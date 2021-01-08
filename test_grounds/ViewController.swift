@@ -5,7 +5,7 @@
 //  Created by javier pizarro on 1/8/21.
 //  Copyright © 2021 javierpizarro. All rights reserved.
 //
-
+import SpriteKit
 import UIKit
 
 class ViewController: UIViewController {
