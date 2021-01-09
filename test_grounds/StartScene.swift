@@ -14,7 +14,7 @@ import UIKit
 
 class StartScene: SKScene{
     
-    var municipiobp: UIBezierPath! = TestClass().createMunicipiosBezierPath()//TestClass().createYauco()    var municipiobp
+    var puertoRicobp: UIBezierPath! = TestClass().createMunicipiosBezierPath()//TestClass().createYauco()    var municipiobp
     
     //TestClass().createPRMap()
     
@@ -27,8 +27,11 @@ class StartScene: SKScene{
      override func didMove(to view: SKView){
         
         self.backgroundColor = SKColor.blue
-        let municipioSKSpriteNode: SKSpriteNode = TestClass().drawMunicipiosBezierPath(bpmunicipio: municipiobp)
-        self.addChild(municipioSKSpriteNode)
+        let puertoRicoSKSpriteNode: SKSpriteNode = TestClass().drawMunicipiosBezierPath(bpPuertoRico: puertoRicobp)
+        puertoRicoSKSpriteNode.xScale = -1.0
+       puertoRicoSKSpriteNode.zRotation = 9.5
+      puertoRicoSKSpriteNode.position = CGPoint(x:100, y: 100)
+        self.addChild( puertoRicoSKSpriteNode)
        // let shapeNode = SKShapeNode(path: municipiobp.cgPath)
         //shapeNode.fillColor = UIColor.red
         //shapeNode.strokeColor = UIColor.white
