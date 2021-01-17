@@ -14,19 +14,22 @@ class TestClass {
     var hormiguerosBezierPath:UIBezierPath!
     var path: UIBezierPath!
     
-    //var pRYUPath: UIBezierPath!
-     
-    /*func createMunicipiosBezierPath() -> UIBezierPath {
-        
-        return createPuertoRico()
 
-        
-    }*/
+    func nodesContainer() -> SKSpriteNode{
+        let nodes_Container = SKSpriteNode()
+        nodes_Container.color = UIColor.green
+        nodes_Container.size = CGSize(width: 100, height: 100)
+        //nodes_Container.anchorPoint = CGPoint.zero
+        //nodes_Container.position = CGPoint(x: frame.midX, y: frame.midY)
+        //nodes_Container.position = CGPoint(x:100, y: 100)
+        return nodes_Container
+    }
+
     
     func hormiguerosBezierPathToSKSpriteNode(bphormigueros: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bphormigueros.cgPath)
-        shapeNode.fillColor = UIColor.red
+        shapeNode.fillColor = UIColor.gray
         shapeNode.strokeColor = UIColor.white
         //shapeNode.position = CGPoint(x: -98, y: 100)
         let view = SKView(frame: UIScreen.main.bounds)
@@ -38,8 +41,8 @@ class TestClass {
     func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
         
         let CBshapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
-        CBshapeNode.fillColor = UIColor.white
-        CBshapeNode.strokeColor = UIColor.red
+        CBshapeNode.fillColor = UIColor.gray
+        CBshapeNode.strokeColor = UIColor.yellow
         //CBshapeNode.position = CGPoint(x: -98, y: 100)
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: CBshapeNode)!
