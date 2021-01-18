@@ -15,15 +15,8 @@ class TestClass {
     var path: UIBezierPath!
     
 
-    func nodesContainer() -> SKSpriteNode{
-        let nodes_Container = SKSpriteNode()
-        nodes_Container.color = UIColor.green
-        nodes_Container.size = CGSize(width: 100, height: 100)
-        //nodes_Container.anchorPoint = CGPoint.zero
-        //nodes_Container.position = CGPoint(x: frame.midX, y: frame.midY)
-        //nodes_Container.position = CGPoint(x:100, y: 100)
-        return nodes_Container
-    }
+
+
 
     
     func hormiguerosBezierPathToSKSpriteNode(bphormigueros: UIBezierPath)-> SKSpriteNode{
@@ -42,7 +35,7 @@ class TestClass {
         
         let CBshapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
         CBshapeNode.fillColor = UIColor.gray
-        CBshapeNode.strokeColor = UIColor.yellow
+        CBshapeNode.strokeColor = UIColor.blue
         //CBshapeNode.position = CGPoint(x: -98, y: 100)
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: CBshapeNode)!
