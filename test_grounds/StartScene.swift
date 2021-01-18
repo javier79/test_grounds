@@ -29,34 +29,37 @@ class StartScene: SKScene{
      override func didMove(to view: SKView){
         
         self.backgroundColor = SKColor.green
-        let containerNode: SKSpriteNode = nodesContainer()
+        let containerNode: SKNode = nodesContainer()
 
 
         let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
+
         caboRojoSKSpriteNode.xScale = -1.0
         caboRojoSKSpriteNode.zRotation = 9.40
-        caboRojoSKSpriteNode.position = CGPoint(x:-237, y: -55)
+        caboRojoSKSpriteNode.position = CGPoint(x:100, y:100)
+        caboRojoSKSpriteNode.zPosition = 1
         containerNode.addChild(caboRojoSKSpriteNode)
         
         let hormiguerosSKSpriteNode: SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
         hormiguerosSKSpriteNode.xScale = -1.0
         hormiguerosSKSpriteNode.zRotation = 9.40
-        hormiguerosSKSpriteNode.position = CGPoint(x:-226.0, y: -28.9)
+        hormiguerosSKSpriteNode.position = CGPoint(x:100, y:200)
         containerNode.addChild(hormiguerosSKSpriteNode)
         
         self.addChild(containerNode)
+
         //self.addChild(caboRojoSKSpriteNode)
         //self.addChild(hormiguerosSKSpriteNode)
         
 
         }
 
-       func nodesContainer() -> SKSpriteNode{
-           let nodes_Container = SKSpriteNode()
-           nodes_Container.color = UIColor.white
-           nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
+       func nodesContainer() -> SKNode{
+           let nodes_Container = SKNode()
+           //nodes_Container.color = UIColor.white
+           //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
            //nodes_Container.anchorPoint = CGPoint.zero
-           nodes_Container.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+           //nodes_Container.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
            return nodes_Container
        }
             
