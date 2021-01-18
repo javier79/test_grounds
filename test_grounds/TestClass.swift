@@ -10,10 +10,11 @@ import SpriteKit
 import UIKit
 
 class TestClass {
+
+    var path: UIBezierPath!
     var caboRojoBezierPath:UIBezierPath!
     var hormiguerosBezierPath:UIBezierPath!
-    var path: UIBezierPath!
-    
+    var mayaguezBezierPath:UIBezierPath!
 
 
 
@@ -24,7 +25,6 @@ class TestClass {
         let shapeNode = SKShapeNode(path: bphormigueros.cgPath)
         shapeNode.fillColor = UIColor.gray
         shapeNode.strokeColor = UIColor.white
-        //shapeNode.position = CGPoint(x: -98, y: 100)
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let hormiguerosNode = SKSpriteNode(texture: texture)
@@ -33,14 +33,24 @@ class TestClass {
     
     func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
         
-        let CBshapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
-        CBshapeNode.fillColor = UIColor.gray
-        CBshapeNode.strokeColor = UIColor.blue
-        //CBshapeNode.position = CGPoint(x: -98, y: 100)
+        let shapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
+        shapeNode.fillColor = UIColor.gray
+        shapeNode.strokeColor = UIColor.white
         let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: CBshapeNode)!
+        let texture = view.texture(from: shapeNode)!
         let caboRojoNode = SKSpriteNode(texture: texture)
         return caboRojoNode
+    }
+    
+    func mayaguezBezierPathToSKSpriteNode(bpMayaguez: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path: bpMayaguez.cgPath)
+        shapeNode.fillColor = UIColor.gray
+        shapeNode.strokeColor = UIColor.white
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let mayaguezNode = SKSpriteNode(texture: texture)
+        return mayaguezNode
     }
     
     func caboRojoDrawBezierPath() -> UIBezierPath{
@@ -1775,7 +1785,10 @@ class TestClass {
             return hormiguerosBezierPath
         }
                 
-        /*Mayaguez
+        //Mayaguez
+            func mayaguezDrawBezierPath() -> UIBezierPath{
+            path = UIBezierPath()
+     
             path.move(to: CGPoint(x: 218.5, y: 69.4))
             path.addLine(to: CGPoint(x: 215.3, y: 68.9))
             path.addLine(to: CGPoint(x: 215.1, y: 69.2))
@@ -2358,10 +2371,15 @@ class TestClass {
             path.addLine(to: CGPoint(x: 129.5, y: 35.9))
             path.addLine(to: CGPoint(x: 128.7, y: 35.9))
             path.addLine(to: CGPoint(x: 128.7, y: 35.8))
+            path.close()
+     
+            mayaguezBezierPath = path
+            return mayaguezBezierPath
 
-           
+    }
         //ANASCO
-            path.move(to: CGPoint(x: 231.4, y: 56.1))
+    
+           /* path.move(to: CGPoint(x: 231.4, y: 56.1))
             path.addLine(to: CGPoint(x: 228.5, y: 55.6))
             path.addLine(to: CGPoint(x: 226, y: 54.6))
             path.addLine(to: CGPoint(x: 224.7, y: 55.9))
