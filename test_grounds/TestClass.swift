@@ -16,6 +16,18 @@ class TestClass {
     var hormiguerosBezierPath:UIBezierPath!
     var mayaguezBezierPath:UIBezierPath!
 
+    
+    func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 1.6
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let caboRojoNode = SKSpriteNode(texture: texture)
+        return caboRojoNode
+    }
 
 
 
@@ -23,24 +35,15 @@ class TestClass {
     func hormiguerosBezierPathToSKSpriteNode(bphormigueros: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bphormigueros.cgPath)
-        shapeNode.fillColor = UIColor.gray
+        shapeNode.fillColor = UIColor.systemGray3
         shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let hormiguerosNode = SKSpriteNode(texture: texture)
         return hormiguerosNode
     }
-    
-    func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
-        
-        let shapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
-        shapeNode.fillColor = UIColor.gray
-        shapeNode.strokeColor = UIColor.white
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let caboRojoNode = SKSpriteNode(texture: texture)
-        return caboRojoNode
-    }
+
     
     func mayaguezBezierPathToSKSpriteNode(bpMayaguez: UIBezierPath)-> SKSpriteNode{
         
@@ -2258,121 +2261,7 @@ class TestClass {
             path.addLine(to: CGPoint(x: 222.5, y: 71.4))
             path.addLine(to: CGPoint(x: 218.5, y: 69.4))
             path.close()
-            path.move(to: CGPoint(x: 128.7, y: 35.8))
-            path.addLine(to: CGPoint(x: 128.1, y: 35.8))
-            path.addLine(to: CGPoint(x: 128.1, y: 35.9))
-            path.addLine(to: CGPoint(x: 128, y: 35.9))
-            path.addLine(to: CGPoint(x: 128, y: 36))
-            path.addLine(to: CGPoint(x: 127.8, y: 36))
-            path.addLine(to: CGPoint(x: 127.8, y: 36.7))
-            path.addLine(to: CGPoint(x: 127.8, y: 36.7))
-            path.addLine(to: CGPoint(x: 127.8, y: 36.8))
-            path.addLine(to: CGPoint(x: 127.7, y: 36.8))
-            path.addLine(to: CGPoint(x: 127.7, y: 36.9))
-            path.addLine(to: CGPoint(x: 127.5, y: 36.9))
-            path.addLine(to: CGPoint(x: 127.5, y: 36.9))
-            path.addLine(to: CGPoint(x: 127.3, y: 36.9))
-            path.addLine(to: CGPoint(x: 127.3, y: 37))
-            path.addLine(to: CGPoint(x: 127.2, y: 37))
-            path.addLine(to: CGPoint(x: 127.2, y: 37.1))
-            path.addLine(to: CGPoint(x: 127.1, y: 37.1))
-            path.addLine(to: CGPoint(x: 127.1, y: 37.6))
-            path.addLine(to: CGPoint(x: 127.2, y: 37.6))
-            path.addLine(to: CGPoint(x: 127.2, y: 37.8))
-            path.addLine(to: CGPoint(x: 127.3, y: 37.8))
-            path.addLine(to: CGPoint(x: 127.3, y: 38))
-            path.addLine(to: CGPoint(x: 127.5, y: 38))
-            path.addLine(to: CGPoint(x: 127.5, y: 38))
-            path.addLine(to: CGPoint(x: 127.5, y: 38))
-            path.addLine(to: CGPoint(x: 127.5, y: 38.1))
-            path.addLine(to: CGPoint(x: 127.6, y: 38.1))
-            path.addLine(to: CGPoint(x: 127.6, y: 38.3))
-            path.addLine(to: CGPoint(x: 127.7, y: 38.3))
-            path.addLine(to: CGPoint(x: 127.7, y: 38.4))
-            path.addLine(to: CGPoint(x: 127.8, y: 38.4))
-            path.addLine(to: CGPoint(x: 127.8, y: 38.5))
-            path.addLine(to: CGPoint(x: 127.8, y: 38.5))
-            path.addLine(to: CGPoint(x: 127.8, y: 38.6))
-            path.addLine(to: CGPoint(x: 128.1, y: 38.6))
-            path.addLine(to: CGPoint(x: 128.1, y: 38.7))
-            path.addLine(to: CGPoint(x: 128.4, y: 38.7))
-            path.addLine(to: CGPoint(x: 128.4, y: 38.8))
-            path.addLine(to: CGPoint(x: 128.5, y: 38.8))
-            path.addLine(to: CGPoint(x: 128.5, y: 38.8))
-            path.addLine(to: CGPoint(x: 128.7, y: 38.8))
-            path.addLine(to: CGPoint(x: 128.7, y: 38.9))
-            path.addLine(to: CGPoint(x: 128.8, y: 38.9))
-            path.addLine(to: CGPoint(x: 128.8, y: 39))
-            path.addLine(to: CGPoint(x: 129, y: 39))
-            path.addLine(to: CGPoint(x: 129, y: 39.1))
-            path.addLine(to: CGPoint(x: 129.1, y: 39.1))
-            path.addLine(to: CGPoint(x: 129.1, y: 39.2))
-            path.addLine(to: CGPoint(x: 129.4, y: 39.2))
-            path.addLine(to: CGPoint(x: 129.4, y: 39.4))
-            path.addLine(to: CGPoint(x: 129.9, y: 39.4))
-            path.addLine(to: CGPoint(x: 129.9, y: 39.2))
-            path.addLine(to: CGPoint(x: 130.2, y: 39.2))
-            path.addLine(to: CGPoint(x: 130.2, y: 39.1))
-            path.addLine(to: CGPoint(x: 130.3, y: 39.1))
-            path.addLine(to: CGPoint(x: 130.3, y: 39.1))
-            path.addLine(to: CGPoint(x: 130.4, y: 39.1))
-            path.addLine(to: CGPoint(x: 130.4, y: 38.6))
-            path.addLine(to: CGPoint(x: 130.6, y: 38.6))
-            path.addLine(to: CGPoint(x: 130.6, y: 38.5))
-            path.addLine(to: CGPoint(x: 130.7, y: 38.5))
-            path.addLine(to: CGPoint(x: 130.7, y: 38.4))
-            path.addLine(to: CGPoint(x: 130.8, y: 38.4))
-            path.addLine(to: CGPoint(x: 130.8, y: 38.4))
-            path.addLine(to: CGPoint(x: 130.8, y: 38.4))
-            path.addLine(to: CGPoint(x: 130.8, y: 38.3))
-            path.addLine(to: CGPoint(x: 131, y: 38.3))
-            path.addLine(to: CGPoint(x: 131, y: 38.2))
-            path.addLine(to: CGPoint(x: 131.1, y: 38.2))
-            path.addLine(to: CGPoint(x: 131.1, y: 38.1))
-            path.addLine(to: CGPoint(x: 131.1, y: 38.1))
-            path.addLine(to: CGPoint(x: 131.1, y: 38))
-            path.addLine(to: CGPoint(x: 131.2, y: 38))
-            path.addLine(to: CGPoint(x: 131.2, y: 38))
-            path.addLine(to: CGPoint(x: 131.4, y: 38))
-            path.addLine(to: CGPoint(x: 131.4, y: 37.7))
-            path.addLine(to: CGPoint(x: 131.5, y: 37.7))
-            path.addLine(to: CGPoint(x: 131.5, y: 37.5))
-            path.addLine(to: CGPoint(x: 131.3, y: 37.5))
-            path.addLine(to: CGPoint(x: 131.3, y: 37.4))
-            path.addLine(to: CGPoint(x: 131, y: 37.4))
-            path.addLine(to: CGPoint(x: 131, y: 37.3))
-            path.addLine(to: CGPoint(x: 130.8, y: 37.3))
-            path.addLine(to: CGPoint(x: 130.8, y: 37.2))
-            path.addLine(to: CGPoint(x: 130.7, y: 37.2))
-            path.addLine(to: CGPoint(x: 130.7, y: 37.1))
-            path.addLine(to: CGPoint(x: 130.6, y: 37.1))
-            path.addLine(to: CGPoint(x: 130.6, y: 37))
-            path.addLine(to: CGPoint(x: 130.5, y: 37))
-            path.addLine(to: CGPoint(x: 130.5, y: 36.9))
-            path.addLine(to: CGPoint(x: 130.5, y: 36.9))
-            path.addLine(to: CGPoint(x: 130.5, y: 36.9))
-            path.addLine(to: CGPoint(x: 130.4, y: 36.9))
-            path.addLine(to: CGPoint(x: 130.4, y: 36.7))
-            path.addLine(to: CGPoint(x: 130.3, y: 36.7))
-            path.addLine(to: CGPoint(x: 130.3, y: 36.6))
-            path.addLine(to: CGPoint(x: 130.2, y: 36.6))
-            path.addLine(to: CGPoint(x: 130.2, y: 36.5))
-            path.addLine(to: CGPoint(x: 130.2, y: 36.5))
-            path.addLine(to: CGPoint(x: 130.2, y: 36.5))
-            path.addLine(to: CGPoint(x: 130, y: 36.5))
-            path.addLine(to: CGPoint(x: 130, y: 36.3))
-            path.addLine(to: CGPoint(x: 129.9, y: 36.3))
-            path.addLine(to: CGPoint(x: 129.9, y: 36.2))
-            path.addLine(to: CGPoint(x: 129.8, y: 36.2))
-            path.addLine(to: CGPoint(x: 129.8, y: 36.1))
-            path.addLine(to: CGPoint(x: 129.6, y: 36.1))
-            path.addLine(to: CGPoint(x: 129.6, y: 36))
-            path.addLine(to: CGPoint(x: 129.5, y: 36))
-            path.addLine(to: CGPoint(x: 129.5, y: 35.9))
-            path.addLine(to: CGPoint(x: 128.7, y: 35.9))
-            path.addLine(to: CGPoint(x: 128.7, y: 35.8))
-            path.close()
-     
+
             mayaguezBezierPath = path
             return mayaguezBezierPath
 
