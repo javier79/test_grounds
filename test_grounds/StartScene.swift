@@ -17,7 +17,10 @@ class StartScene: SKScene{
     var caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
     var hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()//TestClass().createYauco()    var municipiobp
     var mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
-    //var SKSpriteNodesArray: [SKSpriteNode] = []
+    var anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
+    var rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
+    var aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
+    var aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()    //var SKSpriteNodesArray: [SKSpriteNode] = []
     //TestClass().createPRMap()
 
     
@@ -45,7 +48,8 @@ class StartScene: SKScene{
         let hormiguerosSKSpriteNode: SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
         hormiguerosSKSpriteNode.xScale = -1.0
         hormiguerosSKSpriteNode.zRotation = 9.44
-        hormiguerosSKSpriteNode.position = CGPoint(x:89.8, y:168.8)
+        hormiguerosSKSpriteNode.position = CGPoint(x:90.17, y:168.58)
+        //hormiguerosSKSpriteNode.position = CGPoint(x:90.3, y:168.63)
             //hormiguerosSKSpriteNode.position = CGPoint(x:90.0, y:168.2)
         hormiguerosSKSpriteNode.zPosition = 1
         containerNode.addChild(hormiguerosSKSpriteNode)
@@ -53,9 +57,37 @@ class StartScene: SKScene{
         let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
          mayaguezSKSpriteNode.xScale = -1.0
          mayaguezSKSpriteNode.zRotation = 9.44
-         mayaguezSKSpriteNode.position = CGPoint(x:0, y:0)
+        mayaguezSKSpriteNode.position = CGPoint(x:94.2, y:191.08)
          mayaguezSKSpriteNode.zPosition = 1
         containerNode.addChild(mayaguezSKSpriteNode)
+        
+        let anascoSKSpriteNode:SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
+         anascoSKSpriteNode.xScale = -1.0
+         anascoSKSpriteNode.zRotation = 9.44
+        anascoSKSpriteNode.position = CGPoint(x:86.58, y:211.45)
+         anascoSKSpriteNode.zPosition = 1
+         containerNode.addChild(anascoSKSpriteNode)
+        
+        let rinconSKSpriteNode:SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
+         rinconSKSpriteNode.xScale = -1.0
+         rinconSKSpriteNode.zRotation = 9.44
+        rinconSKSpriteNode.position = CGPoint(x:60.98, y:226.43)
+         rinconSKSpriteNode.zPosition = 1
+         containerNode.addChild(rinconSKSpriteNode)
+        
+        let aguadaSKSpriteNode:SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: aguadabp)
+         aguadaSKSpriteNode.xScale = -1.0
+         aguadaSKSpriteNode.zRotation = 9.44
+         aguadaSKSpriteNode.position = CGPoint(x:72.71, y:234.43)
+         aguadaSKSpriteNode.zPosition = 1
+         containerNode.addChild(aguadaSKSpriteNode)
+        
+        let aguadillaSKSpriteNode:SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
+         aguadillaSKSpriteNode.xScale = -1.0
+         aguadillaSKSpriteNode.zRotation = 9.44
+         aguadillaSKSpriteNode.position = CGPoint(x:91.63, y:258.82)
+         aguadillaSKSpriteNode.zPosition = 1
+         containerNode.addChild(aguadillaSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)
