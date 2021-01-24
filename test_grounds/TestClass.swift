@@ -107,7 +107,7 @@ class TestClass {
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
-        let aguadillaNode = SKSpriteNode(texture: texture)
+        let aguadillaNode = SKSpriteNode(texture:texture)
         return aguadillaNode
     }
     
