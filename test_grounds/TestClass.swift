@@ -33,9 +33,15 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let caboRojoNode = SKSpriteNode(texture: texture)
+        caboRojoNode.xScale = -1.0
+        caboRojoNode.zRotation = 9.44
+        caboRojoNode.position = CGPoint(x:80, y:143)
+        caboRojoNode.zPosition = 1
+        caboRojoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:caboRojoNode.size.width/2 * 0.5, height:caboRojoNode.size.height/2), center: CGPoint(x:-3.5, y: 0.5))
+        caboRojoNode.physicsBody?.isDynamic = false
+        caboRojoNode.name = "caboRojoNode"
         return caboRojoNode
     }
-
 
 
     
@@ -48,6 +54,11 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let hormiguerosNode = SKSpriteNode(texture: texture)
+        hormiguerosNode.xScale = -1.0
+        hormiguerosNode.zRotation = 9.44
+        hormiguerosNode.position = CGPoint(x:90.16, y:168.58)
+        hormiguerosNode.zPosition = 2
+        hormiguerosNode.name = "hormiguerosNode"
         return hormiguerosNode
     }
 
@@ -61,6 +72,11 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let mayaguezNode = SKSpriteNode(texture: texture)
+        mayaguezNode.xScale = -1.0
+        mayaguezNode.zRotation = 9.44
+        mayaguezNode.position = CGPoint(x:53.84, y:207.63)
+        mayaguezNode.zPosition = 1
+        mayaguezNode.name = "mayaguezNode"
         return mayaguezNode
     }
     
@@ -73,6 +89,11 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let mayaguezTwoNode = SKSpriteNode(texture: texture)
+        mayaguezTwoNode.xScale = -1.0
+        mayaguezTwoNode.zRotation = 9.44
+        mayaguezTwoNode.position = CGPoint(x:-119.7, y:161.41)
+        mayaguezTwoNode.zPosition = 2
+        mayaguezTwoNode.name = "mayaguezTwoNode"
         return mayaguezTwoNode
     }
     
@@ -85,6 +106,11 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let anascoNode = SKSpriteNode(texture: texture)
+        anascoNode.xScale = -1.0
+        anascoNode.zRotation = 9.44
+        anascoNode.position = CGPoint(x:86.57, y:211.47)
+        anascoNode.zPosition = 1
+        anascoNode.name = "anascoNode"
         return anascoNode
     }
     
@@ -97,6 +123,11 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let rinconNode = SKSpriteNode(texture: texture)
+        rinconNode.xScale = -1.0
+        rinconNode.zRotation = 9.44
+        rinconNode.position = CGPoint(x:60.97, y:226.45)
+        rinconNode.zPosition = 2
+        rinconNode.name = "rinconNode"
         return rinconNode
     }
     
@@ -109,6 +140,11 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let aguadaNode = SKSpriteNode(texture: texture)
+        aguadaNode.xScale = -1.0
+        aguadaNode.zRotation = 9.44
+        aguadaNode.position = CGPoint(x:72.27, y:234.43)
+        aguadaNode.zPosition = 1
+        aguadaNode.name = "aguadaNode"
         return aguadaNode
     }
     
@@ -121,6 +157,11 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let aguadillaNode = SKSpriteNode(texture:texture)
+        aguadillaNode.xScale = -1.0
+        aguadillaNode.zRotation = 9.44
+        aguadillaNode.position = CGPoint(x:91.24, y:258.84)
+        aguadillaNode.zPosition = 2
+        aguadillaNode.name = "aguadillaNode"
         return aguadillaNode
     }
     

@@ -13,7 +13,7 @@ import UIKit
 
 
 class StartScene: SKScene{
-    var nodeNames = ["aguadillaNode","rinconNode", "aguadaNode"]
+    //var nodeNames = ["aguadillaNode","rinconNode", "aguadaNode"]
     var caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
     var hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()//TestClass().createYauco()    var municipiobp
     var mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
@@ -28,11 +28,16 @@ class StartScene: SKScene{
     //var containerNodeTwo = SKNode()
 
     var aguadillaSKSpriteNode = SKSpriteNode()
+    var aguadaSKSpriteNode = SKSpriteNode()
+    var rinconSKSpriteNode = SKSpriteNode()
+    var anascoSKSpriteNode = SKSpriteNode()
+    var mayaguezTwoSKSpriteNode = SKSpriteNode()
+    var mayaguezSKSpriteNode = SKSpriteNode()
+    var hormiguerosSKSpriteNode = SKSpriteNode()
+    var caboRojoSKSpriteNode = SKSpriteNode()
 
-    
-    
-    
-    
+
+
     
      override func didMove(to view: SKView){
         
@@ -42,74 +47,28 @@ class StartScene: SKScene{
         
 
 
-        let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
-        caboRojoSKSpriteNode.xScale = -1.0
-        caboRojoSKSpriteNode.zRotation = 9.44
-        caboRojoSKSpriteNode.position = CGPoint(x:80, y:143)
-        caboRojoSKSpriteNode.zPosition = 1
-        caboRojoSKSpriteNode.name = "caboRojoNode"
+        caboRojoSKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
         containerNode.addChild(caboRojoSKSpriteNode)
         
-        let hormiguerosSKSpriteNode: SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
-        hormiguerosSKSpriteNode.xScale = -1.0
-        hormiguerosSKSpriteNode.zRotation = 9.44
-        hormiguerosSKSpriteNode.position = CGPoint(x:90.16, y:168.58)
-        //hormiguerosSKSpriteNode.position = CGPoint(x:90.17, y:168.58)
-        hormiguerosSKSpriteNode.zPosition = 2
-        hormiguerosSKSpriteNode.name = "hormiguerosNode"
+        hormiguerosSKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
         containerNode.addChild(hormiguerosSKSpriteNode)
         
-        let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
-         mayaguezSKSpriteNode.xScale = -1.0
-         mayaguezSKSpriteNode.zRotation = 9.44
-         //mayaguezSKSpriteNode.position = CGPoint(x:94.2, y:191.08)
-         mayaguezSKSpriteNode.position = CGPoint(x:53.84, y:207.63)
-         mayaguezSKSpriteNode.zPosition = 1
-         mayaguezSKSpriteNode.name = "mayaguezNode"
+        mayaguezSKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
          containerNode.addChild(mayaguezSKSpriteNode)
         
-        let mayaguezTwoSKSpriteNode:SKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
-         mayaguezTwoSKSpriteNode.xScale = -1.0
-         mayaguezTwoSKSpriteNode.zRotation = 9.44
-         mayaguezTwoSKSpriteNode.position = CGPoint(x:-119.7, y:161.41)
-         mayaguezTwoSKSpriteNode.zPosition = 2
-         mayaguezTwoSKSpriteNode.name = "mayaguezTwoNode"
+        mayaguezTwoSKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
          containerNode.addChild(mayaguezTwoSKSpriteNode)
         
-        let anascoSKSpriteNode:SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
-         anascoSKSpriteNode.xScale = -1.0
-         anascoSKSpriteNode.zRotation = 9.44
-         anascoSKSpriteNode.position = CGPoint(x:86.57, y:211.47)
-         //anascoSKSpriteNode.position = CGPoint(x:86.57, y:211.45)
-         anascoSKSpriteNode.zPosition = 1
-         anascoSKSpriteNode.name = "anascoNode"
+        anascoSKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
          containerNode.addChild(anascoSKSpriteNode)
         
-        let rinconSKSpriteNode:SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
-         rinconSKSpriteNode.xScale = -1.0
-         rinconSKSpriteNode.zRotation = 9.44
-         //rinconSKSpriteNode.position = CGPoint(x:60.98, y:226.43)
-         rinconSKSpriteNode.position = CGPoint(x:60.97, y:226.45)
-         rinconSKSpriteNode.zPosition = 2
-         rinconSKSpriteNode.name = "rinconNode"
+        rinconSKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
          containerNode.addChild(rinconSKSpriteNode)
         
-        let aguadaSKSpriteNode:SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: aguadabp)
-         aguadaSKSpriteNode.xScale = -1.0
-         aguadaSKSpriteNode.zRotation = 9.44
-         aguadaSKSpriteNode.position = CGPoint(x:72.27, y:234.43)
-         //aguadaSKSpriteNode.position = CGPoint(x:72.27, y:234.43)
-         aguadaSKSpriteNode.zPosition = 1
-         aguadaSKSpriteNode.name = "aguadaNode"
+        aguadaSKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: aguadabp)
          containerNode.addChild(aguadaSKSpriteNode)
         
          aguadillaSKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
-         aguadillaSKSpriteNode.xScale = -1.0
-         aguadillaSKSpriteNode.zRotation = 9.44
-         aguadillaSKSpriteNode.position = CGPoint(x:91.24, y:258.84)
-         //aguadillaSKSpriteNode.position = CGPoint(x:91.63, y:258.82)
-         aguadillaSKSpriteNode.zPosition = 2
-         aguadillaSKSpriteNode.name = "aguadillaNode"
          containerNode.addChild(aguadillaSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
@@ -155,12 +114,12 @@ class StartScene: SKScene{
         }
              
         let touchLocation = touch.location(in: self)
-        let touchedNode = self.atPoint(touchLocation)
+        let touchedNode = self.physicsWorld.body(at:touchLocation)
 
         for child in containerNode.children {
             if let spriteNode = child as? SKSpriteNode {
                 //if (touchedNode.contains(child.physicsBody)){
-                    if(touchedNode.name == spriteNode.name){
+                    if(touchedNode?.node?.name == spriteNode.name){
                         spriteNode.color = .brown
                         spriteNode.colorBlendFactor = 0.5
                     }
