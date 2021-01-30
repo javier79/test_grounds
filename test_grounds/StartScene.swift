@@ -118,7 +118,6 @@ class StartScene: SKScene{
 
         for child in containerNode.children {
             if let spriteNode = child as? SKSpriteNode {
-                //if (touchedNode.contains(child.physicsBody)){
                     if(touchedNode?.node?.name == spriteNode.name){
                         spriteNode.color = .brown
                         spriteNode.colorBlendFactor = 0.5
