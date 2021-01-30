@@ -58,8 +58,11 @@ class TestClass {
         hormiguerosNode.zRotation = 9.44
         hormiguerosNode.position = CGPoint(x:90.16, y:168.58)
         hormiguerosNode.zPosition = 2
+        hormiguerosNode.physicsBody = SKPhysicsBody(circleOfRadius: hormiguerosNode.size.width/2 * 0.35, center: CGPoint(x:-0.7, y: -1.5))
+        hormiguerosNode.physicsBody?.isDynamic = false
         hormiguerosNode.name = "hormiguerosNode"
         return hormiguerosNode
+
     }
 
     
@@ -76,6 +79,8 @@ class TestClass {
         mayaguezNode.zRotation = 9.44
         mayaguezNode.position = CGPoint(x:53.84, y:207.63)
         mayaguezNode.zPosition = 1
+        mayaguezNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:mayaguezNode.size.width/5.7, height:mayaguezNode.size.height/6), center: CGPoint(x:-41.5, y: 18.0))
+        mayaguezNode.physicsBody?.isDynamic = false
         mayaguezNode.name = "mayaguezNode"
         return mayaguezNode
     }
@@ -110,6 +115,8 @@ class TestClass {
         anascoNode.zRotation = 9.44
         anascoNode.position = CGPoint(x:86.57, y:211.47)
         anascoNode.zPosition = 1
+        anascoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:anascoNode.size.width/2 * 1.2, height:anascoNode.size.height/2 * 0.6), center: CGPoint(x:-3.0, y: -1.7))
+        anascoNode.physicsBody?.isDynamic = false
         anascoNode.name = "anascoNode"
         return anascoNode
     }
@@ -127,6 +134,8 @@ class TestClass {
         rinconNode.zRotation = 9.44
         rinconNode.position = CGPoint(x:60.97, y:226.45)
         rinconNode.zPosition = 2
+        rinconNode.physicsBody = SKPhysicsBody(circleOfRadius: rinconNode.size.width/2 * 0.3 , center: CGPoint(x:1.8, y: 0.5))
+        rinconNode.physicsBody?.isDynamic = false
         rinconNode.name = "rinconNode"
         return rinconNode
     }
@@ -144,6 +153,8 @@ class TestClass {
         aguadaNode.zRotation = 9.44
         aguadaNode.position = CGPoint(x:72.27, y:234.43)
         aguadaNode.zPosition = 1
+        aguadaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadaNode.size.width/2 * 0.45 , center: CGPoint(x:-3.5, y: 0.5))
+        aguadaNode.physicsBody?.isDynamic = false
         aguadaNode.name = "aguadaNode"
         return aguadaNode
     }
@@ -151,7 +162,7 @@ class TestClass {
     func aguadillaBezierPathToSKSpriteNode(bpAguadilla: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpAguadilla.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.fillColor = UIColor.yellow
         shapeNode.strokeColor = UIColor.white
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
@@ -161,6 +172,8 @@ class TestClass {
         aguadillaNode.zRotation = 9.44
         aguadillaNode.position = CGPoint(x:91.24, y:258.84)
         aguadillaNode.zPosition = 2
+        aguadillaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadillaNode.size.width/2 * 0.45 , center: CGPoint(x:2.8, y:-4.0))
+        aguadillaNode.physicsBody?.isDynamic = false
         aguadillaNode.name = "aguadillaNode"
         return aguadillaNode
     }

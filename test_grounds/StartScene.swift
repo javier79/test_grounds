@@ -41,7 +41,7 @@ class StartScene: SKScene{
     
      override func didMove(to view: SKView){
         
-        self.backgroundColor = SKColor.green
+        self.backgroundColor = SKColor.blue
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
         
@@ -101,7 +101,7 @@ class StartScene: SKScene{
     
         func prBackground() ->SKSpriteNode {
         let backgroundNode = SKSpriteNode()
-        backgroundNode.color = UIColor.white
+        backgroundNode.color = UIColor.black
         backgroundNode.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
         //nodes_Container.anchorPoint = CGPoint.zero
         backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
