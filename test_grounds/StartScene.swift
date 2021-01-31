@@ -22,11 +22,12 @@ class StartScene: SKScene{
     var rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
     var aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
     var aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()
+    var isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
 //var SKSpriteNodesArray:
     
     var containerNode = SKNode()
     //var containerNodeTwo = SKNode()
-
+    var isabelaSKSpriteNode = SKSpriteNode()
     var aguadillaSKSpriteNode = SKSpriteNode()
     var aguadaSKSpriteNode = SKSpriteNode()
     var rinconSKSpriteNode = SKSpriteNode()
@@ -70,6 +71,9 @@ class StartScene: SKScene{
         
          aguadillaSKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
          containerNode.addChild(aguadillaSKSpriteNode)
+        
+        isabelaSKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
+        containerNode.addChild(isabelaSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)
