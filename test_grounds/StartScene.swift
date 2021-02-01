@@ -14,8 +14,10 @@ import UIKit
 
 class StartScene: SKScene{
     //var nodeNames = ["aguadillaNode","rinconNode", "aguadaNode"]
-    var caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
-    var hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()//TestClass().createYauco()    var municipiobp
+
+    //var caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
+   
+    //var hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()//TestClass().createYauco()    var municipiobp
     var mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
     var mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
     var anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
@@ -36,19 +38,41 @@ class StartScene: SKScene{
     var mayaguezSKSpriteNode = SKSpriteNode()
     var hormiguerosSKSpriteNode = SKSpriteNode()
     var caboRojoSKSpriteNode = SKSpriteNode()
-
-
+    var newSkspriteNode = [SKSpriteNode]()
+    
+    var SkSpriteNodesArray = [SKSpriteNode]()
+    
+    var bezierPathsArray = [UIBezierPath]()
 
     
      override func didMove(to view: SKView){
+
         
         self.backgroundColor = SKColor.blue
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
         
 
+        //SkSpriteNodesArray = [caboRojoSKSpriteNode, hormiguerosSKSpriteNode]
+        
+        bezierPathsArray.append(TestClass().caboRojoDrawBezierPath())
+        bezierPathsArray.append(TestClass().hormiguerosDrawBezierPath())
+        
+        for i in bezierPathsArray.indices{
+            newSkspriteNode.append(TestClass().caboRojoBezierPathToSKSpriteNode(bpArray:bezierPathsArray[i]))
+        }
+        
+        for i in newSkspriteNode.indices{
+             SkSpriteNodesArray.append(newSkspriteNode[i])
+            
+        }
+        
+        for i in SkSpriteNodesArray.indices{
+            containerNode.addChild(SkSpriteNodesArray[i])
+        }
+        
 
-        caboRojoSKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
+        /*caboRojoSKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
         containerNode.addChild(caboRojoSKSpriteNode)
         
         hormiguerosSKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
@@ -73,7 +97,7 @@ class StartScene: SKScene{
          containerNode.addChild(aguadillaSKSpriteNode)
         
         isabelaSKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
-        containerNode.addChild(isabelaSKSpriteNode)
+        containerNode.addChild(isabelaSKSpriteNode)*/
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)

@@ -24,24 +24,29 @@ class TestClass {
     //var aguadaBezierPath:UIBezierPath!
     //var aguadillaBezierPath:UIBezierPath!
 
+    var skSpriteNode = SKSpriteNode()
+
     
-    func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
+    func caboRojoBezierPathToSKSpriteNode(bpArray: UIBezierPath)-> SKSpriteNode{
         
-        let shapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
+        let shapeNode = SKShapeNode(path: bpArray.cgPath)
         shapeNode.fillColor = UIColor.systemGray3
         shapeNode.strokeColor = UIColor.white
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
-        let caboRojoNode = SKSpriteNode(texture: texture)
-        caboRojoNode.xScale = -1.0
+        skSpriteNode = SKSpriteNode(texture: texture)
+
+        return skSpriteNode
+        
+        /*caboRojoNode.xScale = -1.0
         caboRojoNode.zRotation = 9.44
         caboRojoNode.position = CGPoint(x:80, y:143)
         caboRojoNode.zPosition = 1
         caboRojoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:caboRojoNode.size.width/2 * 0.5, height:caboRojoNode.size.height/2), center: CGPoint(x:-3.5, y: 0.5))
         caboRojoNode.physicsBody?.isDynamic = false
         caboRojoNode.name = "caboRojoNode"
-        return caboRojoNode
+        return caboRojoNode*/
     }
 
 
@@ -198,7 +203,7 @@ class TestClass {
         return isabelaNode
     }
     
-    func caboRojoDrawBezierPath() -> UIBezierPath{
+    func caboRojoDrawBezierPath()->UIBezierPath{
             path = UIBezierPath()
         //Cabo Rojo
             path.move(to: CGPoint(x: 232.5, y: 168.2))
@@ -1860,13 +1865,15 @@ class TestClass {
             path.addLine(to: CGPoint(x: 209.8, y: 98.7))
             path.addLine(to: CGPoint(x: 209.8, y: 98.6))
             path.close()
+            
+            
             caboRojoBezierPath = path
+            return caboRojoBezierPath
 
         
-            return caboRojoBezierPath
     }
         //Hormigueros
-            func hormiguerosDrawBezierPath() -> UIBezierPath{
+            func hormiguerosDrawBezierPath()->UIBezierPath{
             path = UIBezierPath()
             path.move(to: CGPoint(x: 230.8, y: 101.6))
             path.addLine(to: CGPoint(x: 229.8, y: 101.2))
@@ -1926,8 +1933,9 @@ class TestClass {
             path.close()
             
             hormiguerosBezierPath = path
-         
             return hormiguerosBezierPath
+
+            
         }
                 
         //Mayaguez
