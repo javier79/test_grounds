@@ -21,15 +21,14 @@ class TestClass {
     var aguadaBezierPath:UIBezierPath!
     var aguadillaBezierPath:UIBezierPath!
     var isabelaBezierPath:UIBezierPath!
-    //var aguadaBezierPath:UIBezierPath!
-    //var aguadillaBezierPath:UIBezierPath!
+
 
     var skSpriteNode = SKSpriteNode()
 
     
-    func caboRojoBezierPathToSKSpriteNode(bpArray: UIBezierPath)-> SKSpriteNode{
+    func BezierPathToSKSpriteNodeTexture(bpArrayElement: UIBezierPath)-> SKSpriteNode{
         
-        let shapeNode = SKShapeNode(path: bpArray.cgPath)
+        let shapeNode = SKShapeNode(path:bpArrayElement.cgPath)
         shapeNode.fillColor = UIColor.systemGray3
         shapeNode.strokeColor = UIColor.white
         shapeNode.lineWidth = 0.5
@@ -49,9 +48,19 @@ class TestClass {
         return caboRojoNode*/
     }
 
+    func scaleAndRotation(skSpriteNodeScalingRotating: SKSpriteNode)-> SKSpriteNode{
+        
+        skSpriteNodeScalingRotating.xScale = -1.0
+        skSpriteNodeScalingRotating.zRotation = 9.44
+        
+        return skSpriteNodeScalingRotating
+        
+        
+    }
+    
 
     
-    func hormiguerosBezierPathToSKSpriteNode(bphormigueros: UIBezierPath)-> SKSpriteNode{
+        func hormiguerosBezierPathToSKSpriteNode(bphormigueros: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bphormigueros.cgPath)
         shapeNode.fillColor = UIColor.systemGray3
