@@ -23,6 +23,18 @@ class StartScene: SKScene{
     var aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
     var aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()
     var isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
+    var mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
+    var sanSebastianbp:UIBezierPath! = TestClass().sanSebastianDrawBezierPath()
+    var lasMariasbp:UIBezierPath! = TestClass().lasMariasDrawBezierPath()
+    var maricaobp:UIBezierPath! = TestClass().maricaoDrawBezierPath()
+    var sanGermanbp:UIBezierPath! = TestClass().sanGermanDrawBezierPath()
+    var sabanaGrandebp:UIBezierPath! = TestClass().sabanaGrandeDrawBezierPath()
+    var yaucobp:UIBezierPath! = TestClass().yaucoDrawBezierPath()
+    var lajasbp:UIBezierPath! = TestClass().lajasDrawBezierPath()
+    var guanicabp:UIBezierPath! = TestClass().guanicaDrawBezierPath()
+    var guayanillabp:UIBezierPath! = TestClass().guayanillaDrawBezierPath()
+    var adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
+    var laresbp:UIBezierPath! = TestClass().laresDrawBezierPath()
 //var SKSpriteNodesArray:
     
     var containerNode = SKNode()
@@ -36,6 +48,18 @@ class StartScene: SKScene{
     var mayaguezSKSpriteNode = SKSpriteNode()
     var hormiguerosSKSpriteNode = SKSpriteNode()
     var caboRojoSKSpriteNode = SKSpriteNode()
+    var mocaSKSpriteNode = SKSpriteNode()
+    var sanSebastianSKSpriteNode = SKSpriteNode()
+    var lasMariasSKSpriteNode = SKSpriteNode()
+    var maricaoSKSpriteNode = SKSpriteNode()
+    var sanGermanSKSpriteNode = SKSpriteNode()
+    var sabanaGrandeSKSpriteNode = SKSpriteNode()
+    var yaucoSKSpriteNode = SKSpriteNode()
+    var lajasSKSpriteNode = SKSpriteNode()
+    var guanicaSKSpriteNode = SKSpriteNode()
+    var guayanillaSKSpriteNode = SKSpriteNode()
+    var adjuntasSKSpriteNode = SKSpriteNode()
+    var laresSKSpriteNode = SKSpriteNode()
 
 
 
@@ -74,6 +98,44 @@ class StartScene: SKScene{
         
         isabelaSKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
         containerNode.addChild(isabelaSKSpriteNode)
+        
+        mocaSKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
+        containerNode.addChild(mocaSKSpriteNode)
+        
+        sanSebastianSKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: sanSebastianbp)
+        containerNode.addChild(sanSebastianSKSpriteNode)
+        
+        lasMariasSKSpriteNode = TestClass().lasMariasBezierPathToSKSpriteNode(bpLasMarias: lasMariasbp)
+        containerNode.addChild(lasMariasSKSpriteNode)
+        
+        maricaoSKSpriteNode = TestClass().maricaoBezierPathToSKSpriteNode(bpMaricao:maricaobp)
+        containerNode.addChild(maricaoSKSpriteNode)
+        
+        sanGermanSKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: sanGermanbp)
+        containerNode.addChild(sanGermanSKSpriteNode)
+        
+        sabanaGrandeSKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: sabanaGrandebp)
+        containerNode.addChild(sabanaGrandeSKSpriteNode)
+        
+        yaucoSKSpriteNode = TestClass().yaucoBezierPathToSKSpriteNode(bpYauco:yaucobp)
+        containerNode.addChild(yaucoSKSpriteNode)
+        
+        lajasSKSpriteNode = TestClass().lajasBezierPathToSKSpriteNode(bpLajas:lajasbp)
+        containerNode.addChild(lajasSKSpriteNode)
+        
+        guanicaSKSpriteNode = TestClass().guanicaBezierPathToSKSpriteNode(bpGuanica:guanicabp)
+        containerNode.addChild(guanicaSKSpriteNode)
+        
+        guayanillaSKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:guayanillabp)
+        containerNode.addChild(guayanillaSKSpriteNode)
+        
+        adjuntasSKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: adjuntasbp)
+        containerNode.addChild(adjuntasSKSpriteNode)
+        
+        laresSKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares: laresbp)
+        containerNode.addChild(laresSKSpriteNode)
+        
+
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)
