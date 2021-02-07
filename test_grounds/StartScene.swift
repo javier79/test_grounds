@@ -35,6 +35,11 @@ class StartScene: SKScene{
     var guayanillabp:UIBezierPath! = TestClass().guayanillaDrawBezierPath()
     var adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
     var laresbp:UIBezierPath! = TestClass().laresDrawBezierPath()
+    var penuelasbp:UIBezierPath! = TestClass().penuelasDrawBezierPath()
+    var poncebp:UIBezierPath! = TestClass().ponceDrawBezierPath()
+    var utuadobp:UIBezierPath! = TestClass().utuadoDrawBezierPath()
+    var jayuyabp:UIBezierPath! = TestClass().jayuyaDrawBezierPath()
+    var juanaDiazbp:UIBezierPath! = TestClass().juanaDiazDrawBezierPath()
 //var SKSpriteNodesArray:
     
     var containerNode = SKNode()
@@ -60,6 +65,11 @@ class StartScene: SKScene{
     var guayanillaSKSpriteNode = SKSpriteNode()
     var adjuntasSKSpriteNode = SKSpriteNode()
     var laresSKSpriteNode = SKSpriteNode()
+    var penuelasSKSpriteNode = SKSpriteNode()
+    var ponceSKSpriteNode = SKSpriteNode()
+    var utuadoSKSpriteNode = SKSpriteNode()
+    var jayuyaSKSpriteNode = SKSpriteNode()
+    var juanaDiazSKSpriteNode = SKSpriteNode()
 
 
 
@@ -134,8 +144,25 @@ class StartScene: SKScene{
         
         laresSKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares: laresbp)
         containerNode.addChild(laresSKSpriteNode)
+    
+        penuelasSKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas: penuelasbp)
+        containerNode.addChild(penuelasSKSpriteNode)
         
-
+        ponceSKSpriteNode =
+            TestClass().ponceBezierPathToSKSpriteNode(bpPonce: poncebp)
+        containerNode.addChild(ponceSKSpriteNode)
+        
+        utuadoSKSpriteNode =
+            TestClass().utuadoBezierPathToSKSpriteNode(bpUtuado: utuadobp)
+        containerNode.addChild(utuadoSKSpriteNode)
+        
+        jayuyaSKSpriteNode =
+            TestClass().jayuyaBezierPathToSKSpriteNode(bpJayuya: jayuyabp)
+        containerNode.addChild(jayuyaSKSpriteNode)
+        
+        juanaDiazSKSpriteNode =
+            TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz: juanaDiazbp)
+        containerNode.addChild(juanaDiazSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)
