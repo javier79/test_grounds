@@ -40,6 +40,15 @@ class StartScene: SKScene{
     var utuadobp:UIBezierPath! = TestClass().utuadoDrawBezierPath()
     var jayuyabp:UIBezierPath! = TestClass().jayuyaDrawBezierPath()
     var juanaDiazbp:UIBezierPath! = TestClass().juanaDiazDrawBezierPath()
+    var quebradillasbp:UIBezierPath! = TestClass().quebradillasDrawBezierPath()
+    var camuybp:UIBezierPath! = TestClass().camuyDrawBezierPath()
+    var hatillobp:UIBezierPath! = TestClass().hatilloDrawBezierPath()
+    var arecibobp:UIBezierPath! = TestClass().areciboDrawBezierPath()
+    var floridabp:UIBezierPath! = TestClass().floridaDrawBezierPath()
+    var barcelonetabp:UIBezierPath! = TestClass().barcelonetaDrawBezierPath()
+    var manatibp:UIBezierPath! = TestClass().manatiDrawBezierPath()
+    var vegaBajabp:UIBezierPath! = TestClass().vegaBajaDrawBezierPath()
+    
 //var SKSpriteNodesArray:
     
     var containerNode = SKNode()
@@ -70,6 +79,15 @@ class StartScene: SKScene{
     var utuadoSKSpriteNode = SKSpriteNode()
     var jayuyaSKSpriteNode = SKSpriteNode()
     var juanaDiazSKSpriteNode = SKSpriteNode()
+    var quebradillasSKSpriteNode = SKSpriteNode()
+    var camuySKSpriteNode = SKSpriteNode()
+    var floridaSKSpriteNode = SKSpriteNode()
+    var areciboSKSpriteNode = SKSpriteNode()
+    var barcelonetaSKSpriteNode = SKSpriteNode()
+    var manatiSKSpriteNode = SKSpriteNode()
+    var vegaBajaSKSpriteNode = SKSpriteNode()
+    var hatilloSKSpriteNode = SKSpriteNode()
+ 
 
 
 
@@ -163,6 +181,38 @@ class StartScene: SKScene{
         juanaDiazSKSpriteNode =
             TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz: juanaDiazbp)
         containerNode.addChild(juanaDiazSKSpriteNode)
+        
+        quebradillasSKSpriteNode =
+            TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:quebradillasbp)
+        containerNode.addChild(quebradillasSKSpriteNode)
+        
+        camuySKSpriteNode =
+            TestClass().camuyBezierPathToSKSpriteNode(bpCamuy:camuybp)
+        containerNode.addChild(camuySKSpriteNode)
+        
+        barcelonetaSKSpriteNode =
+            TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:barcelonetabp)
+        containerNode.addChild(barcelonetaSKSpriteNode)
+        
+        hatilloSKSpriteNode =
+            TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:hatillobp)
+        containerNode.addChild(hatilloSKSpriteNode)
+        
+        areciboSKSpriteNode =
+            TestClass().areciboBezierPathToSKSpriteNode(bpArecibo:arecibobp)
+        containerNode.addChild(areciboSKSpriteNode)
+        
+        manatiSKSpriteNode =
+            TestClass().manatiBezierPathToSKSpriteNode(bpManati:manatibp)
+        containerNode.addChild(manatiSKSpriteNode)
+        
+        vegaBajaSKSpriteNode =
+            TestClass().vegaBajaBezierPathToSKSpriteNode(bpVegaBaja:vegaBajabp)
+        containerNode.addChild(vegaBajaSKSpriteNode)
+        
+        floridaSKSpriteNode =
+            TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:floridabp)
+        containerNode.addChild(floridaSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)
