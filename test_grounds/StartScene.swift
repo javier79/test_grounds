@@ -48,6 +48,10 @@ class StartScene: SKScene{
     var barcelonetabp:UIBezierPath! = TestClass().barcelonetaDrawBezierPath()
     var manatibp:UIBezierPath! = TestClass().manatiDrawBezierPath()
     var vegaBajabp:UIBezierPath! = TestClass().vegaBajaDrawBezierPath()
+    var villalbabp:UIBezierPath! = TestClass().villalbaDrawBezierPath()
+    var cialesbp:UIBezierPath! = TestClass().cialesDrawBezierPath()
+    var orocovisbp:UIBezierPath! = TestClass().orocovisDrawBezierPath()
+    var morovisbp:UIBezierPath! = TestClass().morovisDrawBezierPath()
     
 //var SKSpriteNodesArray:
     
@@ -87,6 +91,10 @@ class StartScene: SKScene{
     var manatiSKSpriteNode = SKSpriteNode()
     var vegaBajaSKSpriteNode = SKSpriteNode()
     var hatilloSKSpriteNode = SKSpriteNode()
+    var villalbaSKSpriteNode = SKSpriteNode()
+    var cialesSKSpriteNode = SKSpriteNode()
+    var morovisSKSpriteNode = SKSpriteNode()
+    var orocovisSKSpriteNode = SKSpriteNode()
  
 
 
@@ -213,6 +221,22 @@ class StartScene: SKScene{
         floridaSKSpriteNode =
             TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:floridabp)
         containerNode.addChild(floridaSKSpriteNode)
+        
+        villalbaSKSpriteNode =
+            TestClass().villalbaBezierPathToSKSpriteNode(bpVillalba: villalbabp)
+        containerNode.addChild(villalbaSKSpriteNode)
+        
+        cialesSKSpriteNode =
+            TestClass().cialesBezierPathToSKSpriteNode(bpCiales: cialesbp)
+        containerNode.addChild(cialesSKSpriteNode)
+        
+        orocovisSKSpriteNode =
+            TestClass().orocovisBezierPathToSKSpriteNode(bpOrocovis: orocovisbp)
+        containerNode.addChild(orocovisSKSpriteNode)
+        
+        morovisSKSpriteNode =
+            TestClass().morovisBezierPathToSKSpriteNode(bpMorovis: morovisbp)
+        containerNode.addChild(morovisSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)

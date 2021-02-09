@@ -46,6 +46,10 @@ class TestClass {
     var barcelonetaBezierPath:UIBezierPath!
     var manatiBezierPath:UIBezierPath!
     var vegaBajaBezierPath:UIBezierPath!
+    var villalbaBezierPath:UIBezierPath!
+    var orocovisBezierPath:UIBezierPath!
+    var cialesBezierPath:UIBezierPath!
+    var morovisBezierPath:UIBezierPath!
 
     
     func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
@@ -691,11 +695,87 @@ class TestClass {
         vegaBajaNode.zRotation = 9.44
         vegaBajaNode.position = CGPoint(x:283.73, y:249.79)
         vegaBajaNode.zPosition = 1
-        vegaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius: vegaBajaNode.size.width/2 * 0.55, center: CGPoint(x:0.5, y:0.5))
+        vegaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius: vegaBajaNode.size.width/2 * 0.55, center: CGPoint(x:0.5, y:-2.5))
         vegaBajaNode.physicsBody?.isDynamic = false
         vegaBajaNode.name = "vegaBajaNode"
         return  vegaBajaNode
         }
+    
+    func villalbaBezierPathToSKSpriteNode(bpVillalba: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpVillalba.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let villalbaNode = SKSpriteNode(texture: texture)
+         villalbaNode.xScale = -1.0
+         villalbaNode.zRotation = 9.44
+        villalbaNode.position = CGPoint(x:263.2, y:167.86)
+         villalbaNode.zPosition = 1
+         villalbaNode.physicsBody = SKPhysicsBody(circleOfRadius:villalbaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.5))
+         villalbaNode.physicsBody?.isDynamic = false
+         villalbaNode.name = "villalbaNode"
+        return  villalbaNode
+    }
+    
+    func orocovisBezierPathToSKSpriteNode(bpOrocovis: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpOrocovis.cgPath)
+        shapeNode.fillColor = UIColor.yellow
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let orocovisNode = SKSpriteNode(texture: texture)
+         orocovisNode.xScale = -1.0
+         orocovisNode.zRotation = 9.44
+         orocovisNode.position = CGPoint(x:270.23, y:193.72)
+         orocovisNode.zPosition = 1
+        orocovisNode.physicsBody = SKPhysicsBody(circleOfRadius:orocovisNode.size.width/2 * 0.35 , center: CGPoint(x:-6.0, y:0.5))
+         orocovisNode.physicsBody?.isDynamic = false
+         orocovisNode.name = "orocovisNode"
+        return  orocovisNode
+    }
+    
+    func cialesBezierPathToSKSpriteNode(bpCiales: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpCiales.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let cialesNode = SKSpriteNode(texture: texture)
+         cialesNode.xScale = -1.0
+         cialesNode.zRotation = 9.44
+        cialesNode.position = CGPoint(x:247.6, y:206.12)
+         cialesNode.zPosition = 1
+        cialesNode.physicsBody = SKPhysicsBody(circleOfRadius:cialesNode.size.width/2 * 0.4 , center: CGPoint(x:-5.5, y:-10.5))
+         cialesNode.physicsBody?.isDynamic = false
+         cialesNode.name = "cialesNode"
+        return  cialesNode
+    }
+    
+    func morovisBezierPathToSKSpriteNode(bpMorovis: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpMorovis.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let morovisNode = SKSpriteNode(texture: texture)
+         morovisNode.xScale = -1.0
+         morovisNode.zRotation = 9.44
+         morovisNode.position = CGPoint(x:279.3, y:221.04)
+         morovisNode.zPosition = 1
+         morovisNode.physicsBody = SKPhysicsBody(circleOfRadius:morovisNode.size.width/2 * 0.49 , center: CGPoint(x:0.0, y:0.5))
+         morovisNode.physicsBody?.isDynamic = false
+         morovisNode.name = "morovisNode"
+        return  morovisNode
+    }
     
     func caboRojoDrawBezierPath() -> UIBezierPath{
             path = UIBezierPath()
@@ -13771,6 +13851,468 @@ class TestClass {
         return  floridaBezierPath
                         
     }
+    
+    func villalbaDrawBezierPath() -> UIBezierPath{
+    path = UIBezierPath()
+    path.move(to: CGPoint(x: 406.3, y: 95.8))
+    path.addLine(to: CGPoint(x: 405.9, y: 95.8))
+    path.addLine(to: CGPoint(x: 404.7, y: 96.3))
+    path.addLine(to: CGPoint(x: 403.9, y: 96.3))
+    path.addLine(to: CGPoint(x: 401.8, y: 96))
+    path.addLine(to: CGPoint(x: 401.4, y: 96))
+    path.addLine(to: CGPoint(x: 401.3, y: 96.1))
+    path.addLine(to: CGPoint(x: 400.7, y: 97.6))
+    path.addLine(to: CGPoint(x: 399.6, y: 98.3))
+    path.addLine(to: CGPoint(x: 396.6, y: 99.3))
+    path.addLine(to: CGPoint(x: 394.4, y: 99.2))
+    path.addLine(to: CGPoint(x: 393.6, y: 99.7))
+    path.addLine(to: CGPoint(x: 393.1, y: 99.8))
+    path.addLine(to: CGPoint(x: 392.3, y: 99.8))
+    path.addLine(to: CGPoint(x: 391.9, y: 100))
+    path.addLine(to: CGPoint(x: 390.6, y: 101.1))
+    path.addLine(to: CGPoint(x: 390.5, y: 101.3))
+    path.addLine(to: CGPoint(x: 389.8, y: 102.3))
+    path.addLine(to: CGPoint(x: 387.5, y: 103.4))
+    path.addLine(to: CGPoint(x: 387.2, y: 105.3))
+    path.addLine(to: CGPoint(x: 386.3, y: 106.5))
+    path.addLine(to: CGPoint(x: 386.2, y: 107))
+    path.addLine(to: CGPoint(x: 385.9, y: 108.1))
+    path.addLine(to: CGPoint(x: 385.9, y: 108.4))
+    path.addLine(to: CGPoint(x: 385.8, y: 109.1))
+    path.addLine(to: CGPoint(x: 387.2, y: 111.8))
+    path.addLine(to: CGPoint(x: 386.2, y: 115.3))
+    path.addLine(to: CGPoint(x: 385.4, y: 116.1))
+    path.addLine(to: CGPoint(x: 387.5, y: 121))
+    path.addLine(to: CGPoint(x: 388.6, y: 122.3))
+    path.addLine(to: CGPoint(x: 390.6, y: 123.3))
+    path.addLine(to: CGPoint(x: 391.5, y: 123.5))
+    path.addLine(to: CGPoint(x: 392.1, y: 123.1))
+    path.addLine(to: CGPoint(x: 392.9, y: 122.2))
+    path.addLine(to: CGPoint(x: 393, y: 121.6))
+    path.addLine(to: CGPoint(x: 392.9, y: 121.4))
+    path.addLine(to: CGPoint(x: 392, y: 120.4))
+    path.addLine(to: CGPoint(x: 392.1, y: 119.9))
+    path.addLine(to: CGPoint(x: 393, y: 119.3))
+    path.addLine(to: CGPoint(x: 395.3, y: 119.2))
+    path.addLine(to: CGPoint(x: 395.7, y: 119.2))
+    path.addLine(to: CGPoint(x: 396.3, y: 119.6))
+    path.addLine(to: CGPoint(x: 397.5, y: 120.4))
+    path.addLine(to: CGPoint(x: 399.1, y: 121.6))
+    path.addLine(to: CGPoint(x: 404.3, y: 122.8))
+    path.addLine(to: CGPoint(x: 406.3, y: 122.9))
+    path.addLine(to: CGPoint(x: 407.9, y: 122.6))
+    path.addLine(to: CGPoint(x: 408.7, y: 122.5))
+    path.addLine(to: CGPoint(x: 409.9, y: 122.3))
+    path.addLine(to: CGPoint(x: 410.4, y: 122.5))
+    path.addLine(to: CGPoint(x: 411.3, y: 122.7))
+    path.addLine(to: CGPoint(x: 412.3, y: 123.1))
+    path.addLine(to: CGPoint(x: 412.3, y: 121.8))
+    path.addLine(to: CGPoint(x: 412.6, y: 120.6))
+    path.addLine(to: CGPoint(x: 413, y: 120.2))
+    path.addLine(to: CGPoint(x: 414.6, y: 118.8))
+    path.addLine(to: CGPoint(x: 412.2, y: 113.8))
+    path.addLine(to: CGPoint(x: 413.8, y: 108.9))
+    path.addLine(to: CGPoint(x: 414.7, y: 107.8))
+    path.addLine(to: CGPoint(x: 415.2, y: 105.1))
+    path.addLine(to: CGPoint(x: 415.1, y: 104.7))
+    path.addLine(to: CGPoint(x: 412.6, y: 102))
+    path.addLine(to: CGPoint(x: 412.6, y: 100.1))
+    path.addLine(to: CGPoint(x: 412.7, y: 99.7))
+    path.addLine(to: CGPoint(x: 409.9, y: 97.4))
+    path.addLine(to: CGPoint(x: 409.7, y: 97.3))
+    path.addLine(to: CGPoint(x: 408.8, y: 96.6))
+    path.addLine(to: CGPoint(x: 408.4, y: 96.4))
+    path.addLine(to: CGPoint(x: 406.3, y: 95.8))
+    path.close()
+
+        villalbaBezierPath = path
+        return  villalbaBezierPath
+                        
+    }
+    
+    func orocovisDrawBezierPath() -> UIBezierPath{
+
+    path = UIBezierPath()
+    path.move(to: CGPoint(x: 430.6, y: 73.5))
+    path.addLine(to: CGPoint(x: 430.1, y: 72.9))
+    path.addLine(to: CGPoint(x: 428, y: 70))
+    path.addLine(to: CGPoint(x: 426.9, y: 69))
+    path.addLine(to: CGPoint(x: 426.6, y: 68.8))
+    path.addLine(to: CGPoint(x: 425.1, y: 68.7))
+    path.addLine(to: CGPoint(x: 425, y: 68.4))
+    path.addLine(to: CGPoint(x: 425.1, y: 67.2))
+    path.addLine(to: CGPoint(x: 425.6, y: 66.4))
+    path.addLine(to: CGPoint(x: 425.7, y: 66))
+    path.addLine(to: CGPoint(x: 426.2, y: 65.7))
+    path.addLine(to: CGPoint(x: 426.5, y: 65.3))
+    path.addLine(to: CGPoint(x: 426.4, y: 63.1))
+    path.addLine(to: CGPoint(x: 426.4, y: 63))
+    path.addLine(to: CGPoint(x: 425.4, y: 63.5))
+    path.addLine(to: CGPoint(x: 424.7, y: 64.1))
+    path.addLine(to: CGPoint(x: 424.1, y: 65.9))
+    path.addLine(to: CGPoint(x: 423.5, y: 67.9))
+    path.addLine(to: CGPoint(x: 422.9, y: 68.8))
+    path.addLine(to: CGPoint(x: 420.8, y: 70.2))
+    path.addLine(to: CGPoint(x: 419, y: 71))
+    path.addLine(to: CGPoint(x: 418, y: 71.7))
+    path.addLine(to: CGPoint(x: 417.2, y: 71.8))
+    path.addLine(to: CGPoint(x: 413.4, y: 72.4))
+    path.addLine(to: CGPoint(x: 412.8, y: 72.5))
+    path.addLine(to: CGPoint(x: 412.3, y: 72.7))
+    path.addLine(to: CGPoint(x: 410.6, y: 73.6))
+    path.addLine(to: CGPoint(x: 410.3, y: 73.8))
+    path.addLine(to: CGPoint(x: 408.4, y: 73.4))
+    path.addLine(to: CGPoint(x: 405.6, y: 73.4))
+    path.addLine(to: CGPoint(x: 405.5, y: 73.4))
+    path.addLine(to: CGPoint(x: 405.7, y: 74.5))
+    path.addLine(to: CGPoint(x: 405.7, y: 75))
+    path.addLine(to: CGPoint(x: 405.8, y: 75.3))
+    path.addLine(to: CGPoint(x: 403.2, y: 76.4))
+    path.addLine(to: CGPoint(x: 402.9, y: 76.5))
+    path.addLine(to: CGPoint(x: 402.5, y: 76.7))
+    path.addLine(to: CGPoint(x: 401.7, y: 76.7))
+    path.addLine(to: CGPoint(x: 400.5, y: 76.1))
+    path.addLine(to: CGPoint(x: 399.5, y: 75.3))
+    path.addLine(to: CGPoint(x: 398.1, y: 74.8))
+    path.addLine(to: CGPoint(x: 397.2, y: 74.6))
+    path.addLine(to: CGPoint(x: 395.6, y: 74.8))
+    path.addLine(to: CGPoint(x: 395.5, y: 74.8))
+    path.addLine(to: CGPoint(x: 394.2, y: 74.9))
+    path.addLine(to: CGPoint(x: 394.1, y: 74.7))
+    path.addLine(to: CGPoint(x: 393.2, y: 73.6))
+    path.addLine(to: CGPoint(x: 393.1, y: 73.7))
+    path.addLine(to: CGPoint(x: 391.3, y: 75.9))
+    path.addLine(to: CGPoint(x: 390.2, y: 77.7))
+    path.addLine(to: CGPoint(x: 390.3, y: 77.7))
+    path.addLine(to: CGPoint(x: 390.9, y: 78.7))
+    path.addLine(to: CGPoint(x: 391.5, y: 79.8))
+    path.addLine(to: CGPoint(x: 390.9, y: 81.3))
+    path.addLine(to: CGPoint(x: 389.9, y: 81.2))
+    path.addLine(to: CGPoint(x: 388.7, y: 81.2))
+    path.addLine(to: CGPoint(x: 388.7, y: 81.3))
+    path.addLine(to: CGPoint(x: 388.8, y: 82))
+    path.addLine(to: CGPoint(x: 388.9, y: 83))
+    path.addLine(to: CGPoint(x: 389.4, y: 85.1))
+    path.addLine(to: CGPoint(x: 390.2, y: 86.6))
+    path.addLine(to: CGPoint(x: 390.5, y: 90))
+    path.addLine(to: CGPoint(x: 390.5, y: 90.2))
+    path.addLine(to: CGPoint(x: 389.6, y: 92))
+    path.addLine(to: CGPoint(x: 390.5, y: 95.9))
+    path.addLine(to: CGPoint(x: 390.6, y: 96.2))
+    path.addLine(to: CGPoint(x: 390.3, y: 99))
+    path.addLine(to: CGPoint(x: 390.3, y: 99.2))
+    path.addLine(to: CGPoint(x: 390, y: 99.4))
+    path.addLine(to: CGPoint(x: 388.1, y: 100))
+    path.addLine(to: CGPoint(x: 387.3, y: 100.7))
+    path.addLine(to: CGPoint(x: 385.7, y: 101.9))
+    path.addLine(to: CGPoint(x: 383.2, y: 101))
+    path.addLine(to: CGPoint(x: 382, y: 100.3))
+    path.addLine(to: CGPoint(x: 381.9, y: 100.2))
+    path.addLine(to: CGPoint(x: 380.8, y: 102.8))
+    path.addLine(to: CGPoint(x: 380.8, y: 103))
+    path.addLine(to: CGPoint(x: 382.3, y: 104.6))
+    path.addLine(to: CGPoint(x: 383.6, y: 103.8))
+    path.addLine(to: CGPoint(x: 385.3, y: 103.1))
+    path.addLine(to: CGPoint(x: 385.7, y: 103.1))
+    path.addLine(to: CGPoint(x: 387.5, y: 103.4))
+    path.addLine(to: CGPoint(x: 389.8, y: 102.3))
+    path.addLine(to: CGPoint(x: 390.5, y: 101.3))
+    path.addLine(to: CGPoint(x: 390.6, y: 101.1))
+    path.addLine(to: CGPoint(x: 391.9, y: 100))
+    path.addLine(to: CGPoint(x: 392.3, y: 99.8))
+    path.addLine(to: CGPoint(x: 393.1, y: 99.8))
+    path.addLine(to: CGPoint(x: 393.6, y: 99.7))
+    path.addLine(to: CGPoint(x: 394.4, y: 99.2))
+    path.addLine(to: CGPoint(x: 396.6, y: 99.3))
+    path.addLine(to: CGPoint(x: 399.6, y: 98.3))
+    path.addLine(to: CGPoint(x: 400.7, y: 97.6))
+    path.addLine(to: CGPoint(x: 401.3, y: 96.1))
+    path.addLine(to: CGPoint(x: 401.4, y: 96))
+    path.addLine(to: CGPoint(x: 401.8, y: 96))
+    path.addLine(to: CGPoint(x: 403.9, y: 96.3))
+    path.addLine(to: CGPoint(x: 404.7, y: 96.3))
+    path.addLine(to: CGPoint(x: 405.9, y: 95.8))
+    path.addLine(to: CGPoint(x: 406.3, y: 95.8))
+    path.addLine(to: CGPoint(x: 408.4, y: 96.4))
+    path.addLine(to: CGPoint(x: 409.7, y: 96.5))
+    path.addLine(to: CGPoint(x: 410.8, y: 96.6))
+    path.addLine(to: CGPoint(x: 414, y: 97.7))
+    path.addLine(to: CGPoint(x: 414.3, y: 97.8))
+    path.addLine(to: CGPoint(x: 414.5, y: 98.2))
+    path.addLine(to: CGPoint(x: 414.5, y: 98.8))
+    path.addLine(to: CGPoint(x: 414.8, y: 99.3))
+    path.addLine(to: CGPoint(x: 415.5, y: 99.7))
+    path.addLine(to: CGPoint(x: 416.8, y: 100.1))
+    path.addLine(to: CGPoint(x: 417.8, y: 100.3))
+    path.addLine(to: CGPoint(x: 418.9, y: 99.4))
+    path.addLine(to: CGPoint(x: 420.1, y: 99.7))
+    path.addLine(to: CGPoint(x: 421.6, y: 99.6))
+    path.addLine(to: CGPoint(x: 422.6, y: 99.3))
+    path.addLine(to: CGPoint(x: 423.4, y: 97.7))
+    path.addLine(to: CGPoint(x: 426.4, y: 97.5))
+    path.addLine(to: CGPoint(x: 427.2, y: 96.8))
+    path.addLine(to: CGPoint(x: 427.7, y: 96.7))
+    path.addLine(to: CGPoint(x: 429.2, y: 93.8))
+    path.addLine(to: CGPoint(x: 429.2, y: 91.4))
+    path.addLine(to: CGPoint(x: 429.2, y: 90.6))
+    path.addLine(to: CGPoint(x: 430.2, y: 89.5))
+    path.addLine(to: CGPoint(x: 431.2, y: 89.9))
+    path.addLine(to: CGPoint(x: 431.2, y: 90))
+    path.addLine(to: CGPoint(x: 431.6, y: 90.4))
+    path.addLine(to: CGPoint(x: 432.3, y: 91.8))
+    path.addLine(to: CGPoint(x: 432.3, y: 91.9))
+    path.addLine(to: CGPoint(x: 433.3, y: 91.4))
+    path.addLine(to: CGPoint(x: 433.4, y: 91.4))
+    path.addLine(to: CGPoint(x: 433.8, y: 88.1))
+    path.addLine(to: CGPoint(x: 433.5, y: 84.8))
+    path.addLine(to: CGPoint(x: 433.5, y: 84.5))
+    path.addLine(to: CGPoint(x: 433.5, y: 82.6))
+    path.addLine(to: CGPoint(x: 433.7, y: 82.5))
+    path.addLine(to: CGPoint(x: 433.8, y: 81.8))
+    path.addLine(to: CGPoint(x: 433.5, y: 80.7))
+    path.addLine(to: CGPoint(x: 433.6, y: 78))
+    path.addLine(to: CGPoint(x: 433.4, y: 77.7))
+    path.addLine(to: CGPoint(x: 431.8, y: 76.5))
+    path.addLine(to: CGPoint(x: 430.6, y: 73.5))
+    path.close()
+
+        orocovisBezierPath = path
+        return  orocovisBezierPath
+                        
+    }
+
+
+    func cialesDrawBezierPath() -> UIBezierPath{
+
+    path = UIBezierPath()
+    path.move(to: CGPoint(x: 403.4, y: 41.1))
+    path.addLine(to: CGPoint(x: 402.4, y: 40.9))
+    path.addLine(to: CGPoint(x: 401.2, y: 41.7))
+    path.addLine(to: CGPoint(x: 400.7, y: 42.2))
+    path.addLine(to: CGPoint(x: 399.6, y: 42.4))
+    path.addLine(to: CGPoint(x: 396.1, y: 42.7))
+    path.addLine(to: CGPoint(x: 394.5, y: 42.6))
+    path.addLine(to: CGPoint(x: 390.4, y: 43.7))
+    path.addLine(to: CGPoint(x: 389.1, y: 44.5))
+    path.addLine(to: CGPoint(x: 387.2, y: 45.8))
+    path.addLine(to: CGPoint(x: 385.8, y: 47.1))
+    path.addLine(to: CGPoint(x: 385.1, y: 47.1))
+    path.addLine(to: CGPoint(x: 384.4, y: 46.7))
+    path.addLine(to: CGPoint(x: 383.8, y: 47.7))
+    path.addLine(to: CGPoint(x: 379.5, y: 49.6))
+    path.addLine(to: CGPoint(x: 377.4, y: 49.7))
+    path.addLine(to: CGPoint(x: 373.8, y: 49.2))
+    path.addLine(to: CGPoint(x: 373.4, y: 49.4))
+    path.addLine(to: CGPoint(x: 369.1, y: 50.6))
+    path.addLine(to: CGPoint(x: 368.7, y: 50.6))
+    path.addLine(to: CGPoint(x: 368.3, y: 50.5))
+    path.addLine(to: CGPoint(x: 366.7, y: 50.2))
+    path.addLine(to: CGPoint(x: 366.4, y: 50.2))
+    path.addLine(to: CGPoint(x: 366.3, y: 50.4))
+    path.addLine(to: CGPoint(x: 365.5, y: 52.4))
+    path.addLine(to: CGPoint(x: 364.7, y: 53.3))
+    path.addLine(to: CGPoint(x: 363.5, y: 55))
+    path.addLine(to: CGPoint(x: 363.7, y: 55))
+    path.addLine(to: CGPoint(x: 368, y: 54.7))
+    path.addLine(to: CGPoint(x: 370.6, y: 54.9))
+    path.addLine(to: CGPoint(x: 370.8, y: 55.6))
+    path.addLine(to: CGPoint(x: 371.1, y: 56.7))
+    path.addLine(to: CGPoint(x: 371.5, y: 57.4))
+    path.addLine(to: CGPoint(x: 373.8, y: 58.8))
+    path.addLine(to: CGPoint(x: 375.5, y: 61.8))
+    path.addLine(to: CGPoint(x: 377.1, y: 63.1))
+    path.addLine(to: CGPoint(x: 378.8, y: 66.6))
+    path.addLine(to: CGPoint(x: 377.9, y: 68))
+    path.addLine(to: CGPoint(x: 377.8, y: 68.3))
+    path.addLine(to: CGPoint(x: 378.5, y: 70))
+    path.addLine(to: CGPoint(x: 378.4, y: 74))
+    path.addLine(to: CGPoint(x: 378.4, y: 74.4))
+    path.addLine(to: CGPoint(x: 378.4, y: 74.5))
+    path.addLine(to: CGPoint(x: 376.9, y: 74.4))
+    path.addLine(to: CGPoint(x: 376.7, y: 74.5))
+    path.addLine(to: CGPoint(x: 376.6, y: 75.6))
+    path.addLine(to: CGPoint(x: 376.2, y: 77.2))
+    path.addLine(to: CGPoint(x: 376.1, y: 77.6))
+    path.addLine(to: CGPoint(x: 376.6, y: 78.2))
+    path.addLine(to: CGPoint(x: 376.7, y: 78.3))
+    path.addLine(to: CGPoint(x: 378.6, y: 79.1))
+    path.addLine(to: CGPoint(x: 379.2, y: 81.1))
+    path.addLine(to: CGPoint(x: 380.2, y: 83.8))
+    path.addLine(to: CGPoint(x: 383.3, y: 86.1))
+    path.addLine(to: CGPoint(x: 384.6, y: 90.6))
+    path.addLine(to: CGPoint(x: 383.6, y: 93.1))
+    path.addLine(to: CGPoint(x: 385.1, y: 95.3))
+    path.addLine(to: CGPoint(x: 384.8, y: 96.2))
+    path.addLine(to: CGPoint(x: 384.6, y: 96.4))
+    path.addLine(to: CGPoint(x: 383.1, y: 96.5))
+    path.addLine(to: CGPoint(x: 382.3, y: 98.5))
+    path.addLine(to: CGPoint(x: 381.9, y: 100.2))
+    path.addLine(to: CGPoint(x: 382, y: 100.3))
+    path.addLine(to: CGPoint(x: 383.2, y: 101))
+    path.addLine(to: CGPoint(x: 385.7, y: 101.9))
+    path.addLine(to: CGPoint(x: 387.3, y: 100.7))
+    path.addLine(to: CGPoint(x: 388.1, y: 100))
+    path.addLine(to: CGPoint(x: 390, y: 99.4))
+    path.addLine(to: CGPoint(x: 390.3, y: 99.2))
+    path.addLine(to: CGPoint(x: 390.3, y: 99))
+    path.addLine(to: CGPoint(x: 390.6, y: 96.2))
+    path.addLine(to: CGPoint(x: 390.5, y: 95.9))
+    path.addLine(to: CGPoint(x: 389.6, y: 92))
+    path.addLine(to: CGPoint(x: 390.5, y: 90.2))
+    path.addLine(to: CGPoint(x: 390.5, y: 90))
+    path.addLine(to: CGPoint(x: 390.2, y: 86.6))
+    path.addLine(to: CGPoint(x: 389.4, y: 85.1))
+    path.addLine(to: CGPoint(x: 388.9, y: 83))
+    path.addLine(to: CGPoint(x: 388.8, y: 82))
+    path.addLine(to: CGPoint(x: 388.7, y: 81.3))
+    path.addLine(to: CGPoint(x: 388.7, y: 81.2))
+    path.addLine(to: CGPoint(x: 389.9, y: 81.2))
+    path.addLine(to: CGPoint(x: 390.9, y: 81.3))
+    path.addLine(to: CGPoint(x: 391.5, y: 79.8))
+    path.addLine(to: CGPoint(x: 390.9, y: 78.7))
+    path.addLine(to: CGPoint(x: 390.3, y: 77.7))
+    path.addLine(to: CGPoint(x: 390.2, y: 77.7))
+    path.addLine(to: CGPoint(x: 391.3, y: 75.9))
+    path.addLine(to: CGPoint(x: 393.1, y: 73.7))
+    path.addLine(to: CGPoint(x: 393.2, y: 73.6))
+    path.addLine(to: CGPoint(x: 394.1, y: 74.7))
+    path.addLine(to: CGPoint(x: 394.2, y: 74.9))
+    path.addLine(to: CGPoint(x: 395.5, y: 74.8))
+    path.addLine(to: CGPoint(x: 395.6, y: 74.8))
+    path.addLine(to: CGPoint(x: 397.2, y: 74.6))
+    path.addLine(to: CGPoint(x: 398.1, y: 74.8))
+    path.addLine(to: CGPoint(x: 399.5, y: 75.3))
+    path.addLine(to: CGPoint(x: 400.5, y: 76.1))
+    path.addLine(to: CGPoint(x: 401.7, y: 76.7))
+    path.addLine(to: CGPoint(x: 402.5, y: 76.7))
+    path.addLine(to: CGPoint(x: 402.9, y: 76.5))
+    path.addLine(to: CGPoint(x: 403.2, y: 76.4))
+    path.addLine(to: CGPoint(x: 405.8, y: 75.3))
+    path.addLine(to: CGPoint(x: 405.7, y: 75))
+    path.addLine(to: CGPoint(x: 405.7, y: 74.5))
+    path.addLine(to: CGPoint(x: 405.5, y: 73.4))
+    path.addLine(to: CGPoint(x: 404.8, y: 73.3))
+    path.addLine(to: CGPoint(x: 404.6, y: 72.7))
+    path.addLine(to: CGPoint(x: 404.8, y: 72.4))
+    path.addLine(to: CGPoint(x: 404.4, y: 70))
+    path.addLine(to: CGPoint(x: 403.9, y: 68))
+    path.addLine(to: CGPoint(x: 404.2, y: 67.7))
+    path.addLine(to: CGPoint(x: 404.2, y: 67.4))
+    path.addLine(to: CGPoint(x: 403.9, y: 66.9))
+    path.addLine(to: CGPoint(x: 403.1, y: 66.2))
+    path.addLine(to: CGPoint(x: 402.9, y: 66.1))
+    path.addLine(to: CGPoint(x: 403.9, y: 61.5))
+    path.addLine(to: CGPoint(x: 405, y: 61.3))
+    path.addLine(to: CGPoint(x: 405.3, y: 61.3))
+    path.addLine(to: CGPoint(x: 405.7, y: 61.3))
+    path.addLine(to: CGPoint(x: 405.7, y: 61.2))
+    path.addLine(to: CGPoint(x: 405.7, y: 60.8))
+    path.addLine(to: CGPoint(x: 405.8, y: 57.7))
+    path.addLine(to: CGPoint(x: 405.9, y: 53.4))
+    path.addLine(to: CGPoint(x: 405.7, y: 52))
+    path.addLine(to: CGPoint(x: 404, y: 48.8))
+    path.addLine(to: CGPoint(x: 403.3, y: 47.7))
+    path.addLine(to: CGPoint(x: 403.2, y: 47.3))
+    path.addLine(to: CGPoint(x: 403, y: 46.5))
+    path.addLine(to: CGPoint(x: 403.1, y: 44))
+    path.addLine(to: CGPoint(x: 403.4, y: 41.1))
+    path.close()
+
+        cialesBezierPath = path
+        return  cialesBezierPath
+                        
+    }
+
+
+    func morovisDrawBezierPath() -> UIBezierPath{
+
+    path = UIBezierPath()
+    path.move(to: CGPoint(x: 416.4, y: 40.9))
+    path.addLine(to: CGPoint(x: 416.2, y: 40.6))
+    path.addLine(to: CGPoint(x: 415.8, y: 40.2))
+    path.addLine(to: CGPoint(x: 415.9, y: 39.4))
+    path.addLine(to: CGPoint(x: 415.5, y: 39.2))
+    path.addLine(to: CGPoint(x: 414.7, y: 39.2))
+    path.addLine(to: CGPoint(x: 413.9, y: 39.8))
+    path.addLine(to: CGPoint(x: 412.9, y: 41.1))
+    path.addLine(to: CGPoint(x: 412.7, y: 41.3))
+    path.addLine(to: CGPoint(x: 408.6, y: 41.2))
+    path.addLine(to: CGPoint(x: 403.4, y: 41.1))
+    path.addLine(to: CGPoint(x: 403.1, y: 44))
+    path.addLine(to: CGPoint(x: 403, y: 46.5))
+    path.addLine(to: CGPoint(x: 403.2, y: 47.3))
+    path.addLine(to: CGPoint(x: 403.3, y: 47.7))
+    path.addLine(to: CGPoint(x: 404, y: 48.8))
+    path.addLine(to: CGPoint(x: 405.7, y: 52))
+    path.addLine(to: CGPoint(x: 405.9, y: 53.4))
+    path.addLine(to: CGPoint(x: 405.8, y: 57.7))
+    path.addLine(to: CGPoint(x: 405.7, y: 60.8))
+    path.addLine(to: CGPoint(x: 405.7, y: 61.2))
+    path.addLine(to: CGPoint(x: 405.7, y: 61.3))
+    path.addLine(to: CGPoint(x: 405.3, y: 61.3))
+    path.addLine(to: CGPoint(x: 405, y: 61.3))
+    path.addLine(to: CGPoint(x: 403.9, y: 61.5))
+    path.addLine(to: CGPoint(x: 402.9, y: 66.1))
+    path.addLine(to: CGPoint(x: 403.1, y: 66.2))
+    path.addLine(to: CGPoint(x: 403.9, y: 66.9))
+    path.addLine(to: CGPoint(x: 404.2, y: 67.4))
+    path.addLine(to: CGPoint(x: 404.2, y: 67.7))
+    path.addLine(to: CGPoint(x: 403.9, y: 68))
+    path.addLine(to: CGPoint(x: 404.4, y: 70))
+    path.addLine(to: CGPoint(x: 404.8, y: 72.4))
+    path.addLine(to: CGPoint(x: 404.6, y: 72.7))
+    path.addLine(to: CGPoint(x: 404.8, y: 73.3))
+    path.addLine(to: CGPoint(x: 405.5, y: 73.4))
+    path.addLine(to: CGPoint(x: 405.6, y: 73.4))
+    path.addLine(to: CGPoint(x: 408.4, y: 73.4))
+    path.addLine(to: CGPoint(x: 410.3, y: 73.8))
+    path.addLine(to: CGPoint(x: 410.6, y: 73.6))
+    path.addLine(to: CGPoint(x: 412.3, y: 72.7))
+    path.addLine(to: CGPoint(x: 412.8, y: 72.5))
+    path.addLine(to: CGPoint(x: 413.4, y: 72.4))
+    path.addLine(to: CGPoint(x: 417.2, y: 71.8))
+    path.addLine(to: CGPoint(x: 418, y: 71.7))
+    path.addLine(to: CGPoint(x: 419, y: 71))
+    path.addLine(to: CGPoint(x: 420.8, y: 70.2))
+    path.addLine(to: CGPoint(x: 422.9, y: 68.8))
+    path.addLine(to: CGPoint(x: 423.5, y: 67.9))
+    path.addLine(to: CGPoint(x: 424.1, y: 65.9))
+    path.addLine(to: CGPoint(x: 424.7, y: 64.1))
+    path.addLine(to: CGPoint(x: 425.4, y: 63.5))
+    path.addLine(to: CGPoint(x: 426.4, y: 63))
+    path.addLine(to: CGPoint(x: 427, y: 61.9))
+    path.addLine(to: CGPoint(x: 427.6, y: 61))
+    path.addLine(to: CGPoint(x: 427.7, y: 60.7))
+    path.addLine(to: CGPoint(x: 427.8, y: 58.8))
+    path.addLine(to: CGPoint(x: 428, y: 58.4))
+    path.addLine(to: CGPoint(x: 429, y: 55.1))
+    path.addLine(to: CGPoint(x: 429.7, y: 52.3))
+    path.addLine(to: CGPoint(x: 429.8, y: 51.9))
+    path.addLine(to: CGPoint(x: 429.7, y: 51.8))
+    path.addLine(to: CGPoint(x: 428.4, y: 50.8))
+    path.addLine(to: CGPoint(x: 428.2, y: 50.5))
+    path.addLine(to: CGPoint(x: 428.2, y: 49.9))
+    path.addLine(to: CGPoint(x: 426.6, y: 48.8))
+    path.addLine(to: CGPoint(x: 426.1, y: 49.2))
+    path.addLine(to: CGPoint(x: 425.4, y: 49.3))
+    path.addLine(to: CGPoint(x: 424.2, y: 48.7))
+    path.addLine(to: CGPoint(x: 423.9, y: 47.9))
+    path.addLine(to: CGPoint(x: 423.4, y: 46.2))
+    path.addLine(to: CGPoint(x: 423.4, y: 43.8))
+    path.addLine(to: CGPoint(x: 423.4, y: 43.5))
+    path.addLine(to: CGPoint(x: 422.9, y: 42.6))
+    path.addLine(to: CGPoint(x: 422.8, y: 42.5))
+    path.addLine(to: CGPoint(x: 421.7, y: 41))
+    path.addLine(to: CGPoint(x: 420.2, y: 43.3))
+    path.addLine(to: CGPoint(x: 419.1, y: 42.6))
+    path.addLine(to: CGPoint(x: 416.4, y: 40.9))
+    path.close()
+
+
+    morovisBezierPath = path
+    return  morovisBezierPath
+                            
+        }
     
 }
 
