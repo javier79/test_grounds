@@ -52,6 +52,12 @@ class StartScene: SKScene{
     var cialesbp:UIBezierPath! = TestClass().cialesDrawBezierPath()
     var orocovisbp:UIBezierPath! = TestClass().orocovisDrawBezierPath()
     var morovisbp:UIBezierPath! = TestClass().morovisDrawBezierPath()
+    var corozalbp:UIBezierPath! = TestClass().corozalDrawBezierPath()
+    var barranquitasbp:UIBezierPath! = TestClass().barranquitasDrawBezierPath()
+    var comeriobp:UIBezierPath! = TestClass().comerioDrawBezierPath()
+    var coamobp:UIBezierPath! = TestClass().coamoDrawBezierPath()
+    var naranjitobp:UIBezierPath! = TestClass().naranjitoDrawBezierPath()
+    var aibonitobp:UIBezierPath! = TestClass().aibonitoDrawBezierPath()
     
 //var SKSpriteNodesArray:
     
@@ -95,7 +101,12 @@ class StartScene: SKScene{
     var cialesSKSpriteNode = SKSpriteNode()
     var morovisSKSpriteNode = SKSpriteNode()
     var orocovisSKSpriteNode = SKSpriteNode()
- 
+    var corozalSKSpriteNode = SKSpriteNode()
+    var barranquitasSKSpriteNode = SKSpriteNode()
+    var comerioSKSpriteNode = SKSpriteNode()
+    var coamoSKSpriteNode = SKSpriteNode()
+    var naranjitoSKSpriteNode = SKSpriteNode()
+    var aibonitoSKSpriteNode = SKSpriteNode()
 
 
 
@@ -237,6 +248,30 @@ class StartScene: SKScene{
         morovisSKSpriteNode =
             TestClass().morovisBezierPathToSKSpriteNode(bpMorovis: morovisbp)
         containerNode.addChild(morovisSKSpriteNode)
+        
+        corozalSKSpriteNode =
+            TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: corozalbp)
+        containerNode.addChild(corozalSKSpriteNode)
+        
+        barranquitasSKSpriteNode =
+            TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: barranquitasbp)
+        containerNode.addChild(barranquitasSKSpriteNode)
+        
+        comerioSKSpriteNode =
+            TestClass().comerioBezierPathToSKSpriteNode(bpComerio: comeriobp)
+        containerNode.addChild(comerioSKSpriteNode)
+        
+        coamoSKSpriteNode =
+            TestClass().coamoBezierPathToSKSpriteNode(bpCoamo: coamobp)
+        containerNode.addChild(coamoSKSpriteNode)
+        
+        naranjitoSKSpriteNode =
+            TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: naranjitobp)
+        containerNode.addChild(naranjitoSKSpriteNode)
+        
+        aibonitoSKSpriteNode =
+            TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: aibonitobp)
+        containerNode.addChild(aibonitoSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)
