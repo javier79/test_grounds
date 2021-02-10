@@ -68,6 +68,12 @@ class StartScene: SKScene{
     var toaBajabp:UIBezierPath! = TestClass().toaBajaDrawBezierPath()
     var bayamonbp:UIBezierPath! = TestClass().bayamonDrawBezierPath()
     var catanobp:UIBezierPath! = TestClass().catanoDrawBezierPath()
+    var guaynabobp:UIBezierPath! = TestClass().guaynaboDrawBezierPath()
+    var sanJuanbp:UIBezierPath! = TestClass().sanJuanDrawBezierPath()
+    var caguasbp:UIBezierPath! = TestClass().caguasDrawBezierPath()
+    var carolinabp:UIBezierPath! = TestClass().carolinaDrawBezierPath()
+    var aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()
+    var trujilloAltobp:UIBezierPath! = TestClass().trujilloAltoDrawBezierPath()
     
 //var SKSpriteNodesArray:
     
@@ -127,6 +133,12 @@ class StartScene: SKScene{
     var toaBajaSKSpriteNode = SKSpriteNode()
     var bayamonSKSpriteNode = SKSpriteNode()
     var catanoSKSpriteNode = SKSpriteNode()
+    var guaynaboSKSpriteNode = SKSpriteNode()
+    var sanJuanSKSpriteNode = SKSpriteNode()
+    var caguasSKSpriteNode = SKSpriteNode()
+    var carolinaSKSpriteNode = SKSpriteNode()
+    var trujilloAltoSKSpriteNode = SKSpriteNode()
+    var aguasBuenasSKSpriteNode = SKSpriteNode()
 
 
 
@@ -332,6 +344,30 @@ class StartScene: SKScene{
         catanoSKSpriteNode =
             TestClass().catanoBezierPathToSKSpriteNode(bpCatano: catanobp)
         containerNode.addChild(catanoSKSpriteNode)
+        
+        guaynaboSKSpriteNode =
+            TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:guaynabobp)
+        containerNode.addChild(guaynaboSKSpriteNode)
+        
+        sanJuanSKSpriteNode =
+            TestClass().sanJuanBezierPathToSKSpriteNode(bpSanJuan: sanJuanbp)
+        containerNode.addChild(sanJuanSKSpriteNode)
+        
+        carolinaSKSpriteNode =
+            TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: carolinabp)
+        containerNode.addChild(carolinaSKSpriteNode)
+        
+        caguasSKSpriteNode =
+            TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: caguasbp)
+        containerNode.addChild(caguasSKSpriteNode)
+        
+        aguasBuenasSKSpriteNode =
+            TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: aguasBuenasbp)
+        containerNode.addChild(aguasBuenasSKSpriteNode)
+        
+        trujilloAltoSKSpriteNode =
+            TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: trujilloAltobp)
+        containerNode.addChild(trujilloAltoSKSpriteNode)
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(containerNode)
