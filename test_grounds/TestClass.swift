@@ -1133,7 +1133,7 @@ class TestClass {
         let shapeNode = SKShapeNode(path: bpSanJuan.cgPath)
         shapeNode.fillColor = UIColor.systemGray3
         shapeNode.strokeColor = UIColor.white
-        shapeNode.lineWidth = 0.5
+        shapeNode.lineWidth = 0.3
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let sanJuanNode = SKSpriteNode(texture: texture)
@@ -1300,6 +1300,63 @@ class TestClass {
          rioGrandeNode.physicsBody?.isDynamic = false
          rioGrandeNode.name = "rioGrandeNode"
         return  rioGrandeNode
+    }
+    
+    func luquilloBezierPathToSKSpriteNode(bpLuquillo: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpLuquillo.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let luquilloNode = SKSpriteNode(texture: texture)
+         luquilloNode.xScale = -1.0
+         luquilloNode.zRotation = 9.44
+        luquilloNode.position = CGPoint(x:464.64, y:227.19)
+         luquilloNode.zPosition = 1
+         luquilloNode.physicsBody = SKPhysicsBody(circleOfRadius: luquilloNode.size.width/2 * 0.4 , center: CGPoint(x:0.0, y:-1.5))
+         luquilloNode.physicsBody?.isDynamic = false
+         luquilloNode.name = "luquilloNode"
+        return  luquilloNode
+    }
+    
+    func fajardoBezierPathToSKSpriteNode(bpFajardo: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpFajardo.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let fajardoNode = SKSpriteNode(texture: texture)
+         fajardoNode.xScale = -1.0
+         fajardoNode.zRotation = 9.44
+         fajardoNode.position = CGPoint(x:486.08, y:225.53)
+         fajardoNode.zPosition = 1
+        fajardoNode.physicsBody = SKPhysicsBody(circleOfRadius: fajardoNode.size.width/2 * 0.15 , center: CGPoint(x:5.0, y:3.5))
+         fajardoNode.physicsBody?.isDynamic = false
+         fajardoNode.name = "fajardoNode"
+        return  fajardoNode
+    }
+    
+    func ceibaBezierPathToSKSpriteNode(bpCeiba: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpCeiba.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let ceibaNode = SKSpriteNode(texture: texture)
+         ceibaNode.xScale = -1.0
+         ceibaNode.zRotation = 9.44
+        ceibaNode.position = CGPoint(x:477.79, y:201.27)
+         ceibaNode.zPosition = 1
+         ceibaNode.physicsBody = SKPhysicsBody(circleOfRadius: ceibaNode.size.width/2 * 0.15 , center: CGPoint(x:-3.5, y:-1.5))
+         ceibaNode.physicsBody?.isDynamic = false
+         ceibaNode.name = "ceibaNode"
+        return  ceibaNode
     }
     
     func caboRojoDrawBezierPath() -> UIBezierPath{

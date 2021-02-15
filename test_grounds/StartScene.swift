@@ -78,6 +78,9 @@ class StartScene: SKScene{
     let loizaTwobp:UIBezierPath! = TestClass().loizaTwoDrawBezierPath()
     let canovanasbp:UIBezierPath! = TestClass().canovanasDrawBezierPath()
     let rioGrandebp:UIBezierPath! = TestClass().rioGrandeDrawBezierPath()
+    let luquillobp:UIBezierPath! = TestClass().luquilloDrawBezierPath()
+    let fajardobp:UIBezierPath! = TestClass().fajardoDrawBezierPath()
+    let ceibabp:UIBezierPath! = TestClass().ceibaDrawBezierPath()
     var containerNode = SKNode()
     //let loizaBackground = SKSpriteNode()
 
@@ -274,12 +277,20 @@ class StartScene: SKScene{
         let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: loizabp)
         containerNode.addChild(loizaSKSpriteNode)
         
-       let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: canovanasbp)
+        let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: canovanasbp)
         containerNode.addChild(canovanasSKSpriteNode)
         
         let rioGrandeSKSpriteNode:SKSpriteNode = TestClass().rioGrandeBezierPathToSKSpriteNode(bpRioGrande: rioGrandebp)
          containerNode.addChild(rioGrandeSKSpriteNode)
         
+        let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: luquillobp)
+         containerNode.addChild(luquilloSKSpriteNode)
+        
+        let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: fajardobp)
+         containerNode.addChild(fajardoSKSpriteNode)
+        
+        let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: ceibabp)
+         containerNode.addChild(ceibaSKSpriteNode)
         
         
         
