@@ -88,6 +88,10 @@ class StartScene: SKScene{
     let arroyobp:UIBezierPath! = TestClass().arroyoDrawBezierPath()
     let patillasbp:UIBezierPath! = TestClass().patillasDrawBezierPath()
     let maunabobp:UIBezierPath! = TestClass().maunaboDrawBezierPath()
+    let yabucoabp:UIBezierPath! = TestClass().yabucoaDrawBezierPath()
+    let lasPiedrasbp:UIBezierPath! = TestClass().lasPiedrasDrawBezierPath()
+    let humacaobp:UIBezierPath! = TestClass().humacaoDrawBezierPath()
+    let naguabobp:UIBezierPath! = TestClass().naguaboDrawBezierPath()
     var containerNode = SKNode()
     //let loizaBackground = SKSpriteNode()
 
@@ -320,7 +324,17 @@ class StartScene: SKScene{
         let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: maunabobp)
          containerNode.addChild(maunaboSKSpriteNode)
         
+        let yabucoaSKSpriteNode:SKSpriteNode = TestClass().yabucoaBezierPathToSKSpriteNode(bpYabucoa: yabucoabp)
+         containerNode.addChild(yabucoaSKSpriteNode)
         
+        let lasPiedrasSKSpriteNode:SKSpriteNode = TestClass().lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: lasPiedrasbp)
+         containerNode.addChild(lasPiedrasSKSpriteNode)
+        
+        let humacaoSKSpriteNode:SKSpriteNode = TestClass().humacaoBezierPathToSKSpriteNode(bpHumacao: humacaobp)
+         containerNode.addChild(humacaoSKSpriteNode)
+        
+        let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: naguabobp)
+         containerNode.addChild(naguaboSKSpriteNode)
         
         
         
