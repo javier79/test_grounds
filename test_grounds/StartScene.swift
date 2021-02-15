@@ -81,6 +81,13 @@ class StartScene: SKScene{
     let luquillobp:UIBezierPath! = TestClass().luquilloDrawBezierPath()
     let fajardobp:UIBezierPath! = TestClass().fajardoDrawBezierPath()
     let ceibabp:UIBezierPath! = TestClass().ceibaDrawBezierPath()
+    let gurabobp:UIBezierPath! = TestClass().guraboDrawBezierPath()
+    let juncosbp:UIBezierPath! = TestClass().juncosDrawBezierPath()
+    let sanLorenzobp:UIBezierPath! = TestClass().sanLorenzoDrawBezierPath()
+    let guayamabp:UIBezierPath! = TestClass().guayamaDrawBezierPath()
+    let arroyobp:UIBezierPath! = TestClass().arroyoDrawBezierPath()
+    let patillasbp:UIBezierPath! = TestClass().patillasDrawBezierPath()
+    let maunabobp:UIBezierPath! = TestClass().maunaboDrawBezierPath()
     var containerNode = SKNode()
     //let loizaBackground = SKSpriteNode()
 
@@ -291,6 +298,28 @@ class StartScene: SKScene{
         
         let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: ceibabp)
          containerNode.addChild(ceibaSKSpriteNode)
+        
+        let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: gurabobp)
+         containerNode.addChild(guraboSKSpriteNode)
+        
+        let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos: juncosbp)
+        containerNode.addChild(juncosSKSpriteNode)
+        
+        let sanLorenzoSKSpriteNode:SKSpriteNode = TestClass().sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: sanLorenzobp)
+         containerNode.addChild(sanLorenzoSKSpriteNode)
+        
+        let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: guayamabp)
+         containerNode.addChild(guayamaSKSpriteNode)
+        
+        let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: arroyobp)
+         containerNode.addChild(arroyoSKSpriteNode)
+        
+        let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: patillasbp)
+        containerNode.addChild(patillasSKSpriteNode)
+        
+        let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: maunabobp)
+         containerNode.addChild(maunaboSKSpriteNode)
+        
         
         
         
