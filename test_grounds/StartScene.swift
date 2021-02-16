@@ -92,6 +92,8 @@ class StartScene: SKScene{
     let lasPiedrasbp:UIBezierPath! = TestClass().lasPiedrasDrawBezierPath()
     let humacaobp:UIBezierPath! = TestClass().humacaoDrawBezierPath()
     let naguabobp:UIBezierPath! = TestClass().naguaboDrawBezierPath()
+    let viequesbp:UIBezierPath! = TestClass().viequesDrawBezierPath()
+    let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()
     var containerNode = SKNode()
     //let loizaBackground = SKSpriteNode()
 
@@ -335,6 +337,12 @@ class StartScene: SKScene{
         
         let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: naguabobp)
          containerNode.addChild(naguaboSKSpriteNode)
+        
+        let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: viequesbp)
+         containerNode.addChild(viequesSKSpriteNode)
+        
+        let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
+         containerNode.addChild(culebraSKSpriteNode)
         
         
         
