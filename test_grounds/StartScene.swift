@@ -23,7 +23,7 @@ class StartScene: SKScene{
     let aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
     let aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()
     let isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
-    let mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
+   /* let mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
     let sanSebastianbp:UIBezierPath! = TestClass().sanSebastianDrawBezierPath()
     let lasMariasbp:UIBezierPath! = TestClass().lasMariasDrawBezierPath()
     let maricaobp:UIBezierPath! = TestClass().maricaoDrawBezierPath()
@@ -93,9 +93,18 @@ class StartScene: SKScene{
     let humacaobp:UIBezierPath! = TestClass().humacaoDrawBezierPath()
     let naguabobp:UIBezierPath! = TestClass().naguaboDrawBezierPath()
     let viequesbp:UIBezierPath! = TestClass().viequesDrawBezierPath()
-    let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()
+    let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()*/
     var containerNode = SKNode()
-    //let loizaBackground = SKSpriteNode()
+    
+    var labelTimer = SKLabelNode()
+    var timerBackground = SKSpriteNode()
+    
+    var renderTime: TimeInterval = 0.0
+    let changeTime: TimeInterval = 1
+    var seconds: Int = 0
+    var minutes: Int = 0
+    
+
 
     
      override func didMove(to view: SKView){
@@ -103,6 +112,10 @@ class StartScene: SKScene{
         self.backgroundColor = SKColor.blue
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
+        
+        labelTimer = labelForTimer()
+        
+        timerBackground = timerLabelBackground()
         
 
 
@@ -133,7 +146,7 @@ class StartScene: SKScene{
         let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
         containerNode.addChild(isabelaSKSpriteNode)
         
-        let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
+       /* let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
         containerNode.addChild(mocaSKSpriteNode)
         
         let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: sanSebastianbp)
@@ -342,12 +355,15 @@ class StartScene: SKScene{
          containerNode.addChild(viequesSKSpriteNode)
         
         let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
-         containerNode.addChild(culebraSKSpriteNode)
+         containerNode.addChild(culebraSKSpriteNode)*/
         
         
         
         self.addChild(backgroundSKSpriteNode)
+        self.addChild(timerBackground)
         self.addChild(containerNode)
+        
+        self.addChild(labelTimer)
         //self.addChild(containerNodeTwo)
 
         //self.addChild(caboRojoSKSpriteNode)
@@ -376,13 +392,60 @@ class StartScene: SKScene{
     
         func prBackground() ->SKSpriteNode {
         let backgroundNode = SKSpriteNode()
-        backgroundNode.color = UIColor.black
+        backgroundNode.color = UIColor.systemIndigo
         backgroundNode.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
         //nodes_Container.anchorPoint = CGPoint.zero
         backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         return backgroundNode
             
     }
+    
+    func labelForTimer() -> SKLabelNode {
+    
+        let label:SKLabelNode = SKLabelNode()
+        label.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
+        label.fontName = "Arial"
+        label.fontSize = 18
+        label.fontColor = SKColor.red
+        return label
+    
+        }
+    
+    func timerLabelBackground() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.white
+        background.size = CGSize(width:CGFloat(59), height:CGFloat(17))
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
+        //background.zPosition = 2
+        
+        
+        return background
+    }
+
+    override public func update(_ currentTime: TimeInterval) {
+        
+
+        
+        if currentTime > renderTime{
+            if renderTime > 0{
+                seconds += 1
+                
+                if seconds == 60 {
+                    seconds = 0
+                    minutes += 1
+              }
+                
+               let secondsText = (seconds < 10) ?
+                "0\(seconds)" : "\(seconds)"
+                let minutesText = (minutes < 10) ?
+                "0\(minutes)" : "\(minutes)"
+                labelTimer.text = "\(minutesText) : \(secondsText)"
+            }
+        renderTime = currentTime + changeTime
+        }
+      }
+    
+    
        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             guard let touch = touches.first else {
             return
@@ -401,45 +464,8 @@ class StartScene: SKScene{
                   }
 
                 }
-        /*for childTwo in containerNodeTwo.children {
-            if let spriteNodeTwo = childTwo as? SKSpriteNode {
-                //if (touchedNode.contains(child.physicsBody)){
-                    if(touchedNode.name == spriteNodeTwo.name){
-                        spriteNodeTwo.color = .brown
-                        spriteNodeTwo.colorBlendFactor = 0.5
-                    }
-
-                  }
-
-                }*/
-               
-            
-
-            
+        
           }
-}
-/*                   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    guard let touch = touches.first else {
-    return
-}
-     
-let touchLocation = touch.location(in: self)
-let touchedNode = self.atPoint(touchLocation)
-for i in nodeNames.indices{
-    if(touchedNode.name == nodeNames[i]){
-        for child in containerNode.children {
-            if let spriteNode = child as? SKSpriteNode {
-                if(touchedNode.name == spriteNode.name){
-                spriteNode.color = .brown
-                spriteNode.colorBlendFactor = 0.5
-            }
-
-          }
-
-        }
-       }
     
-
-    }
-  }**/
+}
 
