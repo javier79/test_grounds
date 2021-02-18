@@ -65,10 +65,10 @@
 				8D1A898625A8D666008FF0D6 /* ViewController.swift */,
 				8D1A898825A8D666008FF0D6 /* Main.storyboard */,
 				8D1A898B25A8D667008FF0D6 /* Assets.xcassets */,
+				8D1A899825A8DF16008FF0D6 /* TestClass.swift */,
 				8D1A898D25A8D667008FF0D6 /* LaunchScreen.storyboard */,
 				8D1A899025A8D667008FF0D6 /* Info.plist */,
 				8D1A899625A8DEE4008FF0D6 /* StartScene.swift */,
-				8D1A899825A8DF16008FF0D6 /* TestClass.swift */,
 			);
 			path = test_grounds;
 			sourceTree = "<group>";

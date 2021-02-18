@@ -98,12 +98,16 @@ class StartScene: SKScene{
     
     var labelTimer = SKLabelNode()
     var timerBackground = SKSpriteNode()
+    var municipiosNameBackground = SKSpriteNode()
     
     var renderTime: TimeInterval = 0.0
     let changeTime: TimeInterval = 1
     var seconds: Int = 0
     var minutes: Int = 0
     
+    var municipios_names_array = ["Adjuntas", "Aguada"]/*, "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao","Isabela", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
+    
+    var municipioNameLabel = SKLabelNode()
 
 
     
@@ -113,11 +117,13 @@ class StartScene: SKScene{
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
         
-        labelTimer = labelForTimer()
+        labelTimer = labelForTimer(TimerLabel: labelTimer)
         
         timerBackground = timerLabelBackground()
         
-
+        municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
+        
+        municipiosNameBackground = labelMunicipiosNameBackground()
 
         let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
         containerNode.addChild(caboRojoSKSpriteNode)
@@ -361,10 +367,13 @@ class StartScene: SKScene{
         
         self.addChild(backgroundSKSpriteNode)
         self.addChild(timerBackground)
-        self.addChild(containerNode)
-        
         self.addChild(labelTimer)
-        //self.addChild(containerNodeTwo)
+        self.addChild(municipiosNameBackground)
+        //self.addChild(municipiosNameBackground)
+        self.addChild(municipioNameLabel)
+        
+        
+        self.addChild(containerNode)
 
         //self.addChild(caboRojoSKSpriteNode)
         //self.addChild(hormiguerosSKSpriteNode)
@@ -380,15 +389,7 @@ class StartScene: SKScene{
            //nodes_Container.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
            return  nodes_Container
        }
-    
-        func nodesContainerTwo() -> SKNode{
-            let nodes_ContainerTwo = SKNode()
-            //nodes_Container.color = UIColor.white
-            //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
-            //nodes_Container.anchorPoint = CGPoint.zero
-            //nodes_Container.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-            return  nodes_ContainerTwo
-        }
+
     
         func prBackground() ->SKSpriteNode {
         let backgroundNode = SKSpriteNode()
@@ -400,23 +401,46 @@ class StartScene: SKScene{
             
     }
     
-    func labelForTimer() -> SKLabelNode {
+    func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
     
-        let label:SKLabelNode = SKLabelNode()
-        label.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
-        label.fontName = "Arial"
-        label.fontSize = 18
-        label.fontColor = SKColor.red
-        return label
+        //let label:SKLabelNode = SKLabelNode()
+        TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
+        TimerLabel.fontName = "Arial"
+        TimerLabel.fontSize = 18
+        TimerLabel.fontColor = SKColor.red
+        return TimerLabel
     
         }
-    
     func timerLabelBackground() -> SKSpriteNode{
         let background = SKSpriteNode()
         background.color = UIColor.white
-        background.size = CGSize(width:CGFloat(59), height:CGFloat(17))
+        background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
-        //background.zPosition = 2
+        //background.zPosition = -2
+        
+        
+        return background
+    }
+   func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
+     
+    NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
+     NameMunicipioLabel.fontName = "Helvetica"
+     NameMunicipioLabel.fontSize = 18
+     NameMunicipioLabel.fontColor = SKColor.red
+     NameMunicipioLabel.text = "ceiba"
+     //NameMunicipioLabel.zPosition = 2
+     return NameMunicipioLabel
+        
+    }
+    
+    func labelMunicipiosNameBackground() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.white
+        background.size = CGSize(width:CGFloat(120), height:CGFloat(17))
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
+        
+        
+        //background.zPosition = -1
         
         
         return background
