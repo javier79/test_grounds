@@ -33,7 +33,7 @@ class StartScene: SKScene{
     let lajasbp:UIBezierPath! = TestClass().lajasDrawBezierPath()
     let guanicabp:UIBezierPath! = TestClass().guanicaDrawBezierPath()
     let guayanillabp:UIBezierPath! = TestClass().guayanillaDrawBezierPath()
-    let adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
+    */let adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()/*
     let laresbp:UIBezierPath! = TestClass().laresDrawBezierPath()
     let penuelasbp:UIBezierPath! = TestClass().penuelasDrawBezierPath()
     let poncebp:UIBezierPath! = TestClass().ponceDrawBezierPath()
@@ -105,11 +105,12 @@ class StartScene: SKScene{
     var seconds: Int = 0
     var minutes: Int = 0
     
-    var municipios_names_array = ["Adjuntas", "Aguada"]/*, "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao","Isabela", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
+    var municipios_names_array = ["Adjuntas"]/*, "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao","Isabela", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
     
     var municipioNameLabel = SKLabelNode()
 
-
+    var touchedNode: SKPhysicsBody!
+    var fail: String!
     
      override func didMove(to view: SKView){
         
@@ -182,8 +183,8 @@ class StartScene: SKScene{
         let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:guayanillabp)
         containerNode.addChild(guayanillaSKSpriteNode)
         
-        let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: adjuntasbp)
-        containerNode.addChild(adjuntasSKSpriteNode)
+        */let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: adjuntasbp)
+        containerNode.addChild(adjuntasSKSpriteNode)/*
         
         let laresSKSpriteNode:SKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares: laresbp)
         containerNode.addChild(laresSKSpriteNode)
@@ -377,6 +378,12 @@ class StartScene: SKScene{
 
         //self.addChild(caboRojoSKSpriteNode)
         //self.addChild(hormiguerosSKSpriteNode)
+       /* for name in municipios_names_array {
+                print(name)
+                municipioNameLabel.text = name
+
+        
+            }*/
         
 
         }
@@ -421,22 +428,23 @@ class StartScene: SKScene{
         
         return background
     }
-   func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
+    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
      
-    NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
-     NameMunicipioLabel.fontName = "Helvetica"
-     NameMunicipioLabel.fontSize = 18
-     NameMunicipioLabel.fontColor = SKColor.red
-     NameMunicipioLabel.text = "ceiba"
-     //NameMunicipioLabel.zPosition = 2
-     return NameMunicipioLabel
+        NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
+        NameMunicipioLabel.fontName = "Helvetica"
+        NameMunicipioLabel.fontSize = 18
+        NameMunicipioLabel.fontColor = SKColor.red
+        NameMunicipioLabel.text = "Adjuntas"
+        
+        //NameMunicipioLabel.zPosition = 2
+        return NameMunicipioLabel
         
     }
     
     func labelMunicipiosNameBackground() -> SKSpriteNode{
         let background = SKSpriteNode()
         background.color = UIColor.white
-        background.size = CGSize(width:CGFloat(120), height:CGFloat(17))
+        background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
         
         
@@ -448,7 +456,8 @@ class StartScene: SKScene{
 
     override public func update(_ currentTime: TimeInterval) {
         
-
+        
+        let penalty = 4
         
         if currentTime > renderTime{
             if renderTime > 0{
@@ -458,12 +467,25 @@ class StartScene: SKScene{
                     seconds = 0
                     minutes += 1
               }
-                
-               let secondsText = (seconds < 10) ?
-                "0\(seconds)" : "\(seconds)"
-                let minutesText = (minutes < 10) ?
-                "0\(minutes)" : "\(minutes)"
-                labelTimer.text = "\(minutesText) : \(secondsText)"
+                 if(fail == "True"){
+                    seconds = seconds + penalty
+                    let secondsText = (seconds < 10) ?
+                     "0\(seconds)" : "\(seconds)"
+                     let minutesText = (minutes < 10) ?
+                     "0\(minutes)" : "\(minutes)"
+                     //secondsText = secondsText + penalty
+
+                     labelTimer.text = "\(minutesText) : \(secondsText)"
+                     timerBackground.size = labelTimer.frame.size
+                 }
+                 else{
+                       let secondsText = (seconds < 10) ?
+                        "0\(seconds)" : "\(seconds)"
+                        let minutesText = (minutes < 10) ?
+                        "0\(minutes)" : "\(minutes)"
+                        labelTimer.text = "\(minutesText) : \(secondsText)"
+                        timerBackground.size = labelTimer.frame.size
+                }
             }
         renderTime = currentTime + changeTime
         }
@@ -471,25 +493,64 @@ class StartScene: SKScene{
     
     
        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-            guard let touch = touches.first else {
-            return
-        }
+               /*guard let touch = touches.first else {
+                return
+     }*/let touch = touches.first!
              
         let touchLocation = touch.location(in: self)
-        let touchedNode = self.physicsWorld.body(at:touchLocation)
-
-        for child in containerNode.children {
-            if let spriteNode = child as? SKSpriteNode {
-                    if(touchedNode?.node?.name == spriteNode.name){
-                        spriteNode.color = .brown
-                        spriteNode.colorBlendFactor = 0.5
+        touchedNode = self.physicsWorld.body(at:touchLocation)
+        
+        while(municipioNameLabel.text ==  "Adjuntas"){
+        //if(municipioNameLabel.text ==  "Adjuntas"){
+            
+            if (municipioNameLabel.text == touchedNode?.node?.name){
+                for child in containerNode.children {
+                    if let spriteNode = child as? SKSpriteNode {
+                        if(touchedNode?.node?.name == spriteNode.name){
+                            spriteNode.color = .brown
+                            spriteNode.colorBlendFactor = 0.5
+                            municipioNameLabel.text =  "Aguada"
+                            municipiosNameBackground.size = municipioNameLabel.frame.size
+                            
+                            return fail = "False"
+                        }
+                        
+                    }
+                    
+                }
+              }
+            
+                
+                //}
+            else{
+                return fail = "True"
+            }
+        }
+        
+        /*if(municipioNameLabel.text !=  "Adjuntas"){
+            for name in municipios_names_array{
+                municipioNameLabel.text = name
+                municipiosNameBackground.size = municipioNameLabel.frame.size
+                if (municipioNameLabel.text == touchedNode?.node?.name){
+                    for child in containerNode.children {
+                        if let spriteNode = child as? SKSpriteNode {
+                            if(touchedNode?.node?.name == spriteNode.name){
+                                spriteNode.color = .blue
+                                spriteNode.colorBlendFactor = 0.5
+                        
+                       
                     }
 
                   }
 
                 }
-        
+                
+             }
+            else{
+                 fail = "True"
+            }
           }
-    
+    }*/
 }
 
+}

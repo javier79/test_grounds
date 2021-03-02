@@ -472,7 +472,7 @@ class TestClass {
          adjuntasNode.zPosition = 1
          adjuntasNode.physicsBody = SKPhysicsBody(circleOfRadius: adjuntasNode.size.width/2 * 0.43 , center: CGPoint(x:-0.5, y:1.0))
          adjuntasNode.physicsBody?.isDynamic = false
-         adjuntasNode.name = "adjuntasNode"
+         adjuntasNode.name = "Adjuntas"
         return  adjuntasNode
     }
     
