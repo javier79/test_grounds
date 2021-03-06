@@ -111,6 +111,7 @@ class StartScene: SKScene{
 
     var touchedNode: SKPhysicsBody!
     var fail: String!
+    var penalty: Int!
     
      override func didMove(to view: SKView){
         
@@ -446,7 +447,7 @@ class StartScene: SKScene{
         background.color = UIColor.white
         background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
-        
+        background.size = municipioNameLabel.frame.size
         
         //background.zPosition = -1
         
@@ -457,7 +458,7 @@ class StartScene: SKScene{
     override public func update(_ currentTime: TimeInterval) {
         
         
-        let penalty = 4
+        penalty = 3
         
         if currentTime > renderTime{
             if renderTime > 0{
@@ -468,7 +469,26 @@ class StartScene: SKScene{
                     minutes += 1
               }
                  if(fail == "True"){
+                    print("inside")
                     seconds = seconds + penalty
+                    
+                    if seconds == 60 {
+                       seconds = 0
+                       minutes += 1
+                    }
+                    if seconds == 61{
+                       seconds = 1
+                       minutes += 1
+                    }
+                    if seconds == 62 {
+                       seconds = 2
+                       minutes += 1
+                    }
+                    if seconds == 63 {
+                       seconds = 3
+                       minutes += 1
+                    }
+                
                     let secondsText = (seconds < 10) ?
                      "0\(seconds)" : "\(seconds)"
                      let minutesText = (minutes < 10) ?
@@ -477,6 +497,7 @@ class StartScene: SKScene{
 
                      labelTimer.text = "\(minutesText) : \(secondsText)"
                      timerBackground.size = labelTimer.frame.size
+                     fail = ""
                  }
                  else{
                        let secondsText = (seconds < 10) ?
