@@ -17,7 +17,7 @@ class StartScene: SKScene{
     let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
     let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
     let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
-    let mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
+    //let mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
     let anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
     let rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
     let aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
@@ -105,13 +105,15 @@ class StartScene: SKScene{
     var seconds: Int = 0
     var minutes: Int = 0
     
-    var municipios_names_array = ["Adjuntas"]/*, "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao","Isabela", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla","Isabela", "Cabo Rojo", "Hormigueros", "Mayagüez", "Rincón", "Añasco"]/*, "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao","Isabela", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
     
     var municipioNameLabel = SKLabelNode()
 
     var touchedNode: SKPhysicsBody!
+    var success: String!
     var fail: String!
     var penalty: Int!
+    var nextMunicipio: Int = 0
     
      override func didMove(to view: SKView){
         
@@ -136,8 +138,8 @@ class StartScene: SKScene{
         let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
          containerNode.addChild(mayaguezSKSpriteNode)
         
-        let mayaguezTwoSKSpriteNode:SKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
-         containerNode.addChild(mayaguezTwoSKSpriteNode)
+        /*let mayaguezTwoSKSpriteNode:SKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
+         containerNode.addChild(mayaguezTwoSKSpriteNode)*/
         
         let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
          containerNode.addChild(anascoSKSpriteNode)
@@ -436,6 +438,7 @@ class StartScene: SKScene{
         NameMunicipioLabel.fontSize = 18
         NameMunicipioLabel.fontColor = SKColor.red
         NameMunicipioLabel.text = "Adjuntas"
+        municipiosNameBackground.size = NameMunicipioLabel.frame.size
         
         //NameMunicipioLabel.zPosition = 2
         return NameMunicipioLabel
@@ -513,41 +516,52 @@ class StartScene: SKScene{
       }
     
     
-       override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-               /*guard let touch = touches.first else {
-                return
-     }*/let touch = touches.first!
-             
-        let touchLocation = touch.location(in: self)
-        touchedNode = self.physicsWorld.body(at:touchLocation)
-        
-        while(municipioNameLabel.text ==  "Adjuntas"){
-        //if(municipioNameLabel.text ==  "Adjuntas"){
+           override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+                   /*guard let touch = touches.first else {
+                    return
+         }*/let touch = touches.first!
+                 
+            let touchLocation = touch.location(in: self)
+            touchedNode = self.physicsWorld.body(at:touchLocation)
             
+            //while(municipioNameLabel.text ==  "Adjuntas"){
+            //if(municipioNameLabel.text ==  "Adjuntas"){
+                
             if (municipioNameLabel.text == touchedNode?.node?.name){
                 for child in containerNode.children {
                     if let spriteNode = child as? SKSpriteNode {
                         if(touchedNode?.node?.name == spriteNode.name){
                             spriteNode.color = .brown
                             spriteNode.colorBlendFactor = 0.5
-                            municipioNameLabel.text =  "Aguada"
+                            nextMunicipio += 1
+                            if nextMunicipio <= 8{
+                            municipioNameLabel.text = municipios_names_array [nextMunicipio]
                             municipiosNameBackground.size = municipioNameLabel.frame.size
+                            }
+                            else{
+                                municipioNameLabel.text = "Hasta La Vista...Baby!"
+                                municipiosNameBackground.size = municipioNameLabel.frame.size
+                            }
                             
-                            return fail = "False"
+                            
+                            
+                                //municipioNameLabel.text =  "Aguada"
+                                //municipiosNameBackground.size = municipioNameLabel.frame.size
+                                
+                            //return success = "True"
+                            }
+                            
                         }
                         
                     }
-                    
-                }
-              }
-            
+                  }
                 
-                //}
+                    
+                    //}
             else{
-                return fail = "True"
-            }
-        }
-        
+                 return fail = "True"
+                }
+            
         /*if(municipioNameLabel.text !=  "Adjuntas"){
             for name in municipios_names_array{
                 municipioNameLabel.text = name

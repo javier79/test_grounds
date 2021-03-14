@@ -109,7 +109,7 @@ class TestClass {
         caboRojoNode.zPosition = 1
         caboRojoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:caboRojoNode.size.width/2 * 0.5, height:caboRojoNode.size.height/2), center: CGPoint(x:-3.5, y: 0.5))
         caboRojoNode.physicsBody?.isDynamic = false
-        caboRojoNode.name = "caboRojoNode"
+        caboRojoNode.name = "Cabo Rojo"
         return caboRojoNode
     }
 
@@ -130,7 +130,7 @@ class TestClass {
         hormiguerosNode.zPosition = 2
         hormiguerosNode.physicsBody = SKPhysicsBody(circleOfRadius: hormiguerosNode.size.width/2 * 0.35, center: CGPoint(x:-0.7, y: -1.5))
         hormiguerosNode.physicsBody?.isDynamic = false
-        hormiguerosNode.name = "hormiguerosNode"
+        hormiguerosNode.name = "Hormigueros"
         return hormiguerosNode
 
     }
@@ -151,11 +151,11 @@ class TestClass {
         mayaguezNode.zPosition = 1
         mayaguezNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:mayaguezNode.size.width/5.7, height:mayaguezNode.size.height/6), center: CGPoint(x:-41.5, y: 18.0))
         mayaguezNode.physicsBody?.isDynamic = false
-        mayaguezNode.name = "mayaguezNode"
+        mayaguezNode.name = "Mayagüez"
         return mayaguezNode
     }
     
-    func mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: UIBezierPath)-> SKSpriteNode{
+   /* func mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpMayaguezTwo.cgPath)
         shapeNode.fillColor = UIColor.systemGray3
@@ -170,7 +170,7 @@ class TestClass {
         mayaguezTwoNode.zPosition = 2
         mayaguezTwoNode.name = "mayaguezTwoNode"
         return mayaguezTwoNode
-    }
+    }*/
     
     func anascoBezierPathToSKSpriteNode(bpAnasco: UIBezierPath)-> SKSpriteNode{
         
@@ -187,7 +187,7 @@ class TestClass {
         anascoNode.zPosition = 1
         anascoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:anascoNode.size.width/2 * 1.2, height:anascoNode.size.height/2 * 0.6), center: CGPoint(x:-3.0, y: -1.7))
         anascoNode.physicsBody?.isDynamic = false
-        anascoNode.name = "anascoNode"
+        anascoNode.name = "Añasco"
         return anascoNode
     }
     
@@ -206,7 +206,7 @@ class TestClass {
         rinconNode.zPosition = 2
         rinconNode.physicsBody = SKPhysicsBody(circleOfRadius: rinconNode.size.width/2 * 0.3 , center: CGPoint(x:1.8, y: 0.5))
         rinconNode.physicsBody?.isDynamic = false
-        rinconNode.name = "rinconNode"
+        rinconNode.name = "Rincón"
         return rinconNode
     }
     
@@ -225,7 +225,7 @@ class TestClass {
         aguadaNode.zPosition = 1
         aguadaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadaNode.size.width/2 * 0.45 , center: CGPoint(x:-3.5, y: 0.5))
         aguadaNode.physicsBody?.isDynamic = false
-        aguadaNode.name = "aguadaNode"
+        aguadaNode.name = "Aguada"
         return aguadaNode
     }
     
@@ -244,7 +244,7 @@ class TestClass {
         aguadillaNode.zPosition = 2
         aguadillaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadillaNode.size.width/2 * 0.45 , center: CGPoint(x:2.8, y:-4.0))
         aguadillaNode.physicsBody?.isDynamic = false
-        aguadillaNode.name = "aguadillaNode"
+        aguadillaNode.name = "Aguadilla"
         return aguadillaNode
     }
     
@@ -263,7 +263,7 @@ class TestClass {
         isabelaNode.zPosition = 1
         isabelaNode.physicsBody = SKPhysicsBody(circleOfRadius: isabelaNode.size.width/2 * 0.35 , center: CGPoint(x:-2.0, y:0.0))
         isabelaNode.physicsBody?.isDynamic = false
-        isabelaNode.name = "isabelaNode"
+        isabelaNode.name = "Isabela"
         return isabelaNode
     }
     
@@ -3941,7 +3941,7 @@ class TestClass {
             return mayaguezBezierPath
 
     }
-    //MAYAGUEZTWO
+    /*MAYAGUEZTWO
         func mayaguezTwoDrawBezierPath() -> UIBezierPath{
             path = UIBezierPath()
      
@@ -4790,7 +4790,7 @@ class TestClass {
 
             mayaguezTwoBezierPath = path
             return mayaguezTwoBezierPath
-    }
+    }*/
         //ANASCO
         func anascoDrawBezierPath() -> UIBezierPath{
             path = UIBezierPath()
