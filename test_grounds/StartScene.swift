@@ -524,44 +524,42 @@ class StartScene: SKScene{
             let touchLocation = touch.location(in: self)
             touchedNode = self.physicsWorld.body(at:touchLocation)
             
-            //while(municipioNameLabel.text ==  "Adjuntas"){
-            //if(municipioNameLabel.text ==  "Adjuntas"){
-                
-            if (municipioNameLabel.text == touchedNode?.node?.name){
-                for child in containerNode.children {
-                    if let spriteNode = child as? SKSpriteNode {
-                        if(touchedNode?.node?.name == spriteNode.name){
-                            spriteNode.color = .brown
-                            spriteNode.colorBlendFactor = 0.5
-                            nextMunicipio += 1
-                            if nextMunicipio <= 8{
-                            municipioNameLabel.text = municipios_names_array [nextMunicipio]
-                            municipiosNameBackground.size = municipioNameLabel.frame.size
-                            }
-                            else{
-                                municipioNameLabel.text = "Hasta La Vista...Baby!"
+            if (touchedNode != nil){
+                if (municipioNameLabel.text == touchedNode?.node?.name){
+                    for child in containerNode.children {
+                        if let spriteNode = child as? SKSpriteNode {
+                            if(touchedNode?.node?.name == spriteNode.name){
+                                spriteNode.color = .brown
+                                spriteNode.colorBlendFactor = 0.5
+                                nextMunicipio += 1
+                                if nextMunicipio <= 8{
+                                municipioNameLabel.text = municipios_names_array [nextMunicipio]
                                 municipiosNameBackground.size = municipioNameLabel.frame.size
-                            }
-                            
-                            
-                            
-                                //municipioNameLabel.text =  "Aguada"
-                                //municipiosNameBackground.size = municipioNameLabel.frame.size
+                                }
+                                else{
+                                    municipioNameLabel.text = "Hasta La Vista...Baby!"
+                                    municipiosNameBackground.size = municipioNameLabel.frame.size
+                                }
                                 
-                            //return success = "True"
+                                
+                                
+                                    //municipioNameLabel.text =  "Aguada"
+                                    //municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    
+                                //return success = "True"
+                                }
+                                
                             }
                             
                         }
-                        
-                    }
-                  }
-                
+                      }
                     
-                    //}
-            else{
-                 return fail = "True"
-                }
-            
+                        
+                        //}
+                else{
+                     return fail = "True"
+                    }
+            }
         /*if(municipioNameLabel.text !=  "Adjuntas"){
             for name in municipios_names_array{
                 municipioNameLabel.text = name
