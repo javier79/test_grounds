@@ -114,6 +114,7 @@ class StartScene: SKScene{
     var fail: String!
     var penalty: Int!
     var nextMunicipio: Int = 0
+    //var locationNameLabel = SKLabelNode()
     
      override func didMove(to view: SKView){
         
@@ -467,10 +468,10 @@ class StartScene: SKScene{
             if renderTime > 0{
                 seconds += 1
                 
-                if seconds == 60 {
+                 if seconds == 60 {
                     seconds = 0
                     minutes += 1
-              }
+                    }
                  if(fail == "True"){
                     print("inside")
                     seconds = seconds + penalty
@@ -524,6 +525,8 @@ class StartScene: SKScene{
             let touchLocation = touch.location(in: self)
             touchedNode = self.physicsWorld.body(at:touchLocation)
             
+            let locationNameLabel = SKLabelNode()
+            
             if (touchedNode != nil){
                 if (municipioNameLabel.text == touchedNode?.node?.name){
                     for child in containerNode.children {
@@ -533,11 +536,20 @@ class StartScene: SKScene{
                                 spriteNode.colorBlendFactor = 0.5
                                 nextMunicipio += 1
                                 if nextMunicipio <= 8{
-                                municipioNameLabel.text = municipios_names_array [nextMunicipio]
-                                municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    locationNameLabel.text = municipioNameLabel.text
+                                    locationNameLabel.fontSize = 8
+                                    locationNameLabel.fontColor = UIColor.black
+                                    locationNameLabel.horizontalAlignmentMode = .center
+                                    locationNameLabel.verticalAlignmentMode = .center
+                                    locationNameLabel.xScale = -1.0
+                                    locationNameLabel.zRotation = 9.5
+                                    spriteNode.addChild(locationNameLabel)
+                                    municipioNameLabel.text = municipios_names_array [nextMunicipio]
+                                    municipiosNameBackground.size = municipioNameLabel.frame.size
+                                
                                 }
                                 else{
-                                    municipioNameLabel.text = "Hasta La Vista...Baby!"
+                                    municipioNameLabel.text = "end of array"
                                     municipiosNameBackground.size = municipioNameLabel.frame.size
                                 }
                                 
@@ -560,30 +572,8 @@ class StartScene: SKScene{
                      return fail = "True"
                     }
             }
-        /*if(municipioNameLabel.text !=  "Adjuntas"){
-            for name in municipios_names_array{
-                municipioNameLabel.text = name
-                municipiosNameBackground.size = municipioNameLabel.frame.size
-                if (municipioNameLabel.text == touchedNode?.node?.name){
-                    for child in containerNode.children {
-                        if let spriteNode = child as? SKSpriteNode {
-                            if(touchedNode?.node?.name == spriteNode.name){
-                                spriteNode.color = .blue
-                                spriteNode.colorBlendFactor = 0.5
-                        
-                       
-                    }
 
-                  }
 
-                }
-                
-             }
-            else{
-                 fail = "True"
-            }
-          }
-    }*/
-}
+    }
 
 }
