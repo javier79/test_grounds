@@ -203,7 +203,7 @@ class TestClass {
         rinconNode.xScale = -1.0
         rinconNode.zRotation = 9.44
         rinconNode.position = CGPoint(x:60.97, y:226.45)
-        rinconNode.zPosition = 2
+        //rinconNode.zPosition = 2
         rinconNode.physicsBody = SKPhysicsBody(circleOfRadius: rinconNode.size.width/2 * 0.3 , center: CGPoint(x:1.8, y: 0.5))
         rinconNode.physicsBody?.isDynamic = false
         rinconNode.name = "Rincón"
@@ -222,7 +222,7 @@ class TestClass {
         aguadaNode.xScale = -1.0
         aguadaNode.zRotation = 9.44
         aguadaNode.position = CGPoint(x:72.27, y:234.45)
-        aguadaNode.zPosition = 1
+        //aguadaNode.zPosition = 1
         aguadaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadaNode.size.width/2 * 0.45 , center: CGPoint(x:-3.5, y: 0.5))
         aguadaNode.physicsBody?.isDynamic = false
         aguadaNode.name = "Aguada"
@@ -929,7 +929,7 @@ class TestClass {
          aibonitoNode.zPosition = 1
          aibonitoNode.physicsBody = SKPhysicsBody(circleOfRadius:aibonitoNode.size.width/2 * 0.4 , center: CGPoint(x:-2.0, y:-0.5))
          aibonitoNode.physicsBody?.isDynamic = false
-        aibonitoNode.name = "aibonitoNode"
+        aibonitoNode.name = "Aibonito"
         return  aibonitoNode
     }
     
@@ -1214,7 +1214,7 @@ class TestClass {
             aguasBuenasNode.zPosition = 1
             aguasBuenasNode.physicsBody = SKPhysicsBody(circleOfRadius:aguasBuenasNode.size.width/2 * 0.35 , center: CGPoint(x:0.0,y:0.5))
             aguasBuenasNode.physicsBody?.isDynamic = false
-            aguasBuenasNode.name = "aguasBuenasNode"
+            aguasBuenasNode.name = "Aguas Buenas"
             return  aguasBuenasNode
        }
     

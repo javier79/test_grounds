@@ -14,15 +14,15 @@ import UIKit
 
 class StartScene: SKScene{
 
-    let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
-    let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
-    let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
+    //let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
+    //let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
+    //let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
     //let mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
     let anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
-    let rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
+    //let rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
     let aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
     let aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()
-    let isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
+    //let isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
    /* let mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
     let sanSebastianbp:UIBezierPath! = TestClass().sanSebastianDrawBezierPath()
     let lasMariasbp:UIBezierPath! = TestClass().lasMariasDrawBezierPath()
@@ -57,7 +57,7 @@ class StartScene: SKScene{
     let comeriobp:UIBezierPath! = TestClass().comerioDrawBezierPath()
     let coamobp:UIBezierPath! = TestClass().coamoDrawBezierPath()
     let naranjitobp:UIBezierPath! = TestClass().naranjitoDrawBezierPath()
-    let aibonitobp:UIBezierPath! = TestClass().aibonitoDrawBezierPath()
+    */let aibonitobp:UIBezierPath! = TestClass().aibonitoDrawBezierPath()/*
     let salinasbp:UIBezierPath! = TestClass().salinasDrawBezierPath()
     let cayeybp:UIBezierPath! = TestClass().cayeyDrawBezierPath()
     let cidrabp:UIBezierPath! = TestClass().cidraDrawBezierPath()
@@ -72,7 +72,7 @@ class StartScene: SKScene{
     let sanJuanbp:UIBezierPath! = TestClass().sanJuanDrawBezierPath()
     let caguasbp:UIBezierPath! = TestClass().caguasDrawBezierPath()
     let carolinabp:UIBezierPath! = TestClass().carolinaDrawBezierPath()
-    let aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()
+    */let aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()/*
     let trujilloAltobp:UIBezierPath! = TestClass().trujilloAltoDrawBezierPath()
     let loizabp:UIBezierPath! = TestClass().loizaDrawBezierPath()
     let loizaTwobp:UIBezierPath! = TestClass().loizaTwoDrawBezierPath()
@@ -105,7 +105,7 @@ class StartScene: SKScene{
     var seconds: Int = 0
     var minutes: Int = 0
     
-    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla","Isabela", "Cabo Rojo", "Hormigueros", "Mayagüez", "Rincón", "Añasco"]/*, "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao","Isabela", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco"]/*, "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao","Isabela", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
     
     var municipioNameLabel = SKLabelNode()
 
@@ -130,14 +130,14 @@ class StartScene: SKScene{
         
         municipiosNameBackground = labelMunicipiosNameBackground()
 
-        let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
-        containerNode.addChild(caboRojoSKSpriteNode)
+       /* let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
+        containerNode.addChild(caboRojoSKSpriteNode)*/
         
-        let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
-        containerNode.addChild(hormiguerosSKSpriteNode)
+        /*let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
+        containerNode.addChild(hormiguerosSKSpriteNode)*/
         
-        let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
-         containerNode.addChild(mayaguezSKSpriteNode)
+        /*let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
+         containerNode.addChild(mayaguezSKSpriteNode)*/
         
         /*let mayaguezTwoSKSpriteNode:SKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
          containerNode.addChild(mayaguezTwoSKSpriteNode)*/
@@ -145,8 +145,8 @@ class StartScene: SKScene{
         let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
          containerNode.addChild(anascoSKSpriteNode)
         
-        let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
-         containerNode.addChild(rinconSKSpriteNode)
+        /*let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
+         containerNode.addChild(rinconSKSpriteNode)*/
         
         let aguadaSKSpriteNode: SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: aguadabp)
          containerNode.addChild(aguadaSKSpriteNode)
@@ -154,8 +154,8 @@ class StartScene: SKScene{
         let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
          containerNode.addChild(aguadillaSKSpriteNode)
         
-        let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
-        containerNode.addChild(isabelaSKSpriteNode)
+        /*let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
+        containerNode.addChild(isabelaSKSpriteNode)*/
         
        /* let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
         containerNode.addChild(mocaSKSpriteNode)
@@ -259,8 +259,8 @@ class StartScene: SKScene{
         let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: naranjitobp)
         containerNode.addChild(naranjitoSKSpriteNode)
         
-        let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: aibonitobp)
-        containerNode.addChild(aibonitoSKSpriteNode)
+        */let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: aibonitobp)
+        containerNode.addChild(aibonitoSKSpriteNode)/*
         
         let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: cayeybp)
         containerNode.addChild(cayeySKSpriteNode)
@@ -304,8 +304,8 @@ class StartScene: SKScene{
         let caguasSKSpriteNode:SKSpriteNode = TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: caguasbp)
         containerNode.addChild(caguasSKSpriteNode)
         
-        let aguasBuenasSKSpriteNode:SKSpriteNode = TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: aguasBuenasbp)
-        containerNode.addChild(aguasBuenasSKSpriteNode)
+        */let aguasBuenasSKSpriteNode:SKSpriteNode = TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: aguasBuenasbp)
+        containerNode.addChild(aguasBuenasSKSpriteNode)/*
         
         let trujilloAltoSKSpriteNode:SKSpriteNode = TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: trujilloAltobp)
         containerNode.addChild(trujilloAltoSKSpriteNode)
@@ -532,23 +532,43 @@ class StartScene: SKScene{
                     for child in containerNode.children {
                         if let spriteNode = child as? SKSpriteNode {
                             if(touchedNode?.node?.name == spriteNode.name){
-                                spriteNode.color = .brown
+                                spriteNode.color = .systemTeal
                                 spriteNode.colorBlendFactor = 0.5
                                 nextMunicipio += 1
-                                if nextMunicipio <= 8{
+                                if nextMunicipio <= 5 {
                                     locationNameLabel.text = municipioNameLabel.text
-                                    locationNameLabel.fontSize = 8
+                                    locationNameLabel.fontName = "Helvetica"
                                     locationNameLabel.fontColor = UIColor.black
+                                    locationNameLabel.xScale = -1.0
+                                    
+                                    
+                                    
+                                    locationNameLabel.fontSize = 8
                                     locationNameLabel.horizontalAlignmentMode = .center
                                     locationNameLabel.verticalAlignmentMode = .center
-                                    locationNameLabel.xScale = -1.0
-                                    locationNameLabel.zRotation = 9.5
+                                    
+                                    locationNameLabel.zRotation = 9.44
                                     spriteNode.addChild(locationNameLabel)
                                     municipioNameLabel.text = municipios_names_array [nextMunicipio]
                                     municipiosNameBackground.size = municipioNameLabel.frame.size
                                 
                                 }
                                 else{
+                                    locationNameLabel.text = municipioNameLabel.text
+                                    locationNameLabel.fontName = "Helvetica"
+                                    locationNameLabel.fontColor = UIColor.black
+                                    locationNameLabel.xScale = -1.0
+                                    
+                                    
+                                    
+                                    locationNameLabel.fontSize = 8
+                                    locationNameLabel.horizontalAlignmentMode = .center
+                                    locationNameLabel.verticalAlignmentMode = .center
+                                    
+                                    locationNameLabel.zRotation = 9.44
+                                    spriteNode.addChild(locationNameLabel)
+                                    //municipioNameLabel.text = municipios_names_array [nextMunicipio]
+                                    municipiosNameBackground.size = municipioNameLabel.frame.size
                                     municipioNameLabel.text = "end of array"
                                     municipiosNameBackground.size = municipioNameLabel.frame.size
                                 }
