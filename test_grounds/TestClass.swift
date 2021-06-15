@@ -106,7 +106,7 @@ class TestClass {
         caboRojoNode.xScale = -1.0
         caboRojoNode.zRotation = 9.44
         caboRojoNode.position = CGPoint(x:80, y:143)
-        caboRojoNode.zPosition = 1
+        //caboRojoNode.zPosition = 1
         caboRojoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:caboRojoNode.size.width/2 * 0.5, height:caboRojoNode.size.height/2), center: CGPoint(x:-3.5, y: 0.5))
         caboRojoNode.physicsBody?.isDynamic = false
         caboRojoNode.name = "Cabo Rojo"
@@ -127,7 +127,7 @@ class TestClass {
         hormiguerosNode.xScale = -1.0
         hormiguerosNode.zRotation = 9.44
         hormiguerosNode.position = CGPoint(x:90.16, y:168.58)
-        hormiguerosNode.zPosition = 2
+        //hormiguerosNode.zPosition = 2
         hormiguerosNode.physicsBody = SKPhysicsBody(circleOfRadius: hormiguerosNode.size.width/2 * 0.35, center: CGPoint(x:-0.7, y: -1.5))
         hormiguerosNode.physicsBody?.isDynamic = false
         hormiguerosNode.name = "Hormigueros"
@@ -148,7 +148,7 @@ class TestClass {
         mayaguezNode.xScale = -1.0
         mayaguezNode.zRotation = 9.44
         mayaguezNode.position = CGPoint(x:53.84, y:207.63)
-        mayaguezNode.zPosition = 1
+        //mayaguezNode.zPosition = 1
         mayaguezNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:mayaguezNode.size.width/5.7, height:mayaguezNode.size.height/6), center: CGPoint(x:-41.5, y: 18.0))
         mayaguezNode.physicsBody?.isDynamic = false
         mayaguezNode.name = "Mayagüez"
@@ -184,7 +184,7 @@ class TestClass {
         anascoNode.xScale = -1.0
         anascoNode.zRotation = 9.44
         anascoNode.position = CGPoint(x:86.57, y:211.47)
-        anascoNode.zPosition = 1
+        //anascoNode.zPosition = 1
         anascoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:anascoNode.size.width/2 * 1.2, height:anascoNode.size.height/2 * 0.6), center: CGPoint(x:-3.0, y: -1.7))
         anascoNode.physicsBody?.isDynamic = false
         anascoNode.name = "Añasco"
@@ -241,7 +241,7 @@ class TestClass {
         aguadillaNode.xScale = -1.0
         aguadillaNode.zRotation = 9.44
         aguadillaNode.position = CGPoint(x:91.24, y:258.84)
-        aguadillaNode.zPosition = 2
+        //aguadillaNode.zPosition = 1
         aguadillaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadillaNode.size.width/2 * 0.45 , center: CGPoint(x:2.8, y:-4.0))
         aguadillaNode.physicsBody?.isDynamic = false
         aguadillaNode.name = "Aguadilla"
@@ -260,7 +260,7 @@ class TestClass {
         isabelaNode.xScale = -1.0
         isabelaNode.zRotation = 9.44
         isabelaNode.position = CGPoint(x:118.33, y:257.58)
-        isabelaNode.zPosition = 1
+        //isabelaNode.zPosition = 1
         isabelaNode.physicsBody = SKPhysicsBody(circleOfRadius: isabelaNode.size.width/2 * 0.35 , center: CGPoint(x:-2.0, y:0.0))
         isabelaNode.physicsBody?.isDynamic = false
         isabelaNode.name = "Isabela"
@@ -279,10 +279,10 @@ class TestClass {
         mocaNode.xScale = -1.0
         mocaNode.zRotation = 9.44
         mocaNode.position = CGPoint(x:99.85, y:239.98)
-        mocaNode.zPosition = 2
+        //mocaNode.zPosition = 2
         mocaNode.physicsBody = SKPhysicsBody(circleOfRadius: mocaNode.size.width/2 * 0.59 , center: CGPoint(x:1.0, y:2.0))
         mocaNode.physicsBody?.isDynamic = false
-        mocaNode.name = "mocaNode"
+        mocaNode.name = "Moca"
         return mocaNode
     }
     
@@ -298,10 +298,10 @@ class TestClass {
         sanSebastianNode.xScale = -1.0
         sanSebastianNode.zRotation = 9.44
         sanSebastianNode.position = CGPoint(x:128.96, y:222.96)
-        sanSebastianNode.zPosition = 2
+        //sanSebastianNode.zPosition = 2
         sanSebastianNode.physicsBody = SKPhysicsBody(circleOfRadius: sanSebastianNode.size.width/2 * 0.59 , center: CGPoint(x:-0.5, y:-1.0))
         sanSebastianNode.physicsBody?.isDynamic = false
-        sanSebastianNode.name = "sanSebastianNode"
+        sanSebastianNode.name = "San Sebastián"
         return sanSebastianNode
     }
     
@@ -317,10 +317,10 @@ class TestClass {
         lasMariasNode.xScale = -1.0
         lasMariasNode.zRotation = 9.44
         lasMariasNode.position = CGPoint(x:124.39, y:198.77)
-        lasMariasNode.zPosition = 1
+        //lasMariasNode.zPosition = 1
         lasMariasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:lasMariasNode.size.width/2 * 1.0, height:lasMariasNode.size.height/2 * 0.5), center: CGPoint(x:-3.4, y: 1.5))
         lasMariasNode.physicsBody?.isDynamic = false
-        lasMariasNode.name = "lasMariasNode"
+        lasMariasNode.name = "Las Marías"
         return lasMariasNode
     }
     
@@ -336,10 +336,10 @@ class TestClass {
         maricaoNode.xScale = -1.0
         maricaoNode.zRotation = 9.44
         maricaoNode.position = CGPoint(x:136.67, y:180.17)
-        maricaoNode.zPosition = 1
+        //maricaoNode.zPosition = 1
         maricaoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:maricaoNode.size.width/2 * 1.2, height:maricaoNode.size.height/2 * 0.5), center: CGPoint(x:-1.5, y: 1.0))
         maricaoNode.physicsBody?.isDynamic = false
-        maricaoNode.name = "maricaoNode"
+        maricaoNode.name = "Maricao"
         return maricaoNode
     }
     
@@ -355,10 +355,10 @@ class TestClass {
         sanGermanNode.xScale = -1.0
         sanGermanNode.zRotation = 9.44
         sanGermanNode.position = CGPoint(x:110.93, y:163.23)
-        sanGermanNode.zPosition = 1
+        //sanGermanNode.zPosition = 1
         sanGermanNode.physicsBody =  SKPhysicsBody(circleOfRadius: sanGermanNode.size.width/2 * 0.45 , center: CGPoint(x:0.0, y:0.0))
         sanGermanNode.physicsBody?.isDynamic = false
-        sanGermanNode.name = "sanGermanNode"
+        sanGermanNode.name = "San German"
         return sanGermanNode
     }
     
@@ -374,10 +374,10 @@ class TestClass {
         sabanaGrandeNode.xScale = -1.0
         sabanaGrandeNode.zRotation = 9.44
         sabanaGrandeNode.position = CGPoint(x:139.25, y:155.85)
-        sabanaGrandeNode.zPosition = 1
+        //sabanaGrandeNode.zPosition = 1
         sabanaGrandeNode.physicsBody =  SKPhysicsBody(circleOfRadius: sabanaGrandeNode.size.width/2 * 0.50 , center: CGPoint(x:3.5, y:0.0))
         sabanaGrandeNode.physicsBody?.isDynamic = false
-        sabanaGrandeNode.name = "sabanaGrandeNode"
+        sabanaGrandeNode.name = "Sabana Grande"
         return sabanaGrandeNode
     }
     
@@ -393,10 +393,10 @@ class TestClass {
          yaucoNode.xScale = -1.0
          yaucoNode.zRotation = 9.44
          yaucoNode.position = CGPoint(x:159.05, y:148.88)
-         yaucoNode.zPosition = 1
+         //yaucoNode.zPosition = 1
          yaucoNode.physicsBody = SKPhysicsBody(circleOfRadius: yaucoNode.size.width/2 * 0.52 , center: CGPoint(x:-0.4, y:0.0))
          yaucoNode.physicsBody?.isDynamic = false
-         yaucoNode.name = "yaucoNode"
+         yaucoNode.name = "Yauco"
         return  yaucoNode
     }
     
@@ -412,10 +412,10 @@ class TestClass {
         lajasNode.xScale = -1.0
         lajasNode.zRotation = 9.44
         lajasNode.position = CGPoint(x:111.6, y:130.62)
-        lajasNode.zPosition = 1
+        //lajasNode.zPosition = 1
         lajasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:lajasNode.size.width/2 * 1.5, height:lajasNode.size.height/2 * 0.5), center: CGPoint(x:0.5, y: -3.5))
         lajasNode.physicsBody?.isDynamic = false
-        lajasNode.name = "lajasNode"
+        lajasNode.name = "Lajas"
         return lajasNode
     }
     
@@ -430,11 +430,11 @@ class TestClass {
         let  guanicaNode = SKSpriteNode(texture: texture)
          guanicaNode.xScale = -1.0
          guanicaNode.zRotation = 9.44
-        guanicaNode.position = CGPoint(x:143.09, y:125.46)
-         guanicaNode.zPosition = 1
-        guanicaNode.physicsBody = SKPhysicsBody(circleOfRadius: guanicaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.0))
+         guanicaNode.position = CGPoint(x:143.09, y:125.46)
+         //guanicaNode.zPosition = 1
+         guanicaNode.physicsBody = SKPhysicsBody(circleOfRadius: guanicaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.0))
          guanicaNode.physicsBody?.isDynamic = false
-         guanicaNode.name = "guanicaNode"
+         guanicaNode.name = "Guánica"
         return  guanicaNode
     }
     
@@ -453,7 +453,7 @@ class TestClass {
         //guayanillaNode.zPosition = 1
         guayanillaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:guayanillaNode.size.width/2 * 0.3, height:guayanillaNode.size.height/2), center: CGPoint(x:-1.5, y: 0.5))
         guayanillaNode.physicsBody?.isDynamic = false
-        guayanillaNode.name = "guayanillaNode"
+        guayanillaNode.name = "Guayanilla"
         return guayanillaNode
     }
     
@@ -469,7 +469,7 @@ class TestClass {
          adjuntasNode.xScale = -1.0
          adjuntasNode.zRotation = 9.44
          adjuntasNode.position = CGPoint(x:188.93, y:182.56)
-         adjuntasNode.zPosition = 1
+         //adjuntasNode.zPosition = 1
          adjuntasNode.physicsBody = SKPhysicsBody(circleOfRadius: adjuntasNode.size.width/2 * 0.43 , center: CGPoint(x:-0.5, y:1.0))
          adjuntasNode.physicsBody?.isDynamic = false
          adjuntasNode.name = "Adjuntas"
@@ -488,10 +488,10 @@ class TestClass {
         laresNode.xScale = -1.0
         laresNode.zRotation = 9.44
         laresNode.position = CGPoint(x:158.07, y:207.36)
-        laresNode.zPosition = 1
+        //laresNode.zPosition = 1
         laresNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:laresNode.size.width/2 * 0.7, height:laresNode.size.height/2 * 1.5), center: CGPoint(x:0.5, y: 0.5))
         laresNode.physicsBody?.isDynamic = false
-        laresNode.name = "laresNode"
+        laresNode.name = "Lares"
         return laresNode
     }
     
@@ -507,10 +507,10 @@ class TestClass {
         penuelasNode.xScale = -1.0
         penuelasNode.zRotation = 9.44
         penuelasNode.position = CGPoint(x:196.06, y:145.2)
-        penuelasNode.zPosition = 1
+        //penuelasNode.zPosition = 1
         penuelasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:penuelasNode.size.width/2 * 0.5, height:penuelasNode.size.height/2 * 1.2), center: CGPoint(x:-1.8, y: 0.5))
        penuelasNode.physicsBody?.isDynamic = false
-       penuelasNode.name = "penuelasNode"
+       penuelasNode.name = "Peñuelas"
         return penuelasNode
     }
     
@@ -525,11 +525,11 @@ class TestClass {
         let ponceNode = SKSpriteNode(texture: texture)
          ponceNode.xScale = -1.0
          ponceNode.zRotation = 9.44
-        ponceNode.position = CGPoint(x:228.35, y:138.86)
-         ponceNode.zPosition = 1
+         ponceNode.position = CGPoint(x:228.35, y:138.86)
+         //ponceNode.zPosition = 1
          ponceNode.physicsBody = SKPhysicsBody(circleOfRadius: ponceNode.size.width/2 * 0.47 , center: CGPoint(x:2.5, y:-7.5))
          ponceNode.physicsBody?.isDynamic = false
-         ponceNode.name = "ponceNode"
+         ponceNode.name = "Ponce"
         return  ponceNode
     }
     
@@ -545,10 +545,10 @@ class TestClass {
         utuadoNode.xScale = -1.0
         utuadoNode.zRotation = 9.44
         utuadoNode.position = CGPoint(x:202.89, y:202.02)
-        utuadoNode.zPosition = 1
+        //utuadoNode.zPosition = 1
         utuadoNode.physicsBody = SKPhysicsBody(circleOfRadius: utuadoNode.size.width/2 * 0.35, center: CGPoint(x:0.5, y:-4.5))
-       utuadoNode.physicsBody?.isDynamic = false
-       utuadoNode.name = "utuadoNode"
+        utuadoNode.physicsBody?.isDynamic = false
+        utuadoNode.name = "Utuado"
         return utuadoNode
     }
     
@@ -564,10 +564,10 @@ class TestClass {
          jayuyaNode.xScale = -1.0
          jayuyaNode.zRotation = 9.44
          jayuyaNode.position = CGPoint(x:231.73, y:194.79)
-         jayuyaNode.zPosition = 1
+         //jayuyaNode.zPosition = 1
          jayuyaNode.physicsBody = SKPhysicsBody(circleOfRadius: jayuyaNode.size.width/2 * 0.45 , center: CGPoint(x:-2.5, y:5.0))
          jayuyaNode.physicsBody?.isDynamic = false
-        jayuyaNode.name = "jayuyaNode"
+         jayuyaNode.name = "Jayuya"
         return  jayuyaNode
     }
     
@@ -582,11 +582,11 @@ class TestClass {
         let juanaDiazNode = SKSpriteNode(texture: texture)
          juanaDiazNode.xScale = -1.0
          juanaDiazNode.zRotation = 9.44
-        juanaDiazNode.position = CGPoint(x:258.21, y:141.89)
-         juanaDiazNode.zPosition = 1
+         juanaDiazNode.position = CGPoint(x:258.21, y:141.89)
+         //juanaDiazNode.zPosition = 1
          juanaDiazNode.physicsBody = SKPhysicsBody(circleOfRadius: juanaDiazNode.size.width/2 * 0.50 , center: CGPoint(x:-2.5, y:-0.5))
          juanaDiazNode.physicsBody?.isDynamic = false
-         juanaDiazNode.name = "juanaDiazNode"
+         juanaDiazNode.name = "Juana Díaz"
         return  juanaDiazNode
     }
     
@@ -602,10 +602,10 @@ class TestClass {
         quebradillasNode.xScale = -1.0
         quebradillasNode.zRotation = 9.44
         quebradillasNode.position = CGPoint(x:139.8, y:252.85)
-        quebradillasNode.zPosition = 1
+        //quebradillasNode.zPosition = 1
         quebradillasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:quebradillasNode.size.width/2 * 0.5, height:quebradillasNode.size.height/2 * 1.0), center: CGPoint(x:-3.5, y:-1.2))
         quebradillasNode.physicsBody?.isDynamic = false
-        quebradillasNode.name = "quebradillasNode"
+        quebradillasNode.name = "Quebradillas"
         return quebradillasNode
     }
     
@@ -620,12 +620,12 @@ class TestClass {
         let camuyNode = SKSpriteNode(texture: texture)
          camuyNode.xScale = -1.0
          camuyNode.zRotation = 9.44
-        camuyNode.position = CGPoint(x:160.46, y:249.65)
-         camuyNode.zPosition = 1
+         camuyNode.position = CGPoint(x:160.46, y:249.65)
+         //camuyNode.zPosition = 1
          camuyNode.physicsBody = SKPhysicsBody(circleOfRadius: camuyNode.size.width/2 * 0.55 , center: CGPoint(x:1.0, y:0.0))
          camuyNode.physicsBody?.isDynamic = false
-         camuyNode.name = "camuyNode"
-        return  camuyNode
+         camuyNode.name = "Camuy"
+         return  camuyNode
     }
     
     func hatilloBezierPathToSKSpriteNode(bpHatillo: UIBezierPath)-> SKSpriteNode{
@@ -640,10 +640,10 @@ class TestClass {
         hatilloNode.xScale = -1.0
         hatilloNode.zRotation = 9.44
         hatilloNode.position = CGPoint(x:175.03, y:246.63)
-        hatilloNode.zPosition = 1
+        //hatilloNode.zPosition = 1
         hatilloNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:hatilloNode.size.width/2 * 0.52, height:hatilloNode.size.height/2 * 1.2), center: CGPoint(x:-2.5, y: 0.5))
         hatilloNode.physicsBody?.isDynamic = false
-        hatilloNode.name = "hatilloNode"
+        hatilloNode.name = "Hatillo"
         return hatilloNode
     }
     
@@ -658,11 +658,11 @@ class TestClass {
         let areciboNode = SKSpriteNode(texture: texture)
          areciboNode.xScale = -1.0
          areciboNode.zRotation = 9.44
-        areciboNode.position = CGPoint(x:209.2, y:245.93)
-         areciboNode.zPosition = 1
+         areciboNode.position = CGPoint(x:209.2, y:245.93)
+         //areciboNode.zPosition = 1
          areciboNode.physicsBody = SKPhysicsBody(circleOfRadius: areciboNode.size.width/2 * 0.55 , center: CGPoint(x:0.5, y:0.5))
          areciboNode.physicsBody?.isDynamic = false
-         areciboNode.name = "areciboNode"
+         areciboNode.name = "Arecibo"
         return  areciboNode
     }
     
@@ -681,7 +681,7 @@ class TestClass {
         barcelonetaNode.zPosition = 1
         barcelonetaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:barcelonetaNode.size.width/2 * 0.40, height:barcelonetaNode.size.height/2 * 1.2), center: CGPoint(x:0.5, y:-2.0))
         barcelonetaNode.physicsBody?.isDynamic = false
-        barcelonetaNode.name = "barcelonetaNode"
+        barcelonetaNode.name = "Barceloneta"
         return barcelonetaNode
     }
     
@@ -700,7 +700,7 @@ class TestClass {
          floridaNode.zPosition = 1
          floridaNode.physicsBody = SKPhysicsBody(circleOfRadius: floridaNode.size.width/2 * 0.50 , center: CGPoint(x:-0.5, y:0.5))
          floridaNode.physicsBody?.isDynamic = false
-         floridaNode.name = "floridaNode"
+         floridaNode.name = "Florida"
          return  floridaNode
     }
     
@@ -720,7 +720,7 @@ class TestClass {
          manatiNode.zPosition = 1
          manatiNode.physicsBody = SKPhysicsBody(circleOfRadius: manatiNode.size.width/2 * 0.55 , center: CGPoint(x:-1.5, y:0.5))
          manatiNode.physicsBody?.isDynamic = false
-         manatiNode.name = "manatiNode"
+         manatiNode.name = "Manatí"
         return  manatiNode
     }
 
@@ -739,7 +739,7 @@ class TestClass {
         vegaBajaNode.zPosition = 1
         vegaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius: vegaBajaNode.size.width/2 * 0.55, center: CGPoint(x:0.5, y:-2.5))
         vegaBajaNode.physicsBody?.isDynamic = false
-        vegaBajaNode.name = "vegaBajaNode"
+        vegaBajaNode.name = "Vega Baja"
         return  vegaBajaNode
         }
     
@@ -758,7 +758,7 @@ class TestClass {
          villalbaNode.zPosition = 1
          villalbaNode.physicsBody = SKPhysicsBody(circleOfRadius:villalbaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.5))
          villalbaNode.physicsBody?.isDynamic = false
-         villalbaNode.name = "villalbaNode"
+         villalbaNode.name = "Villalba"
         return  villalbaNode
     }
     
@@ -775,9 +775,9 @@ class TestClass {
          orocovisNode.zRotation = 9.44
          orocovisNode.position = CGPoint(x:270.23, y:193.72)
          orocovisNode.zPosition = 1
-        orocovisNode.physicsBody = SKPhysicsBody(circleOfRadius:orocovisNode.size.width/2 * 0.35 , center: CGPoint(x:-6.0, y:0.5))
+         orocovisNode.physicsBody = SKPhysicsBody(circleOfRadius:orocovisNode.size.width/2 * 0.35 , center: CGPoint(x:-6.0, y:0.5))
          orocovisNode.physicsBody?.isDynamic = false
-         orocovisNode.name = "orocovisNode"
+         orocovisNode.name = "Orocovis"
         return  orocovisNode
     }
     
@@ -796,7 +796,7 @@ class TestClass {
          cialesNode.zPosition = 1
         cialesNode.physicsBody = SKPhysicsBody(circleOfRadius:cialesNode.size.width/2 * 0.4 , center: CGPoint(x:-5.5, y:-10.5))
          cialesNode.physicsBody?.isDynamic = false
-         cialesNode.name = "cialesNode"
+         cialesNode.name = "Ciales"
         return  cialesNode
     }
     
@@ -815,7 +815,7 @@ class TestClass {
          morovisNode.zPosition = 1
          morovisNode.physicsBody = SKPhysicsBody(circleOfRadius:morovisNode.size.width/2 * 0.49 , center: CGPoint(x:0.0, y:0.5))
          morovisNode.physicsBody?.isDynamic = false
-         morovisNode.name = "morovisNode"
+         morovisNode.name = "Morovis"
         return  morovisNode
     }
     
@@ -834,7 +834,7 @@ class TestClass {
          corozalNode.zPosition = 1
          corozalNode.physicsBody = SKPhysicsBody(circleOfRadius:corozalNode.size.width/2 * 0.55 , center: CGPoint(x:-1.0, y:0.5))
          corozalNode.physicsBody?.isDynamic = false
-         corozalNode.name = "corozalNode"
+         corozalNode.name = "Corozal"
         return  corozalNode
     }
     
@@ -849,11 +849,11 @@ class TestClass {
         let barranquitasNode = SKSpriteNode(texture: texture)
          barranquitasNode.xScale = -1.0
          barranquitasNode.zRotation = 9.44
-        barranquitasNode.position = CGPoint(x:308.45, y:187.95)
+         barranquitasNode.position = CGPoint(x:308.45, y:187.95)
          barranquitasNode.zPosition = 1
          barranquitasNode.physicsBody = SKPhysicsBody(circleOfRadius:barranquitasNode.size.width/2 * 0.4 , center: CGPoint(x:0.5, y:-1.5))
          barranquitasNode.physicsBody?.isDynamic = false
-         barranquitasNode.name = "barranquitasNode"
+         barranquitasNode.name = "Barranquitas"
         return  barranquitasNode
     }
     
@@ -868,11 +868,11 @@ class TestClass {
         let comerioNode = SKSpriteNode(texture: texture)
          comerioNode.xScale = -1.0
          comerioNode.zRotation = 9.44
-        comerioNode.position = CGPoint(x:331.91, y:194.87)
+         comerioNode.position = CGPoint(x:331.91, y:194.87)
          comerioNode.zPosition = 1
          comerioNode.physicsBody = SKPhysicsBody(circleOfRadius:comerioNode.size.width/2 * 0.4 , center: CGPoint(x:-1.2, y:0.5))
          comerioNode.physicsBody?.isDynamic = false
-        comerioNode.name = "comerioNode"
+         comerioNode.name = "Comerio"
         return  comerioNode
     }
     
@@ -891,7 +891,7 @@ class TestClass {
          coamoNode.zPosition = 1
          coamoNode.physicsBody = SKPhysicsBody(circleOfRadius:coamoNode.size.width/2 * 0.4 , center: CGPoint(x:1.7, y:0.5))
          coamoNode.physicsBody?.isDynamic = false
-        coamoNode.name = "coamoNode"
+         coamoNode.name = "Coamo"
         return  coamoNode
     }
     
@@ -910,7 +910,7 @@ class TestClass {
          naranjitoNode.zPosition = 1
          naranjitoNode.physicsBody = SKPhysicsBody(circleOfRadius:naranjitoNode.size.width/2 * 0.4 , center: CGPoint(x:-1.5, y:0.5))
          naranjitoNode.physicsBody?.isDynamic = false
-         naranjitoNode.name = "naranjitoNode"
+         naranjitoNode.name = "Naranjito"
         return  naranjitoNode
     }
     
@@ -933,25 +933,6 @@ class TestClass {
         return  aibonitoNode
     }
     
-    func cayeyBezierPathToSKSpriteNode(bpCayey: UIBezierPath)-> SKSpriteNode{
-        
-        let shapeNode = SKShapeNode(path:bpCayey.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
-        shapeNode.lineWidth = 0.5
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let cayeyNode = SKSpriteNode(texture: texture)
-         cayeyNode.xScale = -1.0
-         cayeyNode.zRotation = 9.44
-        cayeyNode.position = CGPoint(x:353.68, y:160.28)
-         cayeyNode.zPosition = 1
-         cayeyNode.physicsBody = SKPhysicsBody(circleOfRadius:cayeyNode.size.width/2 * 0.34 , center: CGPoint(x:7.5, y:2.5))
-         cayeyNode.physicsBody?.isDynamic = false
-         cayeyNode.name = "cayeyNode"
-         return  cayeyNode
-    }
-    
     func salinasBezierPathToSKSpriteNode(bpSalinas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSalinas.cgPath)
@@ -967,9 +948,30 @@ class TestClass {
          salinasNode.zPosition = 1
          salinasNode.physicsBody = SKPhysicsBody(circleOfRadius:salinasNode.size.width/2 * 0.4 , center: CGPoint(x:0.0, y:-0.5))
          salinasNode.physicsBody?.isDynamic = false
-        salinasNode.name = "salinasNode"
+        salinasNode.name = "Salinas"
         return  salinasNode
     }
+    
+    func cayeyBezierPathToSKSpriteNode(bpCayey: UIBezierPath)-> SKSpriteNode{
+        
+        let shapeNode = SKShapeNode(path:bpCayey.cgPath)
+        shapeNode.fillColor = UIColor.systemGray3
+        shapeNode.strokeColor = UIColor.white
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let cayeyNode = SKSpriteNode(texture: texture)
+         cayeyNode.xScale = -1.0
+         cayeyNode.zRotation = 9.44
+        cayeyNode.position = CGPoint(x:353.68, y:160.28)
+         cayeyNode.zPosition = 1
+         cayeyNode.physicsBody = SKPhysicsBody(circleOfRadius:cayeyNode.size.width/2 * 0.34 , center: CGPoint(x:7.5, y:2.5))
+         cayeyNode.physicsBody?.isDynamic = false
+         cayeyNode.name = "Cayey"
+         return  cayeyNode
+    }
+    
+
     
     func cidraBezierPathToSKSpriteNode(bpCidra: UIBezierPath)-> SKSpriteNode{
         
@@ -986,7 +988,7 @@ class TestClass {
          cidraNode.zPosition = 1
          cidraNode.physicsBody = SKPhysicsBody(circleOfRadius:cidraNode.size.width/2 * 0.30 , center: CGPoint(x:-3.5, y:2.0))
          cidraNode.physicsBody?.isDynamic = false
-        cidraNode.name = "cidraNode"
+        cidraNode.name = "Cidra"
         return  cidraNode
     }
     
@@ -1005,7 +1007,7 @@ class TestClass {
          santaIsabelNode.zPosition = 1
          santaIsabelNode.physicsBody = SKPhysicsBody(circleOfRadius:santaIsabelNode.size.width/2 * 0.45 , center: CGPoint(x:-1.5,y:-4.5))
          santaIsabelNode.physicsBody?.isDynamic = false
-        santaIsabelNode.name = "santaIsabelNode"
+        santaIsabelNode.name = "Santa Isabel"
         return  santaIsabelNode
     }
     func vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: UIBezierPath)-> SKSpriteNode{
@@ -1023,7 +1025,7 @@ class TestClass {
         vegaAltaNode.zPosition = 1
         vegaAltaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:vegaAltaNode.size.width/2 * 0.25, height:vegaAltaNode.size.height/2 * 1.1), center: CGPoint(x:-1.5, y: -2.5))
         vegaAltaNode.physicsBody?.isDynamic = false
-        vegaAltaNode.name = "vegaAltaNode"
+        vegaAltaNode.name = "Vega Alta"
         return vegaAltaNode
     }
     
@@ -1042,9 +1044,48 @@ class TestClass {
         doradoNode.zPosition = 1
         doradoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:doradoNode.size.width/2 * 0.20, height:doradoNode.size.height/2 * 1.2), center: CGPoint(x:3.5, y: 0.5))
         doradoNode.physicsBody?.isDynamic = false
-        doradoNode.name = "doradoNode"
+        doradoNode.name = "Dorado"
         return doradoNode
     }
+    
+    func toaAltaBezierPathToSKSpriteNode(bpToaAlta: UIBezierPath)-> SKSpriteNode{
+           
+           let shapeNode = SKShapeNode(path:bpToaAlta.cgPath)
+           shapeNode.fillColor = UIColor.systemGray3
+           shapeNode.strokeColor = UIColor.white
+           shapeNode.lineWidth = 0.5
+           let view = SKView(frame: UIScreen.main.bounds)
+           let texture = view.texture(from: shapeNode)!
+           let toaAltaNode = SKSpriteNode(texture: texture)
+            toaAltaNode.xScale = -1.0
+            toaAltaNode.zRotation = 9.44
+            toaAltaNode.position = CGPoint(x:321.65, y:232.96)
+            toaAltaNode.zPosition = 1
+            toaAltaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaAltaNode.size.width/2 * 0.35 , center: CGPoint(x:-3.0,y:-0.5))
+            toaAltaNode.physicsBody?.isDynamic = false
+            toaAltaNode.name = "Toa Alta"
+            return  toaAltaNode
+       }
+    
+    func toaBajaBezierPathToSKSpriteNode(bpToaBaja: UIBezierPath)-> SKSpriteNode{
+           
+           let shapeNode = SKShapeNode(path:bpToaBaja.cgPath)
+           shapeNode.fillColor = UIColor.systemGray3
+           shapeNode.strokeColor = UIColor.white
+           shapeNode.lineWidth = 0.5
+           let view = SKView(frame: UIScreen.main.bounds)
+           let texture = view.texture(from: shapeNode)!
+           let toaBajaNode = SKSpriteNode(texture: texture)
+            toaBajaNode.xScale = -1.0
+            toaBajaNode.zRotation = 9.44
+            toaBajaNode.position = CGPoint(x:337.59, y:253.87)
+            toaBajaNode.zPosition = 1
+            toaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaBajaNode.size.width/2 * 0.27 , center: CGPoint(x:5.5,y:0.5))
+            toaBajaNode.physicsBody?.isDynamic = false
+            toaBajaNode.name = "Toa Baja"
+            return  toaBajaNode
+       }
+    
     
     func bayamonBezierPathToSKSpriteNode(bpBayamon: UIBezierPath)-> SKSpriteNode{
         
@@ -1061,48 +1102,11 @@ class TestClass {
         bayamonNode.zPosition = 1
         bayamonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:bayamonNode.size.width/2 * 0.40, height:bayamonNode.size.height/2 * 1.3), center: CGPoint(x:0.5, y: -0.5))
         bayamonNode.physicsBody?.isDynamic = false
-        bayamonNode.name = "bayamonNode"
+        bayamonNode.name = "Bayamón"
         return bayamonNode
     }
     
-    func toaAltaBezierPathToSKSpriteNode(bpToaAlta: UIBezierPath)-> SKSpriteNode{
-           
-           let shapeNode = SKShapeNode(path:bpToaAlta.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
-           shapeNode.lineWidth = 0.5
-           let view = SKView(frame: UIScreen.main.bounds)
-           let texture = view.texture(from: shapeNode)!
-           let toaAltaNode = SKSpriteNode(texture: texture)
-            toaAltaNode.xScale = -1.0
-            toaAltaNode.zRotation = 9.44
-        toaAltaNode.position = CGPoint(x:321.65, y:232.96)
-            toaAltaNode.zPosition = 1
-            toaAltaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaAltaNode.size.width/2 * 0.35 , center: CGPoint(x:-3.0,y:-0.5))
-            toaAltaNode.physicsBody?.isDynamic = false
-            toaAltaNode.name = "toaAltaNode"
-            return  toaAltaNode
-       }
-    
-    func toaBajaBezierPathToSKSpriteNode(bpToaBaja: UIBezierPath)-> SKSpriteNode{
-           
-           let shapeNode = SKShapeNode(path:bpToaBaja.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
-           shapeNode.lineWidth = 0.5
-           let view = SKView(frame: UIScreen.main.bounds)
-           let texture = view.texture(from: shapeNode)!
-           let toaBajaNode = SKSpriteNode(texture: texture)
-            toaBajaNode.xScale = -1.0
-            toaBajaNode.zRotation = 9.44
-        toaBajaNode.position = CGPoint(x:337.59, y:253.87)
-            toaBajaNode.zPosition = 1
-            toaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaBajaNode.size.width/2 * 0.27 , center: CGPoint(x:5.5,y:0.5))
-            toaBajaNode.physicsBody?.isDynamic = false
-            toaBajaNode.name = "toaBajaNode"
-            return  toaBajaNode
-       }
-    
+
     func catanoBezierPathToSKSpriteNode(bpCatano: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpCatano.cgPath)
@@ -1118,7 +1122,7 @@ class TestClass {
             catanoNode.zPosition = 1
             catanoNode.physicsBody = SKPhysicsBody(circleOfRadius:catanoNode.size.width/2 * 0.33 , center: CGPoint(x:0.5,y:0.5))
             catanoNode.physicsBody?.isDynamic = false
-            catanoNode.name = "catanoNode"
+            catanoNode.name = "Cataño"
             return  catanoNode
        }
     
@@ -1137,7 +1141,7 @@ class TestClass {
         guaynaboNode.zPosition = 1
         guaynaboNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:guaynaboNode.size.width/2 * 0.35, height:guaynaboNode.size.height/2 * 1.3), center: CGPoint(x:0.5, y: 0.5))
         guaynaboNode.physicsBody?.isDynamic = false
-        guaynaboNode.name = "guaynaboNode"
+        guaynaboNode.name = "Guaynabo"
         return guaynaboNode
     }
     
@@ -1156,7 +1160,7 @@ class TestClass {
         sanJuanNode.zPosition = 1
         sanJuanNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:sanJuanNode.size.width/2 * 0.30, height:sanJuanNode.size.height/2 * 1.3), center: CGPoint(x:0.5, y: 0.5))
         sanJuanNode.physicsBody?.isDynamic = false
-        sanJuanNode.name = "sanJuanNode"
+        sanJuanNode.name = "San Juan"
         return sanJuanNode
     }
     
@@ -1176,7 +1180,7 @@ class TestClass {
         caguasNode.zPosition = 1
         caguasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:caguasNode.size.width/2 * 0.30, height:caguasNode.size.height/2 * 1.3), center: CGPoint(x:-2.5, y: 0.5))
         caguasNode.physicsBody?.isDynamic = false
-        caguasNode.name = "caguasNode"
+        caguasNode.name = "Caguas"
         return caguasNode
     }
     
@@ -1195,7 +1199,7 @@ class TestClass {
         carolinaNode.zPosition = 1
         carolinaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:carolinaNode.size.width/2 * 0.30, height:carolinaNode.size.height/2 * 0.95), center: CGPoint(x:-4.5, y: -3.0))
         carolinaNode.physicsBody?.isDynamic = false
-        carolinaNode.name = "carolinaNode"
+        carolinaNode.name = "Carolina"
         return carolinaNode
     }
     
@@ -1210,7 +1214,7 @@ class TestClass {
            let aguasBuenasNode = SKSpriteNode(texture: texture)
             aguasBuenasNode.xScale = -1.0
             aguasBuenasNode.zRotation = 9.44
-        aguasBuenasNode.position = CGPoint(x:356.56, y:202.09)
+            aguasBuenasNode.position = CGPoint(x:356.56, y:202.09)
             aguasBuenasNode.zPosition = 1
             aguasBuenasNode.physicsBody = SKPhysicsBody(circleOfRadius:aguasBuenasNode.size.width/2 * 0.35 , center: CGPoint(x:0.0,y:0.5))
             aguasBuenasNode.physicsBody?.isDynamic = false
@@ -1229,11 +1233,11 @@ class TestClass {
            let trujilloAltoNode = SKSpriteNode(texture: texture)
             trujilloAltoNode.xScale = -1.0
             trujilloAltoNode.zRotation = 9.44
-        trujilloAltoNode.position = CGPoint(x:393.83, y:226.67)
+            trujilloAltoNode.position = CGPoint(x:393.83, y:226.67)
             trujilloAltoNode.zPosition = 1
             trujilloAltoNode.physicsBody = SKPhysicsBody(circleOfRadius:trujilloAltoNode.size.width/2 * 0.40 , center: CGPoint(x:4.0,y:0.5))
             trujilloAltoNode.physicsBody?.isDynamic = false
-            trujilloAltoNode.name = "trujilloAltoNode"
+            trujilloAltoNode.name = "Trujillo Alto"
             return  trujilloAltoNode
        }
     
@@ -1254,10 +1258,10 @@ class TestClass {
         
         loizaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:loizaNode.size.width/2 * 0.7, height:loizaNode.size.height/2 * 0.5), center: CGPoint(x:6.5, y:1.5))
         loizaNode.physicsBody?.isDynamic = false
-        loizaNode.name = "loizaNode"
+        loizaNode.name = "Loiza"
         return loizaNode
     }
-   /* func loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: UIBezierPath)-> SKSpriteNode{
+    /* func loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpLoizaTwo.cgPath)
         shapeNode.fillColor = UIColor.systemIndigo
@@ -1292,7 +1296,7 @@ class TestClass {
         canovanasNode.zPosition = 1
         canovanasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:canovanasNode.size.width/2 * 0.5, height:canovanasNode.size.height/2 * 1.0), center: CGPoint(x:1.5, y: 0.5))
         canovanasNode.physicsBody?.isDynamic = false
-        canovanasNode.name = "canovanasNode"
+        canovanasNode.name = "Canóvanas"
         return canovanasNode
     }
     
@@ -1307,11 +1311,11 @@ class TestClass {
         let rioGrandeNode = SKSpriteNode(texture: texture)
          rioGrandeNode.xScale = -1.0
          rioGrandeNode.zRotation = 9.44
-        rioGrandeNode.position = CGPoint(x:441.51, y:229.61)
+         rioGrandeNode.position = CGPoint(x:441.51, y:229.61)
          rioGrandeNode.zPosition = 1
          rioGrandeNode.physicsBody = SKPhysicsBody(circleOfRadius: rioGrandeNode.size.width/2 * 0.55 , center: CGPoint(x:1.0, y:0.0))
          rioGrandeNode.physicsBody?.isDynamic = false
-         rioGrandeNode.name = "rioGrandeNode"
+         rioGrandeNode.name = "Rio Grande"
         return  rioGrandeNode
     }
     
@@ -1330,7 +1334,7 @@ class TestClass {
          luquilloNode.zPosition = 1
          luquilloNode.physicsBody = SKPhysicsBody(circleOfRadius: luquilloNode.size.width/2 * 0.4 , center: CGPoint(x:0.0, y:-1.5))
          luquilloNode.physicsBody?.isDynamic = false
-         luquilloNode.name = "luquilloNode"
+         luquilloNode.name = "Luquillo"
         return  luquilloNode
     }
     
@@ -1349,7 +1353,7 @@ class TestClass {
          fajardoNode.zPosition = 1
         fajardoNode.physicsBody = SKPhysicsBody(circleOfRadius: fajardoNode.size.width/2 * 0.15 , center: CGPoint(x:5.0, y:3.5))
          fajardoNode.physicsBody?.isDynamic = false
-         fajardoNode.name = "fajardoNode"
+         fajardoNode.name = "Fajardo"
         return  fajardoNode
     }
     
@@ -1368,7 +1372,7 @@ class TestClass {
          ceibaNode.zPosition = 1
          ceibaNode.physicsBody = SKPhysicsBody(circleOfRadius: ceibaNode.size.width/2 * 0.15 , center: CGPoint(x:-3.5, y:-1.5))
          ceibaNode.physicsBody?.isDynamic = false
-         ceibaNode.name = "ceibaNode"
+         ceibaNode.name = "Ceiba"
         return  ceibaNode
     }
     
@@ -1387,7 +1391,7 @@ class TestClass {
          guraboNode.zPosition = 1
          guraboNode.physicsBody = SKPhysicsBody(circleOfRadius: guraboNode.size.width/2 * 0.45 , center: CGPoint(x:-1.0, y:-2.0))
          guraboNode.physicsBody?.isDynamic = false
-        guraboNode.name = "guraboNode"
+        guraboNode.name = "Gurabo"
         return  guraboNode
     }
     
@@ -1406,7 +1410,7 @@ class TestClass {
          juncosNode.zPosition = 1
         juncosNode.physicsBody = SKPhysicsBody(circleOfRadius: juncosNode.size.width/2 * 0.4 , center: CGPoint(x:3.0, y:-7.5))
          juncosNode.physicsBody?.isDynamic = false
-        juncosNode.name = "juncosNode"
+        juncosNode.name = "Juncos"
         return  juncosNode
     }
     
@@ -1425,7 +1429,7 @@ class TestClass {
          sanLorenzoNode.zPosition = 1
         sanLorenzoNode.physicsBody = SKPhysicsBody(circleOfRadius: sanLorenzoNode.size.width/2 * 0.45 , center: CGPoint(x:-3.0, y:2.5))
          sanLorenzoNode.physicsBody?.isDynamic = false
-        sanLorenzoNode.name = "sanLorenzoNode"
+        sanLorenzoNode.name = "San Lorenzo"
         return  sanLorenzoNode
     }
     
@@ -1444,7 +1448,7 @@ class TestClass {
          guayamaNode.zPosition = 1
          guayamaNode.physicsBody = SKPhysicsBody(circleOfRadius:guayamaNode.size.width/2 * 0.4 , center: CGPoint(x:-0.5, y:4.5))
          guayamaNode.physicsBody?.isDynamic = false
-         guayamaNode.name = "guayamaNode"
+         guayamaNode.name = "Guayama"
         return  guayamaNode
     }
     
@@ -1463,7 +1467,7 @@ class TestClass {
         arroyoNode.zPosition = 1
         arroyoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:arroyoNode.size.width/2 * 0.45, height:arroyoNode.size.height/2 * 1.5), center: CGPoint(x:-0.5, y:-1.2))
         arroyoNode.physicsBody?.isDynamic = false
-        arroyoNode.name = "arroyoNode"
+        arroyoNode.name = "Arroyo"
         return arroyoNode
     }
     
@@ -1482,7 +1486,7 @@ class TestClass {
         patillasNode.zPosition = 1
         patillasNode.physicsBody = SKPhysicsBody(circleOfRadius:patillasNode.size.width/2 * 0.25 , center: CGPoint(x:3.0, y:3.0))
         patillasNode.physicsBody?.isDynamic = false
-        patillasNode.name = "patillasNode"
+        patillasNode.name = "Patillas"
         return patillasNode
     }
     
@@ -1501,7 +1505,7 @@ class TestClass {
         maunaboNode.zPosition = 1
         maunaboNode.physicsBody = SKPhysicsBody(circleOfRadius:maunaboNode.size.width/2 * 0.25 , center: CGPoint(x:-1.0, y:3.0))
         maunaboNode.physicsBody?.isDynamic = false
-        maunaboNode.name = "maunaboNode"
+        maunaboNode.name = "Maunabo"
         return maunaboNode
     }
     
@@ -1520,7 +1524,7 @@ class TestClass {
             yabucoaNode.zPosition = 1
             yabucoaNode.physicsBody = SKPhysicsBody(circleOfRadius:yabucoaNode.size.width/2 * 0.3 , center: CGPoint(x:-5.0, y:-0.5))
             yabucoaNode.physicsBody?.isDynamic = false
-            yabucoaNode.name = "yabucoaNode"
+            yabucoaNode.name = "Yabucoa"
            return  yabucoaNode
        }
     
@@ -1539,7 +1543,7 @@ class TestClass {
             lasPiedrasNode.zPosition = 1
             lasPiedrasNode.physicsBody = SKPhysicsBody(circleOfRadius:lasPiedrasNode.size.width/2 * 0.4 , center: CGPoint(x:-1.5, y:0.5))
             lasPiedrasNode.physicsBody?.isDynamic = false
-            lasPiedrasNode.name = "lasPiedrasNode"
+            lasPiedrasNode.name = "Las Piedras"
            return  lasPiedrasNode
        }
     func humacaoBezierPathToSKSpriteNode(bpHumacao: UIBezierPath)-> SKSpriteNode{
@@ -1557,7 +1561,7 @@ class TestClass {
                humacaoNode.zPosition = 1
                humacaoNode.physicsBody = SKPhysicsBody(circleOfRadius:humacaoNode.size.width/2 * 0.4 , center: CGPoint(x:1.5, y:-2.5))
                humacaoNode.physicsBody?.isDynamic = false
-               humacaoNode.name = "humacaoNode"
+               humacaoNode.name = "Humacao"
               return  humacaoNode
           }
     
@@ -1576,7 +1580,7 @@ class TestClass {
             naguaboNode.zPosition = 1
             naguaboNode.physicsBody = SKPhysicsBody(circleOfRadius:naguaboNode.size.width/2 * 0.35 , center: CGPoint(x:2.5, y:1.5))
             naguaboNode.physicsBody?.isDynamic = false
-            naguaboNode.name = "naguaboNode"
+            naguaboNode.name = "Naguabo"
            return  naguaboNode
        }
     
@@ -1595,7 +1599,7 @@ class TestClass {
         viequesNode.zPosition = 1
         viequesNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:viequesNode.size.width/2 * 1.2, height:viequesNode.size.height/2 * 0.5), center: CGPoint(x:30.0, y: -10.0))
         viequesNode.physicsBody?.isDynamic = false
-        viequesNode.name = "viequesNode"
+        viequesNode.name = "Vieques"
         return viequesNode
     }
 
@@ -1614,7 +1618,7 @@ class TestClass {
             culebraNode.zPosition = 1
             culebraNode.physicsBody = SKPhysicsBody(circleOfRadius:culebraNode.size.width/2 * 0.40 , center: CGPoint(x:-1.5, y:1.5))
             culebraNode.physicsBody?.isDynamic = false
-            culebraNode.name = "culebraNode"
+            culebraNode.name = "Culebra"
            return  culebraNode
        }
     
