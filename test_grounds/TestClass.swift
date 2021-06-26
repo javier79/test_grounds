@@ -872,7 +872,7 @@ class TestClass {
          comerioNode.zPosition = 1
          comerioNode.physicsBody = SKPhysicsBody(circleOfRadius:comerioNode.size.width/2 * 0.4 , center: CGPoint(x:-1.2, y:0.5))
          comerioNode.physicsBody?.isDynamic = false
-         comerioNode.name = "Comerio"
+         comerioNode.name = "Comerío"
         return  comerioNode
     }
     
