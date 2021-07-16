@@ -25,12 +25,12 @@ class StartScene: SKScene{
     //let mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
     //let lasMariasbp:UIBezierPath! = TestClass().lasMariasDrawBezierPath()
     //let maricaobp:UIBezierPath! = TestClass().maricaoDrawBezierPath()
-    //let sanGermanbp:UIBezierPath! = TestClass().sanGermanDrawBezierPath()
+    let sanGermanbp:UIBezierPath! = TestClass().sanGermanDrawBezierPath()
     //let lajasbp:UIBezierPath! = TestClass().lajasDrawBezierPath()
     //let yaucobp:UIBezierPath! = TestClass().yaucoDrawBezierPath()
     
     
-    //let sabanaGrandebp:UIBezierPath! = TestClass().sabanaGrandeDrawBezierPath()
+    let sabanaGrandebp:UIBezierPath! = TestClass().sabanaGrandeDrawBezierPath()
     //let sanSebastianbp:UIBezierPath! = TestClass().sanSebastianDrawBezierPath()
     //let guanicabp:UIBezierPath! = TestClass().guanicaDrawBezierPath()
     let guayanillabp:UIBezierPath! = TestClass().guayanillaDrawBezierPath()
@@ -105,7 +105,7 @@ class StartScene: SKScene{
     let viequesbp:UIBezierPath! = TestClass().viequesDrawBezierPath()
     //let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()
     
-    
+
 
     
     
@@ -120,7 +120,13 @@ class StartScene: SKScene{
     var seconds: Int = 0
     var minutes: Int = 0
     
-    var municipios_names_array = ["Camuy", "Vieques", "Maunabo", "Patillas", "Arroyo", "Guayama", "Fajardo", "Ceiba", "Loiza", "Luquillo", "Canóvanas", "Juncos", "Gurabo", "Guaynabo", "Carolina", "Dorado", "Cataño", "Bayamón", "Aibonito", "Barranquitas", "Naranjito", "Morovis", "Corozal", "Florida", "Ciales", "Barceloneta", "Peñuelas", "Guayanilla", "Aguada", "Cayey", "Aguadilla", "Isabela", "Hormigueros", "Rincón", "Mayagüez", "Quebradillas", "Hatillo", "Cabo Rojo"]
+    
+    var twoLineText: String = ""
+    var useLine2:Bool = false
+    
+    var municipios_names_array = ["Camuy", "Sabana Grande", "San Germán", "Cabo Rojo", "Aguada"]
+    
+    /*"Camuy", "Vieques", "Maunabo", "Patillas", "Arroyo", "Guayama", "Fajardo", "Ceiba", "Loiza", "Luquillo", "Canóvanas", "Juncos", "Gurabo", "Guaynabo", "Carolina", "Dorado", "Cataño", "Bayamón", "Aibonito", "Barranquitas", "Naranjito", "Morovis", "Corozal", "Florida", "Ciales", "Barceloneta", "Peñuelas", "Guayanilla", "Aguada", "Cayey", "Aguadilla", "Isabela", "Hormigueros", "Rincón", "Mayagüez", "Quebradillas", "Hatillo", "Cabo Rojo"*/
     
 
    /* var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco"], "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Añasco", "Arecibo", "Arroyo", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerio", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guánica", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Río Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]*/
@@ -151,11 +157,11 @@ class StartScene: SKScene{
         let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
         containerNode.addChild(caboRojoSKSpriteNode)
         
-        let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
-        containerNode.addChild(hormiguerosSKSpriteNode)
+        //let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
+        //containerNode.addChild(hormiguerosSKSpriteNode)
         
-        let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
-         containerNode.addChild(mayaguezSKSpriteNode)
+        //let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
+        //containerNode.addChild(mayaguezSKSpriteNode)
         
         //let mayaguezTwoSKSpriteNode:SKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
          //containerNode.addChild(mayaguezTwoSKSpriteNode)
@@ -163,17 +169,17 @@ class StartScene: SKScene{
         //let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
          //containerNode.addChild(anascoSKSpriteNode)
         
-        let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
-         containerNode.addChild(rinconSKSpriteNode)
+        //let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
+        //containerNode.addChild(rinconSKSpriteNode)
         
         let aguadaSKSpriteNode: SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: aguadabp)
         containerNode.addChild(aguadaSKSpriteNode)
         
-        let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
-         containerNode.addChild(aguadillaSKSpriteNode)
+        //let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
+        //containerNode.addChild(aguadillaSKSpriteNode)
         
-        let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
-        containerNode.addChild(isabelaSKSpriteNode)
+        //let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
+        //containerNode.addChild(isabelaSKSpriteNode)
         
         //let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
         //containerNode.addChild(mocaSKSpriteNode)
@@ -184,8 +190,8 @@ class StartScene: SKScene{
         //let maricaoSKSpriteNode: SKSpriteNode = TestClass().maricaoBezierPathToSKSpriteNode(bpMaricao:maricaobp)
         //containerNode.addChild(maricaoSKSpriteNode)
         
-        //let sanGermanSKSpriteNode:SKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: sanGermanbp)
-        //containerNode.addChild(sanGermanSKSpriteNode)
+        let sanGermanSKSpriteNode:SKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: sanGermanbp)
+        containerNode.addChild(sanGermanSKSpriteNode)
         
         //let yaucoSKSpriteNode: SKSpriteNode = TestClass().yaucoBezierPathToSKSpriteNode(bpYauco:yaucobp)
         //containerNode.addChild(yaucoSKSpriteNode)
@@ -196,20 +202,20 @@ class StartScene: SKScene{
         //let guanicaSKSpriteNode: SKSpriteNode = TestClass().guanicaBezierPathToSKSpriteNode(bpGuanica:guanicabp)
         //containerNode.addChild(guanicaSKSpriteNode)
         
-        let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:guayanillabp)
-        containerNode.addChild(guayanillaSKSpriteNode)
+        //let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:guayanillabp)
+        //containerNode.addChild(guayanillaSKSpriteNode)
         
-       // let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: sanSebastianbp)
-        //containerNode.addChild(sanSebastianSKSpriteNode)
+       //let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: sanSebastianbp)
+       //containerNode.addChild(sanSebastianSKSpriteNode)
         
-        //let sabanaGrandeSKSpriteNode: SKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: sabanaGrandebp)
-        //containerNode.addChild(sabanaGrandeSKSpriteNode)
+        let sabanaGrandeSKSpriteNode: SKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: sabanaGrandebp)
+        containerNode.addChild(sabanaGrandeSKSpriteNode)
         
        //let laresSKSpriteNode:SKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares: laresbp)
        //containerNode.addChild(laresSKSpriteNode)
     
-        let penuelasSKSpriteNode:SKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas: penuelasbp)
-        containerNode.addChild(penuelasSKSpriteNode)
+        //let penuelasSKSpriteNode:SKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas: penuelasbp)
+        //containerNode.addChild(penuelasSKSpriteNode)
         
         //let ponceSKSpriteNode:SKSpriteNode = TestClass().ponceBezierPathToSKSpriteNode(bpPonce: poncebp)
         //containerNode.addChild(ponceSKSpriteNode)
@@ -223,14 +229,14 @@ class StartScene: SKScene{
         //let juanaDiazSKSpriteNode:SKSpriteNode = TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz: juanaDiazbp)
         //containerNode.addChild(juanaDiazSKSpriteNode)
         
-        let quebradillasSKSpriteNode:SKSpriteNode = TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:quebradillasbp)
-        containerNode.addChild(quebradillasSKSpriteNode)
+        //let quebradillasSKSpriteNode:SKSpriteNode = TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:quebradillasbp)
+        //containerNode.addChild(quebradillasSKSpriteNode)
         
         let camuySKSpriteNode:SKSpriteNode = TestClass().camuyBezierPathToSKSpriteNode(bpCamuy:camuybp)
         containerNode.addChild(camuySKSpriteNode)
         
-        let hatilloSKSpriteNode:SKSpriteNode = TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:hatillobp)
-        containerNode.addChild(hatilloSKSpriteNode)
+        //let hatilloSKSpriteNode:SKSpriteNode = TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:hatillobp)
+        //containerNode.addChild(hatilloSKSpriteNode)
         
         //let areciboSKSpriteNode:SKSpriteNode = TestClass().areciboBezierPathToSKSpriteNode(bpArecibo:arecibobp)
         //containerNode.addChild(areciboSKSpriteNode)
@@ -238,8 +244,8 @@ class StartScene: SKScene{
         let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: adjuntasbp)
         containerNode.addChild(adjuntasSKSpriteNode)
         
-        let barcelonetaSKSpriteNode:SKSpriteNode = TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:barcelonetabp)
-        containerNode.addChild(barcelonetaSKSpriteNode)
+        //let barcelonetaSKSpriteNode:SKSpriteNode = TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:barcelonetabp)
+        //containerNode.addChild(barcelonetaSKSpriteNode)
         
         //let manatiSKSpriteNode:SKSpriteNode = TestClass().manatiBezierPathToSKSpriteNode(bpManati:manatibp)
         //containerNode.addChild(manatiSKSpriteNode)
@@ -247,26 +253,26 @@ class StartScene: SKScene{
         //let vegaBajaSKSpriteNode:SKSpriteNode = TestClass().vegaBajaBezierPathToSKSpriteNode(bpVegaBaja:vegaBajabp)
         //containerNode.addChild(vegaBajaSKSpriteNode)
         
-        let floridaSKSpriteNode:SKSpriteNode = TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:floridabp)
-        containerNode.addChild(floridaSKSpriteNode)
+        //let floridaSKSpriteNode:SKSpriteNode = TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:floridabp)
+        //containerNode.addChild(floridaSKSpriteNode)
         
         //let villalbaSKSpriteNode:SKSpriteNode = TestClass().villalbaBezierPathToSKSpriteNode(bpVillalba: villalbabp)
         //containerNode.addChild(villalbaSKSpriteNode)
         
-        let cialesSKSpriteNode:SKSpriteNode = TestClass().cialesBezierPathToSKSpriteNode(bpCiales: cialesbp)
-        containerNode.addChild(cialesSKSpriteNode)
+       //let cialesSKSpriteNode:SKSpriteNode = TestClass().cialesBezierPathToSKSpriteNode(bpCiales: cialesbp)
+        //containerNode.addChild(cialesSKSpriteNode)
         
         //let orocovisSKSpriteNode:SKSpriteNode = TestClass().orocovisBezierPathToSKSpriteNode(bpOrocovis: orocovisbp)
         //containerNode.addChild(orocovisSKSpriteNode)
         
-        let morovisSKSpriteNode:SKSpriteNode = TestClass().morovisBezierPathToSKSpriteNode(bpMorovis: morovisbp)
-        containerNode.addChild(morovisSKSpriteNode)
+        //let morovisSKSpriteNode:SKSpriteNode = TestClass().morovisBezierPathToSKSpriteNode(bpMorovis: morovisbp)
+        //containerNode.addChild(morovisSKSpriteNode)
         
-        let corozalSKSpriteNode:SKSpriteNode = TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: corozalbp)
-        containerNode.addChild(corozalSKSpriteNode)
+        //let corozalSKSpriteNode:SKSpriteNode = TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: corozalbp)
+        //containerNode.addChild(corozalSKSpriteNode)
         
-        let barranquitasSKSpriteNode:SKSpriteNode = TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: barranquitasbp)
-        containerNode.addChild(barranquitasSKSpriteNode)
+        //let barranquitasSKSpriteNode:SKSpriteNode = TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: barranquitasbp)
+        //containerNode.addChild(barranquitasSKSpriteNode)
         
         //let comerioSKSpriteNode:SKSpriteNode = TestClass().comerioBezierPathToSKSpriteNode(bpComerio: comeriobp)
         //containerNode.addChild(comerioSKSpriteNode)
@@ -274,17 +280,17 @@ class StartScene: SKScene{
         //let coamoSKSpriteNode:SKSpriteNode = TestClass().coamoBezierPathToSKSpriteNode(bpCoamo: coamobp)
         //containerNode.addChild(coamoSKSpriteNode)
         
-        let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: naranjitobp)
-        containerNode.addChild(naranjitoSKSpriteNode)
+        //let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: naranjitobp)
+        //containerNode.addChild(naranjitoSKSpriteNode)
         
-        let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: aibonitobp)
-        containerNode.addChild(aibonitoSKSpriteNode)
+        //let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: aibonitobp)
+        //containerNode.addChild(aibonitoSKSpriteNode)
         
         //let salinasSKSpriteNode:SKSpriteNode = TestClass().salinasBezierPathToSKSpriteNode(bpSalinas: salinasbp)
         //containerNode.addChild(salinasSKSpriteNode)
         
-        let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: cayeybp)
-        containerNode.addChild(cayeySKSpriteNode)
+        //let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: cayeybp)
+        //containerNode.addChild(cayeySKSpriteNode)
         
         //let cidraSKSpriteNode:SKSpriteNode = TestClass().cidraBezierPathToSKSpriteNode(bpCidra: cidrabp)
         //containerNode.addChild(cidraSKSpriteNode)
@@ -295,8 +301,8 @@ class StartScene: SKScene{
         //let vegaAltaSKSpriteNode:SKSpriteNode = TestClass().vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: vegaAltabp)
         //containerNode.addChild(vegaAltaSKSpriteNode)
         
-        let doradoSKSpriteNode:SKSpriteNode = TestClass().doradoBezierPathToSKSpriteNode(bpDorado: doradobp)
-        containerNode.addChild(doradoSKSpriteNode)
+        //let doradoSKSpriteNode:SKSpriteNode = TestClass().doradoBezierPathToSKSpriteNode(bpDorado: doradobp)
+        //containerNode.addChild(doradoSKSpriteNode)
         
         //let toaAltaSKSpriteNode:SKSpriteNode = TestClass().toaAltaBezierPathToSKSpriteNode(bpToaAlta: toaAltabp)
         //containerNode.addChild(toaAltaSKSpriteNode)
@@ -304,14 +310,14 @@ class StartScene: SKScene{
         //let toaBajaSKSpriteNode:SKSpriteNode = TestClass().toaBajaBezierPathToSKSpriteNode(bpToaBaja: toaBajabp)
         //containerNode.addChild(toaBajaSKSpriteNode)
         
-        let bayamonSKSpriteNode:SKSpriteNode = TestClass().bayamonBezierPathToSKSpriteNode(bpBayamon: bayamonbp)
-        containerNode.addChild(bayamonSKSpriteNode)
+        //let bayamonSKSpriteNode:SKSpriteNode = TestClass().bayamonBezierPathToSKSpriteNode(bpBayamon: bayamonbp)
+        //containerNode.addChild(bayamonSKSpriteNode)
               
-        let catanoSKSpriteNode:SKSpriteNode = TestClass().catanoBezierPathToSKSpriteNode(bpCatano: catanobp)
-        containerNode.addChild(catanoSKSpriteNode)
+        //let catanoSKSpriteNode:SKSpriteNode = TestClass().catanoBezierPathToSKSpriteNode(bpCatano: catanobp)
+        //containerNode.addChild(catanoSKSpriteNode)
         
-        let guaynaboSKSpriteNode:SKSpriteNode = TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:guaynabobp)
-        containerNode.addChild(guaynaboSKSpriteNode)
+        //let guaynaboSKSpriteNode:SKSpriteNode = TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:guaynabobp)
+        //containerNode.addChild(guaynaboSKSpriteNode)
         
         //let sanJuanSKSpriteNode:SKSpriteNode = TestClass().sanJuanBezierPathToSKSpriteNode(bpSanJuan: sanJuanbp)
         //containerNode.addChild(sanJuanSKSpriteNode)
@@ -319,8 +325,8 @@ class StartScene: SKScene{
         //let caguasSKSpriteNode:SKSpriteNode = TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: caguasbp)
         //containerNode.addChild(caguasSKSpriteNode)
         
-        let carolinaSKSpriteNode:SKSpriteNode = TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: carolinabp)
-        containerNode.addChild(carolinaSKSpriteNode)
+        //let carolinaSKSpriteNode:SKSpriteNode = TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: carolinabp)
+        //containerNode.addChild(carolinaSKSpriteNode)
         
 
         
@@ -330,46 +336,46 @@ class StartScene: SKScene{
         //let trujilloAltoSKSpriteNode:SKSpriteNode = TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: trujilloAltobp)
         //containerNode.addChild(trujilloAltoSKSpriteNode)
         
-        let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: loizabp)
-        containerNode.addChild(loizaSKSpriteNode)
+        //let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: loizabp)
+        //containerNode.addChild(loizaSKSpriteNode)
         
-        let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: canovanasbp)
-        containerNode.addChild(canovanasSKSpriteNode)
+        //let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: canovanasbp)
+        //containerNode.addChild(canovanasSKSpriteNode)
         
         //let rioGrandeSKSpriteNode:SKSpriteNode = TestClass().rioGrandeBezierPathToSKSpriteNode(bpRioGrande: rioGrandebp)
          //containerNode.addChild(rioGrandeSKSpriteNode)
         
-        let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: luquillobp)
-         containerNode.addChild(luquilloSKSpriteNode)
+        //let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: luquillobp)
+        //containerNode.addChild(luquilloSKSpriteNode)
         
-        let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: fajardobp)
-        containerNode.addChild(fajardoSKSpriteNode)
+        //let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: fajardobp)
+        //containerNode.addChild(fajardoSKSpriteNode)
         
-        let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: ceibabp)
-        containerNode.addChild(ceibaSKSpriteNode)
+        //let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: ceibabp)
+        //containerNode.addChild(ceibaSKSpriteNode)
         
-        let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: gurabobp)
-        containerNode.addChild(guraboSKSpriteNode)
+        //let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: gurabobp)
+        //containerNode.addChild(guraboSKSpriteNode)
         
-        let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos: juncosbp)
-        containerNode.addChild(juncosSKSpriteNode)
+        //let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos: juncosbp)
+        //containerNode.addChild(juncosSKSpriteNode)
         
         
         
         //let sanLorenzoSKSpriteNode:SKSpriteNode = TestClass().sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: sanLorenzobp)
          //containerNode.addChild(sanLorenzoSKSpriteNode)
         
-        let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: guayamabp)
-        containerNode.addChild(guayamaSKSpriteNode)
+        //let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: guayamabp)
+        //containerNode.addChild(guayamaSKSpriteNode)
         
-        let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: arroyobp)
-         containerNode.addChild(arroyoSKSpriteNode)
+        //let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: arroyobp)
+         //containerNode.addChild(arroyoSKSpriteNode)
         
-        let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: patillasbp)
-        containerNode.addChild(patillasSKSpriteNode)
+        //let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: patillasbp)
+        //containerNode.addChild(patillasSKSpriteNode)
         
-        let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: maunabobp)
-         containerNode.addChild(maunaboSKSpriteNode)
+        //let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: maunabobp)
+        //containerNode.addChild(maunaboSKSpriteNode)
         
         //let yabucoaSKSpriteNode:SKSpriteNode = TestClass().yabucoaBezierPathToSKSpriteNode(bpYabucoa: yabucoabp)
          //containerNode.addChild(yabucoaSKSpriteNode)
@@ -383,8 +389,8 @@ class StartScene: SKScene{
         //let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: naguabobp)
          //containerNode.addChild(naguaboSKSpriteNode)
         
-        let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: viequesbp)
-        containerNode.addChild(viequesSKSpriteNode)
+        //let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: viequesbp)
+        //containerNode.addChild(viequesSKSpriteNode)
         
         //let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
          //containerNode.addChild(culebraSKSpriteNode)
@@ -528,7 +534,7 @@ class StartScene: SKScene{
       }
     
     
-           override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                    /*guard let touch = touches.first else {
                     return
          }*/let touch = touches.first!
@@ -537,6 +543,8 @@ class StartScene: SKScene{
             touchedNode = self.physicsWorld.body(at:touchLocation)
             
             let locationNameLabel = SKLabelNode()
+            let firstLineLabel = SKLabelNode()
+            let secondLineLabel = SKLabelNode()
             
             if (touchedNode != nil){
                 if (municipioNameLabel.text == touchedNode?.node?.name){
@@ -546,7 +554,7 @@ class StartScene: SKScene{
                                 spriteNode.color = .systemTeal
                                 spriteNode.colorBlendFactor = 0.5
                                 nextMunicipio += 1
-                                if nextMunicipio <= 37{
+                                if nextMunicipio <= 4{
                                     locationNameLabel.text = municipioNameLabel.text
                                     locationNameLabel.fontName = "Helvetica"
                                     locationNameLabel.fontColor = UIColor.black
@@ -636,21 +644,66 @@ class StartScene: SKScene{
                                         
                                         case "Vieques":
                                             locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
+                                           
+                                        
+                                        case "Cabo Rojo", "San Germán", "Sabana Grande":
+                                            useLine2 = false
+                                                self.twoLineText = locationNameLabel.text!
+                                                //var i: Int = 0
+                                                var line1:String = ""
+                                                var line2:String = ""
+                                                
+                                                
+                                                for letter in twoLineText{
+                                                    if (String(letter) == " "){
+                                                        useLine2 = true
+                                                    }
+                                                    
+                                                    if(useLine2 == false){
+                                                        line1 = line1 + String(letter)
+                                                    }
+                                                    else {
+                                                        line2 = line2 + String(letter)
+                                                    }
+                                                    
+                                                    //i += 1
+                                                 }
+                                            
+                                                firstLineLabel.text = line1
+                                                secondLineLabel.text = line2
+
+                                                firstLineLabel.fontName = "Helvetica"
+                                                secondLineLabel.fontName = "Helvetica"
+                                                firstLineLabel.fontSize = 6
+                                                secondLineLabel.fontSize = 6
+                                                firstLineLabel.fontColor = UIColor.black
+                                                secondLineLabel.fontColor = UIColor.black
+                                                firstLineLabel.xScale = -1.0
+                                                secondLineLabel.xScale = -1.0
+                                                firstLineLabel.zRotation = 9.44
+                                                secondLineLabel.zRotation = 9.44
+                                                secondLineLabel.verticalAlignmentMode = .top
                                         
                                         default:
                                             break
                                     }
                                     
-                                    //locationNameLabel.fontSize = 7
-                                    //locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
-                                    //locationNameLabel.horizontalAlignmentMode = .center
-                                    //locationNameLabel.verticalAlignmentMode = .center
-                                    
-                                    spriteNode.addChild(locationNameLabel)
-                                    municipioNameLabel.text = municipios_names_array [nextMunicipio]
-                                    municipiosNameBackground.size = municipioNameLabel.frame.size
-                                
+                                    if(useLine2 == true){
+                                        
+                                        spriteNode.addChild(firstLineLabel)
+                                        spriteNode.addChild(secondLineLabel)
+                                        municipioNameLabel.text = municipios_names_array [nextMunicipio]
+                                        municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    }
+
+                                    else{
+                                        spriteNode.addChild(locationNameLabel)
+                                        municipioNameLabel.text = municipios_names_array [nextMunicipio]
+                                        municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    }
                                 }
+                                    
+                                    
                                 else{
                                     locationNameLabel.text = municipioNameLabel.text
                                     locationNameLabel.fontName = "Helvetica"

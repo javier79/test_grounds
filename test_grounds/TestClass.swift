@@ -358,7 +358,7 @@ class TestClass {
         //sanGermanNode.zPosition = 1
         sanGermanNode.physicsBody =  SKPhysicsBody(circleOfRadius: sanGermanNode.size.width/2 * 0.45 , center: CGPoint(x:0.0, y:0.0))
         sanGermanNode.physicsBody?.isDynamic = false
-        sanGermanNode.name = "San German"
+        sanGermanNode.name = "San Germán"
         return sanGermanNode
     }
     
