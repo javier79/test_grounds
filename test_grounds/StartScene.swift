@@ -123,6 +123,7 @@ class StartScene: SKScene{
     
     var twoLineText: String = ""
     var useLine2:Bool = false
+    //let locationNameLabel = SKLabelNode()/*Esta declaracion estaba originalmente en override func**/
     
     var municipios_names_array = ["Camuy", "Sabana Grande", "San Germán", "Cabo Rojo", "Aguada"]
     
@@ -562,15 +563,11 @@ class StartScene: SKScene{
                                     locationNameLabel.zRotation = 9.44
                                     locationNameLabel.fontSize = 6
                                     
-                                    //locationNameLabel.zRotation = 10.00
-                                    //locationNameLabel.zPosition = 1
-                                    
                                     switch municipioNameLabel.text {
                                         
                                         case  "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
                                               "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa", "Humacao" :
 
-                                            //locationNameLabel.fontSize = 7
                                             locationNameLabel.horizontalAlignmentMode = .center
                                             locationNameLabel.verticalAlignmentMode = .center
                                         
@@ -647,42 +644,20 @@ class StartScene: SKScene{
                                            
                                         
                                         case "Cabo Rojo", "San Germán", "Sabana Grande":
-                                            useLine2 = false
-                                                self.twoLineText = locationNameLabel.text!
-                                                //var i: Int = 0
-                                                var line1:String = ""
-                                                var line2:String = ""
-                                                
-                                                
-                                                for letter in twoLineText{
-                                                    if (String(letter) == " "){
-                                                        useLine2 = true
-                                                    }
-                                                    
-                                                    if(useLine2 == false){
-                                                        line1 = line1 + String(letter)
-                                                    }
-                                                    else {
-                                                        line2 = line2 + String(letter)
-                                                    }
-                                                    
-                                                    //i += 1
-                                                 }
-                                            
-                                                firstLineLabel.text = line1
-                                                secondLineLabel.text = line2
-
-                                                firstLineLabel.fontName = "Helvetica"
-                                                secondLineLabel.fontName = "Helvetica"
-                                                firstLineLabel.fontSize = 6
-                                                secondLineLabel.fontSize = 6
-                                                firstLineLabel.fontColor = UIColor.black
-                                                secondLineLabel.fontColor = UIColor.black
-                                                firstLineLabel.xScale = -1.0
-                                                secondLineLabel.xScale = -1.0
-                                                firstLineLabel.zRotation = 9.44
-                                                secondLineLabel.zRotation = 9.44
-                                                secondLineLabel.verticalAlignmentMode = .top
+                                            firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                            secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                        
+                                            firstLineLabel.fontName = "Helvetica"
+                                            secondLineLabel.fontName = "Helvetica"
+                                            firstLineLabel.fontSize = 6
+                                            secondLineLabel.fontSize = 6
+                                            firstLineLabel.fontColor = UIColor.black
+                                            secondLineLabel.fontColor = UIColor.black
+                                            firstLineLabel.xScale = -1.0
+                                            secondLineLabel.xScale = -1.0
+                                            firstLineLabel.zRotation = 9.44
+                                            secondLineLabel.zRotation = 9.44
+                                            secondLineLabel.verticalAlignmentMode = .top
                                         
                                         default:
                                             break
@@ -745,6 +720,56 @@ class StartScene: SKScene{
             }
 
 
+    }
+    
+    func splitTextIntoFields(theText:SKLabelNode)->String{
+        useLine2 = false
+        twoLineText = theText.text!
+        //var i: Int = 0
+        var line1:String = ""
+        var line2:String = ""
+            
+            
+        for letter in twoLineText{
+            if (String(letter) == " "){
+                useLine2 = true
+            }
+                
+            if(useLine2 == false){
+                line1 = line1 + String(letter)
+            }
+            else {
+                line2 = line2 + String(letter)
+            }
+                
+            //i += 1
+            }
+        return line1
+    }
+    
+    func splitTextIntoFieldsTwo(theText:SKLabelNode)->String{
+        useLine2 = false
+        twoLineText = theText.text!
+        //var i: Int = 0
+        var line1:String = ""
+        var line2:String = ""
+            
+            
+        for letter in twoLineText{
+            if (String(letter) == " "){
+                useLine2 = true
+            }
+                
+            if(useLine2 == false){
+                line1 = line1 + String(letter)
+            }
+            else {
+                line2 = line2 + String(letter)
+            }
+                
+            //i += 1
+            }
+        return line2
     }
 
 }
