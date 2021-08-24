@@ -925,11 +925,11 @@ class TestClass {
         let aibonitoNode = SKSpriteNode(texture: texture)
          aibonitoNode.xScale = -1.0
          aibonitoNode.zRotation = 9.44
-        aibonitoNode.position = CGPoint(x:318.76, y:167.44)
+         aibonitoNode.position = CGPoint(x:318.76, y:167.44)
          aibonitoNode.zPosition = 1
          aibonitoNode.physicsBody = SKPhysicsBody(circleOfRadius:aibonitoNode.size.width/2 * 0.4 , center: CGPoint(x:-2.0, y:-0.5))
          aibonitoNode.physicsBody?.isDynamic = false
-        aibonitoNode.name = "Aibonito"
+         aibonitoNode.name = "Aibonito"
         return  aibonitoNode
     }
     
@@ -1258,7 +1258,7 @@ class TestClass {
         
         loizaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:loizaNode.size.width/2 * 0.7, height:loizaNode.size.height/2 * 0.5), center: CGPoint(x:6.5, y:1.5))
         loizaNode.physicsBody?.isDynamic = false
-        loizaNode.name = "Loiza"
+        loizaNode.name = "Loíza"
         return loizaNode
     }
     /* func loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: UIBezierPath)-> SKSpriteNode{
