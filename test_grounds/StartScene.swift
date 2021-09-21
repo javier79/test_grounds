@@ -401,14 +401,13 @@ class StartScene: SKScene{
         self.addChild(timerBackground)
         self.addChild(labelTimer)
         self.addChild(municipiosNameBackground)
-
         self.addChild(municipioNameLabel)
-        
-        
         self.addChild(containerNode)
+        
+        sleep(2)
 
         
-
+        
         }
 
        func nodesContainer() -> SKNode{
@@ -479,7 +478,7 @@ class StartScene: SKScene{
     }
 
     override public func update(_ currentTime: TimeInterval) {
-        
+
         
         penalty = 3
         
