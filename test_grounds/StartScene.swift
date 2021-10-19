@@ -130,7 +130,7 @@ class StartScene: SKScene{
     /*"Camuy", "Vieques", "Maunabo", "Patillas", "Arroyo", "Guayama", "Fajardo", "Ceiba", "Loiza", "Luquillo", "Canóvanas", "Juncos", "Gurabo", "Guaynabo", "Carolina", "Dorado", "Cataño", "Bayamón", "Aibonito", "Barranquitas", "Naranjito", "Morovis", "Corozal", "Florida", "Ciales", "Barceloneta", "Peñuelas", "Guayanilla", "Aguada", "Cayey", "Aguadilla", "Isabela", "Hormigueros", "Rincón", "Mayagüez", "Quebradillas", "Hatillo", "Cabo Rojo"*/
     
 
-   var municipios_names_array = ["Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo", "Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
+   var municipios_names_array = ["Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco" ]
     
     var municipioNameLabel = SKLabelNode()
 
@@ -555,18 +555,18 @@ class StartScene: SKScene{
                                 spriteNode.color = .systemTeal
                                 spriteNode.colorBlendFactor = 0.5
                                 nextMunicipio += 1
-                                if nextMunicipio <= 76{
+                                if nextMunicipio <= 76 {//76
                                     locationNameLabel.text = municipioNameLabel.text
                                     locationNameLabel.fontName = "Helvetica"
                                     locationNameLabel.fontColor = UIColor.black
                                     locationNameLabel.xScale = -1.0
                                     locationNameLabel.zRotation = 9.44
-                                    locationNameLabel.fontSize = 6
+                                    locationNameLabel.fontSize = 5.4
                                     
                                     firstLineLabel.fontName = "Helvetica"
                                     secondLineLabel.fontName = "Helvetica"
-                                    firstLineLabel.fontSize = 6
-                                    secondLineLabel.fontSize = 6
+                                    firstLineLabel.fontSize = 5.4
+                                    secondLineLabel.fontSize = 5.4
                                     firstLineLabel.fontColor = UIColor.black
                                     secondLineLabel.fontColor = UIColor.black
                                     firstLineLabel.xScale = -1.0
@@ -577,7 +577,7 @@ class StartScene: SKScene{
                                     switch municipioNameLabel.text {
                                         
                                         case  "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
-                                              "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa", "Humacao" :
+                                              "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
 
                                             locationNameLabel.horizontalAlignmentMode = .center
                                             locationNameLabel.verticalAlignmentMode = .center
@@ -605,7 +605,7 @@ class StartScene: SKScene{
                                             locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
                                         
                                         case "Mayagüez":
-                                            locationNameLabel.fontSize = 6
+                                            locationNameLabel.fontSize = 5.4
                                             locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
                                         
                                         case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
@@ -631,7 +631,7 @@ class StartScene: SKScene{
                                             locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
                                         
                                         
-                                        case "Naranjito", "Barranquitas", "Las Piedras" :
+                                        case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
                                             locationNameLabel.fontSize = 4.9
                                             locationNameLabel.zRotation = 2.3
                                             locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
@@ -665,8 +665,8 @@ class StartScene: SKScene{
                                         case "Sabana Grande" :
                                             firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
                                             secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                            firstLineLabel.fontSize = 5.5
-                                            secondLineLabel.fontSize = 5.5
+                                            firstLineLabel.fontSize = 5.0
+                                            secondLineLabel.fontSize = 5.0
                                             firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
                                             secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
                                         
