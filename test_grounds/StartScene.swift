@@ -120,6 +120,7 @@ class StartScene: SKScene{
     var seconds: Int = 0
     var minutes: Int = 0
     
+    var completedGame = false
     
     var twoLineText: String = ""
     var useLine2:Bool = false
@@ -479,9 +480,9 @@ class StartScene: SKScene{
 
     override public func update(_ currentTime: TimeInterval) {
 
-        
         penalty = 3
         
+        if completedGame == false{
         if currentTime > renderTime{
             if renderTime > 0{
                 seconds += 1
@@ -532,6 +533,7 @@ class StartScene: SKScene{
             }
         renderTime = currentTime + changeTime
         }
+       }
       }
     
     
@@ -735,18 +737,15 @@ class StartScene: SKScene{
                                     
                                     locationNameLabel.zRotation = 9.44
                                     spriteNode.addChild(locationNameLabel)
-                                    //municipioNameLabel.text = municipios_names_array [nextMunicipio]
-                                    municipiosNameBackground.size = municipioNameLabel.frame.size
+    
                                     municipioNameLabel.text = "end of array"
                                     municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    
+                                    completedGame = true
                                 }
                                 
                                 
-                                
-                                    //municipioNameLabel.text =  "Aguada"
-                                    //municipiosNameBackground.size = municipioNameLabel.frame.size
-                                    
-                                //return success = "True"
+
                                 }
                                 
                             }
