@@ -126,9 +126,7 @@ class StartScene: SKScene{
     var useLine2:Bool = false
     //let locationNameLabel = SKLabelNode()/*Esta declaracion estaba originalmente en override func**/
     
-    /*var municipios_names_array = ["Camuy", "Las Piedras", "San Lorenzo", "Rio Grande", "Trujillo Alto", "Aguas Buenas", "Santa Isabel", "San Juan", "Toa Baja", "Vega Baja", "Vega Alta", "Juana Díaz", "San Sebastián", "Sabana Grande", "San Germán", "Cabo Rojo", "Aguada"]*/
-    
-    /*"Camuy", "Vieques", "Maunabo", "Patillas", "Arroyo", "Guayama", "Fajardo", "Ceiba", "Loiza", "Luquillo", "Canóvanas", "Juncos", "Gurabo", "Guaynabo", "Carolina", "Dorado", "Cataño", "Bayamón", "Aibonito", "Barranquitas", "Naranjito", "Morovis", "Corozal", "Florida", "Ciales", "Barceloneta", "Peñuelas", "Guayanilla", "Aguada", "Cayey", "Aguadilla", "Isabela", "Hormigueros", "Rincón", "Mayagüez", "Quebradillas", "Hatillo", "Cabo Rojo"*/
+
     
 
    var municipios_names_array = ["Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco" ]
@@ -144,9 +142,10 @@ class StartScene: SKScene{
     
      override func didMove(to view: SKView){
         
-        self.backgroundColor = SKColor.blue
+        //self.backgroundColor = SKColor.blue
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
+        let goldBackgroundSKSpriteNode: SKSpriteNode = goldenBackground()
         
         labelTimer = labelForTimer(TimerLabel: labelTimer)
         
@@ -398,6 +397,7 @@ class StartScene: SKScene{
         let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
         containerNode.addChild(culebraSKSpriteNode)
         
+        self.addChild(goldBackgroundSKSpriteNode)
         self.addChild(backgroundSKSpriteNode)
         self.addChild(timerBackground)
         self.addChild(labelTimer)
@@ -406,7 +406,6 @@ class StartScene: SKScene{
         self.addChild(containerNode)
         
         sleep(2)
-
         
         
         }
@@ -420,11 +419,19 @@ class StartScene: SKScene{
            return  nodes_Container
        }
 
+        func goldenBackground() -> SKSpriteNode {
+        let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
+        goldenBackground.size = CGSize(width: self.size.width, height:self.size.height)
+        goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        return goldenBackground
+            
+    }
+
     
-        func prBackground() ->SKSpriteNode {
+        func prBackground() -> SKSpriteNode {
         let backgroundNode = SKSpriteNode()
         backgroundNode.color = UIColor.systemIndigo
-        backgroundNode.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
+        backgroundNode.size = CGSize(width: self.size.width * 0.92, height:self.size.height * 0.90)
         //nodes_Container.anchorPoint = CGPoint.zero
         backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         return backgroundNode
