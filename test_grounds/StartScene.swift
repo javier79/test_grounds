@@ -421,7 +421,7 @@ class StartScene: SKScene{
 
         func goldenBackground() -> SKSpriteNode {
         let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-        goldenBackground.size = CGSize(width: self.size.width, height:self.size.height)
+        goldenBackground.size = CGSize(width: self.size.width + 6, height:self.size.height + 6)
         goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         return goldenBackground
             
@@ -430,10 +430,10 @@ class StartScene: SKScene{
     
         func prBackground() -> SKSpriteNode {
         let backgroundNode = SKSpriteNode()
-        backgroundNode.color = UIColor.systemIndigo
-        backgroundNode.size = CGSize(width: self.size.width * 0.92, height:self.size.height * 0.90)
+        backgroundNode.color = UIColor.init(red: 0.7451, green: 0.9686, blue: 0.9451, alpha: 1.0)
+        backgroundNode.size = CGSize(width: self.size.width, height:self.size.height * 0.86)
         //nodes_Container.anchorPoint = CGPoint.zero
-        backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
         return backgroundNode
             
     }
