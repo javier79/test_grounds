@@ -97,8 +97,8 @@ class TestClass {
     func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -118,8 +118,8 @@ class TestClass {
     func hormiguerosBezierPathToSKSpriteNode(bphormigueros: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bphormigueros.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -139,8 +139,8 @@ class TestClass {
     func mayaguezBezierPathToSKSpriteNode(bpMayaguez: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpMayaguez.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -175,8 +175,8 @@ class TestClass {
     func anascoBezierPathToSKSpriteNode(bpAnasco: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpAnasco.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6(red: 0.9882, green: 0.9608, blue: 0.9216, alpha: 1.0)//FCF5EB
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -194,8 +194,8 @@ class TestClass {
     func rinconBezierPathToSKSpriteNode(bpRincon: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpRincon.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -213,8 +213,8 @@ class TestClass {
     func aguadaBezierPathToSKSpriteNode(bpAguada: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpAguada.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -232,8 +232,8 @@ class TestClass {
     func aguadillaBezierPathToSKSpriteNode(bpAguadilla: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpAguadilla.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -251,8 +251,8 @@ class TestClass {
     func isabelaBezierPathToSKSpriteNode(bpIsabela: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpIsabela.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -270,8 +270,8 @@ class TestClass {
     func mocaBezierPathToSKSpriteNode(bpMoca: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpMoca.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -289,8 +289,8 @@ class TestClass {
     func sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpSanSebastian.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -308,8 +308,8 @@ class TestClass {
     func lasMariasBezierPathToSKSpriteNode(bpLasMarias: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpLasMarias.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -327,8 +327,8 @@ class TestClass {
     func maricaoBezierPathToSKSpriteNode(bpMaricao: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpMaricao.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -346,8 +346,8 @@ class TestClass {
     func sanGermanBezierPathToSKSpriteNode(bpSanGerman: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSanGerman.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -365,8 +365,8 @@ class TestClass {
     func sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSabanaGrande.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -384,8 +384,8 @@ class TestClass {
     func yaucoBezierPathToSKSpriteNode(bpYauco: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpYauco.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -403,8 +403,8 @@ class TestClass {
     func lajasBezierPathToSKSpriteNode(bpLajas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpLajas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -422,8 +422,8 @@ class TestClass {
     func guanicaBezierPathToSKSpriteNode(bpGuanica: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpGuanica.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -441,8 +441,8 @@ class TestClass {
     func guayanillaBezierPathToSKSpriteNode(bpGuayanilla: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpGuayanilla.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -460,9 +460,8 @@ class TestClass {
     func adjuntasBezierPathToSKSpriteNode(bpAdjuntas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpAdjuntas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
-        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//minty green
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let adjuntasNode = SKSpriteNode(texture: texture)
@@ -479,8 +478,8 @@ class TestClass {
     func laresBezierPathToSKSpriteNode(bpLares: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpLares.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -498,8 +497,8 @@ class TestClass {
     func penuelasBezierPathToSKSpriteNode(bpPenuelas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpPenuelas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -517,8 +516,8 @@ class TestClass {
     func ponceBezierPathToSKSpriteNode(bpPonce: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpPonce.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -536,8 +535,8 @@ class TestClass {
     func utuadoBezierPathToSKSpriteNode(bpUtuado: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpUtuado.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -555,8 +554,8 @@ class TestClass {
     func jayuyaBezierPathToSKSpriteNode(bpJayuya: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpJayuya.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -574,8 +573,8 @@ class TestClass {
     func juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpJuanaDiaz.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -593,8 +592,8 @@ class TestClass {
     func quebradillasBezierPathToSKSpriteNode(bpQuebradillas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpQuebradillas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -612,8 +611,8 @@ class TestClass {
     func camuyBezierPathToSKSpriteNode(bpCamuy: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCamuy.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -631,8 +630,8 @@ class TestClass {
     func hatilloBezierPathToSKSpriteNode(bpHatillo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpHatillo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -650,8 +649,8 @@ class TestClass {
     func areciboBezierPathToSKSpriteNode(bpArecibo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpArecibo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -669,8 +668,8 @@ class TestClass {
     func barcelonetaBezierPathToSKSpriteNode(bpBarceloneta: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpBarceloneta.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -688,8 +687,8 @@ class TestClass {
     func floridaBezierPathToSKSpriteNode(bpFlorida: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpFlorida.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -708,8 +707,8 @@ class TestClass {
     func manatiBezierPathToSKSpriteNode(bpManati: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpManati.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -727,8 +726,8 @@ class TestClass {
     func vegaBajaBezierPathToSKSpriteNode(bpVegaBaja: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpVegaBaja.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -746,8 +745,8 @@ class TestClass {
     func villalbaBezierPathToSKSpriteNode(bpVillalba: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpVillalba.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -765,8 +764,8 @@ class TestClass {
     func orocovisBezierPathToSKSpriteNode(bpOrocovis: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpOrocovis.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -784,8 +783,8 @@ class TestClass {
     func cialesBezierPathToSKSpriteNode(bpCiales: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCiales.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -803,8 +802,8 @@ class TestClass {
     func morovisBezierPathToSKSpriteNode(bpMorovis: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpMorovis.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -822,8 +821,8 @@ class TestClass {
     func corozalBezierPathToSKSpriteNode(bpCorozal: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCorozal.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -841,8 +840,8 @@ class TestClass {
     func barranquitasBezierPathToSKSpriteNode(bpBarranquitas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpBarranquitas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -860,8 +859,8 @@ class TestClass {
     func comerioBezierPathToSKSpriteNode(bpComerio: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpComerio.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -879,8 +878,8 @@ class TestClass {
     func coamoBezierPathToSKSpriteNode(bpCoamo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCoamo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -898,8 +897,8 @@ class TestClass {
     func naranjitoBezierPathToSKSpriteNode(bpNaranjito: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpNaranjito.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -917,8 +916,8 @@ class TestClass {
     func aibonitoBezierPathToSKSpriteNode(bpAibonito: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpAibonito.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -936,8 +935,8 @@ class TestClass {
     func salinasBezierPathToSKSpriteNode(bpSalinas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSalinas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -955,8 +954,8 @@ class TestClass {
     func cayeyBezierPathToSKSpriteNode(bpCayey: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCayey.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -976,8 +975,8 @@ class TestClass {
     func cidraBezierPathToSKSpriteNode(bpCidra: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCidra.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -995,8 +994,8 @@ class TestClass {
     func santaIsabelBezierPathToSKSpriteNode(bpSantaIsabel: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSantaIsabel.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1013,8 +1012,8 @@ class TestClass {
     func vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpVegaAlta.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1032,8 +1031,8 @@ class TestClass {
     func doradoBezierPathToSKSpriteNode(bpDorado: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpDorado.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1051,8 +1050,8 @@ class TestClass {
     func toaAltaBezierPathToSKSpriteNode(bpToaAlta: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpToaAlta.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1070,8 +1069,8 @@ class TestClass {
     func toaBajaBezierPathToSKSpriteNode(bpToaBaja: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpToaBaja.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1090,8 +1089,8 @@ class TestClass {
     func bayamonBezierPathToSKSpriteNode(bpBayamon: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpBayamon.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1110,8 +1109,8 @@ class TestClass {
     func catanoBezierPathToSKSpriteNode(bpCatano: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpCatano.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1129,8 +1128,8 @@ class TestClass {
     func guaynaboBezierPathToSKSpriteNode(bpGuaynabo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpGuaynabo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1148,8 +1147,8 @@ class TestClass {
     func sanJuanBezierPathToSKSpriteNode(bpSanJuan: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpSanJuan.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.3
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1168,8 +1167,8 @@ class TestClass {
     func caguasBezierPathToSKSpriteNode(bpCaguas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpCaguas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1187,8 +1186,8 @@ class TestClass {
     func carolinaBezierPathToSKSpriteNode(bpCarolina: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpCarolina.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1206,8 +1205,8 @@ class TestClass {
     func aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpAguasBuenas.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1225,8 +1224,8 @@ class TestClass {
     func trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpTrujilloAlto.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1244,8 +1243,8 @@ class TestClass {
     func loizaBezierPathToSKSpriteNode(bpLoiza: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpLoiza.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1283,8 +1282,8 @@ class TestClass {
     func canovanasBezierPathToSKSpriteNode(bpCanovanas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpCanovanas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1302,8 +1301,8 @@ class TestClass {
     func rioGrandeBezierPathToSKSpriteNode(bpRioGrande: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpRioGrande.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1321,8 +1320,8 @@ class TestClass {
     func luquilloBezierPathToSKSpriteNode(bpLuquillo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpLuquillo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1340,8 +1339,8 @@ class TestClass {
     func fajardoBezierPathToSKSpriteNode(bpFajardo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpFajardo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1359,8 +1358,8 @@ class TestClass {
     func ceibaBezierPathToSKSpriteNode(bpCeiba: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCeiba.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1378,8 +1377,8 @@ class TestClass {
     func guraboBezierPathToSKSpriteNode(bpGurabo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpGurabo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1397,8 +1396,8 @@ class TestClass {
     func juncosBezierPathToSKSpriteNode(bpJuncos: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpJuncos.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1416,8 +1415,8 @@ class TestClass {
     func sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSanLorenzo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1435,8 +1434,8 @@ class TestClass {
     func guayamaBezierPathToSKSpriteNode(bpGuayama: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpGuayama.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1454,8 +1453,8 @@ class TestClass {
     func arroyoBezierPathToSKSpriteNode(bpArroyo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpArroyo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1473,8 +1472,8 @@ class TestClass {
     func patillasBezierPathToSKSpriteNode(bpPatillas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpPatillas.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1492,8 +1491,8 @@ class TestClass {
     func maunaboBezierPathToSKSpriteNode(bpMaunabo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpMaunabo.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1511,8 +1510,8 @@ class TestClass {
     func yabucoaBezierPathToSKSpriteNode(bpYabucoa: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpYabucoa.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1530,8 +1529,8 @@ class TestClass {
   func lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpLasPiedras.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1548,8 +1547,8 @@ class TestClass {
     func humacaoBezierPathToSKSpriteNode(bpHumacao: UIBezierPath)-> SKSpriteNode{
               
               let shapeNode = SKShapeNode(path:bpHumacao.cgPath)
-              shapeNode.fillColor = UIColor.systemGray3
-              shapeNode.strokeColor = UIColor.white
+              shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+              shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
               shapeNode.lineWidth = 0.5
               let view = SKView(frame: UIScreen.main.bounds)
               let texture = view.texture(from: shapeNode)!
@@ -1567,8 +1566,8 @@ class TestClass {
     func naguaboBezierPathToSKSpriteNode(bpNaguabo: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpNaguabo.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1586,8 +1585,8 @@ class TestClass {
     func viequesBezierPathToSKSpriteNode(bpVieques: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpVieques.cgPath)
-        shapeNode.fillColor = UIColor.systemGray3
-        shapeNode.strokeColor = UIColor.white
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -1605,8 +1604,8 @@ class TestClass {
     func culebraBezierPathToSKSpriteNode(bpCulebra: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpCulebra.cgPath)
-           shapeNode.fillColor = UIColor.systemGray3
-           shapeNode.strokeColor = UIColor.white
+           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!

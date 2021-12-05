@@ -182,6 +182,7 @@ class StartScene: SKScene{
         let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
         containerNode.addChild(isabelaSKSpriteNode)
         
+        
         let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
         containerNode.addChild(mocaSKSpriteNode)
         
@@ -430,7 +431,7 @@ class StartScene: SKScene{
     
         func prBackground() -> SKSpriteNode {
         let backgroundNode = SKSpriteNode()
-        backgroundNode.color = UIColor.init(red: 0.7451, green: 0.9686, blue: 0.9451, alpha: 1.0)
+        backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
         backgroundNode.size = CGSize(width: self.size.width, height:self.size.height * 0.86)
         //nodes_Container.anchorPoint = CGPoint.zero
         backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
@@ -561,8 +562,8 @@ class StartScene: SKScene{
                     for child in containerNode.children {
                         if let spriteNode = child as? SKSpriteNode {
                             if(touchedNode?.node?.name == spriteNode.name){
-                                spriteNode.color = .systemTeal
-                                spriteNode.colorBlendFactor = 0.5
+                                spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//Color description: minty green(custom color no hex # available)
+                                spriteNode.colorBlendFactor = 1.0//0.5
                                 nextMunicipio += 1
                                 if nextMunicipio <= 76 {//76
                                     locationNameLabel.text = municipioNameLabel.text
