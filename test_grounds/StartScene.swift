@@ -452,7 +452,7 @@ class StartScene: SKScene{
     func timerLabelBackground() -> SKSpriteNode{
         let background = SKSpriteNode()
         background.color = UIColor.white
-        background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
+        //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
         //background.zPosition = -2
         
@@ -522,21 +522,39 @@ class StartScene: SKScene{
                 
                     let secondsText = (seconds < 10) ?
                      "0\(seconds)" : "\(seconds)"
-                     let minutesText = (minutes < 10) ?
-                     "0\(minutes)" : "\(minutes)"
-                     //secondsText = secondsText + penalty
-
-                     labelTimer.text = "\(minutesText) : \(secondsText)"
-                     timerBackground.size = labelTimer.frame.size
-                     fail = ""
+                    let minutesText = "\(minutes)"
+                     //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+                     
+                    
+                    if minutes >= 1 {
+                        labelTimer.text = "\(minutesText):\(secondsText)"
+                        timerBackground.size = labelTimer.frame.size
+                        fail = ""
+                    }
+                    
+                    else{
+                        labelTimer.text = "\(secondsText)"
+                        timerBackground.size = labelTimer.frame.size
+                        fail = ""
+                    }
                  }
                  else{
                        let secondsText = (seconds < 10) ?
                         "0\(seconds)" : "\(seconds)"
-                        let minutesText = (minutes < 10) ?
-                        "0\(minutes)" : "\(minutes)"
-                        labelTimer.text = "\(minutesText) : \(secondsText)"
-                        timerBackground.size = labelTimer.frame.size
+                        let minutesText = "\(minutes)"
+                        //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+                    
+                        if minutes >= 1 {
+                            labelTimer.text = "\(minutesText):\(secondsText)"
+                            timerBackground.size = labelTimer.frame.size
+
+                        //fail = ""
+                        }
+                      
+                        else{
+                            labelTimer.text = "\(secondsText)"
+                            timerBackground.size = labelTimer.frame.size
+                    }
                 }
             }
         renderTime = currentTime + changeTime
