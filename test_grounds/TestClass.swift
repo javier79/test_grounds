@@ -1240,7 +1240,7 @@ class TestClass {
             return  trujilloAltoNode
        }
     
-    func loizaBezierPathToSKSpriteNode(bpLoiza: UIBezierPath)-> SKSpriteNode{
+      func loizaBezierPathToSKSpriteNode(bpLoiza: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpLoiza.cgPath)
         shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
@@ -1250,9 +1250,9 @@ class TestClass {
         let texture = view.texture(from: shapeNode)!
         let loizaNode = SKSpriteNode(texture: texture)
         loizaNode.xScale = -1.0
-        loizaNode.zRotation = 0.10
-        loizaNode.setScale(0.59)
-        loizaNode.position = CGPoint(x:414.55, y:249.48)
+        loizaNode.zRotation = 0.00//0.10
+        loizaNode.setScale(0.5750)//setScale(0.59)
+        loizaNode.position = CGPoint(x:414.60, y:250)//(x:414.55, y:249.48)
         //loizaNode.zPosition = 1
         loizaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:loizaNode.size.width/2 * 0.7, height:loizaNode.size.height/2 * 0.5), center: CGPoint(x:6.5, y:1.5))
         loizaNode.physicsBody?.isDynamic = false

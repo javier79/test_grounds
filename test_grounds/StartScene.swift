@@ -83,7 +83,7 @@ class StartScene: SKScene{
     let aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()
     let trujilloAltobp:UIBezierPath! = TestClass().trujilloAltoDrawBezierPath()
     let loizabp:UIBezierPath! = TestClass().loizaDrawBezierPath()
-    //***let loizaTwobp:UIBezierPath! = TestClass().loizaTwoDrawBezierPath()
+    /*let loizaTwobp:UIBezierPath! = TestClass().loizaTwoDrawBezierPath()*/
     let canovanasbp:UIBezierPath! = TestClass().canovanasDrawBezierPath()
     let rioGrandebp:UIBezierPath! = TestClass().rioGrandeDrawBezierPath()
     let luquillobp:UIBezierPath! = TestClass().luquilloDrawBezierPath()
@@ -341,6 +341,9 @@ class StartScene: SKScene{
         
         let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: loizabp)
         containerNode.addChild(loizaSKSpriteNode)
+        
+        /*let loizaTwoSKSpriteNode:SKSpriteNode = TestClass().loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: loizaTwobp)
+        containerNode.addChild(loizaTwoSKSpriteNode)*/
         
         let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: canovanasbp)
         containerNode.addChild(canovanasSKSpriteNode)
