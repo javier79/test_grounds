@@ -1593,9 +1593,9 @@ class TestClass {
         let viequesNode = SKSpriteNode(texture: texture)
         viequesNode.xScale = -1.0
         viequesNode.zRotation = 9.44
-        viequesNode.position = CGPoint(x:582.85, y:154.19)
+        viequesNode.position = CGPoint(x:512, y:93)//(x:582.85, y:154.19)
         viequesNode.zPosition = 1
-        viequesNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:viequesNode.size.width/2 * 1.2, height:viequesNode.size.height/2 * 0.5), center: CGPoint(x:30.0, y: -10.0))
+        viequesNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:viequesNode.size.width/2 * 1.2, height:viequesNode.size.height/2 * 0.5), center: CGPoint(x:39, y: -10.0))
         viequesNode.physicsBody?.isDynamic = false
         viequesNode.name = "Vieques"
         return viequesNode
@@ -1620,26 +1620,32 @@ class TestClass {
            return  culebraNode
        }
     
-    func rectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{
+    func rectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
            
            let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
-           //shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
-           shapeNode.strokeColor = UIColor.black//c1d3c8
+           shapeNode.strokeColor = UIColor.init(red: 0.59, green: 0.58, blue: 0.47, alpha: 1.00)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
            let rectangleNode = SKSpriteNode(texture: texture)
-            //rectangleNode.xScale = -1.0
-            //rectangleNode.zRotation = 9.44
-        rectangleNode.position = CGPoint(x:280, y:190)
-            //rectangleNode.zPosition = 1
-            //rectangleNode.physicsBody = SKPhysicsBody(circleOfRadius:culebraNode.size.width/2 * 0.40 , center: CGPoint(x:-1.5, y:1.5))
-            //rectangleNode.physicsBody?.isDynamic = false
-            //rectangleNode.name = "Culebra"
+           rectangleNode.position = CGPoint(x:280, y:190)
            return  rectangleNode
        }
+    
+    func rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
+           
+           let shapeNode = SKShapeNode(path:bpViequesRectangle.cgPath)
+           shapeNode.strokeColor = UIColor.init(red: 0.59, green: 0.58, blue: 0.47, alpha: 1.00)//c1d3c8
+           shapeNode.lineWidth = 0.5
+           let view = SKView(frame: UIScreen.main.bounds)
+           let texture = view.texture(from: shapeNode)!
+           let rectangleViequesNode = SKSpriteNode(texture: texture)
+        rectangleViequesNode.position = CGPoint(x:473, y:103.5)
 
-    func createRectangle()-> UIBezierPath {
+           return  rectangleViequesNode
+       }
+
+    func createRectangle()-> UIBezierPath {//Big island frame drawing
         // Initialize the path.
             path = UIBezierPath()
      
@@ -1661,6 +1667,27 @@ class TestClass {
             return path
     }
     
+    func createViequesRectangle()-> UIBezierPath {//Big island frame drawing
+        // Initialize the path.
+            path = UIBezierPath()
+     
+            // Specify the point that the path should start get drawn.
+            path.move(to: CGPoint(x: 0.0, y: 0.0))
+     
+            // Create a line between the starting point and the bottom-left side of the view.
+            path.addLine(to: CGPoint(x: 0.0, y:27))
+     
+            // Create the bottom line (bottom-left to bottom-right).
+             path.addLine(to: CGPoint(x:94 , y:27))
+     
+             //Create the vertical line from the bottom-right to the top-right side.
+            path.addLine(to: CGPoint(x:94, y: 0.0))
+     
+            // Close the path. This will create the last line automatically.
+            path.close()
+        
+            return path
+    }
 
  
     
