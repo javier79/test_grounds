@@ -1620,6 +1620,50 @@ class TestClass {
            return  culebraNode
        }
     
+    func rectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{
+           
+           let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
+           //shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           shapeNode.strokeColor = UIColor.black//c1d3c8
+           shapeNode.lineWidth = 0.5
+           let view = SKView(frame: UIScreen.main.bounds)
+           let texture = view.texture(from: shapeNode)!
+           let rectangleNode = SKSpriteNode(texture: texture)
+            //rectangleNode.xScale = -1.0
+            //rectangleNode.zRotation = 9.44
+        rectangleNode.position = CGPoint(x:280, y:190)
+            //rectangleNode.zPosition = 1
+            //rectangleNode.physicsBody = SKPhysicsBody(circleOfRadius:culebraNode.size.width/2 * 0.40 , center: CGPoint(x:-1.5, y:1.5))
+            //rectangleNode.physicsBody?.isDynamic = false
+            //rectangleNode.name = "Culebra"
+           return  rectangleNode
+       }
+
+    func createRectangle()-> UIBezierPath {
+        // Initialize the path.
+            path = UIBezierPath()
+     
+            // Specify the point that the path should start get drawn.
+            path.move(to: CGPoint(x: 0.0, y: 0.0))
+     
+            // Create a line between the starting point and the bottom-left side of the view.
+            path.addLine(to: CGPoint(x: 0.0, y: 200))
+     
+            // Create the bottom line (bottom-left to bottom-right).
+             path.addLine(to: CGPoint(x:480 , y:200))
+     
+             //Create the vertical line from the bottom-right to the top-right side.
+            path.addLine(to: CGPoint(x:480, y: 0.0))
+     
+            // Close the path. This will create the last line automatically.
+            path.close()
+        
+            return path
+    }
+    
+
+ 
+    
     func caboRojoDrawBezierPath() -> UIBezierPath{
             path = UIBezierPath()
         //Cabo Rojo

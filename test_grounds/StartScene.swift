@@ -105,8 +105,10 @@ class StartScene: SKScene{
     let viequesbp:UIBezierPath! = TestClass().viequesDrawBezierPath()
     let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()
     
+    let rectanglebp:UIBezierPath! = TestClass().createRectangle()
 
 
+    
     
     
     var containerNode = SKNode()
@@ -140,7 +142,11 @@ class StartScene: SKScene{
     var nextMunicipio: Int = -1
     //var locationNameLabel = SKLabelNode()
     
+
      override func didMove(to view: SKView){
+        
+    
+
         
         //self.backgroundColor = SKColor.blue
         containerNode = nodesContainer()
@@ -154,6 +160,8 @@ class StartScene: SKScene{
         municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
         
         municipiosNameBackground = labelMunicipiosNameBackground()
+        
+        let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
 
         let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
         containerNode.addChild(caboRojoSKSpriteNode)
@@ -403,6 +411,7 @@ class StartScene: SKScene{
         
         self.addChild(goldBackgroundSKSpriteNode)
         self.addChild(backgroundSKSpriteNode)
+        self.addChild(rectangularFrameSKSPriteNode)
         self.addChild(timerBackground)
         self.addChild(labelTimer)
         self.addChild(municipiosNameBackground)
@@ -841,5 +850,6 @@ class StartScene: SKScene{
             }
         return line2
     }
+    
 
 }
