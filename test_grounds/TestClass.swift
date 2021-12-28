@@ -1593,7 +1593,7 @@ class TestClass {
         let viequesNode = SKSpriteNode(texture: texture)
         viequesNode.xScale = -1.0
         viequesNode.zRotation = 9.44
-        viequesNode.position = CGPoint(x:512, y:93)//(x:582.85, y:154.19)
+        viequesNode.position = CGPoint(x:512, y:95)//(x:582.85, y:154.19)
         viequesNode.zPosition = 1
         viequesNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:viequesNode.size.width/2 * 1.2, height:viequesNode.size.height/2 * 0.5), center: CGPoint(x:39, y: -10.0))
         viequesNode.physicsBody?.isDynamic = false
@@ -1612,18 +1612,18 @@ class TestClass {
            let culebraNode = SKSpriteNode(texture: texture)
             culebraNode.xScale = -1.0
             culebraNode.zRotation = 9.44
-            culebraNode.position = CGPoint(x:577.94, y:220.36)
+            culebraNode.position = CGPoint(x:493, y:141.5)
             culebraNode.zPosition = 1
             culebraNode.physicsBody = SKPhysicsBody(circleOfRadius:culebraNode.size.width/2 * 0.40 , center: CGPoint(x:-1.5, y:1.5))
             culebraNode.physicsBody?.isDynamic = false
             culebraNode.name = "Culebra"
-           return  culebraNode
+            return  culebraNode
        }
     
     func rectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
            
            let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
-           shapeNode.strokeColor = UIColor.init(red: 0.59, green: 0.58, blue: 0.47, alpha: 1.00)//c1d3c8
+           shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
@@ -1632,17 +1632,30 @@ class TestClass {
            return  rectangleNode
        }
     
-    func rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
+    func rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: UIBezierPath)-> SKSpriteNode{//Vieques island frame properties
            
            let shapeNode = SKShapeNode(path:bpViequesRectangle.cgPath)
-           shapeNode.strokeColor = UIColor.init(red: 0.59, green: 0.58, blue: 0.47, alpha: 1.00)//c1d3c8
+           shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
            let rectangleViequesNode = SKSpriteNode(texture: texture)
-        rectangleViequesNode.position = CGPoint(x:473, y:103.5)
+           rectangleViequesNode.position = CGPoint(x:473, y:103.5)
 
            return  rectangleViequesNode
+       }
+    
+    func rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: UIBezierPath)-> SKSpriteNode{//Culebra island frame properties
+           
+           let shapeNode = SKShapeNode(path:bpCulebraRectangle.cgPath)
+           shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//c1d3c8
+           shapeNode.lineWidth = 0.5
+           let view = SKView(frame: UIScreen.main.bounds)
+           let texture = view.texture(from: shapeNode)!
+           let rectangleCulebraNode = SKSpriteNode(texture: texture)
+        rectangleCulebraNode.position = CGPoint(x:493.5, y:141.1)
+
+           return  rectangleCulebraNode
        }
 
     func createRectangle()-> UIBezierPath {//Big island frame drawing
@@ -1653,10 +1666,10 @@ class TestClass {
             path.move(to: CGPoint(x: 0.0, y: 0.0))
      
             // Create a line between the starting point and the bottom-left side of the view.
-            path.addLine(to: CGPoint(x: 0.0, y: 200))
+            path.addLine(to: CGPoint(x: 0.0, y:213))
      
             // Create the bottom line (bottom-left to bottom-right).
-             path.addLine(to: CGPoint(x:480 , y:200))
+            path.addLine(to: CGPoint(x:480 , y:213))
      
              //Create the vertical line from the bottom-right to the top-right side.
             path.addLine(to: CGPoint(x:480, y: 0.0))
@@ -1667,7 +1680,7 @@ class TestClass {
             return path
     }
     
-    func createViequesRectangle()-> UIBezierPath {//Big island frame drawing
+    func createViequesRectangle()-> UIBezierPath {//Vieques frame drawing
         // Initialize the path.
             path = UIBezierPath()
      
@@ -1675,10 +1688,10 @@ class TestClass {
             path.move(to: CGPoint(x: 0.0, y: 0.0))
      
             // Create a line between the starting point and the bottom-left side of the view.
-            path.addLine(to: CGPoint(x: 0.0, y:27))
+            path.addLine(to: CGPoint(x: 0.0, y:40))
      
             // Create the bottom line (bottom-left to bottom-right).
-             path.addLine(to: CGPoint(x:94 , y:27))
+             path.addLine(to: CGPoint(x:94 , y:40))
      
              //Create the vertical line from the bottom-right to the top-right side.
             path.addLine(to: CGPoint(x:94, y: 0.0))
@@ -1688,6 +1701,29 @@ class TestClass {
         
             return path
     }
+    
+    func createCulebraRectangle()-> UIBezierPath {//Culebra frame drawing
+         // Initialize the path.
+             path = UIBezierPath()
+      
+             // Specify the point that the path should start get drawn.
+             path.move(to: CGPoint(x: 0.0, y: 0.0))
+      
+             // Create a line between the starting point and the bottom-left side of the view.
+             path.addLine(to: CGPoint(x: 0.0, y:35))
+      
+             // Create the bottom line (bottom-left to bottom-right).
+              path.addLine(to: CGPoint(x:53 , y:35))
+      
+              //Create the vertical line from the bottom-right to the top-right side.
+             path.addLine(to: CGPoint(x:53, y: 0.0))
+      
+             // Close the path. This will create the last line automatically.
+             path.close()
+         
+             return path
+     }
+    
 
  
     
