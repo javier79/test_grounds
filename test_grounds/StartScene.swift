@@ -163,10 +163,13 @@ class StartScene: SKScene{
         municipiosNameBackground = labelMunicipiosNameBackground()
         
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
+        containerNode.addChild(rectangularFrameSKSPriteNode)
         
         let rectangularViequesFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: rectangleViequesbp)
+        containerNode.addChild(rectangularViequesFrameSKSPriteNode)
         
         let rectangularCulebraFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: rectangleCulebrabp)
+        containerNode.addChild(rectangularCulebraFrameSKSPriteNode)
         
 
         let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
@@ -417,9 +420,6 @@ class StartScene: SKScene{
         
         self.addChild(goldBackgroundSKSpriteNode)
         self.addChild(backgroundSKSpriteNode)
-        self.addChild(rectangularFrameSKSPriteNode)
-        self.addChild(rectangularViequesFrameSKSPriteNode)
-        self.addChild(rectangularCulebraFrameSKSPriteNode)
         self.addChild(timerBackground)
         self.addChild(labelTimer)
         self.addChild(municipiosNameBackground)
@@ -436,7 +436,7 @@ class StartScene: SKScene{
            //nodes_Container.color = UIColor.white
            //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
            //nodes_Container.anchorPoint = CGPoint.zero
-           //nodes_Container.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+            nodes_Container.position = CGPoint(x: 50, y: 15)
            return  nodes_Container
        }
 
