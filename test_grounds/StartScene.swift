@@ -153,6 +153,8 @@ class StartScene: SKScene{
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
         let goldBackgroundSKSpriteNode: SKSpriteNode = goldenBackground()
+        let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
+        containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
         labelTimer = labelForTimer(TimerLabel: labelTimer)
         
@@ -431,80 +433,84 @@ class StartScene: SKScene{
         
         }
 
-       func nodesContainer() -> SKNode{
+        func nodesContainer() -> SKNode{
            let nodes_Container = SKNode()
            //nodes_Container.color = UIColor.white
            //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
            //nodes_Container.anchorPoint = CGPoint.zero
             nodes_Container.position = CGPoint(x: 50, y: 15)
            return  nodes_Container
-       }
+        }
 
         func goldenBackground() -> SKSpriteNode {
-        let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-        goldenBackground.size = CGSize(width: self.size.width + 6, height:self.size.height + 6)
-        goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        return goldenBackground
+            let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
+            goldenBackground.size = CGSize(width: self.size.width + 6, height:self.size.height + 6)
+            goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+            return goldenBackground
             
-    }
+            }
 
     
         func prBackground() -> SKSpriteNode {
-        let backgroundNode = SKSpriteNode()
-        backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
-        backgroundNode.size = CGSize(width: self.size.width, height:self.size.height * 0.86)
-        //nodes_Container.anchorPoint = CGPoint.zero
-        backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
-        return backgroundNode
-            
-    }
+            let backgroundNode = SKSpriteNode()
+            backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
+            backgroundNode.size = CGSize(width: self.size.width, height:self.size.height * 0.86)
+            //nodes_Container.anchorPoint = CGPoint.zero
+            backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
+            return backgroundNode
+            }
     
-    func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
     
-        //let label:SKLabelNode = SKLabelNode()
-        TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
-        TimerLabel.fontName = "Arial"
-        TimerLabel.fontSize = 18
-        TimerLabel.fontColor = SKColor.red
-        return TimerLabel
+        func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
+            let desecheoCover = SKSpriteNode()
+            desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
+            desecheoCover.size = CGSize(width: 10, height:10)
+            desecheoCover.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+            desecheoCover.position = CGPoint(x: -8, y: 239)
+            desecheoCover.zPosition = 1
+            return desecheoCover
+                
+            }
     
-        }
-    func timerLabelBackground() -> SKSpriteNode{
-        let background = SKSpriteNode()
-        background.color = UIColor.white
-        //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
-        //background.zPosition = -2
-        
-        
-        return background
-    }
-    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
-     
-        NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
-        NameMunicipioLabel.fontName = "Helvetica"
-        NameMunicipioLabel.fontSize = 18
-        NameMunicipioLabel.fontColor = SKColor.red
-        NameMunicipioLabel.text = "Adjuntas"
-        municipiosNameBackground.size = NameMunicipioLabel.frame.size
-        
-        //NameMunicipioLabel.zPosition = 2
-        return NameMunicipioLabel
-        
-    }
+        func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
+            //let label:SKLabelNode = SKLabelNode()
+            TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
+            TimerLabel.fontName = "Arial"
+            TimerLabel.fontSize = 18
+            TimerLabel.fontColor = SKColor.red
+            return TimerLabel
     
-    func labelMunicipiosNameBackground() -> SKSpriteNode{
-        let background = SKSpriteNode()
-        background.color = UIColor.white
-        background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
-        background.size = municipioNameLabel.frame.size
-        
-        //background.zPosition = -1
-        
-        
-        return background
-    }
+            }
+    
+        func timerLabelBackground() -> SKSpriteNode{
+            let background = SKSpriteNode()
+            background.color = UIColor.white
+            //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
+            background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
+            //background.zPosition = -2
+            return background
+            }
+    
+        func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
+            NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
+            NameMunicipioLabel.fontName = "Helvetica"
+            NameMunicipioLabel.fontSize = 18
+            NameMunicipioLabel.fontColor = SKColor.red
+            NameMunicipioLabel.text = "Adjuntas"
+            municipiosNameBackground.size = NameMunicipioLabel.frame.size
+            //NameMunicipioLabel.zPosition = 2
+            return NameMunicipioLabel
+            }
+    
+        func labelMunicipiosNameBackground() -> SKSpriteNode{
+            let background = SKSpriteNode()
+            background.color = UIColor.white
+            background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
+            background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
+            background.size = municipioNameLabel.frame.size
+            //background.zPosition = -1
+            return background
+            }
 
     override public func update(_ currentTime: TimeInterval) {
 
