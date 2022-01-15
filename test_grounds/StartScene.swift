@@ -13,7 +13,7 @@ import UIKit
 
 
 class StartScene: SKScene{
-
+    
     let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
     let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
     let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
@@ -44,7 +44,6 @@ class StartScene: SKScene{
     let camuybp:UIBezierPath! = TestClass().camuyDrawBezierPath()
     let hatillobp:UIBezierPath! = TestClass().hatilloDrawBezierPath()
     let arecibobp:UIBezierPath! = TestClass().areciboDrawBezierPath()
-    
     //***let mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
     let adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
     
@@ -143,13 +142,10 @@ class StartScene: SKScene{
     var nextMunicipio: Int = -1
     //var locationNameLabel = SKLabelNode()
     
-
-     override func didMove(to view: SKView){
-        
     
-
+    override func didMove(to view: SKView){
         
-        //self.backgroundColor = SKColor.blue
+        
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
         let goldBackgroundSKSpriteNode: SKSpriteNode = goldenBackground()
@@ -431,387 +427,377 @@ class StartScene: SKScene{
         sleep(2)
         
         
-        }
+    }
 
-        func nodesContainer() -> SKNode{
-           let nodes_Container = SKNode()
-           //nodes_Container.color = UIColor.white
-           //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
-           //nodes_Container.anchorPoint = CGPoint.zero
-            nodes_Container.position = CGPoint(x: 50, y: 15)
-           return  nodes_Container
-        }
+    func nodesContainer() -> SKNode{
+        let nodes_Container = SKNode()
+        //nodes_Container.color = UIColor.white
+        //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
+        //nodes_Container.anchorPoint = CGPoint.zero
+        nodes_Container.position = CGPoint(x: 50, y: 15)
+        return  nodes_Container
+    }
 
-        func goldenBackground() -> SKSpriteNode {
-            let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-            goldenBackground.size = CGSize(width: self.size.width + 6, height:self.size.height + 6)
-            goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-            return goldenBackground
-            
-            }
+    func goldenBackground() -> SKSpriteNode {
+        let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
+        goldenBackground.size = CGSize(width: self.size.width + 6, height:self.size.height + 6)
+        goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        return goldenBackground
+    }
 
     
-        func prBackground() -> SKSpriteNode {
-            let backgroundNode = SKSpriteNode()
-            backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
-            backgroundNode.size = CGSize(width: self.size.width, height:self.size.height * 0.86)
-            //nodes_Container.anchorPoint = CGPoint.zero
-            backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
-            return backgroundNode
-            }
+    func prBackground() -> SKSpriteNode {
+        let backgroundNode = SKSpriteNode()
+        backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
+        backgroundNode.size = CGSize(width: self.size.width, height:self.size.height * 0.86)
+        //nodes_Container.anchorPoint = CGPoint.zero
+        backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
+        return backgroundNode
+    }
     
     
-        func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
-            let desecheoCover = SKSpriteNode()
-            desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
-            desecheoCover.size = CGSize(width: 10, height:10)
-            desecheoCover.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            desecheoCover.position = CGPoint(x: -8, y: 239)
-            desecheoCover.zPosition = 1
-            return desecheoCover
-                
-            }
+    func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
+        let desecheoCover = SKSpriteNode()
+        desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
+        desecheoCover.size = CGSize(width: 10, height:10)
+        desecheoCover.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        desecheoCover.position = CGPoint(x: -8, y: 239)
+        desecheoCover.zPosition = 1
+        return desecheoCover
+    }
     
-        func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
-            //let label:SKLabelNode = SKLabelNode()
-            TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
-            TimerLabel.fontName = "Arial"
-            TimerLabel.fontSize = 18
-            TimerLabel.fontColor = SKColor.red
-            return TimerLabel
+    func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
+        //let label:SKLabelNode = SKLabelNode()
+        TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
+        TimerLabel.fontName = "Arial"
+        TimerLabel.fontSize = 18
+        TimerLabel.fontColor = SKColor.red
+        return TimerLabel
+    }
     
-            }
+    func timerLabelBackground() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.white
+        //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
+        //background.zPosition = -2
+        return background
+    }
     
-        func timerLabelBackground() -> SKSpriteNode{
-            let background = SKSpriteNode()
-            background.color = UIColor.white
-            //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
-            background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
-            //background.zPosition = -2
-            return background
-            }
+    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
+        NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
+        NameMunicipioLabel.fontName = "Helvetica"
+        NameMunicipioLabel.fontSize = 18
+        NameMunicipioLabel.fontColor = SKColor.red
+        NameMunicipioLabel.text = "Adjuntas"
+        municipiosNameBackground.size = NameMunicipioLabel.frame.size
+        //NameMunicipioLabel.zPosition = 2
+        return NameMunicipioLabel
+    }
     
-        func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
-            NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
-            NameMunicipioLabel.fontName = "Helvetica"
-            NameMunicipioLabel.fontSize = 18
-            NameMunicipioLabel.fontColor = SKColor.red
-            NameMunicipioLabel.text = "Adjuntas"
-            municipiosNameBackground.size = NameMunicipioLabel.frame.size
-            //NameMunicipioLabel.zPosition = 2
-            return NameMunicipioLabel
-            }
-    
-        func labelMunicipiosNameBackground() -> SKSpriteNode{
-            let background = SKSpriteNode()
-            background.color = UIColor.white
-            background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
-            background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
-            background.size = municipioNameLabel.frame.size
-            //background.zPosition = -1
-            return background
-            }
+    func labelMunicipiosNameBackground() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.white
+        background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
+        background.size = municipioNameLabel.frame.size
+        //background.zPosition = -1
+        return background
+    }
 
     override public func update(_ currentTime: TimeInterval) {
 
         penalty = 3
-        
+            
         if completedGame == false{
-        if currentTime > renderTime{
-            if renderTime > 0{
-                seconds += 1
+            if currentTime > renderTime{
+                if renderTime > 0{
+                    seconds += 1
                 
-                 if seconds == 60 {
+                if seconds == 60 {
                     seconds = 0
                     minutes += 1
                     }
-                 if(fail == "True"){
+                    
+                if(fail == "True"){
                     print("inside")
                     seconds = seconds + penalty
                     
                     if seconds == 60 {
                        seconds = 0
                        minutes += 1
-                    }
+                       }
                     if seconds == 61{
                        seconds = 1
                        minutes += 1
-                    }
+                       }
                     if seconds == 62 {
                        seconds = 2
                        minutes += 1
-                    }
+                       }
                     if seconds == 63 {
                        seconds = 3
                        minutes += 1
-                    }
+                       }
                 
                     let secondsText = (seconds < 10) ?
                      "0\(seconds)" : "\(seconds)"
                     let minutesText = "\(minutes)"
                      //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
                      
-                    
                     if minutes >= 1 {
                         labelTimer.text = "\(minutesText):\(secondsText)"
                         timerBackground.size = labelTimer.frame.size
                         fail = ""
-                    }
+                        }
                     
                     else{
                         labelTimer.text = "\(secondsText)"
                         timerBackground.size = labelTimer.frame.size
                         fail = ""
-                    }
-                 }
-                 else{
-                       let secondsText = (seconds < 10) ?
-                        "0\(seconds)" : "\(seconds)"
-                        let minutesText = "\(minutes)"
-                        //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+                        }
+                }
                     
-                        if minutes >= 1 {
-                            labelTimer.text = "\(minutesText):\(secondsText)"
-                            timerBackground.size = labelTimer.frame.size
-
+                else{
+                    let secondsText = (seconds < 10) ?
+                    "0\(seconds)" : "\(seconds)"
+                    let minutesText = "\(minutes)"
+                    //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+                    
+                    if minutes >= 1 {
+                        labelTimer.text = "\(minutesText):\(secondsText)"
+                        timerBackground.size = labelTimer.frame.size
                         //fail = ""
                         }
                       
-                        else{
-                            labelTimer.text = "\(secondsText)"
-                            timerBackground.size = labelTimer.frame.size
-                    }
+                    else{
+                        labelTimer.text = "\(secondsText)"
+                        timerBackground.size = labelTimer.frame.size
+                        }
                 }
+                    
+                }
+                
+                renderTime = currentTime + changeTime
             }
-        renderTime = currentTime + changeTime
         }
-       }
-      }
+    }
     
     
-        override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-                   /*guard let touch = touches.first else {
-                    return
-         }*/let touch = touches.first!
-                 
-            let touchLocation = touch.location(in: self)
-            touchedNode = self.physicsWorld.body(at:touchLocation)
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
-            let locationNameLabel = SKLabelNode()
-            let firstLineLabel = SKLabelNode()
-            let secondLineLabel = SKLabelNode()
+        let touch = touches.first!
+        let touchLocation = touch.location(in: self)
+        touchedNode = self.physicsWorld.body(at:touchLocation)
             
-            if (touchedNode != nil){
-                if (municipioNameLabel.text == touchedNode?.node?.name){
-                    for child in containerNode.children {
-                        if let spriteNode = child as? SKSpriteNode {
-                            if(touchedNode?.node?.name == spriteNode.name){
-                                spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//Color description: minty green(custom color no hex # available)
-                                spriteNode.colorBlendFactor = 1.0//0.5
-                                nextMunicipio += 1
-                                if nextMunicipio <= 76 {//76
-                                    locationNameLabel.text = municipioNameLabel.text
-                                    locationNameLabel.fontName = "Helvetica"
-                                    locationNameLabel.fontColor = UIColor.black
-                                    locationNameLabel.xScale = -1.0
-                                    locationNameLabel.zRotation = 9.44
-                                    locationNameLabel.fontSize = 5.4
+        let locationNameLabel = SKLabelNode()
+        let firstLineLabel = SKLabelNode()
+        let secondLineLabel = SKLabelNode()
+            
+        if (touchedNode != nil){
+            if (municipioNameLabel.text == touchedNode?.node?.name){
+                for child in containerNode.children {
+                    if let spriteNode = child as? SKSpriteNode {
+                        if(touchedNode?.node?.name == spriteNode.name){
+                            spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//Color description: minty green(custom color no hex # available)
+                            spriteNode.colorBlendFactor = 1.0//0.5
+                            nextMunicipio += 1
+                            if nextMunicipio <= 76 {//76
+                                locationNameLabel.text = municipioNameLabel.text
+                                locationNameLabel.fontName = "Helvetica"
+                                locationNameLabel.fontColor = UIColor.black
+                                locationNameLabel.xScale = -1.0
+                                locationNameLabel.zRotation = 9.44
+                                locationNameLabel.fontSize = 5.4
                                     
-                                    firstLineLabel.fontName = "Helvetica"
-                                    secondLineLabel.fontName = "Helvetica"
-                                    firstLineLabel.fontSize = 5.4
-                                    secondLineLabel.fontSize = 5.4
-                                    firstLineLabel.fontColor = UIColor.black
-                                    secondLineLabel.fontColor = UIColor.black
-                                    firstLineLabel.xScale = -1.0
-                                    secondLineLabel.xScale = -1.0
-                                    firstLineLabel.zRotation = 9.44
-                                    secondLineLabel.zRotation = 9.44
+                                firstLineLabel.fontName = "Helvetica"
+                                secondLineLabel.fontName = "Helvetica"
+                                firstLineLabel.fontSize = 5.4
+                                secondLineLabel.fontSize = 5.4
+                                firstLineLabel.fontColor = UIColor.black
+                                secondLineLabel.fontColor = UIColor.black
+                                firstLineLabel.xScale = -1.0
+                                secondLineLabel.xScale = -1.0
+                                firstLineLabel.zRotation = 9.44
+                                secondLineLabel.zRotation = 9.44
                                     
-                                    switch municipioNameLabel.text {
+                                switch municipioNameLabel.text {
                                         
-                                        case  "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
-                                              "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
+                                    case  "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
+                                          "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
 
-                                            locationNameLabel.horizontalAlignmentMode = .center
-                                            locationNameLabel.verticalAlignmentMode = .center
+                                           locationNameLabel.horizontalAlignmentMode = .center
+                                           locationNameLabel.verticalAlignmentMode = .center
                                         
-                                        case "Camuy", "Aguadilla", "Juncos":
-                                            locationNameLabel.fontSize = 5.0
-                                            locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
+                                    case "Camuy", "Aguadilla", "Juncos":
+                                        locationNameLabel.fontSize = 5.0
+                                        locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
                                         
-                                        case "Cayey":
-                                            locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
+                                    case "Cayey":
+                                        locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
                                         
-                                        case "Isabela", " Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
-                                            locationNameLabel.fontSize = 5.0
-                                            locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
-                                            //locationNameLabel.zPosition = 1
+                                    case "Isabela", " Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
+                                        locationNameLabel.fontSize = 5.0
+                                        locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+                                        //locationNameLabel.zPosition = 1
                                         
-                                        case "Hormigueros", "Maunabo" :
-                                            locationNameLabel.fontSize = 4.3
-                                            locationNameLabel.zRotation = 10.0
-                                            locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
+                                    case "Hormigueros", "Maunabo" :
+                                        locationNameLabel.fontSize = 4.3
+                                        locationNameLabel.zRotation = 10.0
+                                        locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
                                         
-                                        case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
-                                            locationNameLabel.fontSize = 5.0
-                                            locationNameLabel.zRotation = 10.5
-                                            locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
+                                    case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
+                                        locationNameLabel.fontSize = 5.0
+                                        locationNameLabel.zRotation = 10.5
+                                        locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
                                         
-                                        case "Mayagüez":
-                                            locationNameLabel.fontSize = 5.4
-                                            locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
+                                    case "Mayagüez":
+                                        locationNameLabel.fontSize = 5.4
+                                        locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
                                         
-                                        case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
-                                            locationNameLabel.fontSize = 5.5
-                                            locationNameLabel.zRotation = 10.8
-                                            locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
+                                    case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
+                                        locationNameLabel.fontSize = 5.5
+                                        locationNameLabel.zRotation = 10.8
+                                        locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
                                         
-                                        case "Guayanilla" :
-                                            locationNameLabel.fontSize = 5.5
-                                            locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
-                                            locationNameLabel.zRotation = 9.0
+                                    case "Guayanilla" :
+                                        locationNameLabel.fontSize = 5.5
+                                        locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
+                                        locationNameLabel.zRotation = 9.0
                                         
-                                        case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
-                                            locationNameLabel.fontSize = 5.1
-                                            locationNameLabel.zRotation = 1.9
-                                            locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
+                                    case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
+                                        locationNameLabel.fontSize = 5.1
+                                        locationNameLabel.zRotation = 1.9
+                                        locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
                                         
-                                        case "Florida" :
-                                            locationNameLabel.fontSize = 4.5
-                                            locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+                                    case "Florida" :
+                                        locationNameLabel.fontSize = 4.5
+                                        locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
                                         
-                                        case  "Ciales", "Ceiba" :
-                                            locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
+                                    case  "Ciales", "Ceiba" :
+                                        locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
                                         
                                         
-                                        case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
-                                            locationNameLabel.fontSize = 4.9
-                                            locationNameLabel.zRotation = 2.3
-                                            locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
+                                    case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
+                                        locationNameLabel.fontSize = 4.9
+                                        locationNameLabel.zRotation = 2.3
+                                        locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
                                         
-                                        case "Cataño":
-                                            locationNameLabel.fontSize = 4.0
-                                            locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
+                                    case "Cataño":
+                                        locationNameLabel.fontSize = 4.0
+                                        locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
                                         
-                                        case "Loíza" :
-                                            locationNameLabel.fontSize = 7.0
-                                            locationNameLabel.zRotation = 6.18
-                                            locationNameLabel.xScale = 1.0
-                                            locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
+                                    case "Loíza" :
+                                        locationNameLabel.fontSize = 7.0
+                                        locationNameLabel.zRotation = 6.18
+                                        locationNameLabel.xScale = 1.0
+                                        locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
                                         
-                                        case "Fajardo":
-                                            locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
+                                    case "Fajardo":
+                                        locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
                                         
-                                        case "Guayama":
-                                            locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
+                                    case "Guayama":
+                                        locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
                                         
-                                        case "Vieques":
-                                            locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
+                                    case "Vieques":
+                                        locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
                                            
                                         
-                                        case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
-                                            firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                            secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-
-                                            secondLineLabel.verticalAlignmentMode = .top
+                                    case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
+                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                        secondLineLabel.verticalAlignmentMode = .top
                                         
-                                        case "Sabana Grande" :
-                                            firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                            secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                            firstLineLabel.fontSize = 5.0
-                                            secondLineLabel.fontSize = 5.0
-                                            firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
-                                            secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
+                                    case "Sabana Grande" :
+                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                        firstLineLabel.fontSize = 5.0
+                                        secondLineLabel.fontSize = 5.0
+                                        firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
+                                        secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
                                         
-                                        case "Vega Alta":
-                                            firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                            secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                    case "Vega Alta":
+                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
                                               
-                                            firstLineLabel.position = CGPoint(x:2, y:0.5)
-                                            secondLineLabel.verticalAlignmentMode = .top
+                                        firstLineLabel.position = CGPoint(x:2, y:0.5)
+                                        secondLineLabel.verticalAlignmentMode = .top
                                         
-                                        case "Toa Baja":
-                                            firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                            secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-
-                                            firstLineLabel.horizontalAlignmentMode = .right
-                                            secondLineLabel.verticalAlignmentMode = .top
-                                            secondLineLabel.horizontalAlignmentMode = .right
+                                    case "Toa Baja":
+                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                        firstLineLabel.horizontalAlignmentMode = .right
+                                        secondLineLabel.verticalAlignmentMode = .top
+                                        secondLineLabel.horizontalAlignmentMode = .right
                                         
-                                        case "Trujillo Alto" :
-                                            firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                            secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                            firstLineLabel.fontSize = 5.5
-                                            secondLineLabel.fontSize = 5.5
-                                            firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
-                                            secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
+                                    case "Trujillo Alto" :
+                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                        firstLineLabel.fontSize = 5.5
+                                        secondLineLabel.fontSize = 5.5
+                                        firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
+                                        secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
                                         
-                                        case "San Lorenzo"  :
-                                            firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                            secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                            secondLineLabel.position = CGPoint(x:4.5, y:6.0)
-                                        
-                                        
-                                        
+                                    case "San Lorenzo"  :
+                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                        secondLineLabel.position = CGPoint(x:4.5, y:6.0)
                                         default:
                                             break
-                                    }
-                                    
-                                    if(useLine2 == true){
-                                        
-                                        spriteNode.addChild(firstLineLabel)
-                                        spriteNode.addChild(secondLineLabel)
-                                        municipioNameLabel.text = municipios_names_array [nextMunicipio]
-                                        municipiosNameBackground.size = municipioNameLabel.frame.size
-                                        useLine2 = false
-                                    }
-
-                                    else{
-                                        spriteNode.addChild(locationNameLabel)
-                                        municipioNameLabel.text = municipios_names_array [nextMunicipio]
-                                        municipiosNameBackground.size = municipioNameLabel.frame.size
-                                    }
                                 }
                                     
-                                    
-                                else{
-                                    locationNameLabel.text = municipioNameLabel.text
-                                    locationNameLabel.fontName = "Helvetica"
-                                    locationNameLabel.fontColor = UIColor.black
-                                    locationNameLabel.xScale = -1.0
-                                    
-                                    
-                                    
-                                    locationNameLabel.fontSize = 7
-                                    locationNameLabel.horizontalAlignmentMode = .center
-                                    locationNameLabel.verticalAlignmentMode = .center
-                                    
-                                    locationNameLabel.zRotation = 9.44
-                                    spriteNode.addChild(locationNameLabel)
-    
-                                    municipioNameLabel.text = "end of array"
+                                if(useLine2 == true){
+                                    spriteNode.addChild(firstLineLabel)
+                                    spriteNode.addChild(secondLineLabel)
+                                    municipioNameLabel.text = municipios_names_array [nextMunicipio]
                                     municipiosNameBackground.size = municipioNameLabel.frame.size
-                                    
-                                    completedGame = true
+                                    useLine2 = false
                                 }
-                                
-                                
 
+                                else{
+                                    spriteNode.addChild(locationNameLabel)
+                                    municipioNameLabel.text = municipios_names_array [nextMunicipio]
+                                    municipiosNameBackground.size = municipioNameLabel.frame.size
                                 }
                                 
                             }
-                            
+                                    
+                                    
+                            else{
+                                locationNameLabel.text = municipioNameLabel.text
+                                locationNameLabel.fontName = "Helvetica"
+                                locationNameLabel.fontColor = UIColor.black
+                                locationNameLabel.xScale = -1.0
+                                    
+                                locationNameLabel.fontSize = 7
+                                locationNameLabel.horizontalAlignmentMode = .center
+                                locationNameLabel.verticalAlignmentMode = .center
+                                    
+                                locationNameLabel.zRotation = 9.44
+                                spriteNode.addChild(locationNameLabel)
+    
+                                municipioNameLabel.text = "end of array"
+                                municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    
+                                completedGame = true
+                            }
+                                
+                                
+
                         }
-                      }
+                                
+                    }
+                            
+                }
+            }
                     
                         
                         //}
-                else{
-                     return fail = "True"
-                    }
+            else{
+                return fail = "True"
             }
-
+            
+        }
 
     }
     
