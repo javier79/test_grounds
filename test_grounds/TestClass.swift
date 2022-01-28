@@ -12,7 +12,7 @@ import UIKit
 class TestClass {
 
     var path: UIBezierPath!
-    var caboRojoBezierPath:UIBezierPath!
+    /*var caboRojoBezierPath:UIBezierPath!
     var hormiguerosBezierPath:UIBezierPath!
     var mayaguezBezierPath:UIBezierPath!
     var mayaguezTwoBezierPath:UIBezierPath!
@@ -91,7 +91,7 @@ class TestClass {
     var humacaoBezierPath:UIBezierPath!
     var naguaboBezierPath:UIBezierPath!
     var viequesBezierPath:UIBezierPath!
-    var culebraBezierPath:UIBezierPath!
+    var culebraBezierPath:UIBezierPath!*/
 
     
     func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
@@ -693,13 +693,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let floridaNode = SKSpriteNode(texture: texture)
-         floridaNode.xScale = -1.0
-         floridaNode.zRotation = 9.44
+        floridaNode.xScale = -1.0
+        floridaNode.zRotation = 9.44
         floridaNode.position = CGPoint(x:240.01, y:237.72)
-         floridaNode.zPosition = 0//FOR LABEL TO BE LEGIBLE
-         floridaNode.physicsBody = SKPhysicsBody(circleOfRadius: floridaNode.size.width/2 * 0.50 , center: CGPoint(x:-0.5, y:0.5))
-         floridaNode.physicsBody?.isDynamic = false
-         floridaNode.name = "Florida"
+        floridaNode.zPosition = 0//FOR LABEL TO BE LEGIBLE
+        floridaNode.physicsBody = SKPhysicsBody(circleOfRadius: floridaNode.size.width/2 * 0.50 , center: CGPoint(x:-0.5, y:0.5))
+        floridaNode.physicsBody?.isDynamic = false
+        floridaNode.name = "Florida"
          return  floridaNode
     }
     
@@ -713,13 +713,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let manatiNode = SKSpriteNode(texture: texture)
-         manatiNode.xScale = -1.0
-         manatiNode.zRotation = 9.44
-         manatiNode.position = CGPoint(x:258.84, y:249.77)
-         //manatiNode.zPosition = 1
-         manatiNode.physicsBody = SKPhysicsBody(circleOfRadius: manatiNode.size.width/2 * 0.55 , center: CGPoint(x:-1.5, y:0.5))
-         manatiNode.physicsBody?.isDynamic = false
-         manatiNode.name = "Manatí"
+        manatiNode.xScale = -1.0
+        manatiNode.zRotation = 9.44
+        manatiNode.position = CGPoint(x:258.84, y:249.77)
+        //manatiNode.zPosition = 1
+        manatiNode.physicsBody = SKPhysicsBody(circleOfRadius: manatiNode.size.width/2 * 0.55 , center: CGPoint(x:-1.5, y:0.5))
+        manatiNode.physicsBody?.isDynamic = false
+        manatiNode.name = "Manatí"
         return  manatiNode
     }
 
@@ -751,13 +751,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let villalbaNode = SKSpriteNode(texture: texture)
-         villalbaNode.xScale = -1.0
-         villalbaNode.zRotation = 9.44
-         villalbaNode.position = CGPoint(x:263.2, y:167.86)
-         //villalbaNode.zPosition = 1
-         villalbaNode.physicsBody = SKPhysicsBody(circleOfRadius:villalbaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.5))
-         villalbaNode.physicsBody?.isDynamic = false
-         villalbaNode.name = "Villalba"
+        villalbaNode.xScale = -1.0
+        villalbaNode.zRotation = 9.44
+        villalbaNode.position = CGPoint(x:263.2, y:167.86)
+        //villalbaNode.zPosition = 1
+        villalbaNode.physicsBody = SKPhysicsBody(circleOfRadius:villalbaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.5))
+        villalbaNode.physicsBody?.isDynamic = false
+        villalbaNode.name = "Villalba"
         return  villalbaNode
     }
     
@@ -770,13 +770,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let orocovisNode = SKSpriteNode(texture: texture)
-         orocovisNode.xScale = -1.0
-         orocovisNode.zRotation = 9.44
-         orocovisNode.position = CGPoint(x:270.23, y:193.72)
-         //orocovisNode.zPosition = 1
-         orocovisNode.physicsBody = SKPhysicsBody(circleOfRadius:orocovisNode.size.width/2 * 0.35 , center: CGPoint(x:-6.0, y:0.5))
-         orocovisNode.physicsBody?.isDynamic = false
-         orocovisNode.name = "Orocovis"
+        orocovisNode.xScale = -1.0
+        orocovisNode.zRotation = 9.44
+        orocovisNode.position = CGPoint(x:270.23, y:193.72)
+        //orocovisNode.zPosition = 1
+        orocovisNode.physicsBody = SKPhysicsBody(circleOfRadius:orocovisNode.size.width/2 * 0.35 , center: CGPoint(x:-6.0, y:0.5))
+        orocovisNode.physicsBody?.isDynamic = false
+        orocovisNode.name = "Orocovis"
         return  orocovisNode
     }
     
@@ -789,13 +789,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let cialesNode = SKSpriteNode(texture: texture)
-         cialesNode.xScale = -1.0
-         cialesNode.zRotation = 9.44
-         cialesNode.position = CGPoint(x:247.6, y:206.12)
-         //cialesNode.zPosition = 1
-         cialesNode.physicsBody = SKPhysicsBody(circleOfRadius:cialesNode.size.width/2 * 0.4 , center: CGPoint(x:-5.5, y:-10.5))
-         cialesNode.physicsBody?.isDynamic = false
-         cialesNode.name = "Ciales"
+        cialesNode.xScale = -1.0
+        cialesNode.zRotation = 9.44
+        cialesNode.position = CGPoint(x:247.6, y:206.12)
+        //cialesNode.zPosition = 1
+        cialesNode.physicsBody = SKPhysicsBody(circleOfRadius:cialesNode.size.width/2 * 0.4 , center: CGPoint(x:-5.5, y:-10.5))
+        cialesNode.physicsBody?.isDynamic = false
+        cialesNode.name = "Ciales"
         return  cialesNode
     }
     
@@ -808,13 +808,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let morovisNode = SKSpriteNode(texture: texture)
-         morovisNode.xScale = -1.0
-         morovisNode.zRotation = 9.44
-         morovisNode.position = CGPoint(x:279.3, y:221.04)
-         //morovisNode.zPosition = 1
-         morovisNode.physicsBody = SKPhysicsBody(circleOfRadius:morovisNode.size.width/2 * 0.49 , center: CGPoint(x:0.0, y:0.5))
-         morovisNode.physicsBody?.isDynamic = false
-         morovisNode.name = "Morovis"
+        morovisNode.xScale = -1.0
+        morovisNode.zRotation = 9.44
+        morovisNode.position = CGPoint(x:279.3, y:221.04)
+        //morovisNode.zPosition = 1
+        morovisNode.physicsBody = SKPhysicsBody(circleOfRadius:morovisNode.size.width/2 * 0.49 , center: CGPoint(x:0.0, y:0.5))
+        morovisNode.physicsBody?.isDynamic = false
+        morovisNode.name = "Morovis"
         return  morovisNode
     }
     
@@ -827,13 +827,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let corozalNode = SKSpriteNode(texture: texture)
-         corozalNode.xScale = -1.0
-         corozalNode.zRotation = 9.44
-         corozalNode.position = CGPoint(x:302.12, y:217.15)
-         //corozalNode.zPosition = 1
-         corozalNode.physicsBody = SKPhysicsBody(circleOfRadius:corozalNode.size.width/2 * 0.55 , center: CGPoint(x:-1.0, y:0.5))
-         corozalNode.physicsBody?.isDynamic = false
-         corozalNode.name = "Corozal"
+        corozalNode.xScale = -1.0
+        corozalNode.zRotation = 9.44
+        corozalNode.position = CGPoint(x:302.12, y:217.15)
+        //corozalNode.zPosition = 1
+        corozalNode.physicsBody = SKPhysicsBody(circleOfRadius:corozalNode.size.width/2 * 0.55 , center: CGPoint(x:-1.0, y:0.5))
+        corozalNode.physicsBody?.isDynamic = false
+        corozalNode.name = "Corozal"
         return  corozalNode
     }
     
@@ -846,13 +846,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let barranquitasNode = SKSpriteNode(texture: texture)
-         barranquitasNode.xScale = -1.0
-         barranquitasNode.zRotation = 9.44
-         barranquitasNode.position = CGPoint(x:308.45, y:187.95)
-         barranquitasNode.zPosition = 1//FOR LABEL TO BE LEGIBLE
-         barranquitasNode.physicsBody = SKPhysicsBody(circleOfRadius:barranquitasNode.size.width/2 * 0.4 , center: CGPoint(x:0.5, y:-1.5))
-         barranquitasNode.physicsBody?.isDynamic = false
-         barranquitasNode.name = "Barranquitas"
+        barranquitasNode.xScale = -1.0
+        barranquitasNode.zRotation = 9.44
+        barranquitasNode.position = CGPoint(x:308.45, y:187.95)
+        barranquitasNode.zPosition = 1//FOR LABEL TO BE LEGIBLE
+        barranquitasNode.physicsBody = SKPhysicsBody(circleOfRadius:barranquitasNode.size.width/2 * 0.4 , center: CGPoint(x:0.5, y:-1.5))
+        barranquitasNode.physicsBody?.isDynamic = false
+        barranquitasNode.name = "Barranquitas"
         return  barranquitasNode
     }
     
@@ -865,13 +865,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let comerioNode = SKSpriteNode(texture: texture)
-         comerioNode.xScale = -1.0
-         comerioNode.zRotation = 9.44
-         comerioNode.position = CGPoint(x:331.91, y:194.87)
-         comerioNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(BARRANQUITAS)
-         comerioNode.physicsBody = SKPhysicsBody(circleOfRadius:comerioNode.size.width/2 * 0.4 , center: CGPoint(x:-1.2, y:0.5))
-         comerioNode.physicsBody?.isDynamic = false
-         comerioNode.name = "Comerío"
+        comerioNode.xScale = -1.0
+        comerioNode.zRotation = 9.44
+        comerioNode.position = CGPoint(x:331.91, y:194.87)
+        comerioNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(BARRANQUITAS)
+        comerioNode.physicsBody = SKPhysicsBody(circleOfRadius:comerioNode.size.width/2 * 0.4 , center: CGPoint(x:-1.2, y:0.5))
+        comerioNode.physicsBody?.isDynamic = false
+        comerioNode.name = "Comerío"
         return  comerioNode
     }
     
@@ -884,13 +884,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let coamoNode = SKSpriteNode(texture: texture)
-         coamoNode.xScale = -1.0
-         coamoNode.zRotation = 9.44
-         coamoNode.position = CGPoint(x:296.54, y:158.24)
-         coamoNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(BARRANQUITAS)
-         coamoNode.physicsBody = SKPhysicsBody(circleOfRadius:coamoNode.size.width/2 * 0.4 , center: CGPoint(x:1.7, y:0.5))
-         coamoNode.physicsBody?.isDynamic = false
-         coamoNode.name = "Coamo"
+        coamoNode.xScale = -1.0
+        coamoNode.zRotation = 9.44
+        coamoNode.position = CGPoint(x:296.54, y:158.24)
+        coamoNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(BARRANQUITAS)
+        coamoNode.physicsBody = SKPhysicsBody(circleOfRadius:coamoNode.size.width/2 * 0.4 , center: CGPoint(x:1.7, y:0.5))
+        coamoNode.physicsBody?.isDynamic = false
+        coamoNode.name = "Coamo"
         return  coamoNode
     }
     
@@ -903,13 +903,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let naranjitoNode = SKSpriteNode(texture: texture)
-         naranjitoNode.xScale = -1.0
-         naranjitoNode.zRotation = 9.44
-         naranjitoNode.position = CGPoint(x:321.28, y:212.61)
-         //naranjitoNode.zPosition = 1
-         naranjitoNode.physicsBody = SKPhysicsBody(circleOfRadius:naranjitoNode.size.width/2 * 0.4 , center: CGPoint(x:-1.5, y:0.5))
-         naranjitoNode.physicsBody?.isDynamic = false
-         naranjitoNode.name = "Naranjito"
+        naranjitoNode.xScale = -1.0
+        naranjitoNode.zRotation = 9.44
+        naranjitoNode.position = CGPoint(x:321.28, y:212.61)
+        //naranjitoNode.zPosition = 1
+        naranjitoNode.physicsBody = SKPhysicsBody(circleOfRadius:naranjitoNode.size.width/2 * 0.4 , center: CGPoint(x:-1.5, y:0.5))
+        naranjitoNode.physicsBody?.isDynamic = false
+        naranjitoNode.name = "Naranjito"
         return  naranjitoNode
     }
     
@@ -922,13 +922,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let aibonitoNode = SKSpriteNode(texture: texture)
-         aibonitoNode.xScale = -1.0
-         aibonitoNode.zRotation = 9.44
-         aibonitoNode.position = CGPoint(x:318.76, y:167.44)
-         aibonitoNode.zPosition = 1
-         aibonitoNode.physicsBody = SKPhysicsBody(circleOfRadius:aibonitoNode.size.width/2 * 0.4 , center: CGPoint(x:-2.0, y:-0.5))
-         aibonitoNode.physicsBody?.isDynamic = false
-         aibonitoNode.name = "Aibonito"
+        aibonitoNode.xScale = -1.0
+        aibonitoNode.zRotation = 9.44
+        aibonitoNode.position = CGPoint(x:318.76, y:167.44)
+        aibonitoNode.zPosition = 1
+        aibonitoNode.physicsBody = SKPhysicsBody(circleOfRadius:aibonitoNode.size.width/2 * 0.4 , center: CGPoint(x:-2.0, y:-0.5))
+        aibonitoNode.physicsBody?.isDynamic = false
+        aibonitoNode.name = "Aibonito"
         return  aibonitoNode
     }
     
@@ -941,13 +941,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let salinasNode = SKSpriteNode(texture: texture)
-         salinasNode.xScale = -1.0
-         salinasNode.zRotation = 9.44
-         salinasNode.position = CGPoint(x:322.58, y:132.2)
-         //salinasNode.zPosition = 1
-         salinasNode.physicsBody = SKPhysicsBody(circleOfRadius:salinasNode.size.width/2 * 0.4 , center: CGPoint(x:0.0, y:-0.5))
-         salinasNode.physicsBody?.isDynamic = false
-         salinasNode.name = "Salinas"
+        salinasNode.xScale = -1.0
+        salinasNode.zRotation = 9.44
+        salinasNode.position = CGPoint(x:322.58, y:132.2)
+        //salinasNode.zPosition = 1
+        salinasNode.physicsBody = SKPhysicsBody(circleOfRadius:salinasNode.size.width/2 * 0.4 , center: CGPoint(x:0.0, y:-0.5))
+        salinasNode.physicsBody?.isDynamic = false
+        salinasNode.name = "Salinas"
         return  salinasNode
     }
     
@@ -960,14 +960,14 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let cayeyNode = SKSpriteNode(texture: texture)
-         cayeyNode.xScale = -1.0
-         cayeyNode.zRotation = 9.44
-         cayeyNode.position = CGPoint(x:353.68, y:160.28)
-         //cayeyNode.zPosition = 1
-         cayeyNode.physicsBody = SKPhysicsBody(circleOfRadius:cayeyNode.size.width/2 * 0.34 , center: CGPoint(x:7.5, y:2.5))
-         cayeyNode.physicsBody?.isDynamic = false
-         cayeyNode.name = "Cayey"
-         return  cayeyNode
+        cayeyNode.xScale = -1.0
+        cayeyNode.zRotation = 9.44
+        cayeyNode.position = CGPoint(x:353.68, y:160.28)
+        //cayeyNode.zPosition = 1
+        cayeyNode.physicsBody = SKPhysicsBody(circleOfRadius:cayeyNode.size.width/2 * 0.34 , center: CGPoint(x:7.5, y:2.5))
+        cayeyNode.physicsBody?.isDynamic = false
+        cayeyNode.name = "Cayey"
+        return  cayeyNode
     }
     
 
@@ -981,13 +981,13 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let cidraNode = SKSpriteNode(texture: texture)
-         cidraNode.xScale = -1.0
-         cidraNode.zRotation = 9.44
-         cidraNode.position = CGPoint(x:345.38, y:182.58)
-         //cidraNode.zPosition = 1
-         cidraNode.physicsBody = SKPhysicsBody(circleOfRadius:cidraNode.size.width/2 * 0.30 , center: CGPoint(x:-3.5, y:2.0))
-         cidraNode.physicsBody?.isDynamic = false
-         cidraNode.name = "Cidra"
+        cidraNode.xScale = -1.0
+        cidraNode.zRotation = 9.44
+        cidraNode.position = CGPoint(x:345.38, y:182.58)
+        //cidraNode.zPosition = 1
+        cidraNode.physicsBody = SKPhysicsBody(circleOfRadius:cidraNode.size.width/2 * 0.30 , center: CGPoint(x:-3.5, y:2.0))
+        cidraNode.physicsBody?.isDynamic = false
+        cidraNode.name = "Cidra"
         return  cidraNode
     }
     
@@ -1000,15 +1000,16 @@ class TestClass {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let santaIsabelNode = SKSpriteNode(texture: texture)
-         santaIsabelNode.xScale = -1.0
-         santaIsabelNode.zRotation = 9.44
-         santaIsabelNode.position = CGPoint(x:285.59, y:125.67)
-         //santaIsabelNode.zPosition = 1
-         santaIsabelNode.physicsBody = SKPhysicsBody(circleOfRadius:santaIsabelNode.size.width/2 * 0.45 , center: CGPoint(x:-1.5,y:-4.5))
-         santaIsabelNode.physicsBody?.isDynamic = false
-         santaIsabelNode.name = "Santa Isabel"
+        santaIsabelNode.xScale = -1.0
+        santaIsabelNode.zRotation = 9.44
+        santaIsabelNode.position = CGPoint(x:285.59, y:125.67)
+        //santaIsabelNode.zPosition = 1
+        santaIsabelNode.physicsBody = SKPhysicsBody(circleOfRadius:santaIsabelNode.size.width/2 * 0.45 , center: CGPoint(x:-1.5,y:-4.5))
+        santaIsabelNode.physicsBody?.isDynamic = false
+        santaIsabelNode.name = "Santa Isabel"
         return  santaIsabelNode
     }
+    
     func vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpVegaAlta.cgPath)
@@ -1049,41 +1050,41 @@ class TestClass {
     
     func toaAltaBezierPathToSKSpriteNode(bpToaAlta: UIBezierPath)-> SKSpriteNode{
            
-           let shapeNode = SKShapeNode(path:bpToaAlta.cgPath)
-           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
-           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
-           shapeNode.lineWidth = 0.5
-           let view = SKView(frame: UIScreen.main.bounds)
-           let texture = view.texture(from: shapeNode)!
-           let toaAltaNode = SKSpriteNode(texture: texture)
-            toaAltaNode.xScale = -1.0
-            toaAltaNode.zRotation = 9.44
-            toaAltaNode.position = CGPoint(x:321.65, y:232.96)
-            //toaAltaNode.zPosition = 1
-            toaAltaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaAltaNode.size.width/2 * 0.35 , center: CGPoint(x:-3.0,y:-0.5))
-            toaAltaNode.physicsBody?.isDynamic = false
-            toaAltaNode.name = "Toa Alta"
-            return  toaAltaNode
-       }
+        let shapeNode = SKShapeNode(path:bpToaAlta.cgPath)
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let toaAltaNode = SKSpriteNode(texture: texture)
+        toaAltaNode.xScale = -1.0
+        toaAltaNode.zRotation = 9.44
+        toaAltaNode.position = CGPoint(x:321.65, y:232.96)
+        //toaAltaNode.zPosition = 1
+        toaAltaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaAltaNode.size.width/2 * 0.35 , center: CGPoint(x:-3.0,y:-0.5))
+        toaAltaNode.physicsBody?.isDynamic = false
+        toaAltaNode.name = "Toa Alta"
+        return  toaAltaNode
+    }
     
     func toaBajaBezierPathToSKSpriteNode(bpToaBaja: UIBezierPath)-> SKSpriteNode{
            
-           let shapeNode = SKShapeNode(path:bpToaBaja.cgPath)
-           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
-           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
-           shapeNode.lineWidth = 0.5
-           let view = SKView(frame: UIScreen.main.bounds)
-           let texture = view.texture(from: shapeNode)!
-           let toaBajaNode = SKSpriteNode(texture: texture)
-            toaBajaNode.xScale = -1.0
-            toaBajaNode.zRotation = 9.44
-            toaBajaNode.position = CGPoint(x:337.59, y:253.87)
-            //toaBajaNode.zPosition = 1
-            toaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaBajaNode.size.width/2 * 0.27 , center: CGPoint(x:5.5,y:0.5))
-            toaBajaNode.physicsBody?.isDynamic = false
-            toaBajaNode.name = "Toa Baja"
-            return  toaBajaNode
-       }
+        let shapeNode = SKShapeNode(path:bpToaBaja.cgPath)
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let toaBajaNode = SKSpriteNode(texture: texture)
+        toaBajaNode.xScale = -1.0
+        toaBajaNode.zRotation = 9.44
+        toaBajaNode.position = CGPoint(x:337.59, y:253.87)
+        //toaBajaNode.zPosition = 1
+        toaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaBajaNode.size.width/2 * 0.27 , center: CGPoint(x:5.5,y:0.5))
+        toaBajaNode.physicsBody?.isDynamic = false
+        toaBajaNode.name = "Toa Baja"
+        return  toaBajaNode
+    }
     
     
     func bayamonBezierPathToSKSpriteNode(bpBayamon: UIBezierPath)-> SKSpriteNode{
@@ -1108,22 +1109,22 @@ class TestClass {
 
     func catanoBezierPathToSKSpriteNode(bpCatano: UIBezierPath)-> SKSpriteNode{
            
-           let shapeNode = SKShapeNode(path:bpCatano.cgPath)
-           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
-           shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
-           shapeNode.lineWidth = 0.5
-           let view = SKView(frame: UIScreen.main.bounds)
-           let texture = view.texture(from: shapeNode)!
-           let catanoNode = SKSpriteNode(texture: texture)
-            catanoNode.xScale = -1.0
-            catanoNode.zRotation = 9.44
-            catanoNode.position = CGPoint(x:353.41, y:256.05)
-            catanoNode.zPosition = 2//FOR LABEL TO BE LEGIBLE
-            catanoNode.physicsBody = SKPhysicsBody(circleOfRadius:catanoNode.size.width/2 * 0.33 , center: CGPoint(x:0.5,y:0.5))
-            catanoNode.physicsBody?.isDynamic = false
-            catanoNode.name = "Cataño"
-            return  catanoNode
-       }
+        let shapeNode = SKShapeNode(path:bpCatano.cgPath)
+        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let catanoNode = SKSpriteNode(texture: texture)
+        catanoNode.xScale = -1.0
+        catanoNode.zRotation = 9.44
+        catanoNode.position = CGPoint(x:353.41, y:256.05)
+        catanoNode.zPosition = 2//FOR LABEL TO BE LEGIBLE
+        catanoNode.physicsBody = SKPhysicsBody(circleOfRadius:catanoNode.size.width/2 * 0.33 , center: CGPoint(x:0.5,y:0.5))
+        catanoNode.physicsBody?.isDynamic = false
+        catanoNode.name = "Cataño"
+        return  catanoNode
+    }
     
     func guaynaboBezierPathToSKSpriteNode(bpGuaynabo: UIBezierPath)-> SKSpriteNode{
         
@@ -1219,7 +1220,7 @@ class TestClass {
             aguasBuenasNode.physicsBody?.isDynamic = false
             aguasBuenasNode.name = "Aguas Buenas"
             return  aguasBuenasNode
-       }
+    }
     
     func trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: UIBezierPath)-> SKSpriteNode{
            
@@ -1723,11 +1724,8 @@ class TestClass {
         return path
     }
     
-    
- 
-    
     func caboRojoDrawBezierPath() -> UIBezierPath{
-            path = UIBezierPath()
+        path = UIBezierPath()
         //Cabo Rojo
         path.move(to: CGPoint(x: 232.5, y: 168.2))
         path.addLine(to: CGPoint(x: 232.3, y: 168.2))
@@ -3388,10 +3386,9 @@ class TestClass {
         path.addLine(to: CGPoint(x: 209.8, y: 98.7))
         path.addLine(to: CGPoint(x: 209.8, y: 98.6))
         path.close()
-        caboRojoBezierPath = path
-
+        //caboRojoBezierPath = path
         
-        return caboRojoBezierPath
+        return path
     }
     //Hormigueros
     func hormiguerosDrawBezierPath() -> UIBezierPath{
@@ -3453,9 +3450,9 @@ class TestClass {
         path.addLine(to: CGPoint(x: 230.8, y: 101.6))
         path.close()
         
-        hormiguerosBezierPath = path
+        //hormiguerosBezierPath = path
      
-        return hormiguerosBezierPath
+        return path
     }
                 
         //Mayaguez
@@ -4044,8 +4041,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 128.7, y: 35.9))
         path.addLine(to: CGPoint(x: 128.7, y: 35.8))
         path.close()
-        mayaguezBezierPath = path
-        return mayaguezBezierPath
+        //mayaguezBezierPath = path
+        return path
 
     }
     /*MAYAGUEZTWO
@@ -5097,9 +5094,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 235.4, y: 56.9))
         path.addLine(to: CGPoint(x: 231.4, y: 56.1))
         path.close()
-
-        anascoBezierPath = path
-        return anascoBezierPath
+        //anascoBezierPath = path
+        return path
     }
     
     func rinconDrawBezierPath() -> UIBezierPath{
@@ -5477,8 +5473,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 194.3, y: 40))
         path.close()
             
-        rinconBezierPath = path
-        return rinconBezierPath
+        //rinconBezierPath = path
+        return path
     }
     
     
@@ -5784,8 +5780,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 215.8, y: 30.6))
         path.close()
 
-        aguadaBezierPath = path
-        return aguadaBezierPath
+        //aguadaBezierPath = path
+        return path
     }
         
     
@@ -6234,8 +6230,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 232.4, y: 1))
         path.close()
         
-        aguadillaBezierPath = path
-        return aguadillaBezierPath
+        //aguadillaBezierPath = path
+        return path
 
     }
 
@@ -6664,8 +6660,8 @@ class TestClass {
       path.addLine(to: CGPoint(x: 233.8, y: 0))
       path.close()
         
-      isabelaBezierPath = path
-      return isabelaBezierPath
+      //isabelaBezierPath = path
+      return path
       
     }
     func mocaDrawBezierPath() -> UIBezierPath{
@@ -6741,8 +6737,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 245, y: 20.5))
         path.close()
             
-        mocaBezierPath = path
-        return mocaBezierPath
+        //mocaBezierPath = path
+        return path
         
     }
     func sanSebastianDrawBezierPath() -> UIBezierPath{
@@ -6848,8 +6844,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 262.8, y: 37.1))
         path.close()
 
-            sanSebastianBezierPath = path
-            return sanSebastianBezierPath
+            //sanSebastianBezierPath = path
+            return path
             
     }
     
@@ -6941,8 +6937,8 @@ class TestClass {
         path.close()
 
 
-        lasMariasBezierPath = path
-        return lasMariasBezierPath
+        //lasMariasBezierPath = path
+        return path
                 
     }
     
@@ -7057,8 +7053,8 @@ class TestClass {
         path.close()
 
 
-        maricaoBezierPath = path
-        return maricaoBezierPath
+        //maricaoBezierPath = path
+        return path
                 
     }
     
@@ -7159,8 +7155,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 251.5, y: 99.2))
         path.addLine(to: CGPoint(x: 249.3, y: 98.8))
         path.close()
-        sanGermanBezierPath = path
-        return sanGermanBezierPath
+        //sanGermanBezierPath = path
+        return path
                         
     }
     
@@ -7248,8 +7244,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 278.6, y: 103.8))
         path.close()
 
-        sabanaGrandeBezierPath = path
-        return sabanaGrandeBezierPath
+        //sabanaGrandeBezierPath = path
+        return path
                         
     }
     
@@ -7403,8 +7399,8 @@ class TestClass {
         path.close()
 
 
-        yaucoBezierPath = path
-        return yaucoBezierPath
+        //yaucoBezierPath = path
+        return path
                         
     }
     
@@ -8518,8 +8514,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 243.9, y: 128.5))
         path.close()
 
-        lajasBezierPath = path
-        return lajasBezierPath
+        //lajasBezierPath = path
+        return path
                         
     }
     
@@ -9381,8 +9377,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 275.3, y: 137.9))
         path.close()
 
-        guanicaBezierPath = path
-        return guanicaBezierPath
+        //guanicaBezierPath = path
+        return path
                         
     }
     
@@ -10037,8 +10033,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 318.5, y: 108.1))
         path.close()
 
-        guayanillaBezierPath = path
-        return guayanillaBezierPath
+        //guayanillaBezierPath = path
+        return path
                         
     }
     
@@ -10174,8 +10170,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 323, y: 80.9))
         path.close()
 
-        adjuntasBezierPath = path
-        return  adjuntasBezierPath
+        //adjuntasBezierPath = path
+        return  path
                         
     }
     
@@ -10260,8 +10256,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 305.4, y: 77.4))
         path.close()
 
-        laresBezierPath = path
-        return  laresBezierPath
+        //laresBezierPath = path
+        return  path
                         
     }
     
@@ -11211,8 +11207,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 379.3, y: 103.3))
         path.close()
 
-        ponceBezierPath = path
-        return  ponceBezierPath
+        //ponceBezierPath = path
+        return  path
                         
     }
 
@@ -11940,8 +11936,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 326, y: 114))
         path.close()
         
-        penuelasBezierPath = path
-        return  penuelasBezierPath
+        //penuelasBezierPath = path
+        return  path
                         
     }
     
@@ -12126,10 +12122,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 334.3, y: 55.5))
         path.addLine(to: CGPoint(x: 334, y: 53.7))
         path.close()
-
-
-        utuadoBezierPath = path
-        return  utuadoBezierPath
+        //utuadoBezierPath = path
+        return  path
                         
     }
 
@@ -12218,9 +12212,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 378.8, y: 66.6))
         path.addLine(to: CGPoint(x: 377.1, y: 63.1))
         path.close()
-
-        jayuyaBezierPath = path
-        return  jayuyaBezierPath
+        //jayuyaBezierPath = path
+        return  path
                         
     }
     
@@ -12596,9 +12589,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 382.3, y: 104.6))
         path.addLine(to: CGPoint(x: 380.8, y: 103))
         path.close()
-
-        juanaDiazBezierPath = path
-        return  juanaDiazBezierPath
+        //juanaDiazBezierPath = path
+        return  path
                         
     }
 
@@ -12816,10 +12808,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 274, y: 7))
         path.addLine(to: CGPoint(x: 274, y: 6.9))
         path.close()
-
-            
-        quebradillasBezierPath = path
-        return  quebradillasBezierPath
+        //quebradillasBezierPath = path
+        return  path
                             
     }
     
@@ -13015,9 +13005,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 294.9, y: 7))
         path.addLine(to: CGPoint(x: 294.9, y: 6.7))
         path.close()
-
-        camuyBezierPath = path
-        return  camuyBezierPath
+        //camuyBezierPath = path
+        return  path
                             
     }
     
@@ -13234,9 +13223,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 313.9, y: 6.5))
         path.addLine(to: CGPoint(x: 313.9, y: 6.4))
         path.close()
-
-        hatilloBezierPath = path
-        return  hatilloBezierPath
+        //hatilloBezierPath = path
+        return  path
                             
     }
     
@@ -13838,9 +13826,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 359.2, y: 6.6))
         path.addLine(to: CGPoint(x: 359.2, y: 6.3))
         path.close()
-
-        areciboBezierPath = path
-        return  areciboBezierPath
+        //areciboBezierPath = path
+        return  path
                             
     }
     
@@ -14151,9 +14138,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 420.6, y: 6.2))
         path.addLine(to: CGPoint(x: 420.6, y: 6.2))
         path.close()
-
-        vegaBajaBezierPath = path
-        return  vegaBajaBezierPath
+        //vegaBajaBezierPath = path
+        return  path
                         
     }
     
@@ -14501,9 +14487,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 409.8, y: 15.3))
         path.addLine(to: CGPoint(x: 410, y: 8.5))
         path.close()
-
-        manatiBezierPath = path
-        return  manatiBezierPath
+        //manatiBezierPath = path
+        return  path
                         
     }
     
@@ -14721,14 +14706,12 @@ class TestClass {
         path.addLine(to: CGPoint(x: 376.8, y: 7.3))
         path.addLine(to: CGPoint(x: 376.8, y: 7.3))
         path.close()
-
-        barcelonetaBezierPath = path
-        return  barcelonetaBezierPath
+        //barcelonetaBezierPath = path
+        return  path
                         
     }
     
     func floridaDrawBezierPath() -> UIBezierPath{
-
         path = UIBezierPath()
         path.move(to: CGPoint(x: 384.2, y: 35.8))
         path.addLine(to: CGPoint(x: 382.7, y: 33.2))
@@ -14760,9 +14743,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 384.3, y: 36.3))
         path.addLine(to: CGPoint(x: 384.2, y: 35.8))
         path.close()
-
-        floridaBezierPath = path
-        return  floridaBezierPath
+        //floridaBezierPath = path
+        return  path
                         
     }
     
@@ -14839,8 +14821,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 406.3, y: 95.8))
         path.close()
 
-        villalbaBezierPath = path
-        return  villalbaBezierPath
+        //villalbaBezierPath = path
+        return  path
                         
     }
     
@@ -14989,9 +14971,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 431.8, y: 76.5))
         path.addLine(to: CGPoint(x: 430.6, y: 73.5))
         path.close()
-
-        orocovisBezierPath = path
-        return  orocovisBezierPath
+        //orocovisBezierPath = path
+        return  path
                         
     }
 
@@ -15131,9 +15112,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 403.1, y: 44))
         path.addLine(to: CGPoint(x: 403.4, y: 41.1))
         path.close()
-
-        cialesBezierPath = path
-        return  cialesBezierPath
+        //cialesBezierPath = path
+        return  path
                         
     }
 
@@ -15221,10 +15201,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 419.1, y: 42.6))
         path.addLine(to: CGPoint(x: 416.4, y: 40.9))
         path.close()
-
-
-        morovisBezierPath = path
-        return  morovisBezierPath
+        //morovisBezierPath = path
+        return  path
                             
     }
     
@@ -15321,9 +15299,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 444, y: 43))
         path.addLine(to: CGPoint(x: 443.3, y: 42.6))
         path.close()
-
-        corozalBezierPath = path
-        return  corozalBezierPath
+        //corozalBezierPath = path
+        return  path
                         
     }
 
@@ -15421,16 +15398,14 @@ class TestClass {
         path.addLine(to: CGPoint(x: 445.6, y: 78.1))
         path.addLine(to: CGPoint(x: 445.5, y: 77.9))
         path.close()
-
-        barranquitasBezierPath = path
-        return  barranquitasBezierPath
+        //barranquitasBezierPath = path
+        return path
                         
     }
 
 
 
     func comerioDrawBezierPath() -> UIBezierPath{
-
         path = UIBezierPath()
         path.move(to: CGPoint(x: 477.5, y: 73.9))
         path.addLine(to: CGPoint(x: 476.9, y: 73.1))
@@ -15500,17 +15475,13 @@ class TestClass {
         path.addLine(to: CGPoint(x: 480.2, y: 76.9))
         path.addLine(to: CGPoint(x: 477.5, y: 73.9))
         path.close()
-
-        comerioBezierPath = path
-        return  comerioBezierPath
+        //comerioBezierPath = path
+        return  path
                         
     }
 
 
-  
-
     func coamoDrawBezierPath() -> UIBezierPath{
-
         path = UIBezierPath()
         path.move(to: CGPoint(x: 416.8, y: 100.1))
         path.addLine(to: CGPoint(x: 415.5, y: 99.7))
@@ -15617,11 +15588,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 417.8, y: 100.3))
         path.addLine(to: CGPoint(x: 416.8, y: 100.1))
         path.close()
-
-
-
-        coamoBezierPath = path
-        return  coamoBezierPath
+        //coamoBezierPath = path
+        return  path
                             
     }
 
@@ -15695,10 +15663,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 470.9, y: 54.6))
         path.addLine(to: CGPoint(x: 470.6, y: 54.3))
         path.close()
-
-
-        naranjitoBezierPath = path
-        return  naranjitoBezierPath
+        //naranjitoBezierPath = path
+        return  path
                             
     }
 
@@ -15771,10 +15737,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 468.7, y: 99.7))
         path.addLine(to: CGPoint(x: 462.8, y: 95.3))
         path.close()
-
-
-        aibonitoBezierPath = path
-        return  aibonitoBezierPath
+        //aibonitoBezierPath = path
+        return  path
                             
     }
     
@@ -17033,14 +16997,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 473.9, y: 127.2))
         path.addLine(to: CGPoint(x: 472, y: 126.3))
         path.close()
-
-
-        salinasBezierPath = path
-        return  salinasBezierPath
+        //salinasBezierPath = path
+        return  path
                         
     }
-
-
 
     func cidraDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -17119,12 +17079,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 489.7, y: 86.9))
         path.addLine(to: CGPoint(x: 489.5, y: 83.2))
         path.close()
-
-        cidraBezierPath = path
-        return  cidraBezierPath
+        //cidraBezierPath = path
+        return  path
                         
     }
-
 
     func santaIsabelDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -17970,10 +17928,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 421.8, y: 135.8))
         path.addLine(to: CGPoint(x: 413.2, y: 134.4))
         path.close()
-
-
-        santaIsabelBezierPath = path
-        return  santaIsabelBezierPath
+        //santaIsabelBezierPath = path
+        return  path
                         
     }
     
@@ -18097,9 +18053,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 510.6, y: 109.2))
         path.addLine(to: CGPoint(x: 509.7, y: 106.8))
         path.close()
-
-        cayeyBezierPath = path
-        return  cayeyBezierPath
+        //cayeyBezierPath = path
+        return  path
                         
     }
     
@@ -18327,9 +18282,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 436.9, y: 8.5))
         path.addLine(to: CGPoint(x: 436.9, y: 8.4))
         path.close()
-
-        vegaAltaBezierPath = path
-        return  vegaAltaBezierPath
+        //vegaAltaBezierPath = path
+        return  path
                         
     }
 
@@ -18720,10 +18674,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 455.5, y: 10.1))
         path.addLine(to: CGPoint(x: 455.5, y: 10))
         path.close()
-
-
-        doradoBezierPath = path
-        return  doradoBezierPath
+        //doradoBezierPath = path
+        return  path
                         
     }
 
@@ -18813,14 +18765,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 474.6, y: 40.7))
         path.addLine(to: CGPoint(x: 475.2, y: 36.1))
         path.close()
-
-
-
-        toaAltaBezierPath = path
-        return  toaAltaBezierPath
+        //toaAltaBezierPath = path
+        return  path
                         
     }
-
 
     func toaBajaDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -19315,14 +19263,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 490.7, y: 11.4))
         path.addLine(to: CGPoint(x: 490.7, y: 11.3))
         path.close()
-
-        toaBajaBezierPath = path
-        return  toaBajaBezierPath
+        //toaBajaBezierPath = path
+        return  path
                         
     }
-
-
-
 
     func bayamonDrawBezierPath() -> UIBezierPath{
 
@@ -19443,9 +19387,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 485.8, y: 27))
         path.addLine(to: CGPoint(x: 485.5, y: 26.8))
         path.close()
-
-        bayamonBezierPath = path
-        return  bayamonBezierPath
+        //bayamonBezierPath = path
+        return  path
                             
     }
 
@@ -19707,12 +19650,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 491.2, y: 16.2))
         path.addLine(to: CGPoint(x: 491.2, y: 16))
         path.close()
-
-
-
-
-        catanoBezierPath = path
-        return  catanoBezierPath
+        //catanoBezierPath = path
+        return  path
                             
     }
     
@@ -19829,9 +19768,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 498, y: 21.6))
         path.addLine(to: CGPoint(x: 498, y: 21.6))
         path.close()
-
-        guaynaboBezierPath = path
-        return  guaynaboBezierPath
+        //guaynaboBezierPath = path
+        return  path
                         
     }
 
@@ -20673,13 +20611,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 494.7, y: 12.2))
         path.addLine(to: CGPoint(x: 494.7, y: 12.2))
         path.close()
-
-        sanJuanBezierPath = path
-        return  sanJuanBezierPath
+        //sanJuanBezierPath = path
+        return  path
                         
     }
-
-
 
     func caguasDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -20804,12 +20739,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 519, y: 58.7))
         path.addLine(to: CGPoint(x: 518.4, y: 58.5))
         path.close()
-
-        caguasBezierPath = path
-        return  caguasBezierPath
+        //caguasBezierPath = path
+        return  path
                         
     }
-
 
     func trujilloAltoDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -20864,14 +20797,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 530.5, y: 39.5))
         path.addLine(to: CGPoint(x: 528.5, y: 38.6))
         path.close()
-
-        trujilloAltoBezierPath = path
-        return  trujilloAltoBezierPath
+        //trujilloAltoBezierPath = path
+        return  path
                         
     }
-
-
-
 
     func carolinaDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -21132,9 +21061,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 530.2, y: 16.6))
         path.addLine(to: CGPoint(x: 530.2, y: 16.5))
         path.close()
-
-        carolinaBezierPath = path
-        return  carolinaBezierPath
+        //carolinaBezierPath = path
+        return  path
                             
     }
 
@@ -21204,10 +21132,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 509.2, y: 66.2))
         path.addLine(to: CGPoint(x: 510, y: 62.4))
         path.close()
-
-
-        aguasBuenasBezierPath = path
-        return  aguasBuenasBezierPath
+        //aguasBuenasBezierPath = path
+        return  path
                             
     }
     
@@ -21276,9 +21202,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 21.45, y: -18.65))
         path.addLine(to: CGPoint(x: 21.45, y: -20.05))
         path.close()
-
-        loizaBezierPath = path
-        return  loizaBezierPath
+        //loizaBezierPath = path
+        return  path
                         
     }
 
@@ -21412,9 +21337,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 561.4, y: 39.1))
         path.addLine(to: CGPoint(x: 563.3, y: 30.4))
         path.close()
-
-        canovanasBezierPath = path
-        return  canovanasBezierPath
+        //canovanasBezierPath = path
+        return  path
                         
     }
 
@@ -21972,9 +21896,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 574.2, y: 26.6))
         path.addLine(to: CGPoint(x: 574.2, y: 26.5))
         path.close()
-
-        rioGrandeBezierPath = path
-        return  rioGrandeBezierPath
+        //rioGrandeBezierPath = path
+        return  path
                         
     }
 
@@ -22349,14 +22272,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 603.4, y: 36))
         path.addLine(to: CGPoint(x: 603.4, y: 35.9))
         path.close()
-
-        luquilloBezierPath = path
-        return  luquilloBezierPath
+        //luquilloBezierPath = path
+        return  path
                         
     }
-
-
-
 
     func fajardoDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -23594,14 +23513,12 @@ class TestClass {
         path.addLine(to: CGPoint(x: 636.7, y: 33.5))
         path.addLine(to: CGPoint(x: 636.7, y: 33.4))
         path.close()
-
-        fajardoBezierPath = path
-        return  fajardoBezierPath
+        //fajardoBezierPath = path
+        return  path
                             
     }
 
     func ceibaDrawBezierPath() -> UIBezierPath{
-
         path = UIBezierPath()
         path.move(to: CGPoint(x: 642.6, y: 75.5))
         path.addLine(to: CGPoint(x: 642.5, y: 75.5))
@@ -24806,12 +24723,12 @@ class TestClass {
         path.addLine(to: CGPoint(x: 599, y: 68.8))
         path.addLine(to: CGPoint(x: 598.8, y: 68.4))
         path.close()
-
-        ceibaBezierPath = path
-        return  ceibaBezierPath
+        //ceibaBezierPath = path
+        return  path
                             
     }
-    func loizaTwoDrawBezierPath() -> UIBezierPath{
+    
+    /*func loizaTwoDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
         path.move(to: CGPoint(x: 530.4, y: 16.7))
         path.addLine(to: CGPoint(x: 530.9, y: 17.2))
@@ -25606,9 +25523,9 @@ class TestClass {
         path.addLine(to: CGPoint(x: 530.9, y: 17.2))
         path.close()
 
-        loizaTwoBezierPath = path
-        return loizaTwoBezierPath
-    }
+        //loizaTwoBezierPath = path
+        return path
+    }*/
     
     func juncosDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -25676,9 +25593,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 556.1, y: 72.4))
         path.addLine(to: CGPoint(x: 554.4, y: 71.7))
         path.close()
-        
-        juncosBezierPath = path
-        return  juncosBezierPath
+        //juncosBezierPath = path
+        return  path
                         
     }
 
@@ -25790,9 +25706,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 541.2, y: 85.2))
         path.addLine(to: CGPoint(x: 541.4, y: 81.5))
         path.close()
-
-        sanLorenzoBezierPath = path
-        return  sanLorenzoBezierPath
+        //sanLorenzoBezierPath = path
+        return  path
                         
     }
 
@@ -25879,11 +25794,11 @@ class TestClass {
         path.addLine(to: CGPoint(x: 537.6, y: 60.2))
         path.addLine(to: CGPoint(x: 536.8, y: 58.5))
         path.close()
-
-        guraboBezierPath = path
-        return  guraboBezierPath
+        //guraboBezierPath = path
+        return  path
                         
     }
+    
     func guayamaDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
         path.move(to: CGPoint(x: 513.9, y: 116))
@@ -26873,13 +26788,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 511.9, y: 118.5))
         path.addLine(to: CGPoint(x: 513.9, y: 116))
         path.close()
-
-        guayamaBezierPath = path
-        return  guayamaBezierPath
+        //guayamaBezierPath = path
+        return  path
                         
     }
-
-
 
     func arroyoDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -27134,12 +27046,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 519.4, y: 156))
         path.addLine(to: CGPoint(x: 519.4, y: 155.9))
         path.close()
-
-        arroyoBezierPath = path
-        return  arroyoBezierPath
+        //arroyoBezierPath = path
+        return  path
                         
     }
-
 
     func patillasDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -27548,15 +27458,12 @@ class TestClass {
         path.addLine(to: CGPoint(x: 519.3, y: 117.4))
         path.addLine(to: CGPoint(x: 518.1, y: 117.2))
         path.close()
-
-        patillasBezierPath = path
-        return  patillasBezierPath
+        //patillasBezierPath = path
+        return  path
                         
     }
 
-
     func maunaboDrawBezierPath() -> UIBezierPath{
-
         path = UIBezierPath()
         path.move(to: CGPoint(x: 535.3, y: 131))
         path.addLine(to: CGPoint(x: 534.2, y: 129.1))
@@ -27898,9 +27805,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 535.7, y: 131.5))
         path.addLine(to: CGPoint(x: 535.3, y: 131))
         path.close()
-
-        maunaboBezierPath = path
-        return  maunaboBezierPath
+        //maunaboBezierPath = path
+        return  path
                             
     }
     
@@ -28361,13 +28267,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 558.7, y: 111.9))
         path.addLine(to: CGPoint(x: 556.6, y: 111.2))
         path.close()
-        
-        yabucoaBezierPath = path
-        return  yabucoaBezierPath
+        //yabucoaBezierPath = path
+        return  path
                         
     }
-
-
 
     func lasPiedrasDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -28455,12 +28358,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 573.6, y: 69.3))
         path.addLine(to: CGPoint(x: 573, y: 69))
         path.close()
-
-        lasPiedrasBezierPath = path
-        return  lasPiedrasBezierPath
+        //lasPiedrasBezierPath = path
+        return  path
                         
     }
-
 
     func humacaoDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -28980,9 +28881,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 592.9, y: 91))
         path.addLine(to: CGPoint(x: 584.2, y: 87.7))
         path.close()
-
-        humacaoBezierPath = path
-        return  humacaoBezierPath
+        //humacaoBezierPath = path
+        return  path
                         
     }
 
@@ -29469,11 +29369,11 @@ class TestClass {
         path.addLine(to: CGPoint(x: 587.7, y: 65.3))
         path.addLine(to: CGPoint(x: 587.1, y: 64.6))
         path.close()
-
-        naguaboBezierPath = path
-        return  naguaboBezierPath
+        //naguaboBezierPath = path
+        return  path
                             
     }
+    
     func viequesDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
         path.move(to: CGPoint(x: 797.8, y: 146.5))
@@ -31946,13 +31846,10 @@ class TestClass {
         path.addLine(to: CGPoint(x: 691.6, y: 100.3))
         path.addLine(to: CGPoint(x: 691.6, y: 100.2))
         path.close()
-
-        viequesBezierPath = path
-        return  viequesBezierPath
+        //viequesBezierPath = path
+        return  path
                         
     }
-
-
 
     func culebraDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
@@ -33746,9 +33643,8 @@ class TestClass {
         path.addLine(to: CGPoint(x: 706.5, y: 47))
         path.addLine(to: CGPoint(x: 706.5, y: 46.9))
         path.close()
-
-        culebraBezierPath = path
-        return  culebraBezierPath
+        //culebraBezierPath = path
+        return  path
                         
     }
         

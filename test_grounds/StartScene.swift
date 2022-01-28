@@ -13,8 +13,8 @@ import UIKit
 
 
 class StartScene: SKScene{
-    
-    let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
+    //Estas variables UIBezierPath se pueden declarar en didMove
+    /*let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
     let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
     let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
     let anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
@@ -44,7 +44,7 @@ class StartScene: SKScene{
     let camuybp:UIBezierPath! = TestClass().camuyDrawBezierPath()
     let hatillobp:UIBezierPath! = TestClass().hatilloDrawBezierPath()
     let arecibobp:UIBezierPath! = TestClass().areciboDrawBezierPath()
-    //***let mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
+    //let mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
     let adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
     
     
@@ -82,7 +82,7 @@ class StartScene: SKScene{
     let aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()
     let trujilloAltobp:UIBezierPath! = TestClass().trujilloAltoDrawBezierPath()
     let loizabp:UIBezierPath! = TestClass().loizaDrawBezierPath()
-    /*let loizaTwobp:UIBezierPath! = TestClass().loizaTwoDrawBezierPath()*/
+    //let loizaTwobp:UIBezierPath! = TestClass().loizaTwoDrawBezierPath()
     let canovanasbp:UIBezierPath! = TestClass().canovanasDrawBezierPath()
     let rioGrandebp:UIBezierPath! = TestClass().rioGrandeDrawBezierPath()
     let luquillobp:UIBezierPath! = TestClass().luquilloDrawBezierPath()
@@ -107,39 +107,37 @@ class StartScene: SKScene{
     let rectanglebp:UIBezierPath! = TestClass().createRectangle()
     let rectangleViequesbp:UIBezierPath! = TestClass().createViequesRectangle()
     let rectangleCulebrabp:UIBezierPath! = TestClass().createCulebraRectangle()
-
+    */
     
     
+    var containerNode = SKNode()//se usa en mas de una funcion
+    var labelTimer = SKLabelNode()//se usa en mas de una funcion
+    var timerBackground = SKSpriteNode()//se usa en mas de una funcion
+    var municipiosNameBackground = SKSpriteNode()//se usa en mas de una funcion
     
-    var containerNode = SKNode()
+    var renderTime: TimeInterval = 0.0//esta solo se usa en la funcion del reloj
+    let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
+    var seconds: Int = 0//esta solo se usa en la funcion del reloj
+    var minutes: Int = 0//esta solo se usa en la funcion del reloj
     
-    var labelTimer = SKLabelNode()
-    var timerBackground = SKSpriteNode()
-    var municipiosNameBackground = SKSpriteNode()
+    var completedGame = false//se usa en mas de una funcion
     
-    var renderTime: TimeInterval = 0.0
-    let changeTime: TimeInterval = 1
-    var seconds: Int = 0
-    var minutes: Int = 0
-    
-    var completedGame = false
-    
-    var twoLineText: String = ""
-    var useLine2:Bool = false
+    var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
+    var useLine2:Bool = false//se usa en mas de una funcion
     //let locationNameLabel = SKLabelNode()/*Esta declaracion estaba originalmente en override func**/
     
 
     
-
-   var municipios_names_array = ["Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco" ]
+    //El array se puede declarar dentro de la funcion touchesBegan
+    var municipios_names_array = ["Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco" ]
     
-    var municipioNameLabel = SKLabelNode()
+    var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
-    var touchedNode: SKPhysicsBody!
-    var success: String!
-    var fail: String!
-    var penalty: Int!
-    var nextMunicipio: Int = -1
+    var touchedNode: SKPhysicsBody!//se puede declarar dentro de la funcion touchesBegan
+    //var success: String!//variable que no se uso
+    var fail: String!//se usa en mas de una funcion
+    var penalty: Int!//Se usa solo en la funcion del reloj
+    var nextMunicipio: Int = -1//se puede declarar en touchesBegan
     //var locationNameLabel = SKLabelNode()
     
     
@@ -160,259 +158,333 @@ class StartScene: SKScene{
         
         municipiosNameBackground = labelMunicipiosNameBackground()
         
+        let rectanglebp:UIBezierPath! = TestClass().createRectangle()
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
         containerNode.addChild(rectangularFrameSKSPriteNode)
         
+        let rectangleViequesbp:UIBezierPath! = TestClass().createViequesRectangle()
         let rectangularViequesFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: rectangleViequesbp)
         containerNode.addChild(rectangularViequesFrameSKSPriteNode)
         
+        let rectangleCulebrabp:UIBezierPath! = TestClass().createCulebraRectangle()
         let rectangularCulebraFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: rectangleCulebrabp)
         containerNode.addChild(rectangularCulebraFrameSKSPriteNode)
         
-
+        let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
         let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
         containerNode.addChild(caboRojoSKSpriteNode)
         
+        let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
         let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
         containerNode.addChild(hormiguerosSKSpriteNode)
         
+        let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
         let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
         containerNode.addChild(mayaguezSKSpriteNode)
         
         //let mayaguezTwoSKSpriteNode:SKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
          //containerNode.addChild(mayaguezTwoSKSpriteNode)
-        
+        let anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
         let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
         containerNode.addChild(anascoSKSpriteNode)
         
+        let rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
         let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
         containerNode.addChild(rinconSKSpriteNode)
         
+        let aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
         let aguadaSKSpriteNode: SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: aguadabp)
         containerNode.addChild(aguadaSKSpriteNode)
         
+        let aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()
         let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
         containerNode.addChild(aguadillaSKSpriteNode)
         
+        let isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
         let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
         containerNode.addChild(isabelaSKSpriteNode)
         
-        
+        let mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
         let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
         containerNode.addChild(mocaSKSpriteNode)
         
+        let lasMariasbp:UIBezierPath! = TestClass().lasMariasDrawBezierPath()
         let lasMariasSKSpriteNode: SKSpriteNode = TestClass().lasMariasBezierPathToSKSpriteNode(bpLasMarias: lasMariasbp)
         containerNode.addChild(lasMariasSKSpriteNode)
         
+        let maricaobp:UIBezierPath! = TestClass().maricaoDrawBezierPath()
         let maricaoSKSpriteNode: SKSpriteNode = TestClass().maricaoBezierPathToSKSpriteNode(bpMaricao:maricaobp)
         containerNode.addChild(maricaoSKSpriteNode)
         
+        let sanGermanbp:UIBezierPath! = TestClass().sanGermanDrawBezierPath()
         let sanGermanSKSpriteNode:SKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: sanGermanbp)
         containerNode.addChild(sanGermanSKSpriteNode)
         
+        let yaucobp:UIBezierPath! = TestClass().yaucoDrawBezierPath()
         let yaucoSKSpriteNode: SKSpriteNode = TestClass().yaucoBezierPathToSKSpriteNode(bpYauco:yaucobp)
         containerNode.addChild(yaucoSKSpriteNode)
-    
+        
+        let lajasbp:UIBezierPath! = TestClass().lajasDrawBezierPath()
         let lajasSKSpriteNode: SKSpriteNode = TestClass().lajasBezierPathToSKSpriteNode(bpLajas:lajasbp)
         containerNode.addChild(lajasSKSpriteNode)
         
+        let guanicabp:UIBezierPath! = TestClass().guanicaDrawBezierPath()
         let guanicaSKSpriteNode: SKSpriteNode = TestClass().guanicaBezierPathToSKSpriteNode(bpGuanica:guanicabp)
         containerNode.addChild(guanicaSKSpriteNode)
         
+        let guayanillabp:UIBezierPath! = TestClass().guayanillaDrawBezierPath()
         let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:guayanillabp)
         containerNode.addChild(guayanillaSKSpriteNode)
         
+        let sanSebastianbp:UIBezierPath! = TestClass().sanSebastianDrawBezierPath()
         let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: sanSebastianbp)
         containerNode.addChild(sanSebastianSKSpriteNode)
         
+        let sabanaGrandebp:UIBezierPath! = TestClass().sabanaGrandeDrawBezierPath()
         let sabanaGrandeSKSpriteNode: SKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: sabanaGrandebp)
         containerNode.addChild(sabanaGrandeSKSpriteNode)
         
+        let laresbp:UIBezierPath! = TestClass().laresDrawBezierPath()
         let laresSKSpriteNode:SKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares: laresbp)
         containerNode.addChild(laresSKSpriteNode)
     
+        let penuelasbp:UIBezierPath! = TestClass().penuelasDrawBezierPath()
         let penuelasSKSpriteNode:SKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas: penuelasbp)
         containerNode.addChild(penuelasSKSpriteNode)
         
+        let poncebp:UIBezierPath! = TestClass().ponceDrawBezierPath()
         let ponceSKSpriteNode:SKSpriteNode = TestClass().ponceBezierPathToSKSpriteNode(bpPonce: poncebp)
         containerNode.addChild(ponceSKSpriteNode)
         
+        let utuadobp:UIBezierPath! = TestClass().utuadoDrawBezierPath()
         let utuadoSKSpriteNode:SKSpriteNode = TestClass().utuadoBezierPathToSKSpriteNode(bpUtuado: utuadobp)
         containerNode.addChild(utuadoSKSpriteNode)
         
+        let jayuyabp:UIBezierPath! = TestClass().jayuyaDrawBezierPath()
         let jayuyaSKSpriteNode:SKSpriteNode = TestClass().jayuyaBezierPathToSKSpriteNode(bpJayuya: jayuyabp)
         containerNode.addChild(jayuyaSKSpriteNode)
         
+        let juanaDiazbp:UIBezierPath! = TestClass().juanaDiazDrawBezierPath()
         let juanaDiazSKSpriteNode:SKSpriteNode = TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz: juanaDiazbp)
         containerNode.addChild(juanaDiazSKSpriteNode)
         
+        let quebradillasbp:UIBezierPath! = TestClass().quebradillasDrawBezierPath()
         let quebradillasSKSpriteNode:SKSpriteNode = TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:quebradillasbp)
         containerNode.addChild(quebradillasSKSpriteNode)
         
+        let camuybp:UIBezierPath! = TestClass().camuyDrawBezierPath()
         let camuySKSpriteNode:SKSpriteNode = TestClass().camuyBezierPathToSKSpriteNode(bpCamuy:camuybp)
         containerNode.addChild(camuySKSpriteNode)
         
+        let hatillobp:UIBezierPath! = TestClass().hatilloDrawBezierPath()
         let hatilloSKSpriteNode:SKSpriteNode = TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:hatillobp)
         containerNode.addChild(hatilloSKSpriteNode)
         
+        let arecibobp:UIBezierPath! = TestClass().areciboDrawBezierPath()
         let areciboSKSpriteNode:SKSpriteNode = TestClass().areciboBezierPathToSKSpriteNode(bpArecibo:arecibobp)
         containerNode.addChild(areciboSKSpriteNode)
         
+        let adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
         let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: adjuntasbp)
         containerNode.addChild(adjuntasSKSpriteNode)
         
+        let barcelonetabp:UIBezierPath! = TestClass().barcelonetaDrawBezierPath()
         let barcelonetaSKSpriteNode:SKSpriteNode = TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:barcelonetabp)
         containerNode.addChild(barcelonetaSKSpriteNode)
         
+        let manatibp:UIBezierPath! = TestClass().manatiDrawBezierPath()
         let manatiSKSpriteNode:SKSpriteNode = TestClass().manatiBezierPathToSKSpriteNode(bpManati:manatibp)
         containerNode.addChild(manatiSKSpriteNode)
         
+        let vegaBajabp:UIBezierPath! = TestClass().vegaBajaDrawBezierPath()
         let vegaBajaSKSpriteNode:SKSpriteNode = TestClass().vegaBajaBezierPathToSKSpriteNode(bpVegaBaja:vegaBajabp)
         containerNode.addChild(vegaBajaSKSpriteNode)
         
+        let floridabp:UIBezierPath! = TestClass().floridaDrawBezierPath()
         let floridaSKSpriteNode:SKSpriteNode = TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:floridabp)
         containerNode.addChild(floridaSKSpriteNode)
         
+        let villalbabp:UIBezierPath! = TestClass().villalbaDrawBezierPath()
         let villalbaSKSpriteNode:SKSpriteNode = TestClass().villalbaBezierPathToSKSpriteNode(bpVillalba: villalbabp)
         containerNode.addChild(villalbaSKSpriteNode)
         
+        let cialesbp:UIBezierPath! = TestClass().cialesDrawBezierPath()
         let cialesSKSpriteNode:SKSpriteNode = TestClass().cialesBezierPathToSKSpriteNode(bpCiales: cialesbp)
         containerNode.addChild(cialesSKSpriteNode)
         
+        let orocovisbp:UIBezierPath! = TestClass().orocovisDrawBezierPath()
         let orocovisSKSpriteNode:SKSpriteNode = TestClass().orocovisBezierPathToSKSpriteNode(bpOrocovis: orocovisbp)
         containerNode.addChild(orocovisSKSpriteNode)
         
+        let morovisbp:UIBezierPath! = TestClass().morovisDrawBezierPath()
         let morovisSKSpriteNode:SKSpriteNode = TestClass().morovisBezierPathToSKSpriteNode(bpMorovis: morovisbp)
         containerNode.addChild(morovisSKSpriteNode)
         
+        let corozalbp:UIBezierPath! = TestClass().corozalDrawBezierPath()
         let corozalSKSpriteNode:SKSpriteNode = TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: corozalbp)
         containerNode.addChild(corozalSKSpriteNode)
         
+        let barranquitasbp:UIBezierPath! = TestClass().barranquitasDrawBezierPath()
         let barranquitasSKSpriteNode:SKSpriteNode = TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: barranquitasbp)
         containerNode.addChild(barranquitasSKSpriteNode)
         
+        let comeriobp:UIBezierPath! = TestClass().comerioDrawBezierPath()
         let comerioSKSpriteNode:SKSpriteNode = TestClass().comerioBezierPathToSKSpriteNode(bpComerio: comeriobp)
         containerNode.addChild(comerioSKSpriteNode)
         
+        let coamobp:UIBezierPath! = TestClass().coamoDrawBezierPath()
         let coamoSKSpriteNode:SKSpriteNode = TestClass().coamoBezierPathToSKSpriteNode(bpCoamo: coamobp)
         containerNode.addChild(coamoSKSpriteNode)
         
+        let naranjitobp:UIBezierPath! = TestClass().naranjitoDrawBezierPath()
         let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: naranjitobp)
         containerNode.addChild(naranjitoSKSpriteNode)
         
+        let aibonitobp:UIBezierPath! = TestClass().aibonitoDrawBezierPath()
         let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: aibonitobp)
         containerNode.addChild(aibonitoSKSpriteNode)
         
+        let salinasbp:UIBezierPath! = TestClass().salinasDrawBezierPath()
         let salinasSKSpriteNode:SKSpriteNode = TestClass().salinasBezierPathToSKSpriteNode(bpSalinas: salinasbp)
         containerNode.addChild(salinasSKSpriteNode)
         
+        let cayeybp:UIBezierPath! = TestClass().cayeyDrawBezierPath()
         let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: cayeybp)
         containerNode.addChild(cayeySKSpriteNode)
         
+        let cidrabp:UIBezierPath! = TestClass().cidraDrawBezierPath()
         let cidraSKSpriteNode:SKSpriteNode = TestClass().cidraBezierPathToSKSpriteNode(bpCidra: cidrabp)
         containerNode.addChild(cidraSKSpriteNode)
         
+        let santaIsabelbp:UIBezierPath! = TestClass().santaIsabelDrawBezierPath()
         let santaIsabelSKSpriteNode:SKSpriteNode = TestClass().santaIsabelBezierPathToSKSpriteNode(bpSantaIsabel: santaIsabelbp)
         containerNode.addChild(santaIsabelSKSpriteNode)
         
+        let vegaAltabp:UIBezierPath! = TestClass().vegaAltaDrawBezierPath()
         let vegaAltaSKSpriteNode:SKSpriteNode = TestClass().vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: vegaAltabp)
         containerNode.addChild(vegaAltaSKSpriteNode)
         
+        let doradobp:UIBezierPath! = TestClass().doradoDrawBezierPath()
         let doradoSKSpriteNode:SKSpriteNode = TestClass().doradoBezierPathToSKSpriteNode(bpDorado: doradobp)
         containerNode.addChild(doradoSKSpriteNode)
         
+        let toaAltabp:UIBezierPath! = TestClass().toaAltaDrawBezierPath()
         let toaAltaSKSpriteNode:SKSpriteNode = TestClass().toaAltaBezierPathToSKSpriteNode(bpToaAlta: toaAltabp)
         containerNode.addChild(toaAltaSKSpriteNode)
         
+        let toaBajabp:UIBezierPath! = TestClass().toaBajaDrawBezierPath()
         let toaBajaSKSpriteNode:SKSpriteNode = TestClass().toaBajaBezierPathToSKSpriteNode(bpToaBaja: toaBajabp)
         containerNode.addChild(toaBajaSKSpriteNode)
         
+        let bayamonbp:UIBezierPath! = TestClass().bayamonDrawBezierPath()
         let bayamonSKSpriteNode:SKSpriteNode = TestClass().bayamonBezierPathToSKSpriteNode(bpBayamon: bayamonbp)
         containerNode.addChild(bayamonSKSpriteNode)
-              
+          
+        let catanobp:UIBezierPath! = TestClass().catanoDrawBezierPath()
         let catanoSKSpriteNode:SKSpriteNode = TestClass().catanoBezierPathToSKSpriteNode(bpCatano: catanobp)
         containerNode.addChild(catanoSKSpriteNode)
         
+        let guaynabobp:UIBezierPath! = TestClass().guaynaboDrawBezierPath()
         let guaynaboSKSpriteNode:SKSpriteNode = TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:guaynabobp)
         containerNode.addChild(guaynaboSKSpriteNode)
         
+        let sanJuanbp:UIBezierPath! = TestClass().sanJuanDrawBezierPath()
         let sanJuanSKSpriteNode:SKSpriteNode = TestClass().sanJuanBezierPathToSKSpriteNode(bpSanJuan: sanJuanbp)
         containerNode.addChild(sanJuanSKSpriteNode)
         
-        
+        let caguasbp:UIBezierPath! = TestClass().caguasDrawBezierPath()
         let caguasSKSpriteNode:SKSpriteNode = TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: caguasbp)
         containerNode.addChild(caguasSKSpriteNode)
         
+        let carolinabp:UIBezierPath! = TestClass().carolinaDrawBezierPath()
         let carolinaSKSpriteNode:SKSpriteNode = TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: carolinabp)
         containerNode.addChild(carolinaSKSpriteNode)
         
-
-        
+        let aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()
         let aguasBuenasSKSpriteNode:SKSpriteNode = TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: aguasBuenasbp)
         containerNode.addChild(aguasBuenasSKSpriteNode)
         
+        let trujilloAltobp:UIBezierPath! = TestClass().trujilloAltoDrawBezierPath()
         let trujilloAltoSKSpriteNode:SKSpriteNode = TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: trujilloAltobp)
         containerNode.addChild(trujilloAltoSKSpriteNode)
         
+        let loizabp:UIBezierPath! = TestClass().loizaDrawBezierPath()
         let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: loizabp)
         containerNode.addChild(loizaSKSpriteNode)
         
         /*let loizaTwoSKSpriteNode:SKSpriteNode = TestClass().loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: loizaTwobp)
         containerNode.addChild(loizaTwoSKSpriteNode)*/
         
+        let canovanasbp:UIBezierPath! = TestClass().canovanasDrawBezierPath()
         let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: canovanasbp)
         containerNode.addChild(canovanasSKSpriteNode)
         
+        let rioGrandebp:UIBezierPath! = TestClass().rioGrandeDrawBezierPath()
         let rioGrandeSKSpriteNode:SKSpriteNode = TestClass().rioGrandeBezierPathToSKSpriteNode(bpRioGrande: rioGrandebp)
         containerNode.addChild(rioGrandeSKSpriteNode)
         
+        let luquillobp:UIBezierPath! = TestClass().luquilloDrawBezierPath()
         let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: luquillobp)
         containerNode.addChild(luquilloSKSpriteNode)
         
+        let fajardobp:UIBezierPath! = TestClass().fajardoDrawBezierPath()
         let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: fajardobp)
         containerNode.addChild(fajardoSKSpriteNode)
         
+        let ceibabp:UIBezierPath! = TestClass().ceibaDrawBezierPath()
         let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: ceibabp)
         containerNode.addChild(ceibaSKSpriteNode)
         
+        let gurabobp:UIBezierPath! = TestClass().guraboDrawBezierPath()
         let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: gurabobp)
         containerNode.addChild(guraboSKSpriteNode)
         
+        let juncosbp:UIBezierPath! = TestClass().juncosDrawBezierPath()
         let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos: juncosbp)
         containerNode.addChild(juncosSKSpriteNode)
         
         
-        
+        let sanLorenzobp:UIBezierPath! = TestClass().sanLorenzoDrawBezierPath()
         let sanLorenzoSKSpriteNode:SKSpriteNode = TestClass().sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: sanLorenzobp)
         containerNode.addChild(sanLorenzoSKSpriteNode)
         
+        let guayamabp:UIBezierPath! = TestClass().guayamaDrawBezierPath()
         let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: guayamabp)
         containerNode.addChild(guayamaSKSpriteNode)
         
+        let arroyobp:UIBezierPath! = TestClass().arroyoDrawBezierPath()
         let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: arroyobp)
         containerNode.addChild(arroyoSKSpriteNode)
         
+        let patillasbp:UIBezierPath! = TestClass().patillasDrawBezierPath()
         let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: patillasbp)
         containerNode.addChild(patillasSKSpriteNode)
         
+        let maunabobp:UIBezierPath! = TestClass().maunaboDrawBezierPath()
         let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: maunabobp)
         containerNode.addChild(maunaboSKSpriteNode)
         
+        let yabucoabp:UIBezierPath! = TestClass().yabucoaDrawBezierPath()
         let yabucoaSKSpriteNode:SKSpriteNode = TestClass().yabucoaBezierPathToSKSpriteNode(bpYabucoa: yabucoabp)
         containerNode.addChild(yabucoaSKSpriteNode)
         
+        let lasPiedrasbp:UIBezierPath! = TestClass().lasPiedrasDrawBezierPath()
         let lasPiedrasSKSpriteNode:SKSpriteNode = TestClass().lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: lasPiedrasbp)
         containerNode.addChild(lasPiedrasSKSpriteNode)
         
+        let humacaobp:UIBezierPath! = TestClass().humacaoDrawBezierPath()
         let humacaoSKSpriteNode:SKSpriteNode = TestClass().humacaoBezierPathToSKSpriteNode(bpHumacao: humacaobp)
         containerNode.addChild(humacaoSKSpriteNode)
         
+        let naguabobp:UIBezierPath! = TestClass().naguaboDrawBezierPath()
         let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: naguabobp)
         containerNode.addChild(naguaboSKSpriteNode)
         
+        let viequesbp:UIBezierPath! = TestClass().viequesDrawBezierPath()
         let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: viequesbp)
         containerNode.addChild(viequesSKSpriteNode)
         
+        let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()
         let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
         containerNode.addChild(culebraSKSpriteNode)
         
