@@ -150,6 +150,8 @@ class StartScene: SKScene{
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
+        let skipButton: SKSpriteNode = skipBlueButton()
+        
         labelTimer = labelForTimer(TimerLabel: labelTimer)
         
         timerBackground = timerLabelBackground()
@@ -494,6 +496,7 @@ class StartScene: SKScene{
         self.addChild(labelTimer)
         self.addChild(municipiosNameBackground)
         self.addChild(municipioNameLabel)
+        self.addChild(skipButton)
         self.addChild(containerNode)
         
         sleep(2)
@@ -508,6 +511,13 @@ class StartScene: SKScene{
         //nodes_Container.anchorPoint = CGPoint.zero
         nodes_Container.position = CGPoint(x: 50, y: 15)
         return  nodes_Container
+    }
+    
+    func skipBlueButton()-> SKSpriteNode {
+        let skipBlueButton = SKSpriteNode(imageNamed: "skipBlueButton")
+        skipBlueButton.setScale(0.20)
+        skipBlueButton.position = CGPoint(x:540, y:self.size.height/2 * 0.16)
+        return skipBlueButton
     }
 
     func goldenBackground() -> SKSpriteNode {
@@ -560,7 +570,7 @@ class StartScene: SKScene{
         NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
         NameMunicipioLabel.fontName = "Helvetica"
         NameMunicipioLabel.fontSize = 18
-        NameMunicipioLabel.fontColor = SKColor.red
+        NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
         NameMunicipioLabel.text = "Adjuntas"
         municipiosNameBackground.size = NameMunicipioLabel.frame.size
         //NameMunicipioLabel.zPosition = 2
@@ -569,7 +579,7 @@ class StartScene: SKScene{
     
     func labelMunicipiosNameBackground() -> SKSpriteNode{
         let background = SKSpriteNode()
-        background.color = UIColor.white
+        background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
         background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
         background.size = municipioNameLabel.frame.size
