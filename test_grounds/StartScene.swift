@@ -108,7 +108,7 @@ class StartScene: SKScene{
     let rectangleViequesbp:UIBezierPath! = TestClass().createViequesRectangle()
     let rectangleCulebrabp:UIBezierPath! = TestClass().createCulebraRectangle()
     */
-    
+    var skipButton = SKSpriteNode()//la declare universalmente temporeramente
     
     var containerNode = SKNode()//se usa en mas de una funcion
     var labelTimer = SKLabelNode()//se usa en mas de una funcion
@@ -150,7 +150,7 @@ class StartScene: SKScene{
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
-        let skipButton: SKSpriteNode = skipBlueButton()
+        skipButton = skipBlueButton()
         
         labelTimer = labelForTimer(TimerLabel: labelTimer)
         
@@ -705,11 +705,11 @@ class StartScene: SKScene{
                                     
                                 switch municipioNameLabel.text {
                                         
-                                    case  "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
-                                          "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
+                                    case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
+                                         "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
 
-                                           locationNameLabel.horizontalAlignmentMode = .center
-                                           locationNameLabel.verticalAlignmentMode = .center
+                                        locationNameLabel.horizontalAlignmentMode = .center
+                                        locationNameLabel.verticalAlignmentMode = .center
                                         
                                     case "Camuy", "Aguadilla", "Juncos":
                                         locationNameLabel.fontSize = 5.0
@@ -880,7 +880,12 @@ class StartScene: SKScene{
             }
             
         }
-
+        
+        else if atPoint(touchLocation) == skipButton{
+            nextMunicipio += 1
+            municipioNameLabel.text = municipios_names_array[nextMunicipio]
+            print("Skip Button touched")
+        }
     }
     
     func splitTextIntoFields(theText:SKLabelNode)->String{
