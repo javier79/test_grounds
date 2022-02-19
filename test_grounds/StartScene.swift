@@ -129,7 +129,7 @@ class StartScene: SKScene{
 
     
     //El array se puede declarar dentro de la funcion touchesBegan
-    var municipios_names_array = ["Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco" ]
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
     
     var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
@@ -137,8 +137,9 @@ class StartScene: SKScene{
     //var success: String!//variable que no se uso
     var fail: String!//se usa en mas de una funcion
     var penalty: Int!//Se usa solo en la funcion del reloj
-    var nextMunicipio: Int = -1//se puede declarar en touchesBegan
+    var currentIndex: Int = 0//se puede declarar en touchesBegan
     //var locationNameLabel = SKLabelNode()
+    var numberOfElementsMinusLastElement: Int = 77
     
     
     override func didMove(to view: SKView){
@@ -683,8 +684,24 @@ class StartScene: SKScene{
                         if(touchedNode?.node?.name == spriteNode.name){
                             spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//Color description: minty green(custom color no hex # available)
                             spriteNode.colorBlendFactor = 1.0//0.5
-                            nextMunicipio += 1
-                            if nextMunicipio <= 76 {//76
+                            let currentMunicipioNameOnLabel = municipioNameLabel.text
+                            let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]
+                            /*if currentMunicipioNameOnLabel == municipios_names_array[currentIndex]{
+                                let elementRemoved = municipios_names_array.remove(at:currentIndex)
+                                numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
+                                //print(elementRemoved)
+                                print(municipios_names_array)
+                            }*/
+                            //print(currentMunicipioNameOnLabel)
+                            //print(municipios_names_array[currentIndex])
+                            //currentIndex += 1
+                            if currentIndex <= numberOfElementsMinusLastElement {//76
+                                print("")
+                                print("CURRENT")
+                                print(currentMunicipioNameOnLabel as Any)
+                                print(numberOfElementsMinusLastElement)
+                                print(currentIndex)
+                                print(" ")
                                 locationNameLabel.text = municipioNameLabel.text
                                 locationNameLabel.fontName = "Helvetica"
                                 locationNameLabel.fontColor = UIColor.black
@@ -707,88 +724,114 @@ class StartScene: SKScene{
                                         
                                     case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
                                          "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
-
                                         locationNameLabel.horizontalAlignmentMode = .center
                                         locationNameLabel.verticalAlignmentMode = .center
+                                        //currentIndex -= 1
+                                       /* if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
+                                            let elementRemoved = municipios_names_array.remove(at:currentIndex)
+                                            numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
+                                            print(elementRemoved)
+                                            print(municipios_names_array)
+                                        }*/
                                         
+                                        //let municipios_names_array_two = municipios_names_array.remove(at:currentIndex)
+                                        //numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
+                                        //print(municipios_names_array_two)
                                     case "Camuy", "Aguadilla", "Juncos":
                                         locationNameLabel.fontSize = 5.0
                                         locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
-                                        
+
                                     case "Cayey":
                                         locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
+
                                         
-                                    case "Isabela", " Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
+                                    case "Isabela", "Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
                                         locationNameLabel.fontSize = 5.0
                                         locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
                                         //locationNameLabel.zPosition = 1
+
                                         
                                     case "Hormigueros", "Maunabo" :
                                         locationNameLabel.fontSize = 4.3
                                         locationNameLabel.zRotation = 10.0
                                         locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
+
                                         
                                     case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
                                         locationNameLabel.fontSize = 5.0
                                         locationNameLabel.zRotation = 10.5
                                         locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
+
                                         
                                     case "Mayagüez":
                                         locationNameLabel.fontSize = 5.4
                                         locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
+
                                         
                                     case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
                                         locationNameLabel.fontSize = 5.5
                                         locationNameLabel.zRotation = 10.8
                                         locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
+
                                         
                                     case "Guayanilla" :
                                         locationNameLabel.fontSize = 5.5
                                         locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
                                         locationNameLabel.zRotation = 9.0
+
                                         
                                     case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
                                         locationNameLabel.fontSize = 5.1
                                         locationNameLabel.zRotation = 1.9
                                         locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
+
                                         
                                     case "Florida" :
                                         locationNameLabel.fontSize = 4.5
                                         locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+
                                         
                                     case  "Ciales", "Ceiba" :
                                         locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
+
                                         
                                         
                                     case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
                                         locationNameLabel.fontSize = 4.9
                                         locationNameLabel.zRotation = 2.3
                                         locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
+
                                         
                                     case "Cataño":
                                         locationNameLabel.fontSize = 4.0
                                         locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
+
                                         
                                     case "Loíza" :
                                         locationNameLabel.fontSize = 7.0
                                         locationNameLabel.zRotation = 6.18
                                         locationNameLabel.xScale = 1.0
                                         locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
+
                                         
                                     case "Fajardo":
                                         locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
+
                                         
                                     case "Guayama":
                                         locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
+
                                         
                                     case "Vieques":
                                         locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
+
                                            
                                         
                                     case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
                                         firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
                                         secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
                                         secondLineLabel.verticalAlignmentMode = .top
+
                                         
                                     case "Sabana Grande" :
                                         firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
@@ -797,13 +840,14 @@ class StartScene: SKScene{
                                         secondLineLabel.fontSize = 5.0
                                         firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
                                         secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
+
                                         
                                     case "Vega Alta":
                                         firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
                                         secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                              
                                         firstLineLabel.position = CGPoint(x:2, y:0.5)
                                         secondLineLabel.verticalAlignmentMode = .top
+
                                         
                                     case "Toa Baja":
                                         firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
@@ -811,6 +855,7 @@ class StartScene: SKScene{
                                         firstLineLabel.horizontalAlignmentMode = .right
                                         secondLineLabel.verticalAlignmentMode = .top
                                         secondLineLabel.horizontalAlignmentMode = .right
+
                                         
                                     case "Trujillo Alto" :
                                         firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
@@ -819,33 +864,81 @@ class StartScene: SKScene{
                                         secondLineLabel.fontSize = 5.5
                                         firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
                                         secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
+
                                         
                                     case "San Lorenzo"  :
                                         firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
                                         secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
                                         secondLineLabel.position = CGPoint(x:4.5, y:6.0)
+
+                                    
                                         default:
                                             break
                                 }
+                                
+                                if currentIndex != numberOfElementsMinusLastElement{
+                                    if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
+                                        let elementRemoved = municipios_names_array.remove(at:currentIndex)
+                                        numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
+                                        print("CHANGE")
+                                        print(numberOfElementsMinusLastElement)
+                                        print(currentIndex)
+                                        print("")
+                                        print(elementRemoved)
+                                        //print(municipios_names_array)
+                                        print("ACA")
+                                        
+                                    }
+                                }
+                                else if currentIndex == numberOfElementsMinusLastElement && currentIndex >= 0 && numberOfElementsMinusLastElement >= 1   {
+                                    if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
+                                        let elementRemoved = municipios_names_array.remove(at:currentIndex)
+                                        numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
+                                        currentIndex = 0
+                                        print("CHANGE")
+                                        print(numberOfElementsMinusLastElement)
+                                        print(currentIndex)
+                                        print("")
+                                        print(elementRemoved)
+                                        //print(municipios_names_array)
+                                        print("AQUI")
+                                    }
+                                   
+                                }
+                                else{
+                                    completedGame = true
+                                    print("CHANGE")
+                                    print(numberOfElementsMinusLastElement)
+                                    print(currentIndex)
+                                    print("")
+                                    //print(municipios_names_array)
+                                    print("completed game")
+                                }
+                                
+                                
+
+                                
                                     
                                 if(useLine2 == true){
                                     spriteNode.addChild(firstLineLabel)
                                     spriteNode.addChild(secondLineLabel)
-                                    municipioNameLabel.text = municipios_names_array [nextMunicipio]
+                                    municipioNameLabel.text = municipios_names_array [currentIndex]
+                                    print(municipioNameLabel.text as Any)
                                     municipiosNameBackground.size = municipioNameLabel.frame.size
                                     useLine2 = false
                                 }
 
                                 else{
                                     spriteNode.addChild(locationNameLabel)
-                                    municipioNameLabel.text = municipios_names_array [nextMunicipio]
+                                    municipioNameLabel.text = municipios_names_array [currentIndex]
+                                    print(municipioNameLabel.text as Any)
                                     municipiosNameBackground.size = municipioNameLabel.frame.size
                                 }
                                 
                             }
                                     
                                     
-                            else{
+                            /*else{
                                 locationNameLabel.text = municipioNameLabel.text
                                 locationNameLabel.fontName = "Helvetica"
                                 locationNameLabel.fontColor = UIColor.black
@@ -862,7 +955,7 @@ class StartScene: SKScene{
                                 municipiosNameBackground.size = municipioNameLabel.frame.size
                                     
                                 completedGame = true
-                            }
+                            }*/
                                 
                                 
 
@@ -882,8 +975,13 @@ class StartScene: SKScene{
         }
         
         else if atPoint(touchLocation) == skipButton{
-            nextMunicipio += 1
-            municipioNameLabel.text = municipios_names_array[nextMunicipio]
+            currentIndex += 1
+            if currentIndex == municipios_names_array.endIndex-0{
+                print("This")
+                currentIndex = 0
+            }
+            municipioNameLabel.text = municipios_names_array[currentIndex]
+            municipiosNameBackground.size = municipioNameLabel.frame.size
             print("Skip Button touched")
         }
     }
