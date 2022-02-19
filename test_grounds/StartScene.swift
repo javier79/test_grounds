@@ -913,10 +913,7 @@ class StartScene: SKScene{
                                     print("")
                                     //print(municipios_names_array)
                                     print("completed game")
-                                }
-                                
-                                
-
+                                } 
                                 
                                     
                                 if(useLine2 == true){
