@@ -119,6 +119,7 @@ class StartScene: SKScene{
     let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
     var seconds: Int = 0//esta solo se usa en la funcion del reloj
     var minutes: Int = 0//esta solo se usa en la funcion del reloj
+    var renderTimeBiggerCounter: Int! = 0
     
     var completedGame = false//se usa en mas de una funcion
     
@@ -137,9 +138,9 @@ class StartScene: SKScene{
     //var success: String!//variable que no se uso
     var fail: String!//se usa en mas de una funcion
     var penalty: Int!//Se usa solo en la funcion del reloj
-    var currentIndex: Int = 0//se puede declarar en touchesBegan
+    var currentIndex: Int = 0 //se puede declarar en touchesBegan
     //var locationNameLabel = SKLabelNode()
-    var numberOfElementsMinusLastElement: Int = 77
+    
     
     
     override func didMove(to view: SKView){
@@ -500,7 +501,8 @@ class StartScene: SKScene{
         self.addChild(skipButton)
         self.addChild(containerNode)
         
-        sleep(2)
+        
+        sleep(2)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
         
         
     }
@@ -588,13 +590,16 @@ class StartScene: SKScene{
         return background
     }
 
-    override public func update(_ currentTime: TimeInterval) {
+    override public func update(_ currentTime: TimeInterval) {/*Esta funcion ejecuta cada segundo para la funcionalidad del reloj. Los print statements son para uso del programador(comentar/descomentar todos los print statements a la misma vez, para entender mejor como funciona esta funcion)*/
 
-        penalty = 3
+        penalty = 3//numero de segundos que se anaden a los segundos
             
-        if completedGame == false{
-            if currentTime > renderTime{
-                if renderTime > 0{
+        if completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
+            //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
+            if currentTime > renderTime{/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
+                
+                //En este bloque es que ocurre el movimiento de segundos y minutos
+                if renderTime > 0{//renderTime en su primera iteracion su valor es 0.0, de modo que pasaria al Else If que le sigue a este bloque. Luego de esta primera iteracion siempre su valor sera mayor a 0
                     seconds += 1
                 
                 if seconds == 60 {
@@ -602,11 +607,17 @@ class StartScene: SKScene{
                     minutes += 1
                     }
                     
+                 //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
                 if(fail == "True"){
                     print("inside")
                     seconds = seconds + penalty
+                    //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                    if seconds >= 60{
+                        seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
+                        minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+                    }
                     
-                    if seconds == 60 {
+                    /*if seconds == 60 {
                        seconds = 0
                        minutes += 1
                        }
@@ -621,94 +632,118 @@ class StartScene: SKScene{
                     if seconds == 63 {
                        seconds = 3
                        minutes += 1
-                       }
-                
-                    let secondsText = (seconds < 10) ?
+                       }*/
+                    //Formateo en que se van a desplegar los segundos y minutos(En este bloque solo se hace el rendering de los segundos y minutos cuando el programa ejecuta el penalty)
+                    /*let secondsText = (seconds < 10) ?
                      "0\(seconds)" : "\(seconds)"
                     let minutesText = "\(minutes)"
                      //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
-                     
+                     //aca va a ejecutar cuando reloj del juego lleva mas de 59 segundos de juego
                     if minutes >= 1 {
                         labelTimer.text = "\(minutesText):\(secondsText)"
                         timerBackground.size = labelTimer.frame.size
-                        fail = ""
+                        fail = ""//reinicia bool variable, para poder volver a reutilizarse
                         }
-                    
+                    //else va a ejecutar cuando los segundos son menor a un minuto
                     else{
                         labelTimer.text = "\(secondsText)"
                         timerBackground.size = labelTimer.frame.size
-                        fail = ""
-                        }
+                        fail = ""//reinicia bool variable, para poder volver a reutilizarse
+                        }*/
                 }
                     
+                /*else{*/ //ESTE ELSE ERA PARTE DEL BLOQUE IF ANTERIOR(Y EL CONTENIDO DE ESTE ELSE ERA EL MISMO CODIGO QUE SE LEE ABAJO), DADO QUE EL CODIGO SE REPETIA PARA FORMATO Y RENDERING ELIMINE EL ELSE STATEMENT. AHORA TANTO LO QUE ENTRA AL IF ANTERIOR(FAIL == TRUE) CONT=>
+                //CONT=>ASI COMO EL MOVIMIENTO DE SEGUNDOS Y MINUTOS SE FORMATEA Y DESPLIEGA EN UN SOLO BLOQUE DE CODIGO. OJO SI REACTIVA ELSE EL BLOQUE DE ABAJO HABRIA QUE INDENTARLO A LA DERECHA
+                //Formateo en que se van a desplegar los segundos y minutos(En este bloque solo se hace el rendering de los segundos y minutos cuando el programa ejecuta el penalty)
+                let secondsText = (seconds < 10) ?
+                "0\(seconds)" : "\(seconds)"
+                let minutesText = "\(minutes)"
+                //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+                
+                if minutes >= 1 {
+                    labelTimer.text = "\(minutesText):\(secondsText)"
+                    timerBackground.size = labelTimer.frame.size
+                    if fail == "True"{
+                        fail = ""
+                    }
+                }
+                  
                 else{
+                    labelTimer.text = "\(secondsText)"
+                    timerBackground.size = labelTimer.frame.size
+                    if fail == "True"{
+                        fail = ""
+                    }
+                }
+            //}
+                    
+                }
+                // Este bloque lo unico que hace es ejecutar para hacer formateo y el rendering del 00 cuando comienza el juego y no vuelve a ejecutar pq rendertime su valor no vuelve a 0 si no que siempre esta en ascenso
+                else if renderTime == 0.0{
                     let secondsText = (seconds < 10) ?
                     "0\(seconds)" : "\(seconds)"
-                    let minutesText = "\(minutes)"
-                    //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
-                    
-                    if minutes >= 1 {
-                        labelTimer.text = "\(minutesText):\(secondsText)"
-                        timerBackground.size = labelTimer.frame.size
-                        //fail = ""
-                        }
-                      
-                    else{
-                        labelTimer.text = "\(secondsText)"
-                        timerBackground.size = labelTimer.frame.size
-                        }
+                    labelTimer.text = "\(secondsText)"
+                    timerBackground.size = labelTimer.frame.size
+                    print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
                 }
-                    
-                }
+                //print(renderTime)
+                renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime
+                //print(renderTime, currentTime, "Abajo")
                 
-                renderTime = currentTime + changeTime
             }
+            //Este bloque es para uso del programador y no tiene relacion alguna con el rendering o ningun aspecto del juego, mas bien se hizo para entender visualmente lo que hace esta funcion y como hace funcionar el reloj que creamos aqui
+            //renderTimeBiggerCounter += 1/* En este contador cuento mas o menos la cantidad de oscilaciones como medida para conocer cuanto tiempo le toma a currentTime sobrepasar el valor de renderTime(mientras esta estatico es decir que no se ha actualizado) antes de volver a ser actualizado*/
+            //print(renderTimeBiggerCounter!)
+            //print("")
         }
     }
     
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Funcion encargada del toque de pantalla
+        
+        let touch = touches.first!//Guarda toque de pantalla
+        let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
+        touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
             
-        let touch = touches.first!
-        let touchLocation = touch.location(in: self)
-        touchedNode = self.physicsWorld.body(at:touchLocation)
-            
-        let locationNameLabel = SKLabelNode()
-        let firstLineLabel = SKLabelNode()
-        let secondLineLabel = SKLabelNode()
-            
-        if (touchedNode != nil){
-            if (municipioNameLabel.text == touchedNode?.node?.name){
-                for child in containerNode.children {
-                    if let spriteNode = child as? SKSpriteNode {
-                        if(touchedNode?.node?.name == spriteNode.name){
-                            spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//Color description: minty green(custom color no hex # available)
-                            spriteNode.colorBlendFactor = 1.0//0.5
-                            let currentMunicipioNameOnLabel = municipioNameLabel.text
-                            let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]
-                            /*if currentMunicipioNameOnLabel == municipios_names_array[currentIndex]{
-                                let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                                numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
-                                //print(elementRemoved)
-                                print(municipios_names_array)
-                            }*/
-                            //print(currentMunicipioNameOnLabel)
-                            //print(municipios_names_array[currentIndex])
-                            //currentIndex += 1
-                            if currentIndex <= numberOfElementsMinusLastElement {//76
-                                print("")
-                                print("CURRENT")
-                                print(currentMunicipioNameOnLabel as Any)
-                                print(numberOfElementsMinusLastElement)
-                                print(currentIndex)
-                                print(" ")
+        let locationNameLabel = SKLabelNode()//Label para municipios que utilizan un solo label para acomodar el nombre del mismo
+        let firstLineLabel = SKLabelNode()//Primer label para municipios que utilizan mas de un label para acomodar su nombre
+        let secondLineLabel = SKLabelNode()//Segundo label para municipios que utilizan mas de un label para acomodar su nombre
+        var countOfIndexes:Int = -1//Dado que interesamos obtener una cuenta de los indices y no de los elementos inicializamos a -1 para que la cuenta incluya el lugar numero 0
+        
+        if (touchedNode != nil){//Esta linea permite que la ejecucion continue hacia el bloque abajo si se toco un SKphysics body o tambien se puede entender como si se tocara fuera de los skphysics bodys que en cuyo caso devolveria un valor nil(nulo)
+            if (municipioNameLabel.text == touchedNode?.node?.name){//Si esta condicion no se cumple que es igual a no atinar el municipio a identificar, pasa al Else abajo donde la variable Fail es igual a true
+                for child in containerNode.children {//Este for loop va a iterar(en memoria los elementos contenidos en containerNode(SKNode)) de forma continua cotejando la condicion if(touchedNode?.node?.name == spriteNode.name)
+                    if let spriteNode = child as? SKSpriteNode {//Esto se leeria como Si child puede ser casted as Skspritenode(esto es porque podria ocurrir que containerNode tenga algun objeto que no pueda ser casteado a Skspritenode)
+                        if(touchedNode?.node?.name == spriteNode.name){//Si esta condicion prueba falsa la ejecucion va a regresar al for loop continuamente hasta que esta pruebe cierta
+                            spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
+                            spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
+                            
+                            let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
+                            let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
+                            
+                            //El for statement abajo va a generar la cuenta de los indices entendiendose que el cero es un lugar y esta incluido. En cada nueva iteracion el numero de indices es menor, por: let elementRemoved = municipios_names_array.remove(at:currentIndex)
+                            for index in municipios_names_array {
+                                if index != ""{
+                                    countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
+                                }
+                            }
+                        
+                            if currentIndex <= countOfIndexes/*indexedCount*/{/*Para los efectos del juego esta condicion siempre va a probar cierta, es decir que no es necesaria sin embargo la he dejado como un marker donde podrian en el futuro ser necesario probar alguna otra condicion
+                                es un lugar importante en flow de la ejecucion o lo puede ser en un futuro*/
+                                print("")//uso del programador
+                                print("CURRENT")//uso del programador
+                                print(currentMunicipioNameOnLabel as Any)//municipio a buscar en el momento en el momento. uso del programador
+                                print(countOfIndexes)//variable que lleva cuenta regresiva de los indices hayados en un momento dado en el array. uso del programador
+                                print(currentIndex)//indice correspondiente al elemento(municipio a buscar) que se evalua en el momento. uso del programador
+                                print(" ")//. uso del programador
+                                
+                                //El siguiente bloque se encarga de los atributos generales que van a compartir todos labels que se desplegan sobre los skspritenodes correspondientes a los municipios en el mapa del juego
                                 locationNameLabel.text = municipioNameLabel.text
                                 locationNameLabel.fontName = "Helvetica"
                                 locationNameLabel.fontColor = UIColor.black
                                 locationNameLabel.xScale = -1.0
                                 locationNameLabel.zRotation = 9.44
                                 locationNameLabel.fontSize = 5.4
-                                    
                                 firstLineLabel.fontName = "Helvetica"
                                 secondLineLabel.fontName = "Helvetica"
                                 firstLineLabel.fontSize = 5.4
@@ -719,24 +754,16 @@ class StartScene: SKScene{
                                 secondLineLabel.xScale = -1.0
                                 firstLineLabel.zRotation = 9.44
                                 secondLineLabel.zRotation = 9.44
-                                    
+                                
+                                //El switch statement se encarga de algunos atributos mas especificos(de un grupo de municipios o de uno, referente)de los labels que identifican en texto x municipio luego de ser identificado correctamente
+                                //La ejecuccion va a continuar en el case que corresponda o incluya el string con el mismo valor de municipioNameLabel.text
                                 switch municipioNameLabel.text {
                                         
                                     case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
                                          "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
                                         locationNameLabel.horizontalAlignmentMode = .center
                                         locationNameLabel.verticalAlignmentMode = .center
-                                        //currentIndex -= 1
-                                       /* if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
-                                            let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                                            numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
-                                            print(elementRemoved)
-                                            print(municipios_names_array)
-                                        }*/
                                         
-                                        //let municipios_names_array_two = municipios_names_array.remove(at:currentIndex)
-                                        //numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
-                                        //print(municipios_names_array_two)
                                     case "Camuy", "Aguadilla", "Juncos":
                                         locationNameLabel.fontSize = 5.0
                                         locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
@@ -875,87 +902,91 @@ class StartScene: SKScene{
                                         default:
                                             break
                                 }
-                                
-                                if currentIndex != numberOfElementsMinusLastElement{
-                                    if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
-                                        let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                                        numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
-                                        print("CHANGE")
-                                        print(numberOfElementsMinusLastElement)
-                                        print(currentIndex)
-                                        print("")
-                                        print(elementRemoved)
-                                        //print(municipios_names_array)
-                                        print("ACA")
+
+                                //Este if statement ejecuta siempre que currentIndex y countOfIndexes son distintos
+                                if currentIndex != countOfIndexes{
+                                    if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{//Corrobora que el municipio a eliminarse del array
+                                        let elementRemoved = municipios_names_array.remove(at:currentIndex)//remueve elemento identificado en el indice al momento(que es el municipio a buscar)
+                                        //countIndex = countIndex - 1// Remueve un indice de la cuenta indexada
+                                        print("CHANGE")//. uso del programador
+                                        //reconteo para uso del programador
+                                        countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+                                        for index in municipios_names_array {
+                                            if index != ""{
+                                                countOfIndexes += 1
+                                            }
+                                        }
+                                        print(countOfIndexes)//. uso del programador
+                                        print(currentIndex)//. uso del programador
+                                        print("")//. uso del programador
+                                        print(elementRemoved)//. uso del programador
+                                        print(municipios_names_array)//. uso del programador
+                                        print("ACA")//. uso del programador
                                         
                                     }
                                 }
-                                else if currentIndex == numberOfElementsMinusLastElement && currentIndex >= 0 && numberOfElementsMinusLastElement >= 1   {
+                                /*Este else if ejecuta solo cuando currentIndex y countOfIndexes son iguales pero mayor o igual a 1. Esto solo va a ocurrir si se presiona el boton de skip lo que mueve el index adelante cuando en el transcurso del juego alcanzamos el ultimo elemento en orden natural vamos a observar que ambas variables van a tener el mismo valor (que equivale al numero de municipios saltados previamente), tambien esto nos indica que el currentIndex se movera proximamente al index 0.
+                                */
+                                else if currentIndex == countOfIndexes && currentIndex >= 1 && countOfIndexes >= 1{/*la razon de porque utilice >=1 es para capturar la ejecucion donde se identifica el ultimo elemento aparte, en dicha ocurrencia ambas varables son tambien iguales
+                                    pero iguales a 0*/
                                     if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
                                         let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                                        numberOfElementsMinusLastElement = numberOfElementsMinusLastElement - 1
-                                        currentIndex = 0
-                                        print("CHANGE")
-                                        print(numberOfElementsMinusLastElement)
-                                        print(currentIndex)
-                                        print("")
-                                        print(elementRemoved)
-                                        //print(municipios_names_array)
-                                        print("AQUI")
+                                        //countIndex = countIndex - 1// Remueve un indice de la cuenta
+                                        currentIndex = 0/*Cuando la ejecucion entra en este bloque quiere decir que el programa llego al ultimo indice, aunque se ha utilizado el skip button de modo que vuelve al indice 0 para volver sobre los municipios que no pudieron ser identificados
+                                        durante elrecorrido anterior a lo largo del array */
+                                        print("CHANGE")//. uso del programador
+                                        countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+                                        for index in municipios_names_array {
+                                            if index != ""{
+                                                countOfIndexes += 1
+                                            }
+                                        }
+                                        print(countOfIndexes)//. uso del programador
+                                        print(currentIndex)//. uso del programador
+                                        print("")//. uso del programador
+                                        print(elementRemoved)//. uso del programador
+                                        print(municipios_names_array)//. uso del programador
+                                        print("AQUI")//. uso del programador
                                     }
                                    
                                 }
+                                    
+                                //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
                                 else{
-                                    completedGame = true
-                                    print("CHANGE")
-                                    print(numberOfElementsMinusLastElement)
-                                    print(currentIndex)
-                                    print("")
-                                    //print(municipios_names_array)
+                                    completedGame = true//Se actualiza la variable completedGame para detener el reloj
+                                    print("CHANGE")//. uso del programador
+                                    countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+                                    for index in municipios_names_array {
+                                        if index != ""{
+                                            countOfIndexes += 1
+                                        }
+                                    }
+                                    print(countOfIndexes)//. uso del programador
+                                    print(currentIndex)//. uso del programador
+                                    print("")//. uso del programador
+                                    print(municipios_names_array)//. uso del programador
                                     print("completed game")
                                 } 
                                 
-                                    
+                                 //Aqui van a entrar la ejecucion cuando el municipio identificado utiliza dos labels para acomodar el nombre(localidad del mapa)
                                 if(useLine2 == true){
-                                    spriteNode.addChild(firstLineLabel)
+                                    spriteNode.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
                                     spriteNode.addChild(secondLineLabel)
-                                    municipioNameLabel.text = municipios_names_array [currentIndex]
-                                    print(municipioNameLabel.text as Any)
-                                    municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                    print(municipioNameLabel.text as Any)//Para uso del programador
+                                    municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
                                     useLine2 = false
                                 }
-
+                                //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
                                 else{
-                                    spriteNode.addChild(locationNameLabel)
-                                    municipioNameLabel.text = municipios_names_array [currentIndex]
-                                    print(municipioNameLabel.text as Any)
-                                    municipiosNameBackground.size = municipioNameLabel.frame.size
+                                    spriteNode.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+                                    municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                    print(municipioNameLabel.text as Any)//Para uso del programador
+                                    municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
                                 }
                                 
                             }
-                                    
-                                    
-                            /*else{
-                                locationNameLabel.text = municipioNameLabel.text
-                                locationNameLabel.fontName = "Helvetica"
-                                locationNameLabel.fontColor = UIColor.black
-                                locationNameLabel.xScale = -1.0
-                                    
-                                locationNameLabel.fontSize = 7
-                                locationNameLabel.horizontalAlignmentMode = .center
-                                locationNameLabel.verticalAlignmentMode = .center
-                                    
-                                locationNameLabel.zRotation = 9.44
-                                spriteNode.addChild(locationNameLabel)
-    
-                                municipioNameLabel.text = "end of array"
-                                municipiosNameBackground.size = municipioNameLabel.frame.size
-                                    
-                                completedGame = true
-                            }*/
                                 
-                                
-
                         }
                                 
                     }
@@ -964,47 +995,47 @@ class StartScene: SKScene{
             }
                     
                         
-                        //}
+            //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
-                return fail = "True"
+                return fail = "True"//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
             }
             
         }
-        
+        //Este bloque maneja el toque de pantalla para el skip button
         else if atPoint(touchLocation) == skipButton{
-            currentIndex += 1
-            if currentIndex == municipios_names_array.endIndex-0{
-                print("This")
-                currentIndex = 0
+            currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
+            if currentIndex == municipios_names_array.endIndex-0{//Si el indice llega al ultimo elemento el index se devuelve al 0 para comenzar a iterar los municipios que no fueron identificados en la pasada anterior del juego
+                print("This")//para programador
+                currentIndex = 0//resetea el index al lugar 0 cuando presionando el skip button alcanzamos el ultimo indice
             }
             municipioNameLabel.text = municipios_names_array[currentIndex]
             municipiosNameBackground.size = municipioNameLabel.frame.size
             print("Skip Button touched")
         }
     }
-    
+    //Las dos proximas funciones son identicas con la diferencia de que devuelven cada una por su parte una variable diferente
     func splitTextIntoFields(theText:SKLabelNode)->String{
-        useLine2 = false
-        twoLineText = theText.text!
+        useLine2 = false//Esta linea resetea la variable que es necesario para no crear redundancia cuando se pasa el texto a label(ej:aguas aguas buenas)
+        twoLineText = theText.text!//texto que necesitamos dividir en dos lineas
         //var i: Int = 0
-        var line1:String = ""
+        var line1:String = ""//declaracion de las variables que se van a devolver
         var line2:String = ""
             
             
-        for letter in twoLineText{
+        for letter in twoLineText{//Cada letra contenida en el String es desglosada por el for loop
             if (String(letter) == " "){
                 useLine2 = true
             }
                 
             if(useLine2 == false){
-                line1 = line1 + String(letter)
+                line1 = line1 + String(letter)//casting of letter to String
             }
             else {
                 line2 = line2 + String(letter)
             }
                 
             //i += 1
-            }
+        }
         return line1
     }
     
