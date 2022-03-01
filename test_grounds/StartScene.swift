@@ -136,11 +136,12 @@ class StartScene: SKScene{
 
     var touchedNode: SKPhysicsBody!//se puede declarar dentro de la funcion touchesBegan
     //var success: String!//variable que no se uso
-    var fail: String!//se usa en mas de una funcion
+    var fail: Bool!//se usa en mas de una funcion
     var penalty: Int!//Se usa solo en la funcion del reloj
+    var skipButtonPenalty: Int!//Se usa solo en la funcion del reloj
     var currentIndex: Int = 0 //se puede declarar en touchesBegan
     //var locationNameLabel = SKLabelNode()
-    
+    var pressSKipButton:Bool = false
     
     
     override func didMove(to view: SKView){
@@ -592,6 +593,7 @@ class StartScene: SKScene{
 
     override public func update(_ currentTime: TimeInterval) {/*Esta funcion ejecuta cada segundo para la funcionalidad del reloj. Los print statements son para uso del programador(comentar/descomentar todos los print statements a la misma vez, para entender mejor como funciona esta funcion)*/
 
+        skipButtonPenalty = 15
         penalty = 3//numero de segundos que se anaden a los segundos
             
         if completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
@@ -608,7 +610,7 @@ class StartScene: SKScene{
                     }
                     
                  //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
-                if(fail == "True"){
+                if(fail == true){
                     print("inside")
                     seconds = seconds + penalty
                     //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
@@ -616,6 +618,17 @@ class StartScene: SKScene{
                         seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
                         minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
                     }
+                }
+                    
+                if (pressSKipButton == true){
+                    print("quince segundos mas")
+                    seconds = seconds + skipButtonPenalty
+                    //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                    if seconds >= 60{
+                        seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
+                        minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+                    }
+                }
                     
                     /*if seconds == 60 {
                        seconds = 0
@@ -642,16 +655,16 @@ class StartScene: SKScene{
                     if minutes >= 1 {
                         labelTimer.text = "\(minutesText):\(secondsText)"
                         timerBackground.size = labelTimer.frame.size
-                        fail = ""//reinicia bool variable, para poder volver a reutilizarse
+                        fail = false//reinicia bool variable, para poder volver a reutilizarse
                         }
                     //else va a ejecutar cuando los segundos son menor a un minuto
                     else{
                         labelTimer.text = "\(secondsText)"
                         timerBackground.size = labelTimer.frame.size
-                        fail = ""//reinicia bool variable, para poder volver a reutilizarse
+                        fail = false//reinicia bool variable, para poder volver a reutilizarse
                         }*/
-                }
-                    
+                
+                //}
                 /*else{*/ //ESTE ELSE ERA PARTE DEL BLOQUE IF ANTERIOR(Y EL CONTENIDO DE ESTE ELSE ERA EL MISMO CODIGO QUE SE LEE ABAJO), DADO QUE EL CODIGO SE REPETIA PARA FORMATO Y RENDERING ELIMINE EL ELSE STATEMENT. AHORA TANTO LO QUE ENTRA AL IF ANTERIOR(FAIL == TRUE) CONT=>
                 //CONT=>ASI COMO EL MOVIMIENTO DE SEGUNDOS Y MINUTOS SE FORMATEA Y DESPLIEGA EN UN SOLO BLOQUE DE CODIGO. OJO SI REACTIVA ELSE EL BLOQUE DE ABAJO HABRIA QUE INDENTARLO A LA DERECHA
                 //Formateo en que se van a desplegar los segundos y minutos(En este bloque solo se hace el rendering de los segundos y minutos cuando el programa ejecuta el penalty)
@@ -663,16 +676,22 @@ class StartScene: SKScene{
                 if minutes >= 1 {
                     labelTimer.text = "\(minutesText):\(secondsText)"
                     timerBackground.size = labelTimer.frame.size
-                    if fail == "True"{
-                        fail = ""
+                    if fail == true{
+                        fail = false
+                    }
+                    if pressSKipButton == true{
+                        pressSKipButton = false
                     }
                 }
                   
                 else{
                     labelTimer.text = "\(secondsText)"
                     timerBackground.size = labelTimer.frame.size
-                    if fail == "True"{
-                        fail = ""
+                    if fail == true{
+                        fail = false
+                    }
+                    if pressSKipButton == true{
+                        pressSKipButton = false
                     }
                 }
             //}
@@ -997,7 +1016,7 @@ class StartScene: SKScene{
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
-                return fail = "True"//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
+                return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
             }
             
         }
@@ -1008,6 +1027,7 @@ class StartScene: SKScene{
                 print("This")//para programador
                 currentIndex = 0//resetea el index al lugar 0 cuando presionando el skip button alcanzamos el ultimo indice
             }
+            pressSKipButton = true
             municipioNameLabel.text = municipios_names_array[currentIndex]
             municipiosNameBackground.size = municipioNameLabel.frame.size
             print("Skip Button touched")
