@@ -554,7 +554,7 @@ class StartScene: SKScene{
     
     func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
         //let label:SKLabelNode = SKLabelNode()
-        TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.85)
+        TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.438)
         TimerLabel.fontName = "Arial"
         TimerLabel.fontSize = 18
         TimerLabel.fontColor = SKColor.red
@@ -563,9 +563,9 @@ class StartScene: SKScene{
     
     func timerLabelBackground() -> SKSpriteNode{
         let background = SKSpriteNode()
-        background.color = UIColor.white
+        background.color = UIColor.lightGray
         //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 1.89)
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.480)
         //background.zPosition = -2
         return background
     }
@@ -675,7 +675,15 @@ class StartScene: SKScene{
                 
                 if minutes >= 1 {
                     labelTimer.text = "\(minutesText):\(secondsText)"
-                    timerBackground.size = labelTimer.frame.size
+                    //timerBackground.size = labelTimer.frame.size
+                    if minutes == 1{
+                        timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 0:00
+                    }
+                    
+                    if minutes == 10{
+                        timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
+                    }
+                    
                     if fail == true{
                         fail = false
                     }
@@ -683,17 +691,23 @@ class StartScene: SKScene{
                         pressSKipButton = false
                     }
                 }
+
+                
+
                   
                 else{
                     labelTimer.text = "\(secondsText)"
-                    timerBackground.size = labelTimer.frame.size
+                    //timerBackground.size = labelTimer.frame.size
+                    
                     if fail == true{
                         fail = false
                     }
+                    
                     if pressSKipButton == true{
                         pressSKipButton = false
                     }
                 }
+                
             //}
                     
                 }
@@ -702,7 +716,7 @@ class StartScene: SKScene{
                     let secondsText = (seconds < 10) ?
                     "0\(seconds)" : "\(seconds)"
                     labelTimer.text = "\(secondsText)"
-                    timerBackground.size = labelTimer.frame.size
+                    timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
                     print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
                 }
                 //print(renderTime)
