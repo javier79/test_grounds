@@ -112,6 +112,7 @@ class StartScene: SKScene{
     
     var containerNode = SKNode()//se usa en mas de una funcion
     var labelTimer = SKLabelNode()//se usa en mas de una funcion
+    var labelScores = SKLabelNode()
     var timerBackground = SKSpriteNode()//se usa en mas de una funcion
     var municipiosNameBackground = SKSpriteNode()//se usa en mas de una funcion
     
@@ -142,6 +143,8 @@ class StartScene: SKScene{
     var currentIndex: Int = 0 //se puede declarar en touchesBegan
     //var locationNameLabel = SKLabelNode()
     var pressSKipButton:Bool = false
+    var scoreCount:Int = 0
+    let totalScoreCount:String = "/78"
     
     
     override func didMove(to view: SKView){
@@ -154,6 +157,8 @@ class StartScene: SKScene{
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
         skipButton = skipBlueButton()
+        
+        labelScores = labelForScores(ScoresLabel:labelScores)
         
         labelTimer = labelForTimer(TimerLabel: labelTimer)
         
@@ -497,6 +502,7 @@ class StartScene: SKScene{
         self.addChild(backgroundSKSpriteNode)
         self.addChild(timerBackground)
         self.addChild(labelTimer)
+        self.addChild(labelScores)
         self.addChild(municipiosNameBackground)
         self.addChild(municipioNameLabel)
         self.addChild(skipButton)
@@ -559,6 +565,16 @@ class StartScene: SKScene{
         TimerLabel.fontSize = 18
         TimerLabel.fontColor = SKColor.red
         return TimerLabel
+    }
+    
+    func labelForScores(ScoresLabel: SKLabelNode) -> SKLabelNode {
+        //let label:SKLabelNode = SKLabelNode()
+        ScoresLabel.position = CGPoint(x:637, y:25)
+        ScoresLabel.fontName = "Arial"
+        ScoresLabel.fontSize = 11
+        ScoresLabel.text = "0/78"
+        ScoresLabel.fontColor = UIColor.init(red: 0.1333, green: 0.8392, blue: 0.1333, alpha: 1.0)
+        return ScoresLabel
     }
     
     func timerLabelBackground() -> SKSpriteNode{
@@ -737,11 +753,13 @@ class StartScene: SKScene{
         let touch = touches.first!//Guarda toque de pantalla
         let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
         touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
-            
+        
+        
         let locationNameLabel = SKLabelNode()//Label para municipios que utilizan un solo label para acomodar el nombre del mismo
         let firstLineLabel = SKLabelNode()//Primer label para municipios que utilizan mas de un label para acomodar su nombre
         let secondLineLabel = SKLabelNode()//Segundo label para municipios que utilizan mas de un label para acomodar su nombre
         var countOfIndexes:Int = -1//Dado que interesamos obtener una cuenta de los indices y no de los elementos inicializamos a -1 para que la cuenta incluya el lugar numero 0
+        
         
         if (touchedNode != nil){//Esta linea permite que la ejecucion continue hacia el bloque abajo si se toco un SKphysics body o tambien se puede entender como si se tocara fuera de los skphysics bodys que en cuyo caso devolveria un valor nil(nulo)
             if (municipioNameLabel.text == touchedNode?.node?.name){//Si esta condicion no se cumple que es igual a no atinar el municipio a identificar, pasa al Else abajo donde la variable Fail es igual a true
@@ -942,8 +960,11 @@ class StartScene: SKScene{
                                         let elementRemoved = municipios_names_array.remove(at:currentIndex)//remueve elemento identificado en el indice al momento(que es el municipio a buscar)
                                         //countIndex = countIndex - 1// Remueve un indice de la cuenta indexada
                                         print("CHANGE")//. uso del programador
-                                        //reconteo para uso del programador
                                         countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+                                        //scoreCount += 1
+                                        //labelScores.text = "\(scoreCount)" + totalScoreCount
+                                        
+                                        //reconteo para uso del programador
                                         for index in municipios_names_array {
                                             if index != ""{
                                                 countOfIndexes += 1
@@ -964,11 +985,13 @@ class StartScene: SKScene{
                                     pero iguales a 0*/
                                     if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
                                         let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                                        //countIndex = countIndex - 1// Remueve un indice de la cuenta
                                         currentIndex = 0/*Cuando la ejecucion entra en este bloque quiere decir que el programa llego al ultimo indice, aunque se ha utilizado el skip button de modo que vuelve al indice 0 para volver sobre los municipios que no pudieron ser identificados
                                         durante elrecorrido anterior a lo largo del array */
                                         print("CHANGE")//. uso del programador
                                         countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+                                        //scoreCount += 1
+                                        //labelScores.text = "\(scoreCount)" + totalScoreCount
+                                        //reconteo para uso del programador
                                         for index in municipios_names_array {
                                             if index != ""{
                                                 countOfIndexes += 1
@@ -989,6 +1012,9 @@ class StartScene: SKScene{
                                     completedGame = true//Se actualiza la variable completedGame para detener el reloj
                                     print("CHANGE")//. uso del programador
                                     countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+                                    //scoreCount += 1
+                                    //labelScores.text = "\(scoreCount)" + totalScoreCount
+                                    //reconteo uso del programador
                                     for index in municipios_names_array {
                                         if index != ""{
                                             countOfIndexes += 1
@@ -1009,6 +1035,7 @@ class StartScene: SKScene{
                                     print(municipioNameLabel.text as Any)//Para uso del programador
                                     municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
                                     useLine2 = false
+                                        
                                 }
                                 //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
                                 else{
@@ -1016,8 +1043,14 @@ class StartScene: SKScene{
                                     municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
                                     print(municipioNameLabel.text as Any)//Para uso del programador
                                     municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
+
                                 }
                                 
+                                scoreCount += 1
+                                labelScores.text = "\(scoreCount)" + totalScoreCount
+                                if scoreCount == 77 {
+                                    skipButton.removeFromParent()
+                                }
                             }
                                 
                         }
