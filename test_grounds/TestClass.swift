@@ -92,19 +92,35 @@ class TestClass {
     var naguaboBezierPath:UIBezierPath!
     var viequesBezierPath:UIBezierPath!
     var culebraBezierPath:UIBezierPath!*/
+    
+    func ToSkShapeNodeAndDefaultProperties(nodeShape:SKShapeNode)-> SKSpriteNode{
+        nodeShape.fillColor = UIColor.init(red: 0.78, green: 0.91, blue: 0.81, alpha: 1.00)//#C6E7CE/*(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6*/
+        nodeShape.strokeColor = UIColor.init(red: 0.81, green: 1.00, blue: 0.81, alpha: 1.00)//#CEFFCE/*(red: 0.80, green: 1.00, blue: 0.73, alpha: 1.00)*//*(red: 0.88, green: 0.80, blue: 0.59, alpha: 1.00)*//*(red: 0.99, green: 0.91, blue: 0.84, alpha: 1.00)//#FDE8D7*//*(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8*/
+        nodeShape.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: nodeShape)!
+        let skSpriteNode = SKSpriteNode(texture: texture)
+        skSpriteNode.xScale = -1.0
+        skSpriteNode.zRotation = 9.44
+        
+        return skSpriteNode
+    }
+    
+
 
     
     func caboRojoBezierPathToSKSpriteNode(bpCaboRojo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpCaboRojo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let caboRojoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
-        let caboRojoNode = SKSpriteNode(texture: texture)
-        caboRojoNode.xScale = -1.0
-        caboRojoNode.zRotation = 9.44
+        let caboRojoNode = SKSpriteNode(texture: texture)*/
+        //caboRojoNode.xScale = -1.0
+        //caboRojoNode.zRotation = 9.44
         caboRojoNode.position = CGPoint(x:80, y:143)
         //caboRojoNode.zPosition = 1
         caboRojoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:caboRojoNode.size.width/2 * 0.5, height:caboRojoNode.size.height/2), center: CGPoint(x:-3.5, y: 0.5))
@@ -118,14 +134,15 @@ class TestClass {
     func hormiguerosBezierPathToSKSpriteNode(bphormigueros: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bphormigueros.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let hormiguerosNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
-        let hormiguerosNode = SKSpriteNode(texture: texture)
-        hormiguerosNode.xScale = -1.0
-        hormiguerosNode.zRotation = 9.44
+        let hormiguerosNode = SKSpriteNode(texture: texture)*/
+        //hormiguerosNode.xScale = -1.0
+        //hormiguerosNode.zRotation = 9.44
         hormiguerosNode.position = CGPoint(x:90.16, y:168.58)
         hormiguerosNode.zPosition = 1//FOR LABEL TO BE LEGIBLE
         hormiguerosNode.physicsBody = SKPhysicsBody(circleOfRadius: hormiguerosNode.size.width/2 * 0.35, center: CGPoint(x:-0.7, y: -1.5))
@@ -139,14 +156,15 @@ class TestClass {
     func mayaguezBezierPathToSKSpriteNode(bpMayaguez: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpMayaguez.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let mayaguezNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let mayaguezNode = SKSpriteNode(texture: texture)
         mayaguezNode.xScale = -1.0
-        mayaguezNode.zRotation = 9.44
+        mayaguezNode.zRotation = 9.44*/
         mayaguezNode.position = CGPoint(x:53.84, y:207.63)
         //mayaguezNode.zPosition = 1
         mayaguezNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:mayaguezNode.size.width/5.7, height:mayaguezNode.size.height/6), center: CGPoint(x:-41.5, y: 18.0))
@@ -175,14 +193,15 @@ class TestClass {
     func anascoBezierPathToSKSpriteNode(bpAnasco: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpAnasco.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6(red: 0.9882, green: 0.9608, blue: 0.9216, alpha: 1.0)//FCF5EB
+        let anascoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6(red: 0.9882, green: 0.9608, blue: 0.9216, alpha: 1.0)//FCF5EB
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let anascoNode = SKSpriteNode(texture: texture)
         anascoNode.xScale = -1.0
-        anascoNode.zRotation = 9.44
+        anascoNode.zRotation = 9.44*/
         anascoNode.position = CGPoint(x:86.57, y:211.47)
         //anascoNode.zPosition = 1
         anascoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:anascoNode.size.width/2 * 1.2, height:anascoNode.size.height/2 * 0.6), center: CGPoint(x:-3.0, y: -1.7))
@@ -194,14 +213,15 @@ class TestClass {
     func rinconBezierPathToSKSpriteNode(bpRincon: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpRincon.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let rinconNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let rinconNode = SKSpriteNode(texture: texture)
         rinconNode.xScale = -1.0
-        rinconNode.zRotation = 9.44
+        rinconNode.zRotation = 9.44*/
         rinconNode.position = CGPoint(x:60.97, y:226.45)
         //rinconNode.zPosition = 2
         rinconNode.physicsBody = SKPhysicsBody(circleOfRadius: rinconNode.size.width/2 * 0.3 , center: CGPoint(x:1.8, y: 0.5))
@@ -213,14 +233,15 @@ class TestClass {
     func aguadaBezierPathToSKSpriteNode(bpAguada: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpAguada.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let aguadaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let aguadaNode = SKSpriteNode(texture: texture)
         aguadaNode.xScale = -1.0
-        aguadaNode.zRotation = 9.44
+        aguadaNode.zRotation = 9.44*/
         aguadaNode.position = CGPoint(x:72.27, y:234.45)
         //aguadaNode.zPosition = 1
         aguadaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadaNode.size.width/2 * 0.45 , center: CGPoint(x:-3.5, y: 0.5))
@@ -232,14 +253,15 @@ class TestClass {
     func aguadillaBezierPathToSKSpriteNode(bpAguadilla: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpAguadilla.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let aguadillaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let aguadillaNode = SKSpriteNode(texture:texture)
         aguadillaNode.xScale = -1.0
-        aguadillaNode.zRotation = 9.44
+        aguadillaNode.zRotation = 9.44*/
         aguadillaNode.position = CGPoint(x:91.24, y:258.84)
         //aguadillaNode.zPosition = 1
         aguadillaNode.physicsBody = SKPhysicsBody(circleOfRadius: aguadillaNode.size.width/2 * 0.45 , center: CGPoint(x:2.8, y:-4.0))
@@ -251,14 +273,15 @@ class TestClass {
     func isabelaBezierPathToSKSpriteNode(bpIsabela: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpIsabela.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let isabelaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let isabelaNode = SKSpriteNode(texture:texture)
         isabelaNode.xScale = -1.0
-        isabelaNode.zRotation = 9.44
+        isabelaNode.zRotation = 9.44*/
         isabelaNode.position = CGPoint(x:118.33, y:257.58)
         //isabelaNode.zPosition = 1
         isabelaNode.physicsBody = SKPhysicsBody(circleOfRadius: isabelaNode.size.width/2 * 0.35 , center: CGPoint(x:-2.0, y:0.0))
@@ -270,14 +293,15 @@ class TestClass {
     func mocaBezierPathToSKSpriteNode(bpMoca: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpMoca.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let mocaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let mocaNode = SKSpriteNode(texture:texture)
         mocaNode.xScale = -1.0
-        mocaNode.zRotation = 9.44
+        mocaNode.zRotation = 9.44*/
         mocaNode.position = CGPoint(x:99.85, y:239.98)
         //mocaNode.zPosition = 2
         mocaNode.physicsBody = SKPhysicsBody(circleOfRadius: mocaNode.size.width/2 * 0.59 , center: CGPoint(x:1.0, y:2.0))
@@ -289,14 +313,15 @@ class TestClass {
     func sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpSanSebastian.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let sanSebastianNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let sanSebastianNode = SKSpriteNode(texture:texture)
         sanSebastianNode.xScale = -1.0
-        sanSebastianNode.zRotation = 9.44
+        sanSebastianNode.zRotation = 9.44*/
         sanSebastianNode.position = CGPoint(x:128.96, y:222.96)
         //sanSebastianNode.zPosition = 2
         sanSebastianNode.physicsBody = SKPhysicsBody(circleOfRadius: sanSebastianNode.size.width/2 * 0.59 , center: CGPoint(x:-0.5, y:-1.0))
@@ -308,14 +333,15 @@ class TestClass {
     func lasMariasBezierPathToSKSpriteNode(bpLasMarias: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpLasMarias.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let lasMariasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let lasMariasNode = SKSpriteNode(texture: texture)
         lasMariasNode.xScale = -1.0
-        lasMariasNode.zRotation = 9.44
+        lasMariasNode.zRotation = 9.44*/
         lasMariasNode.position = CGPoint(x:124.39, y:198.77)
         //lasMariasNode.zPosition = 1
         lasMariasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:lasMariasNode.size.width/2 * 1.0, height:lasMariasNode.size.height/2 * 0.5), center: CGPoint(x:-3.4, y: 1.5))
@@ -327,14 +353,15 @@ class TestClass {
     func maricaoBezierPathToSKSpriteNode(bpMaricao: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpMaricao.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let maricaoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let maricaoNode = SKSpriteNode(texture: texture)
         maricaoNode.xScale = -1.0
-        maricaoNode.zRotation = 9.44
+        maricaoNode.zRotation = 9.44*/
         maricaoNode.position = CGPoint(x:136.67, y:180.17)
         //maricaoNode.zPosition = 1
         maricaoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:maricaoNode.size.width/2 * 1.2, height:maricaoNode.size.height/2 * 0.5), center: CGPoint(x:-1.5, y: 1.0))
@@ -346,14 +373,15 @@ class TestClass {
     func sanGermanBezierPathToSKSpriteNode(bpSanGerman: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSanGerman.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let sanGermanNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let sanGermanNode = SKSpriteNode(texture: texture)
         sanGermanNode.xScale = -1.0
-        sanGermanNode.zRotation = 9.44
+        sanGermanNode.zRotation = 9.44*/
         sanGermanNode.position = CGPoint(x:110.93, y:163.23)
         sanGermanNode.zPosition = 0//1//FOR LABEL TO BE LEGIBLE(HORMIGUEROS)
         sanGermanNode.physicsBody =  SKPhysicsBody(circleOfRadius: sanGermanNode.size.width/2 * 0.45 , center: CGPoint(x:0.0, y:0.0))
@@ -365,14 +393,15 @@ class TestClass {
     func sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSabanaGrande.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let sabanaGrandeNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let sabanaGrandeNode = SKSpriteNode(texture: texture)
         sabanaGrandeNode.xScale = -1.0
-        sabanaGrandeNode.zRotation = 9.44
+        sabanaGrandeNode.zRotation = 9.44*/
         sabanaGrandeNode.position = CGPoint(x:139.25, y:155.85)
         //sabanaGrandeNode.zPosition = 1
         sabanaGrandeNode.physicsBody =  SKPhysicsBody(circleOfRadius: sabanaGrandeNode.size.width/2 * 0.50 , center: CGPoint(x:3.5, y:0.0))
@@ -384,14 +413,15 @@ class TestClass {
     func yaucoBezierPathToSKSpriteNode(bpYauco: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpYauco.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let yaucoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let  yaucoNode = SKSpriteNode(texture: texture)
          yaucoNode.xScale = -1.0
-         yaucoNode.zRotation = 9.44
+         yaucoNode.zRotation = 9.44*/
          yaucoNode.position = CGPoint(x:159.05, y:148.88)
          //yaucoNode.zPosition = 1
          yaucoNode.physicsBody = SKPhysicsBody(circleOfRadius: yaucoNode.size.width/2 * 0.52 , center: CGPoint(x:-0.4, y:0.0))
@@ -403,14 +433,15 @@ class TestClass {
     func lajasBezierPathToSKSpriteNode(bpLajas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpLajas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let lajasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let lajasNode = SKSpriteNode(texture: texture)
         lajasNode.xScale = -1.0
-        lajasNode.zRotation = 9.44
+        lajasNode.zRotation = 9.44*/
         lajasNode.position = CGPoint(x:111.6, y:130.62)
         //lajasNode.zPosition = 1
         lajasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:lajasNode.size.width/2 * 1.5, height:lajasNode.size.height/2 * 0.5), center: CGPoint(x:0.5, y: -3.5))
@@ -422,14 +453,15 @@ class TestClass {
     func guanicaBezierPathToSKSpriteNode(bpGuanica: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpGuanica.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let guanicaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let  guanicaNode = SKSpriteNode(texture: texture)
          guanicaNode.xScale = -1.0
-         guanicaNode.zRotation = 9.44
+         guanicaNode.zRotation = 9.44*/
          guanicaNode.position = CGPoint(x:143.09, y:125.46)
          //guanicaNode.zPosition = 1
          guanicaNode.physicsBody = SKPhysicsBody(circleOfRadius: guanicaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.0))
@@ -441,14 +473,15 @@ class TestClass {
     func guayanillaBezierPathToSKSpriteNode(bpGuayanilla: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpGuayanilla.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let guayanillaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let guayanillaNode = SKSpriteNode(texture: texture)
         guayanillaNode.xScale = -1.0
-        guayanillaNode.zRotation = 9.44
+        guayanillaNode.zRotation = 9.44*/
         guayanillaNode.position = CGPoint(x:177.44, y:143.36)
         //guayanillaNode.zPosition = 1
         guayanillaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:guayanillaNode.size.width/2 * 0.3, height:guayanillaNode.size.height/2), center: CGPoint(x:-1.5, y: 0.5))
@@ -460,13 +493,14 @@ class TestClass {
     func adjuntasBezierPathToSKSpriteNode(bpAdjuntas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpAdjuntas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//minty green
+        let adjuntasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//minty green
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let adjuntasNode = SKSpriteNode(texture: texture)
          adjuntasNode.xScale = -1.0
-         adjuntasNode.zRotation = 9.44
+         adjuntasNode.zRotation = 9.44*/
          adjuntasNode.position = CGPoint(x:188.93, y:182.56)
          //adjuntasNode.zPosition = 1
          adjuntasNode.physicsBody = SKPhysicsBody(circleOfRadius: adjuntasNode.size.width/2 * 0.43 , center: CGPoint(x:-0.5, y:1.0))
@@ -478,14 +512,15 @@ class TestClass {
     func laresBezierPathToSKSpriteNode(bpLares: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpLares.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let laresNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let laresNode = SKSpriteNode(texture: texture)
         laresNode.xScale = -1.0
-        laresNode.zRotation = 9.44
+        laresNode.zRotation = 9.44*/
         laresNode.position = CGPoint(x:158.07, y:207.36)
         //laresNode.zPosition = 1
         laresNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:laresNode.size.width/2 * 0.7, height:laresNode.size.height/2 * 1.5), center: CGPoint(x:0.5, y: 0.5))
@@ -497,33 +532,35 @@ class TestClass {
     func penuelasBezierPathToSKSpriteNode(bpPenuelas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpPenuelas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let penuelasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let penuelasNode = SKSpriteNode(texture: texture)
         penuelasNode.xScale = -1.0
-        penuelasNode.zRotation = 9.44
+        penuelasNode.zRotation = 9.44*/
         penuelasNode.position = CGPoint(x:196.06, y:145.2)
         //penuelasNode.zPosition = 1
         penuelasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:penuelasNode.size.width/2 * 0.5, height:penuelasNode.size.height/2 * 1.2), center: CGPoint(x:-1.8, y: 0.5))
-       penuelasNode.physicsBody?.isDynamic = false
-       penuelasNode.name = "Peñuelas"
+        penuelasNode.physicsBody?.isDynamic = false
+        penuelasNode.name = "Peñuelas"
         return penuelasNode
     }
     
     func ponceBezierPathToSKSpriteNode(bpPonce: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpPonce.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let ponceNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let ponceNode = SKSpriteNode(texture: texture)
          ponceNode.xScale = -1.0
-         ponceNode.zRotation = 9.44
+         ponceNode.zRotation = 9.44*/
          ponceNode.position = CGPoint(x:228.35, y:138.86)
          //ponceNode.zPosition = 1
          ponceNode.physicsBody = SKPhysicsBody(circleOfRadius: ponceNode.size.width/2 * 0.47 , center: CGPoint(x:2.5, y:-7.5))
@@ -535,14 +572,15 @@ class TestClass {
     func utuadoBezierPathToSKSpriteNode(bpUtuado: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpUtuado.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let utuadoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let utuadoNode = SKSpriteNode(texture: texture)
         utuadoNode.xScale = -1.0
-        utuadoNode.zRotation = 9.44
+        utuadoNode.zRotation = 9.44*/
         utuadoNode.position = CGPoint(x:202.89, y:202.02)
         //utuadoNode.zPosition = 1
         utuadoNode.physicsBody = SKPhysicsBody(circleOfRadius: utuadoNode.size.width/2 * 0.35, center: CGPoint(x:0.5, y:-4.5))
@@ -554,52 +592,55 @@ class TestClass {
     func jayuyaBezierPathToSKSpriteNode(bpJayuya: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpJayuya.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let jayuyaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let jayuyaNode = SKSpriteNode(texture: texture)
          jayuyaNode.xScale = -1.0
-         jayuyaNode.zRotation = 9.44
+         jayuyaNode.zRotation = 9.44*/
          jayuyaNode.position = CGPoint(x:231.73, y:194.79)
          //jayuyaNode.zPosition = 1
          jayuyaNode.physicsBody = SKPhysicsBody(circleOfRadius: jayuyaNode.size.width/2 * 0.45 , center: CGPoint(x:-2.5, y:5.0))
          jayuyaNode.physicsBody?.isDynamic = false
          jayuyaNode.name = "Jayuya"
-        return  jayuyaNode
+         return  jayuyaNode
     }
     
     func juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpJuanaDiaz.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let juanaDiazNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let juanaDiazNode = SKSpriteNode(texture: texture)
          juanaDiazNode.xScale = -1.0
-         juanaDiazNode.zRotation = 9.44
+         juanaDiazNode.zRotation = 9.44*/
          juanaDiazNode.position = CGPoint(x:258.21, y:141.89)
          //juanaDiazNode.zPosition = 1
          juanaDiazNode.physicsBody = SKPhysicsBody(circleOfRadius: juanaDiazNode.size.width/2 * 0.50 , center: CGPoint(x:-2.5, y:-0.5))
          juanaDiazNode.physicsBody?.isDynamic = false
          juanaDiazNode.name = "Juana Díaz"
-        return  juanaDiazNode
+         return  juanaDiazNode
     }
     
     func quebradillasBezierPathToSKSpriteNode(bpQuebradillas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpQuebradillas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let quebradillasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let quebradillasNode = SKSpriteNode(texture: texture)
         quebradillasNode.xScale = -1.0
-        quebradillasNode.zRotation = 9.44
+        quebradillasNode.zRotation = 9.44*/
         quebradillasNode.position = CGPoint(x:139.8, y:252.85)
         //quebradillasNode.zPosition = 1
         quebradillasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:quebradillasNode.size.width/2 * 0.5, height:quebradillasNode.size.height/2 * 1.0), center: CGPoint(x:-3.5, y:-1.2))
@@ -611,14 +652,15 @@ class TestClass {
     func camuyBezierPathToSKSpriteNode(bpCamuy: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCamuy.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let camuyNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let camuyNode = SKSpriteNode(texture: texture)
          camuyNode.xScale = -1.0
-         camuyNode.zRotation = 9.44
+         camuyNode.zRotation = 9.44*/
          camuyNode.position = CGPoint(x:160.46, y:249.65)
          //camuyNode.zPosition = 1
          camuyNode.physicsBody = SKPhysicsBody(circleOfRadius: camuyNode.size.width/2 * 0.55 , center: CGPoint(x:1.0, y:0.0))
@@ -630,14 +672,15 @@ class TestClass {
     func hatilloBezierPathToSKSpriteNode(bpHatillo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpHatillo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let hatilloNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let hatilloNode = SKSpriteNode(texture: texture)
         hatilloNode.xScale = -1.0
-        hatilloNode.zRotation = 9.44
+        hatilloNode.zRotation = 9.44*/
         hatilloNode.position = CGPoint(x:175.03, y:246.63)
         //hatilloNode.zPosition = 1
         hatilloNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:hatilloNode.size.width/2 * 0.52, height:hatilloNode.size.height/2 * 1.2), center: CGPoint(x:-2.5, y: 0.5))
@@ -649,14 +692,15 @@ class TestClass {
     func areciboBezierPathToSKSpriteNode(bpArecibo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpArecibo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let areciboNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let areciboNode = SKSpriteNode(texture: texture)
          areciboNode.xScale = -1.0
-         areciboNode.zRotation = 9.44
+         areciboNode.zRotation = 9.44*/
          areciboNode.position = CGPoint(x:209.2, y:245.93)
          //areciboNode.zPosition = 1
          areciboNode.physicsBody = SKPhysicsBody(circleOfRadius: areciboNode.size.width/2 * 0.55 , center: CGPoint(x:0.5, y:0.5))
@@ -668,14 +712,15 @@ class TestClass {
     func barcelonetaBezierPathToSKSpriteNode(bpBarceloneta: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpBarceloneta.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let barcelonetaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let barcelonetaNode = SKSpriteNode(texture: texture)
         barcelonetaNode.xScale = -1.0
-        barcelonetaNode.zRotation = 9.44
+        barcelonetaNode.zRotation = 9.44*/
         barcelonetaNode.position = CGPoint(x:240.41, y:255.91)
         barcelonetaNode.zPosition = 1//FOR LABEL TO BE LEGIBLE
         barcelonetaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:barcelonetaNode.size.width/2 * 0.40, height:barcelonetaNode.size.height/2 * 1.2), center: CGPoint(x:0.5, y:-2.0))
@@ -687,14 +732,15 @@ class TestClass {
     func floridaBezierPathToSKSpriteNode(bpFlorida: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpFlorida.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let floridaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let floridaNode = SKSpriteNode(texture: texture)
         floridaNode.xScale = -1.0
-        floridaNode.zRotation = 9.44
+        floridaNode.zRotation = 9.44*/
         floridaNode.position = CGPoint(x:240.01, y:237.72)
         floridaNode.zPosition = 0//FOR LABEL TO BE LEGIBLE
         floridaNode.physicsBody = SKPhysicsBody(circleOfRadius: floridaNode.size.width/2 * 0.50 , center: CGPoint(x:-0.5, y:0.5))
@@ -707,14 +753,15 @@ class TestClass {
     func manatiBezierPathToSKSpriteNode(bpManati: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpManati.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let manatiNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let manatiNode = SKSpriteNode(texture: texture)
         manatiNode.xScale = -1.0
-        manatiNode.zRotation = 9.44
+        manatiNode.zRotation = 9.44*/
         manatiNode.position = CGPoint(x:258.84, y:249.77)
         //manatiNode.zPosition = 1
         manatiNode.physicsBody = SKPhysicsBody(circleOfRadius: manatiNode.size.width/2 * 0.55 , center: CGPoint(x:-1.5, y:0.5))
@@ -726,14 +773,15 @@ class TestClass {
     func vegaBajaBezierPathToSKSpriteNode(bpVegaBaja: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpVegaBaja.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let vegaBajaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let vegaBajaNode = SKSpriteNode(texture: texture)
         vegaBajaNode.xScale = -1.0
-        vegaBajaNode.zRotation = 9.44
+        vegaBajaNode.zRotation = 9.44*/
         vegaBajaNode.position = CGPoint(x:283.73, y:249.79)
         //vegaBajaNode.zPosition = 1
         vegaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius: vegaBajaNode.size.width/2 * 0.55, center: CGPoint(x:0.5, y:-2.5))
@@ -745,14 +793,15 @@ class TestClass {
     func villalbaBezierPathToSKSpriteNode(bpVillalba: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpVillalba.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let villalbaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let villalbaNode = SKSpriteNode(texture: texture)
         villalbaNode.xScale = -1.0
-        villalbaNode.zRotation = 9.44
+        villalbaNode.zRotation = 9.44*/
         villalbaNode.position = CGPoint(x:263.2, y:167.86)
         //villalbaNode.zPosition = 1
         villalbaNode.physicsBody = SKPhysicsBody(circleOfRadius:villalbaNode.size.width/2 * 0.5 , center: CGPoint(x:-1.5, y:0.5))
@@ -764,14 +813,15 @@ class TestClass {
     func orocovisBezierPathToSKSpriteNode(bpOrocovis: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpOrocovis.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let orocovisNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let orocovisNode = SKSpriteNode(texture: texture)
         orocovisNode.xScale = -1.0
-        orocovisNode.zRotation = 9.44
+        orocovisNode.zRotation = 9.44*/
         orocovisNode.position = CGPoint(x:270.23, y:193.72)
         //orocovisNode.zPosition = 1
         orocovisNode.physicsBody = SKPhysicsBody(circleOfRadius:orocovisNode.size.width/2 * 0.35 , center: CGPoint(x:-6.0, y:0.5))
@@ -783,14 +833,15 @@ class TestClass {
     func cialesBezierPathToSKSpriteNode(bpCiales: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCiales.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let cialesNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let cialesNode = SKSpriteNode(texture: texture)
         cialesNode.xScale = -1.0
-        cialesNode.zRotation = 9.44
+        cialesNode.zRotation = 9.44*/
         cialesNode.position = CGPoint(x:247.6, y:206.12)
         //cialesNode.zPosition = 1
         cialesNode.physicsBody = SKPhysicsBody(circleOfRadius:cialesNode.size.width/2 * 0.4 , center: CGPoint(x:-5.5, y:-10.5))
@@ -802,14 +853,15 @@ class TestClass {
     func morovisBezierPathToSKSpriteNode(bpMorovis: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpMorovis.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let morovisNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let morovisNode = SKSpriteNode(texture: texture)
         morovisNode.xScale = -1.0
-        morovisNode.zRotation = 9.44
+        morovisNode.zRotation = 9.44*/
         morovisNode.position = CGPoint(x:279.3, y:221.04)
         //morovisNode.zPosition = 1
         morovisNode.physicsBody = SKPhysicsBody(circleOfRadius:morovisNode.size.width/2 * 0.49 , center: CGPoint(x:0.0, y:0.5))
@@ -821,14 +873,15 @@ class TestClass {
     func corozalBezierPathToSKSpriteNode(bpCorozal: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCorozal.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let corozalNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let corozalNode = SKSpriteNode(texture: texture)
         corozalNode.xScale = -1.0
-        corozalNode.zRotation = 9.44
+        corozalNode.zRotation = 9.44*/
         corozalNode.position = CGPoint(x:302.12, y:217.15)
         //corozalNode.zPosition = 1
         corozalNode.physicsBody = SKPhysicsBody(circleOfRadius:corozalNode.size.width/2 * 0.55 , center: CGPoint(x:-1.0, y:0.5))
@@ -840,14 +893,15 @@ class TestClass {
     func barranquitasBezierPathToSKSpriteNode(bpBarranquitas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpBarranquitas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let barranquitasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let barranquitasNode = SKSpriteNode(texture: texture)
         barranquitasNode.xScale = -1.0
-        barranquitasNode.zRotation = 9.44
+        barranquitasNode.zRotation = 9.44*/
         barranquitasNode.position = CGPoint(x:308.45, y:187.95)
         barranquitasNode.zPosition = 1//FOR LABEL TO BE LEGIBLE
         barranquitasNode.physicsBody = SKPhysicsBody(circleOfRadius:barranquitasNode.size.width/2 * 0.4 , center: CGPoint(x:0.5, y:-1.5))
@@ -859,14 +913,15 @@ class TestClass {
     func comerioBezierPathToSKSpriteNode(bpComerio: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpComerio.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let comerioNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let comerioNode = SKSpriteNode(texture: texture)
         comerioNode.xScale = -1.0
-        comerioNode.zRotation = 9.44
+        comerioNode.zRotation = 9.44*/
         comerioNode.position = CGPoint(x:331.91, y:194.87)
         comerioNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(BARRANQUITAS)
         comerioNode.physicsBody = SKPhysicsBody(circleOfRadius:comerioNode.size.width/2 * 0.4 , center: CGPoint(x:-1.2, y:0.5))
@@ -878,14 +933,15 @@ class TestClass {
     func coamoBezierPathToSKSpriteNode(bpCoamo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCoamo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let coamoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let coamoNode = SKSpriteNode(texture: texture)
         coamoNode.xScale = -1.0
-        coamoNode.zRotation = 9.44
+        coamoNode.zRotation = 9.44*/
         coamoNode.position = CGPoint(x:296.54, y:158.24)
         coamoNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(BARRANQUITAS)
         coamoNode.physicsBody = SKPhysicsBody(circleOfRadius:coamoNode.size.width/2 * 0.4 , center: CGPoint(x:1.7, y:0.5))
@@ -897,14 +953,15 @@ class TestClass {
     func naranjitoBezierPathToSKSpriteNode(bpNaranjito: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpNaranjito.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let naranjitoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let naranjitoNode = SKSpriteNode(texture: texture)
         naranjitoNode.xScale = -1.0
-        naranjitoNode.zRotation = 9.44
+        naranjitoNode.zRotation = 9.44*/
         naranjitoNode.position = CGPoint(x:321.28, y:212.61)
         //naranjitoNode.zPosition = 1
         naranjitoNode.physicsBody = SKPhysicsBody(circleOfRadius:naranjitoNode.size.width/2 * 0.4 , center: CGPoint(x:-1.5, y:0.5))
@@ -916,14 +973,15 @@ class TestClass {
     func aibonitoBezierPathToSKSpriteNode(bpAibonito: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpAibonito.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let aibonitoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let aibonitoNode = SKSpriteNode(texture: texture)
         aibonitoNode.xScale = -1.0
-        aibonitoNode.zRotation = 9.44
+        aibonitoNode.zRotation = 9.44*/
         aibonitoNode.position = CGPoint(x:318.76, y:167.44)
         aibonitoNode.zPosition = 1
         aibonitoNode.physicsBody = SKPhysicsBody(circleOfRadius:aibonitoNode.size.width/2 * 0.4 , center: CGPoint(x:-2.0, y:-0.5))
@@ -935,14 +993,15 @@ class TestClass {
     func salinasBezierPathToSKSpriteNode(bpSalinas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSalinas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let salinasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let salinasNode = SKSpriteNode(texture: texture)
         salinasNode.xScale = -1.0
-        salinasNode.zRotation = 9.44
+        salinasNode.zRotation = 9.44*/
         salinasNode.position = CGPoint(x:322.58, y:132.2)
         //salinasNode.zPosition = 1
         salinasNode.physicsBody = SKPhysicsBody(circleOfRadius:salinasNode.size.width/2 * 0.4 , center: CGPoint(x:0.0, y:-0.5))
@@ -954,14 +1013,15 @@ class TestClass {
     func cayeyBezierPathToSKSpriteNode(bpCayey: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCayey.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let cayeyNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let cayeyNode = SKSpriteNode(texture: texture)
         cayeyNode.xScale = -1.0
-        cayeyNode.zRotation = 9.44
+        cayeyNode.zRotation = 9.44*/
         cayeyNode.position = CGPoint(x:353.68, y:160.28)
         //cayeyNode.zPosition = 1
         cayeyNode.physicsBody = SKPhysicsBody(circleOfRadius:cayeyNode.size.width/2 * 0.34 , center: CGPoint(x:7.5, y:2.5))
@@ -975,14 +1035,15 @@ class TestClass {
     func cidraBezierPathToSKSpriteNode(bpCidra: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCidra.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let cidraNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let cidraNode = SKSpriteNode(texture: texture)
         cidraNode.xScale = -1.0
-        cidraNode.zRotation = 9.44
+        cidraNode.zRotation = 9.44*/
         cidraNode.position = CGPoint(x:345.38, y:182.58)
         //cidraNode.zPosition = 1
         cidraNode.physicsBody = SKPhysicsBody(circleOfRadius:cidraNode.size.width/2 * 0.30 , center: CGPoint(x:-3.5, y:2.0))
@@ -994,14 +1055,15 @@ class TestClass {
     func santaIsabelBezierPathToSKSpriteNode(bpSantaIsabel: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSantaIsabel.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let santaIsabelNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let santaIsabelNode = SKSpriteNode(texture: texture)
         santaIsabelNode.xScale = -1.0
-        santaIsabelNode.zRotation = 9.44
+        santaIsabelNode.zRotation = 9.44*/
         santaIsabelNode.position = CGPoint(x:285.59, y:125.67)
         //santaIsabelNode.zPosition = 1
         santaIsabelNode.physicsBody = SKPhysicsBody(circleOfRadius:santaIsabelNode.size.width/2 * 0.45 , center: CGPoint(x:-1.5,y:-4.5))
@@ -1013,14 +1075,15 @@ class TestClass {
     func vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpVegaAlta.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let vegaAltaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let vegaAltaNode = SKSpriteNode(texture: texture)
         vegaAltaNode.xScale = -1.0
-        vegaAltaNode.zRotation = 9.44
+        vegaAltaNode.zRotation = 9.44*/
         vegaAltaNode.position = CGPoint(x:299.93, y:247.01)
         //vegaAltaNode.zPosition = 1
         vegaAltaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:vegaAltaNode.size.width/2 * 0.25, height:vegaAltaNode.size.height/2 * 1.1), center: CGPoint(x:-1.5, y: -2.5))
@@ -1032,14 +1095,15 @@ class TestClass {
     func doradoBezierPathToSKSpriteNode(bpDorado: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpDorado.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let doradoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let doradoNode = SKSpriteNode(texture: texture)
         doradoNode.xScale = -1.0
-        doradoNode.zRotation = 9.44
+        doradoNode.zRotation = 9.44*/
         doradoNode.position = CGPoint(x:319.91, y:253.65)
         //doradoNode.zPosition = 1
         doradoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:doradoNode.size.width/2 * 0.20, height:doradoNode.size.height/2 * 1.2), center: CGPoint(x:3.5, y: 0.5))
@@ -1051,14 +1115,15 @@ class TestClass {
     func toaAltaBezierPathToSKSpriteNode(bpToaAlta: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpToaAlta.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let toaAltaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let toaAltaNode = SKSpriteNode(texture: texture)
         toaAltaNode.xScale = -1.0
-        toaAltaNode.zRotation = 9.44
+        toaAltaNode.zRotation = 9.44*/
         toaAltaNode.position = CGPoint(x:321.65, y:232.96)
         //toaAltaNode.zPosition = 1
         toaAltaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaAltaNode.size.width/2 * 0.35 , center: CGPoint(x:-3.0,y:-0.5))
@@ -1070,14 +1135,15 @@ class TestClass {
     func toaBajaBezierPathToSKSpriteNode(bpToaBaja: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpToaBaja.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let toaBajaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let toaBajaNode = SKSpriteNode(texture: texture)
         toaBajaNode.xScale = -1.0
-        toaBajaNode.zRotation = 9.44
+        toaBajaNode.zRotation = 9.44*/
         toaBajaNode.position = CGPoint(x:337.59, y:253.87)
         //toaBajaNode.zPosition = 1
         toaBajaNode.physicsBody = SKPhysicsBody(circleOfRadius:toaBajaNode.size.width/2 * 0.27 , center: CGPoint(x:5.5,y:0.5))
@@ -1090,14 +1156,15 @@ class TestClass {
     func bayamonBezierPathToSKSpriteNode(bpBayamon: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpBayamon.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let bayamonNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let bayamonNode = SKSpriteNode(texture: texture)
         bayamonNode.xScale = -1.0
-        bayamonNode.zRotation = 9.44
+        bayamonNode.zRotation = 9.44*/
         bayamonNode.position = CGPoint(x:346.44, y:228.92)
         //bayamonNode.zPosition = 1
         bayamonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:bayamonNode.size.width/2 * 0.40, height:bayamonNode.size.height/2 * 1.3), center: CGPoint(x:0.5, y: -0.5))
@@ -1110,14 +1177,15 @@ class TestClass {
     func catanoBezierPathToSKSpriteNode(bpCatano: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpCatano.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let catanoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let catanoNode = SKSpriteNode(texture: texture)
         catanoNode.xScale = -1.0
-        catanoNode.zRotation = 9.44
+        catanoNode.zRotation = 9.44*/
         catanoNode.position = CGPoint(x:353.41, y:256.05)
         catanoNode.zPosition = 2//FOR LABEL TO BE LEGIBLE
         catanoNode.physicsBody = SKPhysicsBody(circleOfRadius:catanoNode.size.width/2 * 0.33 , center: CGPoint(x:0.5,y:0.5))
@@ -1129,14 +1197,15 @@ class TestClass {
     func guaynaboBezierPathToSKSpriteNode(bpGuaynabo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpGuaynabo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let guaynaboNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let guaynaboNode = SKSpriteNode(texture: texture)
         guaynaboNode.xScale = -1.0
-        guaynaboNode.zRotation = 9.44
+        guaynaboNode.zRotation = 9.44*/
         guaynaboNode.position = CGPoint(x:360.92, y:233.01)
         guaynaboNode.zPosition = 1//FOR LABEL TO BE LEGIBLE
         guaynaboNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:guaynaboNode.size.width/2 * 0.35, height:guaynaboNode.size.height/2 * 1.3), center: CGPoint(x:0.5, y: 0.5))
@@ -1148,14 +1217,15 @@ class TestClass {
     func sanJuanBezierPathToSKSpriteNode(bpSanJuan: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpSanJuan.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let sanJuanNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.3
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let sanJuanNode = SKSpriteNode(texture: texture)
         sanJuanNode.xScale = -1.0
-        sanJuanNode.zRotation = 9.44
+        sanJuanNode.zRotation = 9.44*/
         sanJuanNode.position = CGPoint(x:375.22, y:240.17)
         sanJuanNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(GUAYNABO)
         sanJuanNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:sanJuanNode.size.width/2 * 0.30, height:sanJuanNode.size.height/2 * 1.3), center: CGPoint(x:0.5, y: 0.5))
@@ -1168,14 +1238,15 @@ class TestClass {
     func caguasBezierPathToSKSpriteNode(bpCaguas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpCaguas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let caguasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let caguasNode = SKSpriteNode(texture: texture)
         caguasNode.xScale = -1.0
-        caguasNode.zRotation = 9.44
+        caguasNode.zRotation = 9.44*/
         caguasNode.position = CGPoint(x:375.56, y:191.55)
         //caguasNode.zPosition = 1
         caguasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:caguasNode.size.width/2 * 0.30, height:caguasNode.size.height/2 * 1.3), center: CGPoint(x:-2.5, y: 0.5))
@@ -1187,14 +1258,15 @@ class TestClass {
     func carolinaBezierPathToSKSpriteNode(bpCarolina: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpCarolina.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let carolinaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let carolinaNode = SKSpriteNode(texture: texture)
         carolinaNode.xScale = -1.0
-        carolinaNode.zRotation = 9.44
+        carolinaNode.zRotation = 9.44*/
         carolinaNode.position = CGPoint(x:398.56,  y:234.17)
         //carolinaNode.zPosition = 1
         carolinaNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:carolinaNode.size.width/2 * 0.30, height:carolinaNode.size.height/2 * 0.95), center: CGPoint(x:-4.5, y: -3.0))
@@ -1206,14 +1278,15 @@ class TestClass {
     func aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpAguasBuenas.cgPath)
-           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           let aguasBuenasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+           /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
            shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
            let aguasBuenasNode = SKSpriteNode(texture: texture)
             aguasBuenasNode.xScale = -1.0
-            aguasBuenasNode.zRotation = 9.44
+            aguasBuenasNode.zRotation = 9.44*/
             aguasBuenasNode.position = CGPoint(x:356.56, y:202.09)
             //aguasBuenasNode.zPosition = 1
             aguasBuenasNode.physicsBody = SKPhysicsBody(circleOfRadius:aguasBuenasNode.size.width/2 * 0.35 , center: CGPoint(x:0.0,y:0.5))
@@ -1225,14 +1298,15 @@ class TestClass {
     func trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: UIBezierPath)-> SKSpriteNode{
            
            let shapeNode = SKShapeNode(path:bpTrujilloAlto.cgPath)
-           shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+           let trujilloAltoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+           /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
            shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
            shapeNode.lineWidth = 0.5
            let view = SKView(frame: UIScreen.main.bounds)
            let texture = view.texture(from: shapeNode)!
            let trujilloAltoNode = SKSpriteNode(texture: texture)
             trujilloAltoNode.xScale = -1.0
-            trujilloAltoNode.zRotation = 9.44
+            trujilloAltoNode.zRotation = 9.44*/
             trujilloAltoNode.position = CGPoint(x:393.83, y:226.67)
             //trujilloAltoNode.zPosition = 1
             trujilloAltoNode.physicsBody = SKPhysicsBody(circleOfRadius:trujilloAltoNode.size.width/2 * 0.40 , center: CGPoint(x:4.0,y:0.5))
@@ -1244,13 +1318,14 @@ class TestClass {
       func loizaBezierPathToSKSpriteNode(bpLoiza: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpLoiza.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let loizaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let loizaNode = SKSpriteNode(texture: texture)
-        loizaNode.xScale = -1.0
+        loizaNode.xScale = -1.0*/
         loizaNode.zRotation = 0.00//0.10
         loizaNode.setScale(0.5750)//setScale(0.59)
         loizaNode.position = CGPoint(x:414.60, y:250)//(x:414.55, y:249.48)
@@ -1283,14 +1358,15 @@ class TestClass {
       func canovanasBezierPathToSKSpriteNode(bpCanovanas: UIBezierPath)-> SKSpriteNode{
          
         let shapeNode = SKShapeNode(path: bpCanovanas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let canovanasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let canovanasNode = SKSpriteNode(texture: texture)
         canovanasNode.xScale = -1.0
-        canovanasNode.zRotation = 9.44
+        canovanasNode.zRotation = 9.44*/
         canovanasNode.position = CGPoint(x:422.51, y:225.63)
         //canovanasNode.zPosition = 1
         canovanasNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:canovanasNode.size.width/2 * 0.5, height:canovanasNode.size.height/2 * 1.0), center: CGPoint(x:1.5, y: 0.5))
@@ -1302,14 +1378,15 @@ class TestClass {
       func rioGrandeBezierPathToSKSpriteNode(bpRioGrande: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpRioGrande.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let rioGrandeNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let rioGrandeNode = SKSpriteNode(texture: texture)
         rioGrandeNode.xScale = -1.0
-        rioGrandeNode.zRotation = 9.44
+        rioGrandeNode.zRotation = 9.44*/
         rioGrandeNode.position = CGPoint(x:441.51, y:229.61)
          //rioGrandeNode.zPosition = 1
         rioGrandeNode.physicsBody = SKPhysicsBody(circleOfRadius: rioGrandeNode.size.width/2 * 0.55 , center: CGPoint(x:1.0, y:0.0))
@@ -1321,14 +1398,15 @@ class TestClass {
      func luquilloBezierPathToSKSpriteNode(bpLuquillo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpLuquillo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let luquilloNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let luquilloNode = SKSpriteNode(texture: texture)
         luquilloNode.xScale = -1.0
-        luquilloNode.zRotation = 9.44
+        luquilloNode.zRotation = 9.44*/
         luquilloNode.position = CGPoint(x:464.64, y:227.19)
         //luquilloNode.zPosition = 1
         luquilloNode.physicsBody = SKPhysicsBody(circleOfRadius: luquilloNode.size.width/2 * 0.4 , center: CGPoint(x:0.0, y:-1.5))
@@ -1340,14 +1418,15 @@ class TestClass {
      func fajardoBezierPathToSKSpriteNode(bpFajardo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpFajardo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let fajardoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let fajardoNode = SKSpriteNode(texture: texture)
         fajardoNode.xScale = -1.0
-        fajardoNode.zRotation = 9.44
+        fajardoNode.zRotation = 9.44*/
         fajardoNode.position = CGPoint(x:486.08, y:225.53)
         //fajardoNode.zPosition = 1
         fajardoNode.physicsBody = SKPhysicsBody(circleOfRadius: fajardoNode.size.width/2 * 0.15 , center: CGPoint(x:5.0, y:3.5))
@@ -1359,14 +1438,15 @@ class TestClass {
      func ceibaBezierPathToSKSpriteNode(bpCeiba: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpCeiba.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let ceibaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let ceibaNode = SKSpriteNode(texture: texture)
         ceibaNode.xScale = -1.0
-        ceibaNode.zRotation = 9.44
+        ceibaNode.zRotation = 9.44*/
         ceibaNode.position = CGPoint(x:477.79, y:201.27)
         ceibaNode.zPosition = 1//FOR LABEL TO BE LEGIBLE
         ceibaNode.physicsBody = SKPhysicsBody(circleOfRadius: ceibaNode.size.width/2 * 0.15 , center: CGPoint(x:-3.5, y:-1.5))
@@ -1378,14 +1458,15 @@ class TestClass {
      func guraboBezierPathToSKSpriteNode(bpGurabo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpGurabo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let guraboNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let guraboNode = SKSpriteNode(texture: texture)
         guraboNode.xScale = -1.0
-        guraboNode.zRotation = 9.44
+        guraboNode.zRotation = 9.44*/
         guraboNode.position = CGPoint(x:398.05, y:204.61)
         //guraboNode.zPosition = 1
         guraboNode.physicsBody = SKPhysicsBody(circleOfRadius: guraboNode.size.width/2 * 0.45 , center: CGPoint(x:-1.0, y:-2.0))
@@ -1397,14 +1478,15 @@ class TestClass {
      func juncosBezierPathToSKSpriteNode(bpJuncos: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpJuncos.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let juncosNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let juncosNode = SKSpriteNode(texture: texture)
         juncosNode.xScale = -1.0
-        juncosNode.zRotation = 9.44
+        juncosNode.zRotation = 9.44*/
         juncosNode.position = CGPoint(x:417.56, y:189.66)
         //juncosNode.zPosition = 1
         juncosNode.physicsBody = SKPhysicsBody(circleOfRadius: juncosNode.size.width/2 * 0.4 , center: CGPoint(x:3.0, y:-7.5))
@@ -1416,14 +1498,15 @@ class TestClass {
      func sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpSanLorenzo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let sanLorenzoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let sanLorenzoNode = SKSpriteNode(texture: texture)
         sanLorenzoNode.xScale = -1.0
-        sanLorenzoNode.zRotation = 9.44
+        sanLorenzoNode.zRotation = 9.44*/
         sanLorenzoNode.position = CGPoint(x:394.13, y:174.38)
         //sanLorenzoNode.zPosition = 1
         sanLorenzoNode.physicsBody = SKPhysicsBody(circleOfRadius: sanLorenzoNode.size.width/2 * 0.45 , center: CGPoint(x:-3.0, y:2.5))
@@ -1435,14 +1518,15 @@ class TestClass {
      func guayamaBezierPathToSKSpriteNode(bpGuayama: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpGuayama.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let guayamaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let guayamaNode = SKSpriteNode(texture: texture)
         guayamaNode.xScale = -1.0
-        guayamaNode.zRotation = 9.44
+        guayamaNode.zRotation = 9.44*/
         guayamaNode.position = CGPoint(x:354.67, y:135.15)
         //guayamaNode.zPosition = 1
         guayamaNode.physicsBody = SKPhysicsBody(circleOfRadius:guayamaNode.size.width/2 * 0.4 , center: CGPoint(x:-0.5, y:4.5))
@@ -1454,14 +1538,15 @@ class TestClass {
      func arroyoBezierPathToSKSpriteNode(bpArroyo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpArroyo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let arroyoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let arroyoNode = SKSpriteNode(texture: texture)
         arroyoNode.xScale = -1.0
-        arroyoNode.zRotation = 9.44
+        arroyoNode.zRotation = 9.44*/
         arroyoNode.position = CGPoint(x:375.68, y:130.08)
         //arroyoNode.zPosition = 1
         arroyoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:arroyoNode.size.width/2 * 0.45, height:arroyoNode.size.height/2 * 1.5), center: CGPoint(x:-0.5, y:-1.2))
@@ -1473,14 +1558,15 @@ class TestClass {
      func patillasBezierPathToSKSpriteNode(bpPatillas: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpPatillas.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let patillasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let patillasNode = SKSpriteNode(texture: texture)
         patillasNode.xScale = -1.0
-        patillasNode.zRotation = 9.44
+        patillasNode.zRotation = 9.44*/
         patillasNode.position = CGPoint(x:391.39,  y:142.16)
         //patillasNode.zPosition = 1
         patillasNode.physicsBody = SKPhysicsBody(circleOfRadius:patillasNode.size.width/2 * 0.25 , center: CGPoint(x:3.0, y:3.0))
@@ -1492,14 +1578,15 @@ class TestClass {
      func maunaboBezierPathToSKSpriteNode(bpMaunabo: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path: bpMaunabo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let maunaboNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let maunaboNode = SKSpriteNode(texture: texture)
         maunaboNode.xScale = -1.0
-        maunaboNode.zRotation = 9.44
+        maunaboNode.zRotation = 9.44*/
         maunaboNode.position = CGPoint(x:412.87,  y:137.01)
         //maunaboNode.zPosition = 1
         maunaboNode.physicsBody = SKPhysicsBody(circleOfRadius:maunaboNode.size.width/2 * 0.25 , center: CGPoint(x:-1.0, y:3.0))
@@ -1511,14 +1598,15 @@ class TestClass {
      func yabucoaBezierPathToSKSpriteNode(bpYabucoa: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpYabucoa.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let yabucoaNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let yabucoaNode = SKSpriteNode(texture: texture)
         yabucoaNode.xScale = -1.0
-        yabucoaNode.zRotation = 9.44
+        yabucoaNode.zRotation = 9.44*/
         yabucoaNode.position = CGPoint(x:417.44, y:150.51)
         //yabucoaNode.zPosition = 1
         yabucoaNode.physicsBody = SKPhysicsBody(circleOfRadius:yabucoaNode.size.width/2 * 0.3 , center: CGPoint(x:-5.0, y:-0.5))
@@ -1530,14 +1618,15 @@ class TestClass {
      func lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpLasPiedras.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let lasPiedrasNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let lasPiedrasNode = SKSpriteNode(texture: texture)
         lasPiedrasNode.xScale = -1.0
-        lasPiedrasNode.zRotation = 9.44
+        lasPiedrasNode.zRotation = 9.44*/
         lasPiedrasNode.position = CGPoint(x:425.65, y:186.86)
         //lasPiedrasNode.zPosition = 1
         lasPiedrasNode.physicsBody = SKPhysicsBody(circleOfRadius:lasPiedrasNode.size.width/2 * 0.4 , center: CGPoint(x:-1.5, y:0.5))
@@ -1549,14 +1638,15 @@ class TestClass {
      func humacaoBezierPathToSKSpriteNode(bpHumacao: UIBezierPath)-> SKSpriteNode{
 
         let shapeNode = SKShapeNode(path:bpHumacao.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let humacaoNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let humacaoNode = SKSpriteNode(texture: texture)
         humacaoNode.xScale = -1.0
-        humacaoNode.zRotation = 9.44
+        humacaoNode.zRotation = 9.44*/
         humacaoNode.position = CGPoint(x:444.15, y:170.3)
         //humacaoNode.zPosition = 1
         humacaoNode.physicsBody = SKPhysicsBody(circleOfRadius:humacaoNode.size.width/2 * 0.4 , center: CGPoint(x:1.5, y:-2.5))
@@ -1568,14 +1658,15 @@ class TestClass {
       func naguaboBezierPathToSKSpriteNode(bpNaguabo: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpNaguabo.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let naguaboNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let naguaboNode = SKSpriteNode(texture: texture)
         naguaboNode.xScale = -1.0
-        naguaboNode.zRotation = 9.44
+        naguaboNode.zRotation = 9.44*/
         naguaboNode.position = CGPoint(x:459.97, y:197.89)
         naguaboNode.zPosition = 0//FOR LABEL TO BE LEGIBLE(CEIBA)
         naguaboNode.physicsBody = SKPhysicsBody(circleOfRadius:naguaboNode.size.width/2 * 0.35 , center: CGPoint(x:2.5, y:1.5))
@@ -1587,14 +1678,15 @@ class TestClass {
       func viequesBezierPathToSKSpriteNode(bpVieques: UIBezierPath)-> SKSpriteNode{
         
         let shapeNode = SKShapeNode(path:bpVieques.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let viequesNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let viequesNode = SKSpriteNode(texture: texture)
         viequesNode.xScale = -1.0
-        viequesNode.zRotation = 9.44
+        viequesNode.zRotation = 9.44*/
         viequesNode.position = CGPoint(x:512, y:95)//(x:582.85, y:154.19)
         viequesNode.zPosition = 1
         viequesNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:viequesNode.size.width/2 * 1.2, height:viequesNode.size.height/2 * 0.5), center: CGPoint(x:39, y: -10.0))
@@ -1606,14 +1698,15 @@ class TestClass {
       func culebraBezierPathToSKSpriteNode(bpCulebra: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpCulebra.cgPath)
-        shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
+        let culebraNode: SKSpriteNode = ToSkShapeNodeAndDefaultProperties(nodeShape:shapeNode)
+        /*shapeNode.fillColor = UIColor.init(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6
         shapeNode.strokeColor = UIColor.init(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let culebraNode = SKSpriteNode(texture: texture)
         culebraNode.xScale = -1.0
-        culebraNode.zRotation = 9.44
+        culebraNode.zRotation = 9.44*/
         culebraNode.position = CGPoint(x:493, y:141.5)
         culebraNode.zPosition = 1
         culebraNode.physicsBody = SKPhysicsBody(circleOfRadius:culebraNode.size.width/2 * 0.40 , center: CGPoint(x:-1.5, y:1.5))
