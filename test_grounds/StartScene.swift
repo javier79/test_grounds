@@ -146,6 +146,8 @@ class StartScene: SKScene{
     var scoreCount:Int = 0
     let totalScoreCount:String = "/78"
     
+    var endGameRectangle: SKSpriteNode!
+    
     
     override func didMove(to view: SKView){
         
@@ -167,6 +169,8 @@ class StartScene: SKScene{
         municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
         
         municipiosNameBackground = labelMunicipiosNameBackground()
+        
+        endGameRectangle = endgameRectangle()
         
         let rectanglebp:UIBezierPath! = TestClass().createRectangle()
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
@@ -507,6 +511,7 @@ class StartScene: SKScene{
         self.addChild(municipioNameLabel)
         self.addChild(skipButton)
         self.addChild(containerNode)
+        self.addChild(endGameRectangle)
         
         
         sleep(2)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
@@ -547,6 +552,15 @@ class StartScene: SKScene{
         return backgroundNode
     }
     
+    func endgameRectangle() -> SKSpriteNode {
+        let endGameRectangleNode = SKSpriteNode()
+        endGameRectangleNode.color = UIColor.init(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)//color hex #89d7ed
+        endGameRectangleNode.size = CGSize(width:350, height:250)
+        //nodes_Container.anchorPoint = CGPoint.zero
+        endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
+        endGameRectangleNode.zPosition = 2
+        return endGameRectangleNode
+    }
     
     func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
         let desecheoCover = SKSpriteNode()
