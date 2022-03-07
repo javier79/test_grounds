@@ -147,6 +147,9 @@ class StartScene: SKScene{
     let totalScoreCount:String = "/78"
     
     var endGameRectangle: SKSpriteNode!
+    var endGameRectangleButton = SKSpriteNode()
+    var endGameRectangleButtonTwo = SKSpriteNode()
+    var endGameRectangleButtonThree = SKSpriteNode()
     
     
     override func didMove(to view: SKView){
@@ -171,6 +174,15 @@ class StartScene: SKScene{
         municipiosNameBackground = labelMunicipiosNameBackground()
         
         endGameRectangle = endgameRectangle()
+        
+        endGameRectangleButton.name = "buttonOne"
+        endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
+
+        endGameRectangleButtonTwo.name = "buttonTwo"
+        endGameRectangleButtonTwo = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
+        
+        endGameRectangleButtonThree.name = "buttonThree"
+        endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
         
         let rectanglebp:UIBezierPath! = TestClass().createRectangle()
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
@@ -512,6 +524,9 @@ class StartScene: SKScene{
         self.addChild(skipButton)
         self.addChild(containerNode)
         self.addChild(endGameRectangle)
+        self.addChild(endGameRectangleButton)
+        self.addChild(endGameRectangleButtonTwo)
+        self.addChild(endGameRectangleButtonThree)
         
         
         sleep(2)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
@@ -560,6 +575,42 @@ class StartScene: SKScene{
         endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
         endGameRectangleNode.zPosition = 2
         return endGameRectangleNode
+    }
+    
+    func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
+        let buttonNode = SKSpriteNode()
+        buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color hex #89d7ed
+        //buttonNode.size = CGSize(width:endGameRectangle.size.width/4, height:endGameRectangle.size.height/4)
+        //nodes_Container.anchorPoint = CGPoint.zero
+        //buttonNode.position = CGPoint(x: endGameRectangle.size.width/1.85, y: endGameRectangle.size.height/2)
+        buttonNode.zPosition = 3
+        
+        if buttonOne.name == "buttonOne"{
+            print("inside button one")
+            buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+            buttonNode.position = CGPoint(x:endGameRectangle.size.width/2 + 11, y: endGameRectangle.size.height/2)
+            //buttonNode.color = UIColor.blue
+            //return buttonNode
+        }
+        if buttonTwo.name == "buttonTwo"{
+            print("inside button two")
+            buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)
+            buttonNode.position = CGPoint(x:endGameRectangle.size.width/2 * 1.71, y: endGameRectangle.size.height/2)
+            //buttonNode.position = CGPoint(x: 100, y: 20)
+            //buttonNode.color = UIColor.red
+            //return buttonNode
+        }
+        if buttonThree.name == "buttonThree"{
+            print("inside button three")
+            buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+            buttonNode.position = CGPoint(x:endGameRectangle.size.width * 1.180, y: endGameRectangle.size.height/2)
+            //buttonNode.position = CGPoint(x: 200, y: 50)
+            //buttonNode.color = UIColor.yellow
+            //return buttonNode
+        }
+        //var counter = 0
+        return buttonNode
+        
     }
     
     func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
@@ -778,10 +829,11 @@ class StartScene: SKScene{
         if (touchedNode != nil){//Esta linea permite que la ejecucion continue hacia el bloque abajo si se toco un SKphysics body o tambien se puede entender como si se tocara fuera de los skphysics bodys que en cuyo caso devolveria un valor nil(nulo)
             if (municipioNameLabel.text == touchedNode?.node?.name){//Si esta condicion no se cumple que es igual a no atinar el municipio a identificar, pasa al Else abajo donde la variable Fail es igual a true
                 for child in containerNode.children {//Este for loop va a iterar(en memoria los elementos contenidos en containerNode(SKNode)) de forma continua cotejando la condicion if(touchedNode?.node?.name == spriteNode.name)
-                    if let spriteNode = child as? SKSpriteNode {//Esto se leeria como Si child puede ser casted as Skspritenode(esto es porque podria ocurrir que containerNode tenga algun objeto que no pueda ser casteado a Skspritenode)
+                    if let spriteNode = child as? SKSpriteNode {//Esto se leeria como Si child es Skspritenode(esto es porque podria ocurrir que containerNode tenga algun objeto que no un Skspritenode)
                         if(touchedNode?.node?.name == spriteNode.name){//Si esta condicion prueba falsa la ejecucion va a regresar al for loop continuamente hasta que esta pruebe cierta
                             spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
+                            spriteNode.physicsBody = nil//Elimina el skphysicsBody
                             
                             let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
                             let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
