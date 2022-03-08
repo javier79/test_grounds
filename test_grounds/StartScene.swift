@@ -129,7 +129,8 @@ class StartScene: SKScene{
     //let locationNameLabel = SKLabelNode()/*Esta declaracion estaba originalmente en override func**/
     
 
-    
+    /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
+    elelemento Adjuntas*/
     //El array se puede declarar dentro de la funcion touchesBegan
     var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
     
@@ -175,14 +176,17 @@ class StartScene: SKScene{
         
         endGameRectangle = endgameRectangle()
         
-        endGameRectangleButton.name = "buttonOne"
+        endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
         endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-
+        endGameRectangle.addChild(endGameRectangleButton)
+        
         endGameRectangleButtonTwo.name = "buttonTwo"
         endGameRectangleButtonTwo = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
+        endGameRectangle.addChild(endGameRectangleButtonTwo)
         
         endGameRectangleButtonThree.name = "buttonThree"
         endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
+        endGameRectangle.addChild(endGameRectangleButtonThree)
         
         let rectanglebp:UIBezierPath! = TestClass().createRectangle()
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
@@ -524,9 +528,7 @@ class StartScene: SKScene{
         self.addChild(skipButton)
         self.addChild(containerNode)
         self.addChild(endGameRectangle)
-        self.addChild(endGameRectangleButton)
-        self.addChild(endGameRectangleButtonTwo)
-        self.addChild(endGameRectangleButtonThree)
+
         
         
         sleep(2)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
@@ -579,36 +581,75 @@ class StartScene: SKScene{
     
     func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
         let buttonNode = SKSpriteNode()
-        buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color hex #89d7ed
-        //buttonNode.size = CGSize(width:endGameRectangle.size.width/4, height:endGameRectangle.size.height/4)
-        //nodes_Container.anchorPoint = CGPoint.zero
-        //buttonNode.position = CGPoint(x: endGameRectangle.size.width/1.85, y: endGameRectangle.size.height/2)
+        buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
+        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
         buttonNode.zPosition = 3
         
         if buttonOne.name == "buttonOne"{
             print("inside button one")
-            buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-            buttonNode.position = CGPoint(x:endGameRectangle.size.width/2 + 11, y: endGameRectangle.size.height/2)
-            //buttonNode.color = UIColor.blue
-            //return buttonNode
+            buttonNode.position = CGPoint(x:-115.5, y:-78.4)
+            
+            let buttonOneLabelOne = SKLabelNode()
+            buttonOneLabelOne.fontName = "AvenirNext-Bold"
+            buttonOneLabelOne.fontSize = 16
+            buttonOneLabelOne.text = "Mapa"
+            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+            buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonOneLabelOne)
+            
+            let buttonOneLabelTwo = SKLabelNode()
+            buttonOneLabelTwo.fontName = "AvenirNext-Bold"
+            buttonOneLabelTwo.fontSize = 13
+            buttonOneLabelTwo.text = "(Map)"
+            buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
+            buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonOneLabelTwo)
         }
+        
         if buttonTwo.name == "buttonTwo"{
             print("inside button two")
-            buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)
-            buttonNode.position = CGPoint(x:endGameRectangle.size.width/2 * 1.71, y: endGameRectangle.size.height/2)
-            //buttonNode.position = CGPoint(x: 100, y: 20)
-            //buttonNode.color = UIColor.red
-            //return buttonNode
+            buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
+            buttonNode.position = CGPoint(x:0.5, y: -78.4)
+            
+            let buttonTwoLabelOne = SKLabelNode()
+            buttonTwoLabelOne.fontName = "AvenirNext-Bold"
+            buttonTwoLabelOne.fontSize = 16
+            buttonTwoLabelOne.text = "Jugar Otra Vez"
+            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+            buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonTwoLabelOne)
+            
+            let buttonTwoLabelTwo = SKLabelNode()
+            buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
+            buttonTwoLabelTwo.fontSize = 13
+            buttonTwoLabelTwo.text = "(Play Again)"
+            buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
+            buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonTwoLabelTwo)
         }
+        
         if buttonThree.name == "buttonThree"{
             print("inside button three")
-            buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-            buttonNode.position = CGPoint(x:endGameRectangle.size.width * 1.180, y: endGameRectangle.size.height/2)
-            //buttonNode.position = CGPoint(x: 200, y: 50)
-            //buttonNode.color = UIColor.yellow
-            //return buttonNode
+            //buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+            buttonNode.position = CGPoint(x:115.5, y:-78.4)
+
+            let buttonThreeLabelOne = SKLabelNode()
+            buttonThreeLabelOne.fontName = "AvenirNext-Bold"
+            buttonThreeLabelOne.fontSize = 16
+            buttonThreeLabelOne.text = "Salir"
+            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+            buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonThreeLabelOne)
+            
+            let buttonThreeLabelTwo = SKLabelNode()
+            buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
+            buttonThreeLabelTwo.fontSize = 13
+            buttonThreeLabelTwo.text = "(Exit)"
+            buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
+            buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonThreeLabelTwo)
         }
-        //var counter = 0
+        
         return buttonNode
         
     }
