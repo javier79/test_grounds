@@ -576,6 +576,56 @@ class StartScene: SKScene{
         //nodes_Container.anchorPoint = CGPoint.zero
         endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
         endGameRectangleNode.zPosition = 2
+        
+        let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
+        labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
+        let arrayOflabels = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]
+        
+        for label in arrayOflabels {
+            label.fontName = "AvenirNext-Bold"
+            label.fontSize = 13
+            //label.text = "(Map)"
+            //label.position = CGPoint(x:0, y:-13)
+            label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
+            //label.zPosition = 3
+            
+            if label.name == "labelOne"{
+                print("Voy subiendo")
+                label.text = label.name
+                label.position = CGPoint(x:-35, y:60)
+                //endGameRectangleNode.addChild(label)
+            }
+            if label.name == "labelTwo"{
+                label.text = label.name
+                label.position = CGPoint(x:-35, y:40)
+                //endGameRectangleNode.addChild(label)
+            }
+            if label.name == "labelThree"{
+                label.text = label.name
+                label.position = CGPoint(x:-32, y:20)
+                //endGameRectangleNode.addChild(label)
+            }
+            if label.name == "labelFour"{
+                label.text = label.name
+                label.position = CGPoint(x:-35, y:0)
+                //endGameRectangleNode.addChild(label)
+            }
+            
+            if label.name == "labelFive"{
+                label.text = label.name
+                label.position = CGPoint(x:35, y:50)
+                //endGameRectangleNode.addChild(label)
+            }
+            if label.name == "labelSix"{
+                label.text = label.name
+                label.position = CGPoint(x:35, y:10)
+                //endGameRectangleNode.addChild(label)
+            }
+            
+            endGameRectangleNode.addChild(label)
+        }
+        
+        
         return endGameRectangleNode
     }
     
@@ -594,7 +644,7 @@ class StartScene: SKScene{
             buttonOneLabelOne.fontSize = 16
             buttonOneLabelOne.text = "Mapa"
             //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
             buttonNode.addChild(buttonOneLabelOne)
             
             let buttonOneLabelTwo = SKLabelNode()
@@ -602,7 +652,7 @@ class StartScene: SKScene{
             buttonOneLabelTwo.fontSize = 13
             buttonOneLabelTwo.text = "(Map)"
             buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
-            buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
             buttonNode.addChild(buttonOneLabelTwo)
         }
         
@@ -616,7 +666,7 @@ class StartScene: SKScene{
             buttonTwoLabelOne.fontSize = 16
             buttonTwoLabelOne.text = "Jugar Otra Vez"
             //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
             buttonNode.addChild(buttonTwoLabelOne)
             
             let buttonTwoLabelTwo = SKLabelNode()
@@ -624,7 +674,7 @@ class StartScene: SKScene{
             buttonTwoLabelTwo.fontSize = 13
             buttonTwoLabelTwo.text = "(Play Again)"
             buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
-            buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
             buttonNode.addChild(buttonTwoLabelTwo)
         }
         
@@ -638,7 +688,7 @@ class StartScene: SKScene{
             buttonThreeLabelOne.fontSize = 16
             buttonThreeLabelOne.text = "Salir"
             //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
             buttonNode.addChild(buttonThreeLabelOne)
             
             let buttonThreeLabelTwo = SKLabelNode()
@@ -646,7 +696,7 @@ class StartScene: SKScene{
             buttonThreeLabelTwo.fontSize = 13
             buttonThreeLabelTwo.text = "(Exit)"
             buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
-            buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
             buttonNode.addChild(buttonThreeLabelTwo)
         }
         
