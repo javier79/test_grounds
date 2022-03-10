@@ -139,8 +139,8 @@ class StartScene: SKScene{
     var touchedNode: SKPhysicsBody!//se puede declarar dentro de la funcion touchesBegan
     //var success: String!//variable que no se uso
     var fail: Bool!//se usa en mas de una funcion
-    var penalty: Int!//Se usa solo en la funcion del reloj
-    var skipButtonPenalty: Int!//Se usa solo en la funcion del reloj
+    //var penalty: Int!//Se usa solo en la funcion del reloj
+    //var skipButtonPenalty: Int!//Se usa solo en la funcion del reloj
     var currentIndex: Int = 0 //se puede declarar en touchesBegan
     //var locationNameLabel = SKLabelNode()
     var pressSKipButton:Bool = false
@@ -152,6 +152,9 @@ class StartScene: SKScene{
     var endGameRectangleButtonTwo = SKSpriteNode()
     var endGameRectangleButtonThree = SKSpriteNode()
     
+    var secondsandMinutesRetrieved: Bool = false
+    
+    let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     
     override func didMove(to view: SKView){
         
@@ -527,7 +530,7 @@ class StartScene: SKScene{
         self.addChild(municipioNameLabel)
         self.addChild(skipButton)
         self.addChild(containerNode)
-        self.addChild(endGameRectangle)
+        //self.addChild(endGameRectangle)
 
         
         
@@ -577,13 +580,13 @@ class StartScene: SKScene{
         endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
         endGameRectangleNode.zPosition = 2
         
-        let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
+        
         labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
         let arrayOflabels = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]
         
         for label in arrayOflabels {
             label.fontName = "AvenirNext-Bold"
-            label.fontSize = 13
+            label.fontSize = 15
             //label.text = "(Map)"
             //label.position = CGPoint(x:0, y:-13)
             label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
@@ -592,33 +595,33 @@ class StartScene: SKScene{
             if label.name == "labelOne"{
                 print("Voy subiendo")
                 label.text = label.name
-                label.position = CGPoint(x:-35, y:60)
+                label.position = CGPoint(x:-0, y:60)
                 //endGameRectangleNode.addChild(label)
             }
             if label.name == "labelTwo"{
                 label.text = label.name
-                label.position = CGPoint(x:-35, y:40)
+                label.position = CGPoint(x:-0, y:40)
                 //endGameRectangleNode.addChild(label)
             }
             if label.name == "labelThree"{
                 label.text = label.name
-                label.position = CGPoint(x:-32, y:20)
+                label.position = CGPoint(x:-0, y:10)
                 //endGameRectangleNode.addChild(label)
             }
             if label.name == "labelFour"{
-                label.text = label.name
-                label.position = CGPoint(x:-35, y:0)
+                //label.text = label.name
+                label.position = CGPoint(x:-5, y:-10)
                 //endGameRectangleNode.addChild(label)
             }
             
             if label.name == "labelFive"{
-                label.text = label.name
-                label.position = CGPoint(x:35, y:50)
+                //label.text = label.name
+                label.position = CGPoint(x:65, y:50)
                 //endGameRectangleNode.addChild(label)
             }
             if label.name == "labelSix"{
-                label.text = label.name
-                label.position = CGPoint(x:35, y:10)
+                //label.text = label.name
+                label.position = CGPoint(x:65, y:0)
                 //endGameRectangleNode.addChild(label)
             }
             
@@ -762,11 +765,11 @@ class StartScene: SKScene{
         //background.zPosition = -1
         return background
     }
-
+    
     override public func update(_ currentTime: TimeInterval) {/*Esta funcion ejecuta cada segundo para la funcionalidad del reloj. Los print statements son para uso del programador(comentar/descomentar todos los print statements a la misma vez, para entender mejor como funciona esta funcion)*/
 
-        skipButtonPenalty = 15
-        penalty = 3//numero de segundos que se anaden a los segundos
+        //skipButtonPenalty = 15
+        //penalty = 3//numero de segundos que se anaden a los segundos
             
         if completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
             //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
@@ -783,6 +786,7 @@ class StartScene: SKScene{
                     
                  //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
                 if(fail == true){
+                    let penalty = 3
                     print("inside")
                     seconds = seconds + penalty
                     //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
@@ -793,6 +797,7 @@ class StartScene: SKScene{
                 }
                     
                 if (pressSKipButton == true){
+                    let skipButtonPenalty = 15
                     print("quince segundos mas")
                     seconds = seconds + skipButtonPenalty
                     //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
@@ -890,6 +895,8 @@ class StartScene: SKScene{
                     labelTimer.text = "\(secondsText)"
                     timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
                     print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
+                    UserDefaults.standard.removeObject(forKey: "seconds")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
+                    UserDefaults.standard.removeObject(forKey: "minutes")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
                 }
                 //print(renderTime)
                 renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime
@@ -901,8 +908,76 @@ class StartScene: SKScene{
             //print(renderTimeBiggerCounter!)
             //print("")
         }
+        
+        //Esto es una idea, manana vuelve a cotejar las ultimas anotaciones de la libreta
+        while secondsandMinutesRetrieved == true {
+            secondsAndMinutesAssesmentBestTimes(second:seconds,minute:minutes)
+            secondsandMinutesRetrieved = false
+        }
+        
     }
     
+    func secondsAndMinutesAssesmentBestTimes(second:Int, minute:Int){
+        
+        if UserDefaults.standard.integer(forKey: "minutes") < 1 && UserDefaults.standard.integer(forKey: "seconds") < 1 || minute < UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && seconds < UserDefaults.standard.integer(forKey: "seconds") {
+            
+            UserDefaults.standard.set(minute, forKey:"minutes")
+            UserDefaults.standard.set(second, forKey:"seconds")
+            
+            labelOne.text = "¡NUEVO RECORD!"
+            labelTwo.text = "(NEW RECORD!)"
+            
+            let secondsText = (second < 10) ?
+            "0\(second)" : "\(second)"
+            let minutesText = "\(minute)"
+            
+            if minute >= 1 {
+                labelThree.text = "\(minutesText):\(secondsText)"
+            }
+            else{
+                labelThree.text = "\(secondsText)"
+                //timerBackground.size = labelTimer.frame.size
+                
+            }
+
+            
+            //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
+        }
+        
+        else if minute > UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && second > UserDefaults.standard.integer(forKey: "seconds"){
+            labelOne.text = "Tu Tiempo"
+            labelTwo.text = "(Your Time)"
+            labelThree.text = "Mejor Tiempo"
+            labelFour.text = "(Best Time)"
+            //labelFive.text = labelTimer.text
+            let secondText = (second < 10) ?//Ojo la variable aqui se llama secondText SIN "S"
+            "0\(second)" : "\(second)"
+            let minuteText = "\(minute)" //Ojo la variable aqui se llama minuteText SIN "S"
+            
+            if minute >= 1 {
+                labelFive.text = ":\(minuteText):\(secondText)"
+            }
+            else{
+                labelFive.text = ":\(secondText)"
+                //timerBackground.size = labelTimer.frame.size
+                
+            }
+            
+            let secondsText = (UserDefaults.standard.integer(forKey: "seconds") < 10) ?
+            "0\(UserDefaults.standard.integer(forKey: "seconds"))" : "\(UserDefaults.standard.integer(forKey: "seconds"))"
+            let minutesText = "\(UserDefaults.standard.integer(forKey: "minutes"))"
+            
+            if UserDefaults.standard.integer(forKey: "minutes") >= 1 {
+                labelSix.text = ":\(minutesText):\(secondsText)"
+            }
+            else{
+                labelSix.text = ":\(secondsText)"
+                //timerBackground.size = labelTimer.frame.size
+                
+            }
+            
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Funcion encargada del toque de pantalla
         
@@ -1166,6 +1241,9 @@ class StartScene: SKScene{
                                     
                                 //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
                                 else{
+                                    
+                                    self.addChild(endGameRectangle)
+                                    secondsandMinutesRetrieved = true
                                     completedGame = true//Se actualiza la variable completedGame para detener el reloj
                                     print("CHANGE")//. uso del programador
                                     countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
