@@ -132,7 +132,7 @@ class StartScene: SKScene{
     /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
     elelemento Adjuntas*/
     //El array se puede declarar dentro de la funcion touchesBegan
-    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas"/*, "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"*/]
     
     var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
@@ -153,6 +153,10 @@ class StartScene: SKScene{
     var endGameRectangleButtonThree = SKSpriteNode()
     
     var secondsandMinutesRetrieved: Bool = false
+    
+    //var inTheFirstSecondOfExecution: Bool = false
+    
+    //var countOfElements = 0
     
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     
@@ -571,20 +575,23 @@ class StartScene: SKScene{
         backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
         return backgroundNode
     }
-    
+    /*Esta funcion va a crear el SKSpriteNode para el rectangulo que se desplega cuando se consigue identificar la totalidad de los municipios y se le asignan las propiedades correspondientes,
+     tambien se provee las propiedades para los seis labels pertenecientes al rectangulo. OJO los botones en el rectangulo y sus respectivos labels son generados en otra funcion
+     aparte en donde son anadidos como children de endGameRectangle*/
     func endgameRectangle() -> SKSpriteNode {
         let endGameRectangleNode = SKSpriteNode()
         endGameRectangleNode.color = UIColor.init(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)//color hex #89d7ed
         endGameRectangleNode.size = CGSize(width:350, height:250)
-        //nodes_Container.anchorPoint = CGPoint.zero
         endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
         endGameRectangleNode.zPosition = 2
         
-        
+        /*Abajo se otorga la propiedad de nombre a los labels, propiedad que se utiliza en el proximo bloque , El unico propsito de esto es aislar cada label aprovechando cada iteracion del for loop para asignarles a cada uno propiedades en una misma y unica ejecucion de la funcion */
         labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
-        let arrayOflabels = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]
+        let arrayOflabels = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]/*Poner los elementos a iterar en un for loop por medio de un array me permite reusar codigo, en vez de escribir un bloque por label donde por ejempl
+          propiedades como fontName,fontSize y fontColor se escribirian 6 veces*/
         
         for label in arrayOflabels {
+            /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
             label.fontName = "AvenirNext-Bold"
             label.fontSize = 15
             //label.text = "(Map)"
@@ -596,22 +603,22 @@ class StartScene: SKScene{
                 print("Voy subiendo")
                 label.text = label.name
                 label.position = CGPoint(x:-0, y:60)
-                //endGameRectangleNode.addChild(label)
+
             }
             if label.name == "labelTwo"{
                 label.text = label.name
                 label.position = CGPoint(x:-0, y:40)
-                //endGameRectangleNode.addChild(label)
+
             }
             if label.name == "labelThree"{
                 label.text = label.name
                 label.position = CGPoint(x:-0, y:10)
-                //endGameRectangleNode.addChild(label)
+                
             }
             if label.name == "labelFour"{
                 //label.text = label.name
                 label.position = CGPoint(x:-5, y:-10)
-                //endGameRectangleNode.addChild(label)
+            
             }
             
             if label.name == "labelFive"{
@@ -895,6 +902,8 @@ class StartScene: SKScene{
                     labelTimer.text = "\(secondsText)"
                     timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
                     print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
+                    
+                    //Solo para uso del programador no es parte del app perce
                     UserDefaults.standard.removeObject(forKey: "seconds")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
                     UserDefaults.standard.removeObject(forKey: "minutes")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
                 }
@@ -911,16 +920,16 @@ class StartScene: SKScene{
         
         //Esto es una idea, manana vuelve a cotejar las ultimas anotaciones de la libreta
         while secondsandMinutesRetrieved == true {
-            secondsAndMinutesAssesmentBestTimes(second:seconds,minute:minutes)
+            secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:seconds,minute:minutes)
             secondsandMinutesRetrieved = false
         }
         
     }
-    
-    func secondsAndMinutesAssesmentBestTimes(second:Int, minute:Int){
-        
+    /*Esta funcion va a recibir los minutos y segundos del update fuction y los va a comparar con el contenido de minutos y segundos almacenados en memoria persistente(record mejor tiempo) y determinar si en efecto  hay un nuevo mejor tiempo que registrar. Para los efectos de los mejores tiempos hay dos escenarios: donde ocurre una marca de tiempo mejor nueva y el otro donde la marca es igual o menor */
+    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:Int, minute:Int){
+        /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que le registrada en memoria persistente*/
         if UserDefaults.standard.integer(forKey: "minutes") < 1 && UserDefaults.standard.integer(forKey: "seconds") < 1 || minute < UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && seconds < UserDefaults.standard.integer(forKey: "seconds") {
-            
+            /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
             UserDefaults.standard.set(minute, forKey:"minutes")
             UserDefaults.standard.set(second, forKey:"seconds")
             
@@ -936,7 +945,7 @@ class StartScene: SKScene{
             }
             else{
                 labelThree.text = "\(secondsText)"
-                //timerBackground.size = labelTimer.frame.size
+                //timerBackground.size = labelTimer.frame.size Aqui se utiliza el label de forma transparente por eso no se utiliza esta propiedad
                 
             }
 
@@ -992,6 +1001,7 @@ class StartScene: SKScene{
         var countOfIndexes:Int = -1//Dado que interesamos obtener una cuenta de los indices y no de los elementos inicializamos a -1 para que la cuenta incluya el lugar numero 0
         
         
+        
         if (touchedNode != nil){//Esta linea permite que la ejecucion continue hacia el bloque abajo si se toco un SKphysics body o tambien se puede entender como si se tocara fuera de los skphysics bodys que en cuyo caso devolveria un valor nil(nulo)
             if (municipioNameLabel.text == touchedNode?.node?.name){//Si esta condicion no se cumple que es igual a no atinar el municipio a identificar, pasa al Else abajo donde la variable Fail es igual a true
                 for child in containerNode.children {//Este for loop va a iterar(en memoria los elementos contenidos en containerNode(SKNode)) de forma continua cotejando la condicion if(touchedNode?.node?.name == spriteNode.name)
@@ -1010,7 +1020,17 @@ class StartScene: SKScene{
                                     countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
                                 }
                             }
-                        
+                            //Este bloque lo retire pq no entendi que tuviera sentido contar para convertir a String cuando es un valor constante asi que mejor declaro el String como constante y me ahorro hacer esto
+                           /* if inTheFirstSecondOfExecution == true{
+                                for elements in municipios_names_array {
+                                    if elements != ""{
+                                        countOfElements += 1
+                                        totalScoreCount = countOfElements
+                                        inTheFirstSecondOfExecution = false
+                                    }
+                                }
+                            }*/
+                            
                             if currentIndex <= countOfIndexes/*indexedCount*/{/*Para los efectos del juego esta condicion siempre va a probar cierta, es decir que no es necesaria sin embargo la he dejado como un marker donde podrian en el futuro ser necesario probar alguna otra condicion
                                 es un lugar importante en flow de la ejecucion o lo puede ser en un futuro*/
                                 print("")//uso del programador
@@ -1280,10 +1300,11 @@ class StartScene: SKScene{
                                     municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
 
                                 }
-                                
+                                /*Aqui se estaria ejecutando el label para los scores*/
                                 scoreCount += 1
-                                labelScores.text = "\(scoreCount)" + totalScoreCount
-                                if scoreCount == 77 {
+                                labelScores.text = "\(scoreCount)" + "\(totalScoreCount)"//totalScoreCount es un constant string solo sirve al rendering del score
+                                if currentIndex == municipios_names_array.endIndex-1 && currentIndex == 0 {/*Cuando llegamos al penultimo elemento elimina el boton de skip(ya no es necesario, pues solo queda un elemento por lo tanto se remueve), Ojo
+                                     currentIndex == 0 pq si no esta en cero quiere decir que se oprimio skip y que a pesar */
                                     skipButton.removeFromParent()
                                 }
                             }
