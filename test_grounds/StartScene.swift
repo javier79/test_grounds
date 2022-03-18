@@ -132,7 +132,7 @@ class StartScene: SKScene{
     /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
     elelemento Adjuntas*/
     //El array se puede declarar dentro de la funcion touchesBegan
-    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas"/*, "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"*/]
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
     
     var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
@@ -185,15 +185,15 @@ class StartScene: SKScene{
         
         endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
         endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        endGameRectangle.addChild(endGameRectangleButton)
+        //endGameRectangle.addChild(endGameRectangleButton)
         
         endGameRectangleButtonTwo.name = "buttonTwo"
         endGameRectangleButtonTwo = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        endGameRectangle.addChild(endGameRectangleButtonTwo)
+        //endGameRectangle.addChild(endGameRectangleButtonTwo)
         
         endGameRectangleButtonThree.name = "buttonThree"
         endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        endGameRectangle.addChild(endGameRectangleButtonThree)
+        //endGameRectangle.addChild(endGameRectangleButtonThree)
         
         let rectanglebp:UIBezierPath! = TestClass().createRectangle()
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
@@ -594,8 +594,6 @@ class StartScene: SKScene{
             /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
             label.fontName = "AvenirNext-Bold"
             label.fontSize = 15
-            //label.text = "(Map)"
-            //label.position = CGPoint(x:0, y:-13)
             label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
             //label.zPosition = 3
             
@@ -632,19 +630,20 @@ class StartScene: SKScene{
                 //endGameRectangleNode.addChild(label)
             }
             
-            endGameRectangleNode.addChild(label)
+            endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
         }
-        
         
         return endGameRectangleNode
     }
-    
+    /*Esta funcion cumple dos objetivos: hacer el set de las propiedades generales para los tres botones que aparecen sobre endGameRectangle, Asi como tambien crear los labels y establecer las propiedades para los labels.(tambien son anadidos los labels
+     como hijos de su respectivo boton)*/
     func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
+        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
         let buttonNode = SKSpriteNode()
         buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
         buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
         buttonNode.zPosition = 3
-        
+        /*En los siguientes If statements se hace el set de los valores para las propiedades indviduales para cada boton*/
         if buttonOne.name == "buttonOne"{
             print("inside button one")
             buttonNode.position = CGPoint(x:-115.5, y:-78.4)
@@ -709,7 +708,7 @@ class StartScene: SKScene{
             //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
             buttonNode.addChild(buttonThreeLabelTwo)
         }
-        
+        endGameRectangle.addChild(buttonNode)
         return buttonNode
         
     }
@@ -786,115 +785,76 @@ class StartScene: SKScene{
                 if renderTime > 0{//renderTime en su primera iteracion su valor es 0.0, de modo que pasaria al Else If que le sigue a este bloque. Luego de esta primera iteracion siempre su valor sera mayor a 0
                     seconds += 1
                 
-                if seconds == 60 {
-                    seconds = 0
-                    minutes += 1
+                    if seconds == 60 {
+                        seconds = 0
+                        minutes += 1
+                        }
+                    
+                    //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
+                    if(fail == true){
+                        let penalty = 3
+                        print("inside")
+                        seconds = seconds + penalty
+                        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                        
+                        if seconds >= 60{
+                            seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
+                            minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+                        }
                     }
                     
-                 //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
-                if(fail == true){
-                    let penalty = 3
-                    print("inside")
-                    seconds = seconds + penalty
-                    //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
-                    if seconds >= 60{
-                        seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
-                        minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+                    if (pressSKipButton == true){
+                        let skipButtonPenalty = 15
+                        print("quince segundos mas")
+                        seconds = seconds + skipButtonPenalty
+                        
+                        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                        if seconds >= 60{
+                            seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
+                            minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+                        }
                     }
-                }
                     
-                if (pressSKipButton == true){
-                    let skipButtonPenalty = 15
-                    print("quince segundos mas")
-                    seconds = seconds + skipButtonPenalty
-                    //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
-                    if seconds >= 60{
-                        seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
-                        minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
-                    }
-                }
-                    
-                    /*if seconds == 60 {
-                       seconds = 0
-                       minutes += 1
-                       }
-                    if seconds == 61{
-                       seconds = 1
-                       minutes += 1
-                       }
-                    if seconds == 62 {
-                       seconds = 2
-                       minutes += 1
-                       }
-                    if seconds == 63 {
-                       seconds = 3
-                       minutes += 1
-                       }*/
-                    //Formateo en que se van a desplegar los segundos y minutos(En este bloque solo se hace el rendering de los segundos y minutos cuando el programa ejecuta el penalty)
-                    /*let secondsText = (seconds < 10) ?
-                     "0\(seconds)" : "\(seconds)"
+
+                    let secondsText = (seconds < 10) ?
+                    "0\(seconds)" : "\(seconds)"
                     let minutesText = "\(minutes)"
-                     //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
-                     //aca va a ejecutar cuando reloj del juego lleva mas de 59 segundos de juego
+                    //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+                
                     if minutes >= 1 {
                         labelTimer.text = "\(minutesText):\(secondsText)"
-                        timerBackground.size = labelTimer.frame.size
-                        fail = false//reinicia bool variable, para poder volver a reutilizarse
+                        //timerBackground.size = labelTimer.frame.size
+                        if minutes == 1{
+                            timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 0:00
                         }
-                    //else va a ejecutar cuando los segundos son menor a un minuto
+                    
+                        if minutes == 10{
+                            timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
+                        }
+                    
+                        if fail == true{
+                            fail = false
+                        }
+                        if pressSKipButton == true{
+                            pressSKipButton = false
+                        }
+                    }
+                  
                     else{
                         labelTimer.text = "\(secondsText)"
-                        timerBackground.size = labelTimer.frame.size
-                        fail = false//reinicia bool variable, para poder volver a reutilizarse
-                        }*/
-                
-                //}
-                /*else{*/ //ESTE ELSE ERA PARTE DEL BLOQUE IF ANTERIOR(Y EL CONTENIDO DE ESTE ELSE ERA EL MISMO CODIGO QUE SE LEE ABAJO), DADO QUE EL CODIGO SE REPETIA PARA FORMATO Y RENDERING ELIMINE EL ELSE STATEMENT. AHORA TANTO LO QUE ENTRA AL IF ANTERIOR(FAIL == TRUE) CONT=>
-                //CONT=>ASI COMO EL MOVIMIENTO DE SEGUNDOS Y MINUTOS SE FORMATEA Y DESPLIEGA EN UN SOLO BLOQUE DE CODIGO. OJO SI REACTIVA ELSE EL BLOQUE DE ABAJO HABRIA QUE INDENTARLO A LA DERECHA
-                //Formateo en que se van a desplegar los segundos y minutos(En este bloque solo se hace el rendering de los segundos y minutos cuando el programa ejecuta el penalty)
-                let secondsText = (seconds < 10) ?
-                "0\(seconds)" : "\(seconds)"
-                let minutesText = "\(minutes)"
-                //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
-                
-                if minutes >= 1 {
-                    labelTimer.text = "\(minutesText):\(secondsText)"
-                    //timerBackground.size = labelTimer.frame.size
-                    if minutes == 1{
-                        timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 0:00
-                    }
+                        //timerBackground.size = labelTimer.frame.size//As this is declared on the else if("else if renderTime == 0.0{") below which execute first,  statement commented for duplicity
                     
-                    if minutes == 10{
-                        timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
-                    }
+                        if fail == true{
+                            fail = false
+                        }
                     
-                    if fail == true{
-                        fail = false
+                        if pressSKipButton == true{
+                            pressSKipButton = false
+                        }
                     }
-                    if pressSKipButton == true{
-                        pressSKipButton = false
-                    }
-                }
-
-                
-
-                  
-                else{
-                    labelTimer.text = "\(secondsText)"
-                    //timerBackground.size = labelTimer.frame.size
-                    
-                    if fail == true{
-                        fail = false
-                    }
-                    
-                    if pressSKipButton == true{
-                        pressSKipButton = false
-                    }
-                }
-                
-            //}
                     
                 }
+                    
                 // Este bloque lo unico que hace es ejecutar para hacer formateo y el rendering del 00 cuando comienza el juego y no vuelve a ejecutar pq rendertime su valor no vuelve a 0 si no que siempre esta en ascenso
                 else if renderTime == 0.0{
                     let secondsText = (seconds < 10) ?
@@ -904,8 +864,8 @@ class StartScene: SKScene{
                     print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
                     
                     //Solo para uso del programador no es parte del app perce
-                    UserDefaults.standard.removeObject(forKey: "seconds")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
-                    UserDefaults.standard.removeObject(forKey: "minutes")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
+                    //UserDefaults.standard.removeObject(forKey: "seconds")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
+                    //UserDefaults.standard.removeObject(forKey: "minutes")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
                 }
                 //print(renderTime)
                 renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime
@@ -918,16 +878,16 @@ class StartScene: SKScene{
             //print("")
         }
         
-        //Esto es una idea, manana vuelve a cotejar las ultimas anotaciones de la libreta
+        //Este bloque solo ejecuta si gameCompleted == true, la idea es tomar los ultimos segundos y minutos para que puedan ser evaluados para la mejor marca de tiempo en la siguiente funcion
         while secondsandMinutesRetrieved == true {
             secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:seconds,minute:minutes)
             secondsandMinutesRetrieved = false
         }
         
     }
-    /*Esta funcion va a recibir los minutos y segundos del update fuction y los va a comparar con el contenido de minutos y segundos almacenados en memoria persistente(record mejor tiempo) y determinar si en efecto  hay un nuevo mejor tiempo que registrar. Para los efectos de los mejores tiempos hay dos escenarios: donde ocurre una marca de tiempo mejor nueva y el otro donde la marca es igual o menor */
+    /*Esta funcion va a recibir los minutos y segundos del update fuction y los va a comparar con el contenido de minutos y segundos almacenados en memoria persistente(record mejor tiempo) y determinar si en efecto  hay un nuevo mejor tiempo que registrar. Para los efectos hay dos escenarios: donde ocurre una marca de tiempo mejor nueva y el otro donde la marca es igual o mayor(se llevo a cabo en mas tiempo) */
     func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:Int, minute:Int){
-        /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que le registrada en memoria persistente*/
+        /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
         if UserDefaults.standard.integer(forKey: "minutes") < 1 && UserDefaults.standard.integer(forKey: "seconds") < 1 || minute < UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && seconds < UserDefaults.standard.integer(forKey: "seconds") {
             /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
             UserDefaults.standard.set(minute, forKey:"minutes")
@@ -935,7 +895,7 @@ class StartScene: SKScene{
             
             labelOne.text = "¡NUEVO RECORD!"
             labelTwo.text = "(NEW RECORD!)"
-            
+            //format casting and rendering of new best record
             let secondsText = (second < 10) ?
             "0\(second)" : "\(second)"
             let minutesText = "\(minute)"
@@ -954,12 +914,13 @@ class StartScene: SKScene{
         }
         
         else if minute > UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && second > UserDefaults.standard.integer(forKey: "seconds"){
+            //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
             labelOne.text = "Tu Tiempo"
             labelTwo.text = "(Your Time)"
             labelThree.text = "Mejor Tiempo"
             labelFour.text = "(Best Time)"
             //labelFive.text = labelTimer.text
-            let secondText = (second < 10) ?//Ojo la variable aqui se llama secondText SIN "S"
+            let secondText = (second < 10) ?/*Ojo la variable aqui se llama secondText SIN "S", La razon para el cambio de nombre en la variable es pq ambas(secondText/secondsText) son constantes de modo que en el mismo bloque no podrian ejecutar como constantes(con el mismo nombre) y dado que ambas variables cumplen el mismo proposito no se queria cambiar demasiado el nombre. MAS ADELANTE SE VA A CREAR UNA FUNCION UNIVRSAL PARA LIDIAR SOLO CON EL CASTING Y EL RENDERING YA QUE ESTE CODIGO SE REPITE VARIAS VECES*/
             "0\(second)" : "\(second)"
             let minuteText = "\(minute)" //Ojo la variable aqui se llama minuteText SIN "S"
             
@@ -971,7 +932,7 @@ class StartScene: SKScene{
                 //timerBackground.size = labelTimer.frame.size
                 
             }
-            
+            //este bloque se va a encargar de imprimir la mejor marca que en este caso seria la encontrada en memoria persistente
             let secondsText = (UserDefaults.standard.integer(forKey: "seconds") < 10) ?
             "0\(UserDefaults.standard.integer(forKey: "seconds"))" : "\(UserDefaults.standard.integer(forKey: "seconds"))"
             let minutesText = "\(UserDefaults.standard.integer(forKey: "minutes"))"
@@ -1020,6 +981,7 @@ class StartScene: SKScene{
                                     countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
                                 }
                             }
+                            let countOfIndexesTwo = countOfIndexes//USAR SOLO CUANDO SE ESTA HACIENDO TESTING(PRINT STATEMENTS DEL PROGRAMADOR)
                             //Este bloque lo retire pq no entendi que tuviera sentido contar para convertir a String cuando es un valor constante asi que mejor declaro el String como constante y me ahorro hacer esto
                            /* if inTheFirstSecondOfExecution == true{
                                 for elements in municipios_names_array {
@@ -1033,6 +995,7 @@ class StartScene: SKScene{
                             
                             if currentIndex <= countOfIndexes/*indexedCount*/{/*Para los efectos del juego esta condicion siempre va a probar cierta, es decir que no es necesaria sin embargo la he dejado como un marker donde podrian en el futuro ser necesario probar alguna otra condicion
                                 es un lugar importante en flow de la ejecucion o lo puede ser en un futuro*/
+                                /*PRINT STATEMENTS PARA USO DEL PROGRAMADOR.OJO CUANDO SE USAN LOS PRINT STATEMENTS USAR EN EL FLOW NORMAL LA VARIABLE: countOfIndexesTWO. Luego de comentados los print statements usar nuevamente la variable countOfIndexes donde se habia cambiado*/
                                 print("")//uso del programador
                                 print("CURRENT")//uso del programador
                                 print(currentMunicipioNameOnLabel as Any)//municipio a buscar en el momento en el momento. uso del programador
@@ -1205,6 +1168,7 @@ class StartScene: SKScene{
                                         default:
                                             break
                                 }
+                                
 
                                 //Este if statement ejecuta siempre que currentIndex y countOfIndexes son distintos
                                 if currentIndex != countOfIndexes{
@@ -1231,20 +1195,20 @@ class StartScene: SKScene{
                                         
                                     }
                                 }
+                                
                                 /*Este else if ejecuta solo cuando currentIndex y countOfIndexes son iguales pero mayor o igual a 1. Esto solo va a ocurrir si se presiona el boton de skip lo que mueve el index adelante cuando en el transcurso del juego alcanzamos el ultimo elemento en orden natural vamos a observar que ambas variables van a tener el mismo valor (que equivale al numero de municipios saltados previamente), tambien esto nos indica que el currentIndex se movera proximamente al index 0.
                                 */
-                                else if currentIndex == countOfIndexes && currentIndex >= 1 && countOfIndexes >= 1{/*la razon de porque utilice >=1 es para capturar la ejecucion donde se identifica el ultimo elemento aparte, en dicha ocurrencia ambas varables son tambien iguales
-                                    pero iguales a 0*/
+                                else if currentIndex == countOfIndexes && currentIndex >= 1 && countOfIndexes >= 1{/*Esta condicion se cumple cuando alcanzamos el fin del array, pero quedan elementos en la posiciones anteriores a currentIndex, de mode
+                                     que currentIndex vuelve a 0 para ir sobre el resto de los elementos que van quedando atras en el queue luego que oprimimos el skipButton*/
                                     if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
                                         let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                                        currentIndex = 0/*Cuando la ejecucion entra en este bloque quiere decir que el programa llego al ultimo indice, aunque se ha utilizado el skip button de modo que vuelve al indice 0 para volver sobre los municipios que no pudieron ser identificados
-                                        durante elrecorrido anterior a lo largo del array */
+                                        currentIndex = 0/*Cuando la ejecucion entra en este bloque quiere decir que el programa llego al ultimo indice, de modo que vuelve al indice 0 para volver sobre los municipios que no pudieron ser identificados
+                                        durante el recorrido anterior a lo largo del array */
                                         print("CHANGE")//. uso del programador
                                         countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
-                                        //scoreCount += 1
-                                        //labelScores.text = "\(scoreCount)" + totalScoreCount
+
                                         //reconteo para uso del programador
-                                        for index in municipios_names_array {
+                                       for index in municipios_names_array {
                                             if index != ""{
                                                 countOfIndexes += 1
                                             }
@@ -1258,6 +1222,7 @@ class StartScene: SKScene{
                                     }
                                    
                                 }
+                                
                                     
                                 //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
                                 else{
@@ -1302,9 +1267,13 @@ class StartScene: SKScene{
                                 }
                                 /*Aqui se estaria ejecutando el label para los scores*/
                                 scoreCount += 1
-                                labelScores.text = "\(scoreCount)" + "\(totalScoreCount)"//totalScoreCount es un constant string solo sirve al rendering del score
-                                if currentIndex == municipios_names_array.endIndex-1 && currentIndex == 0 {/*Cuando llegamos al penultimo elemento elimina el boton de skip(ya no es necesario, pues solo queda un elemento por lo tanto se remueve), Ojo
-                                     currentIndex == 0 pq si no esta en cero quiere decir que se oprimio skip y que a pesar */
+                                labelScores.text = "\(scoreCount)" + totalScoreCount//totalScoreCount es un constant string solo sirve al rendering del score
+                                
+                                /*La siguiente condicion es cierta cuando la variable countOfIndexes == 1(osea que restan dos indices el 0 y 1) y currentIndex se encuentra en 0 o primer indice que es donde se encuentra el penultimo indice(elemento) que a este punto ya fue removido en el bloque anterior. Pero dado que la variable countOfIndexes actualiza en la proxima iteracion para los efectos de(la presente iteracion) quedan dos elementos y es lo que permite crear esta condicion de modo que junto al penultimo elemento(removido en bloques anteriores) tambien removemos el boton de skip en este bloque. Lo importante es entender que cuando se cumple esta condicion(para eliminar el skip button) ya se ha removido el penultimo elemento y que tanto la remocion del penultimo elemento como la remocion del skip button ocurren en una misma iteracion */
+                                /*OJO UTILIZO countofIndexesTwo solo y exclusivamente en esta funcion cuando estoy utilizando los print() statements del programador,
+                                de lo contrario comento todos los statements del programador y utilizo la variable countOfIndexes*/
+                                if countOfIndexesTwo == 1 && currentIndex == 0 && municipios_names_array.endIndex-1 == 0 {
+                                    print("skip button out")
                                     skipButton.removeFromParent()
                                 }
                             }
