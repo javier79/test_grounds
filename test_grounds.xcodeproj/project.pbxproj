@@ -15,6 +15,7 @@
 		8D1A898F25A8D667008FF0D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1A898D25A8D667008FF0D6 /* LaunchScreen.storyboard */; };
 		8D1A899725A8DEE4008FF0D6 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1A899625A8DEE4008FF0D6 /* StartScene.swift */; };
 		8D1A899925A8DF16008FF0D6 /* TestClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1A899825A8DF16008FF0D6 /* TestClass.swift */; };
+		8DC51BDB27E616DC00E12ACC /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC51BDA27E616DC00E12ACC /* StartMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8D1A899025A8D667008FF0D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1A899625A8DEE4008FF0D6 /* StartScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		8D1A899825A8DF16008FF0D6 /* TestClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClass.swift; sourceTree = "<group>"; };
+		8DC51BDA27E616DC00E12ACC /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				8D1A898225A8D666008FF0D6 /* AppDelegate.swift */,
 				8D1A898425A8D666008FF0D6 /* SceneDelegate.swift */,
 				8D1A898625A8D666008FF0D6 /* ViewController.swift */,
+				8DC51BDA27E616DC00E12ACC /* StartMenu.swift */,
 				8D1A898825A8D666008FF0D6 /* Main.storyboard */,
 				8D1A898B25A8D667008FF0D6 /* Assets.xcassets */,
 				8D1A899825A8DF16008FF0D6 /* TestClass.swift */,
@@ -149,6 +152,7 @@
 				8D1A898525A8D666008FF0D6 /* SceneDelegate.swift in Sources */,
 				8D1A899725A8DEE4008FF0D6 /* StartScene.swift in Sources */,
 				8D1A899925A8DF16008FF0D6 /* TestClass.swift in Sources */,
+				8DC51BDB27E616DC00E12ACC /* StartMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
