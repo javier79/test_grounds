@@ -1813,10 +1813,14 @@ class TestClass {
       
         // Close the path. This will create the last line automatically.
         path.close()
-         
+        
+        //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)
+        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
+        
         return path
     }
     
+
     func caboRojoDrawBezierPath() -> UIBezierPath{
         path = UIBezierPath()
         //Cabo Rojo

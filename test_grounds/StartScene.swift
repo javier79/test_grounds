@@ -160,6 +160,9 @@ class StartScene: SKScene{
     
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     
+    var have = false
+    var scale = SKAction()
+    
     override func didMove(to view: SKView){
         
         
@@ -554,7 +557,7 @@ class StartScene: SKScene{
     
     func skipBlueButton()-> SKSpriteNode {
         let skipBlueButton = SKSpriteNode(imageNamed: "skipBlueButton")
-        skipBlueButton.setScale(0.20)
+        skipBlueButton.setScale(0.17)
         skipBlueButton.position = CGPoint(x:540, y:self.size.height/2 * 0.16)
         return skipBlueButton
     }
@@ -1295,6 +1298,13 @@ class StartScene: SKScene{
         //Este bloque maneja el toque de pantalla para el skip button
         else if atPoint(touchLocation) == skipButton{
             currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
+            skipButton.alpha = 1.0//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
+            /*if have == false{
+                skipButton.alpha = 0.5
+                //let scale = SKAction.scale(to: 0.174, duration: 0)
+                //skipButton.run(scale)
+                have = true
+            }*/
             if currentIndex == municipios_names_array.endIndex-0{//Si el indice llega al ultimo elemento el index se devuelve al 0 para comenzar a iterar los municipios que no fueron identificados en la pasada anterior del juego
                 print("This")//para programador
                 currentIndex = 0//resetea el index al lugar 0 cuando presionando el skip button alcanzamos el ultimo indice
@@ -1305,6 +1315,18 @@ class StartScene: SKScene{
             print("Skip Button touched")
         }
     }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //Efecto para el skipButton cuando se suelta el boton
+        skipButton.alpha = 0.9//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
+        
+        /*if have == true{
+            skipButton.setScale(0.17)
+                have = false
+            }*/
+        
+    }
+    
     //Las dos proximas funciones son identicas con la diferencia de que devuelven cada una por su parte una variable diferente
     func splitTextIntoFields(theText:SKLabelNode)->String{
         useLine2 = false//Esta linea resetea la variable que es necesario para no crear redundancia cuando se pasa el texto a label(ej:aguas aguas buenas)
