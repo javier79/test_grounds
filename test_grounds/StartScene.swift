@@ -186,6 +186,8 @@ class StartScene: SKScene{
         
         endGameRectangle = endgameRectangle()
         
+        let exitRedButton:SKSpriteNode = redButton()
+        
         endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
         endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
         //endGameRectangle.addChild(endGameRectangleButton)
@@ -528,14 +530,21 @@ class StartScene: SKScene{
         let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
         containerNode.addChild(culebraSKSpriteNode)
         
-        self.addChild(goldBackgroundSKSpriteNode)
+        //Este grupo de objetos estan relacionados por goldBackgroundSKSpriteNode, dado que esta barra de controles se elimina cuando se acierta el ultimo municipios junto con los botones, labels y backgrounds adheridos a la barra de controles)
+        goldBackgroundSKSpriteNode.addChild(labelScores)
+        municipiosNameBackground.addChild(municipioNameLabel)//ojo puse el background como padre del label para facilitar el posicionamiento de ambos con respecto a goldBackgroundSKSpriteNode
+        goldBackgroundSKSpriteNode.addChild(municipiosNameBackground)
+        goldBackgroundSKSpriteNode.addChild(skipButton)
+        goldBackgroundSKSpriteNode.addChild(exitRedButton)
+        
         self.addChild(backgroundSKSpriteNode)
+        self.addChild(goldBackgroundSKSpriteNode)
         self.addChild(timerBackground)
         self.addChild(labelTimer)
-        self.addChild(labelScores)
-        self.addChild(municipiosNameBackground)
-        self.addChild(municipioNameLabel)
-        self.addChild(skipButton)
+        //self.addChild(labelScores)
+        
+        //self.addChild(municipioNameLabel)
+        //self.addChild(skipButton)
         self.addChild(containerNode)
         //self.addChild(endGameRectangle)
 
@@ -545,7 +554,7 @@ class StartScene: SKScene{
         
         
     }
-
+    //Contiene todos los SpriteNodes que tienen que ver con el mapa incluyendo covers(como el de desecheo)
     func nodesContainer() -> SKNode{
         let nodes_Container = SKNode()
         //nodes_Container.color = UIColor.white
@@ -554,28 +563,130 @@ class StartScene: SKScene{
         nodes_Container.position = CGPoint(x: 50, y: 15)
         return  nodes_Container
     }
-    
+    //Esta funcion devuelve el bezier path utilizado para crear los botones de skipButton y exit
+    func blueButtonRedButtonBp()->UIBezierPath{
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:25))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:50 , y:25))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:50, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
+
+        
+        return path
+        
+    }
+    //Label superior para los botones azul y rojo
+    func redButtonBlueButtonLabelOne()->SKLabelNode{
+        let labelSkipButtonOne = SKLabelNode()
+        //labelSkipButtonOne.isUserInteractionEnabled = true
+        labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
+        labelSkipButtonOne.fontSize = 10
+        //labelSkipButtonOne.text = "Saltar"
+        labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
+        //skipBlueButton.addChild(labelSkipButtonOne)
+        return labelSkipButtonOne
+    }
+    //Label inferior para los botones azul y rojo
+    func redButtonBlueButtonLabelTwo() ->SKLabelNode{
+        let labelSkipButtonTwo = SKLabelNode()
+        //labelSkipButtonTwo.isUserInteractionEnabled = true
+        labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
+        labelSkipButtonTwo.fontSize = 8
+        //labelSkipButtonTwo.text = "(Skip)"
+        labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
+        //skipBlueButton.addChild(labelSkipButtonTwo)
+        return labelSkipButtonTwo
+    }
+    //funcion crea skipButton
     func skipBlueButton()-> SKSpriteNode {
-        let skipBlueButton = SKSpriteNode(imageNamed: "skipBlueButton")
-        skipBlueButton.setScale(0.17)
-        skipBlueButton.position = CGPoint(x:540, y:self.size.height/2 * 0.16)
+         
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
+        shapeNode.strokeColor = UIColor.init(red: 0.098, green: 0.4863, blue: 1, alpha: 1.0)
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.init(red: 0.098, green: 0.4863, blue: 1, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let skipBlueButton = SKSpriteNode(texture: texture)
+        skipBlueButton.position = CGPoint(x:195, y:5.5)
+        skipBlueButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:skipBlueButton.size.width, height:skipBlueButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        skipBlueButton.physicsBody?.isDynamic = false
+        skipBlueButton.name = "skipButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
+        
+        let labelSkipButtonOne = redButtonBlueButtonLabelOne()
+        //labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
+        //labelSkipButtonOne.fontSize = 10
+        labelSkipButtonOne.text = "Saltar"
+        //labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
+        skipBlueButton.addChild(labelSkipButtonOne)
+        
+        let labelSkipButtonTwo = redButtonBlueButtonLabelTwo()
+        //labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
+        //labelSkipButtonTwo.fontSize = 8
+        labelSkipButtonTwo.text = "(Skip)"
+        //labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
+        skipBlueButton.addChild(labelSkipButtonTwo)
+        
+        
         return skipBlueButton
     }
-
+    //Funcion crea boton rojo con sus respectivos labels
+    func redButton()-> SKSpriteNode {
+         
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)
+        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let redButton = SKSpriteNode(texture: texture)
+        redButton.position = CGPoint(x:-280, y:5.5)
+        
+        let labelRedButtonOne = redButtonBlueButtonLabelOne()
+        //labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
+        //labelSkipButtonOne.fontSize = 10
+        labelRedButtonOne.text = "Exit"
+        //labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
+        redButton.addChild(labelRedButtonOne)
+        
+        let labelRedButtonTwo = redButtonBlueButtonLabelTwo()
+        //labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
+        //labelSkipButtonTwo.fontSize = 8
+        labelRedButtonTwo.text = "(Salir)"
+        //labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
+        redButton.addChild(labelRedButtonTwo)
+        
+        
+        return redButton
+    }
+    //Barra de controles
     func goldenBackground() -> SKSpriteNode {
         let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-        goldenBackground.size = CGSize(width: self.size.width + 6, height:self.size.height + 6)
-        goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        goldenBackground.size = CGSize(width: self.size.width + 6 /*+ 6*/, height:self.size.height/6.5)
+        goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/6 * 0.46)
+        //goldenBackground.zPosition = 1
         return goldenBackground
     }
 
-    
+    //Background que simula el mar
     func prBackground() -> SKSpriteNode {
         let backgroundNode = SKSpriteNode()
         backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
-        backgroundNode.size = CGSize(width: self.size.width, height:self.size.height * 0.86)
+        backgroundNode.size = CGSize(width: self.size.width, height:self.size.height/* * 0.86*/)
         //nodes_Container.anchorPoint = CGPoint.zero
-        backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/1.75)
+        backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2/*1.75*/)
+        //backgroundNode.zPosition = 0
         return backgroundNode
     }
     /*Esta funcion va a crear el SKSpriteNode para el rectangulo que se desplega cuando se consigue identificar la totalidad de los municipios y se le asignan las propiedades correspondientes,
@@ -715,7 +826,7 @@ class StartScene: SKScene{
         return buttonNode
         
     }
-    
+    //SpriteNode hecho solo para cubrir isla desecheo
     func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
         let desecheoCover = SKSpriteNode()
         desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
@@ -729,6 +840,7 @@ class StartScene: SKScene{
     func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
         //let label:SKLabelNode = SKLabelNode()
         TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.438)
+        TimerLabel.zPosition = 2
         TimerLabel.fontName = "Arial"
         TimerLabel.fontSize = 18
         TimerLabel.fontColor = SKColor.red
@@ -737,7 +849,7 @@ class StartScene: SKScene{
     
     func labelForScores(ScoresLabel: SKLabelNode) -> SKLabelNode {
         //let label:SKLabelNode = SKLabelNode()
-        ScoresLabel.position = CGPoint(x:637, y:25)
+        ScoresLabel.position = CGPoint(x:300, y:0.5)
         ScoresLabel.fontName = "Arial"
         ScoresLabel.fontSize = 11
         ScoresLabel.text = "0/78"
@@ -753,9 +865,9 @@ class StartScene: SKScene{
         //background.zPosition = -2
         return background
     }
-    
-    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {
-        NameMunicipioLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.14)
+    //Parent labelMunicipioNamesBackground
+    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {//child of labelMunicipiosNameBackground()
+        NameMunicipioLabel.position = CGPoint(x:0.5 /*self.size.width/2*/, y:-6.5 /*self.size.height/2 * 0.14*/)
         NameMunicipioLabel.fontName = "Helvetica"
         NameMunicipioLabel.fontSize = 18
         NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
@@ -764,13 +876,14 @@ class StartScene: SKScene{
         //NameMunicipioLabel.zPosition = 2
         return NameMunicipioLabel
     }
-    
+    //Parent goldenBackground
     func labelMunicipiosNameBackground() -> SKSpriteNode{
         let background = SKSpriteNode()
         background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
         background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.18)
+        background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:5.5/*goldenBackground().size.height/2 * 0.18*/)
         background.size = municipioNameLabel.frame.size
+        //background.addChild(labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel))
         //background.zPosition = -1
         return background
     }
@@ -827,11 +940,11 @@ class StartScene: SKScene{
                     if minutes >= 1 {
                         labelTimer.text = "\(minutesText):\(secondsText)"
                         //timerBackground.size = labelTimer.frame.size
-                        if minutes == 1{
+                        if minutes == 1{//ajusta la apariencia del label/background cuando los minutos utilizan un solo lugar que solo ocurre de 1 al minuto 9
                             timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 0:00
                         }
                     
-                        if minutes == 10{
+                        if minutes == 10{// ajusts la apariencia de el label/background para cuando los minutos usan dos lugares que ocurre de los 10 minutos en adelante obviamente.
                             timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
                         }
                     
@@ -1287,7 +1400,25 @@ class StartScene: SKScene{
                             
                 }
             }
-                    
+            /*Se asigno us SKPhysics body para el skipButton y el toque de pantalla se captura en este bloque**/
+            else if (skipButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
+                currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
+                skipButton.alpha = 1.0//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
+                /*if have == false{
+                    skipButton.alpha = 0.5
+                    //let scale = SKAction.scale(to: 0.174, duration: 0)
+                    //skipButton.run(scale)
+                    have = true
+                }*/
+                if currentIndex == municipios_names_array.endIndex-0{//Si el indice llega al ultimo elemento el index se devuelve al 0 para comenzar a iterar los municipios que no fueron identificados en la pasada anterior del juego
+                    print("This")//para programador
+                    currentIndex = 0//resetea el index al lugar 0 cuando presionando el skip button alcanzamos el ultimo indice
+                }
+                pressSKipButton = true
+                municipioNameLabel.text = municipios_names_array[currentIndex]
+                municipiosNameBackground.size = municipioNameLabel.frame.size
+                print("Skip Button touched")
+            }
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
@@ -1295,8 +1426,10 @@ class StartScene: SKScene{
             }
             
         }
-        //Este bloque maneja el toque de pantalla para el skip button
-        else if atPoint(touchLocation) == skipButton{
+        /*Este bloque maneja el toque de pantalla para el skip button si utilizamos una imagen dado que no funciona como SpriteNode dado que el toque de pantalla es atrapado por los labels
+         y la unica manera que encontre para manejar el toque de pantalla fue asignandole al SKSpriteNode un SKPhysics body, por ende el que se haya movido el bloque arriba dentro del scope
+         que maneja el toque de pantalla para SKPhysics bodies*/
+        /*else if atPoint(touchLocation) == skipButton {
             currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
             skipButton.alpha = 1.0//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
             /*if have == false{
@@ -1313,7 +1446,7 @@ class StartScene: SKScene{
             municipioNameLabel.text = municipios_names_array[currentIndex]
             municipiosNameBackground.size = municipioNameLabel.frame.size
             print("Skip Button touched")
-        }
+        }*/
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
