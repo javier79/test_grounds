@@ -132,7 +132,7 @@ class StartScene: SKScene{
     /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
     elelemento Adjuntas*/
     //El array se puede declarar dentro de la funcion touchesBegan
-    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco"/*, "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"*/]
     
     var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
@@ -160,15 +160,17 @@ class StartScene: SKScene{
     
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     
-    var have = false
-    var scale = SKAction()
+    var skipButtonPressed = false
+    //var scale = SKAction()
+    
+    var goldBackgroundSKSpriteNode = SKSpriteNode()
     
     override func didMove(to view: SKView){
         
         
         containerNode = nodesContainer()
         let backgroundSKSpriteNode: SKSpriteNode = prBackground()
-        let goldBackgroundSKSpriteNode: SKSpriteNode = goldenBackground()
+        goldBackgroundSKSpriteNode = goldenBackground()
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
@@ -1342,10 +1344,13 @@ class StartScene: SKScene{
                                     
                                 //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
                                 else{
-                                    
+                                    goldBackgroundSKSpriteNode.removeFromParent()
+                                    timerBackground.removeFromParent()
+                                    labelTimer.removeFromParent()
                                     self.addChild(endGameRectangle)
-                                    secondsandMinutesRetrieved = true
                                     completedGame = true//Se actualiza la variable completedGame para detener el reloj
+                                    secondsandMinutesRetrieved = true
+                                    //EL restante del bloque es para uso del pro\gramador
                                     print("CHANGE")//. uso del programador
                                     countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
                                     //scoreCount += 1
@@ -1404,6 +1409,7 @@ class StartScene: SKScene{
             else if (skipButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
                 currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
                 skipButton.alpha = 1.0//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
+                skipButtonPressed = true
                 /*if have == false{
                     skipButton.alpha = 0.5
                     //let scale = SKAction.scale(to: 0.174, duration: 0)
@@ -1451,8 +1457,10 @@ class StartScene: SKScene{
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Efecto para el skipButton cuando se suelta el boton
-        skipButton.alpha = 0.9//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
-        
+        if skipButtonPressed == true{
+            skipButton.alpha = 0.9//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
+            skipButtonPressed = false
+        }
         /*if have == true{
             skipButton.setScale(0.17)
                 have = false
