@@ -109,6 +109,7 @@ class StartScene: SKScene{
     let rectangleCulebrabp:UIBezierPath! = TestClass().createCulebraRectangle()
     */
     var skipButton = SKSpriteNode()//la declare universalmente temporeramente
+    var exitRedButton = SKSpriteNode()
     
     var containerNode = SKNode()//se usa en mas de una funcion
     var labelTimer = SKLabelNode()//se usa en mas de una funcion
@@ -162,6 +163,7 @@ class StartScene: SKScene{
     
     var skipButtonPressed = false
     //var scale = SKAction()
+    var exitButtonPressed = false
     
     var goldBackgroundSKSpriteNode = SKSpriteNode()
     
@@ -188,7 +190,7 @@ class StartScene: SKScene{
         
         endGameRectangle = endgameRectangle()
         
-        let exitRedButton:SKSpriteNode = redButton()
+        exitRedButton = redButton()
         
         endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
         endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
@@ -654,6 +656,9 @@ class StartScene: SKScene{
         let texture = view.texture(from: shapeNode)!
         let redButton = SKSpriteNode(texture: texture)
         redButton.position = CGPoint(x:-280, y:5.5)
+        redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        redButton.physicsBody?.isDynamic = false
+        redButton.name = "redButton"
         
         let labelRedButtonOne = redButtonBlueButtonLabelOne()
         //labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
@@ -1425,6 +1430,15 @@ class StartScene: SKScene{
                 municipiosNameBackground.size = municipioNameLabel.frame.size
                 print("Skip Button touched")
             }
+            
+            else if (exitRedButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
+                //exitRedButton.alpha = 1.0 No se utilizo animacion en este boton pq no se ve la animacion 
+                //exitButtonPressed = true
+                let startMenuScene = StartMenu(size: self.size)//definitio
+                //let transition = SKTransition.doorsOpenVertical(withDuration: 1.5)
+                self.view?.presentScene(startMenuScene)/*present scene and execut transitions*/
+            }
+
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
@@ -1461,6 +1475,10 @@ class StartScene: SKScene{
             skipButton.alpha = 0.9//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
             skipButtonPressed = false
         }
+       /* if exitButtonPressed == true{
+            exitRedButton.alpha = 0.9//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
+            exitButtonPressed = false
+        }*/
         /*if have == true{
             skipButton.setScale(0.17)
                 have = false
