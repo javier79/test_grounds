@@ -1432,7 +1432,7 @@ class StartScene: SKScene{
             }
             
             else if (exitRedButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
-                //exitRedButton.alpha = 1.0 No se utilizo animacion en este boton pq no se ve la animacion 
+                //exitRedButton.alpha = 1.0 No se utilizo animacion en este boton pq no se ve la animacion
                 //exitButtonPressed = true
                 let startMenuScene = StartMenu(size: self.size)//definitio
                 //let transition = SKTransition.doorsOpenVertical(withDuration: 1.5)
