@@ -152,6 +152,7 @@ class StartScene: SKScene{
     var endGameRectangleButton = SKSpriteNode()
     var endGameRectangleButtonTwo = SKSpriteNode()
     var endGameRectangleButtonThree = SKSpriteNode()
+    var resultadosButton = SKSpriteNode()
     
     var secondsandMinutesRetrieved: Bool = false
     
@@ -203,6 +204,9 @@ class StartScene: SKScene{
         endGameRectangleButtonThree.name = "buttonThree"
         endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
         //endGameRectangle.addChild(endGameRectangleButtonThree)
+        
+        resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
+        resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
         
         let rectanglebp:UIBezierPath! = TestClass().createRectangle()
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
@@ -558,6 +562,22 @@ class StartScene: SKScene{
         
         
     }
+    
+    func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
+        let label:SKLabelNode = StartMenu().setLabelDefaults()
+        label.fontName = "AvenirNext-Bold"
+        label.text = "Resultados (Results)"
+        label.position = CGPoint(x:0.5, y:-5.5)
+        buttonResultadosSKSpriteNode.addChild(label)
+        buttonResultadosSKSpriteNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.475)
+        buttonResultadosSKSpriteNode.size = label.frame.size
+        buttonResultadosSKSpriteNode.name = "resultadosButton"
+        buttonResultadosSKSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonResultadosSKSpriteNode.size.width, height:buttonResultadosSKSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+        buttonResultadosSKSpriteNode.physicsBody?.isDynamic = false
+        
+        return buttonResultadosSKSpriteNode
+    }
+    
     //Contiene todos los SpriteNodes que tienen que ver con el mapa incluyendo covers(como el de desecheo)
     func nodesContainer() -> SKNode{
         let nodes_Container = SKNode()
@@ -768,6 +788,9 @@ class StartScene: SKScene{
         if buttonOne.name == "buttonOne"{
             print("inside button one")
             buttonNode.position = CGPoint(x:-115.5, y:-78.4)
+            buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+            buttonNode.physicsBody?.isDynamic = false
+            buttonNode.name = "mapButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
             
             let buttonOneLabelOne = SKLabelNode()
             buttonOneLabelOne.fontName = "AvenirNext-Bold"
@@ -1437,6 +1460,18 @@ class StartScene: SKScene{
                 let startMenuScene = StartMenu(size: self.size)//definitio
                 //let transition = SKTransition.doorsOpenVertical(withDuration: 1.5)
                 self.view?.presentScene(startMenuScene)/*present scene and execut transitions*/
+            }
+            
+            else if (endGameRectangleButton.name == touchedNode?.node?.name){
+                endGameRectangle.removeFromParent()
+                self.addChild(resultadosButton)
+
+            }
+                
+            else if (resultadosButton.name == touchedNode?.node?.name){
+                resultadosButton.removeFromParent()
+                self.addChild(endGameRectangle)
+
             }
 
                         
