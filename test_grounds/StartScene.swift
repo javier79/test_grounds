@@ -133,7 +133,7 @@ class StartScene: SKScene{
     /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
     elelemento Adjuntas*/
     //El array se puede declarar dentro de la funcion touchesBegan
-    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas"/*, "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"*/]
     
     var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
@@ -1023,11 +1023,18 @@ class StartScene: SKScene{
             //print(renderTimeBiggerCounter!)
             //print("")
         }
-        
+
         //Este bloque solo ejecuta si gameCompleted == true, la idea es tomar los ultimos segundos y minutos para que puedan ser evaluados para la mejor marca de tiempo en la siguiente funcion
         while secondsandMinutesRetrieved == true {
             secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:seconds,minute:minutes)
             secondsandMinutesRetrieved = false
+        }
+        /*Aqui ocurre el paso a la escena de Game Over la razon por la que se encuentra aqui es pq cuando lo ejecutaba en Touchesbegan la transicion le quitaba "espacio" a la funcion
+         Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
+        if completedGame == true{
+            let gameOverScene = GameOverScene(size: self.size)
+            //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
+            self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
         }
         
     }
@@ -1375,7 +1382,7 @@ class StartScene: SKScene{
                                     goldBackgroundSKSpriteNode.removeFromParent()
                                     timerBackground.removeFromParent()
                                     labelTimer.removeFromParent()
-                                    self.addChild(endGameRectangle)
+                                    //self.addChild(endGameRectangle)
                                     completedGame = true//Se actualiza la variable completedGame para detener el reloj
                                     secondsandMinutesRetrieved = true
                                     //EL restante del bloque es para uso del pro\gramador
@@ -1414,10 +1421,18 @@ class StartScene: SKScene{
                                     municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
 
                                 }
+                                
+                                /*if completedGame == true{
+                                    let gameOverScene = GameOverScene(size: self.size)
+                                    let transition = SKTransition.fade(withDuration: 0.1)//withDuration: 1.5)
+                                    self.view?.presentScene(gameOverScene, transition: transition)
+                                }*/
+                                
                                 /*Aqui se estaria ejecutando el label para los scores*/
                                 scoreCount += 1
                                 labelScores.text = "\(scoreCount)" + totalScoreCount//totalScoreCount es un constant string solo sirve al rendering del score
                                 
+
                                 /*La siguiente condicion es cierta cuando la variable countOfIndexes == 1(osea que restan dos indices el 0 y 1) y currentIndex se encuentra en 0 o primer indice que es donde se encuentra el penultimo indice(elemento) que a este punto ya fue removido en el bloque anterior. Pero dado que la variable countOfIndexes actualiza en la proxima iteracion para los efectos de(la presente iteracion) quedan dos elementos y es lo que permite crear esta condicion de modo que junto al penultimo elemento(removido en bloques anteriores) tambien removemos el boton de skip en este bloque. Lo importante es entender que cuando se cumple esta condicion(para eliminar el skip button) ya se ha removido el penultimo elemento y que tanto la remocion del penultimo elemento como la remocion del skip button ocurren en una misma iteracion */
                                 /*OJO UTILIZO countofIndexesTwo solo y exclusivamente en esta funcion cuando estoy utilizando los print() statements del programador,
                                 de lo contrario comento todos los statements del programador y utilizo la variable countOfIndexes*/
@@ -1425,8 +1440,13 @@ class StartScene: SKScene{
                                     print("skip button out")
                                     skipButton.removeFromParent()
                                 }
+                                /*if completedGame == true{
+                                    let gameOverScene = GameOverScene(size: self.size)
+                                    let transition = SKTransition.fade(withDuration: 1.0)//withDuration: 1.5)
+                                    self.view?.presentScene(gameOverScene, transition: transition)
+                                }*/
                             }
-                                
+
                         }
                                 
                     }
@@ -1502,8 +1522,10 @@ class StartScene: SKScene{
             municipiosNameBackground.size = municipioNameLabel.frame.size
             print("Skip Button touched")
         }*/
+        
+        
     }
-    
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Efecto para el skipButton cuando se suelta el boton
         if skipButtonPressed == true{
