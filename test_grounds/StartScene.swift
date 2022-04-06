@@ -121,6 +121,8 @@ class StartScene: SKScene{
     let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
     var seconds: Int = 0//esta solo se usa en la funcion del reloj
     var minutes: Int = 0//esta solo se usa en la funcion del reloj
+    static var secondsGameOver:Int = 0
+    static var minutesGameOver:Int = 0
     var renderTimeBiggerCounter: Int! = 0
     
     var completedGame = false//se usa en mas de una funcion
@@ -133,7 +135,7 @@ class StartScene: SKScene{
     /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
     elelemento Adjuntas*/
     //El array se puede declarar dentro de la funcion touchesBegan
-    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas"/*, "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"*/]
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
     
     var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
@@ -148,10 +150,10 @@ class StartScene: SKScene{
     var scoreCount:Int = 0
     let totalScoreCount:String = "/78"
     
-    var endGameRectangle: SKSpriteNode!
+    /*var endGameRectangle: SKSpriteNode!
     var endGameRectangleButton = SKSpriteNode()
     var endGameRectangleButtonTwo = SKSpriteNode()
-    var endGameRectangleButtonThree = SKSpriteNode()
+    var endGameRectangleButtonThree = SKSpriteNode()*/
     var resultadosButton = SKSpriteNode()
     
     var secondsandMinutesRetrieved: Bool = false
@@ -160,7 +162,7 @@ class StartScene: SKScene{
     
     //var countOfElements = 0
     
-    let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
+    //let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     
     var skipButtonPressed = false
     //var scale = SKAction()
@@ -189,11 +191,11 @@ class StartScene: SKScene{
         
         municipiosNameBackground = labelMunicipiosNameBackground()
         
-        endGameRectangle = endgameRectangle()
+        //endGameRectangle = endgameRectangle()
         
         exitRedButton = redButton()
         
-        endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
+        /*endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
         endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
         //endGameRectangle.addChild(endGameRectangleButton)
         
@@ -203,7 +205,7 @@ class StartScene: SKScene{
         
         endGameRectangleButtonThree.name = "buttonThree"
         endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        //endGameRectangle.addChild(endGameRectangleButtonThree)
+        //endGameRectangle.addChild(endGameRectangleButtonThree)*/
         
         resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
         resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
@@ -719,7 +721,7 @@ class StartScene: SKScene{
     /*Esta funcion va a crear el SKSpriteNode para el rectangulo que se desplega cuando se consigue identificar la totalidad de los municipios y se le asignan las propiedades correspondientes,
      tambien se provee las propiedades para los seis labels pertenecientes al rectangulo. OJO los botones en el rectangulo y sus respectivos labels son generados en otra funcion
      aparte en donde son anadidos como children de endGameRectangle*/
-    func endgameRectangle() -> SKSpriteNode {
+    /*func endgameRectangle() -> SKSpriteNode {
         let endGameRectangleNode = SKSpriteNode()
         endGameRectangleNode.color = UIColor.init(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)//color hex #89d7ed
         endGameRectangleNode.size = CGSize(width:350, height:250)
@@ -775,10 +777,10 @@ class StartScene: SKScene{
         }
         
         return endGameRectangleNode
-    }
+    }*/
     /*Esta funcion cumple dos objetivos: hacer el set de las propiedades generales para los tres botones que aparecen sobre endGameRectangle, Asi como tambien crear los labels y establecer las propiedades para los labels.(tambien son anadidos los labels
      como hijos de su respectivo boton)*/
-    func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
+    /*func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
         /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
         let buttonNode = SKSpriteNode()
         buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
@@ -855,7 +857,7 @@ class StartScene: SKScene{
         endGameRectangle.addChild(buttonNode)
         return buttonNode
         
-    }
+    }*/
     //SpriteNode hecho solo para cubrir isla desecheo
     func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
         let desecheoCover = SKSpriteNode()
@@ -1025,13 +1027,13 @@ class StartScene: SKScene{
         }
 
         //Este bloque solo ejecuta si gameCompleted == true, la idea es tomar los ultimos segundos y minutos para que puedan ser evaluados para la mejor marca de tiempo en la siguiente funcion
-        while secondsandMinutesRetrieved == true {
-            secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:seconds,minute:minutes)
-            secondsandMinutesRetrieved = false
-        }
+        //StartScene.secondsGameOver = seconds
+        //StartScene.minutesGameOver = minutes
         /*Aqui ocurre el paso a la escena de Game Over la razon por la que se encuentra aqui es pq cuando lo ejecutaba en Touchesbegan la transicion le quitaba "espacio" a la funcion
          Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
         if completedGame == true{
+            StartScene.secondsGameOver = seconds
+            StartScene.minutesGameOver = minutes
             let gameOverScene = GameOverScene(size: self.size)
             //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
             self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
@@ -1039,7 +1041,7 @@ class StartScene: SKScene{
         
     }
     /*Esta funcion va a recibir los minutos y segundos del update fuction y los va a comparar con el contenido de minutos y segundos almacenados en memoria persistente(record mejor tiempo) y determinar si en efecto  hay un nuevo mejor tiempo que registrar. Para los efectos hay dos escenarios: donde ocurre una marca de tiempo mejor nueva y el otro donde la marca es igual o mayor(se llevo a cabo en mas tiempo) */
-    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:Int, minute:Int){
+    /*func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:Int, minute:Int){
         /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
         if UserDefaults.standard.integer(forKey: "minutes") < 1 && UserDefaults.standard.integer(forKey: "seconds") < 1 || minute < UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && seconds < UserDefaults.standard.integer(forKey: "seconds") {
             /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
@@ -1100,7 +1102,7 @@ class StartScene: SKScene{
             }
             
         }
-    }
+    }*/
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Funcion encargada del toque de pantalla
         
@@ -1384,7 +1386,7 @@ class StartScene: SKScene{
                                     labelTimer.removeFromParent()
                                     //self.addChild(endGameRectangle)
                                     completedGame = true//Se actualiza la variable completedGame para detener el reloj
-                                    secondsandMinutesRetrieved = true
+                                    //secondsandMinutesRetrieved = true
                                     //EL restante del bloque es para uso del pro\gramador
                                     print("CHANGE")//. uso del programador
                                     countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
@@ -1482,7 +1484,7 @@ class StartScene: SKScene{
                 self.view?.presentScene(startMenuScene)/*present scene and execut transitions*/
             }
             
-            else if (endGameRectangleButton.name == touchedNode?.node?.name){
+            /*else if (endGameRectangleButton.name == touchedNode?.node?.name){
                 endGameRectangle.removeFromParent()
                 self.addChild(resultadosButton)
 
@@ -1492,7 +1494,7 @@ class StartScene: SKScene{
                 resultadosButton.removeFromParent()
                 self.addChild(endGameRectangle)
 
-            }
+            }*/
 
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar

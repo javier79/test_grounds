@@ -5,17 +5,38 @@
 //  Created by javier pizarro on 4/4/22.
 //  Copyright © 2022 javierpizarro. All rights reserved.
 //
-
 import Foundation
 import SpriteKit
+import UIKit
 
 class GameOverScene: SKScene{
     var arrayOfMapSpriteNodes = [SKSpriteNode()]
     var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
     var useLine2:Bool = false//se usa en mas de una funcion
     var containerNode = SKNode()
+    var endGameRectangle = SKSpriteNode()
+    var endGameRectangleButton = SKSpriteNode()
+    var endGameRectangleButtonTwo = SKSpriteNode()
+    var endGameRectangleButtonThree = SKSpriteNode()
+    
+    let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     
     override func didMove(to view: SKView) {
+        
+        endGameRectangle = endgameRectangle()
+        secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:StartScene.secondsGameOver,minute:StartScene.minutesGameOver)
+        
+        endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
+        endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
+        //endGameRectangle.addChild(endGameRectangleButton)
+        
+        endGameRectangleButtonTwo.name = "buttonTwo"
+        endGameRectangleButtonTwo = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
+        //endGameRectangle.addChild(endGameRectangleButtonTwo)
+        
+        endGameRectangleButtonThree.name = "buttonThree"
+        endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
+        //endGameRectangle.addChild(endGameRectangleButtonThree)
         
         containerNode = StartScene().nodesContainer()
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
@@ -541,8 +562,148 @@ class GameOverScene: SKScene{
         containerNode.addChild(node)
       }
         self.addChild(containerNode)
+        self.addChild(endGameRectangle)
+    }
+    
+    /*Esta funcion cumple dos objetivos: hacer el set de las propiedades generales para los tres botones que aparecen sobre endGameRectangle, Asi como tambien crear los labels y establecer las propiedades para los labels.(tambien son anadidos los labels
+     como hijos de su respectivo boton)*/
+    func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
+        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
+        let buttonNode = SKSpriteNode()
+        buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
+        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+        buttonNode.zPosition = 3
+        /*En los siguientes If statements se hace el set de los valores para las propiedades indviduales para cada boton*/
+        if buttonOne.name == "buttonOne"{
+            print("inside button one")
+            buttonNode.position = CGPoint(x:-115.5, y:-78.4)
+            buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+            buttonNode.physicsBody?.isDynamic = false
+            buttonNode.name = "mapButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
+            
+            let buttonOneLabelOne = SKLabelNode()
+            buttonOneLabelOne.fontName = "AvenirNext-Bold"
+            buttonOneLabelOne.fontSize = 16
+            buttonOneLabelOne.text = "Mapa"
+            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+            //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonOneLabelOne)
+            
+            let buttonOneLabelTwo = SKLabelNode()
+            buttonOneLabelTwo.fontName = "AvenirNext-Bold"
+            buttonOneLabelTwo.fontSize = 13
+            buttonOneLabelTwo.text = "(Map)"
+            buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
+            //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonOneLabelTwo)
+        }
+        
+        if buttonTwo.name == "buttonTwo"{
+            print("inside button two")
+            buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
+            buttonNode.position = CGPoint(x:0.5, y: -78.4)
+            
+            let buttonTwoLabelOne = SKLabelNode()
+            buttonTwoLabelOne.fontName = "AvenirNext-Bold"
+            buttonTwoLabelOne.fontSize = 16
+            buttonTwoLabelOne.text = "Jugar Otra Vez"
+            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+            //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonTwoLabelOne)
+            
+            let buttonTwoLabelTwo = SKLabelNode()
+            buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
+            buttonTwoLabelTwo.fontSize = 13
+            buttonTwoLabelTwo.text = "(Play Again)"
+            buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
+            //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonTwoLabelTwo)
+        }
+        
+        if buttonThree.name == "buttonThree"{
+            print("inside button three")
+            //buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+            buttonNode.position = CGPoint(x:115.5, y:-78.4)
+
+            let buttonThreeLabelOne = SKLabelNode()
+            buttonThreeLabelOne.fontName = "AvenirNext-Bold"
+            buttonThreeLabelOne.fontSize = 16
+            buttonThreeLabelOne.text = "Salir"
+            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+            //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonThreeLabelOne)
+            
+            let buttonThreeLabelTwo = SKLabelNode()
+            buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
+            buttonThreeLabelTwo.fontSize = 13
+            buttonThreeLabelTwo.text = "(Exit)"
+            buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
+            //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+            buttonNode.addChild(buttonThreeLabelTwo)
+        }
+        endGameRectangle.addChild(buttonNode)
+        return buttonNode
         
     }
+    
+    func endgameRectangle() -> SKSpriteNode {
+        let endGameRectangleNode = SKSpriteNode()
+        endGameRectangleNode.color = UIColor.init(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)//color hex #89d7ed
+        endGameRectangleNode.size = CGSize(width:350, height:250)
+        endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
+        endGameRectangleNode.zPosition = 2
+        
+        /*Abajo se otorga la propiedad de nombre a los labels, propiedad que se utiliza en el proximo bloque , El unico propsito de esto es aislar cada label aprovechando cada iteracion del for loop para asignarles a cada uno propiedades en una misma y unica ejecucion de la funcion */
+        labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
+        let arrayOflabels = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]/*Poner los elementos a iterar en un for loop por medio de un array me permite reusar codigo, en vez de escribir un bloque por label donde por ejempl
+          propiedades como fontName,fontSize y fontColor se escribirian 6 veces*/
+        
+        for label in arrayOflabels {
+            /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
+            label.fontName = "AvenirNext-Bold"
+            label.fontSize = 15
+            label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
+            //label.zPosition = 3
+            
+            if label.name == "labelOne"{
+                print("Voy subiendo")
+                //label.text = label.name
+                label.position = CGPoint(x:-0, y:60)
+
+            }
+            if label.name == "labelTwo"{
+                //label.text = label.name
+                label.position = CGPoint(x:-0, y:40)
+
+            }
+            if label.name == "labelThree"{
+                //label.text = label.name
+                label.position = CGPoint(x:-0, y:10)
+                
+            }
+            if label.name == "labelFour"{
+                //label.text = label.name
+                label.position = CGPoint(x:-5, y:-10)
+            
+            }
+            
+            if label.name == "labelFive"{
+                //label.text = label.name
+                label.position = CGPoint(x:65, y:50)
+                //endGameRectangleNode.addChild(label)
+            }
+            if label.name == "labelSix"{
+                //label.text = label.name
+                label.position = CGPoint(x:65, y:0)
+                //endGameRectangleNode.addChild(label)
+            }
+            
+            endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
+        }
+        
+        return endGameRectangleNode
+    }
+    
     func splitTextIntoFields(theText:SKLabelNode)->String{
         useLine2 = false//Esta linea resetea la variable que es necesario para no crear redundancia cuando se pasa el texto a label(ej:aguas aguas buenas)
         twoLineText = theText.text!//texto que necesitamos dividir en dos lineas
@@ -592,5 +753,68 @@ class GameOverScene: SKScene{
             }
         return line2
     }
+    
+    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:Int, minute:Int){
+         /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
+         if  UserDefaults.standard.integer(forKey: "minutes") < 1 && UserDefaults.standard.integer(forKey: "seconds") < 1 || minute < UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "seconds") {
+             /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
+             UserDefaults.standard.set(minute, forKey:"minutes")
+             UserDefaults.standard.set(second, forKey:"seconds")
+             
+             labelOne.text = "¡NUEVO RECORD!"
+             labelTwo.text = "(NEW RECORD!)"
+             //format casting and rendering of new best record
+             let secondsText = (second < 10) ?
+             "0\(second)" : "\(second)"
+             let minutesText = "\(minute)"
+             
+             if minute >= 1 {
+                 labelThree.text = "\(minutesText):\(secondsText)"
+             }
+             else{
+                 labelThree.text = "\(secondsText)"
+                 //timerBackground.size = labelTimer.frame.size Aqui se utiliza el label de forma transparente por eso no se utiliza esta propiedad
+                 
+             }
+
+             
+             //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
+         }
+         
+         else if minute > UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && second > UserDefaults.standard.integer(forKey: "seconds"){
+             //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
+             labelOne.text = "Tu Tiempo"
+             labelTwo.text = "(Your Time)"
+             labelThree.text = "Mejor Tiempo"
+             labelFour.text = "(Best Time)"
+             //labelFive.text = labelTimer.text
+             let secondText = (second < 10) ?/*Ojo la variable aqui se llama secondText SIN "S", La razon para el cambio de nombre en la variable es pq ambas(secondText/secondsText) son constantes de modo que en el mismo bloque no podrian ejecutar como constantes(con el mismo nombre) y dado que ambas variables cumplen el mismo proposito no se queria cambiar demasiado el nombre. MAS ADELANTE SE VA A CREAR UNA FUNCION UNIVRSAL PARA LIDIAR SOLO CON EL CASTING Y EL RENDERING YA QUE ESTE CODIGO SE REPITE VARIAS VECES*/
+             "0\(second)" : "\(second)"
+             let minuteText = "\(minute)" //Ojo la variable aqui se llama minuteText SIN "S"
+             
+             if minute >= 1 {
+                 labelFive.text = ":\(minuteText):\(secondText)"
+             }
+             else{
+                 labelFive.text = ":\(secondText)"
+                 //timerBackground.size = labelTimer.frame.size
+                 
+             }
+             //este bloque se va a encargar de imprimir la mejor marca que en este caso seria la encontrada en memoria persistente
+             let secondsText = (UserDefaults.standard.integer(forKey: "seconds") < 10) ?
+             "0\(UserDefaults.standard.integer(forKey: "seconds"))" : "\(UserDefaults.standard.integer(forKey: "seconds"))"
+             let minutesText = "\(UserDefaults.standard.integer(forKey: "minutes"))"
+             
+             if UserDefaults.standard.integer(forKey: "minutes") >= 1 {
+                 labelSix.text = ":\(minutesText):\(secondsText)"
+             }
+             else{
+                 labelSix.text = ":\(secondsText)"
+                 //timerBackground.size = labelTimer.frame.size
+                 
+             }
+             
+         }
+     }
 
 }
