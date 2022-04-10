@@ -154,7 +154,7 @@ class StartScene: SKScene{
     var endGameRectangleButton = SKSpriteNode()
     var endGameRectangleButtonTwo = SKSpriteNode()
     var endGameRectangleButtonThree = SKSpriteNode()*/
-    var resultadosButton = SKSpriteNode()
+    //var resultadosButton = SKSpriteNode()
     
     var secondsandMinutesRetrieved: Bool = false
     
@@ -207,8 +207,8 @@ class StartScene: SKScene{
         endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
         //endGameRectangle.addChild(endGameRectangleButtonThree)*/
         
-        resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
-        resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
+        //resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
+        //resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
         
         let rectanglebp:UIBezierPath! = TestClass().createRectangle()
         let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
@@ -565,7 +565,7 @@ class StartScene: SKScene{
         
     }
     
-    func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
+    /*func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
         let label:SKLabelNode = StartMenu().setLabelDefaults()
         label.fontName = "AvenirNext-Bold"
         label.text = "Resultados (Results)"
@@ -578,7 +578,7 @@ class StartScene: SKScene{
         buttonResultadosSKSpriteNode.physicsBody?.isDynamic = false
         
         return buttonResultadosSKSpriteNode
-    }
+    }*/
     
     //Contiene todos los SpriteNodes que tienen que ver con el mapa incluyendo covers(como el de desecheo)
     func nodesContainer() -> SKNode{

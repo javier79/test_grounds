@@ -18,7 +18,8 @@ class GameOverScene: SKScene{
     var endGameRectangleButton = SKSpriteNode()
     var endGameRectangleButtonTwo = SKSpriteNode()
     var endGameRectangleButtonThree = SKSpriteNode()
-    
+    var resultadosButton = SKSpriteNode()
+    var touchedNode: SKPhysicsBody!
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     
     override func didMove(to view: SKView) {
@@ -40,6 +41,9 @@ class GameOverScene: SKScene{
         
         containerNode = StartScene().nodesContainer()
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
+        
+        resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
+        resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
         
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = StartScene().desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
@@ -565,6 +569,30 @@ class GameOverScene: SKScene{
         self.addChild(endGameRectangle)
     }
     
+     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first!//Guarda toque de pantalla
+        let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
+        touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
+        
+        if (touchedNode != nil){
+            if (endGameRectangleButton.name == touchedNode?.node?.name){
+                endGameRectangle.removeFromParent()
+                self.addChild(resultadosButton)
+
+            }
+                
+            else if (resultadosButton.name == touchedNode?.node?.name){
+                resultadosButton.removeFromParent()
+                self.addChild(endGameRectangle)
+
+            }
+            
+        }
+        
+    }
+    
+    
     /*Esta funcion cumple dos objetivos: hacer el set de las propiedades generales para los tres botones que aparecen sobre endGameRectangle, Asi como tambien crear los labels y establecer las propiedades para los labels.(tambien son anadidos los labels
      como hijos de su respectivo boton)*/
     func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
@@ -815,6 +843,22 @@ class GameOverScene: SKScene{
              }
              
          }
+        
      }
+    
+    func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
+        let label:SKLabelNode = StartMenu().setLabelDefaults()
+        label.fontName = "AvenirNext-Bold"
+        label.text = "Resultados (Results)"
+        label.position = CGPoint(x:0.5, y:-5.5)
+        buttonResultadosSKSpriteNode.addChild(label)
+        buttonResultadosSKSpriteNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.475)
+        buttonResultadosSKSpriteNode.size = label.frame.size
+        buttonResultadosSKSpriteNode.name = "resultadosButton"
+        buttonResultadosSKSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonResultadosSKSpriteNode.size.width, height:buttonResultadosSKSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+        buttonResultadosSKSpriteNode.physicsBody?.isDynamic = false
+        
+        return buttonResultadosSKSpriteNode
+    }
 
 }
