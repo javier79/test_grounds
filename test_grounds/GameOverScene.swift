@@ -21,6 +21,7 @@ class GameOverScene: SKScene{
     var resultadosButton = SKSpriteNode()
     var touchedNode: SKPhysicsBody!
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
+    var playagain: Bool = false
     
     override func didMove(to view: SKView) {
         
@@ -569,6 +570,16 @@ class GameOverScene: SKScene{
         self.addChild(endGameRectangle)
     }
     
+     override public func update(_ currentTime: TimeInterval) {
+        if playagain == true{
+            //self.removeFromParent()
+            //self.removeAllActions()
+            let startScene = StartScene(size: self.size)//definitio
+            //let transition = SKTransition.fade(withDuration: 1.0)
+            self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
+        }
+    }
+    
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first!//Guarda toque de pantalla
@@ -585,6 +596,19 @@ class GameOverScene: SKScene{
             else if (resultadosButton.name == touchedNode?.node?.name){
                 resultadosButton.removeFromParent()
                 self.addChild(endGameRectangle)
+
+            }
+            
+            else if (endGameRectangleButtonTwo.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
+                self.removeFromParent()
+                self.removeAllActions()
+                //let startScene = StartScene(size: self.size)
+                playagain = true
+                //self.removeFromParent()
+                //self.removeAllActions()
+                //let startScene = StartScene(size: self.size)//definitio
+                //let transition = SKTransition.fade(withDuration: 1.0)
+                //self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
 
             }
             
@@ -630,6 +654,8 @@ class GameOverScene: SKScene{
             print("inside button two")
             buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
             buttonNode.position = CGPoint(x:0.5, y: -78.4)
+            buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+            buttonNode.physicsBody?.isDynamic = false
             
             let buttonTwoLabelOne = SKLabelNode()
             buttonTwoLabelOne.fontName = "AvenirNext-Bold"

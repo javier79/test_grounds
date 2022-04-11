@@ -560,7 +560,7 @@ class StartScene: SKScene{
 
         
         
-        sleep(2)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
+        //sleep(1)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
         
         
     }
@@ -1013,8 +1013,8 @@ class StartScene: SKScene{
                     
                     //Solo para uso del programador no es parte del app perce
                     //UserDefaults.standard.removeObject(forKey: "seconds")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
-                    //UserDefaults.standard.removeObject(forKey: "minutes")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
-                }
+                    //UserDefaults.standard.removeObject(forKey: "minutes")//OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO
+            }
                 //print(renderTime)
                 renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime
                 //print(renderTime, currentTime, "Abajo")
@@ -1034,6 +1034,8 @@ class StartScene: SKScene{
         if completedGame == true{
             StartScene.secondsGameOver = seconds
             StartScene.minutesGameOver = minutes
+            self.removeFromParent()
+            self.removeAllActions()
             let gameOverScene = GameOverScene(size: self.size)
             //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
             self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
@@ -1458,7 +1460,7 @@ class StartScene: SKScene{
             /*Se asigno us SKPhysics body para el skipButton y el toque de pantalla se captura en este bloque**/
             else if (skipButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
                 currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
-                skipButton.alpha = 1.0//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
+                skipButton.alpha = 0.9//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
                 skipButtonPressed = true
                 /*if have == false{
                     skipButton.alpha = 0.5
@@ -1531,7 +1533,7 @@ class StartScene: SKScene{
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Efecto para el skipButton cuando se suelta el boton
         if skipButtonPressed == true{
-            skipButton.alpha = 0.9//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
+            skipButton.alpha = 1.0//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
             skipButtonPressed = false
         }
        /* if exitButtonPressed == true{
