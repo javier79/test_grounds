@@ -22,23 +22,24 @@ class GameOverScene: SKScene{
     var touchedNode: SKPhysicsBody!
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     var playagain: Bool = false
+    var exited:Bool = false
     
     override func didMove(to view: SKView) {
         
         endGameRectangle = endgameRectangle()
         secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:StartScene.secondsGameOver,minute:StartScene.minutesGameOver)
         
-        endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
-        endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        //endGameRectangle.addChild(endGameRectangleButton)
+        //endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
+        endGameRectangleButton = endgameRectangleButton()
+        endGameRectangle.addChild(endGameRectangleButton)
         
-        endGameRectangleButtonTwo.name = "buttonTwo"
-        endGameRectangleButtonTwo = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        //endGameRectangle.addChild(endGameRectangleButtonTwo)
+        //endGameRectangleButtonTwo.name = "buttonTwo"
+        endGameRectangleButtonTwo = endgameRectangleButtoTwo()
+        endGameRectangle.addChild(endGameRectangleButtonTwo)
         
-        endGameRectangleButtonThree.name = "buttonThree"
-        endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        //endGameRectangle.addChild(endGameRectangleButtonThree)
+        //endGameRectangleButtonThree.name = "buttonThree"
+        endGameRectangleButtonThree = endgameRectangleButtoThree()
+        endGameRectangle.addChild(endGameRectangleButtonThree)
         
         containerNode = StartScene().nodesContainer()
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
@@ -572,12 +573,22 @@ class GameOverScene: SKScene{
     
      override public func update(_ currentTime: TimeInterval) {
         if playagain == true{
-            //self.removeFromParent()
-            //self.removeAllActions()
+            self.removeFromParent()
+            self.removeAllActions()
             let startScene = StartScene(size: self.size)//definitio
             //let transition = SKTransition.fade(withDuration: 1.0)
             self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
+            playagain = false
         }
+        
+        if exited == true{
+           self.removeFromParent()
+           self.removeAllActions()
+           let startMenu = StartMenu(size: self.size)//definitio
+           //let transition = SKTransition.fade(withDuration: 1.0)
+           self.view?.presentScene(startMenu/*, transition: transition*/)/*present scene and execut transitions*/
+           exited = false
+       }
     }
     
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -599,106 +610,139 @@ class GameOverScene: SKScene{
 
             }
             
-            else if (endGameRectangleButtonTwo.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
-                self.removeFromParent()
-                self.removeAllActions()
-                //let startScene = StartScene(size: self.size)
+            else if (endGameRectangleButtonTwo.name == touchedNode?.node?.name){
                 playagain = true
                 //self.removeFromParent()
                 //self.removeAllActions()
-                //let startScene = StartScene(size: self.size)//definitio
-                //let transition = SKTransition.fade(withDuration: 1.0)
-                //self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
-
+                //let startScene = StartScene(size: self.size)
+                //self.view?.presentScene(startScene)
+            }
+            
+            else if(endGameRectangleButtonThree.name == touchedNode?.node?.name){
+                //let startMenu = StartMenu(size: self.size)
+                //self.view?.presentScene(startMenu)
+                exited = true
             }
             
         }
         
     }
     
+    func endgameRectangleButton()-> SKSpriteNode {
+           /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
+           let buttonNode:SKSpriteNode = buttonNodeDefaults()
+           buttonNode.name = "buttonMap"
+           /*buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
+           buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+           buttonNode.zPosition = 3*/
+          
+
+           buttonNode.position = CGPoint(x:-115.5, y:-78.4)
+           buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+           buttonNode.physicsBody?.isDynamic = false
+           
+           
+           let buttonOneLabelOne = SKLabelNode()
+           buttonOneLabelOne.fontName = "AvenirNext-Bold"
+           buttonOneLabelOne.fontSize = 16
+           buttonOneLabelOne.text = "Mapa"
+           //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+           //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+           buttonNode.addChild(buttonOneLabelOne)
+           
+           let buttonOneLabelTwo = SKLabelNode()
+           buttonOneLabelTwo.fontName = "AvenirNext-Bold"
+           buttonOneLabelTwo.fontSize = 13
+           buttonOneLabelTwo.text = "(Map)"
+           buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
+           //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+           buttonNode.addChild(buttonOneLabelTwo)
+
+           return buttonNode
+
+    }
     
-    /*Esta funcion cumple dos objetivos: hacer el set de las propiedades generales para los tres botones que aparecen sobre endGameRectangle, Asi como tambien crear los labels y establecer las propiedades para los labels.(tambien son anadidos los labels
-     como hijos de su respectivo boton)*/
-    func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
-        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
+    func buttonNodeDefaults()->SKSpriteNode{
         let buttonNode = SKSpriteNode()
         buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
         buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
         buttonNode.zPosition = 3
-        /*En los siguientes If statements se hace el set de los valores para las propiedades indviduales para cada boton*/
-        if buttonOne.name == "buttonOne"{
-            print("inside button one")
-            buttonNode.position = CGPoint(x:-115.5, y:-78.4)
-            buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-            buttonNode.physicsBody?.isDynamic = false
-            buttonNode.name = "mapButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
-            
-            let buttonOneLabelOne = SKLabelNode()
-            buttonOneLabelOne.fontName = "AvenirNext-Bold"
-            buttonOneLabelOne.fontSize = 16
-            buttonOneLabelOne.text = "Mapa"
-            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonOneLabelOne)
-            
-            let buttonOneLabelTwo = SKLabelNode()
-            buttonOneLabelTwo.fontName = "AvenirNext-Bold"
-            buttonOneLabelTwo.fontSize = 13
-            buttonOneLabelTwo.text = "(Map)"
-            buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
-            //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonOneLabelTwo)
-        }
         
-        if buttonTwo.name == "buttonTwo"{
-            print("inside button two")
-            buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
-            buttonNode.position = CGPoint(x:0.5, y: -78.4)
-            buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-            buttonNode.physicsBody?.isDynamic = false
-            
-            let buttonTwoLabelOne = SKLabelNode()
-            buttonTwoLabelOne.fontName = "AvenirNext-Bold"
-            buttonTwoLabelOne.fontSize = 16
-            buttonTwoLabelOne.text = "Jugar Otra Vez"
-            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonTwoLabelOne)
-            
-            let buttonTwoLabelTwo = SKLabelNode()
-            buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
-            buttonTwoLabelTwo.fontSize = 13
-            buttonTwoLabelTwo.text = "(Play Again)"
-            buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
-            //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonTwoLabelTwo)
-        }
-        
-        if buttonThree.name == "buttonThree"{
-            print("inside button three")
-            //buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-            buttonNode.position = CGPoint(x:115.5, y:-78.4)
-
-            let buttonThreeLabelOne = SKLabelNode()
-            buttonThreeLabelOne.fontName = "AvenirNext-Bold"
-            buttonThreeLabelOne.fontSize = 16
-            buttonThreeLabelOne.text = "Salir"
-            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonThreeLabelOne)
-            
-            let buttonThreeLabelTwo = SKLabelNode()
-            buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
-            buttonThreeLabelTwo.fontSize = 13
-            buttonThreeLabelTwo.text = "(Exit)"
-            buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
-            //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonThreeLabelTwo)
-        }
-        endGameRectangle.addChild(buttonNode)
         return buttonNode
-        
     }
+    
+    func endgameRectangleButtoTwo()-> SKSpriteNode {
+        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
+        let buttonNode:SKSpriteNode = buttonNodeDefaults()
+        buttonNode.name = "buttonJugarOtraVez"
+       /* buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
+        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+        buttonNode.zPosition = 3*/
+       
+        buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
+        buttonNode.position = CGPoint(x:0.5, y: -78.4)
+        buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+        buttonNode.physicsBody?.isDynamic = false
+        
+        let buttonTwoLabelOne = SKLabelNode()
+        buttonTwoLabelOne.fontName = "AvenirNext-Bold"
+        buttonTwoLabelOne.fontSize = 16
+        buttonTwoLabelOne.text = "Jugar Otra Vez"
+        //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+        //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        buttonNode.addChild(buttonTwoLabelOne)
+        
+        let buttonTwoLabelTwo = SKLabelNode()
+        buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
+        buttonTwoLabelTwo.fontSize = 13
+        buttonTwoLabelTwo.text = "(Play Again)"
+        buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
+        //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        buttonNode.addChild(buttonTwoLabelTwo)
+    
+
+        return buttonNode
+
+    }
+    
+    func endgameRectangleButtoThree()-> SKSpriteNode {
+        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
+        let buttonNode:SKSpriteNode = buttonNodeDefaults()
+        buttonNode.name = "buttonSalir"
+       /* buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
+        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+        buttonNode.zPosition = 3*/
+       
+
+        //buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
+        buttonNode.position = CGPoint(x:115.5, y:-78.4)
+        buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+        buttonNode.physicsBody?.isDynamic = false
+
+        let buttonThreeLabelOne = SKLabelNode()
+        buttonThreeLabelOne.fontName = "AvenirNext-Bold"
+        buttonThreeLabelOne.fontSize = 16
+        buttonThreeLabelOne.text = "Salir"
+        //buttonOneLabelOne.position = CGPoint(x:0, y:0)
+        //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        buttonNode.addChild(buttonThreeLabelOne)
+        
+        let buttonThreeLabelTwo = SKLabelNode()
+        buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
+        buttonThreeLabelTwo.fontSize = 13
+        buttonThreeLabelTwo.text = "(Exit)"
+        buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
+        //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        buttonNode.addChild(buttonThreeLabelTwo)
+        
+    
+
+        return buttonNode
+
+    }
+    
+    
+
     
     func endgameRectangle() -> SKSpriteNode {
         let endGameRectangleNode = SKSpriteNode()
@@ -835,7 +879,7 @@ class GameOverScene: SKScene{
              //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
          }
          
-         else if minute > UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && second > UserDefaults.standard.integer(forKey: "seconds"){
+         else if minute > UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && second > UserDefaults.standard.integer(forKey: "seconds")||minute == UserDefaults.standard.integer(forKey: "minutes") && second == UserDefaults.standard.integer(forKey: "seconds"){
              //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
              labelOne.text = "Tu Tiempo"
              labelTwo.text = "(Your Time)"
