@@ -35,6 +35,17 @@ class StartMenu: SKScene {
     var redButtonOneLabel:SKLabelNode!//labels for (the three)red buttons
     var redButtonTwoLabel:SKLabelNode!
     var redButtonThreeLabel:SKLabelNode!
+    var creditsLabel:SKLabelNode!
+    var creditsLabelTwo:SKLabelNode!
+    var creditsSoundMusicLabel:SKLabelNode!
+    var creditsSoundMusicChildLabel:SKLabelNode!
+    var creditsSoundMusicChildLabelTwo:SKLabelNode!
+    var creditsSoundMusicChildLabelThree:SKLabelNode!
+    var creditsMapsImagesLabel:SKLabelNode!
+    var creditsMapsImagesChildLabel:SKLabelNode!
+    var creditsMapsImagesChildLabelTwo:SKLabelNode!
+    var creditsMapsImagesChildLabelThree:SKLabelNode!
+    var creditsSpecialThanksLabel:SKLabelNode!
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -135,21 +146,138 @@ class StartMenu: SKScene {
         returnVolverRedButton.position = CGPoint(x:40, y:25)
         returnVolverRedButton.setScale(1.2)//set a larger scale
         
-        oldPaperBorderTexture.addChild(elMorro)
-        //elMorro.addChild(buttonGreen)
+        creditsLabel = setCreditsLabelDefaults()
+        creditsLabel.text = "CONCEPT\n\nDESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
+        creditsLabel.position = CGPoint(x:50, y:202)
+        
+        creditsLabelTwo = setCreditsLabelDefaults()
+        creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\nEnrique J. Pizarro\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
+        creditsLabelTwo.fontColor = UIColor.black
+        creditsLabelTwo.position = CGPoint(x:160, y:202)
+        //creditsLabelTwo.numberOfLines = 13
+        creditsLabelTwo.preferredMaxLayoutWidth = 110 //140
+        
+        creditsSoundMusicLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
+        //creditsSoundMusicLabel.fontSize = 11
+        //creditsSoundMusicLabel.fontName = "GillSans-Bold"
+        //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
+        creditsSoundMusicLabel.text = "SOUND & MUSIC"
+        creditsSoundMusicLabel.position = CGPoint(x:95, y:190)
+        
+        creditsSoundMusicChildLabel = setCreditsLabelDefaults()
+        //creditsSoundMusicChildLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
+        creditsSoundMusicChildLabel.text = "1-At the shore\n2-No Frills Salsa-Alternate\n(shortened from original)\n3-Guiton Sketch\n\n1-La Borinqueña\n2-Star Spangled Banner\n\n1-Game Sound Correct\nOrganic Violin\n\n\nCartoon Success Fanfare"
+        creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 125
+        creditsSoundMusicChildLabel.position = CGPoint(x:69, y:55)
+        
+        creditsSoundMusicChildLabelTwo = setCreditsLabelDefaults()
+        creditsSoundMusicChildLabelTwo.text = "\nKevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
+        creditsSoundMusicChildLabelTwo.fontColor = UIColor.black
+        creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:55)
+        //creditsLabelTwo.numberOfLines = 13
+        creditsSoundMusicChildLabelTwo.preferredMaxLayoutWidth = 100 //140
+        
+        creditsSoundMusicChildLabelThree = licenseLabels()
+        //creditsSoundMusicChildLabelThree.fontColor = UIColor.black
+        //creditsSoundMusicChildLabelThree.fontSize = 7.5
+        //creditsSoundMusicChildLabelThree.fontName = "GillSans-Bold"
+        creditsSoundMusicChildLabelThree.text = "All music and sounds used licensed under Creative Commons:\n\t\tBy Attribution 3.0 License\n\t(http://creativecommons.org/licenses/by/3.0/)"
+        //creditsSoundMusicChildLabelThree.numberOfLines = 5
+        //creditsSoundMusicChildLabelThree.preferredMaxLayoutWidth = 250
+        creditsSoundMusicChildLabelThree.position =  CGPoint(x:125, y:20)
+        
+        creditsMapsImagesLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
+        //creditsSoundMusicLabel.fontSize = 11
+        //creditsSoundMusicLabel.fontName = "GillSans-Bold"
+        //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
+        creditsMapsImagesLabel.text = "IMAGES AND MAPS"
+        creditsMapsImagesLabel.position = CGPoint(x:370, y:295)
+        
+        creditsMapsImagesChildLabel = setCreditsLabelDefaults()
+        //creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
+        creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
+        creditsMapsImagesChildLabel.position = CGPoint(x:325, y:245)
+        
+        creditsMapsImagesChildLabelTwo = setCreditsLabelDefaults()
+        creditsMapsImagesChildLabelTwo.text = "https://mapsvg.com/maps/puerto-rico"
+        creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
+        creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:260)
+        //creditsLabelTwo.numberOfLines = 13
+        creditsMapsImagesChildLabelTwo.preferredMaxLayoutWidth = 180
+        
+        creditsMapsImagesChildLabelThree = licenseLabels()
+        creditsMapsImagesChildLabelThree.position = CGPoint(x:383, y:215)
+        creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
+        
+        creditsSpecialThanksLabel = creditsSingleLineLabelDefaults()
+        creditsSpecialThanksLabel.text = "SPECIAL THANKS"
+        creditsSpecialThanksLabel.position = CGPoint(x:370, y:200)
+        
         
         elMorro.addChild(mapaClickBanner)
+        oldPaperBorderTexture.addChild(elMorro)
+        //elMorro.addChild(buttonGreen)
         
         //elMorro.addChild(redButtonOne)
         //elMorro.addChild(redButtonTwo)
        // elMorro.addChild(redButtonThree)
         self.addChild(oldPaperBorderTexture)
-        self.addChild(buttonGreen)
-        self.addChild(redButtonOne)
-        self.addChild(redButtonTwo)
-        self.addChild(redButtonThree)
-    
+        //self.addChild(buttonGreen)
+        //self.addChild(redButtonOne)
+        //self.addChild(redButtonTwo)
+        //self.addChild(redButtonThree)
+        self.addChild(creditsLabel)
+        self.addChild(creditsLabelTwo)
+        self.addChild(creditsSoundMusicLabel)
+        self.addChild(creditsSoundMusicChildLabel)
+        self.addChild(creditsSoundMusicChildLabelTwo)
+        self.addChild(creditsSoundMusicChildLabelThree)
+        self.addChild(creditsMapsImagesLabel)
+        self.addChild(creditsMapsImagesChildLabel)
+        self.addChild(creditsMapsImagesChildLabelTwo)
+        self.addChild(creditsMapsImagesChildLabelThree)
+        self.addChild(creditsSpecialThanksLabel)
     }
+    
+    func licenseLabels()->SKLabelNode{
+        let label = SKLabelNode()
+        label.fontColor = UIColor.black
+        label.fontSize = 7.5
+        label.fontName = "GillSans-Bold"
+        label.numberOfLines = 5
+        label.preferredMaxLayoutWidth = 250
+        return label
+    }
+    
+    /*func creditsMapsImagesChildLabelText(label:SKLabelNode)->SKLabelNode{
+        label.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
+        return label
+    }*/
+    
+    func creditsSingleLineLabelDefaults()->SKLabelNode{
+        let label = SKLabelNode()
+        label.fontSize = 11
+        label.fontName = "GillSans-Bold"
+        label.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        return label
+    }
+    
+    func setCreditsLabelDefaults()->SKLabelNode{
+      let label = SKLabelNode()
+      label.fontName = "GillSans-Bold"
+      label.fontSize = 9
+      label.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+      /*label.text = "\tEn la parte inferior de la pantalla encontrarás\n el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de Reto con un mapa en blanco.  Con algunas excepciones, los nombres de los objetivos a identificarse seran en base al idioma oficial del pais o territorio."*/
+      label.numberOfLines = 10//12
+      label.preferredMaxLayoutWidth = 80//105
+      
+      //label.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.4)
+      
+        
+      return label
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first!//Guarda toque de pantalla
