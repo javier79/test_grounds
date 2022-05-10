@@ -46,6 +46,8 @@ class StartMenu: SKScene {
     var creditsMapsImagesChildLabelTwo:SKLabelNode!
     var creditsMapsImagesChildLabelThree:SKLabelNode!
     var creditsSpecialThanksLabel:SKLabelNode!
+    var creditsSpecialThanksChildLabel:SKLabelNode!
+    var creditsSpecialThanksChildLabelTwo:SKLabelNode!
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -194,7 +196,7 @@ class StartMenu: SKScene {
         creditsMapsImagesLabel.position = CGPoint(x:370, y:295)
         
         creditsMapsImagesChildLabel = setCreditsLabelDefaults()
-        //creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
         creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
         creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
         creditsMapsImagesChildLabel.position = CGPoint(x:325, y:245)
@@ -212,9 +214,20 @@ class StartMenu: SKScene {
         
         creditsSpecialThanksLabel = creditsSingleLineLabelDefaults()
         creditsSpecialThanksLabel.text = "SPECIAL THANKS"
-        creditsSpecialThanksLabel.position = CGPoint(x:370, y:200)
+        creditsSpecialThanksLabel.position = CGPoint(x:360, y:200)
         
+        creditsSpecialThanksChildLabel = setCreditsLabelDefaults()
+        creditsSpecialThanksChildLabel.text = "Manuel Alvarez\nRoberto Vélez Benitez\nEnrique J. Pizarro\nRodrigo Barasorda\nJosé Ramos\nMaritza Torres\nNarén Vélez Vendrell\nGabriela Mora Llorens\nCarmine T. Guida\nVladimir Alyamkin\nRaul Rosado\n@Pedro Cacique(https://www.youtube.com/c/PedroCacique)\nHoglund & Pamías\nAtlantic University College\nEpic Games,inc"
+        creditsSpecialThanksChildLabel.fontColor = UIColor.black
+        creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:43)
+        //creditsLabelTwo.numberOfLines = 13
+        creditsSpecialThanksChildLabel.preferredMaxLayoutWidth = 280 //140
         
+        creditsSpecialThanksChildLabelTwo = licenseLabels()
+        creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
+        creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
+        creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
+            
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
         //elMorro.addChild(buttonGreen)
@@ -238,6 +251,8 @@ class StartMenu: SKScene {
         self.addChild(creditsMapsImagesChildLabelTwo)
         self.addChild(creditsMapsImagesChildLabelThree)
         self.addChild(creditsSpecialThanksLabel)
+        self.addChild(creditsSpecialThanksChildLabel)
+        self.addChild(creditsSpecialThanksChildLabelTwo)
     }
     
     func licenseLabels()->SKLabelNode{
