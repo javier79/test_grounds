@@ -48,6 +48,27 @@ class StartMenu: SKScene {
     var creditsSpecialThanksLabel:SKLabelNode!
     var creditsSpecialThanksChildLabel:SKLabelNode!
     var creditsSpecialThanksChildLabelTwo:SKLabelNode!
+    var path: UIBezierPath!
+    var dropDownArrow:SKSpriteNode!
+    var dropDownArrowTwo:SKSpriteNode!
+    var dropDownArrowLabel:SKLabelNode!
+    var dropDownArrowLabelTwo:SKLabelNode!
+    var dropDownLabelBG:SKSpriteNode!
+    var dropDownLabelBGTwo:SKSpriteNode!
+    var mapOrderOldPaperbackground:SKSpriteNode!
+    var mapOrderTopLabel:SKLabelNode!
+    var mapOrderMiddleLabel:SKLabelNode!
+    var mapOrderSingleLineLabel:SKLabelNode!
+    var mapOrderSingleLineLabelTwo:SKLabelNode!
+    var mapOrderCountryDropDownMenu: SKSpriteNode!
+    var orderDropDownMenu: SKSpriteNode!
+    var mapOrderCountryDropDownMenuYellowBG: SKSpriteNode!
+    var dropDownMenuLabelPR:SKLabelNode!
+    var orderDropDownMenuYellowBG:SKSpriteNode!
+    var orderDropDownMenuLabel:SKLabelNode!
+    var orderDropDownMenuLabelTwo:SKLabelNode!
+    var mapOrderGreenButton:SKSpriteNode!
+    var mapOrderRedButton:SKSpriteNode!
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -227,7 +248,100 @@ class StartMenu: SKScene {
         creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
         creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
         creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
-            
+        
+        mapOrderOldPaperbackground = mapOrderOldPaperDropdownBG()
+        
+        mapOrderTopLabel = mapOrderTwoLineLabelDefaults()
+        mapOrderTopLabel.position = CGPoint(x:120, y:60)
+        mapOrderTopLabel.text = "Seleccciona el mapa en el menú desplegable\n(Select the map from the drop-downmenu)"
+        mapOrderOldPaperbackground.addChild(mapOrderTopLabel)
+        
+        mapOrderMiddleLabel = mapOrderTwoLineLabelDefaults()
+        mapOrderMiddleLabel.position = CGPoint(x:90, y:-10)
+        mapOrderMiddleLabel.text = "Selecciona el orden de los objetivos en el menú desplegable\n(Select the target order from the drop-downmenu)"
+        mapOrderOldPaperbackground.addChild(mapOrderMiddleLabel)
+        
+        dropDownLabelBG = dropDownLabelBackground()
+        dropDownLabelBG.position = CGPoint(x:100,y:40)
+        mapOrderOldPaperbackground.addChild(dropDownLabelBG)
+        
+        dropDownLabelBGTwo = dropDownLabelBackground()
+        dropDownLabelBGTwo.position = CGPoint(x:100,y:-30)
+        mapOrderOldPaperbackground.addChild(dropDownLabelBGTwo)
+        
+        dropDownArrow = dropDownArrowBPToSKSpritenode()
+        dropDownArrow.position = CGPoint(x:80,y:-0.5)
+        dropDownLabelBG.addChild(dropDownArrow)
+        
+        dropDownArrowLabelTwo = dropDownArrowLabelDefaults()
+        dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
+        dropDownArrowLabelTwo.text = "Alfabético (Alphabetic)"
+        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+        
+        dropDownArrowTwo = dropDownArrowBPToSKSpritenode()
+        dropDownArrowTwo.position = CGPoint(x:80,y:-0.5)
+        dropDownLabelBGTwo.addChild(dropDownArrowTwo)
+        
+        dropDownArrowLabel = dropDownArrowLabelDefaults()
+        dropDownArrowLabel.position = CGPoint(x:-55.0,y:-4.5)
+        dropDownArrowLabel.text = "Puerto Rico"
+        dropDownLabelBG.addChild(dropDownArrowLabel)
+        
+        mapOrderSingleLineLabel = creditsSingleLineLabelDefaults()
+        mapOrderSingleLineLabel.fontSize = 14
+        mapOrderSingleLineLabel.text = "Mapa (Map)"
+        mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabel)
+        mapOrderSingleLineLabel.position = CGPoint(x:-165, y:50)
+        
+        mapOrderSingleLineLabelTwo = creditsSingleLineLabelDefaults()
+        mapOrderSingleLineLabelTwo.fontSize = 14
+        mapOrderSingleLineLabelTwo.text = "Orden (Order)"
+        mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabelTwo)
+        mapOrderSingleLineLabelTwo.position = CGPoint(x:-156, y:-15.0)
+        //dropDownLabelBG = dropDownLabelBackground()
+        //dropDownLabelBG.position = CGPoint(x:120,y:65)
+        
+        mapOrderCountryDropDownMenu = mapOrderCountryDropDownMenuSpriteNode()
+        mapOrderCountryDropDownMenu.position = CGPoint(x:434,y:178)
+        
+        mapOrderCountryDropDownMenuYellowBG = dropDownMenuLabelBackground()
+        mapOrderCountryDropDownMenuYellowBG.position = CGPoint(x:0.0,y:32.55)
+        mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
+        
+        dropDownMenuLabelPR = dropDownArrowLabelDefaults()
+        dropDownMenuLabelPR.position = CGPoint(x:-56,y:27)
+        dropDownMenuLabelPR.fontSize = 10.5
+        dropDownMenuLabelPR.text = "Puerto Rico"
+        mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
+        
+        orderDropDownMenu = mapOrderCountryDropDownMenuSpriteNodeTwo()
+        orderDropDownMenu.position = CGPoint(x:434,y:133)
+        
+        orderDropDownMenuYellowBG = dropDownMenuLabelBackground()
+        orderDropDownMenuYellowBG.position = CGPoint(x:0.0,y:7.5)
+        orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+        
+        orderDropDownMenuLabel = dropDownArrowLabelDefaults()
+        orderDropDownMenuLabel.position = CGPoint(x:-33,y:3)
+        orderDropDownMenuLabel.fontSize = 10.5
+        orderDropDownMenuLabel.text = "Alfabético (Alphabetic)"
+        orderDropDownMenu.addChild(orderDropDownMenuLabel)
+        
+        orderDropDownMenuLabelTwo = dropDownArrowLabelDefaults()
+        orderDropDownMenuLabelTwo.position = CGPoint(x:-45,y:-12.5)
+        orderDropDownMenuLabelTwo.fontSize = 10.5
+        orderDropDownMenuLabelTwo.fontColor = .white
+        orderDropDownMenuLabelTwo.text = "Al Azar (Random)"
+        orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+        
+        mapOrderGreenButton = setMapOrderGreenButton()
+        mapOrderGreenButton.position = CGPoint(x:30, y:-78)
+        mapOrderOldPaperbackground.addChild(mapOrderGreenButton)
+        
+        mapOrderRedButton = setMapOrderRedButton()
+        mapOrderRedButton.position = CGPoint(x:-45, y:-78)
+        mapOrderOldPaperbackground.addChild(mapOrderRedButton)
+        
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
         //elMorro.addChild(buttonGreen)
@@ -240,9 +354,9 @@ class StartMenu: SKScene {
         //self.addChild(redButtonOne)
         //self.addChild(redButtonTwo)
         //self.addChild(redButtonThree)
-        self.addChild(creditsLabel)
-        self.addChild(creditsLabelTwo)
-        self.addChild(creditsSoundMusicLabel)
+        //self.addChild(creditsLabel)
+        //self.addChild(creditsLabelTwo)
+        /*self.addChild(creditsSoundMusicLabel)
         self.addChild(creditsSoundMusicChildLabel)
         self.addChild(creditsSoundMusicChildLabelTwo)
         self.addChild(creditsSoundMusicChildLabelThree)
@@ -252,7 +366,30 @@ class StartMenu: SKScene {
         self.addChild(creditsMapsImagesChildLabelThree)
         self.addChild(creditsSpecialThanksLabel)
         self.addChild(creditsSpecialThanksChildLabel)
-        self.addChild(creditsSpecialThanksChildLabelTwo)
+        self.addChild(creditsSpecialThanksChildLabelTwo)*/
+        //self.addChild(dropDownArrow)
+        self.addChild(mapOrderOldPaperbackground)
+        //self.addChild(orderDropDownMenu)
+        //self.addChild(dropDownLabelBG)
+    }
+    
+    func dropDownArrowLabelDefaults()->SKLabelNode{
+        let label = SKLabelNode()
+        label.fontName = "Avenir-Medium"
+        label.fontSize = 12
+        label.fontColor = UIColor.black
+        
+        return label
+    }
+    
+    func mapOrderTwoLineLabelDefaults()->SKLabelNode{
+      let label = SKLabelNode()
+      label.fontName = "GillSans-SemiBold"
+      label.numberOfLines = 3
+      label.fontColor = .black
+      label.fontSize = 11
+      
+      return label
     }
     
     func licenseLabels()->SKLabelNode{
@@ -362,6 +499,165 @@ class StartMenu: SKScene {
         
     }
     
+    func dropDownMenuLabelBackground()->SKSpriteNode{
+        
+        //Drawing
+       var path = UIBezierPath()
+       // Specify the point that the path should start get drawn.
+       path.move(to: CGPoint(x: 0.0, y: 0.0))
+       // Create a line between the starting point and the bottom-left side of the view.
+       path.addLine(to: CGPoint(x: 0.0, y:15))
+       // Create the bottom line (bottom-left to bottom-right).
+       path.addLine(to: CGPoint(x:180 , y:15))
+       //Create the vertical line from the bottom-right to the top-right side.
+       path.addLine(to: CGPoint(x:180, y: 0.0))
+       // Close the path. This will create the last line automatically.
+       path.close()
+         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
+       //Drawing to Shapenode
+       let shapeNode = SKShapeNode(path:path.cgPath)
+       shapeNode.strokeColor = UIColor.init(red: 0.898, green: 0.7765, blue: 0, alpha: 1.0)
+       shapeNode.lineWidth = 0.5
+       shapeNode.fillColor = UIColor.init(red: 0.898, green: 0.7765, blue: 0, alpha: 1.0)
+       //Shapenode To SKSpriteNode
+       let view = SKView(frame: UIScreen.main.bounds)
+       let texture = view.texture(from: shapeNode)!
+       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
+
+       return dropDownLabelBackGround
+            
+    }
+    
+    func mapOrderCountryDropDownMenuSpriteNodeTwo()->SKSpriteNode{
+        
+        //Drawing
+       var path = UIBezierPath()
+       // Specify the point that the path should start get drawn.
+       path.move(to: CGPoint(x: 0.0, y: 0.0))
+       // Create a line between the starting point and the bottom-left side of the view.
+       path.addLine(to: CGPoint(x: 0.0, y:30))
+       // Create the bottom line (bottom-left to bottom-right).
+       path.addLine(to: CGPoint(x:180 , y:30))
+       //Create the vertical line from the bottom-right to the top-right side.
+       path.addLine(to: CGPoint(x:180, y: 0.0))
+       // Close the path. This will create the last line automatically.
+       path.close()
+         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
+       //Drawing to Shapenode
+       let shapeNode = SKShapeNode(path:path.cgPath)
+       shapeNode.strokeColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
+       shapeNode.lineWidth = 0.5
+       shapeNode.fillColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
+       //Shapenode To SKSpriteNode
+       let view = SKView(frame: UIScreen.main.bounds)
+       let texture = view.texture(from: shapeNode)!
+       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
+
+       return dropDownLabelBackGround
+            
+    }
+    
+    func mapOrderCountryDropDownMenuSpriteNode()->SKSpriteNode{
+        
+        //Drawing
+       var path = UIBezierPath()
+       // Specify the point that the path should start get drawn.
+       path.move(to: CGPoint(x: 0.0, y: 0.0))
+       // Create a line between the starting point and the bottom-left side of the view.
+       path.addLine(to: CGPoint(x: 0.0, y:80))
+       // Create the bottom line (bottom-left to bottom-right).
+       path.addLine(to: CGPoint(x:180 , y:80))
+       //Create the vertical line from the bottom-right to the top-right side.
+       path.addLine(to: CGPoint(x:180, y: 0.0))
+       // Close the path. This will create the last line automatically.
+       path.close()
+         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
+       //Drawing to Shapenode
+       let shapeNode = SKShapeNode(path:path.cgPath)
+       shapeNode.strokeColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
+       shapeNode.lineWidth = 0.5
+       shapeNode.fillColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
+       //Shapenode To SKSpriteNode
+       let view = SKView(frame: UIScreen.main.bounds)
+       let texture = view.texture(from: shapeNode)!
+       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
+
+       return dropDownLabelBackGround
+            
+    }
+    
+    func dropDownLabelBackground()->SKSpriteNode{
+        
+        //Drawing
+       var path = UIBezierPath()
+       // Specify the point that the path should start get drawn.
+       path.move(to: CGPoint(x: 0.0, y: 0.0))
+       // Create a line between the starting point and the bottom-left side of the view.
+       path.addLine(to: CGPoint(x: 0.0, y:18))
+       // Create the bottom line (bottom-left to bottom-right).
+       path.addLine(to: CGPoint(x:180 , y:18))
+       //Create the vertical line from the bottom-right to the top-right side.
+       path.addLine(to: CGPoint(x:180, y: 0.0))
+       // Close the path. This will create the last line automatically.
+       path.close()
+         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
+       //Drawing to Shapenode
+       let shapeNode = SKShapeNode(path:path.cgPath)
+       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+       shapeNode.lineWidth = 0.5
+       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+       //Shapenode To SKSpriteNode
+       let view = SKView(frame: UIScreen.main.bounds)
+       let texture = view.texture(from: shapeNode)!
+       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
+
+       return dropDownLabelBackGround
+            
+    }
+    
+     func dropDownArrowBPToSKSpritenode()-> SKSpriteNode {//Culebra frame drawing
+        // Initialize the path.
+        path = UIBezierPath()
+      
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+      
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 3.5, y:0))
+      
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:0 , y:-3))
+      
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:-3.5, y: 0.0))
+      
+        // Close the path. This will create the last line automatically.
+        path.close()
+        
+        //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)
+        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let dropDownArrow = SKSpriteNode(texture: texture)
+
+        return dropDownArrow
+        
+    }
+    
     func blueButtonRedButtonBp()->UIBezierPath{
         var path = UIBezierPath()
         // Specify the point that the path should start get drawn.
@@ -418,23 +714,7 @@ class StartMenu: SKScene {
         //redButton.position = CGPoint(x:0.5, y:5.5)//(x:-280, y:5.5)
         redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
         redButton.physicsBody?.isDynamic = false
-        //redButton.name = "redButton"
-        
-        /*let labelRedButtonOne = redButtonBlueButtonLabelOne()
-        //labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
-        //labelSkipButtonOne.fontSize = 10
-        labelRedButtonOne.text = "Exit"
-        //labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
-        redButton.addChild(labelRedButtonOne)
-        
-        let labelRedButtonTwo = redButtonBlueButtonLabelTwo()
-        //labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
-        //labelSkipButtonTwo.fontSize = 8
-        labelRedButtonTwo.text = "(Salir)"
-        //labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
-        redButton.addChild(labelRedButtonTwo)*/
-        
-        
+
         return redButton
     }
     
@@ -620,6 +900,15 @@ class StartMenu: SKScene {
        return redButton
             
     }
+    
+    func mapOrderOldPaperDropdownBG()->SKSpriteNode{
+        let oldPaperTexture = SKSpriteNode(imageNamed: "old paper texture")
+        oldPaperTexture.size = CGSize(width: 480, height:195)
+        oldPaperTexture.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        //oldPaperTexture.zPosition = 0
+        return oldPaperTexture
+        
+    }
 
     
     func oldPapertexture()->SKSpriteNode{
@@ -696,6 +985,106 @@ class StartMenu: SKScene {
         greenbutton.addChild(labelTwo)
         
         return greenbutton
+        
+                
+    }
+    
+    func setMapOrderGreenButton()->SKSpriteNode{
+        //Drawing
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:30))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:60 , y:30))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:60, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
+        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.strokeColor = UIColor.green//c1d3c8
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.green
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let greenbutton = SKSpriteNode(texture: texture)
+        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        greenbutton.position = CGPoint(x:350, y:200)
+        //greenbutton.zPosition = 2
+        let labelOne = SKLabelNode()
+        labelOne.fontName = "AvenirNext-Bold"
+        labelOne.fontSize = 11
+        labelOne.text = "Siguiente"
+        labelOne.position = CGPoint(x:0.5, y:1.5)
+        //labelOne.position = CGPoint(x:0, y:-13)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        greenbutton.addChild(labelOne)
+        
+        let labelTwo = SKLabelNode()
+        labelTwo.fontName = "AvenirNext-Bold"
+        labelTwo.fontSize = 10
+        labelTwo.text = "(Next)"
+        labelTwo.position = CGPoint(x:0.5, y:-10)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        greenbutton.addChild(labelTwo)
+        
+        return greenbutton
+        
+                
+    }
+    
+    func setMapOrderRedButton()->SKSpriteNode{
+        //Drawing
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:30))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:60 , y:30))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:60, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
+        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2745, blue: 0, alpha: 1.0)//c1d3c8
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2745, blue: 0, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let redButton = SKSpriteNode(texture: texture)
+        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        redButton.position = CGPoint(x:350, y:200)
+        //greenbutton.zPosition = 2
+        let labelOne = SKLabelNode()
+        labelOne.fontName = "AvenirNext-Bold"
+        labelOne.fontSize = 11
+        labelOne.text = "Volver"
+        labelOne.position = CGPoint(x:0.5, y:1.5)
+        //labelOne.position = CGPoint(x:0, y:-13)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        redButton.addChild(labelOne)
+        
+        let labelTwo = SKLabelNode()
+        labelTwo.fontName = "AvenirNext-Bold"
+        labelTwo.fontSize = 10
+        labelTwo.text = "(Return)"
+        labelTwo.position = CGPoint(x:0.5, y:-10)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        redButton.addChild(labelTwo)
+        
+        return redButton
         
                 
     }
