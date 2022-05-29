@@ -573,13 +573,25 @@ class GameOverScene: SKScene{
     
      override public func update(_ currentTime: TimeInterval) {
         if playagain == true{
-            self.removeFromParent()
-            self.removeAllActions()
-            let startScene = StartScene(size: self.size)//definitio
-            //let transition = SKTransition.fade(withDuration: 1.0)
-            self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
-            playagain = false
-        }
+            if RandomGame.completedGame == false {
+                self.removeFromParent()
+                self.removeAllActions()
+                let startScene = StartScene(size: self.size)//definitio
+                //let transition = SKTransition.fade(withDuration: 1.0)
+                self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
+                playagain = false
+            }
+            else {
+                self.removeFromParent()
+                self.removeAllActions()
+                let randomGame = RandomGame(size: self.size)//definitio
+                //let transition = SKTransition.fade(withDuration: 1.0)
+                self.view?.presentScene(randomGame/*, transition: transition*/)/*present scene and execut transitions*/
+                playagain = false
+                RandomGame.completedGame = false
+                }
+            
+            }
         
         if exited == true{
            self.removeFromParent()
