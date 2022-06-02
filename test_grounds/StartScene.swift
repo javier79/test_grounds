@@ -174,7 +174,8 @@ class StartScene: SKScene{
         
         
         containerNode = nodesContainer()
-        let backgroundSKSpriteNode: SKSpriteNode = prBackground()
+        self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
+        //let backgroundSKSpriteNode: SKSpriteNode = prBackground()
         goldBackgroundSKSpriteNode = goldenBackground()
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
@@ -547,7 +548,7 @@ class StartScene: SKScene{
         goldBackgroundSKSpriteNode.addChild(skipButton)
         goldBackgroundSKSpriteNode.addChild(exitRedButton)
         
-        self.addChild(backgroundSKSpriteNode)
+        //self.addChild(backgroundSKSpriteNode)
         self.addChild(goldBackgroundSKSpriteNode)
         self.addChild(timerBackground)
         self.addChild(labelTimer)
@@ -643,7 +644,7 @@ class StartScene: SKScene{
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let skipBlueButton = SKSpriteNode(texture: texture)
-        skipBlueButton.position = CGPoint(x:195, y:5.5)
+        skipBlueButton.position = CGPoint(x:195, y:-0.5)
         skipBlueButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:skipBlueButton.size.width, height:skipBlueButton.size.height), center: CGPoint(x:0.5, y: 0.5))
         skipBlueButton.physicsBody?.isDynamic = false
         skipBlueButton.name = "skipButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
@@ -677,7 +678,7 @@ class StartScene: SKScene{
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let redButton = SKSpriteNode(texture: texture)
-        redButton.position = CGPoint(x:-280, y:5.5)
+        redButton.position = CGPoint(x:-280, y:-0.5)
         redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
         redButton.physicsBody?.isDynamic = false
         redButton.name = "redButton"
@@ -702,14 +703,14 @@ class StartScene: SKScene{
     //Barra de controles
     func goldenBackground() -> SKSpriteNode {
         let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-        goldenBackground.size = CGSize(width: self.size.width + 6 /*+ 6*/, height:self.size.height/6.5)
-        goldenBackground.position = CGPoint(x: self.size.width/2, y: self.size.height/6 * 0.46)
+        goldenBackground.size = CGSize(width: 680, height:50)
+        goldenBackground.position = CGPoint(x:335, y:25)
         //goldenBackground.zPosition = 1
         return goldenBackground
     }
 
     //Background que simula el mar
-    func prBackground() -> SKSpriteNode {
+    /*func prBackground() -> SKSpriteNode {
         let backgroundNode = SKSpriteNode()
         backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
         backgroundNode.size = CGSize(width: self.size.width, height:self.size.height/* * 0.86*/)
@@ -717,7 +718,7 @@ class StartScene: SKScene{
         backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2/*1.75*/)
         //backgroundNode.zPosition = 0
         return backgroundNode
-    }
+    }*/
     /*Esta funcion va a crear el SKSpriteNode para el rectangulo que se desplega cuando se consigue identificar la totalidad de los municipios y se le asignan las propiedades correspondientes,
      tambien se provee las propiedades para los seis labels pertenecientes al rectangulo. OJO los botones en el rectangulo y sus respectivos labels son generados en otra funcion
      aparte en donde son anadidos como children de endGameRectangle*/
@@ -871,7 +872,7 @@ class StartScene: SKScene{
     
     func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
         //let label:SKLabelNode = SKLabelNode()
-        TimerLabel.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.438)
+        TimerLabel.position = CGPoint(x: 333.5, y:82.5)
         TimerLabel.zPosition = 2
         TimerLabel.fontName = "Arial"
         TimerLabel.fontSize = 18
@@ -881,7 +882,7 @@ class StartScene: SKScene{
     
     func labelForScores(ScoresLabel: SKLabelNode) -> SKLabelNode {
         //let label:SKLabelNode = SKLabelNode()
-        ScoresLabel.position = CGPoint(x:300, y:0.5)
+        ScoresLabel.position = CGPoint(x:300, y:-0.5)
         ScoresLabel.fontName = "Arial"
         ScoresLabel.fontSize = 11
         ScoresLabel.text = "0/78"
@@ -893,7 +894,7 @@ class StartScene: SKScene{
         let background = SKSpriteNode()
         background.color = UIColor.lightGray
         //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.480)
+        background.position = CGPoint(x:333.5, y:89.5)
         //background.zPosition = -2
         return background
     }
@@ -913,10 +914,10 @@ class StartScene: SKScene{
         let background = SKSpriteNode()
         background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
         background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
-        background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:5.5/*goldenBackground().size.height/2 * 0.18*/)
+        background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
         background.size = municipioNameLabel.frame.size
         //background.addChild(labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel))
-        //background.zPosition = -1
+        //background.zPosition = 5
         return background
     }
     
