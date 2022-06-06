@@ -12,8 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let practiceAlphabeticGame = PracticeAlphabeticGame(size: view.bounds.size)
-        //let randomGame = RandomGame(size: view.bounds.size)
+        //let practiceAlphabeticGame = PracticeAlphabeticGame(size: view.bounds.size)
+        let randomGame = RandomGame(size: view.bounds.size)
         //let startMenu = StartMenu(size: view.bounds.size)
         //let instructions = Instructions(size: view.bounds.size)
         //let startScene = StartScene(size: view.bounds.size)/*startScene() call object size to be same as the view and assigned to*/
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         skView.showsFPS = true//frame per seconds indicator
         skView.showsPhysics = true//enables the usage of SKPhysicsBody properties,without this SKPhysicsBody will not work
         skView.showsNodeCount = true
-        skView.presentScene(practiceAlphabeticGame)//present scene on a skView    }
+        skView.presentScene(randomGame)//present scene on a skView    }
         //skView.presentScene(startMenu)
 
 

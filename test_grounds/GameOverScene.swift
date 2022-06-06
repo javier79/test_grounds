@@ -27,7 +27,12 @@ class GameOverScene: SKScene{
     override func didMove(to view: SKView) {
         
         endGameRectangle = endgameRectangle()
-        secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:StartScene.secondsGameOver,minute:StartScene.minutesGameOver)
+        if RandomGame.completedGame == true{
+            secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingRandom(second:RandomGame.secondsGameOver,minute:RandomGame.minutesGameOver)
+        }
+        else{
+            secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:StartScene.secondsGameOver,minute:StartScene.minutesGameOver)
+        }
         
         //endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
         endGameRectangleButton = endgameRectangleButton()
@@ -574,7 +579,7 @@ class GameOverScene: SKScene{
      override public func update(_ currentTime: TimeInterval) {
         if playagain == true{
             if RandomGame.completedGame == false {
-                self.removeFromParent()
+                self.removeAllChildren()
                 self.removeAllActions()
                 let startScene = StartScene(size: self.size)//definitio
                 //let transition = SKTransition.fade(withDuration: 1.0)
@@ -582,7 +587,7 @@ class GameOverScene: SKScene{
                 playagain = false
             }
             else {
-                self.removeFromParent()
+                self.removeAllChildren()
                 self.removeAllActions()
                 let randomGame = RandomGame(size: self.size)//definitio
                 //let transition = SKTransition.fade(withDuration: 1.0)
@@ -864,12 +869,12 @@ class GameOverScene: SKScene{
         return line2
     }
     
-    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:Int, minute:Int){
+    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:Int, minute:Int){
          /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
-         if  UserDefaults.standard.integer(forKey: "minutes") < 1 && UserDefaults.standard.integer(forKey: "seconds") < 1 || minute < UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "seconds") {
+         if  UserDefaults.standard.integer(forKey: "minutesAlphabetic") < 1 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") < 1 || minute < UserDefaults.standard.integer(forKey: "minutesAlphabetic") || minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsAlphabetic") {
              /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
-             UserDefaults.standard.set(minute, forKey:"minutes")
-             UserDefaults.standard.set(second, forKey:"seconds")
+             UserDefaults.standard.set(minute, forKey:"minutesAlphabetic")
+             UserDefaults.standard.set(second, forKey:"secondsAlphabetic")
              
              labelOne.text = "¡NUEVO RECORD!"
              labelTwo.text = "(NEW RECORD!)"
@@ -891,7 +896,7 @@ class GameOverScene: SKScene{
              //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
          }
          
-         else if minute > UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && second > UserDefaults.standard.integer(forKey: "seconds")||minute == UserDefaults.standard.integer(forKey: "minutes") && second == UserDefaults.standard.integer(forKey: "seconds"){
+         else if minute > UserDefaults.standard.integer(forKey: "minutesAlphabetic") || minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && second > UserDefaults.standard.integer(forKey: "secondsAlphabetic")||minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && second == UserDefaults.standard.integer(forKey: "secondsAlphabetic"){
              //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
              labelOne.text = "Tu Tiempo"
              labelTwo.text = "(Your Time)"
@@ -911,11 +916,75 @@ class GameOverScene: SKScene{
                  
              }
              //este bloque se va a encargar de imprimir la mejor marca que en este caso seria la encontrada en memoria persistente
-             let secondsText = (UserDefaults.standard.integer(forKey: "seconds") < 10) ?
-             "0\(UserDefaults.standard.integer(forKey: "seconds"))" : "\(UserDefaults.standard.integer(forKey: "seconds"))"
-             let minutesText = "\(UserDefaults.standard.integer(forKey: "minutes"))"
+             let secondsText = (UserDefaults.standard.integer(forKey: "secondsAlphabetic") < 10) ?
+             "0\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))" : "\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))"
+             let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesAlphabetic"))"
              
-             if UserDefaults.standard.integer(forKey: "minutes") >= 1 {
+             if UserDefaults.standard.integer(forKey: "minutesAlphabetic") >= 1 {
+                 labelSix.text = ":\(minutesText):\(secondsText)"
+             }
+             else{
+                 labelSix.text = ":\(secondsText)"
+                 //timerBackground.size = labelTimer.frame.size
+                 
+             }
+             
+         }
+        
+     }
+    
+    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingRandom(second:Int, minute:Int){
+         /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
+         if  UserDefaults.standard.integer(forKey: "minutesRandom") < 1 && UserDefaults.standard.integer(forKey: "secondsRandom") < 1 || minute < UserDefaults.standard.integer(forKey: "minutesRandom") || minute == UserDefaults.standard.integer(forKey: "minutesRandom") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsRandom") {
+             /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
+             UserDefaults.standard.set(minute, forKey:"minutesRandom")
+             UserDefaults.standard.set(second, forKey:"secondsRandom")
+             
+             labelOne.text = "¡NUEVO RECORD!"
+             labelTwo.text = "(NEW RECORD!)"
+             //format casting and rendering of new best record
+             let secondsText = (second < 10) ?
+             "0\(second)" : "\(second)"
+             let minutesText = "\(minute)"
+             
+             if minute >= 1 {
+                 labelThree.text = "\(minutesText):\(secondsText)"
+             }
+             else{
+                 labelThree.text = "\(secondsText)"
+                 //timerBackground.size = labelTimer.frame.size Aqui se utiliza el label de forma transparente por eso no se utiliza esta propiedad
+                 
+             }
+
+             
+             //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
+         }
+         
+         else if minute > UserDefaults.standard.integer(forKey: "minutesRandom") || minute == UserDefaults.standard.integer(forKey: "minutesRandom") && second > UserDefaults.standard.integer(forKey: "secondsRandom")||minute == UserDefaults.standard.integer(forKey: "minutesRandom") && second == UserDefaults.standard.integer(forKey: "secondsRandom"){
+             //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
+             labelOne.text = "Tu Tiempo"
+             labelTwo.text = "(Your Time)"
+             labelThree.text = "Mejor Tiempo"
+             labelFour.text = "(Best Time)"
+             //labelFive.text = labelTimer.text
+             let secondText = (second < 10) ?/*Ojo la variable aqui se llama secondText SIN "S", La razon para el cambio de nombre en la variable es pq ambas(secondText/secondsText) son constantes de modo que en el mismo bloque no podrian ejecutar como constantes(con el mismo nombre) y dado que ambas variables cumplen el mismo proposito no se queria cambiar demasiado el nombre. MAS ADELANTE SE VA A CREAR UNA FUNCION UNIVRSAL PARA LIDIAR SOLO CON EL CASTING Y EL RENDERING YA QUE ESTE CODIGO SE REPITE VARIAS VECES*/
+             "0\(second)" : "\(second)"
+             let minuteText = "\(minute)" //Ojo la variable aqui se llama minuteText SIN "S"
+             
+             if minute >= 1 {
+                 labelFive.text = ":\(minuteText):\(secondText)"
+             }
+             else{
+                 labelFive.text = ":\(secondText)"
+                 //timerBackground.size = labelTimer.frame.size
+                 
+             }
+             //este bloque se va a encargar de imprimir la mejor marca que en este caso seria la encontrada en memoria persistente
+             let secondsText = (UserDefaults.standard.integer(forKey: "secondsRandom") < 10) ?
+             "0\(UserDefaults.standard.integer(forKey: "secondsRandom"))" : "\(UserDefaults.standard.integer(forKey: "secondsRandom"))"
+             let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesRandom"))"
+             
+             if UserDefaults.standard.integer(forKey: "minutesRandom") >= 1 {
                  labelSix.text = ":\(minutesText):\(secondsText)"
              }
              else{
