@@ -686,14 +686,14 @@ class StartScene: SKScene{
         let labelRedButtonOne = redButtonBlueButtonLabelOne()
         //labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
         //labelSkipButtonOne.fontSize = 10
-        labelRedButtonOne.text = "Exit"
+        labelRedButtonOne.text = "Salir"
         //labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
         redButton.addChild(labelRedButtonOne)
         
         let labelRedButtonTwo = redButtonBlueButtonLabelTwo()
         //labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
         //labelSkipButtonTwo.fontSize = 8
-        labelRedButtonTwo.text = "(Salir)"
+        labelRedButtonTwo.text = "(Exit)"
         //labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
         redButton.addChild(labelRedButtonTwo)
         

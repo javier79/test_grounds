@@ -866,11 +866,21 @@ class GameOverScene: SKScene{
                 label.fontColor = UIColor.init(red: 0/255, green: 134/255, blue: 252/255, alpha: 1.0)
                 
                 if PracticeAlphabeticGame.completedGame == true{
-                    label.text = "\(PracticeAlphabeticGame.minutesGameOver) : \(PracticeAlphabeticGame.secondsGameOver)"
+                    if PracticeAlphabeticGame.secondsGameOver < 10{
+                    label.text = "\(PracticeAlphabeticGame.minutesGameOver) : 0\(PracticeAlphabeticGame.secondsGameOver)"
                     }
+                    else{
+                     label.text = "\(PracticeAlphabeticGame.minutesGameOver) : \(PracticeAlphabeticGame.secondsGameOver)"
+                    }
+                }
                     
                 else if PracticeRandomGame.completedGame{
-                    label.text = "\(PracticeRandomGame.minutesGameOver) : \(PracticeRandomGame.secondsGameOver)"
+                    if PracticeRandomGame.secondsGameOver < 10{
+                    label.text = "\(PracticeRandomGame.minutesGameOver) : 0\(PracticeRandomGame.secondsGameOver)"
+                    }
+                    else{
+                     label.text = "\(PracticeRandomGame.minutesGameOver) : \(PracticeRandomGame.secondsGameOver)"
+                    }
                 }
                     
                 label.position = CGPoint(x:0, y:55)

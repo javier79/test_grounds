@@ -572,7 +572,7 @@ class PracticeAlphabeticGame: SKScene{
             }
             
             if(useLine2 == true){
-                 print("ENtrar0 aquA")
+                 //print("ENtrar0 aquA")
                 node.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
                 node.addChild(secondLineLabel)
                 useLine2 = false
@@ -580,7 +580,7 @@ class PracticeAlphabeticGame: SKScene{
             }
             //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
             else{
-                print("ENtrare aqui")
+                //print("ENtrare aqui")
                 node.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
 
             }
@@ -736,9 +736,9 @@ class PracticeAlphabeticGame: SKScene{
             touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
             
             
-            let locationNameLabel = SKLabelNode()//Label para municipios que utilizan un solo label para acomodar el nombre del mismo
-            let firstLineLabel = SKLabelNode()//Primer label para municipios que utilizan mas de un label para acomodar su nombre
-            let secondLineLabel = SKLabelNode()//Segundo label para municipios que utilizan mas de un label para acomodar su nombre
+            //let locationNameLabel = SKLabelNode()//Label para municipios que utilizan un solo label para acomodar el nombre del mismo
+            //let firstLineLabel = SKLabelNode()//Primer label para municipios que utilizan mas de un label para acomodar su nombre
+            //let secondLineLabel = SKLabelNode()//Segundo label para municipios que utilizan mas de un label para acomodar su nombre
             var countOfIndexes:Int = -1//Dado que interesamos obtener una cuenta de los indices y no de los elementos inicializamos a -1 para que la cuenta incluya el lugar numero 0
             
             
@@ -871,23 +871,23 @@ class PracticeAlphabeticGame: SKScene{
                                     }
                                     
                                      //Aqui van a entrar la ejecucion cuando el municipio identificado utiliza dos labels para acomodar el nombre(localidad del mapa)
-                                    if(useLine2 == true){
-                                        spriteNode.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
-                                        spriteNode.addChild(secondLineLabel)
+                                    //if(useLine2 == true){
+                                        //spriteNode.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+                                        //spriteNode.addChild(secondLineLabel)
                                         municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
                                         print(municipioNameLabel.text as Any)//Para uso del programador
                                         municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
-                                        useLine2 = false
+                                        //useLine2 = false
                                             
-                                    }
+                                    //}
                                     //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
-                                    else{
+                                    /*else{
                                         spriteNode.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
                                         municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
                                         print(municipioNameLabel.text as Any)//Para uso del programador
                                         municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
 
-                                    }
+                                    }*/
                                     
                                     /*if completedGame == true{
                                         let gameOverScene = GameOverScene(size: self.size)
