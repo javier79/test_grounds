@@ -35,7 +35,7 @@ class PracticeAlphabeticGame: SKScene{
     var currentIndex: Int = 0 //se puede declarar en touchesBegan
     var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
 
-    var completedGame = false//se usa en mas de una funcion
+    static var completedGame = false//se usa en mas de una funcion
     var scoreCount:Int = 0
     let totalScoreCount:String = "/78"
     var skipButtonPressed = false
@@ -613,7 +613,7 @@ class PracticeAlphabeticGame: SKScene{
             //skipButtonPenalty = 15
             //penalty = 3//numero de segundos que se anaden a los segundos
                 
-            if completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
+            if PracticeAlphabeticGame.completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
                 //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
                 if currentTime > renderTime{/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
                     
@@ -845,7 +845,7 @@ class PracticeAlphabeticGame: SKScene{
                                         labelTimer.removeFromParent()
                                         
                                         //self.addChild(endGameRectangle)
-                                        completedGame = true//Se actualiza la variable completedGame para detener el reloj
+                                        PracticeAlphabeticGame.completedGame = true//Se actualiza la variable completedGame para detener el reloj
                                         /*self.removeFromParent()
                                         self.removeAllActions()
                                         let gameOverScene = GameOverScene(size: self.size)

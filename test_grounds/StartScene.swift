@@ -125,7 +125,7 @@ class StartScene: SKScene{
     static var minutesGameOver:Int = 0
     var renderTimeBiggerCounter: Int! = 0
     
-    var completedGame = false//se usa en mas de una funcion
+    static var completedGame = false//se usa en mas de una funcion
     
     var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
     var useLine2:Bool = false//se usa en mas de una funcion
@@ -926,7 +926,7 @@ class StartScene: SKScene{
         //skipButtonPenalty = 15
         //penalty = 3//numero de segundos que se anaden a los segundos
             
-        if completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
+        if StartScene.completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
             //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
             if currentTime > renderTime{/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
                 
@@ -1032,7 +1032,7 @@ class StartScene: SKScene{
         //StartScene.minutesGameOver = minutes
         /*Aqui ocurre el paso a la escena de Game Over la razon por la que se encuentra aqui es pq cuando lo ejecutaba en Touchesbegan la transicion le quitaba "espacio" a la funcion
          Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
-        if completedGame == true{
+        if StartScene.completedGame == true{
             StartScene.secondsGameOver = seconds
             StartScene.minutesGameOver = minutes
             self.removeFromParent()
@@ -1389,7 +1389,7 @@ class StartScene: SKScene{
                                     labelTimer.removeFromParent()
                                     
                                     //self.addChild(endGameRectangle)
-                                    completedGame = true//Se actualiza la variable completedGame para detener el reloj
+                                    StartScene.completedGame = true//Se actualiza la variable completedGame para detener el reloj
                                     /*self.removeFromParent()
                                     self.removeAllActions()
                                     let gameOverScene = GameOverScene(size: self.size)

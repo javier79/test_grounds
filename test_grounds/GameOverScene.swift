@@ -21,16 +21,18 @@ class GameOverScene: SKScene{
     var resultadosButton = SKSpriteNode()
     var touchedNode: SKPhysicsBody!
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
+    let labelSeven = SKLabelNode(); let labelEight = SKLabelNode(); let labelNine = SKLabelNode(); let labelTen = SKLabelNode()
     var playagain: Bool = false
     var exited:Bool = false
     
     override func didMove(to view: SKView) {
         
         endGameRectangle = endgameRectangle()
+        
         if RandomGame.completedGame == true{
             secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingRandom(second:RandomGame.secondsGameOver,minute:RandomGame.minutesGameOver)
         }
-        else{
+        else if StartScene.completedGame{
             secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:StartScene.secondsGameOver,minute:StartScene.minutesGameOver)
         }
         
@@ -577,16 +579,18 @@ class GameOverScene: SKScene{
     }
     
      override public func update(_ currentTime: TimeInterval) {
+        
         if playagain == true{
-            if RandomGame.completedGame == false {
+            if  StartScene.completedGame == true{
                 self.removeAllChildren()
                 self.removeAllActions()
                 let startScene = StartScene(size: self.size)//definitio
                 //let transition = SKTransition.fade(withDuration: 1.0)
                 self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
+                StartScene.completedGame = false
                 playagain = false
             }
-            else {
+            else if RandomGame.completedGame == true{
                 self.removeAllChildren()
                 self.removeAllActions()
                 let randomGame = RandomGame(size: self.size)//definitio
@@ -594,9 +598,17 @@ class GameOverScene: SKScene{
                 self.view?.presentScene(randomGame/*, transition: transition*/)/*present scene and execut transitions*/
                 playagain = false
                 RandomGame.completedGame = false
-                }
-            
             }
+            else if PracticeAlphabeticGame.completedGame == true{
+                self.removeAllChildren()
+                self.removeAllActions()
+                let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)//definitio
+                //let transition = SKTransition.fade(withDuration: 1.0)
+                self.view?.presentScene(practiceAlphabeticGame/*, transition: transition*/)/*present scene and execut transitions*/
+                playagain = false
+                PracticeAlphabeticGame.completedGame = false
+            }
+        }
         
         if exited == true{
            self.removeFromParent()
@@ -768,52 +780,106 @@ class GameOverScene: SKScene{
         endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
         endGameRectangleNode.zPosition = 2
         
-        /*Abajo se otorga la propiedad de nombre a los labels, propiedad que se utiliza en el proximo bloque , El unico propsito de esto es aislar cada label aprovechando cada iteracion del for loop para asignarles a cada uno propiedades en una misma y unica ejecucion de la funcion */
-        labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
-        let arrayOflabels = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]/*Poner los elementos a iterar en un for loop por medio de un array me permite reusar codigo, en vez de escribir un bloque por label donde por ejempl
-          propiedades como fontName,fontSize y fontColor se escribirian 6 veces*/
-        
-        for label in arrayOflabels {
-            /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
-            label.fontName = "AvenirNext-Bold"
-            label.fontSize = 15
-            label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
-            //label.zPosition = 3
+        if StartScene.completedGame == true || RandomGame.completedGame == true{
+            /*Abajo se otorga la propiedad de nombre a los labels, propiedad que se utiliza en el proximo bloque , El unico propsito de esto es aislar cada label aprovechando cada iteracion del for loop para asignarles a cada uno propiedades en una misma y unica ejecucion de la funcion */
+            labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
             
-            if label.name == "labelOne"{
-                print("Voy subiendo")
-                //label.text = label.name
-                label.position = CGPoint(x:-0, y:60)
-
-            }
-            if label.name == "labelTwo"{
-                //label.text = label.name
-                label.position = CGPoint(x:-0, y:40)
-
-            }
-            if label.name == "labelThree"{
-                //label.text = label.name
-                label.position = CGPoint(x:-0, y:10)
+            let arrayOflabelsChallenge = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]/*Poner los elementos a iterar en un for loop por medio de un array me permite reusar codigo, en vez de escribir un bloque por label donde por ejempl
+              propiedades como fontName,fontSize y fontColor se escribirian 6 veces*/
+            
+            for label in arrayOflabelsChallenge {
+                /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
+                label.fontName = "AvenirNext-Bold"
+                label.fontSize = 15
+                label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
+                //label.zPosition = 3
                 
-            }
-            if label.name == "labelFour"{
-                //label.text = label.name
-                label.position = CGPoint(x:-5, y:-10)
+                if label.name == "labelOne"{
+                    print("Voy subiendo")
+                    //label.text = label.name
+                    label.position = CGPoint(x:-0, y:60)
+
+                }
+                if label.name == "labelTwo"{
+                    //label.text = label.name
+                    label.position = CGPoint(x:-0, y:40)
+
+                }
+                if label.name == "labelThree"{
+                    //label.text = label.name
+                    label.position = CGPoint(x:-0, y:10)
+                    
+                }
+                if label.name == "labelFour"{
+                    //label.text = label.name
+                    label.position = CGPoint(x:-5, y:-10)
+                
+                }
+                
+                if label.name == "labelFive"{
+                    //label.text = label.name
+                    label.position = CGPoint(x:65, y:50)
+                    //endGameRectangleNode.addChild(label)
+                }
+                if label.name == "labelSix"{
+                    //label.text = label.name
+                    label.position = CGPoint(x:65, y:0)
+                    //endGameRectangleNode.addChild(label)
+                }
+                
+                endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
+           }
+        }
+        
+        else if PracticeAlphabeticGame.completedGame == true{
+            labelSeven.name = "labelSeven"; labelEight.name = "labelEight"; labelNine.name = "labelNine"; labelTen.name = "labelTen"
             
+            let arrayOflabelsPractice = [labelSeven, labelEight, labelNine, labelTen]
+            
+            for label in arrayOflabelsPractice {
+                /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
+                label.fontName = "AvenirNext-Bold"
+                //label.fontSize = 15
+                label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
+                //label.zPosition = 3
+
+                if label.name == "labelSeven"{
+                //print("Voy subiendo")
+                label.fontSize = 15
+                label.text = "Tu Tiempo (Your Time):"
+                label.position = CGPoint(x:0, y:90)
+
+                }
+               //"\(UserDefaults.standard.integer(forKey: "minutes"))"
+                
+                if label.name == "labelEight"{
+                label.fontSize = 16
+                label.fontColor = UIColor.init(red: 0/255, green: 134/255, blue: 252/255, alpha: 1.0)
+                label.text = "\(PracticeAlphabeticGame.minutesGameOver) : \(PracticeAlphabeticGame.secondsGameOver)"
+                label.position = CGPoint(x:0, y:55)
+
+                }
+                if label.name == "labelNine"{
+                label.fontSize = 10
+                label.numberOfLines = 2
+                label.preferredMaxLayoutWidth = 220
+                label.text = "Inténtalo en Modo de Reto para que tu mejor \n\t\ttiempo sea grabado"
+                label.position = CGPoint(x:0, y:5)
+
+                }
+                if label.name == "labelTen"{
+                label.fontSize = 10
+                label.numberOfLines = 2
+                label.preferredMaxLayoutWidth = 220
+                label.text = "Try it in Challenge Mode so that your best \n\t\ttime can be recorded"
+                label.position = CGPoint(x:0, y:-40)
+
+                }
+             
+                endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
             }
             
-            if label.name == "labelFive"{
-                //label.text = label.name
-                label.position = CGPoint(x:65, y:50)
-                //endGameRectangleNode.addChild(label)
-            }
-            if label.name == "labelSix"{
-                //label.text = label.name
-                label.position = CGPoint(x:65, y:0)
-                //endGameRectangleNode.addChild(label)
-            }
             
-            endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
         }
         
         return endGameRectangleNode
