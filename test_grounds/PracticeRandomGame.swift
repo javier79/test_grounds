@@ -1,58 +1,88 @@
 //
-//  GameOverScene.swift
+//  PracticeRandomGame.swift
 //  test_grounds
 //
-//  Created by javier pizarro on 4/4/22.
+//  Created by javier pizarro on 6/7/22.
 //  Copyright © 2022 javierpizarro. All rights reserved.
 //
+
 import Foundation
 import SpriteKit
 import UIKit
 
-class GameOverScene: SKScene{
-    var arrayOfMapSpriteNodes = [SKSpriteNode()]
+class PracticeRandomGame: SKScene{
+    
+    var skipButton = SKSpriteNode()//la declare universalmente temporeramente
+    var exitRedButton = SKSpriteNode()
+    
+    var containerNode = SKNode()//se usa en mas de una funcion
+    var labelTimer = SKLabelNode()//se usa en mas de una funcion
+    var labelScores = SKLabelNode()
+    var timerBackground = SKSpriteNode()//se usa en mas de una funcion
+    var municipiosNameBackground = SKSpriteNode()//se usa en mas de una funcion
+    
+    var renderTime: TimeInterval = 0.0//esta solo se usa en la funcion del reloj
+    let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
+    var seconds: Int = 0//esta solo se usa en la funcion del reloj
+    var minutes: Int = 0//esta solo se usa en la funcion del reloj
+    static var secondsGameOver:Int = 0
+    static var minutesGameOver:Int = 0
+    var renderTimeBiggerCounter: Int! = 0
+    
+    static var completedGame = false//se usa en mas de una funcion
+    
     var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
     var useLine2:Bool = false//se usa en mas de una funcion
-    var containerNode = SKNode()
-    var endGameRectangle = SKSpriteNode()
-    var endGameRectangleButton = SKSpriteNode()
-    var endGameRectangleButtonTwo = SKSpriteNode()
-    var endGameRectangleButtonThree = SKSpriteNode()
-    var resultadosButton = SKSpriteNode()
-    var touchedNode: SKPhysicsBody!
-    let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
-    let labelSeven = SKLabelNode(); let labelEight = SKLabelNode(); let labelNine = SKLabelNode(); let labelTen = SKLabelNode()
-    var playagain: Bool = false
-    var exited:Bool = false
+
+    //Ojo el array arranca leyendo el indice 0, pero el primer municipio al azar se lee de la funcion que crea el label(donde se presentan los municipios a buscar)
+    //El array se puede declarar dentro de la funcion touchesBegan
+    var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
+    
+    var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
+
+    var touchedNode: SKPhysicsBody!//se puede declarar dentro de la funcion touchesBegan
+    var fail: Bool!//se usa en mas de una funcion
+    var currentIndex: Int = 0 //se puede declarar en touchesBegan
+    var pressSKipButton:Bool = false
+    var scoreCount:Int = 0
+    let totalScoreCount:String = "/78"
+    
+    var secondsandMinutesRetrieved: Bool = false
+    
+    var skipButtonPressed = false
+    var exitButtonPressed = false
+    
+    var goldBackgroundSKSpriteNode = SKSpriteNode()
+    var randomIndex: Int = 0
+    
+    var arrayOfMapSpriteNodes = [SKSpriteNode()]
+    
     
     override func didMove(to view: SKView) {
         
-        endGameRectangle = endgameRectangle()
-        
-        if RandomGame.completedGame == true{
-            secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingRandom(second:RandomGame.secondsGameOver,minute:RandomGame.minutesGameOver)
-        }
-        else if StartScene.completedGame{
-            secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:StartScene.secondsGameOver,minute:StartScene.minutesGameOver)
-        }
-        
-        //endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
-        endGameRectangleButton = endgameRectangleButton()
-        endGameRectangle.addChild(endGameRectangleButton)
-        
-        //endGameRectangleButtonTwo.name = "buttonTwo"
-        endGameRectangleButtonTwo = endgameRectangleButtoTwo()
-        endGameRectangle.addChild(endGameRectangleButtonTwo)
-        
-        //endGameRectangleButtonThree.name = "buttonThree"
-        endGameRectangleButtonThree = endgameRectangleButtoThree()
-        endGameRectangle.addChild(endGameRectangleButtonThree)
-        
         containerNode = StartScene().nodesContainer()
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
+        //let backgroundSKSpriteNode: SKSpriteNode = prBackground()
+        goldBackgroundSKSpriteNode = StartScene().goldenBackground()
+        //let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
+        //containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
-        resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
-        resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
+        skipButton = StartScene().skipBlueButton()
+        
+        labelScores = StartScene().labelForScores(ScoresLabel:labelScores)
+        
+        labelTimer = StartScene().labelForTimer(TimerLabel: labelTimer)
+        
+        timerBackground = StartScene().timerLabelBackground()
+        
+        municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
+        
+        municipiosNameBackground = labelMunicipiosNameBackground()
+        
+        //endGameRectangle = endgameRectangle()
+        
+        exitRedButton = StartScene().redButton()
+        
         
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = StartScene().desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
@@ -390,9 +420,9 @@ class GameOverScene: SKScene{
             let firstLineLabel = SKLabelNode()//Primer label para municipios que utilizan mas de un label para acomodar su nombre
             let secondLineLabel = SKLabelNode()
     
-            node.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
-            node.colorBlendFactor = 1.0
-            node.physicsBody = nil
+            //node.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
+            //node.colorBlendFactor = 1.0
+            //node.physicsBody = nil
             
             locationNameLabel.text = node.name
             locationNameLabel.fontName = "Helvetica"
@@ -557,349 +587,323 @@ class GameOverScene: SKScene{
                         break
             }
             
-        if(useLine2 == true){
-             print("ENtrar0 aquA")
-            node.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
-            node.addChild(secondLineLabel)
-            useLine2 = false
-                
-        }
-        //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
-        else{
-            print("ENtrare aqui")
-            node.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+            if(useLine2 == true){
+                 //print("ENtrar0 aquA")
+                node.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+                node.addChild(secondLineLabel)
+                useLine2 = false
+                    
+            }
+            //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
+            else{
+                //print("ENtrare aqui")
+                node.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
 
-        }
-        
-        
-        containerNode.addChild(node)
-      }
-        self.addChild(containerNode)
-        self.addChild(endGameRectangle)
+            }
+            
+            
+            containerNode.addChild(node)
+          }
+            goldBackgroundSKSpriteNode.addChild(labelScores)
+            municipiosNameBackground.addChild(municipioNameLabel)//ojo puse el background como padre del label para facilitar el posicionamiento de ambos con respecto a goldBackgroundSKSpriteNode
+            goldBackgroundSKSpriteNode.addChild(municipiosNameBackground)
+            goldBackgroundSKSpriteNode.addChild(skipButton)
+            goldBackgroundSKSpriteNode.addChild(exitRedButton)
+            
+            //self.addChild(backgroundSKSpriteNode)
+            self.addChild(goldBackgroundSKSpriteNode)
+            self.addChild(timerBackground)
+            self.addChild(labelTimer)
+            //self.addChild(labelScores)
+            
+            //self.addChild(municipioNameLabel)
+            //self.addChild(skipButton)
+            self.addChild(containerNode)
+            //self.addChild(endGameRectangle)
+            
+
     }
     
-     override public func update(_ currentTime: TimeInterval) {
-        
-        if playagain == true{
-            if  StartScene.completedGame == true{
-                self.removeAllChildren()
-                self.removeAllActions()
-                let startScene = StartScene(size: self.size)//definitio
-                //let transition = SKTransition.fade(withDuration: 1.0)
-                self.view?.presentScene(startScene/*, transition: transition*/)/*present scene and execut transitions*/
-                StartScene.completedGame = false
-                playagain = false
+    
+    override public func update(_ currentTime: TimeInterval) {/*Esta funcion ejecuta cada segundo para la funcionalidad del reloj. Los print statements son para uso del programador(comentar/descomentar todos los print statements a la misma vez, para entender mejor como funciona esta funcion)*/
+
+        //skipButtonPenalty = 15
+        //penalty = 3//numero de segundos que se anaden a los segundos
+            
+        if PracticeRandomGame.completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
+            //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
+            if currentTime > renderTime{/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
+                
+                //En este bloque es que ocurre el movimiento de segundos y minutos
+                if renderTime > 0{//renderTime en su primera iteracion su valor es 0.0, de modo que pasaria al Else If que le sigue a este bloque. Luego de esta primera iteracion siempre su valor sera mayor a 0
+                    seconds += 1
+                
+                    if seconds == 60 {
+                        seconds = 0
+                        minutes += 1
+                        }
+                    
+                    //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
+                    if(fail == true){
+                        let penalty = 3
+                        print("inside")
+                        seconds = seconds + penalty
+                        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                        
+                        if seconds >= 60{
+                            seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
+                            minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+                        }
+                    }
+                    
+                    if (pressSKipButton == true){
+                        let skipButtonPenalty = 15
+                        print("quince segundos mas")
+                        seconds = seconds + skipButtonPenalty
+                        
+                        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                        if seconds >= 60{
+                            seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
+                            minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+                        }
+                    }
+                    
+
+                    let secondsText = (seconds < 10) ?
+                    "0\(seconds)" : "\(seconds)"
+                    let minutesText = "\(minutes)"
+                    //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+                
+                    if minutes >= 1 {
+                        labelTimer.text = "\(minutesText):\(secondsText)"
+                        //timerBackground.size = labelTimer.frame.size
+                        if minutes == 1{//ajusta la apariencia del label/background cuando los minutos utilizan un solo lugar que solo ocurre de 1 al minuto 9
+                            timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 0:00
+                        }
+                    
+                        if minutes == 10{// ajusts la apariencia de el label/background para cuando los minutos usan dos lugares que ocurre de los 10 minutos en adelante obviamente.
+                            timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
+                        }
+                    
+                        if fail == true{
+                            fail = false
+                        }
+                        if pressSKipButton == true{
+                            pressSKipButton = false
+                        }
+                    }
+                  
+                    else{
+                        labelTimer.text = "\(secondsText)"
+                        //timerBackground.size = labelTimer.frame.size//As this is declared on the else if("else if renderTime == 0.0{") below which execute first,  statement commented for duplicity
+                    
+                        if fail == true{
+                            fail = false
+                        }
+                    
+                        if pressSKipButton == true{
+                            pressSKipButton = false
+                        }
+                    }
+                    
+                }
+                    
+                // Este bloque lo unico que hace es ejecutar para hacer formateo y el rendering del 00 cuando comienza el juego y no vuelve a ejecutar pq rendertime su valor no vuelve a 0 si no que siempre esta en ascenso
+                else if renderTime == 0.0{
+                    let secondsText = (seconds < 10) ?
+                    "0\(seconds)" : "\(seconds)"
+                    labelTimer.text = "\(secondsText)"
+                    timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
+                    print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
+                    
+                    //Solo para uso del programador no es parte del app perce
+                    //UserDefaults.standard.removeObject(forKey: "secondsRandom")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
+                    //UserDefaults.standard.removeObject(forKey: "minutesRandom")//OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO
             }
-            else if RandomGame.completedGame == true{
-                self.removeAllChildren()
-                self.removeAllActions()
-                let randomGame = RandomGame(size: self.size)//definitio
-                //let transition = SKTransition.fade(withDuration: 1.0)
-                self.view?.presentScene(randomGame/*, transition: transition*/)/*present scene and execut transitions*/
-                playagain = false
-                RandomGame.completedGame = false
+                //print(renderTime)
+                renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime
+                //print(renderTime, currentTime, "Abajo")
+                
             }
-            else if PracticeAlphabeticGame.completedGame == true{
-                self.removeAllChildren()
-                self.removeAllActions()
-                let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)//definitio
-                //let transition = SKTransition.fade(withDuration: 1.0)
-                self.view?.presentScene(practiceAlphabeticGame/*, transition: transition*/)/*present scene and execut transitions*/
-                playagain = false
-                PracticeAlphabeticGame.completedGame = false
-            }
-            else if PracticeRandomGame.completedGame == true{
-                self.removeAllChildren()
-                self.removeAllActions()
-                let practiceRandomGame = PracticeRandomGame(size: self.size)//definitio
-                //let transition = SKTransition.fade(withDuration: 1.0)
-                self.view?.presentScene(practiceRandomGame/*, transition: transition*/)/*present scene and execut transitions*/
-                playagain = false
-                PracticeRandomGame.completedGame = false
-            }
+            //Este bloque es para uso del programador y no tiene relacion alguna con el rendering o ningun aspecto del juego, mas bien se hizo para entender visualmente lo que hace esta funcion y como hace funcionar el reloj que creamos aqui
+            //renderTimeBiggerCounter += 1/* En este contador cuento mas o menos la cantidad de oscilaciones como medida para conocer cuanto tiempo le toma a currentTime sobrepasar el valor de renderTime(mientras esta estatico es decir que no se ha actualizado) antes de volver a ser actualizado*/
+            //print(renderTimeBiggerCounter!)
+            //print("")
+        }
+
+        //Este bloque solo ejecuta si gameCompleted == true, la idea es tomar los ultimos segundos y minutos para que puedan ser evaluados para la mejor marca de tiempo en la siguiente funcion
+        //StartScene.secondsGameOver = seconds
+        //StartScene.minutesGameOver = minutes
+        /*Aqui ocurre el paso a la escena de Game Over la razon por la que se encuentra aqui es pq cuando lo ejecutaba en Touchesbegan la transicion le quitaba "espacio" a la funcion
+         Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
+        else{
+            PracticeRandomGame.secondsGameOver = seconds
+            PracticeRandomGame.minutesGameOver = minutes
+            let gameOverScene = GameOverScene(size: self.size)
+            //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
+            self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
         }
         
-        if exited == true{
-           self.removeFromParent()
-           self.removeAllActions()
-           let startMenu = StartMenu(size: self.size)//definitio
-           //let transition = SKTransition.fade(withDuration: 1.0)
-           self.view?.presentScene(startMenu/*, transition: transition*/)/*present scene and execut transitions*/
-           exited = false
-       }
     }
     
-     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Funcion encargada del toque de pantalla
         
         let touch = touches.first!//Guarda toque de pantalla
         let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
         touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
         
-        if (touchedNode != nil){
-            if (endGameRectangleButton.name == touchedNode?.node?.name){
-                endGameRectangle.removeFromParent()
-                self.addChild(resultadosButton)
-
-            }
-                
-            else if (resultadosButton.name == touchedNode?.node?.name){
-                resultadosButton.removeFromParent()
-                self.addChild(endGameRectangle)
-
-            }
-            
-            else if (endGameRectangleButtonTwo.name == touchedNode?.node?.name){
-                playagain = true
-                //self.removeFromParent()
-                //self.removeAllActions()
-                //let startScene = StartScene(size: self.size)
-                //self.view?.presentScene(startScene)
-            }
-            
-            else if(endGameRectangleButtonThree.name == touchedNode?.node?.name){
-                //let startMenu = StartMenu(size: self.size)
-                //self.view?.presentScene(startMenu)
-                exited = true
-            }
-            
-        }
         
-    }
-    
-    func endgameRectangleButton()-> SKSpriteNode {
-           /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
-           let buttonNode:SKSpriteNode = buttonNodeDefaults()
-           buttonNode.name = "buttonMap"
-           /*buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-           buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-           buttonNode.zPosition = 3*/
-          
-
-           buttonNode.position = CGPoint(x:-115.5, y:-78.4)
-           buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-           buttonNode.physicsBody?.isDynamic = false
-           
-           
-           let buttonOneLabelOne = SKLabelNode()
-           buttonOneLabelOne.fontName = "AvenirNext-Bold"
-           buttonOneLabelOne.fontSize = 16
-           buttonOneLabelOne.text = "Mapa"
-           //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-           //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-           buttonNode.addChild(buttonOneLabelOne)
-           
-           let buttonOneLabelTwo = SKLabelNode()
-           buttonOneLabelTwo.fontName = "AvenirNext-Bold"
-           buttonOneLabelTwo.fontSize = 13
-           buttonOneLabelTwo.text = "(Map)"
-           buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
-           //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-           buttonNode.addChild(buttonOneLabelTwo)
-
-           return buttonNode
-
-    }
-    
-    func buttonNodeDefaults()->SKSpriteNode{
-        let buttonNode = SKSpriteNode()
-        buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.zPosition = 3
+        //let locationNameLabel = SKLabelNode()//Label para municipios que utilizan un solo label para acomodar el nombre del mismo
+        //let firstLineLabel = SKLabelNode()//Primer label para municipios que utilizan mas de un label para acomodar su nombre
+        //let secondLineLabel = SKLabelNode()//Segundo label para municipios que utilizan mas de un label para acomodar su nombre
+        var countOfIndexes:Int = -1//Dado que interesamos obtener una cuenta de los indices y no de los elementos inicializamos a -1 para que la cuenta incluya el lugar numero 0
         
-        return buttonNode
-    }
-    
-    func endgameRectangleButtoTwo()-> SKSpriteNode {
-        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
-        let buttonNode:SKSpriteNode = buttonNodeDefaults()
-        buttonNode.name = "buttonJugarOtraVez"
-       /* buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.zPosition = 3*/
-       
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
-        buttonNode.position = CGPoint(x:0.5, y: -78.4)
-        buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-        buttonNode.physicsBody?.isDynamic = false
         
-        let buttonTwoLabelOne = SKLabelNode()
-        buttonTwoLabelOne.fontName = "AvenirNext-Bold"
-        buttonTwoLabelOne.fontSize = 16
-        buttonTwoLabelOne.text = "Jugar Otra Vez"
-        //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-        //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonTwoLabelOne)
         
-        let buttonTwoLabelTwo = SKLabelNode()
-        buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
-        buttonTwoLabelTwo.fontSize = 13
-        buttonTwoLabelTwo.text = "(Play Again)"
-        buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
-        //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonTwoLabelTwo)
+        if (touchedNode != nil){//Esta linea permite que la ejecucion continue hacia el bloque abajo si se toco un SKphysics body o tambien se puede entender como si se tocara fuera de los skphysics bodys que en cuyo caso devolveria un valor nil(nulo)
+            if (municipioNameLabel.text == touchedNode?.node?.name){//Si esta condicion no se cumple que es igual a no atinar el municipio a identificar, pasa al Else abajo donde la variable Fail es igual a true
+                for child in containerNode.children {//Este for loop va a iterar(en memoria los elementos contenidos en containerNode(SKNode)) de forma continua cotejando la condicion if(touchedNode?.node?.name == spriteNode.name)
+                    if let spriteNode = child as? SKSpriteNode {//Esto se leeria como Si child es Skspritenode(esto es porque podria ocurrir que containerNode tenga algun objeto que no un Skspritenode)
+                        if(touchedNode?.node?.name == spriteNode.name){//Si esta condicion prueba falsa la ejecucion va a regresar al for loop continuamente hasta que esta pruebe cierta
+                            spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
+                            spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
+                            spriteNode.physicsBody = nil//Elimina el skphysicsBody
+
+                            
+                            for index in municipios_names_array {
+                                if index != ""{
+                                    countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
+                                    //countOfIndexes
+                                }
+                            }
+                        
+                            if countOfIndexes == 1  {
+                                print("skip button out")
+                                skipButton.removeFromParent()
+                            }
+
+                            //Este if statement ejecuta siempre que currentIndex y countOfIndexes son distintos
+                            if countOfIndexes > 0 {
+                                let elementRemoved = municipios_names_array.remove(at:randomIndex)//remueve elemento identificado en el indice al momento(que es el municipio a buscar)
+                                   
+                                print(countOfIndexes)//. uso del programador
+                                print(elementRemoved)//. uso del programador
+                                print(municipios_names_array)//. uso del programador
+                                
+                            }
+                                
+                            //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
+                            else{
+                                //goldBackgroundSKSpriteNode.removeFromParent()
+                                //timerBackground.removeFromParent()
+                                //labelTimer.removeFromParent()
     
+                                PracticeRandomGame.completedGame = true//Se actualiza la variable completedGame para detener el reloj
+                                self.removeAllChildren()
 
-        return buttonNode
+                                //let gameOverScene = GameOverScene(size: self.size)
+                                //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
+                                //self.view?.presentScene(gameOverScene/*, transition: transition*/)
 
-    }
-    
-    func endgameRectangleButtoThree()-> SKSpriteNode {
-        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
-        let buttonNode:SKSpriteNode = buttonNodeDefaults()
-        buttonNode.name = "buttonSalir"
-       /* buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.zPosition = 3*/
-       
+                            
+                                print(municipios_names_array)//. uso del programador
+                                print("completed game")
+                            }
+                        
+                            countOfIndexes = -1
+                            for index in municipios_names_array {
+                                if index != ""{
+                                    countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
+                                }
+                            }
+                            
+                             //Aqui van a entrar la ejecucion cuando el municipio identificado utiliza dos labels para acomodar el nombre(localidad del mapa)
+                            //if(useLine2 == true){
+                                //spriteNode.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+                                //spriteNode.addChild(secondLineLabel)
+                                randomIndex = Int.random(in:0...countOfIndexes)
+                                municipioNameLabel.text = municipios_names_array[randomIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
+                                //useLine2 = false
+                                    
+                            //}
+                            //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
+                            /*else{
+                                //spriteNode.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+                                randomIndex = Int.random(in:0...countOfIndexes)
+                                print(randomIndex)
+                                municipioNameLabel.text = municipios_names_array[randomIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
 
-        //buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.position = CGPoint(x:115.5, y:-78.4)
-        buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-        buttonNode.physicsBody?.isDynamic = false
-
-        let buttonThreeLabelOne = SKLabelNode()
-        buttonThreeLabelOne.fontName = "AvenirNext-Bold"
-        buttonThreeLabelOne.fontSize = 16
-        buttonThreeLabelOne.text = "Salir"
-        //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-        //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonThreeLabelOne)
-        
-        let buttonThreeLabelTwo = SKLabelNode()
-        buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
-        buttonThreeLabelTwo.fontSize = 13
-        buttonThreeLabelTwo.text = "(Exit)"
-        buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
-        //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonThreeLabelTwo)
-        
-    
-
-        return buttonNode
-
-    }
-    
-    
-
-    
-    func endgameRectangle() -> SKSpriteNode {
-        let endGameRectangleNode = SKSpriteNode()
-        endGameRectangleNode.color = UIColor.init(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)//color hex #89d7ed
-        endGameRectangleNode.size = CGSize(width:350, height:250)
-        endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
-        endGameRectangleNode.zPosition = 2
-        
-        if StartScene.completedGame == true || RandomGame.completedGame == true{
-            /*Abajo se otorga la propiedad de nombre a los labels, propiedad que se utiliza en el proximo bloque , El unico propsito de esto es aislar cada label aprovechando cada iteracion del for loop para asignarles a cada uno propiedades en una misma y unica ejecucion de la funcion */
-            labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
-            
-            let arrayOflabelsChallenge = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]/*Poner los elementos a iterar en un for loop por medio de un array me permite reusar codigo, en vez de escribir un bloque por label donde por ejempl
-              propiedades como fontName,fontSize y fontColor se escribirian 6 veces*/
-            
-            for label in arrayOflabelsChallenge {
-                /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
-                label.fontName = "AvenirNext-Bold"
-                label.fontSize = 15
-                label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
-                //label.zPosition = 3
-                
-                if label.name == "labelOne"{
-                    print("Voy subiendo")
-                    //label.text = label.name
-                    label.position = CGPoint(x:-0, y:60)
-
-                }
-                if label.name == "labelTwo"{
-                    //label.text = label.name
-                    label.position = CGPoint(x:-0, y:40)
-
-                }
-                if label.name == "labelThree"{
-                    //label.text = label.name
-                    label.position = CGPoint(x:-0, y:10)
-                    
-                }
-                if label.name == "labelFour"{
-                    //label.text = label.name
-                    label.position = CGPoint(x:-5, y:-10)
-                
-                }
-                
-                if label.name == "labelFive"{
-                    //label.text = label.name
-                    label.position = CGPoint(x:65, y:50)
-                    //endGameRectangleNode.addChild(label)
-                }
-                if label.name == "labelSix"{
-                    //label.text = label.name
-                    label.position = CGPoint(x:65, y:0)
-                    //endGameRectangleNode.addChild(label)
-                }
-                
-                endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
-           }
-        }
-        
-        else if PracticeAlphabeticGame.completedGame == true || PracticeRandomGame.completedGame {
-            labelSeven.name = "labelSeven"; labelEight.name = "labelEight"; labelNine.name = "labelNine"; labelTen.name = "labelTen"
-            
-            let arrayOflabelsPractice = [labelSeven, labelEight, labelNine, labelTen]
-            
-            for label in arrayOflabelsPractice {
-                /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
-                label.fontName = "AvenirNext-Bold"
-                //label.fontSize = 15
-                label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
-                //label.zPosition = 3
-
-                if label.name == "labelSeven"{
-                //print("Voy subiendo")
-                label.fontSize = 15
-                label.text = "Tu Tiempo (Your Time):"
-                label.position = CGPoint(x:0, y:90)
-
-                }
-               //"\(UserDefaults.standard.integer(forKey: "minutes"))"
-                
-                if label.name == "labelEight"{
-                label.fontSize = 16
-                label.fontColor = UIColor.init(red: 0/255, green: 134/255, blue: 252/255, alpha: 1.0)
-                
-                if PracticeAlphabeticGame.completedGame == true{
-                    label.text = "\(PracticeAlphabeticGame.minutesGameOver) : \(PracticeAlphabeticGame.secondsGameOver)"
+                            }*/
+                            
+                            /*Aqui se estaria ejecutando el label para los scores*/
+                            scoreCount += 1
+                            labelScores.text = "\(scoreCount)" + totalScoreCount//totalScoreCount es un constant string solo sirve al rendering del score
+                        }
+                                
                     }
-                    
-                else if PracticeRandomGame.completedGame{
-                    label.text = "\(PracticeRandomGame.minutesGameOver) : \(PracticeRandomGame.secondsGameOver)"
+                            
                 }
-                    
-                label.position = CGPoint(x:0, y:55)
+            }
+            /*Se asigno us SKPhysics body para el skipButton y el toque de pantalla se captura en este bloque**/
+            else if (skipButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
+                //currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
+                skipButton.alpha = 0.9//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
+                skipButtonPressed = true
+                for index in municipios_names_array {
+                    if index != ""{
+                        countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
+                    }
+                }
+                randomIndex = Int.random(in:0...countOfIndexes)
+                pressSKipButton = true
+                municipioNameLabel.text = municipios_names_array[randomIndex]
+                municipiosNameBackground.size = municipioNameLabel.frame.size
+                print("Skip Button touched")
 
-                }
-                if label.name == "labelNine"{
-                label.fontSize = 10
-                label.numberOfLines = 2
-                label.preferredMaxLayoutWidth = 220
-                label.text = "Inténtalo en Modo de Reto para que tu mejor \n\t\ttiempo sea grabado"
-                label.position = CGPoint(x:0, y:5)
-
-                }
-                if label.name == "labelTen"{
-                label.fontSize = 10
-                label.numberOfLines = 2
-                label.preferredMaxLayoutWidth = 220
-                label.text = "Try it in Challenge Mode so that your best \n\t\ttime can be recorded"
-                label.position = CGPoint(x:0, y:-40)
-
-                }
-             
-                endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
             }
             
+            else if (exitRedButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
+                //exitRedButton.alpha = 1.0 No se utilizo animacion en este boton pq no se ve la animacion
+                //exitButtonPressed = true
+                let startMenuScene = StartMenu(size: self.size)//definitio
+                //let transition = SKTransition.doorsOpenVertical(withDuration: 1.5)
+                self.view?.presentScene(startMenuScene)/*present scene and execut transitions*/
+            }
+
+
+                        
+            //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
+            else{
+                return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
+            }
             
         }
         
-        return endGameRectangleNode
+    }
+    
+    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {//child of labelMunicipiosNameBackground()
+         NameMunicipioLabel.position = CGPoint(x:0.5 /*self.size.width/2*/, y:-6.5 /*self.size.height/2 * 0.14*/)
+         NameMunicipioLabel.fontName = "Helvetica"
+         NameMunicipioLabel.fontSize = 18
+         NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
+         randomIndex = Int.random(in:0...77)
+         NameMunicipioLabel.text = municipios_names_array[randomIndex]
+         municipiosNameBackground.size = NameMunicipioLabel.frame.size
+         //NameMunicipioLabel.zPosition = 2
+         return NameMunicipioLabel
+     }
+    
+    func labelMunicipiosNameBackground() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
+        background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
+        background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
+        background.size = municipioNameLabel.frame.size
+        //background.addChild(labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel))
+        //background.zPosition = 5
+        return background
     }
     
     func splitTextIntoFields(theText:SKLabelNode)->String{
@@ -926,7 +930,7 @@ class GameOverScene: SKScene{
         }
         return line1
     }
-    
+
     func splitTextIntoFieldsTwo(theText:SKLabelNode)->String{
         useLine2 = false
         twoLineText = theText.text!
@@ -952,147 +956,6 @@ class GameOverScene: SKScene{
         return line2
     }
     
-    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:Int, minute:Int){
-         /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
-         if  UserDefaults.standard.integer(forKey: "minutesAlphabetic") < 1 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") < 1 || minute < UserDefaults.standard.integer(forKey: "minutesAlphabetic") || minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsAlphabetic") {
-             /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
-             UserDefaults.standard.set(minute, forKey:"minutesAlphabetic")
-             UserDefaults.standard.set(second, forKey:"secondsAlphabetic")
-             
-             labelOne.text = "¡NUEVO RECORD!"
-             labelTwo.text = "(NEW RECORD!)"
-             //format casting and rendering of new best record
-             let secondsText = (second < 10) ?
-             "0\(second)" : "\(second)"
-             let minutesText = "\(minute)"
-             
-             if minute >= 1 {
-                 labelThree.text = "\(minutesText):\(secondsText)"
-             }
-             else{
-                 labelThree.text = "\(secondsText)"
-                 //timerBackground.size = labelTimer.frame.size Aqui se utiliza el label de forma transparente por eso no se utiliza esta propiedad
-                 
-             }
-
-             
-             //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
-         }
-         
-         else if minute > UserDefaults.standard.integer(forKey: "minutesAlphabetic") || minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && second > UserDefaults.standard.integer(forKey: "secondsAlphabetic")||minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && second == UserDefaults.standard.integer(forKey: "secondsAlphabetic"){
-             //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
-             labelOne.text = "Tu Tiempo"
-             labelTwo.text = "(Your Time)"
-             labelThree.text = "Mejor Tiempo"
-             labelFour.text = "(Best Time)"
-             //labelFive.text = labelTimer.text
-             let secondText = (second < 10) ?/*Ojo la variable aqui se llama secondText SIN "S", La razon para el cambio de nombre en la variable es pq ambas(secondText/secondsText) son constantes de modo que en el mismo bloque no podrian ejecutar como constantes(con el mismo nombre) y dado que ambas variables cumplen el mismo proposito no se queria cambiar demasiado el nombre. MAS ADELANTE SE VA A CREAR UNA FUNCION UNIVRSAL PARA LIDIAR SOLO CON EL CASTING Y EL RENDERING YA QUE ESTE CODIGO SE REPITE VARIAS VECES*/
-             "0\(second)" : "\(second)"
-             let minuteText = "\(minute)" //Ojo la variable aqui se llama minuteText SIN "S"
-             
-             if minute >= 1 {
-                 labelFive.text = ":\(minuteText):\(secondText)"
-             }
-             else{
-                 labelFive.text = ":\(secondText)"
-                 //timerBackground.size = labelTimer.frame.size
-                 
-             }
-             //este bloque se va a encargar de imprimir la mejor marca que en este caso seria la encontrada en memoria persistente
-             let secondsText = (UserDefaults.standard.integer(forKey: "secondsAlphabetic") < 10) ?
-             "0\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))" : "\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))"
-             let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesAlphabetic"))"
-             
-             if UserDefaults.standard.integer(forKey: "minutesAlphabetic") >= 1 {
-                 labelSix.text = ":\(minutesText):\(secondsText)"
-             }
-             else{
-                 labelSix.text = ":\(secondsText)"
-                 //timerBackground.size = labelTimer.frame.size
-                 
-             }
-             
-         }
-        
-     }
     
-    func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingRandom(second:Int, minute:Int){
-         /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
-         if  UserDefaults.standard.integer(forKey: "minutesRandom") < 1 && UserDefaults.standard.integer(forKey: "secondsRandom") < 1 || minute < UserDefaults.standard.integer(forKey: "minutesRandom") || minute == UserDefaults.standard.integer(forKey: "minutesRandom") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsRandom") {
-             /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
-             UserDefaults.standard.set(minute, forKey:"minutesRandom")
-             UserDefaults.standard.set(second, forKey:"secondsRandom")
-             
-             labelOne.text = "¡NUEVO RECORD!"
-             labelTwo.text = "(NEW RECORD!)"
-             //format casting and rendering of new best record
-             let secondsText = (second < 10) ?
-             "0\(second)" : "\(second)"
-             let minutesText = "\(minute)"
-             
-             if minute >= 1 {
-                 labelThree.text = "\(minutesText):\(secondsText)"
-             }
-             else{
-                 labelThree.text = "\(secondsText)"
-                 //timerBackground.size = labelTimer.frame.size Aqui se utiliza el label de forma transparente por eso no se utiliza esta propiedad
-                 
-             }
-
-             
-             //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
-         }
-         
-         else if minute > UserDefaults.standard.integer(forKey: "minutesRandom") || minute == UserDefaults.standard.integer(forKey: "minutesRandom") && second > UserDefaults.standard.integer(forKey: "secondsRandom")||minute == UserDefaults.standard.integer(forKey: "minutesRandom") && second == UserDefaults.standard.integer(forKey: "secondsRandom"){
-             //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
-             labelOne.text = "Tu Tiempo"
-             labelTwo.text = "(Your Time)"
-             labelThree.text = "Mejor Tiempo"
-             labelFour.text = "(Best Time)"
-             //labelFive.text = labelTimer.text
-             let secondText = (second < 10) ?/*Ojo la variable aqui se llama secondText SIN "S", La razon para el cambio de nombre en la variable es pq ambas(secondText/secondsText) son constantes de modo que en el mismo bloque no podrian ejecutar como constantes(con el mismo nombre) y dado que ambas variables cumplen el mismo proposito no se queria cambiar demasiado el nombre. MAS ADELANTE SE VA A CREAR UNA FUNCION UNIVRSAL PARA LIDIAR SOLO CON EL CASTING Y EL RENDERING YA QUE ESTE CODIGO SE REPITE VARIAS VECES*/
-             "0\(second)" : "\(second)"
-             let minuteText = "\(minute)" //Ojo la variable aqui se llama minuteText SIN "S"
-             
-             if minute >= 1 {
-                 labelFive.text = ":\(minuteText):\(secondText)"
-             }
-             else{
-                 labelFive.text = ":\(secondText)"
-                 //timerBackground.size = labelTimer.frame.size
-                 
-             }
-             //este bloque se va a encargar de imprimir la mejor marca que en este caso seria la encontrada en memoria persistente
-             let secondsText = (UserDefaults.standard.integer(forKey: "secondsRandom") < 10) ?
-             "0\(UserDefaults.standard.integer(forKey: "secondsRandom"))" : "\(UserDefaults.standard.integer(forKey: "secondsRandom"))"
-             let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesRandom"))"
-             
-             if UserDefaults.standard.integer(forKey: "minutesRandom") >= 1 {
-                 labelSix.text = ":\(minutesText):\(secondsText)"
-             }
-             else{
-                 labelSix.text = ":\(secondsText)"
-                 //timerBackground.size = labelTimer.frame.size
-                 
-             }
-             
-         }
-        
-     }
     
-    func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
-        let label:SKLabelNode = StartMenu().setLabelDefaults()
-        label.fontName = "AvenirNext-Bold"
-        label.text = "Resultados (Results)"
-        label.position = CGPoint(x:0.5, y:-5.5)
-        buttonResultadosSKSpriteNode.addChild(label)
-        buttonResultadosSKSpriteNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.475)
-        buttonResultadosSKSpriteNode.size = label.frame.size
-        buttonResultadosSKSpriteNode.name = "resultadosButton"
-        buttonResultadosSKSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonResultadosSKSpriteNode.size.width, height:buttonResultadosSKSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-        buttonResultadosSKSpriteNode.physicsBody?.isDynamic = false
-        
-        return buttonResultadosSKSpriteNode
-    }
-
 }

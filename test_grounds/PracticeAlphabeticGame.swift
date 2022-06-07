@@ -59,7 +59,7 @@ class PracticeAlphabeticGame: SKScene{
         
         timerBackground = StartScene().timerLabelBackground()
         
-        municipioNameLabel = StartScene().labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
+        municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
         
         municipiosNameBackground = labelMunicipiosNameBackground()
         
@@ -1041,6 +1041,17 @@ class PracticeAlphabeticGame: SKScene{
                 //i += 1
                 }
             return line2
+        }
+    
+        func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {//child of labelMunicipiosNameBackground()
+            NameMunicipioLabel.position = CGPoint(x:0.5 /*self.size.width/2*/, y:-6.5 /*self.size.height/2 * 0.14*/)
+            NameMunicipioLabel.fontName = "Helvetica"
+            NameMunicipioLabel.fontSize = 18
+            NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
+            NameMunicipioLabel.text = "Adjuntas"
+            municipiosNameBackground.size = NameMunicipioLabel.frame.size
+            //NameMunicipioLabel.zPosition = 2
+            return NameMunicipioLabel
         }
         
         func labelMunicipiosNameBackground() -> SKSpriteNode{
