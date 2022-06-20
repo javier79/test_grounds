@@ -698,6 +698,15 @@ class StartMenu: SKScene {
             }
             
         }
+            
+        else if mapOrderOldPaperbackground.parent != nil && mapOrderCountryDropDownMenu.parent != nil{
+            mapOrderCountryDropDownMenu.removeFromParent()
+            dropDownLabelBG.addChild(dropDownArrowLabel)//Devolviendo a la vista el label que se elimino cuando inicialmente presionamos en el drop down tab gris(dropDownArrowLabel)
+        }
+        else if mapOrderOldPaperbackground.parent != nil && orderDropDownMenu.parent != nil{
+            orderDropDownMenu.removeFromParent()
+            dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//Devolviendo a la vista el label que se elimino cuando inicialmente presionamos en el drop down tab gris(dropDownArrowLabelTwo)
+        }
         
     }
     
