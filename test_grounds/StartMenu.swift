@@ -385,6 +385,9 @@ class StartMenu: SKScene {
         
         //boton rojo
         mapOrderRedButton = setMapOrderRedButton()
+        mapOrderRedButton.name = "mapOrderRedButton"
+        mapOrderRedButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:mapOrderRedButton.size.width, height:mapOrderRedButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        mapOrderRedButton.physicsBody?.isDynamic = false
         mapOrderRedButton.position = CGPoint(x:-45, y:-78)
         mapOrderOldPaperbackground.addChild(mapOrderRedButton)
         
@@ -536,6 +539,14 @@ class StartMenu: SKScene {
                     instructionsEnglishLabelTwo.removeFromParent()
                 }
                 
+                self.addChild(buttonGreen)
+                self.addChild(redButtonOne)
+                self.addChild(redButtonTwo)
+                self.addChild(redButtonThree)
+            }
+                
+            else if mapOrderRedButton.name == touchedNode?.node?.name{
+                mapOrderOldPaperbackground.removeFromParent()
                 self.addChild(buttonGreen)
                 self.addChild(redButtonOne)
                 self.addChild(redButtonTwo)
