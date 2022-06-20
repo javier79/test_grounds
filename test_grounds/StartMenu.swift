@@ -65,6 +65,7 @@ class StartMenu: SKScene {
     var mapOrderCountryDropDownMenuYellowBG: SKSpriteNode!
     var dropDownMenuLabelPR:SKLabelNode!
     var orderDropDownMenuYellowBG:SKSpriteNode!
+    var orderDropDownMenuYellowBGTwo:SKSpriteNode!
     var orderDropDownMenuLabel:SKLabelNode!
     var orderDropDownMenuLabelTwo:SKLabelNode!
     var mapOrderGreenButton:SKSpriteNode!
@@ -249,95 +250,140 @@ class StartMenu: SKScene {
         creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
         creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
         
+        //recuadro donde se desplegan los objetos concernientes a elegir mapa y ordern
         mapOrderOldPaperbackground = mapOrderOldPaperDropdownBG()
         
+        //label con instrucciones al tope derecho
         mapOrderTopLabel = mapOrderTwoLineLabelDefaults()
-        mapOrderTopLabel.position = CGPoint(x:120, y:60)
+        mapOrderTopLabel.position = CGPoint(x:120, y:69)
         mapOrderTopLabel.text = "Seleccciona el mapa en el menú desplegable\n(Select the map from the drop-downmenu)"
         mapOrderOldPaperbackground.addChild(mapOrderTopLabel)
         
+        //segundo label con instrucciones
         mapOrderMiddleLabel = mapOrderTwoLineLabelDefaults()
-        mapOrderMiddleLabel.position = CGPoint(x:90, y:-10)
+        mapOrderMiddleLabel.position = CGPoint(x:90, y:-14)
         mapOrderMiddleLabel.text = "Selecciona el orden de los objetivos en el menú desplegable\n(Select the target order from the drop-downmenu)"
         mapOrderOldPaperbackground.addChild(mapOrderMiddleLabel)
         
+        //background gris en el primer dropdown tab
         dropDownLabelBG = dropDownLabelBackground()
-        dropDownLabelBG.position = CGPoint(x:100,y:40)
+        dropDownLabelBG.name = "dropDownLabelBG"
+        dropDownLabelBG.position = CGPoint(x:100,y:61)
         mapOrderOldPaperbackground.addChild(dropDownLabelBG)
         
-        dropDownLabelBGTwo = dropDownLabelBackground()
-        dropDownLabelBGTwo.position = CGPoint(x:100,y:-30)
-        mapOrderOldPaperbackground.addChild(dropDownLabelBGTwo)
-        
+        //flecha en el dropdown tab
         dropDownArrow = dropDownArrowBPToSKSpritenode()
         dropDownArrow.position = CGPoint(x:80,y:-0.5)
         dropDownLabelBG.addChild(dropDownArrow)
         
-        dropDownArrowLabelTwo = dropDownArrowLabelDefaults()
-        dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
-        dropDownArrowLabelTwo.text = "Alfabético (Alphabetic)"
-        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-        
-        dropDownArrowTwo = dropDownArrowBPToSKSpritenode()
-        dropDownArrowTwo.position = CGPoint(x:80,y:-0.5)
-        dropDownLabelBGTwo.addChild(dropDownArrowTwo)
-        
+        //label en el primer dropdown tab
         dropDownArrowLabel = dropDownArrowLabelDefaults()
+        dropDownArrowLabel.name = "dropDownArrowLabel"
         dropDownArrowLabel.position = CGPoint(x:-55.0,y:-4.5)
         dropDownArrowLabel.text = "Puerto Rico"
+        dropDownArrowLabel.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:55, y: 4.5))
+        dropDownArrowLabel.physicsBody?.isDynamic = false
         dropDownLabelBG.addChild(dropDownArrowLabel)
         
+        //label a la izquierda con la palabra Mapa(Map)
         mapOrderSingleLineLabel = creditsSingleLineLabelDefaults()
         mapOrderSingleLineLabel.fontSize = 14
         mapOrderSingleLineLabel.text = "Mapa (Map)"
         mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabel)
-        mapOrderSingleLineLabel.position = CGPoint(x:-165, y:50)
+        mapOrderSingleLineLabel.position = CGPoint(x:-165, y:57)
         
+        //segundo label a la izquierda con la palabra Orden(Order)
         mapOrderSingleLineLabelTwo = creditsSingleLineLabelDefaults()
         mapOrderSingleLineLabelTwo.fontSize = 14
         mapOrderSingleLineLabelTwo.text = "Orden (Order)"
         mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabelTwo)
-        mapOrderSingleLineLabelTwo.position = CGPoint(x:-156, y:-15.0)
+        mapOrderSingleLineLabelTwo.position = CGPoint(x:-156, y:-26.0)
         //dropDownLabelBG = dropDownLabelBackground()
         //dropDownLabelBG.position = CGPoint(x:120,y:65)
         
+        //Menu a desplegarse cuando oprimimos el dropdown tab superior
         mapOrderCountryDropDownMenu = mapOrderCountryDropDownMenuSpriteNode()
-        mapOrderCountryDropDownMenu.position = CGPoint(x:434,y:178)
+        mapOrderCountryDropDownMenu.position = CGPoint(x:434,y:223.5)
         
+        //Background amarillo para el label que dice "Puerto Rico" en el menu
         mapOrderCountryDropDownMenuYellowBG = dropDownMenuLabelBackground()
-        mapOrderCountryDropDownMenuYellowBG.position = CGPoint(x:0.0,y:32.55)
-        mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
+        mapOrderCountryDropDownMenuYellowBG.position = CGPoint(x:0.0,y:9.7)
+        //mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
         
+        //Label en el menu "Puerto Rico"
         dropDownMenuLabelPR = dropDownArrowLabelDefaults()
-        dropDownMenuLabelPR.position = CGPoint(x:-56,y:27)
+        dropDownMenuLabelPR.name = "dropDownMenuLabelPR"
+        dropDownMenuLabelPR.position = CGPoint(x:-56,y:4.5)
         dropDownMenuLabelPR.fontSize = 10.5
         dropDownMenuLabelPR.text = "Puerto Rico"
-        mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
+        dropDownMenuLabelPR.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:56, y: 4.5))
+        dropDownMenuLabelPR.physicsBody?.isDynamic = false
+        //mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
         
+        //dropdown tab(con la flecha hacia abajo) en el dropdown menu inferior(orden alfabetico/azar)
+        dropDownLabelBGTwo = dropDownLabelBackground()
+        dropDownLabelBGTwo.position = CGPoint(x:100,y:-23)
+        mapOrderOldPaperbackground.addChild(dropDownLabelBGTwo)
+        
+        //esto genera el dibujo de la flechita en el dropdown menu inferior(orden alfabetico/azar)
+        dropDownArrowTwo = dropDownArrowBPToSKSpritenode()
+        dropDownArrowTwo.position = CGPoint(x:80,y:-0.5)
+        dropDownLabelBGTwo.addChild(dropDownArrowTwo)//se anade como hijo del dropdown tab
+         
+        //Label que se coloca sobre dropdown tab inferior(orden alfabetico/azar)
+        dropDownArrowLabelTwo = dropDownArrowLabelDefaults()
+        dropDownArrowLabelTwo.name = "dropDownArrowLabelTwo"
+        dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
+        dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+        dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)//posicionamiento con respecto al parent dropDownLabelBGTwo
+        //dropDownArrowLabelTwo.preferredMaxLayoutWidth = 300
+        dropDownArrowLabelTwo.text = "Alfabético (Alphabetic)"//default text
+        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+        
+        //La casilla gris que se desplega cuando oprimimos en dropDownArrowLabelTwo(dropdown orden alfabetico/azar)
         orderDropDownMenu = mapOrderCountryDropDownMenuSpriteNodeTwo()
-        orderDropDownMenu.position = CGPoint(x:434,y:133)
+        orderDropDownMenu.position = CGPoint(x:434,y:142)
         
+        //Background amarillo para el label "Alfabetico"
         orderDropDownMenuYellowBG = dropDownMenuLabelBackground()
-        orderDropDownMenuYellowBG.position = CGPoint(x:0.0,y:7.5)
-        orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+        orderDropDownMenuYellowBG.position = CGPoint(x:0.0,y:7)
+        orderDropDownMenuYellowBG.zPosition = 0
+        //orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
         
+        //primer label dentro de orderDropDownMenu
         orderDropDownMenuLabel = dropDownArrowLabelDefaults()
-        orderDropDownMenuLabel.position = CGPoint(x:-33,y:3)
+        orderDropDownMenuLabel.name = "orderDropDownMenuLabel"
+        orderDropDownMenuLabel.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:34.5, y: 4.5))
+        orderDropDownMenuLabel.physicsBody?.isDynamic = false
+        orderDropDownMenuLabel.position = CGPoint(x:-33,y:2)
         orderDropDownMenuLabel.fontSize = 10.5
         orderDropDownMenuLabel.text = "Alfabético (Alphabetic)"
-        orderDropDownMenu.addChild(orderDropDownMenuLabel)
+        //orderDropDownMenu.addChild(orderDropDownMenuLabel)
         
+        //Background amarillo para el label "Al Azar (Random)"
+        orderDropDownMenuYellowBGTwo = dropDownMenuLabelBackground()
+        orderDropDownMenuYellowBGTwo.position = CGPoint(x:0.0,y:-7.0)
+        orderDropDownMenuYellowBGTwo.zPosition = 0
+        //orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+        
+        //segundo label dentro de orderDropDownMenu
         orderDropDownMenuLabelTwo = dropDownArrowLabelDefaults()
-        orderDropDownMenuLabelTwo.position = CGPoint(x:-45,y:-12.5)
+        orderDropDownMenuLabelTwo.name = "orderDropDownMenuLabelTwo"
+        orderDropDownMenuLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:177, height:9.5), center: CGPoint(x:47.5, y: 4.5))
+        orderDropDownMenuLabelTwo.physicsBody?.isDynamic = false
+        orderDropDownMenuLabelTwo.position = CGPoint(x:-45,y:-12)
+        //orderDropDownMenuLabelTwo.zposition = 1
         orderDropDownMenuLabelTwo.fontSize = 10.5
-        orderDropDownMenuLabelTwo.fontColor = .white
+        //orderDropDownMenuLabelTwo.fontColor = .white
         orderDropDownMenuLabelTwo.text = "Al Azar (Random)"
-        orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+        //orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
         
+        //boton verde
         mapOrderGreenButton = setMapOrderGreenButton()
         mapOrderGreenButton.position = CGPoint(x:30, y:-78)
         mapOrderOldPaperbackground.addChild(mapOrderGreenButton)
         
+        //boton rojo
         mapOrderRedButton = setMapOrderRedButton()
         mapOrderRedButton.position = CGPoint(x:-45, y:-78)
         mapOrderOldPaperbackground.addChild(mapOrderRedButton)
@@ -369,6 +415,7 @@ class StartMenu: SKScene {
         self.addChild(creditsSpecialThanksChildLabelTwo)*/
         //self.addChild(dropDownArrow)
         self.addChild(mapOrderOldPaperbackground)
+        //self.addChild(orderDropDownMenu)
         //self.addChild(orderDropDownMenu)
         //self.addChild(dropDownLabelBG)
     }
@@ -494,6 +541,161 @@ class StartMenu: SKScene {
                 self.addChild(redButtonTwo)
                 self.addChild(redButtonThree)
             }
+                
+            else if (dropDownArrowLabel.name == touchedNode?.node?.name){
+                
+                dropDownArrowLabel.removeFromParent()
+                self.addChild(mapOrderCountryDropDownMenu)
+                
+                /*el if statement siguiente se activa si el dropdown menu de orden(alfabetico/azar) se encuentra desplegado cerrando el mismo y restituyendo el label dropDownArrowLabelTwo
+                el cual se removio cuando previamente presionamos dropDownArrowLabelTwo para desplegar orderDropDownMenu, pero que a este momento el usuario no hizo seleccion mientras desplegaba
+                 mapOrderCountryDropDownMenu.*/
+                if orderDropDownMenu.parent != nil{
+                    
+                    /*Si orderDropDownMenuYellowBG se encuentra desplegado se va a utilizar el texto de orderDropDownMenuLabel("Alfabetico (Alphabetic)") en el label del dropdown tab osea dropDownArrowLabelTwo
+                    , por el contrario si se encontrara desplegado orderDropDownMenuYellowBGTwo se va a utilizar el texto de orderDropDownMenuLabelTwo  */
+                    if orderDropDownMenuYellowBG.parent != nil {
+                        dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                    }
+                    else if orderDropDownMenuYellowBGTwo.parent != nil{
+                        dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                    }
+                    
+                    orderDropDownMenu.removeFromParent()
+                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                }
+                /*El siguiente bloque va anadir a la vista el BG amarillo y luego el label "Puerto Rico" sin embargo como se anaden como hijos de mapOrderCountryDropDownMenu y estos dos no se remueven sino que que removemos al Parent no se tienen que volver a anadir, por ello que si eliminamos los statements:  && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil nos da el error de que estamos tratando de anadir un objeto que ya tiene parent*/
+                if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
+                   
+                    mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
+                    mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
+                    
+                }
+
+            }
+            
+            else if (dropDownMenuLabelPR.name == touchedNode?.node?.name){
+                dropDownArrowLabel.text = dropDownMenuLabelPR.text
+                mapOrderCountryDropDownMenu.removeFromParent()
+                dropDownLabelBG.addChild(dropDownArrowLabel)
+   
+            }
+            
+            else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name){
+                //remuevo el label del dropdown tab
+                dropDownArrowLabelTwo.removeFromParent()
+                
+                //La ejecucion entra en este bloque si el menu de pais se encuentra desplegado cuando presionamos dropDownArrowLabelTwo
+                if mapOrderCountryDropDownMenu.parent != nil{
+                    //orderDropDownMenu.removeFromParent()
+                    //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
+                    if mapOrderCountryDropDownMenuYellowBG.parent != nil {
+                        dropDownArrowLabel.text = dropDownMenuLabelPR.text
+                    }
+                    
+                    mapOrderCountryDropDownMenu.removeFromParent()
+                    dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
+                     se removio el label cuando presionamos en dropDownArrowLabel*/
+                }
+                
+                self.addChild(orderDropDownMenu)
+                
+                /*Aqui la ejecucion va a entrar la primera vez salvo que los children aqui anadidos no se vuelven a remover sino que si necesitaramos removerlos seria removiendo el parent
+                 y por ello que se utilice la condicion .parent == nil, para prevenir que sean anadidos nuevamente.
+                 LA EJECUCION ENTRA EN UNO DE LOS IF SIGUIENTES CUANDO EL TEXTO EN EL LABEL(DROPDOWN TAB) ES EL MISMO QUE EL LABEL EN EL MENU CON BG AMARILLO(POR DEFAULT VA A ENTRAR AQUI LA PRIMERA VEZ QUE PRESIONAMOS: dropDownArrowLabelTwo)**/
+                if dropDownArrowLabelTwo.text == orderDropDownMenuLabel.text && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil{
+                   
+                    orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                    orderDropDownMenu.addChild(orderDropDownMenuLabel)
+                    orderDropDownMenuLabelTwo.fontColor = .white
+                    orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                    
+                }
+                //ACA VA A ENTRAR CUANDO EL BG AMARILLO SE ENCUENTRA EN EL SEGUNDO LABEL EN EL MENU Y SU TEXTO ES IGUAL AL DEL DROP DOWN TAB
+                else if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text && orderDropDownMenuYellowBGTwo.parent == nil && orderDropDownMenuLabelTwo.parent == nil && dropDownArrowLabelTwo.parent == nil {
+                    
+                    orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                    orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                    orderDropDownMenuLabel.fontColor = .white
+                    orderDropDownMenu.addChild(orderDropDownMenuLabel)
+                }
+            }
+            
+            else if (orderDropDownMenuLabel.name == touchedNode?.node?.name){
+                /*esta es la condicion default(cuando entramos a esta pantalla para un nuevo juego o por primera vez, por lo que no tenemos que anadir el texto al label pq
+                 son iguales como se predetermino)*/
+                if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
+                    orderDropDownMenu.removeFromParent()
+                    //dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
+                }
+                    
+                else if orderDropDownMenuLabel.text != dropDownArrowLabelTwo.text{
+                    orderDropDownMenu.alpha = 0.9
+                    orderDropDownMenu.removeFromParent()
+                    //dropDownArrowLabelTwo.text = ""
+                    /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
+                    aqui otorgado*/
+                    dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                    /*cuando se reescribe el label con el texto "Azar (Random)" en el proximo bloque ocurre un glitch donde el texto se ve indentado hacia el medio, Para solucionar esto en el bloque de abajo
+                     se reposiciona el label hacia la izquierda lo cual va a afectar el posicionamiento del Physics body, por lo cual eliminamos el Physics body original(en el bloque siguiente)
+                     y lo redefinimos con los valores correspondientes a la nueva posicion del label. Estos reposicionamientos tienen como consecuencia que al reescribir
+                     con el texto "Alfabetico (Alphabetic)" el texto queda indentado hacia la izquierda y fuera del dropDownLabelBGTwo(viene siendo el dropdown tab color gris)
+                     y por ello que en este bloque lo volvemos a reposicionar y redefinimos el physics body.Los physics bodies se eliminan y se redefinen dado que reposicionarlos
+                     sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos*/
+                    dropDownArrowLabelTwo.physicsBody = nil
+                    dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
+                    dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                    dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
+                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                    /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, , estos cambios no los vamos a ver de inmediato en el rendering pq son
+                    para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro**/
+                    orderDropDownMenuYellowBGTwo.removeFromParent()
+                    orderDropDownMenuLabel.fontColor = .black
+                    orderDropDownMenuLabelTwo.fontColor = .white
+                    orderDropDownMenuLabel.zPosition = 1
+                    orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                    
+                    
+                }
+            }
+            
+            else if (orderDropDownMenuLabelTwo.name == touchedNode?.node?.name){
+                
+                if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
+                    orderDropDownMenu.removeFromParent()
+                    //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                }
+                
+                
+                else if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
+                    orderDropDownMenu.alpha = 0.9
+                    orderDropDownMenu.removeFromParent()
+                    //dropDownArrowLabelTwo.text = ""
+                    dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                    /*cuando se reescribe el label con el texto "Azar (Random)" ocurre un glitch donde el texto se ve indentado hacia el centro. Reposicione el label,
+                     sin embargo como es de esperarse el physics body se desalineo un poco por lo que elimino el physics body default y lo redefino con nuevo posicionamiento.
+                     Los physics bodies se eliminan y se redefinen dado que reposicionarlos sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos.
+                     ** Uno podria pensar que quizas seria mas facil definir un nuevo label para "Azar (Random)"con su propio physics body, sin embargo ello conllevaria reescribir la logica y
+                     no representaria ninguna mejora en la eficiencia dado que la mecanica involucraria anadir y posicionar el nuevo label y redefinir su propio physics body que como vemos
+                     es exactamente lo que ocurre en este bloque.*/
+                    dropDownArrowLabelTwo.physicsBody = nil
+                    dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
+                    dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                    dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
+                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                    /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, estos cambios no los vamos a ver de inmediato en el rendering pq son
+                     para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro **/
+                    orderDropDownMenuYellowBG.removeFromParent()
+                    orderDropDownMenuLabel.fontColor = .white
+                    orderDropDownMenuLabelTwo.fontColor = .black
+                    orderDropDownMenuLabelTwo.zPosition = 1
+                    /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
+                    orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                    //orderDropDownMenuLabelTwo.zPosition = 1
+                }
+            }
             
         }
         
@@ -506,9 +708,9 @@ class StartMenu: SKScene {
        // Specify the point that the path should start get drawn.
        path.move(to: CGPoint(x: 0.0, y: 0.0))
        // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:15))
+       path.addLine(to: CGPoint(x: 0.0, y:13))
        // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:180 , y:15))
+       path.addLine(to: CGPoint(x:180 , y:13))
        //Create the vertical line from the bottom-right to the top-right side.
        path.addLine(to: CGPoint(x:180, y: 0.0))
        // Close the path. This will create the last line automatically.
@@ -537,9 +739,9 @@ class StartMenu: SKScene {
        // Specify the point that the path should start get drawn.
        path.move(to: CGPoint(x: 0.0, y: 0.0))
        // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:30))
+       path.addLine(to: CGPoint(x: 0.0, y:27))
        // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:180 , y:30))
+       path.addLine(to: CGPoint(x:180 , y:27))
        //Create the vertical line from the bottom-right to the top-right side.
        path.addLine(to: CGPoint(x:180, y: 0.0))
        // Close the path. This will create the last line automatically.
@@ -568,9 +770,9 @@ class StartMenu: SKScene {
        // Specify the point that the path should start get drawn.
        path.move(to: CGPoint(x: 0.0, y: 0.0))
        // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:80))
+       path.addLine(to: CGPoint(x: 0.0, y:33))
        // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:180 , y:80))
+       path.addLine(to: CGPoint(x:180 , y:33))
        //Create the vertical line from the bottom-right to the top-right side.
        path.addLine(to: CGPoint(x:180, y: 0.0))
        // Close the path. This will create the last line automatically.
@@ -599,9 +801,9 @@ class StartMenu: SKScene {
        // Specify the point that the path should start get drawn.
        path.move(to: CGPoint(x: 0.0, y: 0.0))
        // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:18))
+        path.addLine(to: CGPoint(x: 0.0, y:16.5))
        // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:180 , y:18))
+        path.addLine(to: CGPoint(x:180 , y:16.5))
        //Create the vertical line from the bottom-right to the top-right side.
        path.addLine(to: CGPoint(x:180, y: 0.0))
        // Close the path. This will create the last line automatically.
