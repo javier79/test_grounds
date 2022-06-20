@@ -70,6 +70,14 @@ class StartMenu: SKScene {
     var orderDropDownMenuLabelTwo:SKLabelNode!
     var mapOrderGreenButton:SKSpriteNode!
     var mapOrderRedButton:SKSpriteNode!
+    var gameModeSelectionOldPaperbackground:SKSpriteNode!
+    var gameModeSelectionGreenButton:SKSpriteNode!
+    var gameModeSelectionGreenButtonLabel:SKLabelNode!
+    var gameModeSelectionBlueButton:SKSpriteNode!
+    var gameModeSelectionRedButtonLabel:SKLabelNode!
+    var gameModeSelectionLabel:SKLabelNode!
+    var gameModeSelectionLabelTwo:SKLabelNode!
+    var gameModeSelectionRedButton:SKSpriteNode!
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -391,6 +399,31 @@ class StartMenu: SKScene {
         mapOrderRedButton.position = CGPoint(x:-45, y:-78)
         mapOrderOldPaperbackground.addChild(mapOrderRedButton)
         
+        gameModeSelectionOldPaperbackground = mapOrderOldPaperDropdownBG()
+        
+        gameModeSelectionGreenButton = modeSelectionGreenButton()
+        gameModeSelectionGreenButton.position = CGPoint(x:-90, y:50)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionGreenButton)
+        
+        gameModeSelectionLabel = modeSelectionLabelDefaults()
+        gameModeSelectionLabel.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
+        gameModeSelectionLabel.position = CGPoint(x:-87,y:-25)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabel)
+        
+        gameModeSelectionBlueButton = modeSelectionBlueButton()
+        gameModeSelectionBlueButton.position = CGPoint(x:90, y:50)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionBlueButton)
+        
+        gameModeSelectionLabelTwo = modeSelectionLabelDefaults()
+        gameModeSelectionLabelTwo.text = "Juega con nombres ya en el mapa.\n\t Tiempo no se guardará.\n(Play with names already on the map.\n\tTime will not be saved)"
+        gameModeSelectionLabelTwo.preferredMaxLayoutWidth = 160
+        gameModeSelectionLabelTwo.position = CGPoint(x:105,y:-26)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
+        
+        gameModeSelectionRedButton = modeSelectionRedButton()
+        gameModeSelectionRedButton.position = CGPoint(x:0,y:-55)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
+        
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
         //elMorro.addChild(buttonGreen)
@@ -417,10 +450,166 @@ class StartMenu: SKScene {
         self.addChild(creditsSpecialThanksChildLabel)
         self.addChild(creditsSpecialThanksChildLabelTwo)*/
         //self.addChild(dropDownArrow)
-        self.addChild(mapOrderOldPaperbackground)
+        //self.addChild(mapOrderOldPaperbackground)
+        self.addChild(gameModeSelectionOldPaperbackground)
         //self.addChild(orderDropDownMenu)
         //self.addChild(orderDropDownMenu)
         //self.addChild(dropDownLabelBG)
+    }
+    
+    func modeSelectionRedButton()->SKSpriteNode{
+        //Drawing
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:30))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:74 , y:30))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:74, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
+        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.strokeColor = UIColor.init(red: 0.949, green: 0.2824, blue: 0.2941, alpha: 1.0)//c1d3c8
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.init(red: 0.949, green: 0.2824, blue: 0.2941, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let redbutton = SKSpriteNode(texture: texture)
+
+        let labelOne = SKLabelNode()
+        labelOne.fontName = "AvenirNext-Bold"
+        labelOne.fontSize = 11
+        labelOne.text = " Volver\n(Return)"
+        labelOne.numberOfLines = 2
+        labelOne.position = CGPoint(x:0, y:-17)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        redbutton.addChild(labelOne)
+        
+        /*let labelTwo = SKLabelNode()
+        labelTwo.fontName = "AvenirNext-Bold"
+        labelTwo.fontSize = 13
+        labelTwo.text = "(PLAY)"
+        labelTwo.position = CGPoint(x:0.5, y:-13)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        redbutton.addChild(labelTwo)*/
+        
+        return redbutton
+        
+                
+    }
+    
+    func modeSelectionBlueButton()->SKSpriteNode{
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:40))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:130 , y:40))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:130, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
+        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.lineWidth = 0.5
+        shapeNode.strokeColor = UIColor.init(red: 0, green: 0.6588, blue: 0.9882, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0, green: 0.6588, blue: 0.9882, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let button = SKSpriteNode(texture: texture)
+        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        //redButton.position = CGPoint(x:350, y:200)
+        //greenbutton.zPosition = 2
+        let labelOne = SKLabelNode()
+        labelOne.fontName = "AvenirNext-Bold"
+        labelOne.fontSize = 13
+        labelOne.text = "  Modo de Práctica \n   (Practice Mode)"
+        labelOne.numberOfLines = 2
+        labelOne.position = CGPoint(x:0.5, y:-19.5)
+        //labelOne.position = CGPoint(x:0, y:-13)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        button.addChild(labelOne)
+        
+        /*let labelTwo = SKLabelNode()
+        labelTwo.fontName = "AvenirNext-Bold"
+        labelTwo.fontSize = 10
+        labelTwo.text = "(Return)"
+        labelTwo.position = CGPoint(x:0.5, y:-10)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        redButton.addChild(labelTwo)*/
+        
+        return button
+    }
+    
+    func modeSelectionLabelDefaults()->SKLabelNode{
+        let label = SKLabelNode()
+        label.fontName = "Avenir-Heavy"
+        label.fontSize = 9
+        label.fontColor = .black
+        //label.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
+        label.numberOfLines = 3
+        label.preferredMaxLayoutWidth = 140
+        return label
+    }
+    
+    func modeSelectionGreenButton()->SKSpriteNode{
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:40))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:130 , y:40))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:130, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
+        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.lineWidth = 0.5
+        shapeNode.strokeColor = UIColor.init(red: 0.2706, green: 0.9098, blue: 0.5882, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.2706, green: 0.9098, blue: 0.5882, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let button = SKSpriteNode(texture: texture)
+        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        //redButton.position = CGPoint(x:350, y:200)
+        //greenbutton.zPosition = 2
+        let labelOne = SKLabelNode()
+        labelOne.fontName = "AvenirNext-Bold"
+        labelOne.fontSize = 13
+        labelOne.text = "  Modo de Reto \n(Challenge Mode)"
+        labelOne.numberOfLines = 2
+        labelOne.position = CGPoint(x:0.5, y:-19.5)
+        //labelOne.position = CGPoint(x:0, y:-13)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        button.addChild(labelOne)
+        
+        /*let labelTwo = SKLabelNode()
+        labelTwo.fontName = "AvenirNext-Bold"
+        labelTwo.fontSize = 10
+        labelTwo.text = "(Return)"
+        labelTwo.position = CGPoint(x:0.5, y:-10)
+        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
+        redButton.addChild(labelTwo)*/
+        
+        return button
     }
     
     func dropDownArrowLabelDefaults()->SKLabelNode{
@@ -1125,7 +1314,7 @@ class StartMenu: SKScene {
     
     func mapOrderOldPaperDropdownBG()->SKSpriteNode{
         let oldPaperTexture = SKSpriteNode(imageNamed: "old paper texture")
-        oldPaperTexture.size = CGSize(width: 480, height:195)
+        oldPaperTexture.size = CGSize(width: 440, height:170)//(width: 480, height:195)
         oldPaperTexture.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         //oldPaperTexture.zPosition = 0
         return oldPaperTexture
