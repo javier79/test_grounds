@@ -78,6 +78,11 @@ class StartMenu: SKScene {
     var gameModeSelectionLabel:SKLabelNode!
     var gameModeSelectionLabelTwo:SKLabelNode!
     var gameModeSelectionRedButton:SKSpriteNode!
+    var bestTimesRectangleBp:UIBezierPath!
+    var bestTimesRectangleBpToSKSpritenode:SKSpriteNode!
+    var bestTimesToplabel:SKLabelNode!
+    var bestTimesPrAlphabeticlabel:SKLabelNode!
+    
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -424,6 +429,22 @@ class StartMenu: SKScene {
         gameModeSelectionRedButton.position = CGPoint(x:0,y:-55)
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
         
+        bestTimesRectangleBp = TestClass().createRectangle()
+        bestTimesRectangleBpToSKSpritenode = bestTimesRectangleBezierPathToSKSpriteNode(bpRectangle: bestTimesRectangleBp)
+        
+        bestTimesToplabel = mapOrderTwoLineLabelDefaults()
+        bestTimesToplabel.fontSize = 14
+        bestTimesToplabel.text = "Mejores Tiempos\n   (Best Times)"
+        bestTimesToplabel.position = CGPoint(x:0.5,y:60)
+        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesToplabel)
+        
+        bestTimesPrAlphabeticlabel = bestTimeslabel()
+        bestTimesPrAlphabeticlabel.text = "Puerto Rico(Alfabético/Alphabetic):"
+        bestTimesPrAlphabeticlabel.position = CGPoint(x:-70,y:35)
+        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrAlphabeticlabel)
+        
+
+        
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
         //elMorro.addChild(buttonGreen)
@@ -451,10 +472,33 @@ class StartMenu: SKScene {
         self.addChild(creditsSpecialThanksChildLabelTwo)*/
         //self.addChild(dropDownArrow)
         //self.addChild(mapOrderOldPaperbackground)
-        self.addChild(gameModeSelectionOldPaperbackground)
+        //self.addChild(gameModeSelectionOldPaperbackground)
         //self.addChild(orderDropDownMenu)
         //self.addChild(orderDropDownMenu)
         //self.addChild(dropDownLabelBG)
+        self.addChild(bestTimesRectangleBpToSKSpritenode)
+    }
+    
+
+    
+    func bestTimeslabel()->SKLabelNode{
+        let label = SKLabelNode()
+        label.fontSize = 12
+        label.fontName = "GillSans-SemiBold"
+        label.fontColor = .black
+        return label
+    }
+        
+    func bestTimesRectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
+           
+        let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
+        shapeNode.strokeColor = .black
+        shapeNode.lineWidth = 2.0
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let rectangleNode = SKSpriteNode(texture: texture)
+        rectangleNode.position = CGPoint(x:300, y:190)
+        return  rectangleNode
     }
     
     func modeSelectionRedButton()->SKSpriteNode{
