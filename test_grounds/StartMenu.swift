@@ -82,7 +82,9 @@ class StartMenu: SKScene {
     var bestTimesRectangleBpToSKSpritenode:SKSpriteNode!
     var bestTimesToplabel:SKLabelNode!
     var bestTimesPrAlphabeticlabel:SKLabelNode!
-    
+    var bestTimesPrAlphabeticScorelabel:SKLabelNode!
+    var bestTimesPrRandomlabel:SKLabelNode!
+    var bestTimesPrRandomScorelabel:SKLabelNode!
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -443,7 +445,18 @@ class StartMenu: SKScene {
         bestTimesPrAlphabeticlabel.position = CGPoint(x:-70,y:35)
         bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrAlphabeticlabel)
         
-
+        bestTimesPrRandomlabel = bestTimeslabel()
+        bestTimesPrRandomlabel.text = "Puerto Rico(Al Azar/Random):"
+        bestTimesPrRandomlabel.position = CGPoint(x:-57,y:15)
+        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrRandomlabel)
+        
+        bestTimesPrAlphabeticScorelabel = bestTimesPrAlphabeticScore()
+        bestTimesPrAlphabeticScorelabel.position = CGPoint(x:120,y:33)
+        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrAlphabeticScorelabel)
+        
+        bestTimesPrRandomScorelabel = bestTimesPrRandomScore()
+        bestTimesPrRandomScorelabel.position = CGPoint(x:120,y:15)
+        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrRandomScorelabel)
         
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
@@ -479,6 +492,65 @@ class StartMenu: SKScene {
         self.addChild(bestTimesRectangleBpToSKSpritenode)
     }
     
+    func bestTimesPrRandomScore()->SKLabelNode{
+        
+        let label = SKLabelNode()
+        label.fontSize = 12
+        label.fontName = "GillSans-SemiBold"
+        label.fontColor = .black
+        
+        if UserDefaults.standard.integer(forKey: "minutesRandom") != 0 && UserDefaults.standard.integer(forKey: "secondsRandom") != 0 {
+            let secondsText = (UserDefaults.standard.integer(forKey: "secondsRandom") < 10) ?
+            "0\(UserDefaults.standard.integer(forKey: "secondsRandom"))" : "\(UserDefaults.standard.integer(forKey: "secondsRandom"))"
+            let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesRandom"))"
+
+            
+            
+            if UserDefaults.standard.integer(forKey: "minutesRandom") >= 1 {
+            label.text = "\(minutesText):\(secondsText)"
+            }
+            else{
+            label.text = ":\(secondsText)"
+            //timerBackground.size = labelTimer.frame.size
+            }
+        }
+        
+        else{
+            label.text = "________"
+        }
+        
+         return label
+    }
+    
+    
+    func bestTimesPrAlphabeticScore()->SKLabelNode {
+        
+        let label = SKLabelNode()
+        label.fontSize = 12
+        label.fontName = "GillSans-SemiBold"
+        label.fontColor = .black
+        
+        if UserDefaults.standard.integer(forKey: "minutesAlphabetic") != 0 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") != 0 {
+            
+            let secondsText = (UserDefaults.standard.integer(forKey: "secondsAlphabetic") < 10) ?
+            "0\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))" : "\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))"
+            let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesAlphabetic"))"
+            
+            
+            
+            if UserDefaults.standard.integer(forKey: "minutesAlphabetic") >= 1 {
+                label.text = "\(minutesText):\(secondsText)"
+            }
+            else{
+                label.text = ":\(secondsText)"
+            }
+        }
+    
+        else{
+            label.text = "________"
+        }
+        return label
+    }
 
     
     func bestTimeslabel()->SKLabelNode{
@@ -497,7 +569,7 @@ class StartMenu: SKScene {
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let rectangleNode = SKSpriteNode(texture: texture)
-        rectangleNode.position = CGPoint(x:300, y:190)
+        rectangleNode.position = CGPoint(x:325, y:190)
         return  rectangleNode
     }
     
