@@ -8,7 +8,7 @@
 
 import SpriteKit
 import UIKit
-
+import AVFoundation
 
 
 
@@ -150,6 +150,8 @@ class StartScene: SKScene{
     var scoreCount:Int = 0
     let totalScoreCount:String = "/78"
     
+    let correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
+    let incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
     /*var endGameRectangle: SKSpriteNode!
     var endGameRectangleButton = SKSpriteNode()
     var endGameRectangleButtonTwo = SKSpriteNode()
@@ -1130,6 +1132,8 @@ class StartScene: SKScene{
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
                             spriteNode.physicsBody = nil//Elimina el skphysicsBody
                             
+                            run(correctSound)
+                            
                             let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
                             let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
                             
@@ -1464,6 +1468,7 @@ class StartScene: SKScene{
                             
                 }
             }
+            
             /*Se asigno us SKPhysics body para el skipButton y el toque de pantalla se captura en este bloque**/
             else if (skipButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
                 currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
@@ -1508,7 +1513,9 @@ class StartScene: SKScene{
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
+                run(incorrectSound)
                 return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
+                
             }
             
         }
