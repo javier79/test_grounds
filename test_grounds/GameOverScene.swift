@@ -24,8 +24,13 @@ class GameOverScene: SKScene{
     let labelSeven = SKLabelNode(); let labelEight = SKLabelNode(); let labelNine = SKLabelNode(); let labelTen = SKLabelNode()
     var playagain: Bool = false
     var exited:Bool = false
+    let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
+    let backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
     
     override func didMove(to view: SKView) {
+        
+        run(fanfair)
+        self.addChild(backgroundMusic)
         
         endGameRectangle = endgameRectangle()
         

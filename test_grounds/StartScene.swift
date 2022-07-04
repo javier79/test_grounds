@@ -152,6 +152,8 @@ class StartScene: SKScene{
     
     let correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
     let incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
+    let backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
+    //let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
     /*var endGameRectangle: SKSpriteNode!
     var endGameRectangleButton = SKSpriteNode()
     var endGameRectangleButtonTwo = SKSpriteNode()
@@ -172,6 +174,8 @@ class StartScene: SKScene{
     
     var goldBackgroundSKSpriteNode = SKSpriteNode()
     
+    
+    
     override func didMove(to view: SKView){
         
         
@@ -181,6 +185,7 @@ class StartScene: SKScene{
         goldBackgroundSKSpriteNode = goldenBackground()
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
+        
         
         skipButton = skipBlueButton()
         
@@ -559,7 +564,7 @@ class StartScene: SKScene{
         //self.addChild(municipioNameLabel)
         //self.addChild(skipButton)
         self.addChild(containerNode)
-        //self.addChild(endGameRectangle)
+        self.addChild(backgroundMusic)
 
         
         
@@ -582,6 +587,7 @@ class StartScene: SKScene{
         
         return buttonResultadosSKSpriteNode
     }*/
+    
     
     //Contiene todos los SpriteNodes que tienen que ver con el mapa incluyendo covers(como el de desecheo)
     func nodesContainer() -> SKNode{
@@ -1028,12 +1034,13 @@ class StartScene: SKScene{
             //print(renderTimeBiggerCounter!)
             //print("")
         }
-
+        
         //Este bloque solo ejecuta si gameCompleted == true, la idea es tomar los ultimos segundos y minutos para que puedan ser evaluados para la mejor marca de tiempo en la siguiente funcion
         //StartScene.secondsGameOver = seconds
         //StartScene.minutesGameOver = minutes
         /*Aqui ocurre el paso a la escena de Game Over la razon por la que se encuentra aqui es pq cuando lo ejecutaba en Touchesbegan la transicion le quitaba "espacio" a la funcion
          Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
+        
         if StartScene.completedGame == true{
             StartScene.secondsGameOver = seconds
             StartScene.minutesGameOver = minutes
@@ -1132,7 +1139,7 @@ class StartScene: SKScene{
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
                             spriteNode.physicsBody = nil//Elimina el skphysicsBody
                             
-                            run(correctSound)
+                            run(correctSound)//correctSound
                             
                             let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
                             let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
@@ -1388,10 +1395,10 @@ class StartScene: SKScene{
                                     
                                 //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
                                 else{
+                                    //run(fanfair)
                                     goldBackgroundSKSpriteNode.removeFromParent()
                                     timerBackground.removeFromParent()
                                     labelTimer.removeFromParent()
-                                    
                                     //self.addChild(endGameRectangle)
                                     StartScene.completedGame = true//Se actualiza la variable completedGame para detener el reloj
                                     /*self.removeFromParent()
