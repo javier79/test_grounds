@@ -85,6 +85,15 @@ class StartMenu: SKScene {
     var bestTimesPrAlphabeticScorelabel:SKLabelNode!
     var bestTimesPrRandomlabel:SKLabelNode!
     var bestTimesPrRandomScorelabel:SKLabelNode!
+    var opcionesAudioLabel:SKLabelNode!
+    var opcionesMusicaLabel:SKLabelNode!
+    var opcionesSonidosLabel:SKLabelNode!
+    var opcionesCheckbox:SKSpriteNode!
+    var opcionesCheckboxTwo:SKSpriteNode!
+    var opcionesCheckmark:SKSpriteNode!
+    var opcionesCheckmarkTwo:SKSpriteNode!
+    var creditosButton:SKSpriteNode!
+    var creditButtonLabel:SKLabelNode!
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -458,6 +467,48 @@ class StartMenu: SKScene {
         bestTimesPrRandomScorelabel.position = CGPoint(x:120,y:15)
         bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrRandomScorelabel)
         
+        opcionesAudioLabel = opcionesLabelDefaults()
+        opcionesAudioLabel.fontName = "GillSans-Bold"
+        opcionesAudioLabel.text = "Audio"
+        opcionesAudioLabel.position = CGPoint(x:345,y:225)
+        
+        opcionesMusicaLabel = opcionesLabelDefaults()
+        opcionesMusicaLabel.text = "Música (Music)"
+        opcionesMusicaLabel.position = CGPoint(x:-17,y:-20.5)
+        opcionesAudioLabel.addChild(opcionesMusicaLabel)
+        
+        opcionesSonidosLabel = opcionesLabelDefaults()
+        opcionesSonidosLabel.text = "Sonidos (Sound)"
+        opcionesSonidosLabel.position = CGPoint(x:-11.5,y:-45)
+        opcionesAudioLabel.addChild(opcionesSonidosLabel)
+        
+        opcionesCheckbox = opcionesCheckBoxesBpToSpritenode()
+        opcionesCheckbox.position = CGPoint(x:50,y:-16)
+        opcionesAudioLabel.addChild(opcionesCheckbox)
+        
+        opcionesCheckmark = opcionesCheckmarkBpToSpritenode()
+        opcionesCheckmark.position = CGPoint(x:50,y:-16)
+        opcionesAudioLabel.addChild(opcionesCheckmark)
+        
+        opcionesCheckboxTwo = opcionesCheckBoxesBpToSpritenode()
+        opcionesCheckboxTwo.position = CGPoint(x:50,y:-40)
+        opcionesAudioLabel.addChild(opcionesCheckboxTwo)
+        
+        opcionesCheckmarkTwo = opcionesCheckmarkBpToSpritenode()
+        opcionesCheckmarkTwo.position = CGPoint(x:50,y:-40)
+        opcionesAudioLabel.addChild(opcionesCheckmarkTwo)
+        
+        creditosButton = creditosButtonBpDrawToSKSpriteNode()
+        creditosButton.position = CGPoint(x:0.5,y:-65)
+        opcionesAudioLabel.addChild(creditosButton)
+        
+        creditButtonLabel = setLabelDefaults()
+        creditButtonLabel.text = "Creditos (Credits)"
+        creditButtonLabel.position = CGPoint(x:0.5,y:-5.5)
+        creditosButton.addChild(creditButtonLabel)
+        
+        
+        
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
         //elMorro.addChild(buttonGreen)
@@ -489,7 +540,104 @@ class StartMenu: SKScene {
         //self.addChild(orderDropDownMenu)
         //self.addChild(orderDropDownMenu)
         //self.addChild(dropDownLabelBG)
-        self.addChild(bestTimesRectangleBpToSKSpritenode)
+        //self.addChild(bestTimesRectangleBpToSKSpritenode)
+        self.addChild(opcionesAudioLabel)
+    }
+    func creditosButtonBpDrawToSKSpriteNode()->SKSpriteNode{
+        
+        //Drawing
+       var path = UIBezierPath()
+       // Specify the point that the path should start get drawn.
+       path.move(to: CGPoint(x: 0.0, y: 0.0))
+       // Create a line between the starting point and the bottom-left side of the view.
+       path.addLine(to: CGPoint(x: 0.0, y:18))
+       // Create the bottom line (bottom-left to bottom-right).
+       path.addLine(to: CGPoint(x:125 , y:18))
+       //Create the vertical line from the bottom-right to the top-right side.
+       path.addLine(to: CGPoint(x:125, y: 0.0))
+       // Close the path. This will create the last line automatically.
+       path.close()
+         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
+       //Drawing to Shapenode
+       let shapeNode = SKShapeNode(path:path.cgPath)
+       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+       shapeNode.lineWidth = 0.5
+       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+       //Shapenode To SKSpriteNode
+       let view = SKView(frame: UIScreen.main.bounds)
+       let texture = view.texture(from: shapeNode)!
+       let creditosRedButton = SKSpriteNode(texture: texture)
+
+       return creditosRedButton
+            
+    }
+    
+    func opcionesCheckmarkBpToSpritenode()->SKSpriteNode{
+        
+        let path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 4))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:0.0))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:9, y:0))
+        //Create the vertical line from the bottom-right to the top-right side.
+        //path.addLine(to: CGPoint(x:10, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        //path.close()
+        
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.strokeColor = .black//c1d3c8
+        shapeNode.lineWidth = 2.0
+        //shapeNode.fillColor = .white
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let checkmark = SKSpriteNode(texture: texture)
+        checkmark.zRotation = 1
+
+        
+        return checkmark
+        
+    }
+    
+    func opcionesCheckBoxesBpToSpritenode()->SKSpriteNode{
+        let path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:10))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:10 , y:10))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:10, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
+        
+        let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.strokeColor = .white//c1d3c8
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = .white
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let checkbox = SKSpriteNode(texture: texture)
+
+        
+        return checkbox
+        
+    }
+    
+    func opcionesLabelDefaults()->SKLabelNode{
+        let label = SKLabelNode()
+        label.fontSize = 14
+        label.fontName = "GillSans-SemiBold"
+        label.fontColor = .black
+        return label
     }
     
     func bestTimesPrRandomScore()->SKLabelNode{
