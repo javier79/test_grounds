@@ -411,6 +411,9 @@ class StartMenu: SKScene {
         
         //boton verde
         mapOrderGreenButton = setMapOrderGreenButton()
+        mapOrderGreenButton.name = "mapOrderGreenButton"
+        mapOrderGreenButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:mapOrderGreenButton.size.width, height:mapOrderGreenButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        mapOrderGreenButton.physicsBody?.isDynamic = false
         mapOrderGreenButton.position = CGPoint(x:-118, y:-67)
         mapOrderOldPaperbackground.addChild(mapOrderGreenButton)
         
@@ -736,9 +739,9 @@ class StartMenu: SKScene {
         // Create a line between the starting point and the bottom-left side of the view.
         path.addLine(to: CGPoint(x: 0.0, y:30))
         // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:74 , y:30))
+        path.addLine(to: CGPoint(x:50 , y:30))
         //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:74, y: 0.0))
+        path.addLine(to: CGPoint(x:50, y: 0.0))
         // Close the path. This will create the last line automatically.
         path.close()
           
@@ -975,6 +978,11 @@ class StartMenu: SKScene {
                 buttonGreen.removeFromParent()
                 self.addChild(opcionesAudioLabel)
                 self.addChild(returnVolverRedButton)
+            }
+            
+            else if(mapOrderGreenButton.name == touchedNode?.node?.name){
+                mapOrderOldPaperbackground.removeFromParent()
+                self.addChild(gameModeSelectionOldPaperbackground)
             }
                 
             else if (redArrowButtonEspanolLabel.name == touchedNode?.node?.name){
