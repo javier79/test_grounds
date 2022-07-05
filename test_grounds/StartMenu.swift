@@ -541,7 +541,7 @@ class StartMenu: SKScene {
         //self.addChild(orderDropDownMenu)
         //self.addChild(dropDownLabelBG)
         //self.addChild(bestTimesRectangleBpToSKSpritenode)
-        self.addChild(opcionesAudioLabel)
+        //self.addChild(opcionesAudioLabel)
     }
     func creditosButtonBpDrawToSKSpriteNode()->SKSpriteNode{
         
