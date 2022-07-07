@@ -980,11 +980,6 @@ class StartMenu: SKScene {
                 self.addChild(returnVolverRedButton)
             }
             
-            else if(mapOrderGreenButton.name == touchedNode?.node?.name){
-                mapOrderOldPaperbackground.removeFromParent()
-                self.addChild(gameModeSelectionOldPaperbackground)
-            }
-                
             else if (redArrowButtonEspanolLabel.name == touchedNode?.node?.name){
                 instructionsEspanolLabel.removeFromParent()
                 self.addChild(instructionsEspanolLabelTwo)
@@ -1038,7 +1033,33 @@ class StartMenu: SKScene {
                 //self.addChild(redButtonTwo)
                 //self.addChild(redButtonThree)
             }
+            /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton verde y se encuentra desplegado alguno de los dos drop down menu */
+            else if mapOrderGreenButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
+                orderDropDownMenu.removeFromParent()
+                dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+            }
                 
+            else if mapOrderGreenButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+                mapOrderCountryDropDownMenu.removeFromParent()
+                dropDownLabelBG.addChild(dropDownArrowLabel)
+            }
+            /*la ejecucion entra aqui para movernos a LA VISTA PARA ESCOGER EL MODO DE JUEGO cuando presionamos boton verde**/
+            else if(mapOrderGreenButton.name == touchedNode?.node?.name){
+                mapOrderOldPaperbackground.removeFromParent()
+                self.addChild(gameModeSelectionOldPaperbackground)
+            }
+            
+            /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton rojo y se encuentra desplegado alguno de los dos drop down menu */
+            else if mapOrderRedButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
+                orderDropDownMenu.removeFromParent()
+                dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+            }
+                
+            else if mapOrderRedButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+                mapOrderCountryDropDownMenu.removeFromParent()
+                dropDownLabelBG.addChild(dropDownArrowLabel)
+            }
+            /*la ejecucion entra aqui para regresar a la pagina principal cuando presionamos boton rojo**/
             else if mapOrderRedButton.name == touchedNode?.node?.name{
                 mapOrderOldPaperbackground.removeFromParent()
                 self.addChild(buttonGreen)
