@@ -1682,7 +1682,7 @@ class StartMenu: SKScene {
         let texture = view.texture(from: shapeNode)!
         let greenbutton = SKSpriteNode(texture: texture)
         //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        greenbutton.position = CGPoint(x:350, y:225)
+        greenbutton.position = CGPoint(x:self.size.width/2, y:self.size.height/2)//(x:self.size.width/2, y:self.size.height/2)//(x:350, y:225)
         //greenbutton.zPosition = 2
         let labelOne = SKLabelNode()
         labelOne.fontName = "AvenirNext-Bold"
