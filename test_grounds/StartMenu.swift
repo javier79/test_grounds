@@ -1067,6 +1067,19 @@ class StartMenu: SKScene {
                 //self.addChild(redButtonTwo)
                 //self.addChild(redButtonThree)
             }
+            /*La ejecucion va a entrar aqui cuando presiono dropDownArrowLabel pero orderDropDownMenu se encuentra desplegado. En esencia reescribe el label dropDownArrowLabelTwo
+                 con la seleccion que se encuentra identificada por orderDropDownMenuYellowBG o orderDropDownMenuYellowBGTwo devuelve(anade) y remueve orderDropDownMenu**/
+            else if (dropDownArrowLabel.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil){
+                if orderDropDownMenuYellowBG.parent != nil {
+                    dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                }
+                else if orderDropDownMenuYellowBGTwo.parent != nil{
+                    dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                }
+                
+                orderDropDownMenu.removeFromParent()
+                dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+            }
                 
             else if (dropDownArrowLabel.name == touchedNode?.node?.name){
                 
@@ -1076,7 +1089,7 @@ class StartMenu: SKScene {
                 /*el if statement siguiente se activa si el dropdown menu de orden(alfabetico/azar) se encuentra desplegado cerrando el mismo y restituyendo el label dropDownArrowLabelTwo
                 el cual se removio cuando previamente presionamos dropDownArrowLabelTwo para desplegar orderDropDownMenu, pero que a este momento el usuario no hizo seleccion mientras desplegaba
                  mapOrderCountryDropDownMenu.*/
-                if orderDropDownMenu.parent != nil{
+                /*if orderDropDownMenu.parent != nil{
                     
                     /*Si orderDropDownMenuYellowBG se encuentra desplegado se va a utilizar el texto de orderDropDownMenuLabel("Alfabetico (Alphabetic)") en el label del dropdown tab osea dropDownArrowLabelTwo
                     , por el contrario si se encontrara desplegado orderDropDownMenuYellowBGTwo se va a utilizar el texto de orderDropDownMenuLabelTwo  */
@@ -1089,7 +1102,7 @@ class StartMenu: SKScene {
                     
                     orderDropDownMenu.removeFromParent()
                     dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                }
+                }*/
                 /*El siguiente bloque va anadir a la vista el BG amarillo y luego el label "Puerto Rico" sin embargo como se anaden como hijos de mapOrderCountryDropDownMenu y estos dos no se remueven sino que que removemos al Parent no se tienen que volver a anadir, por ello que si eliminamos los statements:  && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil nos da el error de que estamos tratando de anadir un objeto que ya tiene parent*/
                 if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
                    
@@ -1106,13 +1119,25 @@ class StartMenu: SKScene {
                 dropDownLabelBG.addChild(dropDownArrowLabel)
    
             }
+            /*La ejecucion va a entrar aqui cuando oprimimos dropdropDownArrowLabelTwo pero mapOrderCountryDropDownMenu se encuentra desplegado,
+                 en esencia se cierra mapOrderCountryDropDownMenu y se devuelve dropDownArrowLabel al dropDown tab */
+            else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil){
+                 //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
+                if mapOrderCountryDropDownMenuYellowBG.parent != nil {
+                    dropDownArrowLabel.text = dropDownMenuLabelPR.text
+                }
+                
+                mapOrderCountryDropDownMenu.removeFromParent()
+                dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
+                se removio el label cuando presionamos en dropDownArrowLabel*/
+            }
             
             else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name){
                 //remuevo el label del dropdown tab
                 dropDownArrowLabelTwo.removeFromParent()
                 
                 //La ejecucion entra en este bloque si el menu de pais se encuentra desplegado cuando presionamos dropDownArrowLabelTwo
-                if mapOrderCountryDropDownMenu.parent != nil{
+                /*if mapOrderCountryDropDownMenu.parent != nil{
                     //orderDropDownMenu.removeFromParent()
                     //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
                     if mapOrderCountryDropDownMenuYellowBG.parent != nil {
@@ -1122,7 +1147,7 @@ class StartMenu: SKScene {
                     mapOrderCountryDropDownMenu.removeFromParent()
                     dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
                      se removio el label cuando presionamos en dropDownArrowLabel*/
-                }
+                }*/
                 
                 self.addChild(orderDropDownMenu)
                 
