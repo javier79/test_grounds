@@ -428,6 +428,9 @@ class StartMenu: SKScene {
         gameModeSelectionOldPaperbackground = mapOrderOldPaperDropdownBG()
         
         gameModeSelectionGreenButton = modeSelectionGreenButton()
+        gameModeSelectionGreenButton.name = "gameModeSelectionGreenButton"
+        gameModeSelectionGreenButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:gameModeSelectionGreenButton.size.width, height:gameModeSelectionGreenButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        gameModeSelectionGreenButton.physicsBody?.isDynamic = false
         gameModeSelectionGreenButton.position = CGPoint(x:-90, y:50)
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionGreenButton)
         
@@ -437,6 +440,9 @@ class StartMenu: SKScene {
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabel)
         
         gameModeSelectionBlueButton = modeSelectionBlueButton()
+        gameModeSelectionBlueButton.name = "gameModeSelectionBlueButton"
+        gameModeSelectionBlueButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:gameModeSelectionBlueButton.size.width, height:gameModeSelectionBlueButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        gameModeSelectionBlueButton.physicsBody?.isDynamic = false
         gameModeSelectionBlueButton.position = CGPoint(x:90, y:50)
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionBlueButton)
         
@@ -447,6 +453,9 @@ class StartMenu: SKScene {
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
         
         gameModeSelectionRedButton = modeSelectionRedButton()
+        gameModeSelectionRedButton.name = "gameModeSelectionRedButton"
+        gameModeSelectionRedButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:gameModeSelectionRedButton.size.width, height:gameModeSelectionRedButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        gameModeSelectionRedButton.physicsBody?.isDynamic = false
         gameModeSelectionRedButton.position = CGPoint(x:0,y:-55)
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
         
@@ -1246,6 +1255,41 @@ class StartMenu: SKScene {
                     orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
                     //orderDropDownMenuLabelTwo.zPosition = 1
                 }
+            }
+            /*Los proximos tres else if statements pertenecen a los botones para la vista de seleccion**/
+            else if (gameModeSelectionGreenButton.name == touchedNode?.node?.name){
+                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                    self.removeAllActions()
+                    self.removeFromParent()
+                    let startScene = StartScene(size: self.size)
+                    self.view?.presentScene(startScene)
+                }
+                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                    self.removeAllActions()
+                    self.removeFromParent()
+                    let randomGame = RandomGame(size: self.size)
+                    self.view?.presentScene(randomGame)
+                }
+                
+            }
+            else if (gameModeSelectionBlueButton.name == touchedNode?.node?.name){
+                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                    self.removeAllActions()
+                    self.removeFromParent()
+                    let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
+                    self.view?.presentScene(practiceAlphabeticGame)
+                }
+                
+                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                    self.removeAllActions()
+                    self.removeFromParent()
+                    let practiceRandomGame = PracticeRandomGame(size: self.size)
+                    self.view?.presentScene(practiceRandomGame)
+                }
+            }
+            else if (gameModeSelectionRedButton.name == touchedNode?.node?.name){
+                gameModeSelectionOldPaperbackground.removeFromParent()
+                self.addChild(mapOrderOldPaperbackground)
             }
             
         }
