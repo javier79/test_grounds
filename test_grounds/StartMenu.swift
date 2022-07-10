@@ -96,6 +96,7 @@ class StartMenu: SKScene {
     static var gamePlaySoundOn = true
     var creditosButton:SKSpriteNode!
     var creditButtonLabel:SKLabelNode!
+    var creditsContainer:SKNode!
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -203,9 +204,12 @@ class StartMenu: SKScene {
         returnVolverRedButton.position = CGPoint(x:40, y:25)
         returnVolverRedButton.setScale(1.2)//set a larger scale
         
+        creditsContainer = nodesContainer()
+        
         creditsLabel = setCreditsLabelDefaults()
         creditsLabel.text = "CONCEPT\n\nDESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
         creditsLabel.position = CGPoint(x:50, y:202)
+        creditsContainer.addChild(creditsLabel)
         
         creditsLabelTwo = setCreditsLabelDefaults()
         creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\nEnrique J. Pizarro\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
@@ -213,6 +217,7 @@ class StartMenu: SKScene {
         creditsLabelTwo.position = CGPoint(x:160, y:202)
         //creditsLabelTwo.numberOfLines = 13
         creditsLabelTwo.preferredMaxLayoutWidth = 110 //140
+        creditsContainer.addChild(creditsLabelTwo)
         
         creditsSoundMusicLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
         //creditsSoundMusicLabel.fontSize = 11
@@ -220,12 +225,14 @@ class StartMenu: SKScene {
         //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
         creditsSoundMusicLabel.text = "SOUND & MUSIC"
         creditsSoundMusicLabel.position = CGPoint(x:95, y:190)
+        creditsContainer.addChild(creditsSoundMusicLabel)
         
         creditsSoundMusicChildLabel = setCreditsLabelDefaults()
         //creditsSoundMusicChildLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
         creditsSoundMusicChildLabel.text = "1-At the shore\n2-No Frills Salsa-Alternate\n(shortened from original)\n3-Guiton Sketch\n\n1-La Borinqueña\n2-Star Spangled Banner\n\n1-Game Sound Correct\nOrganic Violin\n\n\nCartoon Success Fanfare"
         creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 125
         creditsSoundMusicChildLabel.position = CGPoint(x:69, y:55)
+        creditsContainer.addChild(creditsSoundMusicChildLabel)
         
         creditsSoundMusicChildLabelTwo = setCreditsLabelDefaults()
         creditsSoundMusicChildLabelTwo.text = "\nKevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
@@ -233,6 +240,7 @@ class StartMenu: SKScene {
         creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:55)
         //creditsLabelTwo.numberOfLines = 13
         creditsSoundMusicChildLabelTwo.preferredMaxLayoutWidth = 100 //140
+        creditsContainer.addChild(creditsSoundMusicChildLabelTwo)
         
         creditsSoundMusicChildLabelThree = licenseLabels()
         //creditsSoundMusicChildLabelThree.fontColor = UIColor.black
@@ -242,6 +250,7 @@ class StartMenu: SKScene {
         //creditsSoundMusicChildLabelThree.numberOfLines = 5
         //creditsSoundMusicChildLabelThree.preferredMaxLayoutWidth = 250
         creditsSoundMusicChildLabelThree.position =  CGPoint(x:125, y:20)
+        creditsContainer.addChild(creditsSoundMusicChildLabelThree)
         
         creditsMapsImagesLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
         //creditsSoundMusicLabel.fontSize = 11
@@ -249,12 +258,14 @@ class StartMenu: SKScene {
         //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
         creditsMapsImagesLabel.text = "IMAGES AND MAPS"
         creditsMapsImagesLabel.position = CGPoint(x:370, y:295)
+        creditsContainer.addChild(creditsMapsImagesLabel)
         
         creditsMapsImagesChildLabel = setCreditsLabelDefaults()
         creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
         creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
         creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
         creditsMapsImagesChildLabel.position = CGPoint(x:325, y:245)
+        creditsContainer.addChild(creditsMapsImagesChildLabel)
         
         creditsMapsImagesChildLabelTwo = setCreditsLabelDefaults()
         creditsMapsImagesChildLabelTwo.text = "https://mapsvg.com/maps/puerto-rico"
@@ -262,14 +273,17 @@ class StartMenu: SKScene {
         creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:260)
         //creditsLabelTwo.numberOfLines = 13
         creditsMapsImagesChildLabelTwo.preferredMaxLayoutWidth = 180
+        creditsContainer.addChild(creditsMapsImagesChildLabelTwo)
         
         creditsMapsImagesChildLabelThree = licenseLabels()
         creditsMapsImagesChildLabelThree.position = CGPoint(x:383, y:215)
         creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
+        creditsContainer.addChild(creditsMapsImagesChildLabelThree)
         
         creditsSpecialThanksLabel = creditsSingleLineLabelDefaults()
         creditsSpecialThanksLabel.text = "SPECIAL THANKS"
         creditsSpecialThanksLabel.position = CGPoint(x:360, y:200)
+        creditsContainer.addChild(creditsSpecialThanksLabel)
         
         creditsSpecialThanksChildLabel = setCreditsLabelDefaults()
         creditsSpecialThanksChildLabel.text = "Manuel Alvarez\nRoberto Vélez Benitez\nEnrique J. Pizarro\nRodrigo Barasorda\nJosé Ramos\nMaritza Torres\nNarén Vélez Vendrell\nGabriela Mora Llorens\nCarmine T. Guida\nVladimir Alyamkin\nRaul Rosado\n@Pedro Cacique(https://www.youtube.com/c/PedroCacique)\nHoglund & Pamías\nAtlantic University College\nEpic Games,inc"
@@ -277,12 +291,13 @@ class StartMenu: SKScene {
         creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:43)
         //creditsLabelTwo.numberOfLines = 13
         creditsSpecialThanksChildLabel.preferredMaxLayoutWidth = 280 //140
+        creditsContainer.addChild(creditsSpecialThanksChildLabel)
         
         creditsSpecialThanksChildLabelTwo = licenseLabels()
         creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
         creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
         creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
-        
+        creditsContainer.addChild(creditsSpecialThanksChildLabelTwo)
         //recuadro donde se desplegan los objetos concernientes a elegir mapa y ordern
         mapOrderOldPaperbackground = mapOrderOldPaperDropdownBG()
         
@@ -547,6 +562,8 @@ class StartMenu: SKScene {
         
         
         
+        
+        
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
         //elMorro.addChild(buttonGreen)
@@ -581,8 +598,17 @@ class StartMenu: SKScene {
         //self.addChild(bestTimesRectangleBpToSKSpritenode)
         //self.addChild(opcionesAudioLabel)
     }
+    
+    func nodesContainer() -> SKNode{
+        let nodes_Container = SKNode()
+        //nodes_Container.color = UIColor.white
+        //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
+        //nodes_Container.anchorPoint = CGPoint.zero
+        nodes_Container.position = CGPoint(x:self.size.width/11, y:self.size.height - self.size.height)///25 - 5)//(x: 60.0, y: 0.5)
+        return  nodes_Container
+    }
+    
     func creditosButtonBpDrawToSKSpriteNode()->SKSpriteNode{
-        
         //Drawing
        var path = UIBezierPath()
        // Specify the point that the path should start get drawn.
@@ -1035,6 +1061,12 @@ class StartMenu: SKScene {
                 instructionsEnglishLabelTwo.removeFromParent()
                 self.addChild(instructionsEnglishLabel)
             }
+            //Esta linea se hizo para poder reutilizar el boton de volver cuando se desplega la vista de creditos
+            else if (returnVolverRedButton.name == touchedNode?.node?.name && creditsContainer.parent != nil){
+                creditsContainer.removeFromParent()
+                self.addChild(opcionesAudioLabel)
+            }
+            
             else if (returnVolverRedButton.name == touchedNode?.node?.name){
                 returnVolverRedButton.removeFromParent()
                 if instructionsEspanolLabel.parent != nil{
@@ -1056,12 +1088,14 @@ class StartMenu: SKScene {
                     bestTimesRectangleBpToSKSpritenode.removeFromParent()
                 }
                 
+                
                 self.addChild(buttonGreen)
                 //self.addChild(redButtonOne)
                 //self.addChild(redButtonTwo)
                 //self.addChild(redButtonThree)
             }
-            /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton verde y se encuentra desplegado alguno de los dos drop down menu */
+            
+                /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton verde y se encuentra desplegado alguno de los dos drop down menu */
             else if mapOrderGreenButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
                 orderDropDownMenu.removeFromParent()
                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
@@ -1327,6 +1361,10 @@ class StartMenu: SKScene {
             else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent == nil){
                 opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
                 StartMenu.gamePlaySoundOn = true
+            }
+            else if (creditosButton.name == touchedNode?.node?.name){
+                opcionesAudioLabel.removeFromParent()
+                self.addChild(creditsContainer)
             }
             
             
