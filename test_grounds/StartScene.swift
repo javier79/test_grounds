@@ -177,8 +177,7 @@ class StartScene: SKScene{
     
     
     override func didMove(to view: SKView){
-        
-        
+    
         containerNode = nodesContainer()
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
         //let backgroundSKSpriteNode: SKSpriteNode = prBackground()
@@ -564,7 +563,10 @@ class StartScene: SKScene{
         //self.addChild(municipioNameLabel)
         //self.addChild(skipButton)
         self.addChild(containerNode)
-        self.addChild(backgroundMusic)
+        if StartMenu.backgroundMusicOn == true{
+            self.addChild(backgroundMusic)
+        }
+        
 
         
         
@@ -1138,9 +1140,9 @@ class StartScene: SKScene{
                             spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
                             spriteNode.physicsBody = nil//Elimina el skphysicsBody
-                            
-                            run(correctSound)//correctSound
-                            
+                            if StartMenu.gamePlaySoundOn == true{
+                                run(correctSound)//correctSound
+                            }
                             let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
                             let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
                             
@@ -1520,7 +1522,9 @@ class StartScene: SKScene{
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
-                run(incorrectSound)
+                if StartMenu.gamePlaySoundOn == true{
+                    run(incorrectSound)
+                }
                 return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
                 
             }

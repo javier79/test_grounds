@@ -92,6 +92,8 @@ class StartMenu: SKScene {
     var opcionesCheckboxTwo:SKSpriteNode!
     var opcionesCheckmark:SKSpriteNode!
     var opcionesCheckmarkTwo:SKSpriteNode!
+    static var backgroundMusicOn = true
+    static var gamePlaySoundOn = true
     var creditosButton:SKSpriteNode!
     var creditButtonLabel:SKLabelNode!
     
@@ -502,22 +504,39 @@ class StartMenu: SKScene {
         opcionesAudioLabel.addChild(opcionesSonidosLabel)
         
         opcionesCheckbox = opcionesCheckBoxesBpToSpritenode()
+        opcionesCheckbox.name = "opcionesCheckbox"
+        opcionesCheckbox.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:opcionesCheckbox.size.width, height:opcionesCheckbox.size.height), center: CGPoint(x:0.5, y: 0.5))
+        opcionesCheckbox.physicsBody?.isDynamic = false
         opcionesCheckbox.position = CGPoint(x:50,y:-16)
         opcionesAudioLabel.addChild(opcionesCheckbox)
         
         opcionesCheckmark = opcionesCheckmarkBpToSpritenode()
-        opcionesCheckmark.position = CGPoint(x:50,y:-16)
-        opcionesAudioLabel.addChild(opcionesCheckmark)
+        opcionesCheckmark.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-16)
+        /*La siguiente linea es para evitar que si usuario dio uncheck o por el contrario check antes de comenzar el juego y sale del juego como es un cambio de escena, esta escena pues va a anadir de nuevo el check mark que inicialmente quizas el usuario quito pq no queria musica de fondo o sonido de juego, de modo que con esta linea prevalece la seleccion del usuario, aun haya cambio de escena(para ver esto eliminar el if
+         )**/
+        if StartMenu.backgroundMusicOn == true{
+            opcionesCheckbox.addChild(opcionesCheckmark)
+        }
         
         opcionesCheckboxTwo = opcionesCheckBoxesBpToSpritenode()
+        opcionesCheckboxTwo.name = "opcionesCheckboxTwo"
+        opcionesCheckboxTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:opcionesCheckboxTwo.size.width, height:opcionesCheckboxTwo.size.height), center: CGPoint(x:0.5, y: 0.5))
+        opcionesCheckboxTwo.physicsBody?.isDynamic = false
         opcionesCheckboxTwo.position = CGPoint(x:50,y:-40)
         opcionesAudioLabel.addChild(opcionesCheckboxTwo)
         
         opcionesCheckmarkTwo = opcionesCheckmarkBpToSpritenode()
-        opcionesCheckmarkTwo.position = CGPoint(x:50,y:-40)
-        opcionesAudioLabel.addChild(opcionesCheckmarkTwo)
+        opcionesCheckmarkTwo.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-40)
+        /*La siguiente linea es para evitar que si usuario dio uncheck o por el contrario check antes de comenzar el juego y sale del juego como es un cambio de escena, esta escena pues va a anadir de nuevo el check mark que inicialmente quizas el usuario quito pq no queria musica de fondo o sonido de juego, de modo que con esta linea prevalece la seleccion del usuario, aun haya cambio de escena(para ver esto eliminar el if
+        )**/
+        if StartMenu.gamePlaySoundOn == true{
+            opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
+        }
         
         creditosButton = creditosButtonBpDrawToSKSpriteNode()
+        creditosButton.name = "creditosButton"
+        creditosButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:creditosButton.size.width, height:creditosButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        creditosButton.physicsBody?.isDynamic = false
         creditosButton.position = CGPoint(x:0.5,y:-65)
         opcionesAudioLabel.addChild(creditosButton)
         
@@ -1291,6 +1310,25 @@ class StartMenu: SKScene {
                 gameModeSelectionOldPaperbackground.removeFromParent()
                 self.addChild(mapOrderOldPaperbackground)
             }
+                
+            else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
+                opcionesCheckmark.removeFromParent()
+                StartMenu.backgroundMusicOn = false
+            }
+            
+            else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent == nil){
+                opcionesCheckbox.addChild(opcionesCheckmark)
+                StartMenu.backgroundMusicOn = true
+            }
+            else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent != nil){
+                opcionesCheckmarkTwo.removeFromParent()
+                StartMenu.gamePlaySoundOn = false
+            }
+            else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent == nil){
+                opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
+                StartMenu.gamePlaySoundOn = true
+            }
+            
             
         }
             
