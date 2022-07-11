@@ -150,9 +150,9 @@ class StartScene: SKScene{
     var scoreCount:Int = 0
     let totalScoreCount:String = "/78"
     
-    let correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
-    let incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
-    let backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
+    static var correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
+    static var incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
+    static var backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
     //let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
     /*var endGameRectangle: SKSpriteNode!
     var endGameRectangleButton = SKSpriteNode()
@@ -564,7 +564,7 @@ class StartScene: SKScene{
         //self.addChild(skipButton)
         self.addChild(containerNode)
         if StartMenu.backgroundMusicOn == true{
-            self.addChild(backgroundMusic)
+            self.addChild(StartScene.backgroundMusic)
         }
         
 
@@ -1141,7 +1141,7 @@ class StartScene: SKScene{
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
                             spriteNode.physicsBody = nil//Elimina el skphysicsBody
                             if StartMenu.gamePlaySoundOn == true{
-                                run(correctSound)//correctSound
+                                run(StartScene.correctSound)//correctSound
                             }
                             let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
                             let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
@@ -1523,7 +1523,7 @@ class StartScene: SKScene{
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
                 if StartMenu.gamePlaySoundOn == true{
-                    run(incorrectSound)
+                    run(StartScene.incorrectSound)
                 }
                 return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
                 

@@ -530,7 +530,7 @@ class StartMenu: SKScene {
         opcionesCheckmark.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-16)
         /*La siguiente linea es para evitar que si usuario dio uncheck o por el contrario check antes de comenzar el juego y sale del juego como es un cambio de escena, esta escena pues va a anadir de nuevo el check mark que inicialmente quizas el usuario quito pq no queria musica de fondo o sonido de juego, de modo que con esta linea prevalece la seleccion del usuario, aun haya cambio de escena(para ver esto eliminar el if
          )**/
-        if StartMenu.backgroundMusicOn == true{
+        if StartMenu.backgroundMusicOn == true /*&& opcionesCheckmark.parent == nil*/{
             opcionesCheckbox.addChild(opcionesCheckmark)
         }
         
@@ -572,7 +572,12 @@ class StartMenu: SKScene {
         //elMorro.addChild(redButtonOne)
         //elMorro.addChild(redButtonTwo)
        // elMorro.addChild(redButtonThree)
-        self.addChild(startMenuMusic)
+        
+        /*Este if statement previene que se anada la musica por ejemplo si el usuario deshabilito la musica de fondo y juega pero interrumpe el juego(Salida(exit)) este statement
+         va a impedir que con el cambio de escena se vuelva a anadir la musica*/
+        if opcionesCheckmark.parent != nil{
+            self.addChild(startMenuMusic)
+        }
         self.addChild(oldPaperBorderTexture)
         self.addChild(buttonGreen)
         //self.addChild(redButtonOne)

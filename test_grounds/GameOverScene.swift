@@ -625,8 +625,9 @@ class GameOverScene: SKScene{
         }
         
         if exited == true{
-           self.removeFromParent()
            self.removeAllActions()
+           self.removeFromParent()
+
            let startMenu = StartMenu(size: self.size)//definitio
            //let transition = SKTransition.fade(withDuration: 1.0)
            self.view?.presentScene(startMenu/*, transition: transition*/)/*present scene and execut transitions*/

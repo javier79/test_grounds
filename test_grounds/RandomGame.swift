@@ -505,6 +505,10 @@ class RandomGame: SKScene{
         let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
         containerNode.addChild(culebraSKSpriteNode)
         
+        if StartMenu.backgroundMusicOn == true{
+            self.addChild(StartScene.backgroundMusic)
+        }
+        
         //Este grupo de objetos estan relacionados por goldBackgroundSKSpriteNode, dado que esta barra de controles se elimina cuando se acierta el ultimo municipios junto con los botones, labels y backgrounds adheridos a la barra de controles)
         goldBackgroundSKSpriteNode.addChild(labelScores)
         municipiosNameBackground.addChild(municipioNameLabel)//ojo puse el background como padre del label para facilitar el posicionamiento de ambos con respecto a goldBackgroundSKSpriteNode
@@ -877,7 +881,10 @@ class RandomGame: SKScene{
                             spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
                             spriteNode.physicsBody = nil//Elimina el skphysicsBody
-
+                            
+                            if StartMenu.gamePlaySoundOn == true{
+                                run(StartScene.correctSound)
+                             }
                                 
                             //El siguiente bloque se encarga de los atributos generales que van a compartir todos labels que se desplegan sobre los skspritenodes correspondientes a los municipios en el mapa del juego
                             locationNameLabel.text = municipioNameLabel.text
@@ -1151,6 +1158,9 @@ class RandomGame: SKScene{
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
+                if StartMenu.gamePlaySoundOn == true{
+                    run(StartScene.incorrectSound)
+                }
                 return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
             }
             

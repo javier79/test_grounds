@@ -604,6 +604,10 @@ class PracticeRandomGame: SKScene{
             
             containerNode.addChild(node)
           }
+           if StartMenu.backgroundMusicOn == true{
+               self.addChild(StartScene.backgroundMusic)
+           }
+        
             goldBackgroundSKSpriteNode.addChild(labelScores)
             municipiosNameBackground.addChild(municipioNameLabel)//ojo puse el background como padre del label para facilitar el posicionamiento de ambos con respecto a goldBackgroundSKSpriteNode
             goldBackgroundSKSpriteNode.addChild(municipiosNameBackground)
@@ -768,7 +772,10 @@ class PracticeRandomGame: SKScene{
                             spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
                             spriteNode.physicsBody = nil//Elimina el skphysicsBody
-
+                                
+                            if StartMenu.gamePlaySoundOn == true{
+                                run(StartScene.correctSound)
+                            }
                             
                             for index in municipios_names_array {
                                 if index != ""{
@@ -876,6 +883,11 @@ class PracticeRandomGame: SKScene{
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
+                
+                if StartMenu.gamePlaySoundOn == true{
+                    run(StartScene.incorrectSound)
+                }
+                
                 return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
             }
             
