@@ -97,6 +97,7 @@ class StartMenu: SKScene {
     var creditosButton:SKSpriteNode!
     var creditButtonLabel:SKLabelNode!
     var creditsContainer:SKNode!
+    var startMenuMusic = SKAudioNode(fileNamed: "Guiton Sketch.mp3")
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
@@ -571,6 +572,7 @@ class StartMenu: SKScene {
         //elMorro.addChild(redButtonOne)
         //elMorro.addChild(redButtonTwo)
        // elMorro.addChild(redButtonThree)
+        self.addChild(startMenuMusic)
         self.addChild(oldPaperBorderTexture)
         self.addChild(buttonGreen)
         //self.addChild(redButtonOne)
@@ -1348,11 +1350,13 @@ class StartMenu: SKScene {
             else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
                 opcionesCheckmark.removeFromParent()
                 StartMenu.backgroundMusicOn = false
+                startMenuMusic.removeFromParent()
             }
             
             else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent == nil){
                 opcionesCheckbox.addChild(opcionesCheckmark)
                 StartMenu.backgroundMusicOn = true
+                self.addChild(startMenuMusic)
             }
             else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent != nil){
                 opcionesCheckmarkTwo.removeFromParent()
