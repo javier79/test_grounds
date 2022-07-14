@@ -625,6 +625,9 @@ class GameOverScene: SKScene{
         }
         
         if exited == true{
+            if StartScene.completedGame == true{
+                StartScene.completedGame = false
+            }
            self.removeAllActions()
            self.removeFromParent()
 

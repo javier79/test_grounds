@@ -127,6 +127,7 @@ class StartMenu: SKScene {
         buttonGreen.addChild(redButtonTwo)
         
         redButtonThree = redButtonBpDrawToSKSpriteNode()
+        
         redButtonThree = setRedButtonPhysicsBody(redButton:redButtonThree)
         redButtonThree.position = CGPoint(x:0.5,y:-98.5)
         redButtonThree.name = "redButtonThree"
@@ -136,18 +137,22 @@ class StartMenu: SKScene {
         buttonGreen.addChild(redButtonThree)
         
         instructionsEspanolLabel = setinstructionsLabelDefaults()//create label and set default atrributes
+        instructionsEspanolLabel.name = "instructionsEspanolLabel"
         instructionsEspanolLabel = instructionsEspanolLabelText(labelEspanol:instructionsEspanolLabel)//set the text attribute for label
         instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.55)//overrides position values from setinstructionsLabelDefaults()
         
         instructionsEspanolLabelTwo = setinstructionsLabelDefaults()
+        instructionsEspanolLabelTwo.name = "instructionsEspanolLabelTwo"
         instructionsEspanolLabelTwo = instructionsEspanolLabelTextTwo (labelEspanolTwo:instructionsEspanolLabelTwo)
         //instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
         
         instructionsEnglishLabel = setinstructionsLabelDefaults()
+        instructionsEnglishLabel.name = "instructionsEnglishLabel"
         instructionsEnglishLabel = instructionsEnglishLabelText(labelEnglish:instructionsEnglishLabel)
         //instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
         
         instructionsEnglishLabelTwo = setinstructionsLabelDefaults()
+        instructionsEnglishLabelTwo.name = "instructionsEnglishLabelTwo"
         instructionsEnglishLabelTwo = instructionsEnglishLabelTextTwo(labelEnglishTwo:instructionsEnglishLabelTwo)
         //instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
         
@@ -194,6 +199,7 @@ class StartMenu: SKScene {
         instructionsEnglishLabel.addChild(espanolButton)
         
         returnVolverRedButton = redButtonShapeNodeToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        returnVolverRedButton.name = "returnVolverRedButton"
         returnVolverRedButtonLabelOne = redButtonBlueButtonLabelOne()//set difault attributes for label
         returnVolverRedButtonLabelOne.name = "redButtonBlueButtonLabelOne"
         returnVolverRedButtonLabelOne.text = "Volver"
@@ -206,13 +212,15 @@ class StartMenu: SKScene {
         returnVolverRedButton.setScale(1.2)//set a larger scale
         
         creditsContainer = nodesContainer()
-        
+        creditsContainer.name = "creditsContainer"
         creditsLabel = setCreditsLabelDefaults()
+        creditsLabel.name = "creditsLabel"
         creditsLabel.text = "CONCEPT\n\nDESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
         creditsLabel.position = CGPoint(x:50, y:202)
         creditsContainer.addChild(creditsLabel)
         
         creditsLabelTwo = setCreditsLabelDefaults()
+        creditsLabelTwo.name = "creditsLabelTwo"
         creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\nEnrique J. Pizarro\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
         creditsLabelTwo.fontColor = UIColor.black
         creditsLabelTwo.position = CGPoint(x:160, y:202)
@@ -221,6 +229,7 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsLabelTwo)
         
         creditsSoundMusicLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
+        creditsSoundMusicLabel.name = "creditsSoundMusicLabel"
         //creditsSoundMusicLabel.fontSize = 11
         //creditsSoundMusicLabel.fontName = "GillSans-Bold"
         //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
@@ -229,6 +238,7 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsSoundMusicLabel)
         
         creditsSoundMusicChildLabel = setCreditsLabelDefaults()
+        creditsSoundMusicChildLabel.name = "creditsSoundMusicChildLabel"
         //creditsSoundMusicChildLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
         creditsSoundMusicChildLabel.text = "1-At the shore\n2-No Frills Salsa-Alternate\n(shortened from original)\n3-Guiton Sketch\n\n1-La Borinqueña\n2-Star Spangled Banner\n\n1-Game Sound Correct\nOrganic Violin\n\n\nCartoon Success Fanfare"
         creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 125
@@ -236,6 +246,7 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsSoundMusicChildLabel)
         
         creditsSoundMusicChildLabelTwo = setCreditsLabelDefaults()
+        creditsSoundMusicChildLabelTwo.name = "creditsSoundMusicChildLabelTwo"
         creditsSoundMusicChildLabelTwo.text = "\nKevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
         creditsSoundMusicChildLabelTwo.fontColor = UIColor.black
         creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:55)
@@ -244,6 +255,7 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsSoundMusicChildLabelTwo)
         
         creditsSoundMusicChildLabelThree = licenseLabels()
+        creditsSoundMusicChildLabelThree.name = "creditsSoundMusicChildLabelThree"
         //creditsSoundMusicChildLabelThree.fontColor = UIColor.black
         //creditsSoundMusicChildLabelThree.fontSize = 7.5
         //creditsSoundMusicChildLabelThree.fontName = "GillSans-Bold"
@@ -254,6 +266,7 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsSoundMusicChildLabelThree)
         
         creditsMapsImagesLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
+        creditsMapsImagesLabel.name = "creditsMapsImagesLabel"
         //creditsSoundMusicLabel.fontSize = 11
         //creditsSoundMusicLabel.fontName = "GillSans-Bold"
         //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
@@ -262,6 +275,7 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsMapsImagesLabel)
         
         creditsMapsImagesChildLabel = setCreditsLabelDefaults()
+        creditsMapsImagesChildLabel.name = "creditsMapsImagesChildLabel"
         creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
         creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
         creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
@@ -269,6 +283,7 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsMapsImagesChildLabel)
         
         creditsMapsImagesChildLabelTwo = setCreditsLabelDefaults()
+        creditsMapsImagesChildLabelTwo.name = "creditsMapsImagesChildLabelTwo"
         creditsMapsImagesChildLabelTwo.text = "https://mapsvg.com/maps/puerto-rico"
         creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
         creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:260)
@@ -277,16 +292,19 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsMapsImagesChildLabelTwo)
         
         creditsMapsImagesChildLabelThree = licenseLabels()
+        creditsMapsImagesChildLabelThree.name = "creditsMapsImagesChildLabelThree"
         creditsMapsImagesChildLabelThree.position = CGPoint(x:383, y:215)
         creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
         creditsContainer.addChild(creditsMapsImagesChildLabelThree)
         
         creditsSpecialThanksLabel = creditsSingleLineLabelDefaults()
+        creditsSpecialThanksLabel.name = "creditsSpecialThanksLabel"
         creditsSpecialThanksLabel.text = "SPECIAL THANKS"
         creditsSpecialThanksLabel.position = CGPoint(x:360, y:200)
         creditsContainer.addChild(creditsSpecialThanksLabel)
         
         creditsSpecialThanksChildLabel = setCreditsLabelDefaults()
+        creditsSpecialThanksChildLabel.name = "creditsSpecialThanksChildLabel"
         creditsSpecialThanksChildLabel.text = "Manuel Alvarez\nRoberto Vélez Benitez\nEnrique J. Pizarro\nRodrigo Barasorda\nJosé Ramos\nMaritza Torres\nNarén Vélez Vendrell\nGabriela Mora Llorens\nCarmine T. Guida\nVladimir Alyamkin\nRaul Rosado\n@Pedro Cacique(https://www.youtube.com/c/PedroCacique)\nHoglund & Pamías\nAtlantic University College\nEpic Games,inc"
         creditsSpecialThanksChildLabel.fontColor = UIColor.black
         creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:43)
@@ -295,21 +313,26 @@ class StartMenu: SKScene {
         creditsContainer.addChild(creditsSpecialThanksChildLabel)
         
         creditsSpecialThanksChildLabelTwo = licenseLabels()
+        creditsSpecialThanksChildLabelTwo.name = "creditsSpecialThanksChildLabelTwo"
         creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
         creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
         creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
         creditsContainer.addChild(creditsSpecialThanksChildLabelTwo)
         //recuadro donde se desplegan los objetos concernientes a elegir mapa y ordern
+        
         mapOrderOldPaperbackground = mapOrderOldPaperDropdownBG()
+        mapOrderOldPaperbackground.name = "mapOrderOldPaperbackground"
         
         //label con instrucciones al tope derecho
         mapOrderTopLabel = mapOrderTwoLineLabelDefaults()
+        mapOrderTopLabel.name = "mapOrderTopLabel"
         mapOrderTopLabel.position = CGPoint(x:110, y:58)
         mapOrderTopLabel.text = "Seleccciona el mapa en el menú desplegable\n(Select the map from the drop-downmenu)"
         mapOrderOldPaperbackground.addChild(mapOrderTopLabel)
         
         //segundo label con instrucciones
         mapOrderMiddleLabel = mapOrderTwoLineLabelDefaults()
+        mapOrderMiddleLabel.name = "mapOrderMiddleLabel"
         mapOrderMiddleLabel.position = CGPoint(x:72, y:-15)
         mapOrderMiddleLabel.text = "Selecciona el orden de los objetivos en el menú desplegable\n\t   (Select the target order from the drop-downmenu)"
         mapOrderOldPaperbackground.addChild(mapOrderMiddleLabel)
@@ -322,6 +345,7 @@ class StartMenu: SKScene {
         
         //flecha en el dropdown tab
         dropDownArrow = dropDownArrowBPToSKSpritenode()
+        dropDownArrow.name = "dropDownArrow"
         dropDownArrow.position = CGPoint(x:80,y:-0.5)
         dropDownLabelBG.addChild(dropDownArrow)
         
@@ -336,6 +360,7 @@ class StartMenu: SKScene {
         
         //label a la izquierda con la palabra Mapa(Map)
         mapOrderSingleLineLabel = creditsSingleLineLabelDefaults()
+        mapOrderSingleLineLabel.name = "mapOrderSingleLineLabel"
         mapOrderSingleLineLabel.fontSize = 14
         mapOrderSingleLineLabel.text = "Mapa (Map)"
         mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabel)
@@ -343,6 +368,7 @@ class StartMenu: SKScene {
         
         //segundo label a la izquierda con la palabra Orden(Order)
         mapOrderSingleLineLabelTwo = creditsSingleLineLabelDefaults()
+        mapOrderSingleLineLabelTwo.name = "mapOrderSingleLineLabelTwo"
         mapOrderSingleLineLabelTwo.fontSize = 14
         mapOrderSingleLineLabelTwo.text = "Orden (Order)"
         mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabelTwo)
@@ -352,10 +378,12 @@ class StartMenu: SKScene {
         
         //Menu a desplegarse cuando oprimimos el dropdown tab superior
         mapOrderCountryDropDownMenu = mapOrderCountryDropDownMenuSpriteNode()
+        mapOrderCountryDropDownMenu.name = "mapOrderCountryDropDownMenu"
         mapOrderCountryDropDownMenu.position = CGPoint(x:434,y:215)
         
         //Background amarillo para el label que dice "Puerto Rico" en el menu
         mapOrderCountryDropDownMenuYellowBG = dropDownMenuLabelBackground()
+        mapOrderCountryDropDownMenuYellowBG.name = "mapOrderCountryDropDownMenuYellowBG"
         mapOrderCountryDropDownMenuYellowBG.position = CGPoint(x:0.0,y:9.7)
         //mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
         
@@ -371,11 +399,13 @@ class StartMenu: SKScene {
         
         //dropdown tab(con la flecha hacia abajo) en el dropdown menu inferior(orden alfabetico/azar)
         dropDownLabelBGTwo = dropDownLabelBackground()
+        dropDownLabelBGTwo.name = "dropDownLabelBGTwo"
         dropDownLabelBGTwo.position = CGPoint(x:100,y:-23)
         mapOrderOldPaperbackground.addChild(dropDownLabelBGTwo)
         
         //esto genera el dibujo de la flechita en el dropdown menu inferior(orden alfabetico/azar)
         dropDownArrowTwo = dropDownArrowBPToSKSpritenode()
+        dropDownArrowTwo.name = "dropDownArrowTwo"
         dropDownArrowTwo.position = CGPoint(x:80,y:-0.5)
         dropDownLabelBGTwo.addChild(dropDownArrowTwo)//se anade como hijo del dropdown tab
          
@@ -391,10 +421,12 @@ class StartMenu: SKScene {
         
         //La casilla gris que se desplega cuando oprimimos en dropDownArrowLabelTwo(dropdown orden alfabetico/azar)
         orderDropDownMenu = mapOrderCountryDropDownMenuSpriteNodeTwo()
+        orderDropDownMenu.name = "orderDropDownMenu"
         orderDropDownMenu.position = CGPoint(x:434,y:142)
         
         //Background amarillo para el label "Alfabetico"
         orderDropDownMenuYellowBG = dropDownMenuLabelBackground()
+        orderDropDownMenuYellowBG.name = "orderDropDownMenuYellowBG"
         orderDropDownMenuYellowBG.position = CGPoint(x:0.0,y:7)
         orderDropDownMenuYellowBG.zPosition = 0
         //orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
@@ -411,6 +443,7 @@ class StartMenu: SKScene {
         
         //Background amarillo para el label "Al Azar (Random)"
         orderDropDownMenuYellowBGTwo = dropDownMenuLabelBackground()
+        orderDropDownMenuYellowBGTwo.name = "orderDropDownMenuYellowBGTwo"
         orderDropDownMenuYellowBGTwo.position = CGPoint(x:0.0,y:-7.0)
         orderDropDownMenuYellowBGTwo.zPosition = 0
         //orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
@@ -444,6 +477,7 @@ class StartMenu: SKScene {
         mapOrderOldPaperbackground.addChild(mapOrderRedButton)
         
         gameModeSelectionOldPaperbackground = mapOrderOldPaperDropdownBG()
+        gameModeSelectionOldPaperbackground.name = "gameModeSelectionOldPaperbackground"
         
         gameModeSelectionGreenButton = modeSelectionGreenButton()
         gameModeSelectionGreenButton.name = "gameModeSelectionGreenButton"
@@ -453,6 +487,7 @@ class StartMenu: SKScene {
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionGreenButton)
         
         gameModeSelectionLabel = modeSelectionLabelDefaults()
+        gameModeSelectionLabel.name = "gameModeSelectionLabel"
         gameModeSelectionLabel.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
         gameModeSelectionLabel.position = CGPoint(x:-87,y:-25)
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabel)
@@ -465,6 +500,7 @@ class StartMenu: SKScene {
         gameModeSelectionOldPaperbackground.addChild(gameModeSelectionBlueButton)
         
         gameModeSelectionLabelTwo = modeSelectionLabelDefaults()
+        gameModeSelectionLabelTwo.name = "gameModeSelectionLabelTwo"
         gameModeSelectionLabelTwo.text = "Juega con nombres ya en el mapa.\n\t Tiempo no se guardará.\n(Play with names already on the map.\n\tTime will not be saved)"
         gameModeSelectionLabelTwo.preferredMaxLayoutWidth = 160
         gameModeSelectionLabelTwo.position = CGPoint(x:105,y:-26)
@@ -479,42 +515,51 @@ class StartMenu: SKScene {
         
         bestTimesRectangleBp = TestClass().createRectangle()
         bestTimesRectangleBpToSKSpritenode = bestTimesRectangleBezierPathToSKSpriteNode(bpRectangle: bestTimesRectangleBp)
+        bestTimesRectangleBpToSKSpritenode.name = "bestTimesRectangleBpToSKSpritenode"
         
         bestTimesToplabel = mapOrderTwoLineLabelDefaults()
+        bestTimesToplabel.name = "bestTimesToplabel"
         bestTimesToplabel.fontSize = 14
         bestTimesToplabel.text = "Mejores Tiempos\n   (Best Times)"
         bestTimesToplabel.position = CGPoint(x:0.5,y:60)
         bestTimesRectangleBpToSKSpritenode.addChild(bestTimesToplabel)
         
         bestTimesPrAlphabeticlabel = bestTimeslabel()
+        bestTimesPrAlphabeticlabel.name = "bestTimesPrAlphabeticlabel"
         bestTimesPrAlphabeticlabel.text = "Puerto Rico(Alfabético/Alphabetic):"
         bestTimesPrAlphabeticlabel.position = CGPoint(x:-70,y:35)
         bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrAlphabeticlabel)
         
         bestTimesPrRandomlabel = bestTimeslabel()
+        bestTimesPrRandomlabel.name = "bestTimesPrRandomlabel"
         bestTimesPrRandomlabel.text = "Puerto Rico(Al Azar/Random):"
         bestTimesPrRandomlabel.position = CGPoint(x:-57,y:15)
         bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrRandomlabel)
         
         bestTimesPrAlphabeticScorelabel = bestTimesPrAlphabeticScore()
+        bestTimesPrAlphabeticScorelabel.name = "bestTimesPrAlphabeticScorelabel"
         bestTimesPrAlphabeticScorelabel.position = CGPoint(x:120,y:33)
         bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrAlphabeticScorelabel)
         
         bestTimesPrRandomScorelabel = bestTimesPrRandomScore()
+        bestTimesPrRandomScorelabel.name = "bestTimesPrRandomScorelabel"
         bestTimesPrRandomScorelabel.position = CGPoint(x:120,y:15)
         bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrRandomScorelabel)
         
         opcionesAudioLabel = opcionesLabelDefaults()
+        opcionesAudioLabel.name = "opcionesAudioLabel"
         opcionesAudioLabel.fontName = "GillSans-Bold"
         opcionesAudioLabel.text = "Audio"
         opcionesAudioLabel.position = CGPoint(x:345,y:225)
         
         opcionesMusicaLabel = opcionesLabelDefaults()
+        opcionesMusicaLabel.name = "opcionesMusicaLabel"
         opcionesMusicaLabel.text = "Música (Music)"
         opcionesMusicaLabel.position = CGPoint(x:-17,y:-20.5)
         opcionesAudioLabel.addChild(opcionesMusicaLabel)
         
         opcionesSonidosLabel = opcionesLabelDefaults()
+        opcionesSonidosLabel.name = "opcionesSonidosLabel"
         opcionesSonidosLabel.text = "Sonidos (Sound)"
         opcionesSonidosLabel.position = CGPoint(x:-11.5,y:-45)
         opcionesAudioLabel.addChild(opcionesSonidosLabel)
@@ -527,6 +572,7 @@ class StartMenu: SKScene {
         opcionesAudioLabel.addChild(opcionesCheckbox)
         
         opcionesCheckmark = opcionesCheckmarkBpToSpritenode()
+        opcionesCheckmark.name = "opcionesCheckmark"
         opcionesCheckmark.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-16)
         /*La siguiente linea es para evitar que si usuario dio uncheck o por el contrario check antes de comenzar el juego y sale del juego como es un cambio de escena, esta escena pues va a anadir de nuevo el check mark que inicialmente quizas el usuario quito pq no queria musica de fondo o sonido de juego, de modo que con esta linea prevalece la seleccion del usuario, aun haya cambio de escena(para ver esto eliminar el if
          )**/
@@ -542,6 +588,7 @@ class StartMenu: SKScene {
         opcionesAudioLabel.addChild(opcionesCheckboxTwo)
         
         opcionesCheckmarkTwo = opcionesCheckmarkBpToSpritenode()
+        opcionesCheckmarkTwo.name = "opcionesCheckmarkTwo"
         opcionesCheckmarkTwo.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-40)
         /*La siguiente linea es para evitar que si usuario dio uncheck o por el contrario check antes de comenzar el juego y sale del juego como es un cambio de escena, esta escena pues va a anadir de nuevo el check mark que inicialmente quizas el usuario quito pq no queria musica de fondo o sonido de juego, de modo que con esta linea prevalece la seleccion del usuario, aun haya cambio de escena(para ver esto eliminar el if
         )**/
@@ -557,6 +604,7 @@ class StartMenu: SKScene {
         opcionesAudioLabel.addChild(creditosButton)
         
         creditButtonLabel = setLabelDefaults()
+        creditButtonLabel.name = "creditButtonLabel"
         creditButtonLabel.text = "Creditos (Credits)"
         creditButtonLabel.position = CGPoint(x:0.5,y:-5.5)
         creditosButton.addChild(creditButtonLabel)
