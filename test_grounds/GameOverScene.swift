@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 import UIKit
+import AVFoundation
 
 class GameOverScene: SKScene{
     var arrayOfMapSpriteNodes = [SKSpriteNode()]
@@ -25,12 +26,23 @@ class GameOverScene: SKScene{
     var playagain: Bool = false
     var exited:Bool = false
     let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
-    let backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
+    //let backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
+    var musicPlayer = AVAudioPlayer()
+    var musicURL:URL?
     
     override func didMove(to view: SKView) {
         
-        run(fanfair)
-        self.addChild(backgroundMusic)
+        
+        if StartMenu.gamePlaySoundOn == true{
+            run(fanfair)
+        }
+        
+        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
+        if StartMenu.backgroundMusicOn == true{
+            //self.addChild(StartScene.backgroundMusic)
+            initMusic()
+        }
+        //self.addChild(backgroundMusic)
         
         endGameRectangle = endgameRectangle()
         
@@ -625,8 +637,13 @@ class GameOverScene: SKScene{
         }
         
         if exited == true{
+            /*Los if statements van a devolver completedGame a false, de lo contrario si oprimo salir en GameOverScene, cuando vuelvo a comenzar un juego
+            va hacer el rendering de GameOverScene ya que completedGame tendria como valor true*/
             if StartScene.completedGame == true{
                 StartScene.completedGame = false
+            }
+            if RandomGame.completedGame == true{
+                RandomGame.completedGame = false
             }
            self.removeAllActions()
            self.removeFromParent()
@@ -673,6 +690,19 @@ class GameOverScene: SKScene{
             
         }
         
+    }
+    func initMusic() {
+        guard let url = musicURL else { return }
+        
+        do{
+            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+        }catch{
+            print("error")
+            }
+        
+        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+        musicPlayer.prepareToPlay()//ready to play musicPlayer
+        musicPlayer.play()//
     }
     
     func endgameRectangleButton()-> SKSpriteNode {
@@ -1037,7 +1067,7 @@ class GameOverScene: SKScene{
     
     func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingRandom(second:Int, minute:Int){
          /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
-         if  UserDefaults.standard.integer(forKey: "minutesRandom") < 1 && UserDefaults.standard.integer(forKey: "secondsRandom") < 1 || minute < UserDefaults.standard.integer(forKey: "minutesRandom") || minute == UserDefaults.standard.integer(forKey: "minutesRandom") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsRandom") {
+         if  UserDefaults.standard.integer(forKey: "minutesRandom") == 0 && UserDefaults.standard.integer(forKey: "secondsRandom") == 0 || minute < UserDefaults.standard.integer(forKey: "minutesRandom") || minute == UserDefaults.standard.integer(forKey: "minutesRandom") && RandomGame.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsRandom") {
              /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
              UserDefaults.standard.set(minute, forKey:"minutesRandom")
              UserDefaults.standard.set(second, forKey:"secondsRandom")

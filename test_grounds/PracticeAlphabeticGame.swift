@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 import UIKit
+import AVFoundation
 
 class PracticeAlphabeticGame: SKScene{
     var goldBackgroundSKSpriteNode = SKSpriteNode()
@@ -42,6 +43,9 @@ class PracticeAlphabeticGame: SKScene{
     static var secondsGameOver:Int = 0
     static var minutesGameOver:Int = 0
     
+    var musicPlayer = AVAudioPlayer()
+    var musicURL:URL?
+    
     override func didMove(to view: SKView) {
         
         containerNode = StartScene().nodesContainer()
@@ -50,6 +54,8 @@ class PracticeAlphabeticGame: SKScene{
         goldBackgroundSKSpriteNode = StartScene().goldenBackground()
         //let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         //containerNode.addChild(coverDesecheoIslandSKSpriteNode)
+        
+        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         
         skipButton = StartScene().skipBlueButton()
         
@@ -590,7 +596,8 @@ class PracticeAlphabeticGame: SKScene{
           }
             
             if StartMenu.backgroundMusicOn == true{
-                self.addChild(StartScene.backgroundMusic)
+                //self.addChild(StartScene.backgroundMusic)
+                initMusic()
             }
             
             goldBackgroundSKSpriteNode.addChild(labelScores)
@@ -1005,6 +1012,20 @@ class PracticeAlphabeticGame: SKScene{
             }*/
             
             
+        }
+    
+        func initMusic() {
+            guard let url = musicURL else { return }
+
+            do{
+                musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+            }catch{
+                print("error")
+                }
+
+            musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+            musicPlayer.prepareToPlay()//ready to play musicPlayer
+            musicPlayer.play()//
         }
     
         func splitTextIntoFields(theText:SKLabelNode)->String{

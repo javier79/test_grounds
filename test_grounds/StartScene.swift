@@ -152,7 +152,10 @@ class StartScene: SKScene{
     
     static var correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
     static var incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
-    static var backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
+    //static var backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
+    var musicPlayer = AVAudioPlayer()
+    var musicURL:URL?
+    
     //let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
     /*var endGameRectangle: SKSpriteNode!
     var endGameRectangleButton = SKSpriteNode()
@@ -185,6 +188,7 @@ class StartScene: SKScene{
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
+        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         
         skipButton = skipBlueButton()
         
@@ -564,7 +568,8 @@ class StartScene: SKScene{
         //self.addChild(skipButton)
         self.addChild(containerNode)
         if StartMenu.backgroundMusicOn == true{
-            self.addChild(StartScene.backgroundMusic)
+            //self.addChild(StartScene.backgroundMusic)
+            initMusic()
         }
         
 
@@ -573,6 +578,19 @@ class StartScene: SKScene{
         //sleep(1)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
         
         
+    }
+    func initMusic() {
+        guard let url = musicURL else { return }
+        
+        do{
+            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+        }catch{
+            print("error")
+            }
+        
+        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+        musicPlayer.prepareToPlay()//ready to play musicPlayer
+        musicPlayer.play()//
     }
     
     /*func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{

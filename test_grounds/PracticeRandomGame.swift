@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 import UIKit
+import AVFoundation
 
 class PracticeRandomGame: SKScene{
     
@@ -57,6 +58,8 @@ class PracticeRandomGame: SKScene{
     
     var arrayOfMapSpriteNodes = [SKSpriteNode()]
     
+    var musicPlayer = AVAudioPlayer()
+    var musicURL:URL?
     
     override func didMove(to view: SKView) {
         
@@ -66,6 +69,8 @@ class PracticeRandomGame: SKScene{
         goldBackgroundSKSpriteNode = StartScene().goldenBackground()
         //let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         //containerNode.addChild(coverDesecheoIslandSKSpriteNode)
+        
+        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         
         skipButton = StartScene().skipBlueButton()
         
@@ -605,7 +610,8 @@ class PracticeRandomGame: SKScene{
             containerNode.addChild(node)
           }
            if StartMenu.backgroundMusicOn == true{
-               self.addChild(StartScene.backgroundMusic)
+               //self.addChild(StartScene.backgroundMusic)
+               initMusic()
            }
         
             goldBackgroundSKSpriteNode.addChild(labelScores)
@@ -893,6 +899,20 @@ class PracticeRandomGame: SKScene{
             
         }
         
+    }
+    
+    func initMusic() {
+        guard let url = musicURL else { return }
+
+        do{
+            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+        }catch{
+            print("error")
+            }
+
+        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+        musicPlayer.prepareToPlay()//ready to play musicPlayer
+        musicPlayer.play()//
     }
     
     func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {//child of labelMunicipiosNameBackground()

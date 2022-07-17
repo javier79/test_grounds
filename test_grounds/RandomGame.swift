@@ -8,7 +8,7 @@
 
 import SpriteKit
 import UIKit
-
+import AVFoundation
 
 
 
@@ -151,6 +151,9 @@ class RandomGame: SKScene{
     var goldBackgroundSKSpriteNode = SKSpriteNode()
     var randomIndex: Int = 0
     
+    var musicPlayer = AVAudioPlayer()
+    var musicURL:URL?
+    
     override func didMove(to view: SKView){
         
         
@@ -159,6 +162,8 @@ class RandomGame: SKScene{
         goldBackgroundSKSpriteNode = goldenBackground()
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
+        
+        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         
         skipButton = skipBlueButton()
         
@@ -506,7 +511,8 @@ class RandomGame: SKScene{
         containerNode.addChild(culebraSKSpriteNode)
         
         if StartMenu.backgroundMusicOn == true{
-            self.addChild(StartScene.backgroundMusic)
+            //self.addChild(StartScene.backgroundMusic)
+            initMusic()
         }
         
         //Este grupo de objetos estan relacionados por goldBackgroundSKSpriteNode, dado que esta barra de controles se elimina cuando se acierta el ultimo municipios junto con los botones, labels y backgrounds adheridos a la barra de controles)
@@ -532,6 +538,20 @@ class RandomGame: SKScene{
         //sleep(1)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
         
         
+    }
+    
+    func initMusic() {
+        guard let url = musicURL else { return }
+        
+        do{
+            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+        }catch{
+            print("error")
+            }
+        
+        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+        musicPlayer.prepareToPlay()//ready to play musicPlayer
+        musicPlayer.play()//
     }
     
     
@@ -831,6 +851,8 @@ class RandomGame: SKScene{
                     //Solo para uso del programador no es parte del app perce
                     //UserDefaults.standard.removeObject(forKey: "secondsRandom")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
                     //UserDefaults.standard.removeObject(forKey: "minutesRandom")//OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO
+                    //print(UserDefaults.standard.integer(forKey: "minutesRandom"))
+                    //print(UserDefaults.standard.integer(forKey: "secondsRandom"))
             }
                 //print(renderTime)
                 renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime

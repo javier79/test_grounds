@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class StartMenu: SKScene {
     //let oldPaperBorderTexture = SKSpriteNode(imageNamed: "old paper texture")
@@ -97,12 +98,16 @@ class StartMenu: SKScene {
     var creditosButton:SKSpriteNode!
     var creditButtonLabel:SKLabelNode!
     var creditsContainer:SKNode!
-    var startMenuMusic = SKAudioNode(fileNamed: "Guiton Sketch.mp3")
+    //var startMenuMusic = SKAudioNode(fileNamed: "Guiton Sketch.mp3") esta variable es para si se utiliza SKAction para el background music lo cual no es recomendado
+    var musicPlayer = AVAudioPlayer()
+    var musicURL:URL?
     
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
         let elMorro:SKSpriteNode = setElMorro()// foto del morro
         let mapaClickBanner: SKSpriteNode = setMapaClickBanner()//nombre de la marca a la parte superior de la escena
+        
+        musicURL = Bundle.main.url(forResource:"Guiton Sketch", withExtension:"mp3")
         
         buttonGreen = setGreenButton()
         buttonGreen.name = "buttonGreen"
@@ -624,7 +629,8 @@ class StartMenu: SKScene {
         /*Este if statement previene que se anada la musica por ejemplo si el usuario deshabilito la musica de fondo y juega pero interrumpe el juego(Salida(exit)) este statement
          va a impedir que con el cambio de escena se vuelva a anadir la musica*/
         if opcionesCheckmark.parent != nil{
-            self.addChild(startMenuMusic)
+            initMusic()
+            //self.addChild(startMenuMusic)
         }
         self.addChild(oldPaperBorderTexture)
         self.addChild(buttonGreen)
@@ -652,6 +658,20 @@ class StartMenu: SKScene {
         //self.addChild(dropDownLabelBG)
         //self.addChild(bestTimesRectangleBpToSKSpritenode)
         //self.addChild(opcionesAudioLabel)
+    }
+    
+    func initMusic() {
+        guard let url = musicURL else { return }
+        
+        do{
+            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+        }catch{
+            print("error")
+            }
+        
+        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+        musicPlayer.prepareToPlay()//ready to play musicPlayer
+        musicPlayer.play()//
     }
     
     func nodesContainer() -> SKNode{
@@ -1403,13 +1423,15 @@ class StartMenu: SKScene {
             else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
                 opcionesCheckmark.removeFromParent()
                 StartMenu.backgroundMusicOn = false
-                startMenuMusic.removeFromParent()
+                //startMenuMusic.removeFromParent()
+                musicPlayer.stop()
             }
             
             else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent == nil){
                 opcionesCheckbox.addChild(opcionesCheckmark)
                 StartMenu.backgroundMusicOn = true
-                self.addChild(startMenuMusic)
+                //self.addChild(startMenuMusic)
+                initMusic()
             }
             else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent != nil){
                 opcionesCheckmarkTwo.removeFromParent()
