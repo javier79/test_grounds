@@ -645,6 +645,13 @@ class GameOverScene: SKScene{
             if RandomGame.completedGame == true{
                 RandomGame.completedGame = false
             }
+            if PracticeRandomGame.completedGame == true{
+                PracticeRandomGame.completedGame = false
+            }
+            if PracticeAlphabeticGame.completedGame == true{
+                PracticeAlphabeticGame.completedGame = false
+            }
+            
            self.removeAllActions()
            self.removeFromParent()
 
