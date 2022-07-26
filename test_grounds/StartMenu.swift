@@ -13,29 +13,33 @@ class StartMenu: SKScene {
     //let oldPaperBorderTexture = SKSpriteNode(imageNamed: "old paper texture")
     //let elMorro = SKSpriteNode(imageNamed: "el morro")
     //let mapaClickBanner = SKSpriteNode(imageNamed: "Mapaclick Title")
-    var touchedNode: SKPhysicsBody!
-    var instructionsEspanolLabel: SKLabelNode!
-    var instructionsEspanolLabelTwo: SKLabelNode!
-    var instructionsEnglishLabel:SKLabelNode!
-    var instructionsEnglishLabelTwo:SKLabelNode!
-    var redArrowButtonEspanolLabel: SKSpriteNode!
-    var redArrowButtonEspanolLabelTwo:SKSpriteNode!
-    var redArrowButtonEnglishLabel:SKSpriteNode!
-    var redArrowButtonEnglishLabelTwo:SKSpriteNode!
-    var redButtonOne:SKSpriteNode!//boton rojo "Mejores Tiempos"
-    var redButtonTwo:SKSpriteNode!
-    var redButtonThree:SKSpriteNode!
-    var buttonGreen:SKSpriteNode!//boton verde de jugar
-    var englishButton:SKSpriteNode!
-    var espanolButton:SKSpriteNode!
-    var englishButtonLabel:SKLabelNode!
-    var espanolButtonLabel:SKLabelNode!
-    var returnVolverRedButton:SKSpriteNode!
+    //var touchedNode: SKPhysicsBody!Se declaro como variable local en TouchesBegun
+    let buttonGreen:SKSpriteNode = StartMenuMethods().setGreenButton()//boton verde de jugar
+    let redButtonOne:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//boton rojo "Mejores Tiempos"
+    let redButtonTwo:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//boton rojo instrucciones
+    let redButtonThree:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//boton rojo opciones
+    let redButtonOneLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//labels for (the three)red buttons
+    let redButtonTwoLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()
+    let redButtonThreeLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()
+    
+    let instructionsEspanolLabel:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
+    var instructionsEspanolLabelTwo:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
+    let instructionsEnglishLabel:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
+    let instructionsEnglishLabelTwo:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
+    var redArrowButtonEspanolLabel = SKSpriteNode()
+    var redArrowButtonEspanolLabelTwo = SKSpriteNode()
+    var redArrowButtonEnglishLabel = SKSpriteNode()
+    var redArrowButtonEnglishLabelTwo = SKSpriteNode()
+    
+    
+    var englishButton = SKSpriteNode()
+    var espanolButton = SKSpriteNode()
+    var englishButtonLabel = SKLabelNode()
+    var espanolButtonLabel = SKLabelNode()
+    var returnVolverRedButton = SKSpriteNode()
     var returnVolverRedButtonLabelOne:SKLabelNode!
     var returnVolverRedButtonLabelTwo:SKLabelNode!
-    var redButtonOneLabel:SKLabelNode!//labels for (the three)red buttons
-    var redButtonTwoLabel:SKLabelNode!
-    var redButtonThreeLabel:SKLabelNode!
+    
     var creditsLabel:SKLabelNode!
     var creditsLabelTwo:SKLabelNode!
     var creditsSoundMusicLabel:SKLabelNode!
@@ -96,7 +100,7 @@ class StartMenu: SKScene {
     static var backgroundMusicOn = true
     static var gamePlaySoundOn = true
     var creditosButton:SKSpriteNode!
-    var creditButtonLabel:SKLabelNode!
+    var creditButtonLabel = SKLabelNode()
     var creditsContainer:SKNode!
     //var startMenuMusic = SKAudioNode(fileNamed: "Guiton Sketch.mp3") esta variable es para si se utiliza SKAction para el background music lo cual no es recomendado
     var musicPlayer = AVAudioPlayer()
@@ -109,100 +113,105 @@ class StartMenu: SKScene {
         
         musicURL = Bundle.main.url(forResource:"Guiton Sketch", withExtension:"mp3")
         
-        buttonGreen = setGreenButton()
+        setMainMenuObjectsForRender()
+        /*buttonGreen = setGreenButton()
         buttonGreen.name = "buttonGreen"
-        buttonGreen = setRedButtonPhysicsBody(redButton:buttonGreen)
+        buttonGreen = initSetButtonPhysicsBody(objectButton:buttonGreen)
         
         redButtonOne = redButtonBpDrawToSKSpriteNode()//funcion dibuja el shapenode y lo convierte a formato SpriteNode
-        redButtonOne = setRedButtonPhysicsBody(redButton:redButtonOne)//set physics body
+        redButtonOne = initSetButtonPhysicsBody(objectButton:redButtonOne)//set physics body
         redButtonOne.position = CGPoint(x:0.5,y:-45.5)
         redButtonOne.name = "redButtonOne"
-        redButtonOneLabel = setLabelDefaults()//create label and set default atrributes
+        redButtonOneLabel = mainMenuSetLabelDefaults(label:redButtonOneLabel)//create label and set default atrributes
         redButtonOneLabel.text = "Mejores Tiempos (Best Times)"
         redButtonOne.addChild(redButtonOneLabel)
         buttonGreen.addChild(redButtonOne)
         
         redButtonTwo = redButtonBpDrawToSKSpriteNode()
-        redButtonTwo = setRedButtonPhysicsBody(redButton:redButtonTwo)
+        redButtonTwo = initSetButtonPhysicsBody(objectButton:redButtonTwo)
         redButtonTwo.position = CGPoint(x:0.5,y:-72)
         redButtonTwo.name = "instrucciones"
-        redButtonTwoLabel = setLabelDefaults()
+        redButtonTwoLabel = mainMenuSetLabelDefaults(label:redButtonTwoLabel)
         redButtonTwoLabel.text = "Instrucciones (Instructions)"
         redButtonTwo.addChild(redButtonTwoLabel)
         buttonGreen.addChild(redButtonTwo)
         
         redButtonThree = redButtonBpDrawToSKSpriteNode()
         
-        redButtonThree = setRedButtonPhysicsBody(redButton:redButtonThree)
+        redButtonThree = initSetButtonPhysicsBody(objectButton:redButtonThree)
         redButtonThree.position = CGPoint(x:0.5,y:-98.5)
         redButtonThree.name = "redButtonThree"
-        redButtonThreeLabel = setLabelDefaults()
+        redButtonThreeLabel = mainMenuSetLabelDefaults(label:redButtonThreeLabel)
         redButtonThreeLabel.text = "Opciones (Options)"
         redButtonThree.addChild(redButtonThreeLabel)
         buttonGreen.addChild(redButtonThree)
-        
-        instructionsEspanolLabel = setinstructionsLabelDefaults()//create label and set default atrributes
+        */
+        initInstruccionesObjectsForRender()
+        /*instructionsEspanolLabel = setinstructionsLabelDefaults(label:instructionsEspanolLabel)//create label and set default atrributes
         instructionsEspanolLabel.name = "instructionsEspanolLabel"
         instructionsEspanolLabel = instructionsEspanolLabelText(labelEspanol:instructionsEspanolLabel)//set the text attribute for label
         instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.55)//overrides position values from setinstructionsLabelDefaults()
         
-        instructionsEspanolLabelTwo = setinstructionsLabelDefaults()
+        instructionsEspanolLabelTwo = setinstructionsLabelDefaults(label:instructionsEspanolLabelTwo)
         instructionsEspanolLabelTwo.name = "instructionsEspanolLabelTwo"
         instructionsEspanolLabelTwo = instructionsEspanolLabelTextTwo (labelEspanolTwo:instructionsEspanolLabelTwo)
         //instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
         
-        instructionsEnglishLabel = setinstructionsLabelDefaults()
+        instructionsEnglishLabel = setinstructionsLabelDefaults(label:instructionsEnglishLabel)
         instructionsEnglishLabel.name = "instructionsEnglishLabel"
         instructionsEnglishLabel = instructionsEnglishLabelText(labelEnglish:instructionsEnglishLabel)
         //instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
         
-        instructionsEnglishLabelTwo = setinstructionsLabelDefaults()
+        instructionsEnglishLabelTwo = setinstructionsLabelDefaults(label:instructionsEnglishLabelTwo)
         instructionsEnglishLabelTwo.name = "instructionsEnglishLabelTwo"
         instructionsEnglishLabelTwo = instructionsEnglishLabelTextTwo(labelEnglishTwo:instructionsEnglishLabelTwo)
         //instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
-        
-        redArrowButtonEspanolLabel = redArrowButtonBpDrawToSKSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
-        redArrowButtonEspanolLabel = setRedArrowButton(redArrow: redArrowButtonEspanolLabel)//set difault attributes for red arrow buttons
+        */
+        /*redArrowButtonEspanolLabel = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()//draws a red arrow Shapenode and converts to SKSpriteNode
+        //redArrowButtonEspanolLabel = setRedArrowButton(redArrow: redArrowButtonEspanolLabel)//set difault attributes for red arrow buttons
         redArrowButtonEspanolLabel.name = "redArrowButtonEspanolLabel"
         redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-20)//overrides position values from setRedArrowButton(), as the only arrow node with a different position values.
         instructionsEspanolLabel.addChild(redArrowButtonEspanolLabel)
         
-        redArrowButtonEspanolLabelTwo = redArrowButtonBpDrawToSKSpriteNode()
-        redArrowButtonEspanolLabelTwo = setRedArrowButton(redArrow: redArrowButtonEspanolLabelTwo)
+        redArrowButtonEspanolLabelTwo = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
+        //redArrowButtonEspanolLabelTwo = setRedArrowButton(redArrow: redArrowButtonEspanolLabelTwo)
         redArrowButtonEspanolLabelTwo.name = "redArrowButtonEspanolLabelTwo"
         redArrowButtonEspanolLabelTwo.zRotation = 3.14
         //redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-29.5)
         instructionsEspanolLabelTwo.addChild(redArrowButtonEspanolLabelTwo)
         
-        redArrowButtonEnglishLabel = redArrowButtonBpDrawToSKSpriteNode()
-        redArrowButtonEnglishLabel = setRedArrowButton(redArrow: redArrowButtonEnglishLabel)
+        redArrowButtonEnglishLabel = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
+        //redArrowButtonEnglishLabel = setRedArrowButton(redArrow: redArrowButtonEnglishLabel)
         redArrowButtonEnglishLabel.name = "redArrowButtonEnglishLabel"
         //redArrowButtonEnglishLabel.position = CGPoint(x:0.0,y:-29.5)
         instructionsEnglishLabel.addChild(redArrowButtonEnglishLabel)
         
-        redArrowButtonEnglishLabelTwo = redArrowButtonBpDrawToSKSpriteNode()
-        redArrowButtonEnglishLabelTwo = setRedArrowButton(redArrow: redArrowButtonEnglishLabelTwo)
+        redArrowButtonEnglishLabelTwo = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
+        //redArrowButtonEnglishLabelTwo = setRedArrowButton(redArrow: redArrowButtonEnglishLabelTwo)
         redArrowButtonEnglishLabelTwo.name = "redArrowButtonEnglishLabelTwo"
         redArrowButtonEnglishLabelTwo.zRotation =  3.14
         //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-29.5)
         instructionsEnglishLabelTwo.addChild(redArrowButtonEnglishLabelTwo)
-        
-        englishButton = espanolEnglishButtonShapeNodeToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        */
+        /*
+        englishButton = espanolEnglishButtonDrawToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        englishButton.name = "englishButton"
         englishButtonLabel = espanolEnglishButtonLabelDefaults()//set difault attributes for label
         englishButtonLabel.text = "English"
         englishButton.addChild(englishButtonLabel)
         englishButton.position = CGPoint(x:0.5, y:170)//290
-        englishButton.name = "englishButton"
         instructionsEspanolLabel.addChild(englishButton)
         
-        espanolButton = espanolEnglishButtonShapeNodeToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        espanolButton = espanolEnglishButtonDrawToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        espanolButton.name = "espanolButton"
         espanolButtonLabel = espanolEnglishButtonLabelDefaults()//set difault attributes for label
         espanolButtonLabel.text = "Español"
         espanolButton.addChild(espanolButtonLabel)
-        espanolButton.position = CGPoint(x:0.5, y:160.5)
-        espanolButton.name = "espanolButton"
+        espanolButton.position = CGPoint(x:0.5, y:160.5)//160.5
         instructionsEnglishLabel.addChild(espanolButton)
-        
+        */
+        initReturnVolverRedButtonObject()
+        /*
         returnVolverRedButton = redButtonShapeNodeToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
         returnVolverRedButton.name = "returnVolverRedButton"
         returnVolverRedButtonLabelOne = redButtonBlueButtonLabelOne()//set difault attributes for label
@@ -215,6 +224,9 @@ class StartMenu: SKScene {
         returnVolverRedButton.addChild(returnVolverRedButtonLabelTwo)
         returnVolverRedButton.position = CGPoint(x:40, y:25)
         returnVolverRedButton.setScale(1.2)//set a larger scale
+        */
+        
+        
         
         creditsContainer = nodesContainer()
         creditsContainer.name = "creditsContainer"
@@ -608,7 +620,7 @@ class StartMenu: SKScene {
         creditosButton.position = CGPoint(x:0.5,y:-65)
         opcionesAudioLabel.addChild(creditosButton)
         
-        creditButtonLabel = setLabelDefaults()
+        creditButtonLabel = mainMenuSetLabelDefaults(label:creditButtonLabel)
         creditButtonLabel.name = "creditButtonLabel"
         creditButtonLabel.text = "Creditos (Credits)"
         creditButtonLabel.position = CGPoint(x:0.5,y:-5.5)
@@ -634,30 +646,126 @@ class StartMenu: SKScene {
         }
         self.addChild(oldPaperBorderTexture)
         self.addChild(buttonGreen)
-        //self.addChild(redButtonOne)
-        //self.addChild(redButtonTwo)
-        //self.addChild(redButtonThree)
-        //self.addChild(creditsLabel)
-        //self.addChild(creditsLabelTwo)
-        /*self.addChild(creditsSoundMusicLabel)
-        self.addChild(creditsSoundMusicChildLabel)
-        self.addChild(creditsSoundMusicChildLabelTwo)
-        self.addChild(creditsSoundMusicChildLabelThree)
-        self.addChild(creditsMapsImagesLabel)
-        self.addChild(creditsMapsImagesChildLabel)
-        self.addChild(creditsMapsImagesChildLabelTwo)
-        self.addChild(creditsMapsImagesChildLabelThree)
-        self.addChild(creditsSpecialThanksLabel)
-        self.addChild(creditsSpecialThanksChildLabel)
-        self.addChild(creditsSpecialThanksChildLabelTwo)*/
-        //self.addChild(dropDownArrow)
-        //self.addChild(mapOrderOldPaperbackground)
-        //self.addChild(gameModeSelectionOldPaperbackground)
-        //self.addChild(orderDropDownMenu)
-        //self.addChild(orderDropDownMenu)
-        //self.addChild(dropDownLabelBG)
-        //self.addChild(bestTimesRectangleBpToSKSpritenode)
-        //self.addChild(opcionesAudioLabel)
+
+    }
+    func setMainMenuObjectsForRender(){
+        //buttonGreen = setGreenButton()
+        buttonGreen.name = "buttonGreen"
+        buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
+        //buttonGreen = initSetButtonPhysicsBody(objectButton:buttonGreen)
+        
+        //redButtonOne = redButtonBpDrawToSKSpriteNode()//funcion dibuja el shapenode y lo convierte a formato SpriteNode
+        //redButtonOne = initSetButtonPhysicsBody(objectButton:redButtonOne)//set physics body
+        redButtonOne.name = "redButtonOne"
+        redButtonOne.position = CGPoint(x:0.5,y:-45.5)
+        //redButtonOneLabel = mainMenuSetLabelDefaults(label:redButtonOneLabel)//create label and set default atrributes
+        redButtonOneLabel.text = "Mejores Tiempos (Best Times)"
+        redButtonOne.addChild(redButtonOneLabel)
+        buttonGreen.addChild(redButtonOne)
+        
+        //redButtonTwo = redButtonBpDrawToSKSpriteNode()
+        //redButtonTwo = initSetButtonPhysicsBody(objectButton:redButtonTwo)
+        redButtonTwo.name = "instrucciones"
+        redButtonTwo.position = CGPoint(x:0.5,y:-72)
+        //redButtonTwoLabel = mainMenuSetLabelDefaults(label:redButtonTwoLabel)
+        redButtonTwoLabel.text = "Instrucciones (Instructions)"
+        redButtonTwo.addChild(redButtonTwoLabel)
+        buttonGreen.addChild(redButtonTwo)
+        
+        //redButtonThree = redButtonBpDrawToSKSpriteNode()
+        //redButtonThree = initSetButtonPhysicsBody(objectButton:redButtonThree)
+        redButtonThree.name = "redButtonThree"
+        redButtonThree.position = CGPoint(x:0.5,y:-98.5)
+        //redButtonThreeLabel = mainMenuSetLabelDefaults(label:redButtonThreeLabel)
+        redButtonThreeLabel.text = "Opciones (Options)"
+        redButtonThree.addChild(redButtonThreeLabel)
+        buttonGreen.addChild(redButtonThree)
+    }
+    
+    
+    func initInstruccionesObjectsForRender()/*->SKLabelNode*/{
+        //instructionsEspanolLabel = setinstructionsLabelDefaults()//create label and set default atrributes
+        instructionsEspanolLabel.name = "instructionsEspanolLabel"
+        instructionsEspanolLabel.text = "\tEn la parte inferior de la pantalla encontrarás el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para\n identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los\n objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de\n Reto con un mapa en blanco.\n\tCon algunas excepciones, los nombres de los objetivos a identificarse seran\n en base al idioma oficial del pais o territorio."
+        //instructionsEspanolLabel = instructionsEspanolLabelText(labelEspanol:instructionsEspanolLabel)//set the text attribute for label
+        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.55)//overrides position values from setinstructionsLabelDefaults()
+        
+        //instructionsEspanolLabelTwo = setinstructionsLabelDefaults(label:instructionsEspanolLabelTwo)
+        instructionsEspanolLabelTwo.name = "instructionsEspanolLabelTwo"
+        instructionsEspanolLabelTwo.text = "\tPuedes acercar o alejar la cámara pellizcando la pantalla con 2 dedos. Cuando\n la cámara está acercada, puedes moverla deslizando 1 solo dedo a través de la pantalla.\n\tPara marcar el objetivo, haz un toque ligero sobre el mismo en la pantalla sin\n mover el dedo(toca el objetivo como tal, NO la raya apuntando al mismo.)Si\n seleccionaste el objetivo corecto, entonces su nombre(o, si estas jugando en\n Modeo de Práctica, una marca de cotejo)aparecerá sobre el mismo en el mapa\n acompañado de un cambio de color tornando el objetivo verde y el nombre\n del proximo objetivo aparecerá al fondo de la pantalla.\n\tCada vez que hagas una selección errónea, se añadirán 3 segundos adicionales\n a tu tiempo. Tambien puedes escoger saltar el objetivo actual con una penalidad\n de 15 segundos añadidos(todavia tendrás que identificar los objetivos saltados al final)"
+        //instructionsEspanolLabelTwo = instructionsEspanolLabelTextTwo (labelEspanolTwo:instructionsEspanolLabelTwo)
+        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+        
+        //instructionsEnglishLabel = setinstructionsLabelDefaults(label:instructionsEnglishLabel)
+        instructionsEnglishLabel.name = "instructionsEnglishLabel"
+        instructionsEnglishLabel.text = "\tAt the bottom of the screen is the name of a municipality, state, capital, city,\nterritory or country. You must find it on the map and tap it to identify it. The goal is\n to identify all the targets as fast as you can.\n\tYou can play in Practice Mode with the map already showing the names of the targets, but your fastest time will only be recorded if you play in Challenge Mode with a blank map.\n\tWith some exceptions, the names of the targets will be based on the official language of the countrie or territory"
+        //instructionsEnglishLabel = instructionsEnglishLabelText(labelEnglish:instructionsEnglishLabel)
+        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+        
+        //instructionsEnglishLabelTwo = setinstructionsLabelDefaults(label:instructionsEnglishLabelTwo)
+        instructionsEnglishLabelTwo.name = "instructionsEnglishLabelTwo"
+        instructionsEnglishLabelTwo.text = "\tYou can zoom in/out by pinching the screen with 2 fingers. When zoomed in, you\ncan move the camera around by sliding a single finger across the screen.\n\tTo mark the target, tap it on the screen without moving your finger(tap the target itself, NOT the arrow pointing at it.) If you selected the correct target, then it's name\n(or if you are playing in Practice Mode, a checkmark) will appear over the target in the map and the color of the target will change(to green) and the name of the next target will appear at the bottom of the screen.\n\tEverytime you make a wrong selection, 3 more seconds will be added to your time. You can also choose to skip the current target with a penalty of 15 seconds added(you'll still need to identify skipped targets at the end.)"
+        //instructionsEnglishLabelTwo = instructionsEnglishLabelTextTwo(labelEnglishTwo:instructionsEnglishLabelTwo)
+        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+        
+        redArrowButtonEspanolLabel = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()//draws a red arrow Shapenode and converts to SKSpriteNode
+        //redArrowButtonEspanolLabel = setRedArrowButton(redArrow: redArrowButtonEspanolLabel)//set difault attributes for red arrow buttons
+        redArrowButtonEspanolLabel.name = "redArrowButtonEspanolLabel"
+        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-20)//overrides position values from setRedArrowButton(), as the only arrow node with a different position values.
+        instructionsEspanolLabel.addChild(redArrowButtonEspanolLabel)
+        
+        redArrowButtonEspanolLabelTwo = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
+        //redArrowButtonEspanolLabelTwo = setRedArrowButton(redArrow: redArrowButtonEspanolLabelTwo)
+        redArrowButtonEspanolLabelTwo.name = "redArrowButtonEspanolLabelTwo"
+        redArrowButtonEspanolLabelTwo.zRotation = 3.14
+        //redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-29.5)
+        instructionsEspanolLabelTwo.addChild(redArrowButtonEspanolLabelTwo)
+        
+        redArrowButtonEnglishLabel = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
+        //redArrowButtonEnglishLabel = setRedArrowButton(redArrow: redArrowButtonEnglishLabel)
+        redArrowButtonEnglishLabel.name = "redArrowButtonEnglishLabel"
+        //redArrowButtonEnglishLabel.position = CGPoint(x:0.0,y:-29.5)
+        instructionsEnglishLabel.addChild(redArrowButtonEnglishLabel)
+        
+        redArrowButtonEnglishLabelTwo = redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
+        //redArrowButtonEnglishLabelTwo = setRedArrowButton(redArrow: redArrowButtonEnglishLabelTwo)
+        redArrowButtonEnglishLabelTwo.name = "redArrowButtonEnglishLabelTwo"
+        redArrowButtonEnglishLabelTwo.zRotation =  3.14
+        //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-29.5)
+        instructionsEnglishLabelTwo.addChild(redArrowButtonEnglishLabelTwo)
+        
+        englishButton = espanolEnglishButtonDrawToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        englishButton = initSetButtonPhysicsBody(objectButton: englishButton)
+        englishButton.name = "englishButton"
+        englishButtonLabel = espanolEnglishButtonLabelDefaults(label:englishButtonLabel)//set difault attributes for label
+        englishButtonLabel.text = "English"
+        englishButton.addChild(englishButtonLabel)
+        englishButton.position = CGPoint(x:0.5, y:170)//290
+        instructionsEspanolLabel.addChild(englishButton)
+        
+        espanolButton = espanolEnglishButtonDrawToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        espanolButton = initSetButtonPhysicsBody(objectButton: espanolButton)
+        espanolButton.name = "espanolButton"
+        espanolButtonLabel = espanolEnglishButtonLabelDefaults(label: espanolButtonLabel)//set difault attributes for label
+        espanolButtonLabel.text = "Español"
+        espanolButton.addChild(espanolButtonLabel)
+        espanolButton.position = CGPoint(x:0.5, y:160.5)//160.5
+        instructionsEnglishLabel.addChild(espanolButton)
+    }
+    func initReturnVolverRedButtonObject(){
+        returnVolverRedButton = redButtonShapeNodeToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
+        returnVolverRedButton = initSetButtonPhysicsBody(objectButton: returnVolverRedButton)
+        returnVolverRedButton.name = "returnVolverRedButton"
+        returnVolverRedButtonLabelOne = redButtonBlueButtonLabelOne()//set difault attributes for label
+        returnVolverRedButtonLabelOne.name = "redButtonBlueButtonLabelOne"
+        returnVolverRedButtonLabelOne.text = "Volver"
+        returnVolverRedButtonLabelTwo = redButtonBlueButtonLabelTwo()
+        returnVolverRedButtonLabelTwo.name = "returnVolverRedButtonLabelTwo"
+        returnVolverRedButtonLabelTwo.text = "(Return)"
+        returnVolverRedButton.addChild(returnVolverRedButtonLabelOne)
+        returnVolverRedButton.addChild(returnVolverRedButtonLabelTwo)
+        returnVolverRedButton.position = CGPoint(x:40, y:25)
+        returnVolverRedButton.setScale(1.2)//set a larger scale
     }
     
     func initMusic() {
@@ -1076,7 +1184,7 @@ class StartMenu: SKScene {
         
         let touch = touches.first!//Guarda toque de pantalla
         let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
-        touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
+        let touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
         
         if (touchedNode != nil){
             
@@ -1673,13 +1781,13 @@ class StartMenu: SKScene {
         let texture = view.texture(from: shapeNode)!
         let redButton = SKSpriteNode(texture: texture)
         //redButton.position = CGPoint(x:0.5, y:5.5)//(x:-280, y:5.5)
-        redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        redButton.physicsBody?.isDynamic = false
+        //redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        //redButton.physicsBody?.isDynamic = false
 
         return redButton
     }
     
-    func espanolEnglishButtonBp()->UIBezierPath{
+    /*func espanolEnglishButtonBp()->UIBezierPath{
         var path = UIBezierPath()
         // Specify the point that the path should start get drawn.
         path.move(to: CGPoint(x: 0.0, y: 0.0))
@@ -1697,10 +1805,10 @@ class StartMenu: SKScene {
         
         return path
         
-    }
+    }*/
     
-    func espanolEnglishButtonLabelDefaults()->SKLabelNode{
-        let label = SKLabelNode()
+    func espanolEnglishButtonLabelDefaults(label:SKLabelNode)->SKLabelNode{
+        //let label = SKLabelNode()
         label.fontName = "ChalkboardSE-Regular"
         label.fontSize = 12
         label.position = CGPoint(x:0.5, y:-5.0)
@@ -1708,10 +1816,23 @@ class StartMenu: SKScene {
         return label
     }
     
-    func espanolEnglishButtonShapeNodeToSpriteNode()-> SKSpriteNode {
-         
+    func espanolEnglishButtonDrawToSpriteNode()-> SKSpriteNode {
+        //Draw
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:20.0))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:50 , y:20.0))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:50, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
         //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:espanolEnglishButtonBp().cgPath )
+        let shapeNode = SKShapeNode(path:path.cgPath )
         shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
         shapeNode.lineWidth = 0.5
         shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
@@ -1720,11 +1841,15 @@ class StartMenu: SKScene {
         let texture = view.texture(from: shapeNode)!
         let redButton = SKSpriteNode(texture: texture)
         //redButton.position = CGPoint(x:0.5, y:5.5)//(x:-280, y:5.5)
-        redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        redButton.physicsBody?.isDynamic = false
+        //redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        //redButton.physicsBody?.isDynamic = false
         //redButton.name = "redButton"
     
         return redButton
+    }
+    func instruccionesLabelsPosition(){
+        let label = SKLabelNode()
+        label.position = CGPoint(x: StartMenu().self.size.width/2 /* 135*/, y:StartMenu().self.size.height/2 * 0.6)
     }
     
     func setinstructionsLabelDefaults()->SKLabelNode{
@@ -1734,8 +1859,7 @@ class StartMenu: SKScene {
       label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//(red: 0, green: 0.4078, blue: 0.2431, alpha: 1.0)
       label.numberOfLines = 12//12
       label.preferredMaxLayoutWidth = 580//650
-      label.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
-      
+        label.position = CGPoint(x: StartMenu().self.size.width/2 /* 135*/, y:StartMenu().self.size.height/2 * 0.6)
       return label
     }
     
@@ -1769,7 +1893,7 @@ class StartMenu: SKScene {
     
 
     
-    func redArrowButtonBpDrawToSKSpriteNode()->SKSpriteNode{
+    func redArrowButtonDrawToSKSpriteNodeAndSetAttributes()->SKSpriteNode{
         
         //Drawing
        let path = UIBezierPath()
@@ -1792,19 +1916,24 @@ class StartMenu: SKScene {
         
        //Drawing to Shapenode
        let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
        shapeNode.lineWidth = 0.5
+       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
        shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
        //Shapenode To SKSpriteNode
        let view = SKView(frame: UIScreen.main.bounds)
        let texture = view.texture(from: shapeNode)!
-       let redArrowButton = SKSpriteNode(texture: texture)
+       let textureAsSpriteNode = SKSpriteNode(texture: texture)
+       //Set Attributes
+       textureAsSpriteNode.position = CGPoint(x:0.0,y:-29.5)
+       textureAsSpriteNode.setScale(0.50)
+       textureAsSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:textureAsSpriteNode.size.width, height:textureAsSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
+       textureAsSpriteNode.physicsBody?.isDynamic = false
 
-       return redArrowButton
+       return textureAsSpriteNode
             
     }
 
-    func setRedArrowButton(redArrow:SKSpriteNode)->SKSpriteNode{
+    /*func setRedArrowButton(redArrow:SKSpriteNode)->SKSpriteNode{
         //redArrow.name = "redArrowButton"
         redArrow.position = CGPoint(x:0.0,y:-29.5)
         redArrow.setScale(0.50)
@@ -1812,18 +1941,18 @@ class StartMenu: SKScene {
         redArrow.physicsBody?.isDynamic = false
         
         return redArrow
-    }
+    }*/
 
-    func setRedButtonPhysicsBody(redButton:SKSpriteNode)->SKSpriteNode {
-        redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        redButton.physicsBody?.isDynamic = false
+    func initSetButtonPhysicsBody(objectButton:SKSpriteNode)->SKSpriteNode {
+        objectButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:objectButton.size.width, height:objectButton.size.height), center: CGPoint(x:0.5, y: 0.5))
+        objectButton.physicsBody?.isDynamic = false
         
-        return redButton
+        return objectButton
     }
     
     
-    func setLabelDefaults()-> SKLabelNode{
-        let label = SKLabelNode()
+    func mainMenuSetLabelDefaults(label:SKLabelNode)-> SKLabelNode{
+        
         label.fontName = "AvenirNext-Bold"
         label.fontSize = 14
         label.position = CGPoint(x:0.5,y:-5.5)

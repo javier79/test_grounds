@@ -579,6 +579,8 @@ class StartScene: SKScene{
         
         
     }
+   
+    
     func initMusic() {
         guard let url = musicURL else { return }
         

@@ -1010,7 +1010,7 @@ class GameOverScene: SKScene{
     
     func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:Int, minute:Int){
          /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
-         if  UserDefaults.standard.integer(forKey: "minutesAlphabetic") < 1 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") < 1 || minute < UserDefaults.standard.integer(forKey: "minutesAlphabetic") || minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsAlphabetic") {
+         if  UserDefaults.standard.integer(forKey: "minutesAlphabetic") == 0 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") == 0 || minute < UserDefaults.standard.integer(forKey: "minutesAlphabetic") || minute == UserDefaults.standard.integer(forKey: "minutesAlphabetic") && StartScene.secondsGameOver < UserDefaults.standard.integer(forKey: "secondsAlphabetic") {
              /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
              UserDefaults.standard.set(minute, forKey:"minutesAlphabetic")
              UserDefaults.standard.set(second, forKey:"secondsAlphabetic")
@@ -1137,7 +1137,7 @@ class GameOverScene: SKScene{
      }
     
     func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
-        let label:SKLabelNode = StartMenu().setLabelDefaults()
+        let label = setLabelDefaults()
         label.fontName = "AvenirNext-Bold"
         label.text = "Resultados (Results)"
         label.position = CGPoint(x:0.5, y:-5.5)
@@ -1149,6 +1149,14 @@ class GameOverScene: SKScene{
         buttonResultadosSKSpriteNode.physicsBody?.isDynamic = false
         
         return buttonResultadosSKSpriteNode
+    }
+    func setLabelDefaults()-> SKLabelNode{
+        let label = SKLabelNode()
+        label.fontName = "AvenirNext-Bold"
+        label.fontSize = 14
+        label.position = CGPoint(x:0.5,y:-5.5)
+        //.zPosition = 1
+        return label
     }
 
 }

@@ -93,6 +93,17 @@ class TestClass {
     var viequesBezierPath:UIBezierPath!
     var culebraBezierPath:UIBezierPath!*/
     
+    func setinstructionsLabelDefaults()->SKLabelNode{
+      let label = SKLabelNode()
+      label.fontName = "GillSans-SemiBold"
+      label.fontSize = 14
+      label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//(red: 0, green: 0.4078, blue: 0.2431, alpha: 1.0)
+      label.numberOfLines = 12//12
+      label.preferredMaxLayoutWidth = 580//650
+      //label.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+      return label
+    }
+    
     func ToSkShapeNodeAndDefaultProperties(nodeShape:SKShapeNode)-> SKSpriteNode{
         nodeShape.fillColor = UIColor.init(red: 0.78, green: 0.91, blue: 0.81, alpha: 1.00)//#C6E7CE/*(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6*/
         nodeShape.strokeColor = UIColor.init(red: 0.81, green: 1.00, blue: 0.81, alpha: 1.00)//#CEFFCE/*(red: 0.80, green: 1.00, blue: 0.73, alpha: 1.00)*//*(red: 0.88, green: 0.80, blue: 0.59, alpha: 1.00)*//*(red: 0.99, green: 0.91, blue: 0.84, alpha: 1.00)//#FDE8D7*//*(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8*/
