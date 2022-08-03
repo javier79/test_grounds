@@ -1220,157 +1220,161 @@ class StartMenu: SKScene {
         let touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
         
         if (touchedNode != nil){
-            
-            if(buttonGreen.name == touchedNode?.node?.name){
-                buttonGreen.removeFromParent()
-                self.addChild(mapOrderOldPaperbackground)
+            if buttonGreen.parent != nil{
+                if(buttonGreen.name == touchedNode?.node?.name){
+                    buttonGreen.removeFromParent()
+                    self.addChild(mapOrderOldPaperbackground)
+                    
+                }
                 
-            }
-            
-            else if (redButtonOne.name == touchedNode?.node?.name){
-                buttonGreen.removeFromParent()
-                self.addChild(bestTimesRectangleBpToSKSpritenode)
-                self.addChild(returnVolverRedButton)
-            }
-            
-            
-            else if (redButtonTwo.name == touchedNode?.node?.name){
-                buttonGreen.removeFromParent()
-                //redButtonOne.removeFromParent()
-                //redButtonTwo.removeFromParent()
-                //redButtonThree.removeFromParent()
-                self.addChild(instructionsEspanolLabel)
-                self.addChild(returnVolverRedButton)
+                else if (redButtonOne.name == touchedNode?.node?.name){
+                    buttonGreen.removeFromParent()
+                    self.addChild(bestTimesRectangleBpToSKSpritenode)
+                    self.addChild(returnVolverRedButton)
+                }
+                
+                
+                else if (redButtonTwo.name == touchedNode?.node?.name){
+                    buttonGreen.removeFromParent()
+                    //redButtonOne.removeFromParent()
+                    //redButtonTwo.removeFromParent()
+                    //redButtonThree.removeFromParent()
+                    self.addChild(instructionsEspanolLabel)
+                    self.addChild(returnVolverRedButton)
 
+                }
+                
+                else if (redButtonThree.name == touchedNode?.node?.name){
+                    buttonGreen.removeFromParent()
+                    self.addChild(opcionesAudioLabel)
+                    self.addChild(returnVolverRedButton)
+                }
+            }
+            else if bestTimesRectangleBpToSKSpritenode.parent != nil{
+                if (returnVolverRedButton.name == touchedNode?.node?.name /*&& bestTimesRectangleBpToSKSpritenode.parent != nil*/){
+                   returnVolverRedButton.removeFromParent()
+                   bestTimesRectangleBpToSKSpritenode.removeFromParent()
+                   self.addChild(buttonGreen)
+                }
             }
             
-            else if (redButtonThree.name == touchedNode?.node?.name){
-                buttonGreen.removeFromParent()
-                self.addChild(opcionesAudioLabel)
-                self.addChild(returnVolverRedButton)
+            else if instructionsEspanolLabel.parent != nil || instructionsEspanolLabelTwo.parent != nil || instructionsEnglishLabel.parent != nil || instructionsEnglishLabelTwo.parent != nil /*&& returnVolverRedButton.parent != nil*/{
+                if (redArrowButtonEspanolLabel.name == touchedNode?.node?.name){
+                    instructionsEspanolLabel.removeFromParent()
+                    self.addChild(instructionsEspanolLabelTwo)
+                }
+                
+                else if (redArrowButtonEspanolLabelTwo.name == touchedNode?.node?.name){
+                    instructionsEspanolLabelTwo.removeFromParent()
+                    self.addChild(instructionsEspanolLabel)
+                }
+                else if (englishButton.name == touchedNode?.node?.name){
+                    instructionsEspanolLabel.removeFromParent()
+                    self.addChild(instructionsEnglishLabel)
+                }
+                else if (espanolButton.name == touchedNode?.node?.name){
+                    instructionsEnglishLabel.removeFromParent()
+                    //instructionsEspanolLabel.addChild(englishButton)
+                    self.addChild(instructionsEspanolLabel)
+                }
+                else if (redArrowButtonEnglishLabel.name == touchedNode?.node?.name){
+                    instructionsEnglishLabel.removeFromParent()
+                    //instructionsEspanolLabel.addChild(englishButton)
+                    self.addChild(instructionsEnglishLabelTwo)
+                }
+                else if (redArrowButtonEnglishLabelTwo.name == touchedNode?.node?.name){
+                    instructionsEnglishLabelTwo.removeFromParent()
+                    self.addChild(instructionsEnglishLabel)
+                }
+                //Esta linea se hizo para poder reutilizar el boton de volver cuando se desplega la vista de creditos
+                
+                else if (returnVolverRedButton.name == touchedNode?.node?.name){
+                    returnVolverRedButton.removeFromParent()
+                    if instructionsEspanolLabel.parent != nil{
+                        instructionsEspanolLabel.removeFromParent()
+                    }
+                    if instructionsEspanolLabelTwo.parent != nil{
+                        instructionsEspanolLabelTwo.removeFromParent()
+                    }
+                    if instructionsEnglishLabel.parent != nil{
+                        instructionsEnglishLabel.removeFromParent()
+                    }
+                    if instructionsEnglishLabelTwo.parent != nil{
+                        instructionsEnglishLabelTwo.removeFromParent()
+                    }
+                    /*if opcionesAudioLabel.parent != nil{
+                        opcionesAudioLabel.removeFromParent()
+                    }*/
+                    /*if bestTimesRectangleBpToSKSpritenode.parent != nil{
+                        bestTimesRectangleBpToSKSpritenode.removeFromParent()
+                    }*/
+                    
+                    
+                    self.addChild(buttonGreen)
+                    //self.addChild(redButtonOne)
+                    //self.addChild(redButtonTwo)
+                    //self.addChild(redButtonThree)
+                }
             }
+                
             
-            else if (redArrowButtonEspanolLabel.name == touchedNode?.node?.name){
-                instructionsEspanolLabel.removeFromParent()
-                self.addChild(instructionsEspanolLabelTwo)
-            }
-            
-            else if (redArrowButtonEspanolLabelTwo.name == touchedNode?.node?.name){
-                instructionsEspanolLabelTwo.removeFromParent()
-                self.addChild(instructionsEspanolLabel)
-            }
-            else if (englishButton.name == touchedNode?.node?.name){
-                instructionsEspanolLabel.removeFromParent()
-                self.addChild(instructionsEnglishLabel)
-            }
-            else if (espanolButton.name == touchedNode?.node?.name){
-                instructionsEnglishLabel.removeFromParent()
-                //instructionsEspanolLabel.addChild(englishButton)
-                self.addChild(instructionsEspanolLabel)
-            }
-            else if (redArrowButtonEnglishLabel.name == touchedNode?.node?.name){
-                instructionsEnglishLabel.removeFromParent()
-                //instructionsEspanolLabel.addChild(englishButton)
-                self.addChild(instructionsEnglishLabelTwo)
-            }
-            else if (redArrowButtonEnglishLabelTwo.name == touchedNode?.node?.name){
-                instructionsEnglishLabelTwo.removeFromParent()
-                self.addChild(instructionsEnglishLabel)
-            }
-            //Esta linea se hizo para poder reutilizar el boton de volver cuando se desplega la vista de creditos
-            else if (returnVolverRedButton.name == touchedNode?.node?.name && creditsContainer.parent != nil){
+            /*else if (returnVolverRedButton.name == touchedNode?.node?.name && creditsContainer.parent != nil){
                 creditsContainer.removeFromParent()
                 self.addChild(opcionesAudioLabel)
-            }
+            }*/
             
-            else if (returnVolverRedButton.name == touchedNode?.node?.name){
+          
+            /*else if (returnVolverRedButton.name == touchedNode?.node?.name && opcionesAudioLabel.parent != nil){
                 returnVolverRedButton.removeFromParent()
-                if instructionsEspanolLabel.parent != nil{
-                    instructionsEspanolLabel.removeFromParent()
-                }
-                if instructionsEspanolLabelTwo.parent != nil{
-                    instructionsEspanolLabelTwo.removeFromParent()
-                }
-                if instructionsEnglishLabel.parent != nil{
-                    instructionsEnglishLabel.removeFromParent()
-                }
-                if instructionsEnglishLabelTwo.parent != nil{
-                    instructionsEnglishLabelTwo.removeFromParent()
-                }
-                if opcionesAudioLabel.parent != nil{
-                    opcionesAudioLabel.removeFromParent()
-                }
-                if bestTimesRectangleBpToSKSpritenode.parent != nil{
-                    bestTimesRectangleBpToSKSpritenode.removeFromParent()
-                }
-                
-                
+                opcionesAudioLabel.removeFromParent()
                 self.addChild(buttonGreen)
-                //self.addChild(redButtonOne)
-                //self.addChild(redButtonTwo)
-                //self.addChild(redButtonThree)
-            }
+            }*/
             
+            
+            /*else if (returnVolverRedButton.name == touchedNode?.node?.name && bestTimesRectangleBpToSKSpritenode.parent != nil){
+                returnVolverRedButton.removeFromParent()
+                bestTimesRectangleBpToSKSpritenode.removeFromParent()
+                self.addChild(buttonGreen)
+            }*/
+            
+            else if mapOrderOldPaperbackground.parent != nil{
                 /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton verde y se encuentra desplegado alguno de los dos drop down menu */
-            else if mapOrderGreenButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
-                orderDropDownMenu.removeFromParent()
-                dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-            }
-                
-            else if mapOrderGreenButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
-                mapOrderCountryDropDownMenu.removeFromParent()
-                dropDownLabelBG.addChild(dropDownArrowLabel)
-            }
-            /*la ejecucion entra aqui para movernos a LA VISTA PARA ESCOGER EL MODO DE JUEGO cuando presionamos boton verde**/
-            else if(mapOrderGreenButton.name == touchedNode?.node?.name){
-                mapOrderOldPaperbackground.removeFromParent()
-                self.addChild(gameModeSelectionOldPaperbackground)
-            }
-            
-            /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton rojo y se encuentra desplegado alguno de los dos drop down menu */
-            else if mapOrderRedButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
-                orderDropDownMenu.removeFromParent()
-                dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-            }
-                
-            else if mapOrderRedButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
-                mapOrderCountryDropDownMenu.removeFromParent()
-                dropDownLabelBG.addChild(dropDownArrowLabel)
-            }
-            /*la ejecucion entra aqui para regresar a la pagina principal cuando presionamos boton rojo**/
-            else if mapOrderRedButton.name == touchedNode?.node?.name{
-                mapOrderOldPaperbackground.removeFromParent()
-                self.addChild(buttonGreen)
-                //self.addChild(redButtonOne)
-                //self.addChild(redButtonTwo)
-                //self.addChild(redButtonThree)
-            }
-            /*La ejecucion va a entrar aqui cuando presiono dropDownArrowLabel pero orderDropDownMenu se encuentra desplegado. En esencia reescribe el label dropDownArrowLabelTwo
-                 con la seleccion que se encuentra identificada por orderDropDownMenuYellowBG o orderDropDownMenuYellowBGTwo devuelve(anade) y remueve orderDropDownMenu**/
-            else if (dropDownArrowLabel.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil){
-                if orderDropDownMenuYellowBG.parent != nil {
-                    dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                if mapOrderGreenButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
+                    orderDropDownMenu.removeFromParent()
+                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
                 }
-                else if orderDropDownMenuYellowBGTwo.parent != nil{
-                    dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                }
-                
-                orderDropDownMenu.removeFromParent()
-                dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-            }
-                
-            else if (dropDownArrowLabel.name == touchedNode?.node?.name){
-                
-                dropDownArrowLabel.removeFromParent()
-                self.addChild(mapOrderCountryDropDownMenu)
-                
-                /*el if statement siguiente se activa si el dropdown menu de orden(alfabetico/azar) se encuentra desplegado cerrando el mismo y restituyendo el label dropDownArrowLabelTwo
-                el cual se removio cuando previamente presionamos dropDownArrowLabelTwo para desplegar orderDropDownMenu, pero que a este momento el usuario no hizo seleccion mientras desplegaba
-                 mapOrderCountryDropDownMenu.*/
-                /*if orderDropDownMenu.parent != nil{
                     
-                    /*Si orderDropDownMenuYellowBG se encuentra desplegado se va a utilizar el texto de orderDropDownMenuLabel("Alfabetico (Alphabetic)") en el label del dropdown tab osea dropDownArrowLabelTwo
-                    , por el contrario si se encontrara desplegado orderDropDownMenuYellowBGTwo se va a utilizar el texto de orderDropDownMenuLabelTwo  */
+                else if mapOrderGreenButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+                    mapOrderCountryDropDownMenu.removeFromParent()
+                    dropDownLabelBG.addChild(dropDownArrowLabel)
+                }
+                /*la ejecucion entra aqui para movernos a LA VISTA PARA ESCOGER EL MODO DE JUEGO cuando presionamos boton verde**/
+                else if(mapOrderGreenButton.name == touchedNode?.node?.name){
+                    mapOrderOldPaperbackground.removeFromParent()
+                    self.addChild(gameModeSelectionOldPaperbackground)
+                }
+                
+                /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton rojo y se encuentra desplegado alguno de los dos drop down menu */
+                else if mapOrderRedButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
+                    orderDropDownMenu.removeFromParent()
+                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                }
+                    
+                else if mapOrderRedButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+                    mapOrderCountryDropDownMenu.removeFromParent()
+                    dropDownLabelBG.addChild(dropDownArrowLabel)
+                }
+                /*la ejecucion entra aqui para regresar a la pagina principal cuando presionamos boton rojo**/
+                else if mapOrderRedButton.name == touchedNode?.node?.name{
+                    mapOrderOldPaperbackground.removeFromParent()
+                    self.addChild(buttonGreen)
+                    //self.addChild(redButtonOne)
+                    //self.addChild(redButtonTwo)
+                    //self.addChild(redButtonThree)
+                }
+                /*La ejecucion va a entrar aqui cuando presiono dropDownArrowLabel pero orderDropDownMenu se encuentra desplegado. En esencia reescribe el label dropDownArrowLabelTwo
+                     con la seleccion que se encuentra identificada por orderDropDownMenuYellowBG o orderDropDownMenuYellowBGTwo devuelve(anade) y remueve orderDropDownMenu**/
+                else if (dropDownArrowLabel.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil){
                     if orderDropDownMenuYellowBG.parent != nil {
                         dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
                     }
@@ -1380,213 +1384,253 @@ class StartMenu: SKScene {
                     
                     orderDropDownMenu.removeFromParent()
                     dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                }*/
-                /*El siguiente bloque va anadir a la vista el BG amarillo y luego el label "Puerto Rico" sin embargo como se anaden como hijos de mapOrderCountryDropDownMenu y estos dos no se remueven sino que que removemos al Parent no se tienen que volver a anadir, por ello que si eliminamos los statements:  && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil nos da el error de que estamos tratando de anadir un objeto que ya tiene parent*/
-                if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
-                   
-                    mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
-                    mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
+                }
                     
-                }
+                else if (dropDownArrowLabel.name == touchedNode?.node?.name){
+                    
+                    dropDownArrowLabel.removeFromParent()
+                    self.addChild(mapOrderCountryDropDownMenu)
+                    
+                    /*el if statement siguiente se activa si el dropdown menu de orden(alfabetico/azar) se encuentra desplegado cerrando el mismo y restituyendo el label dropDownArrowLabelTwo
+                    el cual se removio cuando previamente presionamos dropDownArrowLabelTwo para desplegar orderDropDownMenu, pero que a este momento el usuario no hizo seleccion mientras desplegaba
+                     mapOrderCountryDropDownMenu.*/
+                    /*if orderDropDownMenu.parent != nil{
+                        
+                        /*Si orderDropDownMenuYellowBG se encuentra desplegado se va a utilizar el texto de orderDropDownMenuLabel("Alfabetico (Alphabetic)") en el label del dropdown tab osea dropDownArrowLabelTwo
+                        , por el contrario si se encontrara desplegado orderDropDownMenuYellowBGTwo se va a utilizar el texto de orderDropDownMenuLabelTwo  */
+                        if orderDropDownMenuYellowBG.parent != nil {
+                            dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                        }
+                        else if orderDropDownMenuYellowBGTwo.parent != nil{
+                            dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                        }
+                        
+                        orderDropDownMenu.removeFromParent()
+                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                    }*/
+                    /*El siguiente bloque va anadir a la vista el BG amarillo y luego el label "Puerto Rico" sin embargo como se anaden como hijos de mapOrderCountryDropDownMenu y estos dos no se remueven sino que que removemos al Parent no se tienen que volver a anadir, por ello que si eliminamos los statements:  && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil nos da el error de que estamos tratando de anadir un objeto que ya tiene parent*/
+                    if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
+                       
+                        mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
+                        mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
+                        
+                    }
 
-            }
-            
-            else if (dropDownMenuLabelPR.name == touchedNode?.node?.name){
-                dropDownArrowLabel.text = dropDownMenuLabelPR.text
-                mapOrderCountryDropDownMenu.removeFromParent()
-                dropDownLabelBG.addChild(dropDownArrowLabel)
-   
-            }
-            /*La ejecucion va a entrar aqui cuando oprimimos dropdropDownArrowLabelTwo pero mapOrderCountryDropDownMenu se encuentra desplegado,
-                 en esencia se cierra mapOrderCountryDropDownMenu y se devuelve dropDownArrowLabel al dropDown tab */
-            else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil){
-                 //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
-                if mapOrderCountryDropDownMenuYellowBG.parent != nil {
-                    dropDownArrowLabel.text = dropDownMenuLabelPR.text
                 }
                 
-                mapOrderCountryDropDownMenu.removeFromParent()
-                dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
-                se removio el label cuando presionamos en dropDownArrowLabel*/
-            }
-            
-            else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name){
-                //remuevo el label del dropdown tab
-                dropDownArrowLabelTwo.removeFromParent()
-                
-                //La ejecucion entra en este bloque si el menu de pais se encuentra desplegado cuando presionamos dropDownArrowLabelTwo
-                /*if mapOrderCountryDropDownMenu.parent != nil{
-                    //orderDropDownMenu.removeFromParent()
-                    //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
+                else if (dropDownMenuLabelPR.name == touchedNode?.node?.name){
+                    dropDownArrowLabel.text = dropDownMenuLabelPR.text
+                    mapOrderCountryDropDownMenu.removeFromParent()
+                    dropDownLabelBG.addChild(dropDownArrowLabel)
+       
+                }
+                /*La ejecucion va a entrar aqui cuando oprimimos dropdropDownArrowLabelTwo pero mapOrderCountryDropDownMenu se encuentra desplegado,
+                     en esencia se cierra mapOrderCountryDropDownMenu y se devuelve dropDownArrowLabel al dropDown tab */
+                else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil){
+                     //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
                     if mapOrderCountryDropDownMenuYellowBG.parent != nil {
                         dropDownArrowLabel.text = dropDownMenuLabelPR.text
                     }
                     
                     mapOrderCountryDropDownMenu.removeFromParent()
                     dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
-                     se removio el label cuando presionamos en dropDownArrowLabel*/
-                }*/
-                
-                self.addChild(orderDropDownMenu)
-                
-                /*Aqui la ejecucion va a entrar la primera vez salvo que los children aqui anadidos no se vuelven a remover sino que si necesitaramos removerlos seria removiendo el parent
-                 y por ello que se utilice la condicion .parent == nil, para prevenir que sean anadidos nuevamente.
-                 LA EJECUCION ENTRA EN UNO DE LOS IF SIGUIENTES CUANDO EL TEXTO EN EL LABEL(DROPDOWN TAB) ES EL MISMO QUE EL LABEL EN EL MENU CON BG AMARILLO(POR DEFAULT VA A ENTRAR AQUI LA PRIMERA VEZ QUE PRESIONAMOS: dropDownArrowLabelTwo)**/
-                if dropDownArrowLabelTwo.text == orderDropDownMenuLabel.text && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil{
-                   
-                    orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
-                    orderDropDownMenu.addChild(orderDropDownMenuLabel)
-                    orderDropDownMenuLabelTwo.fontColor = .white
-                    orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
-                    
-                }
-                //ACA VA A ENTRAR CUANDO EL BG AMARILLO SE ENCUENTRA EN EL SEGUNDO LABEL EN EL MENU Y SU TEXTO ES IGUAL AL DEL DROP DOWN TAB
-                else if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text && orderDropDownMenuYellowBGTwo.parent == nil && orderDropDownMenuLabelTwo.parent == nil && dropDownArrowLabelTwo.parent == nil {
-                    
-                    orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
-                    orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
-                    orderDropDownMenuLabel.fontColor = .white
-                    orderDropDownMenu.addChild(orderDropDownMenuLabel)
-                }
-            }
-            
-            else if (orderDropDownMenuLabel.name == touchedNode?.node?.name){
-                /*esta es la condicion default(cuando entramos a esta pantalla para un nuevo juego o por primera vez, por lo que no tenemos que anadir el texto al label pq
-                 son iguales como se predetermino)*/
-                if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
-                    orderDropDownMenu.removeFromParent()
-                    //dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
-                }
-                    
-                else if orderDropDownMenuLabel.text != dropDownArrowLabelTwo.text{
-                    orderDropDownMenu.alpha = 0.9
-                    orderDropDownMenu.removeFromParent()
-                    //dropDownArrowLabelTwo.text = ""
-                    /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
-                    aqui otorgado*/
-                    dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                    /*cuando se reescribe el label con el texto "Azar (Random)" en el proximo bloque ocurre un glitch donde el texto se ve indentado hacia el medio, Para solucionar esto en el bloque de abajo
-                     se reposiciona el label hacia la izquierda lo cual va a afectar el posicionamiento del Physics body, por lo cual eliminamos el Physics body original(en el bloque siguiente)
-                     y lo redefinimos con los valores correspondientes a la nueva posicion del label. Estos reposicionamientos tienen como consecuencia que al reescribir
-                     con el texto "Alfabetico (Alphabetic)" el texto queda indentado hacia la izquierda y fuera del dropDownLabelBGTwo(viene siendo el dropdown tab color gris)
-                     y por ello que en este bloque lo volvemos a reposicionar y redefinimos el physics body.Los physics bodies se eliminan y se redefinen dado que reposicionarlos
-                     sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos*/
-                    dropDownArrowLabelTwo.physicsBody = nil
-                    dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
-                    dropDownArrowLabelTwo.physicsBody?.isDynamic = false
-                    dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
-                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                    /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, , estos cambios no los vamos a ver de inmediato en el rendering pq son
-                    para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro**/
-                    orderDropDownMenuYellowBGTwo.removeFromParent()
-                    orderDropDownMenuLabel.fontColor = .black
-                    orderDropDownMenuLabelTwo.fontColor = .white
-                    orderDropDownMenuLabel.zPosition = 1
-                    orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
-                    
-                    
-                }
-            }
-            
-            else if (orderDropDownMenuLabelTwo.name == touchedNode?.node?.name){
-                
-                if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
-                    orderDropDownMenu.removeFromParent()
-                    //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                    se removio el label cuando presionamos en dropDownArrowLabel*/
                 }
                 
+                else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name){
+                    //remuevo el label del dropdown tab
+                    dropDownArrowLabelTwo.removeFromParent()
+                    
+                    //La ejecucion entra en este bloque si el menu de pais se encuentra desplegado cuando presionamos dropDownArrowLabelTwo
+                    /*if mapOrderCountryDropDownMenu.parent != nil{
+                        //orderDropDownMenu.removeFromParent()
+                        //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
+                        if mapOrderCountryDropDownMenuYellowBG.parent != nil {
+                            dropDownArrowLabel.text = dropDownMenuLabelPR.text
+                        }
+                        
+                        mapOrderCountryDropDownMenu.removeFromParent()
+                        dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
+                         se removio el label cuando presionamos en dropDownArrowLabel*/
+                    }*/
+                    
+                    self.addChild(orderDropDownMenu)
+                    
+                    /*Aqui la ejecucion va a entrar la primera vez salvo que los children aqui anadidos no se vuelven a remover sino que si necesitaramos removerlos seria removiendo el parent
+                     y por ello que se utilice la condicion .parent == nil, para prevenir que sean anadidos nuevamente.
+                     LA EJECUCION ENTRA EN UNO DE LOS IF SIGUIENTES CUANDO EL TEXTO EN EL LABEL(DROPDOWN TAB) ES EL MISMO QUE EL LABEL EN EL MENU CON BG AMARILLO(POR DEFAULT VA A ENTRAR AQUI LA PRIMERA VEZ QUE PRESIONAMOS: dropDownArrowLabelTwo)**/
+                    if dropDownArrowLabelTwo.text == orderDropDownMenuLabel.text && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil{
+                       
+                        orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                        orderDropDownMenu.addChild(orderDropDownMenuLabel)
+                        orderDropDownMenuLabelTwo.fontColor = .white
+                        orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                        
+                    }
+                    //ACA VA A ENTRAR CUANDO EL BG AMARILLO SE ENCUENTRA EN EL SEGUNDO LABEL EN EL MENU Y SU TEXTO ES IGUAL AL DEL DROP DOWN TAB
+                    else if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text && orderDropDownMenuYellowBGTwo.parent == nil && orderDropDownMenuLabelTwo.parent == nil && dropDownArrowLabelTwo.parent == nil {
+                        
+                        orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                        orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                        orderDropDownMenuLabel.fontColor = .white
+                        orderDropDownMenu.addChild(orderDropDownMenuLabel)
+                    }
+                }
                 
-                else if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
-                    orderDropDownMenu.alpha = 0.9
-                    orderDropDownMenu.removeFromParent()
-                    //dropDownArrowLabelTwo.text = ""
-                    dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                    /*cuando se reescribe el label con el texto "Azar (Random)" ocurre un glitch donde el texto se ve indentado hacia el centro. Reposicione el label,
-                     sin embargo como es de esperarse el physics body se desalineo un poco por lo que elimino el physics body default y lo redefino con nuevo posicionamiento.
-                     Los physics bodies se eliminan y se redefinen dado que reposicionarlos sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos.
-                     ** Uno podria pensar que quizas seria mas facil definir un nuevo label para "Azar (Random)"con su propio physics body, sin embargo ello conllevaria reescribir la logica y
-                     no representaria ninguna mejora en la eficiencia dado que la mecanica involucraria anadir y posicionar el nuevo label y redefinir su propio physics body que como vemos
-                     es exactamente lo que ocurre en este bloque.*/
-                    dropDownArrowLabelTwo.physicsBody = nil
-                    dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
-                    dropDownArrowLabelTwo.physicsBody?.isDynamic = false
-                    dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
-                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                    /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, estos cambios no los vamos a ver de inmediato en el rendering pq son
-                     para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro **/
-                    orderDropDownMenuYellowBG.removeFromParent()
-                    orderDropDownMenuLabel.fontColor = .white
-                    orderDropDownMenuLabelTwo.fontColor = .black
-                    orderDropDownMenuLabelTwo.zPosition = 1
-                    /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
-                    orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
-                    //orderDropDownMenuLabelTwo.zPosition = 1
+                else if (orderDropDownMenuLabel.name == touchedNode?.node?.name){
+                    /*esta es la condicion default(cuando entramos a esta pantalla para un nuevo juego o por primera vez, por lo que no tenemos que anadir el texto al label pq
+                     son iguales como se predetermino)*/
+                    if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
+                        orderDropDownMenu.removeFromParent()
+                        //dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
+                    }
+                        
+                    else if orderDropDownMenuLabel.text != dropDownArrowLabelTwo.text{
+                        orderDropDownMenu.alpha = 0.9
+                        orderDropDownMenu.removeFromParent()
+                        //dropDownArrowLabelTwo.text = ""
+                        /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
+                        aqui otorgado*/
+                        dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                        /*cuando se reescribe el label con el texto "Azar (Random)" en el proximo bloque ocurre un glitch donde el texto se ve indentado hacia el medio, Para solucionar esto en el bloque de abajo
+                         se reposiciona el label hacia la izquierda lo cual va a afectar el posicionamiento del Physics body, por lo cual eliminamos el Physics body original(en el bloque siguiente)
+                         y lo redefinimos con los valores correspondientes a la nueva posicion del label. Estos reposicionamientos tienen como consecuencia que al reescribir
+                         con el texto "Alfabetico (Alphabetic)" el texto queda indentado hacia la izquierda y fuera del dropDownLabelBGTwo(viene siendo el dropdown tab color gris)
+                         y por ello que en este bloque lo volvemos a reposicionar y redefinimos el physics body.Los physics bodies se eliminan y se redefinen dado que reposicionarlos
+                         sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos*/
+                        dropDownArrowLabelTwo.physicsBody = nil
+                        dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
+                        dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                        dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
+                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                        /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, , estos cambios no los vamos a ver de inmediato en el rendering pq son
+                        para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro**/
+                        orderDropDownMenuYellowBGTwo.removeFromParent()
+                        orderDropDownMenuLabel.fontColor = .black
+                        orderDropDownMenuLabelTwo.fontColor = .white
+                        orderDropDownMenuLabel.zPosition = 1
+                        orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                        
+                        
+                    }
+                }
+                
+                else if (orderDropDownMenuLabelTwo.name == touchedNode?.node?.name){
+                    
+                    if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
+                        orderDropDownMenu.removeFromParent()
+                        //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                    }
+                    
+                    
+                    else if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
+                        orderDropDownMenu.alpha = 0.9
+                        orderDropDownMenu.removeFromParent()
+                        //dropDownArrowLabelTwo.text = ""
+                        dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                        /*cuando se reescribe el label con el texto "Azar (Random)" ocurre un glitch donde el texto se ve indentado hacia el centro. Reposicione el label,
+                         sin embargo como es de esperarse el physics body se desalineo un poco por lo que elimino el physics body default y lo redefino con nuevo posicionamiento.
+                         Los physics bodies se eliminan y se redefinen dado que reposicionarlos sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos.
+                         ** Uno podria pensar que quizas seria mas facil definir un nuevo label para "Azar (Random)"con su propio physics body, sin embargo ello conllevaria reescribir la logica y
+                         no representaria ninguna mejora en la eficiencia dado que la mecanica involucraria anadir y posicionar el nuevo label y redefinir su propio physics body que como vemos
+                         es exactamente lo que ocurre en este bloque.*/
+                        dropDownArrowLabelTwo.physicsBody = nil
+                        dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
+                        dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                        dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
+                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                        /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, estos cambios no los vamos a ver de inmediato en el rendering pq son
+                         para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro **/
+                        orderDropDownMenuYellowBG.removeFromParent()
+                        orderDropDownMenuLabel.fontColor = .white
+                        orderDropDownMenuLabelTwo.fontColor = .black
+                        orderDropDownMenuLabelTwo.zPosition = 1
+                        /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
+                        orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                        //orderDropDownMenuLabelTwo.zPosition = 1
+                    }
                 }
             }
             /*Los proximos tres else if statements pertenecen a los botones para la vista de seleccion**/
-            else if (gameModeSelectionGreenButton.name == touchedNode?.node?.name){
-                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
-                    self.removeAllActions()
-                    self.removeFromParent()
-                    let startScene = StartScene(size: self.size)
-                    self.view?.presentScene(startScene)
+            if gameModeSelectionOldPaperbackground.parent != nil{
+                if (gameModeSelectionGreenButton.name == touchedNode?.node?.name){
+                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                        self.removeAllActions()
+                        self.removeFromParent()
+                        let startScene = StartScene(size: self.size)
+                        self.view?.presentScene(startScene)
+                    }
+                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                        self.removeAllActions()
+                        self.removeFromParent()
+                        let randomGame = RandomGame(size: self.size)
+                        self.view?.presentScene(randomGame)
+                    }
+                    
                 }
-                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
-                    self.removeAllActions()
-                    self.removeFromParent()
-                    let randomGame = RandomGame(size: self.size)
-                    self.view?.presentScene(randomGame)
+                else if (gameModeSelectionBlueButton.name == touchedNode?.node?.name){
+                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                        self.removeAllActions()
+                        self.removeFromParent()
+                        let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
+                        self.view?.presentScene(practiceAlphabeticGame)
+                    }
+                    
+                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                        self.removeAllActions()
+                        self.removeFromParent()
+                        let practiceRandomGame = PracticeRandomGame(size: self.size)
+                        self.view?.presentScene(practiceRandomGame)
+                    }
+                }
+                else if (gameModeSelectionRedButton.name == touchedNode?.node?.name){
+                    gameModeSelectionOldPaperbackground.removeFromParent()
+                    self.addChild(mapOrderOldPaperbackground)
+                }
+            }
+                
+            else if opcionesAudioLabel.parent != nil{
+                if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
+                    opcionesCheckmark.removeFromParent()
+                    StartMenu.backgroundMusicOn = false
+                    //startMenuMusic.removeFromParent()
+                    musicPlayer.stop()
+                }
+                
+                else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent == nil){
+                    opcionesCheckbox.addChild(opcionesCheckmark)
+                    StartMenu.backgroundMusicOn = true
+                    //self.addChild(startMenuMusic)
+                    initMusic()
+                }
+                else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent != nil){
+                    opcionesCheckmarkTwo.removeFromParent()
+                    StartMenu.gamePlaySoundOn = false
+                }
+                else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent == nil){
+                    opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
+                    StartMenu.gamePlaySoundOn = true
+                }
+                else if (creditosButton.name == touchedNode?.node?.name){
+                    opcionesAudioLabel.removeFromParent()
+                    self.addChild(creditsContainer)
+                }
+                else if (returnVolverRedButton.name == touchedNode?.node?.name /*&& opcionesAudioLabel.parent != nil*/){
+                    returnVolverRedButton.removeFromParent()
+                    opcionesAudioLabel.removeFromParent()
+                    self.addChild(buttonGreen)
                 }
                 
             }
-            else if (gameModeSelectionBlueButton.name == touchedNode?.node?.name){
-                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
-                    self.removeAllActions()
-                    self.removeFromParent()
-                    let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
-                    self.view?.presentScene(practiceAlphabeticGame)
+            else if creditsContainer.parent != nil{
+                if (returnVolverRedButton.name == touchedNode?.node?.name /*&& creditsContainer.parent != nil*/){
+                    creditsContainer.removeFromParent()
+                    self.addChild(opcionesAudioLabel)
                 }
                 
-                if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
-                    self.removeAllActions()
-                    self.removeFromParent()
-                    let practiceRandomGame = PracticeRandomGame(size: self.size)
-                    self.view?.presentScene(practiceRandomGame)
-                }
             }
-            else if (gameModeSelectionRedButton.name == touchedNode?.node?.name){
-                gameModeSelectionOldPaperbackground.removeFromParent()
-                self.addChild(mapOrderOldPaperbackground)
-            }
-                
-            else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
-                opcionesCheckmark.removeFromParent()
-                StartMenu.backgroundMusicOn = false
-                //startMenuMusic.removeFromParent()
-                musicPlayer.stop()
-            }
-            
-            else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent == nil){
-                opcionesCheckbox.addChild(opcionesCheckmark)
-                StartMenu.backgroundMusicOn = true
-                //self.addChild(startMenuMusic)
-                initMusic()
-            }
-            else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent != nil){
-                opcionesCheckmarkTwo.removeFromParent()
-                StartMenu.gamePlaySoundOn = false
-            }
-            else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent == nil){
-                opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
-                StartMenu.gamePlaySoundOn = true
-            }
-            else if (creditosButton.name == touchedNode?.node?.name){
-                opcionesAudioLabel.removeFromParent()
-                self.addChild(creditsContainer)
-            }
-            
             
         }
             
