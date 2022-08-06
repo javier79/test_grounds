@@ -12,6 +12,7 @@ import SpriteKit
 
 class StartMenuMethods{
     
+    
     func mainMenuSetLabelDefaults()-> SKLabelNode{
         let label = SKLabelNode()
         label.fontName = "AvenirNext-Bold"
@@ -196,6 +197,7 @@ class StartMenuMethods{
         let texture = view.texture(from: shapeNode)!
         let rectangleNode = SKSpriteNode(texture: texture)
         rectangleNode.position = CGPoint(x:325, y:190)
+        rectangleNode.name = "bestTimesRectangleBpToSKSpritenode"
         return  rectangleNode
     }
     
@@ -235,14 +237,7 @@ class StartMenuMethods{
         labelOne.position = CGPoint(x:0, y:-17)
         //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
         redbutton.addChild(labelOne)
-        
-        /*let labelTwo = SKLabelNode()
-        labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 13
-        labelTwo.text = "(PLAY)"
-        labelTwo.position = CGPoint(x:0.5, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        redbutton.addChild(labelTwo)*/
+
         
         return redbutton
         
