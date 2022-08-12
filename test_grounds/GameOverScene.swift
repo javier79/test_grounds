@@ -68,7 +68,7 @@ class GameOverScene: SKScene{
         containerNode = StartScene().nodesContainer()
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
         
-        resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
+        resultadosButton = StartMenuMethods().redButtonBpDrawToSKSpriteNode()
         resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
         
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = StartScene().desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.

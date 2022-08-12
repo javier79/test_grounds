@@ -12,7 +12,36 @@ import SpriteKit
 
 class StartMenuMethods{
     
-    
+    func redButtonBpDrawToSKSpriteNode()->SKSpriteNode{
+        
+        //Drawing
+       var path = UIBezierPath()
+       // Specify the point that the path should start get drawn.
+       path.move(to: CGPoint(x: 0.0, y: 0.0))
+       // Create a line between the starting point and the bottom-left side of the view.
+       path.addLine(to: CGPoint(x: 0.0, y:25))
+       // Create the bottom line (bottom-left to bottom-right).
+       path.addLine(to: CGPoint(x:210 , y:25))
+       //Create the vertical line from the bottom-right to the top-right side.
+       path.addLine(to: CGPoint(x:210, y: 0.0))
+       // Close the path. This will create the last line automatically.
+       path.close()
+         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
+       //Drawing to Shapenode
+       let shapeNode = SKShapeNode(path:path.cgPath)
+       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+       shapeNode.lineWidth = 0.5
+       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+       //Shapenode To SKSpriteNode
+       let view = SKView(frame: UIScreen.main.bounds)
+       let texture = view.texture(from: shapeNode)!
+       let redButton = SKSpriteNode(texture: texture)
+
+       return redButton
+            
+    }
     
     
     func mainMenuSetLabelDefaults()-> SKLabelNode{
