@@ -121,6 +121,12 @@ class StartMenu: SKScene {
     var musicPlayer = AVAudioPlayer()
     var musicURL:URL?
     
+    //let touch = touches.first!
+    //let touchLocation = touch.location(in: self)
+    //let touchedNode = self.physicsWorld.body(at:touchLocation)
+    
+    var touchedPhysicsBody:SKPhysicsBody!
+    
     override func didMove(to view: SKView){
         let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
         let elMorro:SKSpriteNode = setElMorro()// foto del morro
@@ -718,393 +724,428 @@ class StartMenu: SKScene {
         return  nodes_Container
     }
     
-    func creditosButtonBpDrawToSKSpriteNode()->SKSpriteNode{
-        //Drawing
-       var path = UIBezierPath()
-       // Specify the point that the path should start get drawn.
-       path.move(to: CGPoint(x: 0.0, y: 0.0))
-       // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:18))
-       // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:125 , y:18))
-       //Create the vertical line from the bottom-right to the top-right side.
-       path.addLine(to: CGPoint(x:125, y: 0.0))
-       // Close the path. This will create the last line automatically.
-       path.close()
+    func mainMenuTouchNodes(nodeTouched:SKPhysicsBody){
+        if(buttonGreen.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()
+            if mapOrderObjectsNotInitSet == true{
+                initSetSecondaryMapOrderObjects()
+                print("inicializando mapOrderObject")
+                mapOrderObjectsNotInitSet = false
+            }
+            self.addChild(mapOrderOldPaperbackground)
+            
+        }
+        
+        else if (redButtonOne.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()
+            
+            if bestTimesObjectsNotInitSet == true{
+                initSetBestTimesBoardObjects()
+                bestTimesObjectsNotInitSet = false
+            }
+            if returnVolverRedButton == nil{
+                initReturnVolverRedButtonObject()
+                print("outside")
+            }
+            self.addChild(bestTimesRectangleBpToSKSpritenode)
+            self.addChild(returnVolverRedButton!)
+        }
+        
+        
+        else if (redButtonTwo.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()
+            
+            if returnVolverRedButton == nil{
+                initReturnVolverRedButtonObject()
+                print("inside")
+            }
+            self.addChild(instructionsEspanolLabel)
+            self.addChild(returnVolverRedButton)
+
+        }
+        
+        else if (redButtonThree.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()
+            if opcionesObjectsNotInitSet == true{
+                initSetSecondaryOpcionesObjects()
+                opcionesObjectsNotInitSet = false
+            }
+            if returnVolverRedButton == nil{
+                initReturnVolverRedButtonObject()
+                print("wisin y yandel")
+            }
+            self.addChild(opcionesAudioLabel)
+            self.addChild(returnVolverRedButton)
+        }
+    }
+    
+    func bestTimesTouchNodes(nodeTouched:SKPhysicsBody){
+        if (returnVolverRedButton.name == nodeTouched.node?.name /*&& bestTimesRectangleBpToSKSpritenode.parent != nil*/){
+           returnVolverRedButton.removeFromParent()
+           bestTimesRectangleBpToSKSpritenode.removeFromParent()
+           self.addChild(buttonGreen)
+        }
+    }
+    
+    func instructionsTouchNodes(nodeTouched:SKPhysicsBody){
+        
+        if (redArrowButtonEspanolLabel.name == nodeTouched.node?.name){
+            instructionsEspanolLabel.removeFromParent()
+            self.addChild(instructionsEspanolLabelTwo)
+        }
+        
+        else if (redArrowButtonEspanolLabelTwo.name == nodeTouched.node?.name){
+            instructionsEspanolLabelTwo.removeFromParent()
+            self.addChild(instructionsEspanolLabel)
+        }
+        else if (englishButton.name == nodeTouched.node?.name){
+            instructionsEspanolLabel.removeFromParent()
+            self.addChild(instructionsEnglishLabel)
+        }
+        else if (espanolButton.name == nodeTouched.node?.name){
+            instructionsEnglishLabel.removeFromParent()
+            //instructionsEspanolLabel.addChild(englishButton)
+            self.addChild(instructionsEspanolLabel)
+        }
+        else if (redArrowButtonEnglishLabel.name == nodeTouched.node?.name){
+            instructionsEnglishLabel.removeFromParent()
+            //instructionsEspanolLabel.addChild(englishButton)
+            self.addChild(instructionsEnglishLabelTwo)
+        }
+        else if (redArrowButtonEnglishLabelTwo.name == nodeTouched.node?.name){
+            instructionsEnglishLabelTwo.removeFromParent()
+            self.addChild(instructionsEnglishLabel)
+        }
+        //Esta linea se hizo para poder reutilizar el boton de volver cuando se desplega la vista de creditos
+        
+        else if (returnVolverRedButton.name == nodeTouched.node?.name){
+            returnVolverRedButton.removeFromParent()
+            if instructionsEspanolLabel.parent != nil{
+                instructionsEspanolLabel.removeFromParent()
+            }
+            if instructionsEspanolLabelTwo.parent != nil{
+                instructionsEspanolLabelTwo.removeFromParent()
+            }
+            if instructionsEnglishLabel.parent != nil{
+                instructionsEnglishLabel.removeFromParent()
+            }
+            if instructionsEnglishLabelTwo.parent != nil{
+                instructionsEnglishLabelTwo.removeFromParent()
+            }
+            /*if opcionesAudioLabel.parent != nil{
+                opcionesAudioLabel.removeFromParent()
+            }*/
+            /*if bestTimesRectangleBpToSKSpritenode.parent != nil{
+                bestTimesRectangleBpToSKSpritenode.removeFromParent()
+            }*/
+            
+            
+            self.addChild(buttonGreen)
+            //self.addChild(redButtonOne)
+            //self.addChild(redButtonTwo)
+            //self.addChild(redButtonThree)
+        }
+    }
+    
+    func mapOrderTouchNodes(nodeTouched:SKPhysicsBody){
+        if mapOrderGreenButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
+             orderDropDownMenu.removeFromParent()
+             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         }
+             
+         else if mapOrderGreenButton.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)
+         }
+         /*la ejecucion entra aqui para movernos a LA VISTA PARA ESCOGER EL MODO DE JUEGO cuando presionamos boton verde**/
+         else if(mapOrderGreenButton.name == nodeTouched.node?.name){
+             mapOrderOldPaperbackground.removeFromParent()
+             if gameModeSelectionObjectsNotInitSet == true{
+                 initSetSecondaryGameModeSelectionObjects()
+                 gameModeSelectionObjectsNotInitSet = false
+             }
+             self.addChild(gameModeSelectionOldPaperbackground)
+         }
          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
-       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
-       //Drawing to Shapenode
-       let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-       shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-       //Shapenode To SKSpriteNode
-       let view = SKView(frame: UIScreen.main.bounds)
-       let texture = view.texture(from: shapeNode)!
-       let creditosRedButton = SKSpriteNode(texture: texture)
-
-       return creditosRedButton
-            
-    }
-    
-    func opcionesCheckmarkBpToSpritenode()->SKSpriteNode{
-        
-        let path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 4))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:0.0))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:9, y:0))
-        //Create the vertical line from the bottom-right to the top-right side.
-        //path.addLine(to: CGPoint(x:10, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        //path.close()
-        
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = .black//c1d3c8
-        shapeNode.lineWidth = 2.0
-        //shapeNode.fillColor = .white
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let checkmark = SKSpriteNode(texture: texture)
-        checkmark.zRotation = 1
-
-        
-        return checkmark
-        
-    }
-    
-    func opcionesCheckBoxesBpToSpritenode()->SKSpriteNode{
-        let path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:10))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:10 , y:10))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:10, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
-        
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = .white//c1d3c8
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = .white
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let checkbox = SKSpriteNode(texture: texture)
-
-        
-        return checkbox
-        
-    }
-    
-    func opcionesLabelDefaults()->SKLabelNode{
-        let label = SKLabelNode()
-        label.fontSize = 14
-        label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
-        return label
-    }
-    
-    func bestTimesPrRandomScore()->SKLabelNode{
-        
-        let label = SKLabelNode()
-        label.fontSize = 12
-        label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
-        
-        if UserDefaults.standard.integer(forKey: "minutesRandom") != 0 && UserDefaults.standard.integer(forKey: "secondsRandom") != 0 {
-            let secondsText = (UserDefaults.standard.integer(forKey: "secondsRandom") < 10) ?
-            "0\(UserDefaults.standard.integer(forKey: "secondsRandom"))" : "\(UserDefaults.standard.integer(forKey: "secondsRandom"))"
-            let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesRandom"))"
-
-            
-            
-            if UserDefaults.standard.integer(forKey: "minutesRandom") >= 1 {
-            label.text = "\(minutesText):\(secondsText)"
-            }
-            else{
-            label.text = ":\(secondsText)"
-            //timerBackground.size = labelTimer.frame.size
-            }
-        }
-        
-        else{
-            label.text = "________"
-        }
-        
-         return label
-    }
-    
-    
-    func bestTimesPrAlphabeticScore()->SKLabelNode {
-        
-        let label = SKLabelNode()
-        label.fontSize = 12
-        label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
-        
-        if UserDefaults.standard.integer(forKey: "minutesAlphabetic") != 0 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") != 0 {
-            
-            let secondsText = (UserDefaults.standard.integer(forKey: "secondsAlphabetic") < 10) ?
-            "0\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))" : "\(UserDefaults.standard.integer(forKey: "secondsAlphabetic"))"
-            let minutesText = "\(UserDefaults.standard.integer(forKey: "minutesAlphabetic"))"
-            
-            
-            
-            if UserDefaults.standard.integer(forKey: "minutesAlphabetic") >= 1 {
-                label.text = "\(minutesText):\(secondsText)"
-            }
-            else{
-                label.text = ":\(secondsText)"
-            }
-        }
-    
-        else{
-            label.text = "________"
-        }
-        return label
-    }
-
-    
-    func bestTimeslabel()->SKLabelNode{
-        let label = SKLabelNode()
-        label.fontSize = 12
-        label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
-        return label
-    }
-        
-    func bestTimesRectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
-           
-        let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
-        shapeNode.strokeColor = .black
-        shapeNode.lineWidth = 2.0
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let rectangleNode = SKSpriteNode(texture: texture)
-        rectangleNode.position = CGPoint(x:325, y:190)
-        return  rectangleNode
-    }
-    
-    func modeSelectionRedButton()->SKSpriteNode{
-        //Drawing
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:30))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:50 , y:30))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:50, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
-        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.949, green: 0.2824, blue: 0.2941, alpha: 1.0)//c1d3c8
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.949, green: 0.2824, blue: 0.2941, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let redbutton = SKSpriteNode(texture: texture)
-
-        let labelOne = SKLabelNode()
-        labelOne.fontName = "AvenirNext-Bold"
-        labelOne.fontSize = 11
-        labelOne.text = " Volver\n(Return)"
-        labelOne.numberOfLines = 2
-        labelOne.position = CGPoint(x:0, y:-17)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        redbutton.addChild(labelOne)
-        
-        /*let labelTwo = SKLabelNode()
-        labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 13
-        labelTwo.text = "(PLAY)"
-        labelTwo.position = CGPoint(x:0.5, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        redbutton.addChild(labelTwo)*/
-        
-        return redbutton
-        
+         /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton rojo y se encuentra desplegado alguno de los dos drop down menu */
+         else if mapOrderRedButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
+             orderDropDownMenu.removeFromParent()
+             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         }
+             
+         else if mapOrderRedButton.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)
+         }
+         /*la ejecucion entra aqui para regresar a la pagina principal cuando presionamos boton rojo**/
+         else if mapOrderRedButton.name == nodeTouched.node?.name{
+             mapOrderOldPaperbackground.removeFromParent()
+             self.addChild(buttonGreen)
+             //self.addChild(redButtonOne)
+             //self.addChild(redButtonTwo)
+             //self.addChild(redButtonThree)
+         }
+         /*La ejecucion va a entrar aqui cuando presiono dropDownArrowLabel pero orderDropDownMenu se encuentra desplegado. En esencia reescribe el label dropDownArrowLabelTwo
+              con la seleccion que se encuentra identificada por orderDropDownMenuYellowBG o orderDropDownMenuYellowBGTwo devuelve(anade) y remueve orderDropDownMenu**/
+         else if (dropDownArrowLabel.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil){
+             if orderDropDownMenuYellowBG.parent != nil {
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+             }
+             else if orderDropDownMenuYellowBGTwo.parent != nil{
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+             }
+             
+             orderDropDownMenu.removeFromParent()
+             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         }
+             
+         else if (dropDownArrowLabel.name == nodeTouched.node?.name){
+             
+             dropDownArrowLabel.removeFromParent()
+             self.addChild(mapOrderCountryDropDownMenu)
+             
+             /*el if statement siguiente se activa si el dropdown menu de orden(alfabetico/azar) se encuentra desplegado cerrando el mismo y restituyendo el label dropDownArrowLabelTwo
+             el cual se removio cuando previamente presionamos dropDownArrowLabelTwo para desplegar orderDropDownMenu, pero que a este momento el usuario no hizo seleccion mientras desplegaba
+              mapOrderCountryDropDownMenu.*/
+             /*if orderDropDownMenu.parent != nil{
+                 
+                 /*Si orderDropDownMenuYellowBG se encuentra desplegado se va a utilizar el texto de orderDropDownMenuLabel("Alfabetico (Alphabetic)") en el label del dropdown tab osea dropDownArrowLabelTwo
+                 , por el contrario si se encontrara desplegado orderDropDownMenuYellowBGTwo se va a utilizar el texto de orderDropDownMenuLabelTwo  */
+                 if orderDropDownMenuYellowBG.parent != nil {
+                     dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                 }
+                 else if orderDropDownMenuYellowBGTwo.parent != nil{
+                     dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                 }
+                 
+                 orderDropDownMenu.removeFromParent()
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+             }*/
+             /*El siguiente bloque va anadir a la vista el BG amarillo y luego el label "Puerto Rico" sin embargo como se anaden como hijos de mapOrderCountryDropDownMenu y estos dos no se remueven sino que que removemos al Parent no se tienen que volver a anadir, por ello que si eliminamos los statements:  && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil nos da el error de que estamos tratando de anadir un objeto que ya tiene parent*/
+             if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
                 
+                 mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
+                 mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
+                 
+             }
+
+         }
+         
+         else if (dropDownMenuLabelPR.name == nodeTouched.node?.name){
+             dropDownArrowLabel.text = dropDownMenuLabelPR.text
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)
+
+         }
+         /*La ejecucion va a entrar aqui cuando oprimimos dropdropDownArrowLabelTwo pero mapOrderCountryDropDownMenu se encuentra desplegado,
+              en esencia se cierra mapOrderCountryDropDownMenu y se devuelve dropDownArrowLabel al dropDown tab */
+         else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil){
+              //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
+             if mapOrderCountryDropDownMenuYellowBG.parent != nil {
+                 dropDownArrowLabel.text = dropDownMenuLabelPR.text
+             }
+             
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
+             se removio el label cuando presionamos en dropDownArrowLabel*/
+         }
+         
+         else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name){
+             //remuevo el label del dropdown tab
+             dropDownArrowLabelTwo.removeFromParent()
+             
+             //La ejecucion entra en este bloque si el menu de pais se encuentra desplegado cuando presionamos dropDownArrowLabelTwo
+             /*if mapOrderCountryDropDownMenu.parent != nil{
+                 //orderDropDownMenu.removeFromParent()
+                 //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
+                 if mapOrderCountryDropDownMenuYellowBG.parent != nil {
+                     dropDownArrowLabel.text = dropDownMenuLabelPR.text
+                 }
+                 
+                 mapOrderCountryDropDownMenu.removeFromParent()
+                 dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
+                  se removio el label cuando presionamos en dropDownArrowLabel*/
+             }*/
+             
+             self.addChild(orderDropDownMenu)
+             
+             /*Aqui la ejecucion va a entrar la primera vez salvo que los children aqui anadidos no se vuelven a remover sino que si necesitaramos removerlos seria removiendo el parent
+              y por ello que se utilice la condicion .parent == nil, para prevenir que sean anadidos nuevamente.
+              LA EJECUCION ENTRA EN UNO DE LOS IF SIGUIENTES CUANDO EL TEXTO EN EL LABEL(DROPDOWN TAB) ES EL MISMO QUE EL LABEL EN EL MENU CON BG AMARILLO(POR DEFAULT VA A ENTRAR AQUI LA PRIMERA VEZ QUE PRESIONAMOS: dropDownArrowLabelTwo)**/
+             if dropDownArrowLabelTwo.text == orderDropDownMenuLabel.text && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil{
+                
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                 orderDropDownMenu.addChild(orderDropDownMenuLabel)
+                 orderDropDownMenuLabelTwo.fontColor = .white
+                 orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                 
+             }
+             //ACA VA A ENTRAR CUANDO EL BG AMARILLO SE ENCUENTRA EN EL SEGUNDO LABEL EN EL MENU Y SU TEXTO ES IGUAL AL DEL DROP DOWN TAB
+             else if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text && orderDropDownMenuYellowBGTwo.parent == nil && orderDropDownMenuLabelTwo.parent == nil && dropDownArrowLabelTwo.parent == nil {
+                 
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                 orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                 orderDropDownMenuLabel.fontColor = .white
+                 orderDropDownMenu.addChild(orderDropDownMenuLabel)
+             }
+         }
+         
+         else if (orderDropDownMenuLabel.name == nodeTouched.node?.name){
+             /*esta es la condicion default(cuando entramos a esta pantalla para un nuevo juego o por primera vez, por lo que no tenemos que anadir el texto al label pq
+              son iguales como se predetermino)*/
+             if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
+                 orderDropDownMenu.removeFromParent()
+                 //dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
+             }
+                 
+             else if orderDropDownMenuLabel.text != dropDownArrowLabelTwo.text{
+                 orderDropDownMenu.alpha = 0.9
+                 orderDropDownMenu.removeFromParent()
+                 //dropDownArrowLabelTwo.text = ""
+                 /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
+                 aqui otorgado*/
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                 /*cuando se reescribe el label con el texto "Azar (Random)" en el proximo bloque ocurre un glitch donde el texto se ve indentado hacia el medio, Para solucionar esto en el bloque de abajo
+                  se reposiciona el label hacia la izquierda lo cual va a afectar el posicionamiento del Physics body, por lo cual eliminamos el Physics body original(en el bloque siguiente)
+                  y lo redefinimos con los valores correspondientes a la nueva posicion del label. Estos reposicionamientos tienen como consecuencia que al reescribir
+                  con el texto "Alfabetico (Alphabetic)" el texto queda indentado hacia la izquierda y fuera del dropDownLabelBGTwo(viene siendo el dropdown tab color gris)
+                  y por ello que en este bloque lo volvemos a reposicionar y redefinimos el physics body.Los physics bodies se eliminan y se redefinen dado que reposicionarlos
+                  sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos*/
+                 dropDownArrowLabelTwo.physicsBody = nil
+                 dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
+                 dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                 dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                 /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, , estos cambios no los vamos a ver de inmediato en el rendering pq son
+                 para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro**/
+                 orderDropDownMenuYellowBGTwo.removeFromParent()
+                 orderDropDownMenuLabel.fontColor = .black
+                 orderDropDownMenuLabelTwo.fontColor = .white
+                 orderDropDownMenuLabel.zPosition = 1
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                 
+                 
+             }
+         }
+         
+         else if (orderDropDownMenuLabelTwo.name == nodeTouched.node?.name){
+             
+             if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
+                 orderDropDownMenu.removeFromParent()
+                 //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+             }
+             
+             
+             else if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
+                 orderDropDownMenu.alpha = 0.9
+                 orderDropDownMenu.removeFromParent()
+                 //dropDownArrowLabelTwo.text = ""
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                 /*cuando se reescribe el label con el texto "Azar (Random)" ocurre un glitch donde el texto se ve indentado hacia el centro. Reposicione el label,
+                  sin embargo como es de esperarse el physics body se desalineo un poco por lo que elimino el physics body default y lo redefino con nuevo posicionamiento.
+                  Los physics bodies se eliminan y se redefinen dado que reposicionarlos sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos.
+                  ** Uno podria pensar que quizas seria mas facil definir un nuevo label para "Azar (Random)"con su propio physics body, sin embargo ello conllevaria reescribir la logica y
+                  no representaria ninguna mejora en la eficiencia dado que la mecanica involucraria anadir y posicionar el nuevo label y redefinir su propio physics body que como vemos
+                  es exactamente lo que ocurre en este bloque.*/
+                 dropDownArrowLabelTwo.physicsBody = nil
+                 dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
+                 dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                 dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                 /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, estos cambios no los vamos a ver de inmediato en el rendering pq son
+                  para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro **/
+                 orderDropDownMenuYellowBG.removeFromParent()
+                 orderDropDownMenuLabel.fontColor = .white
+                 orderDropDownMenuLabelTwo.fontColor = .black
+                 orderDropDownMenuLabelTwo.zPosition = 1
+                 /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                 //orderDropDownMenuLabelTwo.zPosition = 1
+             }
+         }
     }
     
-    func modeSelectionBlueButton()->SKSpriteNode{
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:40))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:130 , y:40))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:130, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
-        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.lineWidth = 0.5
-        shapeNode.strokeColor = UIColor.init(red: 0, green: 0.6588, blue: 0.9882, alpha: 1.0)//c1d3c8
-        shapeNode.fillColor = UIColor.init(red: 0, green: 0.6588, blue: 0.9882, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let button = SKSpriteNode(texture: texture)
-        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        //redButton.position = CGPoint(x:350, y:200)
-        //greenbutton.zPosition = 2
-        let labelOne = SKLabelNode()
-        labelOne.fontName = "AvenirNext-Bold"
-        labelOne.fontSize = 13
-        labelOne.text = "  Modo de Práctica \n   (Practice Mode)"
-        labelOne.numberOfLines = 2
-        labelOne.position = CGPoint(x:0.5, y:-19.5)
-        //labelOne.position = CGPoint(x:0, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        button.addChild(labelOne)
+    func gameModeTouchNodes(nodeTouched: SKPhysicsBody){
+        if (gameModeSelectionGreenButton.name == nodeTouched.node?.name){
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let startScene = StartScene(size: self.size)
+                self.view?.presentScene(startScene)
+            }
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let randomGame = RandomGame(size: self.size)
+                self.view?.presentScene(randomGame)
+            }
+            
+        }
+        else if (gameModeSelectionBlueButton.name == nodeTouched.node?.name){
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
+                self.view?.presentScene(practiceAlphabeticGame)
+            }
+            
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let practiceRandomGame = PracticeRandomGame(size: self.size)
+                self.view?.presentScene(practiceRandomGame)
+            }
+        }
+        else if (gameModeSelectionRedButton.name == nodeTouched.node?.name){
+            gameModeSelectionOldPaperbackground.removeFromParent()
+            self.addChild(mapOrderOldPaperbackground)
+        }
+    }
+    
+    func opcionesTouchNodes(nodeTouched:SKPhysicsBody){
+        if (opcionesCheckbox.name == nodeTouched.node?.name && opcionesCheckmark.parent != nil){
+            opcionesCheckmark.removeFromParent()
+            StartMenu.backgroundMusicOn = false
+            //startMenuMusic.removeFromParent()
+            musicPlayer.stop()
+        }
         
-        /*let labelTwo = SKLabelNode()
-        labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 10
-        labelTwo.text = "(Return)"
-        labelTwo.position = CGPoint(x:0.5, y:-10)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        redButton.addChild(labelTwo)*/
-        
-        return button
+        else if (opcionesCheckbox.name == nodeTouched.node?.name && opcionesCheckmark.parent == nil){
+            opcionesCheckbox.addChild(opcionesCheckmark)
+            StartMenu.backgroundMusicOn = true
+            //self.addChild(startMenuMusic)
+            initMusic()
+        }
+        else if (opcionesCheckboxTwo.name == nodeTouched.node?.name && opcionesCheckmarkTwo.parent != nil){
+            opcionesCheckmarkTwo.removeFromParent()
+            StartMenu.gamePlaySoundOn = false
+        }
+        else if (opcionesCheckboxTwo.name == nodeTouched.node?.name && opcionesCheckmarkTwo.parent == nil){
+            opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
+            StartMenu.gamePlaySoundOn = true
+        }
+        else if (creditosButton.name == nodeTouched.node?.name){
+            opcionesAudioLabel.removeFromParent()
+            if creditsContainerChildrenNotInitSet == true{
+                initSetcreditsContainerChildren()
+                creditsContainerChildrenNotInitSet = false
+            }
+            self.addChild(creditsContainer)
+        }
+        else if (returnVolverRedButton.name == nodeTouched.node?.name /*&& opcionesAudioLabel.parent != nil*/){
+            returnVolverRedButton.removeFromParent()
+            opcionesAudioLabel.removeFromParent()
+            self.addChild(buttonGreen)
+        }
     }
     
-    func modeSelectionLabelDefaults()->SKLabelNode{
-        let label = SKLabelNode()
-        label.fontName = "Avenir-Heavy"
-        label.fontSize = 9
-        label.fontColor = .black
-        //label.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
-        label.numberOfLines = 3
-        label.preferredMaxLayoutWidth = 140
-        return label
-    }
-    
-    func modeSelectionGreenButton()->SKSpriteNode{
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:40))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:130 , y:40))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:130, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
-        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.lineWidth = 0.5
-        shapeNode.strokeColor = UIColor.init(red: 0.2706, green: 0.9098, blue: 0.5882, alpha: 1.0)//c1d3c8
-        shapeNode.fillColor = UIColor.init(red: 0.2706, green: 0.9098, blue: 0.5882, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let button = SKSpriteNode(texture: texture)
-        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        //redButton.position = CGPoint(x:350, y:200)
-        //greenbutton.zPosition = 2
-        let labelOne = SKLabelNode()
-        labelOne.fontName = "AvenirNext-Bold"
-        labelOne.fontSize = 13
-        labelOne.text = "  Modo de Reto \n(Challenge Mode)"
-        labelOne.numberOfLines = 2
-        labelOne.position = CGPoint(x:0.5, y:-19.5)
-        //labelOne.position = CGPoint(x:0, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        button.addChild(labelOne)
-        
-        /*let labelTwo = SKLabelNode()
-        labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 10
-        labelTwo.text = "(Return)"
-        labelTwo.position = CGPoint(x:0.5, y:-10)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        redButton.addChild(labelTwo)*/
-        
-        return button
-    }
-    
-    func dropDownArrowLabelDefaults()->SKLabelNode{
-        let label = SKLabelNode()
-        label.fontName = "Avenir-Medium"
-        label.fontSize = 12
-        label.fontColor = UIColor.black
-        
-        return label
-    }
-    
-    func mapOrderTwoLineLabelDefaults()->SKLabelNode{
-      let label = SKLabelNode()
-      label.fontName = "GillSans-SemiBold"
-      label.numberOfLines = 3
-      label.fontColor = .black
-      label.fontSize = 11
-      
-      return label
-    }
-    
-    func licenseLabels()->SKLabelNode{
-        let label = SKLabelNode()
-        label.fontColor = UIColor.black
-        label.fontSize = 7.5
-        label.fontName = "GillSans-Bold"
-        label.numberOfLines = 5
-        label.preferredMaxLayoutWidth = 250
-        return label
-    }
-    
-    /*func creditsMapsImagesChildLabelText(label:SKLabelNode)->SKLabelNode{
-        label.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
-        return label
-    }*/
-    
-    func creditsSingleLineLabelDefaults()->SKLabelNode{
-        let label = SKLabelNode()
-        label.fontSize = 11
-        label.fontName = "GillSans-Bold"
-        label.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
-        return label
-    }
-    
-    func setCreditsLabelDefaults()->SKLabelNode{
-      let label = SKLabelNode()
-      label.fontName = "GillSans-Bold"
-      label.fontSize = 9
-      label.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
-      /*label.text = "\tEn la parte inferior de la pantalla encontrarás\n el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de Reto con un mapa en blanco.  Con algunas excepciones, los nombres de los objetivos a identificarse seran en base al idioma oficial del pais o territorio."*/
-      label.numberOfLines = 10//12
-      label.preferredMaxLayoutWidth = 80//105
-      
-      //label.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.4)
-      
-        
-      return label
+    func creditsTouchNodes(nodeTouched: SKPhysicsBody){
+        if (returnVolverRedButton.name == nodeTouched.node?.name /*&& creditsContainer.parent != nil*/){
+            creditsContainer.removeFromParent()
+            self.addChild(opcionesAudioLabel)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -1114,8 +1155,12 @@ class StartMenu: SKScene {
         let touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
         
         if (touchedNode != nil){
+            
+            touchedPhysicsBody = touchedNode
+            
             if buttonGreen.parent != nil{
-                if(buttonGreen.name == touchedNode?.node?.name){
+                mainMenuTouchNodes(nodeTouched:touchedPhysicsBody)
+                /*if(buttonGreen.name == touchedNode?.node?.name){
                     buttonGreen.removeFromParent()
                     if mapOrderObjectsNotInitSet == true{
                         initSetSecondaryMapOrderObjects()
@@ -1167,17 +1212,21 @@ class StartMenu: SKScene {
                     self.addChild(opcionesAudioLabel)
                     self.addChild(returnVolverRedButton)
                 }
+                */
             }
             else if bestTimesRectangleBpToSKSpritenode.parent != nil{
-                if (returnVolverRedButton.name == touchedNode?.node?.name /*&& bestTimesRectangleBpToSKSpritenode.parent != nil*/){
+                bestTimesTouchNodes(nodeTouched:touchedPhysicsBody)
+                /*if (returnVolverRedButton.name == touchedNode?.node?.name /*&& bestTimesRectangleBpToSKSpritenode.parent != nil*/){
                    returnVolverRedButton.removeFromParent()
                    bestTimesRectangleBpToSKSpritenode.removeFromParent()
                    self.addChild(buttonGreen)
-                }
+                }*/
             }
             
             else if instructionsEspanolLabel.parent != nil || instructionsEspanolLabelTwo.parent != nil || instructionsEnglishLabel.parent != nil || instructionsEnglishLabelTwo.parent != nil /*&& returnVolverRedButton.parent != nil*/{
-                if (redArrowButtonEspanolLabel.name == touchedNode?.node?.name){
+                
+                instructionsTouchNodes(nodeTouched:touchedPhysicsBody)
+                /*if (redArrowButtonEspanolLabel.name == touchedNode?.node?.name){
                     instructionsEspanolLabel.removeFromParent()
                     self.addChild(instructionsEspanolLabelTwo)
                 }
@@ -1232,7 +1281,7 @@ class StartMenu: SKScene {
                     //self.addChild(redButtonOne)
                     //self.addChild(redButtonTwo)
                     //self.addChild(redButtonThree)
-                }
+                }*/
             }
                 
             
@@ -1256,8 +1305,9 @@ class StartMenu: SKScene {
             }*/
             
             else if mapOrderOldPaperbackground.parent != nil{
+                mapOrderTouchNodes(nodeTouched:touchedPhysicsBody)
                 /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton verde y se encuentra desplegado alguno de los dos drop down menu */
-                if mapOrderGreenButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
+               /* if mapOrderGreenButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
                     orderDropDownMenu.removeFromParent()
                     dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
                 }
@@ -1473,11 +1523,12 @@ class StartMenu: SKScene {
                         orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
                         //orderDropDownMenuLabelTwo.zPosition = 1
                     }
-                }
+                }*/
             }
             /*Los proximos tres else if statements pertenecen a los botones para la vista de seleccion**/
             if gameModeSelectionOldPaperbackground.parent != nil{
-                if (gameModeSelectionGreenButton.name == touchedNode?.node?.name){
+                gameModeTouchNodes(nodeTouched:touchedPhysicsBody)
+                /*if (gameModeSelectionGreenButton.name == touchedNode?.node?.name){
                     if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
                         self.removeAllActions()
                         self.removeFromParent()
@@ -1510,11 +1561,12 @@ class StartMenu: SKScene {
                 else if (gameModeSelectionRedButton.name == touchedNode?.node?.name){
                     gameModeSelectionOldPaperbackground.removeFromParent()
                     self.addChild(mapOrderOldPaperbackground)
-                }
+                }*/
             }
                 
             else if opcionesAudioLabel.parent != nil{
-                if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
+                opcionesTouchNodes(nodeTouched:touchedPhysicsBody)
+                /*if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
                     opcionesCheckmark.removeFromParent()
                     StartMenu.backgroundMusicOn = false
                     //startMenuMusic.removeFromParent()
@@ -1547,14 +1599,15 @@ class StartMenu: SKScene {
                     returnVolverRedButton.removeFromParent()
                     opcionesAudioLabel.removeFromParent()
                     self.addChild(buttonGreen)
-                }
+                }*/
                 
             }
             else if creditsContainer.parent != nil{
-                if (returnVolverRedButton.name == touchedNode?.node?.name /*&& creditsContainer.parent != nil*/){
+                creditsTouchNodes(nodeTouched: touchedPhysicsBody)
+                /*if (returnVolverRedButton.name == touchedNode?.node?.name /*&& creditsContainer.parent != nil*/){
                     creditsContainer.removeFromParent()
                     self.addChild(opcionesAudioLabel)
-                }
+                }*/
                 
             }
             
@@ -1570,438 +1623,13 @@ class StartMenu: SKScene {
         }
         
     }
-    
-    func dropDownMenuLabelBackground()->SKSpriteNode{
-        
-        //Drawing
-       var path = UIBezierPath()
-       // Specify the point that the path should start get drawn.
-       path.move(to: CGPoint(x: 0.0, y: 0.0))
-       // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:13))
-       // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:180 , y:13))
-       //Create the vertical line from the bottom-right to the top-right side.
-       path.addLine(to: CGPoint(x:180, y: 0.0))
-       // Close the path. This will create the last line automatically.
-       path.close()
-         
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
-       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
-       //Drawing to Shapenode
-       let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.898, green: 0.7765, blue: 0, alpha: 1.0)
-       shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.898, green: 0.7765, blue: 0, alpha: 1.0)
-       //Shapenode To SKSpriteNode
-       let view = SKView(frame: UIScreen.main.bounds)
-       let texture = view.texture(from: shapeNode)!
-       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
 
-       return dropDownLabelBackGround
-            
-    }
-    
-    func mapOrderCountryDropDownMenuSpriteNodeTwo()->SKSpriteNode{
-        
-        //Drawing
-       var path = UIBezierPath()
-       // Specify the point that the path should start get drawn.
-       path.move(to: CGPoint(x: 0.0, y: 0.0))
-       // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:27))
-       // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:180 , y:27))
-       //Create the vertical line from the bottom-right to the top-right side.
-       path.addLine(to: CGPoint(x:180, y: 0.0))
-       // Close the path. This will create the last line automatically.
-       path.close()
-         
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
-       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
-       //Drawing to Shapenode
-       let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
-       shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
-       //Shapenode To SKSpriteNode
-       let view = SKView(frame: UIScreen.main.bounds)
-       let texture = view.texture(from: shapeNode)!
-       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
-
-       return dropDownLabelBackGround
-            
-    }
-    
-    func mapOrderCountryDropDownMenuSpriteNode()->SKSpriteNode{
-        
-        //Drawing
-       var path = UIBezierPath()
-       // Specify the point that the path should start get drawn.
-       path.move(to: CGPoint(x: 0.0, y: 0.0))
-       // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:33))
-       // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:180 , y:33))
-       //Create the vertical line from the bottom-right to the top-right side.
-       path.addLine(to: CGPoint(x:180, y: 0.0))
-       // Close the path. This will create the last line automatically.
-       path.close()
-         
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
-       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
-       //Drawing to Shapenode
-       let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
-       shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.3373, green: 0.3373, blue: 0.3373, alpha: 1.0)
-       //Shapenode To SKSpriteNode
-       let view = SKView(frame: UIScreen.main.bounds)
-       let texture = view.texture(from: shapeNode)!
-       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
-
-       return dropDownLabelBackGround
-            
-    }
-    
-    func dropDownLabelBackground()->SKSpriteNode{
-        
-        //Drawing
-       var path = UIBezierPath()
-       // Specify the point that the path should start get drawn.
-       path.move(to: CGPoint(x: 0.0, y: 0.0))
-       // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:16.5))
-       // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:180 , y:16.5))
-       //Create the vertical line from the bottom-right to the top-right side.
-       path.addLine(to: CGPoint(x:180, y: 0.0))
-       // Close the path. This will create the last line automatically.
-       path.close()
-         
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
-       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
-       //Drawing to Shapenode
-       let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
-       shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
-       //Shapenode To SKSpriteNode
-       let view = SKView(frame: UIScreen.main.bounds)
-       let texture = view.texture(from: shapeNode)!
-       let dropDownLabelBackGround = SKSpriteNode(texture: texture)
-
-       return dropDownLabelBackGround
-            
-    }
-    
-     func dropDownArrowBPToSKSpritenode()-> SKSpriteNode {//Culebra frame drawing
-        // Initialize the path.
-        let path = UIBezierPath()
-      
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-      
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 3.5, y:0))
-      
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:0 , y:-3))
-      
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:-3.5, y: 0.0))
-      
-        // Close the path. This will create the last line automatically.
-        path.close()
-        
-        //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)
-        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let dropDownArrow = SKSpriteNode(texture: texture)
-
-        return dropDownArrow
-        
-    }
-    
-    func blueButtonRedButtonBp()->UIBezierPath{
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:25))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:50 , y:25))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:50, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
-
-        
-        return path
-        
-    }
-    
-    func redButtonBlueButtonLabelOne()->SKLabelNode{
-        let labelredButtonBlueButtonOne = SKLabelNode()
-        //labelSkipButtonOne.isUserInteractionEnabled = true
-        labelredButtonBlueButtonOne.fontName = "ChalkboardSE-Regular"
-        labelredButtonBlueButtonOne.fontSize = 10
-        //labelSkipButtonOne.text = "Saltar"
-        labelredButtonBlueButtonOne.position = CGPoint(x:0.5, y:0.5)
-        //skipBlueButton.addChild(labelSkipButtonOne)
-        return labelredButtonBlueButtonOne
-    }
-    //Label inferior para los botones azul y rojo
-    func redButtonBlueButtonLabelTwo() ->SKLabelNode{
-        let labelredButtonBlueButtonTwo = SKLabelNode()
-        //labelSkipButtonTwo.isUserInteractionEnabled = true
-        labelredButtonBlueButtonTwo.fontName = "ChalkboardSE-Light"
-        labelredButtonBlueButtonTwo.fontSize = 8
-        //labelSkipButtonTwo.text = "(Skip)"
-        labelredButtonBlueButtonTwo.position = CGPoint(x:0.5, y:-8.5)
-        //skipBlueButton.addChild(labelSkipButtonTwo)
-        return labelredButtonBlueButtonTwo
-    }
-    
-    func redButtonShapeNodeToSpriteNode()-> SKSpriteNode {
-         
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let redButton = SKSpriteNode(texture: texture)
-        //redButton.position = CGPoint(x:0.5, y:5.5)//(x:-280, y:5.5)
-        //redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //redButton.physicsBody?.isDynamic = false
-
-        return redButton
-    }
-    
-    /*func espanolEnglishButtonBp()->UIBezierPath{
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:20.0))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:50 , y:20.0))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:50, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
-
-        
-        return path
-        
-    }*/
-    
-    /*func espanolEnglishButtonLabelDefaults(label:SKLabelNode)->SKLabelNode{
-        //let label = SKLabelNode()
-        label.fontName = "ChalkboardSE-Regular"
-        label.fontSize = 12
-        label.position = CGPoint(x:0.5, y:-5.0)
-        
-        return label
-    }*/
-    
-    /*func espanolEnglishButtonDrawToSpriteNode()-> SKSpriteNode {
-        //Draw
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:20.0))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:50 , y:20.0))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:50, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath )
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let redButton = SKSpriteNode(texture: texture)
-        //redButton.position = CGPoint(x:0.5, y:5.5)//(x:-280, y:5.5)
-        //redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //redButton.physicsBody?.isDynamic = false
-        //redButton.name = "redButton"
-    
-        return redButton
-    }*/
-    func instruccionesLabelsPosition(){
-        let label = SKLabelNode()
-        label.position = CGPoint(x: StartMenu().self.size.width/2 /* 135*/, y:StartMenu().self.size.height/2 * 0.6)
-    }
-    
-    func setinstructionsLabelDefaults()->SKLabelNode{
-      let label = SKLabelNode()
-      label.fontName = "GillSans-SemiBold"
-      label.fontSize = 14
-      label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//(red: 0, green: 0.4078, blue: 0.2431, alpha: 1.0)
-      label.numberOfLines = 12//12
-      label.preferredMaxLayoutWidth = 580//650
-        label.position = CGPoint(x: StartMenu().self.size.width/2 /* 135*/, y:StartMenu().self.size.height/2 * 0.6)
-      return label
-    }
-    
-    func instructionsEspanolLabelText(labelEspanol: SKLabelNode)->SKLabelNode{
-        //let label = SKLabelNode()
-        labelEspanol.text = "\tEn la parte inferior de la pantalla encontrarás el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para\n identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los\n objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de\n Reto con un mapa en blanco.\n\tCon algunas excepciones, los nombres de los objetivos a identificarse seran\n en base al idioma oficial del pais o territorio."
-        
-        return labelEspanol
-    }
-    
-    func instructionsEspanolLabelTextTwo(labelEspanolTwo:SKLabelNode)->SKLabelNode{
-         //let label = SKLabelNode()
-         labelEspanolTwo.text = "\tPuedes acercar o alejar la cámara pellizcando la pantalla con 2 dedos. Cuando\n la cámara está acercada, puedes moverla deslizando 1 solo dedo a través de la pantalla.\n\tPara marcar el objetivo, haz un toque ligero sobre el mismo en la pantalla sin\n mover el dedo(toca el objetivo como tal, NO la raya apuntando al mismo.)Si\n seleccionaste el objetivo corecto, entonces su nombre(o, si estas jugando en\n Modeo de Práctica, una marca de cotejo)aparecerá sobre el mismo en el mapa\n acompañado de un cambio de color tornando el objetivo verde y el nombre\n del proximo objetivo aparecerá al fondo de la pantalla.\n\tCada vez que hagas una selección errónea, se añadirán 3 segundos adicionales\n a tu tiempo. Tambien puedes escoger saltar el objetivo actual con una penalidad\n de 15 segundos añadidos(todavia tendrás que identificar los objetivos saltados al final)"
-         
-         return labelEspanolTwo
-     }
-    
-    func instructionsEnglishLabelText(labelEnglish: SKLabelNode)->SKLabelNode{
-        //let label = SKLabelNode()
-        labelEnglish.text = "\tAt the bottom of the screen is the name of a municipality, state, capital, city,\nterritory or country. You must find it on the map and tap it to identify it. The goal is\n to identify all the targets as fast as you can.\n\tYou can play in Practice Mode with the map already showing the names of the targets, but your fastest time will only be recorded if you play in Challenge Mode with a blank map.\n\tWith some exceptions, the names of the targets will be based on the official language of the countrie or territory"
-        
-        return labelEnglish
-    }
-    
-    func instructionsEnglishLabelTextTwo(labelEnglishTwo: SKLabelNode)->SKLabelNode{
-        //let label = SKLabelNode()
-        labelEnglishTwo.text = "\tYou can zoom in/out by pinching the screen with 2 fingers. When zoomed in, you\ncan move the camera around by sliding a single finger across the screen.\n\tTo mark the target, tap it on the screen without moving your finger(tap the target itself, NOT the arrow pointing at it.) If you selected the correct target, then it's name\n(or if you are playing in Practice Mode, a checkmark) will appear over the target in the map and the color of the target will change(to green) and the name of the next target will appear at the bottom of the screen.\n\tEverytime you make a wrong selection, 3 more seconds will be added to your time. You can also choose to skip the current target with a penalty of 15 seconds added(you'll still need to identify skipped targets at the end.)"
-        
-        return labelEnglishTwo
-    }
+ 
     
 
     
-    /*func redArrowButtonDrawToSKSpriteNodeAndSetAttributes()->SKSpriteNode{
-        
-        //Drawing
-       let path = UIBezierPath()
-       // Specify the point that the path should start get drawn.
-       path.move(to: CGPoint(x: 0.0, y: 0.0))
-       // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:25))
-       // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:50 , y:25))
-        //Creates arrow upper wing point
-       path.addLine(to: CGPoint(x:50 , y:40))
-        //Arrow's tip
-       path.addLine(to: CGPoint(x:100 , y:12.5))
-       //Creates arrow lower wing point
-       path.addLine(to: CGPoint(x:50 , y:-17))
-       //Create the point where lower wing joins the arrow's body
-       path.addLine(to: CGPoint(x:50, y: 0.0))
-       // Close the path. This will create the last line automatically to (0,0)
-       path.close()
-        
-       //Drawing to Shapenode
-       let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.lineWidth = 0.5
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-       //Shapenode To SKSpriteNode
-       let view = SKView(frame: UIScreen.main.bounds)
-       let texture = view.texture(from: shapeNode)!
-       let textureAsSpriteNode = SKSpriteNode(texture: texture)
-       //Set Attributes
-       textureAsSpriteNode.position = CGPoint(x:0.0,y:-29.5)
-       textureAsSpriteNode.setScale(0.50)
-       textureAsSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:textureAsSpriteNode.size.width, height:textureAsSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-       textureAsSpriteNode.physicsBody?.isDynamic = false
-
-       return textureAsSpriteNode
-            
-    }*/
-
-    /*func setRedArrowButton(redArrow:SKSpriteNode)->SKSpriteNode{
-        //redArrow.name = "redArrowButton"
-        redArrow.position = CGPoint(x:0.0,y:-29.5)
-        redArrow.setScale(0.50)
-        redArrow.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redArrow.size.width, height:redArrow.size.height), center: CGPoint(x:0.5, y: 0.5))
-        redArrow.physicsBody?.isDynamic = false
-        
-        return redArrow
-    }*/
-
-    func initSetButtonPhysicsBody(objectButton:SKSpriteNode)->SKSpriteNode {
-        objectButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:objectButton.size.width, height:objectButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        objectButton.physicsBody?.isDynamic = false
-        
-        return objectButton
-    }
+  
     
-    
-    func mainMenuSetLabelDefaults()-> SKLabelNode{
-        let label = SKLabelNode()
-        label.fontName = "AvenirNext-Bold"
-        label.fontSize = 14
-        label.position = CGPoint(x:0.5,y:-5.5)
-        //.zPosition = 1
-        return label
-    }
-    
-    func redButtonBpDrawToSKSpriteNode()->SKSpriteNode{
-        
-        //Drawing
-       var path = UIBezierPath()
-       // Specify the point that the path should start get drawn.
-       path.move(to: CGPoint(x: 0.0, y: 0.0))
-       // Create a line between the starting point and the bottom-left side of the view.
-       path.addLine(to: CGPoint(x: 0.0, y:25))
-       // Create the bottom line (bottom-left to bottom-right).
-       path.addLine(to: CGPoint(x:210 , y:25))
-       //Create the vertical line from the bottom-right to the top-right side.
-       path.addLine(to: CGPoint(x:210, y: 0.0))
-       // Close the path. This will create the last line automatically.
-       path.close()
-         
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
-       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
-       //Drawing to Shapenode
-       let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-       shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-       //Shapenode To SKSpriteNode
-       let view = SKView(frame: UIScreen.main.bounds)
-       let texture = view.texture(from: shapeNode)!
-       let redButton = SKSpriteNode(texture: texture)
-
-       return redButton
-            
-    }
-    
-    func mapOrderOldPaperDropdownBG()->SKSpriteNode{
-        let oldPaperTexture = SKSpriteNode(imageNamed: "old paper texture")
-        oldPaperTexture.size = CGSize(width: 440, height:170)//(width: 480, height:195)
-        oldPaperTexture.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        //oldPaperTexture.zPosition = 0
-        return oldPaperTexture
-        
-    }
 
     
     func oldPapertexture()->SKSpriteNode{
@@ -2030,155 +1658,7 @@ class StartMenu: SKScene {
         return bannerMapaClick
     }
     
+ 
     
     
-    
-    func setGreenButton()->SKSpriteNode{
-        //Drawing
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:40))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:94 , y:40))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:94, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
-        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.green//c1d3c8
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.green
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let greenbutton = SKSpriteNode(texture: texture)
-        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        greenbutton.position = CGPoint(x:self.size.width/2, y:self.size.height/2)//(x:self.size.width/2, y:self.size.height/2)//(x:350, y:225)
-        //greenbutton.zPosition = 2
-        let labelOne = SKLabelNode()
-        labelOne.fontName = "AvenirNext-Bold"
-        labelOne.fontSize = 16
-        labelOne.text = "JUGAR"
-        //labelOne.position = CGPoint(x:0, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        greenbutton.addChild(labelOne)
-        
-        let labelTwo = SKLabelNode()
-        labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 13
-        labelTwo.text = "(PLAY)"
-        labelTwo.position = CGPoint(x:0.5, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        greenbutton.addChild(labelTwo)
-        
-        return greenbutton
-        
-                
-    }
-    
-    func setMapOrderGreenButton()->SKSpriteNode{
-        //Drawing
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:30))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:60 , y:30))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:60, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
-        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.green//c1d3c8
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.green
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let greenbutton = SKSpriteNode(texture: texture)
-        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        greenbutton.position = CGPoint(x:350, y:200)
-        //greenbutton.zPosition = 2
-        let labelOne = SKLabelNode()
-        labelOne.fontName = "AvenirNext-Bold"
-        labelOne.fontSize = 11
-        labelOne.text = "Siguiente"
-        labelOne.position = CGPoint(x:0.5, y:1.5)
-        //labelOne.position = CGPoint(x:0, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        greenbutton.addChild(labelOne)
-        
-        let labelTwo = SKLabelNode()
-        labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 10
-        labelTwo.text = "(Next)"
-        labelTwo.position = CGPoint(x:0.5, y:-10)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        greenbutton.addChild(labelTwo)
-        
-        return greenbutton
-        
-                
-    }
-    
-    func setMapOrderRedButton()->SKSpriteNode{
-        //Drawing
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:30))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:60 , y:30))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:60, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 6.0)//Esta linea trabaja el curveado de las esquinas
-        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2745, blue: 0, alpha: 1.0)//c1d3c8
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2745, blue: 0, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let redButton = SKSpriteNode(texture: texture)
-        //greenbutton.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        redButton.position = CGPoint(x:350, y:200)
-        //greenbutton.zPosition = 2
-        let labelOne = SKLabelNode()
-        labelOne.fontName = "AvenirNext-Bold"
-        labelOne.fontSize = 11
-        labelOne.text = "Volver"
-        labelOne.position = CGPoint(x:0.5, y:1.5)
-        //labelOne.position = CGPoint(x:0, y:-13)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        redButton.addChild(labelOne)
-        
-        let labelTwo = SKLabelNode()
-        labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 10
-        labelTwo.text = "(Return)"
-        labelTwo.position = CGPoint(x:0.5, y:-10)
-        //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        redButton.addChild(labelTwo)
-        
-        return redButton
-        
-                
-    }
 }

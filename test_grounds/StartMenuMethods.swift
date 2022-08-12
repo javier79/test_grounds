@@ -13,6 +13,8 @@ import SpriteKit
 class StartMenuMethods{
     
     
+    
+    
     func mainMenuSetLabelDefaults()-> SKLabelNode{
         let label = SKLabelNode()
         label.fontName = "AvenirNext-Bold"
