@@ -227,7 +227,7 @@ class StartMenuMethods{
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let rectangleNode = SKSpriteNode(texture: texture)
-        rectangleNode.position = CGPoint(x:325, y:190)
+        //rectangleNode.position = CGPoint(x:325, y:190)
         rectangleNode.name = "bestTimesRectangleBpToSKSpritenode"
         return  rectangleNode
     }

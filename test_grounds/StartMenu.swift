@@ -5,1640 +5,118 @@
 //  Created by javier pizarro on 3/19/22.
 //  Copyright © 2022 javierpizarro. All rights reserved.
 //
+/**In this class StartMenu the user will interact with different groups of nodes/objects that transition from one to another. NOTE that this effects take place on the same scene by taking group of nodes/objects out of view (screen)
+ to render another set of related nodes/objects for the user to interact with)*/
 
 import SpriteKit
 import AVFoundation
 
 class StartMenu: SKScene {
-    //let oldPaperBorderTexture = SKSpriteNode(imageNamed: "old paper texture")
-    //let elMorro = SKSpriteNode(imageNamed: "el morro")
-    //let mapaClickBanner = SKSpriteNode(imageNamed: "Mapaclick Title")
-    //var touchedNode: SKPhysicsBody!Se declaro como variable local en TouchesBegun
-    let buttonGreen:SKSpriteNode = StartMenuMethods().setGreenButton()//boton verde de jugar
-    let redButtonOne:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//boton rojo "Mejores Tiempos"
-    let redButtonTwo:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//boton rojo instrucciones
-    let redButtonThree:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//boton rojo opciones
-    let redButtonOneLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//labels for (the three)red buttons
-    let redButtonTwoLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()
-    let redButtonThreeLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()
     
-    let instructionsEspanolLabel:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
-    let instructionsEspanolLabelTwo:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
-    let instructionsEnglishLabel:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
-    let instructionsEnglishLabelTwo:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()
-    let redArrowButtonEspanolLabel: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
-    let redArrowButtonEspanolLabelTwo: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
-    let redArrowButtonEnglishLabel: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
-    let redArrowButtonEnglishLabelTwo: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()
+    let buttonGreen:SKSpriteNode = StartMenuMethods().setGreenButton()//green button on main menu
+    let redButtonOne:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//red button "Mejores Tiempos"
+    let redButtonTwo:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//red button "instrucciones"
+    let redButtonThree:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//red button "opciones"
+    let redButtonOneLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label red button "Mejores Tiempos"
+    let redButtonTwoLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label red button "instrucciones"
+    let redButtonThreeLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label red button "opciones"
     
-    let englishButton: SKSpriteNode = StartMenuMethods().espanolEnglishButtonDrawToSpriteNode()
-    let espanolButton: SKSpriteNode = StartMenuMethods().espanolEnglishButtonDrawToSpriteNode()
-    //let englishButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
-    //let espanolButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
-    var returnVolverRedButton: SKSpriteNode! = nil/* = StartMenuMethods().redButtonShapeNodeToSpriteNode()*/
-    //let returnVolverRedButtonLabelOne:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelOne()
-    //let returnVolverRedButtonLabelTwo:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelTwo()
+    let instructionsEspanolLabel:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()//label with spanish instructions
+    let instructionsEspanolLabelTwo:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()//second label with spanish instructions
+    let instructionsEnglishLabel:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()//label with english instructions
+    let instructionsEnglishLabelTwo:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()//second label with english instructions
+    let redArrowButtonEspanolLabel: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()//red arrow button when instructionsEspanolLabel is rendered
+    let redArrowButtonEspanolLabelTwo: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()//red arrow button when instructionsEspanolLabeltwo is rendered
+    let redArrowButtonEnglishLabel: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()//red arrow button when instructionsEnglishLabel is rendered
+    let redArrowButtonEnglishLabelTwo: SKSpriteNode = StartMenuMethods().redArrowButtonDrawToSKSpriteNodeAndSetAttributes()//red arrow button when instructionsEnglishLabelTwo is rendered
     
-    //let creditsLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-    //let creditsLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-    //let creditsSoundMusicLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-    //let creditsSoundMusicChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-    //let creditsSoundMusicChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-    //let creditsSoundMusicChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
-    //let creditsMapsImagesLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-    //let creditsMapsImagesChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-    //let creditsMapsImagesChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-    //let creditsMapsImagesChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
-    //let creditsSpecialThanksLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-    //let creditsSpecialThanksChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-    //let creditsSpecialThanksChildLabelTwo:SKLabelNode = StartMenuMethods().licenseLabels()
-    //var path: UIBezierPath!
-    
-    var mapOrderObjectsNotInitSet: Bool = true
-    //let dropDownArrow:SKSpriteNode = StartMenuMethods().dropDownArrowBPToSKSpritenode()
-    //let dropDownArrowTwo:SKSpriteNode = StartMenuMethods().dropDownArrowBPToSKSpritenode()
-    let dropDownArrowLabel:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()
-    let dropDownArrowLabelTwo:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()
-    let dropDownLabelBG:SKSpriteNode = StartMenuMethods().dropDownLabelBackground()
-    let dropDownLabelBGTwo:SKSpriteNode = StartMenuMethods().dropDownLabelBackground()
-    let mapOrderOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()
-    //let mapOrderTopLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
-    //let mapOrderMiddleLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
-    //let mapOrderSingleLineLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-    //let mapOrderSingleLineLabelTwo:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-    let mapOrderCountryDropDownMenu: SKSpriteNode =  StartMenuMethods().mapOrderCountryDropDownMenuSpriteNode()
-    let orderDropDownMenu: SKSpriteNode = StartMenuMethods().mapOrderCountryDropDownMenuSpriteNodeTwo()
-    let mapOrderCountryDropDownMenuYellowBG: SKSpriteNode = StartMenuMethods().dropDownMenuLabelBackground()
-    let dropDownMenuLabelPR:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()
-    let orderDropDownMenuYellowBG:SKSpriteNode = StartMenuMethods().dropDownMenuLabelBackground()
-    let orderDropDownMenuYellowBGTwo:SKSpriteNode = StartMenuMethods().dropDownMenuLabelBackground()
-    let orderDropDownMenuLabel:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()
-    let orderDropDownMenuLabelTwo:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()
-    let mapOrderGreenButton:SKSpriteNode = StartMenuMethods().setMapOrderGreenButton()
-    //let mapOrderGreenButtonTopLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsTopLabelsDefault()
-    //let mapOrderGreenButtonBottomLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsBottomLabelsDefault()
-    let mapOrderRedButton:SKSpriteNode = StartMenuMethods().setMapOrderRedButton()
-    //let mapOrderRedButtonTopLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsTopLabelsDefault()
-    //let mapOrderRedButtonBottomLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsBottomLabelsDefault()
-    var gameModeSelectionObjectsNotInitSet:Bool = true
-    let gameModeSelectionOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()
-    let gameModeSelectionGreenButton:SKSpriteNode = StartMenuMethods().modeSelectionGreenButton()
+    let englishButton: SKSpriteNode = StartMenuMethods().espanolEnglishButtonDrawToSpriteNode()//English button when instructionsEspanolLabel is rendered
+    let espanolButton: SKSpriteNode = StartMenuMethods().espanolEnglishButtonDrawToSpriteNode()//Espanol button when instructionsEnglishLabel is rendered
+    var returnVolverRedButton: SKSpriteNode! = nil/*return/volver button displays when bestTimesRectangle, instructionsEspanolLabel, instructionsEspanolLabelTwo, instructionsEnglishLabel, instructionsEnglishLabelTwo, opcionesAudioLabel or creditsContainer are rendered*/
+
+    var mapOrderObjectsNotInitSet: Bool = true//used on touch function as a condition to init/set mapOrder Objects and prevents objects from re initializing(and adding objects that were already added to scene)
+    let dropDownArrowLabel:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()//on map/order selection view label("Puerto Rico") on top of grey drop down menu tab
+    let dropDownArrowLabelTwo:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()//on map/order selection view label("Alfabetico(Alphabetic)") on top of inferior grey drop down menu tab
+    let dropDownLabelBG:SKSpriteNode = StartMenuMethods().dropDownLabelBackground()//on map/order selection view top grey drop down menu tab
+    let dropDownLabelBGTwo:SKSpriteNode = StartMenuMethods().dropDownLabelBackground()//on map/order selection view inferior grey drop down menu tab
+    let mapOrderOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()//on map/order selection view is the view parent, centered rectangle where user interacts
+
+    let mapOrderCountryDropDownMenu: SKSpriteNode =  StartMenuMethods().mapOrderCountryDropDownMenuSpriteNode()//dark grey rectangle rendered when label dropDownArrowLabel is pressed
+    let orderDropDownMenu: SKSpriteNode = StartMenuMethods().mapOrderCountryDropDownMenuSpriteNodeTwo()/* dark grey rectangle rendered when label dropDownArrowLabelTwo(default text "Alfabetico(Alphabetic)") is pressed*/
+    let mapOrderCountryDropDownMenuYellowBG: SKSpriteNode = StartMenuMethods().dropDownMenuLabelBackground()//yellow background that display on top of mapOrderCountryDropDownMenu
+    let dropDownMenuLabelPR:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()//label with text "Puerto Rico" on top of mapOrderCountryDropDownMenu
+    let orderDropDownMenuYellowBG:SKSpriteNode = StartMenuMethods().dropDownMenuLabelBackground()/*yellow background(for label with text "Alfabetico(Alphabetic)") that display for the first selection on top of orderDropDownMenu*/
+    let orderDropDownMenuYellowBGTwo:SKSpriteNode = StartMenuMethods().dropDownMenuLabelBackground()/*yellow background(for label with text "Al Azar(Random)") that display for the first selection on top of orderDropDownMenu*/
+    let orderDropDownMenuLabel:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()//label on top of orderDropDownMenu with default text "Alfabetico(Alphabetic)"
+    let orderDropDownMenuLabelTwo:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()//label on top of orderDropDownMenu with default text "Al Azar(Random)"
+    let mapOrderGreenButton:SKSpriteNode = StartMenuMethods().setMapOrderGreenButton()//Button on mapOrder with text "Siguiente/Next"
+    let mapOrderRedButton:SKSpriteNode = StartMenuMethods().setMapOrderRedButton()//Button on mapOrder with text "Volver/Return"
+
+    var gameModeSelectionObjectsNotInitSet:Bool = true/*used on touch function as a condition to init/set gameMode Objects and prevents objects from re initializing(and adding objects that were already added to scene)*/
+    let gameModeSelectionOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()//on gameMode selection view is the view parent, centered rectangle where user interacts
+    let gameModeSelectionGreenButton:SKSpriteNode = StartMenuMethods().modeSelectionGreenButton()//on gameModeSelection view the green button
     let gameModeSelectionGreenButtonLabel:SKLabelNode = StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
     let gameModeSelectionBlueButton:SKSpriteNode = StartMenuMethods().modeSelectionBlueButton()
     let gameModeSelectionBlueButtonLabel:SKLabelNode = StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
-    //var gameModeSelectionRedButtonLabel:SKLabelNode = StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
-    //let gameModeSelectionLabel:SKLabelNode = StartMenuMethods().modeSelectionLabelDefaults()
-    //let gameModeSelectionLabelTwo:SKLabelNode = StartMenuMethods().modeSelectionLabelDefaults()
     let gameModeSelectionRedButton:SKSpriteNode = StartMenuMethods().modeSelectionRedButton()
-    //let bestTimesRectangleBp:UIBezierPath = TestClass().createRectangle()
     
-    var bestTimesObjectsNotInitSet: Bool = true
-    let bestTimesRectangleBpToSKSpritenode:SKSpriteNode = StartMenuMethods().bestTimesRectangleBezierPathToSKSpriteNode()
+    var bestTimesObjectsNotInitSet: Bool = true/*used on touch function as a condition to init/set bestTimes objects and prevents objects from re initializing(and adding objects that were already added to scene)*/
+    let bestTimesRectangle:SKSpriteNode = StartMenuMethods().bestTimesRectangleBezierPathToSKSpriteNode()//centered rectangle parent of bestTimes view
     let bestTimesToplabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
-    //let bestTimesPrAlphabeticlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
-    //let bestTimesPrAlphabeticScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrAlphabeticScore()
-    //let bestTimesPrRandomlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
-    //let bestTimesPrRandomScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrRandomScore()
     
-    var opcionesObjectsNotInitSet:Bool = true
-    let opcionesAudioLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
-    //let opcionesMusicaLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
-    //let opcionesSonidosLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
-    let opcionesCheckbox:SKSpriteNode = StartMenuMethods().opcionesCheckBoxesBpToSpritenode()
-    let opcionesCheckboxTwo:SKSpriteNode = StartMenuMethods().opcionesCheckBoxesBpToSpritenode()
-    let opcionesCheckmark:SKSpriteNode = StartMenuMethods().opcionesCheckmarkBpToSpritenode()
-    let opcionesCheckmarkTwo:SKSpriteNode = StartMenuMethods().opcionesCheckmarkBpToSpritenode()
     
-    var creditsContainerChildrenNotInitSet:Bool = true
-    let creditosButton:SKSpriteNode = StartMenuMethods().creditosButtonBpDrawToSKSpriteNode()
+    var opcionesObjectsNotInitSet:Bool = true/*used on touch function as a condition to init/set opciones view objects and prevents objects from re initializing(and adding objects that were already added to scene)*/
+    let opcionesAudioLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()//label(with text "Audio")parent node when opciones view is displayed()
+    let opcionesCheckbox:SKSpriteNode = StartMenuMethods().opcionesCheckBoxesBpToSpritenode()//superior checknbox
+    let opcionesCheckboxTwo:SKSpriteNode = StartMenuMethods().opcionesCheckBoxesBpToSpritenode()//inferior checkbox
+    let opcionesCheckmark:SKSpriteNode = StartMenuMethods().opcionesCheckmarkBpToSpritenode()//superior checkmark
+    let opcionesCheckmarkTwo:SKSpriteNode = StartMenuMethods().opcionesCheckmarkBpToSpritenode()//inferior checkmark
+    
+    var creditsContainerChildrenNotInitSet:Bool = true/*used on touch function as a condition to init/set creditos view objects and prevents objects from re initializing(and adding objects that were already added to scene)*/
+    let creditosButton:SKSpriteNode = StartMenuMethods().creditosButtonBpDrawToSKSpriteNode()//this button displays on opciones view
     let creditButtonLabel:SKLabelNode = StartMenuMethods().mainMenuSetLabelDefaults()
-    var creditsContainer:SKNode!
+    var creditsContainer:SKNode!//parent node when creditos view is rendered. Contains all creditos labels
     
-    static var backgroundMusicOn = true
-    static var gamePlaySoundOn = true
+    static var backgroundMusicOn = true//variable is set to false if "Musica(Music)" in opciones is unchecked, which disbles background music
+    static var gamePlaySoundOn = true//variable is set to false if "Sonidos(Sound)" in opciones is unchecked, which disbles game sound
     
-    //var startMenuMusic = SKAudioNode(fileNamed: "Guiton Sketch.mp3") esta variable es para si se utiliza SKAction para el background music lo cual no es recomendado
-    var musicPlayer = AVAudioPlayer()
-    var musicURL:URL?
+    var musicPlayer = AVAudioPlayer()//music player object for background music
+    var musicURL:URL? //music file address on game file
     
-    //let touch = touches.first!
-    //let touchLocation = touch.location(in: self)
-    //let touchedNode = self.physicsWorld.body(at:touchLocation)
+    var touchedNode:SKPhysicsBody!//Declared univesally in order to be used by function calls outside touch function scope
     
-    var touchedPhysicsBody:SKPhysicsBody!
+    var initMainTouchNodes:Bool = false
     
     override func didMove(to view: SKView){
-        let oldPaperBorderTexture = oldPapertexture()//Primer objeto sobre la escena, sirve de background al resto de los objetos y le da la caracteristica a los bordes como la textura de un pergamino antiguo
-        let elMorro:SKSpriteNode = setElMorro()// foto del morro
-        let mapaClickBanner: SKSpriteNode = setMapaClickBanner()//nombre de la marca a la parte superior de la escena
         
+        let oldPaperBorderTexture:SKSpriteNode = oldPapertexture()//First object on scene it's appearance is like an old paper with ruff edges, serves as a background for all objects to be rendered
+        let elMorro:SKSpriteNode = setElMorro()//Morro picture background
+        let mapaClickBanner: SKSpriteNode = setMapaClickBanner()//brand name on top when game launches
         musicURL = Bundle.main.url(forResource:"Guiton Sketch", withExtension:"mp3")
-        
-        setMainMenuObjectsForRender()
-        initSetInstruccionesObjects()
-        setMainMapOrderObjects()
-        setMainGameModeSelectionObjects()
-        setMainOpcionesObjects()
-      
-        creditsContainer = nodesContainer()
-        creditsContainer.name = "creditsContainer"
+        /**
+         Iam  using a distinction on naming the functions(Main/Secondary) when i use Main means objects that are needed at runtime or needed to be ready when Touch function is called. Secondary are objects that are not needed at run time
+         and that could be initialized as they are needed by users.(see Touch function(nested functions) for Secondary objects inizializartion)*/
+        setMainMenuObjectsForRender()//This are the first objects user interacts with when game launch, objects are initialized at the top and set here
     
-        /*La siguiente linea es para evitar que si usuario dio uncheck o por el contrario check antes de comenzar el juego y sale del juego como es un cambio de escena, esta escena pues va a anadir de nuevo el check mark que inicialmente quizas el usuario quito pq no queria musica de fondo o sonido de juego, de modo que con esta linea prevalece la seleccion del usuario, aun haya cambio de escena(para ver esto eliminar el if
-         )**/
-        if StartMenu.backgroundMusicOn == true /*&& opcionesCheckmark.parent == nil*/{
-            opcionesCheckbox.addChild(opcionesCheckmark)
-        }
         
-        /*La siguiente linea es para evitar que si usuario dio uncheck o por el contrario check antes de comenzar el juego y sale del juego como es un cambio de escena, esta escena pues va a anadir de nuevo el check mark que inicialmente quizas el usuario quito pq no queria musica de fondo o sonido de juego, de modo que con esta linea prevalece la seleccion del usuario, aun haya cambio de escena(para ver esto eliminar el if
-        )**/
-        if StartMenu.gamePlaySoundOn == true{
-            opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
-        }
-        
-        /*Este if statement previene que se anada la musica por ejemplo si el usuario deshabilito la musica de fondo y juega pero interrumpe el juego(Salida(exit)) este statement
-        va a impedir que con el cambio de escena se vuelva a anadir la musica*/
-        if opcionesCheckmark.parent != nil{
+        /*If statement allows default music to play OR prevents music from being added if user select not to play background music*/
+        if StartMenu.backgroundMusicOn == true{
             initMusic()
-            //self.addChild(startMenuMusic)
         }
-        
+        //Adding to the scene the main background oldPaperBorderTexture(Parent) and on top of it elMorro picture and the mapaClickBanner
         elMorro.addChild(mapaClickBanner)
         oldPaperBorderTexture.addChild(elMorro)
         
         self.addChild(oldPaperBorderTexture)
-        self.addChild(buttonGreen)
+        self.addChild(buttonGreen)//Parent node for main menu at launch(contains the three red buttons)
 
     }
-    func initSetSecondaryOpcionesObjects(){
-    
-        let opcionesMusicaLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
-        opcionesMusicaLabel.name = "opcionesMusicaLabel"
-        opcionesMusicaLabel.text = "Música (Music)"
-        opcionesMusicaLabel.position = CGPoint(x:-17,y:-20.5)
-        opcionesAudioLabel.addChild(opcionesMusicaLabel)
-        
-        let opcionesSonidosLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
-        opcionesSonidosLabel.name = "opcionesSonidosLabel"
-        opcionesSonidosLabel.text = "Sonidos (Sound)"
-        opcionesSonidosLabel.position = CGPoint(x:-11.5,y:-45)
-        opcionesAudioLabel.addChild(opcionesSonidosLabel)
-    
-    }
-    
-    func setMainOpcionesObjects(){
-        //opcionesAudioLabel = opcionesLabelDefaults()
-        opcionesAudioLabel.name = "opcionesAudioLabel"
-        opcionesAudioLabel.fontName = "GillSans-Bold"
-        opcionesAudioLabel.text = "Audio"
-        opcionesAudioLabel.position = CGPoint(x:345,y:225)
-
-        //opcionesCheckbox = opcionesCheckBoxesBpToSpritenode()
-        opcionesCheckbox.name = "opcionesCheckbox"
-        //opcionesCheckbox.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:opcionesCheckbox.size.width, height:opcionesCheckbox.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //opcionesCheckbox.physicsBody?.isDynamic = false
-        opcionesCheckbox.position = CGPoint(x:50,y:-16)
-        opcionesAudioLabel.addChild(opcionesCheckbox)
-
-        //opcionesCheckmark = opcionesCheckmarkBpToSpritenode()
-        opcionesCheckmark.name = "opcionesCheckmark"
-        opcionesCheckmark.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-16)
-
-        //opcionesCheckboxTwo = opcionesCheckBoxesBpToSpritenode()
-        opcionesCheckboxTwo.name = "opcionesCheckboxTwo"
-        //opcionesCheckboxTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:opcionesCheckboxTwo.size.width, height:opcionesCheckboxTwo.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //opcionesCheckboxTwo.physicsBody?.isDynamic = false
-        opcionesCheckboxTwo.position = CGPoint(x:50,y:-40)
-        opcionesAudioLabel.addChild(opcionesCheckboxTwo)
-
-        //opcionesCheckmarkTwo = opcionesCheckmarkBpToSpritenode()
-        opcionesCheckmarkTwo.name = "opcionesCheckmarkTwo"
-        opcionesCheckmarkTwo.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-40)
-        
-        //creditosButton = creditosButtonBpDrawToSKSpriteNode()
-        creditosButton.name = "creditosButton"
-        //creditosButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:creditosButton.size.width, height:creditosButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //creditosButton.physicsBody?.isDynamic = false
-        creditosButton.position = CGPoint(x:0.5,y:-65)
-        opcionesAudioLabel.addChild(creditosButton)
-        
-        //creditButtonLabel = mainMenuSetLabelDefaults()
-        creditButtonLabel.name = "creditButtonLabel"
-        creditButtonLabel.text = "Creditos (Credits)"
-        creditButtonLabel.position = CGPoint(x:0.5,y:-5.5)
-        creditosButton.addChild(creditButtonLabel)
-        
-    }
-    
-    func initSetSecondaryGameModeSelectionObjects(){
-        //gameModeSelectionLabel = modeSelectionLabelDefaults()
-        let gameModeSelectionLabel:SKLabelNode = StartMenuMethods().modeSelectionLabelDefaults()
-        gameModeSelectionLabel.name = "gameModeSelectionLabel"
-        gameModeSelectionLabel.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
-        gameModeSelectionLabel.position = CGPoint(x:-87,y:-25)
-        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabel)
-        
-        //gameModeSelectionLabelTwo = modeSelectionLabelDefaults()
-        let gameModeSelectionLabelTwo:SKLabelNode = StartMenuMethods().modeSelectionLabelDefaults()
-        gameModeSelectionLabelTwo.name = "gameModeSelectionLabelTwo"
-        gameModeSelectionLabelTwo.text = "Juega con nombres ya en el mapa.\n\t Tiempo no se guardará.\n(Play with names already on the map.\n\tTime will not be saved)"
-        gameModeSelectionLabelTwo.preferredMaxLayoutWidth = 160
-        gameModeSelectionLabelTwo.position = CGPoint(x:105,y:-26)
-        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
-    }
-    
-    func setMainGameModeSelectionObjects(){
-        //gameModeSelectionOldPaperbackground = mapOrderOldPaperDropdownBG()
-        gameModeSelectionOldPaperbackground.name = "gameModeSelectionOldPaperbackground"
-        gameModeSelectionOldPaperbackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        
-        //gameModeSelectionGreenButton = modeSelectionGreenButton()
-        gameModeSelectionGreenButton.name = "gameModeSelectionGreenButton"
-        //gameModeSelectionGreenButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:gameModeSelectionGreenButton.size.width, height:gameModeSelectionGreenButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //gameModeSelectionGreenButton.physicsBody?.isDynamic = false
-        gameModeSelectionGreenButton.position = CGPoint(x:-90, y:50)
-        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionGreenButton)
-        
-        //Lo voy a inicializar desde el principio pq es el label del boton
-        gameModeSelectionGreenButtonLabel.name = "gameModeSelectionGreenButtonLabel"
-        gameModeSelectionGreenButtonLabel.text = "  Modo de Reto \n(Challenge Mode)"
-        gameModeSelectionGreenButton.addChild(gameModeSelectionGreenButtonLabel)
-        
-        //gameModeSelectionBlueButton = modeSelectionBlueButton()
-        gameModeSelectionBlueButton.name = "gameModeSelectionBlueButton"
-        //gameModeSelectionBlueButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:gameModeSelectionBlueButton.size.width, height:gameModeSelectionBlueButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //gameModeSelectionBlueButton.physicsBody?.isDynamic = false
-        gameModeSelectionBlueButton.position = CGPoint(x:90, y:50)
-        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionBlueButton)
-        
-        gameModeSelectionBlueButtonLabel.name = "gameModeSelectionBlueButtonLabel"
-        gameModeSelectionBlueButtonLabel.text = "  Modo de Práctica \n   (Practice Mode)"
-        gameModeSelectionBlueButton.addChild(gameModeSelectionBlueButtonLabel)
-        
-        //gameModeSelectionRedButton = modeSelectionRedButton()
-        gameModeSelectionRedButton.name = "gameModeSelectionRedButton"
-        //gameModeSelectionRedButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:gameModeSelectionRedButton.size.width, height:gameModeSelectionRedButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        //gameModeSelectionRedButton.physicsBody?.isDynamic = false
-        gameModeSelectionRedButton.position = CGPoint(x:0,y:-55)
-        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
-    }
-    
-    
-    
-    func initSetcreditsContainerChildren(){
-        //creditsLabel = setCreditsLabelDefaults()
-        let creditsLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-        creditsLabel.name = "creditsLabel"
-        creditsLabel.text = "CONCEPT\n\nDESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
-        creditsLabel.position = CGPoint(x:50, y:202)
-        creditsContainer.addChild(creditsLabel)
-        
-        //creditsLabelTwo = setCreditsLabelDefaults()
-        let creditsLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-        creditsLabelTwo.name = "creditsLabelTwo"
-        creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\nEnrique J. Pizarro\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
-        creditsLabelTwo.fontColor = UIColor.black
-        creditsLabelTwo.position = CGPoint(x:160, y:202)
-        //creditsLabelTwo.numberOfLines = 13
-        creditsLabelTwo.preferredMaxLayoutWidth = 110 //140
-        creditsContainer.addChild(creditsLabelTwo)
-        
-        //creditsSoundMusicLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
-        let creditsSoundMusicLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-        creditsSoundMusicLabel.name = "creditsSoundMusicLabel"
-        //creditsSoundMusicLabel.fontSize = 11
-        //creditsSoundMusicLabel.fontName = "GillSans-Bold"
-        //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
-        creditsSoundMusicLabel.text = "SOUND & MUSIC"
-        creditsSoundMusicLabel.position = CGPoint(x:95, y:190)
-        creditsContainer.addChild(creditsSoundMusicLabel)
-        
-        //creditsSoundMusicChildLabel = setCreditsLabelDefaults()
-        let creditsSoundMusicChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-        creditsSoundMusicChildLabel.name = "creditsSoundMusicChildLabel"
-        //creditsSoundMusicChildLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
-        creditsSoundMusicChildLabel.text = "1-At the shore\n2-No Frills Salsa-Alternate\n(shortened from original)\n3-Guiton Sketch\n\n1-La Borinqueña\n2-Star Spangled Banner\n\n1-Game Sound Correct\nOrganic Violin\n\n\nCartoon Success Fanfare"
-        creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 125
-        creditsSoundMusicChildLabel.position = CGPoint(x:69, y:55)
-        creditsContainer.addChild(creditsSoundMusicChildLabel)
-        
-        //creditsSoundMusicChildLabelTwo = setCreditsLabelDefaults()
-        let creditsSoundMusicChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-        creditsSoundMusicChildLabelTwo.name = "creditsSoundMusicChildLabelTwo"
-        creditsSoundMusicChildLabelTwo.text = "\nKevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
-        creditsSoundMusicChildLabelTwo.fontColor = UIColor.black
-        creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:55)
-        //creditsLabelTwo.numberOfLines = 13
-        creditsSoundMusicChildLabelTwo.preferredMaxLayoutWidth = 100 //140
-        creditsContainer.addChild(creditsSoundMusicChildLabelTwo)
-        
-        //creditsSoundMusicChildLabelThree = licenseLabels()
-        let creditsSoundMusicChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
-        creditsSoundMusicChildLabelThree.name = "creditsSoundMusicChildLabelThree"
-        //creditsSoundMusicChildLabelThree.fontColor = UIColor.black
-        //creditsSoundMusicChildLabelThree.fontSize = 7.5
-        //creditsSoundMusicChildLabelThree.fontName = "GillSans-Bold"
-        creditsSoundMusicChildLabelThree.text = "All music and sounds used licensed under Creative Commons:\n\t\tBy Attribution 3.0 License\n\t(http://creativecommons.org/licenses/by/3.0/)"
-        //creditsSoundMusicChildLabelThree.numberOfLines = 5
-        //creditsSoundMusicChildLabelThree.preferredMaxLayoutWidth = 250
-        creditsSoundMusicChildLabelThree.position =  CGPoint(x:125, y:20)
-        creditsContainer.addChild(creditsSoundMusicChildLabelThree)
-        
-        //creditsMapsImagesLabel = creditsSingleLineLabelDefaults()//Stand alone label set CreditsLabelDefaults() is for multipleline labels
-        let creditsMapsImagesLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-        creditsMapsImagesLabel.name = "creditsMapsImagesLabel"
-        //creditsSoundMusicLabel.fontSize = 11
-        //creditsSoundMusicLabel.fontName = "GillSans-Bold"
-        //creditsSoundMusicLabel.fontColor = UIColor.init(red: 0, green: 1, blue: 0.1647, alpha: 1.0)
-        creditsMapsImagesLabel.text = "IMAGES AND MAPS"
-        creditsMapsImagesLabel.position = CGPoint(x:370, y:295)
-        creditsContainer.addChild(creditsMapsImagesLabel)
-        
-        //creditsMapsImagesChildLabel = setCreditsLabelDefaults()
-        let creditsMapsImagesChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-        creditsMapsImagesChildLabel.name = "creditsMapsImagesChildLabel"
-        creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
-        creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
-        creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
-        creditsMapsImagesChildLabel.position = CGPoint(x:325, y:245)
-        creditsContainer.addChild(creditsMapsImagesChildLabel)
-        
-        //creditsMapsImagesChildLabelTwo = setCreditsLabelDefaults()
-        let creditsMapsImagesChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-        creditsMapsImagesChildLabelTwo.name = "creditsMapsImagesChildLabelTwo"
-        creditsMapsImagesChildLabelTwo.text = "https://mapsvg.com/maps/puerto-rico"
-        creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
-        creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:260)
-        //creditsLabelTwo.numberOfLines = 13
-        creditsMapsImagesChildLabelTwo.preferredMaxLayoutWidth = 180
-        creditsContainer.addChild(creditsMapsImagesChildLabelTwo)
-        
-        //creditsMapsImagesChildLabelThree = licenseLabels()
-        let creditsMapsImagesChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
-        creditsMapsImagesChildLabelThree.name = "creditsMapsImagesChildLabelThree"
-        creditsMapsImagesChildLabelThree.position = CGPoint(x:383, y:215)
-        creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
-        creditsContainer.addChild(creditsMapsImagesChildLabelThree)
-        
-        //creditsSpecialThanksLabel = creditsSingleLineLabelDefaults()
-        let creditsSpecialThanksLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-        creditsSpecialThanksLabel.name = "creditsSpecialThanksLabel"
-        creditsSpecialThanksLabel.text = "SPECIAL THANKS"
-        creditsSpecialThanksLabel.position = CGPoint(x:360, y:200)
-        creditsContainer.addChild(creditsSpecialThanksLabel)
-        
-        //creditsSpecialThanksChildLabel = setCreditsLabelDefaults()
-        let creditsSpecialThanksChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
-        creditsSpecialThanksChildLabel.name = "creditsSpecialThanksChildLabel"
-        creditsSpecialThanksChildLabel.text = "Manuel Alvarez\nRoberto Vélez Benitez\nEnrique J. Pizarro\nRodrigo Barasorda\nJosé Ramos\nMaritza Torres\nNarén Vélez Vendrell\nGabriela Mora Llorens\nCarmine T. Guida\nVladimir Alyamkin\nRaul Rosado\n@Pedro Cacique(https://www.youtube.com/c/PedroCacique)\nHoglund & Pamías\nAtlantic University College\nEpic Games,inc"
-        creditsSpecialThanksChildLabel.fontColor = UIColor.black
-        creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:43)
-        //creditsLabelTwo.numberOfLines = 13
-        creditsSpecialThanksChildLabel.preferredMaxLayoutWidth = 280 //140
-        creditsContainer.addChild(creditsSpecialThanksChildLabel)
-        
-        //creditsSpecialThanksChildLabelTwo = licenseLabels()
-        let creditsSpecialThanksChildLabelTwo:SKLabelNode = StartMenuMethods().licenseLabels()
-        creditsSpecialThanksChildLabelTwo.name = "creditsSpecialThanksChildLabelTwo"
-        creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
-        creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
-        creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
-        creditsContainer.addChild(creditsSpecialThanksChildLabelTwo)
-        
-        
-    }
-    
-    func setMainMapOrderObjects(){
-        mapOrderOldPaperbackground.name = "mapOrderOldPaperbackground"
-        mapOrderOldPaperbackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        
-        dropDownLabelBG.name = "dropDownLabelBG"
-        dropDownLabelBG.position = CGPoint(x:100,y:50)
-        mapOrderOldPaperbackground.addChild(dropDownLabelBG)
-        
-        dropDownArrowLabel.name = "dropDownArrowLabel"
-        dropDownArrowLabel.position = CGPoint(x:-55.0,y:-4.5)
-        dropDownArrowLabel.text = "Puerto Rico"
-        dropDownArrowLabel.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:55, y: 4.5))
-        dropDownArrowLabel.physicsBody?.isDynamic = false
-        dropDownLabelBG.addChild(dropDownArrowLabel)
-        
-        dropDownArrowLabelTwo.name = "dropDownArrowLabelTwo"
-        dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
-        dropDownArrowLabelTwo.physicsBody?.isDynamic = false
-        dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)//posicionamiento con respecto al parent dropDownLabelBGTwo
-        //dropDownArrowLabelTwo.preferredMaxLayoutWidth = 300
-        dropDownArrowLabelTwo.text = "Alfabético (Alphabetic)"//default text
-        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-        
-        mapOrderCountryDropDownMenu.name = "mapOrderCountryDropDownMenu"
-        mapOrderCountryDropDownMenu.position = CGPoint(x:434,y:215)
-        
-        mapOrderCountryDropDownMenuYellowBG.name = "mapOrderCountryDropDownMenuYellowBG"
-        mapOrderCountryDropDownMenuYellowBG.position = CGPoint(x:0.0,y:9.7)
-        
-        dropDownMenuLabelPR.name = "dropDownMenuLabelPR"
-        dropDownMenuLabelPR.position = CGPoint(x:-56,y:4.5)
-        dropDownMenuLabelPR.fontSize = 10.5
-        dropDownMenuLabelPR.text = "Puerto Rico"
-        dropDownMenuLabelPR.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:56, y: 4.5))
-        dropDownMenuLabelPR.physicsBody?.isDynamic = false
-        
-        dropDownLabelBGTwo.name = "dropDownLabelBGTwo"
-        dropDownLabelBGTwo.position = CGPoint(x:100,y:-23)
-        mapOrderOldPaperbackground.addChild(dropDownLabelBGTwo)
-        
-        orderDropDownMenu.name = "orderDropDownMenu"
-        orderDropDownMenu.position = CGPoint(x:434,y:142)
-        
-        orderDropDownMenuYellowBG.name = "orderDropDownMenuYellowBG"
-        orderDropDownMenuYellowBG.position = CGPoint(x:0.0,y:7)
-        orderDropDownMenuYellowBG.zPosition = 0
-        
-        orderDropDownMenuLabel.name = "orderDropDownMenuLabel"
-        orderDropDownMenuLabel.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:34.5, y: 4.5))
-        orderDropDownMenuLabel.physicsBody?.isDynamic = false
-        orderDropDownMenuLabel.position = CGPoint(x:-33,y:2)
-        orderDropDownMenuLabel.fontSize = 10.5
-        orderDropDownMenuLabel.text = "Alfabético (Alphabetic)"
-        
-        orderDropDownMenuYellowBGTwo.name = "orderDropDownMenuYellowBGTwo"
-        orderDropDownMenuYellowBGTwo.position = CGPoint(x:0.0,y:-7.0)
-        orderDropDownMenuYellowBGTwo.zPosition = 0
-        
-        orderDropDownMenuLabelTwo.name = "orderDropDownMenuLabelTwo"
-        orderDropDownMenuLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:177, height:9.5), center: CGPoint(x:47.5, y: 4.5))
-        orderDropDownMenuLabelTwo.physicsBody?.isDynamic = false
-        orderDropDownMenuLabelTwo.position = CGPoint(x:-45,y:-12)
-        //orderDropDownMenuLabelTwo.zposition = 1
-        orderDropDownMenuLabelTwo.fontSize = 10.5
-        //orderDropDownMenuLabelTwo.fontColor = .white
-        orderDropDownMenuLabelTwo.text = "Al Azar (Random)"
-        
-        mapOrderGreenButton.name = "mapOrderGreenButton"
-        mapOrderGreenButton.position = CGPoint(x:-118, y:-67)
-        mapOrderOldPaperbackground.addChild(mapOrderGreenButton)
-        
-        mapOrderRedButton.name = "mapOrderRedButton"
-        mapOrderRedButton.position = CGPoint(x:-185, y:-67)
-        mapOrderOldPaperbackground.addChild(mapOrderRedButton)
-    }
-    
-    func initSetInstruccionesObjects(){
-        
-        instructionsEspanolLabel.name = "instructionsEspanolLabel"
-        instructionsEspanolLabel.text = "\tEn la parte inferior de la pantalla encontrarás el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para\n identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los\n objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de\n Reto con un mapa en blanco.\n\tCon algunas excepciones, los nombres de los objetivos a identificarse seran\n en base al idioma oficial del pais o territorio."
-        //instructionsEspanolLabel = instructionsEspanolLabelText(labelEspanol:instructionsEspanolLabel)//set the text attribute for label
-        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.55)
-        
-        instructionsEspanolLabelTwo.name = "instructionsEspanolLabelTwo"
-        instructionsEspanolLabelTwo.text = "\tPuedes acercar o alejar la cámara pellizcando la pantalla con 2 dedos. Cuando\n la cámara está acercada, puedes moverla deslizando 1 solo dedo a través de la pantalla.\n\tPara marcar el objetivo, haz un toque ligero sobre el mismo en la pantalla sin\n mover el dedo(toca el objetivo como tal, NO la raya apuntando al mismo.)Si\n seleccionaste el objetivo corecto, entonces su nombre(o, si estas jugando en\n Modeo de Práctica, una marca de cotejo)aparecerá sobre el mismo en el mapa\n acompañado de un cambio de color tornando el objetivo verde y el nombre\n del proximo objetivo aparecerá al fondo de la pantalla.\n\tCada vez que hagas una selección errónea, se añadirán 3 segundos adicionales\n a tu tiempo. Tambien puedes escoger saltar el objetivo actual con una penalidad\n de 15 segundos añadidos(todavia tendrás que identificar los objetivos saltados al final)"
-        //instructionsEspanolLabelTwo = instructionsEspanolLabelTextTwo (labelEspanolTwo:instructionsEspanolLabelTwo)
-        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
-        
-        instructionsEnglishLabel.name = "instructionsEnglishLabel"
-        instructionsEnglishLabel.text = "\tAt the bottom of the screen is the name of a municipality, state, capital, city,\nterritory or country. You must find it on the map and tap it to identify it. The goal is\n to identify all the targets as fast as you can.\n\tYou can play in Practice Mode with the map already showing the names of the targets, but your fastest time will only be recorded if you play in Challenge Mode with a blank map.\n\tWith some exceptions, the names of the targets will be based on the official language of the countrie or territory"
-        //instructionsEnglishLabel = instructionsEnglishLabelText(labelEnglish:instructionsEnglishLabel)
-        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
-        
-        instructionsEnglishLabelTwo.name = "instructionsEnglishLabelTwo"
-        instructionsEnglishLabelTwo.text = "\tYou can zoom in/out by pinching the screen with 2 fingers. When zoomed in, you\ncan move the camera around by sliding a single finger across the screen.\n\tTo mark the target, tap it on the screen without moving your finger(tap the target itself, NOT the arrow pointing at it.) If you selected the correct target, then it's name\n(or if you are playing in Practice Mode, a checkmark) will appear over the target in the map and the color of the target will change(to green) and the name of the next target will appear at the bottom of the screen.\n\tEverytime you make a wrong selection, 3 more seconds will be added to your time. You can also choose to skip the current target with a penalty of 15 seconds added(you'll still need to identify skipped targets at the end.)"
-        //instructionsEnglishLabelTwo = instructionsEnglishLabelTextTwo(labelEnglishTwo:instructionsEnglishLabelTwo)
-        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
-        
-        redArrowButtonEspanolLabel.name = "redArrowButtonEspanolLabel"
-        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-20)//overrides position values from setRedArrowButton(), as the only arrow node with a different position values.
-        instructionsEspanolLabel.addChild(redArrowButtonEspanolLabel)
-        
-        redArrowButtonEspanolLabelTwo.name = "redArrowButtonEspanolLabelTwo"
-        redArrowButtonEspanolLabelTwo.zRotation = 3.14
-        //redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-29.5)
-        instructionsEspanolLabelTwo.addChild(redArrowButtonEspanolLabelTwo)
-        
-        redArrowButtonEnglishLabel.name = "redArrowButtonEnglishLabel"
-        //redArrowButtonEnglishLabel.position = CGPoint(x:0.0,y:-29.5)
-        instructionsEnglishLabel.addChild(redArrowButtonEnglishLabel)
-        
-        redArrowButtonEnglishLabelTwo.name = "redArrowButtonEnglishLabelTwo"
-        redArrowButtonEnglishLabelTwo.zRotation =  3.14
-        //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-29.5)
-        instructionsEnglishLabelTwo.addChild(redArrowButtonEnglishLabelTwo)
-        
-        englishButton.name = "englishButton"
-        //englishButtonLabel = espanolEnglishButtonLabelDefaults(label:englishButtonLabel)//set difault attributes for label
-        let englishButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
-        englishButtonLabel.text = "English"
-        englishButton.addChild(englishButtonLabel)
-        englishButton.position = CGPoint(x:0.5, y:170)//290
-        instructionsEspanolLabel.addChild(englishButton)
-        
-        espanolButton.name = "espanolButton"
-        //espanolButtonLabel = espanolEnglishButtonLabelDefaults(label: espanolButtonLabel)//set difault attributes for label
-        let espanolButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
-        espanolButtonLabel.text = "Español"
-        espanolButton.addChild(espanolButtonLabel)
-        espanolButton.position = CGPoint(x:0.5, y:160.5)//160.5
-        instructionsEnglishLabel.addChild(espanolButton)
-    
-        
-    }
-    
-    func initSetBestTimesBoardObjects(){
-        //bestTimesToplabel = mapOrderTwoLineLabelDefaults()
-        let bestTimesToplabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
-        bestTimesToplabel.name = "bestTimesToplabel"
-        bestTimesToplabel.fontSize = 14
-        bestTimesToplabel.text = "Mejores Tiempos\n   (Best Times)"
-        bestTimesToplabel.position = CGPoint(x:0.5,y:60)
-        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesToplabel)
-        
-        //bestTimesPrAlphabeticlabel = bestTimeslabel()
-        let bestTimesPrAlphabeticlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
-        bestTimesPrAlphabeticlabel.name = "bestTimesPrAlphabeticlabel"
-        bestTimesPrAlphabeticlabel.text = "Puerto Rico(Alfabético/Alphabetic):"
-        bestTimesPrAlphabeticlabel.position = CGPoint(x:-70,y:35)
-        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrAlphabeticlabel)
-        
-        //bestTimesPrRandomlabel = bestTimeslabel()
-        let bestTimesPrRandomlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
-        bestTimesPrRandomlabel.name = "bestTimesPrRandomlabel"
-        bestTimesPrRandomlabel.text = "Puerto Rico(Al Azar/Random):"
-        bestTimesPrRandomlabel.position = CGPoint(x:-57,y:15)
-        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrRandomlabel)
-        
-        //bestTimesPrAlphabeticScorelabel = bestTimesPrAlphabeticScore()
-        let bestTimesPrAlphabeticScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrAlphabeticScore()
-        bestTimesPrAlphabeticScorelabel.name = "bestTimesPrAlphabeticScorelabel"
-        bestTimesPrAlphabeticScorelabel.position = CGPoint(x:120,y:33)
-        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrAlphabeticScorelabel)
-        
-        //bestTimesPrRandomScorelabel = bestTimesPrRandomScore()
-        let bestTimesPrRandomScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrRandomScore()
-        bestTimesPrRandomScorelabel.name = "bestTimesPrRandomScorelabel"
-        bestTimesPrRandomScorelabel.position = CGPoint(x:120,y:15)
-        bestTimesRectangleBpToSKSpritenode.addChild(bestTimesPrRandomScorelabel)
-    }
-    
-    
-    func initSetSecondaryMapOrderObjects(){
-        //label con instrucciones al tope derecho
-        //mapOrderTopLabel = mapOrderTwoLineLabelDefaults()
-        let mapOrderTopLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
-        mapOrderTopLabel.name = "mapOrderTopLabel"
-        mapOrderTopLabel.position = CGPoint(x:110, y:58)
-        mapOrderTopLabel.text = "Seleccciona el mapa en el menú desplegable\n(Select the map from the drop-downmenu)"
-        mapOrderOldPaperbackground.addChild(mapOrderTopLabel)
-        
-        //segundo label con instrucciones
-        //mapOrderMiddleLabel = mapOrderTwoLineLabelDefaults()
-        let mapOrderMiddleLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
-        mapOrderMiddleLabel.name = "mapOrderMiddleLabel"
-        mapOrderMiddleLabel.position = CGPoint(x:72, y:-15)
-        mapOrderMiddleLabel.text = "Selecciona el orden de los objetivos en el menú desplegable\n\t   (Select the target order from the drop-downmenu)"
-        mapOrderOldPaperbackground.addChild(mapOrderMiddleLabel)
-        
-        
-        let dropDownArrow:SKSpriteNode = StartMenuMethods().dropDownArrowBPToSKSpritenode()
-        dropDownArrow.name = "dropDownArrow"
-        dropDownArrow.position = CGPoint(x:80,y:-0.5)
-        dropDownLabelBG.addChild(dropDownArrow)
-        
-
-        let mapOrderSingleLineLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-        mapOrderSingleLineLabel.name = "mapOrderSingleLineLabel"
-        mapOrderSingleLineLabel.fontSize = 14
-        mapOrderSingleLineLabel.text = "Mapa (Map)"
-        mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabel)
-        mapOrderSingleLineLabel.position = CGPoint(x:-165, y:46)
-        
-        //segundo label a la izquierda con la palabra Orden(Order)
-        //mapOrderSingleLineLabelTwo = creditsSingleLineLabelDefaults()
-        let mapOrderSingleLineLabelTwo:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
-        mapOrderSingleLineLabelTwo.name = "mapOrderSingleLineLabelTwo"
-        mapOrderSingleLineLabelTwo.fontSize = 14
-        mapOrderSingleLineLabelTwo.text = "Orden (Order)"
-        mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabelTwo)
-        mapOrderSingleLineLabelTwo.position = CGPoint(x:-156, y:-25.0)
-        
-        let dropDownArrowTwo:SKSpriteNode = StartMenuMethods().dropDownArrowBPToSKSpritenode()
-        dropDownArrowTwo.name = "dropDownArrowTwo"
-        dropDownArrowTwo.position = CGPoint(x:80,y:-0.5)
-        dropDownLabelBGTwo.addChild(dropDownArrowTwo)//se anade como hijo del dropdown tab
-         
-        
-        let mapOrderGreenButtonTopLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsTopLabelsDefault()
-        mapOrderGreenButtonTopLabel.name = "mapOrderGreenButtonTopLabel"
-        mapOrderGreenButtonTopLabel.text = "Siguiente"
-        mapOrderGreenButton.addChild(mapOrderGreenButtonTopLabel)
-        
-        let mapOrderGreenButtonBottomLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsBottomLabelsDefault()
-        mapOrderGreenButtonBottomLabel.name = "mapOrderGreenButtonBottomLabel"
-        mapOrderGreenButtonBottomLabel.text = "(Next)"
-        mapOrderGreenButton.addChild(mapOrderGreenButtonBottomLabel)
-       
-        let mapOrderRedButtonTopLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsTopLabelsDefault()
-        mapOrderRedButtonTopLabel.name = "mapOrderGreenButtonTopLabel"
-        mapOrderRedButtonTopLabel.text = "Volver"
-        mapOrderRedButton.addChild(mapOrderRedButtonTopLabel)
-        
-        let mapOrderRedButtonBottomLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsBottomLabelsDefault()
-        mapOrderRedButtonBottomLabel.name = "mapOrderGreenButtonBottomLabel"
-        mapOrderRedButtonBottomLabel.text = "(Return)"
-        mapOrderRedButton.addChild(mapOrderRedButtonBottomLabel)
-    }
-    
-    func setMainMenuObjectsForRender(){
-        //buttonGreen = setGreenButton()
-        buttonGreen.name = "buttonGreen"
-        buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
-        //buttonGreen = initSetButtonPhysicsBody(objectButton:buttonGreen)
-        
-        //redButtonOne = redButtonBpDrawToSKSpriteNode()//funcion dibuja el shapenode y lo convierte a formato SpriteNode
-        //redButtonOne = initSetButtonPhysicsBody(objectButton:redButtonOne)//set physics body
-        redButtonOne.name = "redButtonOne"
-        redButtonOne.position = CGPoint(x:0.5,y:-45.5)
-        //redButtonOneLabel = mainMenuSetLabelDefaults(label:redButtonOneLabel)//create label and set default atrributes
-        redButtonOneLabel.text = "Mejores Tiempos (Best Times)"
-        redButtonOne.addChild(redButtonOneLabel)
-        buttonGreen.addChild(redButtonOne)
-        
-        //redButtonTwo = redButtonBpDrawToSKSpriteNode()
-        //redButtonTwo = initSetButtonPhysicsBody(objectButton:redButtonTwo)
-        redButtonTwo.name = "instrucciones"
-        redButtonTwo.position = CGPoint(x:0.5,y:-72)
-        //redButtonTwoLabel = mainMenuSetLabelDefaults(label:redButtonTwoLabel)
-        redButtonTwoLabel.text = "Instrucciones (Instructions)"
-        redButtonTwo.addChild(redButtonTwoLabel)
-        buttonGreen.addChild(redButtonTwo)
-        
-        //redButtonThree = redButtonBpDrawToSKSpriteNode()
-        //redButtonThree = initSetButtonPhysicsBody(objectButton:redButtonThree)
-        redButtonThree.name = "redButtonThree"
-        redButtonThree.position = CGPoint(x:0.5,y:-98.5)
-        //redButtonThreeLabel = mainMenuSetLabelDefaults(label:redButtonThreeLabel)
-        redButtonThreeLabel.text = "Opciones (Options)"
-        redButtonThree.addChild(redButtonThreeLabel)
-        buttonGreen.addChild(redButtonThree)
-    }
-    
-    
-    
-    func initReturnVolverRedButtonObject(){
-        returnVolverRedButton = StartMenuMethods().redButtonShapeNodeToSpriteNode()
-        //returnVolverRedButton = redButtonShapeNodeToSpriteNode()//draws a red arrow Shapenode and converts to SKSpriteNode
-        //returnVolverRedButton = initSetButtonPhysicsBody(objectButton: returnVolverRedButton)
-        returnVolverRedButton.name = "returnVolverRedButton"
-        //returnVolverRedButtonLabelOne = redButtonBlueButtonLabelOne()//set difault attributes for label
-        let returnVolverRedButtonLabelOne:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelOne()
-        returnVolverRedButtonLabelOne.name = "redButtonBlueButtonLabelOne"
-        returnVolverRedButtonLabelOne.text = "Volver"
-        //returnVolverRedButtonLabelTwo = redButtonBlueButtonLabelTwo()
-        let returnVolverRedButtonLabelTwo:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelTwo()
-        returnVolverRedButtonLabelTwo.name = "returnVolverRedButtonLabelTwo"
-        returnVolverRedButtonLabelTwo.text = "(Return)"
-        returnVolverRedButton.addChild(returnVolverRedButtonLabelOne)
-        returnVolverRedButton.addChild(returnVolverRedButtonLabelTwo)
-        returnVolverRedButton.position = CGPoint(x:40, y:25)
-        returnVolverRedButton.setScale(1.2)//set a larger scale
-    }
-    
-    func initMusic() {
-        guard let url = musicURL else { return }
-        
-        do{
-            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
-        }catch{
-            print("error")
-            }
-        
-        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
-        musicPlayer.prepareToPlay()//ready to play musicPlayer
-        musicPlayer.play()//
-    }
-    
-    func nodesContainer() -> SKNode{
-        let nodes_Container = SKNode()
-        //nodes_Container.color = UIColor.white
-        //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
-        //nodes_Container.anchorPoint = CGPoint.zero
-        nodes_Container.position = CGPoint(x:self.size.width/11, y:self.size.height - self.size.height)///25 - 5)//(x: 60.0, y: 0.5)
-        return  nodes_Container
-    }
-    
-    func mainMenuTouchNodes(nodeTouched:SKPhysicsBody){
-        if(buttonGreen.name == nodeTouched.node?.name){
-            buttonGreen.removeFromParent()
-            if mapOrderObjectsNotInitSet == true{
-                initSetSecondaryMapOrderObjects()
-                print("inicializando mapOrderObject")
-                mapOrderObjectsNotInitSet = false
-            }
-            self.addChild(mapOrderOldPaperbackground)
-            
-        }
-        
-        else if (redButtonOne.name == nodeTouched.node?.name){
-            buttonGreen.removeFromParent()
-            
-            if bestTimesObjectsNotInitSet == true{
-                initSetBestTimesBoardObjects()
-                bestTimesObjectsNotInitSet = false
-            }
-            if returnVolverRedButton == nil{
-                initReturnVolverRedButtonObject()
-                print("outside")
-            }
-            self.addChild(bestTimesRectangleBpToSKSpritenode)
-            self.addChild(returnVolverRedButton!)
-        }
-        
-        
-        else if (redButtonTwo.name == nodeTouched.node?.name){
-            buttonGreen.removeFromParent()
-            
-            if returnVolverRedButton == nil{
-                initReturnVolverRedButtonObject()
-                print("inside")
-            }
-            self.addChild(instructionsEspanolLabel)
-            self.addChild(returnVolverRedButton)
-
-        }
-        
-        else if (redButtonThree.name == nodeTouched.node?.name){
-            buttonGreen.removeFromParent()
-            if opcionesObjectsNotInitSet == true{
-                initSetSecondaryOpcionesObjects()
-                opcionesObjectsNotInitSet = false
-            }
-            if returnVolverRedButton == nil{
-                initReturnVolverRedButtonObject()
-                print("wisin y yandel")
-            }
-            self.addChild(opcionesAudioLabel)
-            self.addChild(returnVolverRedButton)
-        }
-    }
-    
-    func bestTimesTouchNodes(nodeTouched:SKPhysicsBody){
-        if (returnVolverRedButton.name == nodeTouched.node?.name /*&& bestTimesRectangleBpToSKSpritenode.parent != nil*/){
-           returnVolverRedButton.removeFromParent()
-           bestTimesRectangleBpToSKSpritenode.removeFromParent()
-           self.addChild(buttonGreen)
-        }
-    }
-    
-    func instructionsTouchNodes(nodeTouched:SKPhysicsBody){
-        
-        if (redArrowButtonEspanolLabel.name == nodeTouched.node?.name){
-            instructionsEspanolLabel.removeFromParent()
-            self.addChild(instructionsEspanolLabelTwo)
-        }
-        
-        else if (redArrowButtonEspanolLabelTwo.name == nodeTouched.node?.name){
-            instructionsEspanolLabelTwo.removeFromParent()
-            self.addChild(instructionsEspanolLabel)
-        }
-        else if (englishButton.name == nodeTouched.node?.name){
-            instructionsEspanolLabel.removeFromParent()
-            self.addChild(instructionsEnglishLabel)
-        }
-        else if (espanolButton.name == nodeTouched.node?.name){
-            instructionsEnglishLabel.removeFromParent()
-            //instructionsEspanolLabel.addChild(englishButton)
-            self.addChild(instructionsEspanolLabel)
-        }
-        else if (redArrowButtonEnglishLabel.name == nodeTouched.node?.name){
-            instructionsEnglishLabel.removeFromParent()
-            //instructionsEspanolLabel.addChild(englishButton)
-            self.addChild(instructionsEnglishLabelTwo)
-        }
-        else if (redArrowButtonEnglishLabelTwo.name == nodeTouched.node?.name){
-            instructionsEnglishLabelTwo.removeFromParent()
-            self.addChild(instructionsEnglishLabel)
-        }
-        //Esta linea se hizo para poder reutilizar el boton de volver cuando se desplega la vista de creditos
-        
-        else if (returnVolverRedButton.name == nodeTouched.node?.name){
-            returnVolverRedButton.removeFromParent()
-            if instructionsEspanolLabel.parent != nil{
-                instructionsEspanolLabel.removeFromParent()
-            }
-            if instructionsEspanolLabelTwo.parent != nil{
-                instructionsEspanolLabelTwo.removeFromParent()
-            }
-            if instructionsEnglishLabel.parent != nil{
-                instructionsEnglishLabel.removeFromParent()
-            }
-            if instructionsEnglishLabelTwo.parent != nil{
-                instructionsEnglishLabelTwo.removeFromParent()
-            }
-            /*if opcionesAudioLabel.parent != nil{
-                opcionesAudioLabel.removeFromParent()
-            }*/
-            /*if bestTimesRectangleBpToSKSpritenode.parent != nil{
-                bestTimesRectangleBpToSKSpritenode.removeFromParent()
-            }*/
-            
-            
-            self.addChild(buttonGreen)
-            //self.addChild(redButtonOne)
-            //self.addChild(redButtonTwo)
-            //self.addChild(redButtonThree)
-        }
-    }
-    
-    func mapOrderTouchNodes(nodeTouched:SKPhysicsBody){
-        if mapOrderGreenButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
-             orderDropDownMenu.removeFromParent()
-             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-         }
-             
-         else if mapOrderGreenButton.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil {
-             mapOrderCountryDropDownMenu.removeFromParent()
-             dropDownLabelBG.addChild(dropDownArrowLabel)
-         }
-         /*la ejecucion entra aqui para movernos a LA VISTA PARA ESCOGER EL MODO DE JUEGO cuando presionamos boton verde**/
-         else if(mapOrderGreenButton.name == nodeTouched.node?.name){
-             mapOrderOldPaperbackground.removeFromParent()
-             if gameModeSelectionObjectsNotInitSet == true{
-                 initSetSecondaryGameModeSelectionObjects()
-                 gameModeSelectionObjectsNotInitSet = false
-             }
-             self.addChild(gameModeSelectionOldPaperbackground)
-         }
-         
-         /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton rojo y se encuentra desplegado alguno de los dos drop down menu */
-         else if mapOrderRedButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
-             orderDropDownMenu.removeFromParent()
-             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-         }
-             
-         else if mapOrderRedButton.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil {
-             mapOrderCountryDropDownMenu.removeFromParent()
-             dropDownLabelBG.addChild(dropDownArrowLabel)
-         }
-         /*la ejecucion entra aqui para regresar a la pagina principal cuando presionamos boton rojo**/
-         else if mapOrderRedButton.name == nodeTouched.node?.name{
-             mapOrderOldPaperbackground.removeFromParent()
-             self.addChild(buttonGreen)
-             //self.addChild(redButtonOne)
-             //self.addChild(redButtonTwo)
-             //self.addChild(redButtonThree)
-         }
-         /*La ejecucion va a entrar aqui cuando presiono dropDownArrowLabel pero orderDropDownMenu se encuentra desplegado. En esencia reescribe el label dropDownArrowLabelTwo
-              con la seleccion que se encuentra identificada por orderDropDownMenuYellowBG o orderDropDownMenuYellowBGTwo devuelve(anade) y remueve orderDropDownMenu**/
-         else if (dropDownArrowLabel.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil){
-             if orderDropDownMenuYellowBG.parent != nil {
-                 dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-             }
-             else if orderDropDownMenuYellowBGTwo.parent != nil{
-                 dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-             }
-             
-             orderDropDownMenu.removeFromParent()
-             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-         }
-             
-         else if (dropDownArrowLabel.name == nodeTouched.node?.name){
-             
-             dropDownArrowLabel.removeFromParent()
-             self.addChild(mapOrderCountryDropDownMenu)
-             
-             /*el if statement siguiente se activa si el dropdown menu de orden(alfabetico/azar) se encuentra desplegado cerrando el mismo y restituyendo el label dropDownArrowLabelTwo
-             el cual se removio cuando previamente presionamos dropDownArrowLabelTwo para desplegar orderDropDownMenu, pero que a este momento el usuario no hizo seleccion mientras desplegaba
-              mapOrderCountryDropDownMenu.*/
-             /*if orderDropDownMenu.parent != nil{
-                 
-                 /*Si orderDropDownMenuYellowBG se encuentra desplegado se va a utilizar el texto de orderDropDownMenuLabel("Alfabetico (Alphabetic)") en el label del dropdown tab osea dropDownArrowLabelTwo
-                 , por el contrario si se encontrara desplegado orderDropDownMenuYellowBGTwo se va a utilizar el texto de orderDropDownMenuLabelTwo  */
-                 if orderDropDownMenuYellowBG.parent != nil {
-                     dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                 }
-                 else if orderDropDownMenuYellowBGTwo.parent != nil{
-                     dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                 }
-                 
-                 orderDropDownMenu.removeFromParent()
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-             }*/
-             /*El siguiente bloque va anadir a la vista el BG amarillo y luego el label "Puerto Rico" sin embargo como se anaden como hijos de mapOrderCountryDropDownMenu y estos dos no se remueven sino que que removemos al Parent no se tienen que volver a anadir, por ello que si eliminamos los statements:  && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil nos da el error de que estamos tratando de anadir un objeto que ya tiene parent*/
-             if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
-                
-                 mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
-                 mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
-                 
-             }
-
-         }
-         
-         else if (dropDownMenuLabelPR.name == nodeTouched.node?.name){
-             dropDownArrowLabel.text = dropDownMenuLabelPR.text
-             mapOrderCountryDropDownMenu.removeFromParent()
-             dropDownLabelBG.addChild(dropDownArrowLabel)
-
-         }
-         /*La ejecucion va a entrar aqui cuando oprimimos dropdropDownArrowLabelTwo pero mapOrderCountryDropDownMenu se encuentra desplegado,
-              en esencia se cierra mapOrderCountryDropDownMenu y se devuelve dropDownArrowLabel al dropDown tab */
-         else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil){
-              //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
-             if mapOrderCountryDropDownMenuYellowBG.parent != nil {
-                 dropDownArrowLabel.text = dropDownMenuLabelPR.text
-             }
-             
-             mapOrderCountryDropDownMenu.removeFromParent()
-             dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
-             se removio el label cuando presionamos en dropDownArrowLabel*/
-         }
-         
-         else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name){
-             //remuevo el label del dropdown tab
-             dropDownArrowLabelTwo.removeFromParent()
-             
-             //La ejecucion entra en este bloque si el menu de pais se encuentra desplegado cuando presionamos dropDownArrowLabelTwo
-             /*if mapOrderCountryDropDownMenu.parent != nil{
-                 //orderDropDownMenu.removeFromParent()
-                 //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
-                 if mapOrderCountryDropDownMenuYellowBG.parent != nil {
-                     dropDownArrowLabel.text = dropDownMenuLabelPR.text
-                 }
-                 
-                 mapOrderCountryDropDownMenu.removeFromParent()
-                 dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
-                  se removio el label cuando presionamos en dropDownArrowLabel*/
-             }*/
-             
-             self.addChild(orderDropDownMenu)
-             
-             /*Aqui la ejecucion va a entrar la primera vez salvo que los children aqui anadidos no se vuelven a remover sino que si necesitaramos removerlos seria removiendo el parent
-              y por ello que se utilice la condicion .parent == nil, para prevenir que sean anadidos nuevamente.
-              LA EJECUCION ENTRA EN UNO DE LOS IF SIGUIENTES CUANDO EL TEXTO EN EL LABEL(DROPDOWN TAB) ES EL MISMO QUE EL LABEL EN EL MENU CON BG AMARILLO(POR DEFAULT VA A ENTRAR AQUI LA PRIMERA VEZ QUE PRESIONAMOS: dropDownArrowLabelTwo)**/
-             if dropDownArrowLabelTwo.text == orderDropDownMenuLabel.text && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil{
-                
-                 orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
-                 orderDropDownMenu.addChild(orderDropDownMenuLabel)
-                 orderDropDownMenuLabelTwo.fontColor = .white
-                 orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
-                 
-             }
-             //ACA VA A ENTRAR CUANDO EL BG AMARILLO SE ENCUENTRA EN EL SEGUNDO LABEL EN EL MENU Y SU TEXTO ES IGUAL AL DEL DROP DOWN TAB
-             else if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text && orderDropDownMenuYellowBGTwo.parent == nil && orderDropDownMenuLabelTwo.parent == nil && dropDownArrowLabelTwo.parent == nil {
-                 
-                 orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
-                 orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
-                 orderDropDownMenuLabel.fontColor = .white
-                 orderDropDownMenu.addChild(orderDropDownMenuLabel)
-             }
-         }
-         
-         else if (orderDropDownMenuLabel.name == nodeTouched.node?.name){
-             /*esta es la condicion default(cuando entramos a esta pantalla para un nuevo juego o por primera vez, por lo que no tenemos que anadir el texto al label pq
-              son iguales como se predetermino)*/
-             if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
-                 orderDropDownMenu.removeFromParent()
-                 //dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
-             }
-                 
-             else if orderDropDownMenuLabel.text != dropDownArrowLabelTwo.text{
-                 orderDropDownMenu.alpha = 0.9
-                 orderDropDownMenu.removeFromParent()
-                 //dropDownArrowLabelTwo.text = ""
-                 /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
-                 aqui otorgado*/
-                 dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                 /*cuando se reescribe el label con el texto "Azar (Random)" en el proximo bloque ocurre un glitch donde el texto se ve indentado hacia el medio, Para solucionar esto en el bloque de abajo
-                  se reposiciona el label hacia la izquierda lo cual va a afectar el posicionamiento del Physics body, por lo cual eliminamos el Physics body original(en el bloque siguiente)
-                  y lo redefinimos con los valores correspondientes a la nueva posicion del label. Estos reposicionamientos tienen como consecuencia que al reescribir
-                  con el texto "Alfabetico (Alphabetic)" el texto queda indentado hacia la izquierda y fuera del dropDownLabelBGTwo(viene siendo el dropdown tab color gris)
-                  y por ello que en este bloque lo volvemos a reposicionar y redefinimos el physics body.Los physics bodies se eliminan y se redefinen dado que reposicionarlos
-                  sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos*/
-                 dropDownArrowLabelTwo.physicsBody = nil
-                 dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
-                 dropDownArrowLabelTwo.physicsBody?.isDynamic = false
-                 dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                 /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, , estos cambios no los vamos a ver de inmediato en el rendering pq son
-                 para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro**/
-                 orderDropDownMenuYellowBGTwo.removeFromParent()
-                 orderDropDownMenuLabel.fontColor = .black
-                 orderDropDownMenuLabelTwo.fontColor = .white
-                 orderDropDownMenuLabel.zPosition = 1
-                 orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
-                 
-                 
-             }
-         }
-         
-         else if (orderDropDownMenuLabelTwo.name == nodeTouched.node?.name){
-             
-             if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
-                 orderDropDownMenu.removeFromParent()
-                 //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-             }
-             
-             
-             else if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
-                 orderDropDownMenu.alpha = 0.9
-                 orderDropDownMenu.removeFromParent()
-                 //dropDownArrowLabelTwo.text = ""
-                 dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                 /*cuando se reescribe el label con el texto "Azar (Random)" ocurre un glitch donde el texto se ve indentado hacia el centro. Reposicione el label,
-                  sin embargo como es de esperarse el physics body se desalineo un poco por lo que elimino el physics body default y lo redefino con nuevo posicionamiento.
-                  Los physics bodies se eliminan y se redefinen dado que reposicionarlos sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos.
-                  ** Uno podria pensar que quizas seria mas facil definir un nuevo label para "Azar (Random)"con su propio physics body, sin embargo ello conllevaria reescribir la logica y
-                  no representaria ninguna mejora en la eficiencia dado que la mecanica involucraria anadir y posicionar el nuevo label y redefinir su propio physics body que como vemos
-                  es exactamente lo que ocurre en este bloque.*/
-                 dropDownArrowLabelTwo.physicsBody = nil
-                 dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
-                 dropDownArrowLabelTwo.physicsBody?.isDynamic = false
-                 dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                 /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, estos cambios no los vamos a ver de inmediato en el rendering pq son
-                  para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro **/
-                 orderDropDownMenuYellowBG.removeFromParent()
-                 orderDropDownMenuLabel.fontColor = .white
-                 orderDropDownMenuLabelTwo.fontColor = .black
-                 orderDropDownMenuLabelTwo.zPosition = 1
-                 /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
-                 orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
-                 //orderDropDownMenuLabelTwo.zPosition = 1
-             }
-         }
-    }
-    
-    func gameModeTouchNodes(nodeTouched: SKPhysicsBody){
-        if (gameModeSelectionGreenButton.name == nodeTouched.node?.name){
-            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
-                self.removeAllActions()
-                self.removeFromParent()
-                let startScene = StartScene(size: self.size)
-                self.view?.presentScene(startScene)
-            }
-            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
-                self.removeAllActions()
-                self.removeFromParent()
-                let randomGame = RandomGame(size: self.size)
-                self.view?.presentScene(randomGame)
-            }
-            
-        }
-        else if (gameModeSelectionBlueButton.name == nodeTouched.node?.name){
-            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
-                self.removeAllActions()
-                self.removeFromParent()
-                let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
-                self.view?.presentScene(practiceAlphabeticGame)
-            }
-            
-            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
-                self.removeAllActions()
-                self.removeFromParent()
-                let practiceRandomGame = PracticeRandomGame(size: self.size)
-                self.view?.presentScene(practiceRandomGame)
-            }
-        }
-        else if (gameModeSelectionRedButton.name == nodeTouched.node?.name){
-            gameModeSelectionOldPaperbackground.removeFromParent()
-            self.addChild(mapOrderOldPaperbackground)
-        }
-    }
-    
-    func opcionesTouchNodes(nodeTouched:SKPhysicsBody){
-        if (opcionesCheckbox.name == nodeTouched.node?.name && opcionesCheckmark.parent != nil){
-            opcionesCheckmark.removeFromParent()
-            StartMenu.backgroundMusicOn = false
-            //startMenuMusic.removeFromParent()
-            musicPlayer.stop()
-        }
-        
-        else if (opcionesCheckbox.name == nodeTouched.node?.name && opcionesCheckmark.parent == nil){
-            opcionesCheckbox.addChild(opcionesCheckmark)
-            StartMenu.backgroundMusicOn = true
-            //self.addChild(startMenuMusic)
-            initMusic()
-        }
-        else if (opcionesCheckboxTwo.name == nodeTouched.node?.name && opcionesCheckmarkTwo.parent != nil){
-            opcionesCheckmarkTwo.removeFromParent()
-            StartMenu.gamePlaySoundOn = false
-        }
-        else if (opcionesCheckboxTwo.name == nodeTouched.node?.name && opcionesCheckmarkTwo.parent == nil){
-            opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
-            StartMenu.gamePlaySoundOn = true
-        }
-        else if (creditosButton.name == nodeTouched.node?.name){
-            opcionesAudioLabel.removeFromParent()
-            if creditsContainerChildrenNotInitSet == true{
-                initSetcreditsContainerChildren()
-                creditsContainerChildrenNotInitSet = false
-            }
-            self.addChild(creditsContainer)
-        }
-        else if (returnVolverRedButton.name == nodeTouched.node?.name /*&& opcionesAudioLabel.parent != nil*/){
-            returnVolverRedButton.removeFromParent()
-            opcionesAudioLabel.removeFromParent()
-            self.addChild(buttonGreen)
-        }
-    }
-    
-    func creditsTouchNodes(nodeTouched: SKPhysicsBody){
-        if (returnVolverRedButton.name == nodeTouched.node?.name /*&& creditsContainer.parent != nil*/){
-            creditsContainer.removeFromParent()
-            self.addChild(opcionesAudioLabel)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        let touch = touches.first!//Guarda toque de pantalla
-        let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
-        let touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
-        
-        if (touchedNode != nil){
-            
-            touchedPhysicsBody = touchedNode
-            
-            if buttonGreen.parent != nil{
-                mainMenuTouchNodes(nodeTouched:touchedPhysicsBody)
-                /*if(buttonGreen.name == touchedNode?.node?.name){
-                    buttonGreen.removeFromParent()
-                    if mapOrderObjectsNotInitSet == true{
-                        initSetSecondaryMapOrderObjects()
-                        print("inicializando mapOrderObject")
-                        mapOrderObjectsNotInitSet = false
-                    }
-                    self.addChild(mapOrderOldPaperbackground)
-                    
-                }
-                
-                else if (redButtonOne.name == touchedNode?.node?.name){
-                    buttonGreen.removeFromParent()
-                    
-                    if bestTimesObjectsNotInitSet == true{
-                        initSetBestTimesBoardObjects()
-                        bestTimesObjectsNotInitSet = false
-                    }
-                    if returnVolverRedButton == nil{
-                        initReturnVolverRedButtonObject()
-                        print("outside")
-                    }
-                    self.addChild(bestTimesRectangleBpToSKSpritenode)
-                    self.addChild(returnVolverRedButton!)
-                }
-                
-                
-                else if (redButtonTwo.name == touchedNode?.node?.name){
-                    buttonGreen.removeFromParent()
-                    
-                    if returnVolverRedButton == nil{
-                        initReturnVolverRedButtonObject()
-                        print("inside")
-                    }
-                    self.addChild(instructionsEspanolLabel)
-                    self.addChild(returnVolverRedButton)
-
-                }
-                
-                else if (redButtonThree.name == touchedNode?.node?.name){
-                    buttonGreen.removeFromParent()
-                    if opcionesObjectsNotInitSet == true{
-                        initSetSecondaryOpcionesObjects()
-                        opcionesObjectsNotInitSet = false
-                    }
-                    if returnVolverRedButton == nil{
-                        initReturnVolverRedButtonObject()
-                        print("wisin y yandel")
-                    }
-                    self.addChild(opcionesAudioLabel)
-                    self.addChild(returnVolverRedButton)
-                }
-                */
-            }
-            else if bestTimesRectangleBpToSKSpritenode.parent != nil{
-                bestTimesTouchNodes(nodeTouched:touchedPhysicsBody)
-                /*if (returnVolverRedButton.name == touchedNode?.node?.name /*&& bestTimesRectangleBpToSKSpritenode.parent != nil*/){
-                   returnVolverRedButton.removeFromParent()
-                   bestTimesRectangleBpToSKSpritenode.removeFromParent()
-                   self.addChild(buttonGreen)
-                }*/
-            }
-            
-            else if instructionsEspanolLabel.parent != nil || instructionsEspanolLabelTwo.parent != nil || instructionsEnglishLabel.parent != nil || instructionsEnglishLabelTwo.parent != nil /*&& returnVolverRedButton.parent != nil*/{
-                
-                instructionsTouchNodes(nodeTouched:touchedPhysicsBody)
-                /*if (redArrowButtonEspanolLabel.name == touchedNode?.node?.name){
-                    instructionsEspanolLabel.removeFromParent()
-                    self.addChild(instructionsEspanolLabelTwo)
-                }
-                
-                else if (redArrowButtonEspanolLabelTwo.name == touchedNode?.node?.name){
-                    instructionsEspanolLabelTwo.removeFromParent()
-                    self.addChild(instructionsEspanolLabel)
-                }
-                else if (englishButton.name == touchedNode?.node?.name){
-                    instructionsEspanolLabel.removeFromParent()
-                    self.addChild(instructionsEnglishLabel)
-                }
-                else if (espanolButton.name == touchedNode?.node?.name){
-                    instructionsEnglishLabel.removeFromParent()
-                    //instructionsEspanolLabel.addChild(englishButton)
-                    self.addChild(instructionsEspanolLabel)
-                }
-                else if (redArrowButtonEnglishLabel.name == touchedNode?.node?.name){
-                    instructionsEnglishLabel.removeFromParent()
-                    //instructionsEspanolLabel.addChild(englishButton)
-                    self.addChild(instructionsEnglishLabelTwo)
-                }
-                else if (redArrowButtonEnglishLabelTwo.name == touchedNode?.node?.name){
-                    instructionsEnglishLabelTwo.removeFromParent()
-                    self.addChild(instructionsEnglishLabel)
-                }
-                //Esta linea se hizo para poder reutilizar el boton de volver cuando se desplega la vista de creditos
-                
-                else if (returnVolverRedButton.name == touchedNode?.node?.name){
-                    returnVolverRedButton.removeFromParent()
-                    if instructionsEspanolLabel.parent != nil{
-                        instructionsEspanolLabel.removeFromParent()
-                    }
-                    if instructionsEspanolLabelTwo.parent != nil{
-                        instructionsEspanolLabelTwo.removeFromParent()
-                    }
-                    if instructionsEnglishLabel.parent != nil{
-                        instructionsEnglishLabel.removeFromParent()
-                    }
-                    if instructionsEnglishLabelTwo.parent != nil{
-                        instructionsEnglishLabelTwo.removeFromParent()
-                    }
-                    /*if opcionesAudioLabel.parent != nil{
-                        opcionesAudioLabel.removeFromParent()
-                    }*/
-                    /*if bestTimesRectangleBpToSKSpritenode.parent != nil{
-                        bestTimesRectangleBpToSKSpritenode.removeFromParent()
-                    }*/
-                    
-                    
-                    self.addChild(buttonGreen)
-                    //self.addChild(redButtonOne)
-                    //self.addChild(redButtonTwo)
-                    //self.addChild(redButtonThree)
-                }*/
-            }
-                
-            
-            /*else if (returnVolverRedButton.name == touchedNode?.node?.name && creditsContainer.parent != nil){
-                creditsContainer.removeFromParent()
-                self.addChild(opcionesAudioLabel)
-            }*/
-            
-          
-            /*else if (returnVolverRedButton.name == touchedNode?.node?.name && opcionesAudioLabel.parent != nil){
-                returnVolverRedButton.removeFromParent()
-                opcionesAudioLabel.removeFromParent()
-                self.addChild(buttonGreen)
-            }*/
-            
-            
-            /*else if (returnVolverRedButton.name == touchedNode?.node?.name && bestTimesRectangleBpToSKSpritenode.parent != nil){
-                returnVolverRedButton.removeFromParent()
-                bestTimesRectangleBpToSKSpritenode.removeFromParent()
-                self.addChild(buttonGreen)
-            }*/
-            
-            else if mapOrderOldPaperbackground.parent != nil{
-                mapOrderTouchNodes(nodeTouched:touchedPhysicsBody)
-                /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton verde y se encuentra desplegado alguno de los dos drop down menu */
-               /* if mapOrderGreenButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
-                    orderDropDownMenu.removeFromParent()
-                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                }
-                    
-                else if mapOrderGreenButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
-                    mapOrderCountryDropDownMenu.removeFromParent()
-                    dropDownLabelBG.addChild(dropDownArrowLabel)
-                }
-                /*la ejecucion entra aqui para movernos a LA VISTA PARA ESCOGER EL MODO DE JUEGO cuando presionamos boton verde**/
-                else if(mapOrderGreenButton.name == touchedNode?.node?.name){
-                    mapOrderOldPaperbackground.removeFromParent()
-                    if gameModeSelectionObjectsNotInitSet == true{
-                        initSetSecondaryGameModeSelectionObjects()
-                        gameModeSelectionObjectsNotInitSet = false
-                    }
-                    self.addChild(gameModeSelectionOldPaperbackground)
-                }
-                
-                /*La ejecucion va a entrar en uno de los proximos dos else if statements si se presiona el boton rojo y se encuentra desplegado alguno de los dos drop down menu */
-                else if mapOrderRedButton.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil{
-                    orderDropDownMenu.removeFromParent()
-                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                }
-                    
-                else if mapOrderRedButton.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil {
-                    mapOrderCountryDropDownMenu.removeFromParent()
-                    dropDownLabelBG.addChild(dropDownArrowLabel)
-                }
-                /*la ejecucion entra aqui para regresar a la pagina principal cuando presionamos boton rojo**/
-                else if mapOrderRedButton.name == touchedNode?.node?.name{
-                    mapOrderOldPaperbackground.removeFromParent()
-                    self.addChild(buttonGreen)
-                    //self.addChild(redButtonOne)
-                    //self.addChild(redButtonTwo)
-                    //self.addChild(redButtonThree)
-                }
-                /*La ejecucion va a entrar aqui cuando presiono dropDownArrowLabel pero orderDropDownMenu se encuentra desplegado. En esencia reescribe el label dropDownArrowLabelTwo
-                     con la seleccion que se encuentra identificada por orderDropDownMenuYellowBG o orderDropDownMenuYellowBGTwo devuelve(anade) y remueve orderDropDownMenu**/
-                else if (dropDownArrowLabel.name == touchedNode?.node?.name && orderDropDownMenu.parent != nil){
-                    if orderDropDownMenuYellowBG.parent != nil {
-                        dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                    }
-                    else if orderDropDownMenuYellowBGTwo.parent != nil{
-                        dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                    }
-                    
-                    orderDropDownMenu.removeFromParent()
-                    dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                }
-                    
-                else if (dropDownArrowLabel.name == touchedNode?.node?.name){
-                    
-                    dropDownArrowLabel.removeFromParent()
-                    self.addChild(mapOrderCountryDropDownMenu)
-                    
-                    /*el if statement siguiente se activa si el dropdown menu de orden(alfabetico/azar) se encuentra desplegado cerrando el mismo y restituyendo el label dropDownArrowLabelTwo
-                    el cual se removio cuando previamente presionamos dropDownArrowLabelTwo para desplegar orderDropDownMenu, pero que a este momento el usuario no hizo seleccion mientras desplegaba
-                     mapOrderCountryDropDownMenu.*/
-                    /*if orderDropDownMenu.parent != nil{
-                        
-                        /*Si orderDropDownMenuYellowBG se encuentra desplegado se va a utilizar el texto de orderDropDownMenuLabel("Alfabetico (Alphabetic)") en el label del dropdown tab osea dropDownArrowLabelTwo
-                        , por el contrario si se encontrara desplegado orderDropDownMenuYellowBGTwo se va a utilizar el texto de orderDropDownMenuLabelTwo  */
-                        if orderDropDownMenuYellowBG.parent != nil {
-                            dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                        }
-                        else if orderDropDownMenuYellowBGTwo.parent != nil{
-                            dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                        }
-                        
-                        orderDropDownMenu.removeFromParent()
-                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                    }*/
-                    /*El siguiente bloque va anadir a la vista el BG amarillo y luego el label "Puerto Rico" sin embargo como se anaden como hijos de mapOrderCountryDropDownMenu y estos dos no se remueven sino que que removemos al Parent no se tienen que volver a anadir, por ello que si eliminamos los statements:  && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil nos da el error de que estamos tratando de anadir un objeto que ya tiene parent*/
-                    if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
-                       
-                        mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
-                        mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
-                        
-                    }
-
-                }
-                
-                else if (dropDownMenuLabelPR.name == touchedNode?.node?.name){
-                    dropDownArrowLabel.text = dropDownMenuLabelPR.text
-                    mapOrderCountryDropDownMenu.removeFromParent()
-                    dropDownLabelBG.addChild(dropDownArrowLabel)
-       
-                }
-                /*La ejecucion va a entrar aqui cuando oprimimos dropdropDownArrowLabelTwo pero mapOrderCountryDropDownMenu se encuentra desplegado,
-                     en esencia se cierra mapOrderCountryDropDownMenu y se devuelve dropDownArrowLabel al dropDown tab */
-                else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name && mapOrderCountryDropDownMenu.parent != nil){
-                     //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
-                    if mapOrderCountryDropDownMenuYellowBG.parent != nil {
-                        dropDownArrowLabel.text = dropDownMenuLabelPR.text
-                    }
-                    
-                    mapOrderCountryDropDownMenu.removeFromParent()
-                    dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
-                    se removio el label cuando presionamos en dropDownArrowLabel*/
-                }
-                
-                else if (dropDownArrowLabelTwo.name == touchedNode?.node?.name){
-                    //remuevo el label del dropdown tab
-                    dropDownArrowLabelTwo.removeFromParent()
-                    
-                    //La ejecucion entra en este bloque si el menu de pais se encuentra desplegado cuando presionamos dropDownArrowLabelTwo
-                    /*if mapOrderCountryDropDownMenu.parent != nil{
-                        //orderDropDownMenu.removeFromParent()
-                        //Antes de cerrar el dropdown menu anadimos el text al label que se va a anadir al dropdown tab
-                        if mapOrderCountryDropDownMenuYellowBG.parent != nil {
-                            dropDownArrowLabel.text = dropDownMenuLabelPR.text
-                        }
-                        
-                        mapOrderCountryDropDownMenu.removeFromParent()
-                        dropDownLabelBG.addChild(dropDownArrowLabel)/*Esta linea luego de cerrar el menu(mapOrderCountryDropDownMenu) devuelve el label que habia sido removido cuando inicialmente
-                         se removio el label cuando presionamos en dropDownArrowLabel*/
-                    }*/
-                    
-                    self.addChild(orderDropDownMenu)
-                    
-                    /*Aqui la ejecucion va a entrar la primera vez salvo que los children aqui anadidos no se vuelven a remover sino que si necesitaramos removerlos seria removiendo el parent
-                     y por ello que se utilice la condicion .parent == nil, para prevenir que sean anadidos nuevamente.
-                     LA EJECUCION ENTRA EN UNO DE LOS IF SIGUIENTES CUANDO EL TEXTO EN EL LABEL(DROPDOWN TAB) ES EL MISMO QUE EL LABEL EN EL MENU CON BG AMARILLO(POR DEFAULT VA A ENTRAR AQUI LA PRIMERA VEZ QUE PRESIONAMOS: dropDownArrowLabelTwo)**/
-                    if dropDownArrowLabelTwo.text == orderDropDownMenuLabel.text && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil{
-                       
-                        orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
-                        orderDropDownMenu.addChild(orderDropDownMenuLabel)
-                        orderDropDownMenuLabelTwo.fontColor = .white
-                        orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
-                        
-                    }
-                    //ACA VA A ENTRAR CUANDO EL BG AMARILLO SE ENCUENTRA EN EL SEGUNDO LABEL EN EL MENU Y SU TEXTO ES IGUAL AL DEL DROP DOWN TAB
-                    else if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text && orderDropDownMenuYellowBGTwo.parent == nil && orderDropDownMenuLabelTwo.parent == nil && dropDownArrowLabelTwo.parent == nil {
-                        
-                        orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
-                        orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
-                        orderDropDownMenuLabel.fontColor = .white
-                        orderDropDownMenu.addChild(orderDropDownMenuLabel)
-                    }
-                }
-                
-                else if (orderDropDownMenuLabel.name == touchedNode?.node?.name){
-                    /*esta es la condicion default(cuando entramos a esta pantalla para un nuevo juego o por primera vez, por lo que no tenemos que anadir el texto al label pq
-                     son iguales como se predetermino)*/
-                    if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
-                        orderDropDownMenu.removeFromParent()
-                        //dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
-                    }
-                        
-                    else if orderDropDownMenuLabel.text != dropDownArrowLabelTwo.text{
-                        orderDropDownMenu.alpha = 0.9
-                        orderDropDownMenu.removeFromParent()
-                        //dropDownArrowLabelTwo.text = ""
-                        /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
-                        aqui otorgado*/
-                        dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
-                        /*cuando se reescribe el label con el texto "Azar (Random)" en el proximo bloque ocurre un glitch donde el texto se ve indentado hacia el medio, Para solucionar esto en el bloque de abajo
-                         se reposiciona el label hacia la izquierda lo cual va a afectar el posicionamiento del Physics body, por lo cual eliminamos el Physics body original(en el bloque siguiente)
-                         y lo redefinimos con los valores correspondientes a la nueva posicion del label. Estos reposicionamientos tienen como consecuencia que al reescribir
-                         con el texto "Alfabetico (Alphabetic)" el texto queda indentado hacia la izquierda y fuera del dropDownLabelBGTwo(viene siendo el dropdown tab color gris)
-                         y por ello que en este bloque lo volvemos a reposicionar y redefinimos el physics body.Los physics bodies se eliminan y se redefinen dado que reposicionarlos
-                         sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos*/
-                        dropDownArrowLabelTwo.physicsBody = nil
-                        dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
-                        dropDownArrowLabelTwo.physicsBody?.isDynamic = false
-                        dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
-                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                        /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, , estos cambios no los vamos a ver de inmediato en el rendering pq son
-                        para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro**/
-                        orderDropDownMenuYellowBGTwo.removeFromParent()
-                        orderDropDownMenuLabel.fontColor = .black
-                        orderDropDownMenuLabelTwo.fontColor = .white
-                        orderDropDownMenuLabel.zPosition = 1
-                        orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
-                        
-                        
-                    }
-                }
-                
-                else if (orderDropDownMenuLabelTwo.name == touchedNode?.node?.name){
-                    
-                    if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
-                        orderDropDownMenu.removeFromParent()
-                        //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                    }
-                    
-                    
-                    else if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
-                        orderDropDownMenu.alpha = 0.9
-                        orderDropDownMenu.removeFromParent()
-                        //dropDownArrowLabelTwo.text = ""
-                        dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                        /*cuando se reescribe el label con el texto "Azar (Random)" ocurre un glitch donde el texto se ve indentado hacia el centro. Reposicione el label,
-                         sin embargo como es de esperarse el physics body se desalineo un poco por lo que elimino el physics body default y lo redefino con nuevo posicionamiento.
-                         Los physics bodies se eliminan y se redefinen dado que reposicionarlos sin redefinirlos, no da el resultado esperado y de acuerdo a la literatura la norma es redefinirlos.
-                         ** Uno podria pensar que quizas seria mas facil definir un nuevo label para "Azar (Random)"con su propio physics body, sin embargo ello conllevaria reescribir la logica y
-                         no representaria ninguna mejora en la eficiencia dado que la mecanica involucraria anadir y posicionar el nuevo label y redefinir su propio physics body que como vemos
-                         es exactamente lo que ocurre en este bloque.*/
-                        dropDownArrowLabelTwo.physicsBody = nil
-                        dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
-                        dropDownArrowLabelTwo.physicsBody?.isDynamic = false
-                        dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
-                        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
-                        /*En este punto estoy haciendo el set para cuando orderDropDownMenu sea desplegado nuevamente, estos cambios no los vamos a ver de inmediato en el rendering pq son
-                         para cuando dropDownArrowLabelTwo sea presionado nuevamente en el futuro **/
-                        orderDropDownMenuYellowBG.removeFromParent()
-                        orderDropDownMenuLabel.fontColor = .white
-                        orderDropDownMenuLabelTwo.fontColor = .black
-                        orderDropDownMenuLabelTwo.zPosition = 1
-                        /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
-                        orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
-                        //orderDropDownMenuLabelTwo.zPosition = 1
-                    }
-                }*/
-            }
-            /*Los proximos tres else if statements pertenecen a los botones para la vista de seleccion**/
-            if gameModeSelectionOldPaperbackground.parent != nil{
-                gameModeTouchNodes(nodeTouched:touchedPhysicsBody)
-                /*if (gameModeSelectionGreenButton.name == touchedNode?.node?.name){
-                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
-                        self.removeAllActions()
-                        self.removeFromParent()
-                        let startScene = StartScene(size: self.size)
-                        self.view?.presentScene(startScene)
-                    }
-                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
-                        self.removeAllActions()
-                        self.removeFromParent()
-                        let randomGame = RandomGame(size: self.size)
-                        self.view?.presentScene(randomGame)
-                    }
-                    
-                }
-                else if (gameModeSelectionBlueButton.name == touchedNode?.node?.name){
-                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
-                        self.removeAllActions()
-                        self.removeFromParent()
-                        let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
-                        self.view?.presentScene(practiceAlphabeticGame)
-                    }
-                    
-                    if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
-                        self.removeAllActions()
-                        self.removeFromParent()
-                        let practiceRandomGame = PracticeRandomGame(size: self.size)
-                        self.view?.presentScene(practiceRandomGame)
-                    }
-                }
-                else if (gameModeSelectionRedButton.name == touchedNode?.node?.name){
-                    gameModeSelectionOldPaperbackground.removeFromParent()
-                    self.addChild(mapOrderOldPaperbackground)
-                }*/
-            }
-                
-            else if opcionesAudioLabel.parent != nil{
-                opcionesTouchNodes(nodeTouched:touchedPhysicsBody)
-                /*if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent != nil){
-                    opcionesCheckmark.removeFromParent()
-                    StartMenu.backgroundMusicOn = false
-                    //startMenuMusic.removeFromParent()
-                    musicPlayer.stop()
-                }
-                
-                else if (opcionesCheckbox.name == touchedNode?.node?.name && opcionesCheckmark.parent == nil){
-                    opcionesCheckbox.addChild(opcionesCheckmark)
-                    StartMenu.backgroundMusicOn = true
-                    //self.addChild(startMenuMusic)
-                    initMusic()
-                }
-                else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent != nil){
-                    opcionesCheckmarkTwo.removeFromParent()
-                    StartMenu.gamePlaySoundOn = false
-                }
-                else if (opcionesCheckboxTwo.name == touchedNode?.node?.name && opcionesCheckmarkTwo.parent == nil){
-                    opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
-                    StartMenu.gamePlaySoundOn = true
-                }
-                else if (creditosButton.name == touchedNode?.node?.name){
-                    opcionesAudioLabel.removeFromParent()
-                    if creditsContainerChildrenNotInitSet == true{
-                        initSetcreditsContainerChildren()
-                        creditsContainerChildrenNotInitSet = false
-                    }
-                    self.addChild(creditsContainer)
-                }
-                else if (returnVolverRedButton.name == touchedNode?.node?.name /*&& opcionesAudioLabel.parent != nil*/){
-                    returnVolverRedButton.removeFromParent()
-                    opcionesAudioLabel.removeFromParent()
-                    self.addChild(buttonGreen)
-                }*/
-                
-            }
-            else if creditsContainer.parent != nil{
-                creditsTouchNodes(nodeTouched: touchedPhysicsBody)
-                /*if (returnVolverRedButton.name == touchedNode?.node?.name /*&& creditsContainer.parent != nil*/){
-                    creditsContainer.removeFromParent()
-                    self.addChild(opcionesAudioLabel)
-                }*/
-                
-            }
-            
-        }
-            
-        else if mapOrderOldPaperbackground.parent != nil && mapOrderCountryDropDownMenu.parent != nil{
-            mapOrderCountryDropDownMenu.removeFromParent()
-            dropDownLabelBG.addChild(dropDownArrowLabel)//Devolviendo a la vista el label que se elimino cuando inicialmente presionamos en el drop down tab gris(dropDownArrowLabel)
-        }
-        else if mapOrderOldPaperbackground.parent != nil && orderDropDownMenu.parent != nil{
-            orderDropDownMenu.removeFromParent()
-            dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//Devolviendo a la vista el label que se elimino cuando inicialmente presionamos en el drop down tab gris(dropDownArrowLabelTwo)
-        }
-        
-    }
-
- 
-    
-
-    
-  
-    
-
     
     func oldPapertexture()->SKSpriteNode{
         let oldPaperTexture = SKSpriteNode(imageNamed: "old paper texture")
-        oldPaperTexture.size = CGSize(width: self.size.width, height:self.size.height)
-        oldPaperTexture.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        //oldPaperTexture.zPosition = 0
+        oldPaperTexture.size = CGSize(width: self.size.width, height:self.size.height)/**Using the properties of the class(self) with parent objects standarize the size of the objects displayed across diferrent screen sizes*/
+        oldPaperTexture.position = CGPoint(x: self.size.width/2, y: self.size.height/2)/**Using the properties of the class(self) with parent objects standarize the position of the objects displayed across diferrent screen sizes*/
         return oldPaperTexture
-        
     }
     
     func setElMorro()->SKSpriteNode{
@@ -1657,8 +135,1016 @@ class StartMenu: SKScene {
         //elMorro.zPosition = 1
         return bannerMapaClick
     }
+    // set main menu objects rendered at launch(beggining of the game)
+    func setMainMenuObjectsForRender(){
+        //"Jugar" button
+        //buttonGreen = setGreenButton()
+        buttonGreen.name = "buttonGreen"
+        buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
+        
+        //"Mejores Tiempos Button"
+        redButtonOne.name = "redButtonOne"
+        redButtonOne.position = CGPoint(x:0.5,y:-45.5)
+        redButtonOneLabel.text = "Mejores Tiempos (Best Times)"
+        redButtonOne.addChild(redButtonOneLabel)
+        buttonGreen.addChild(redButtonOne)
+        
+        //"Instrucciones" button
+        redButtonTwo.name = "instrucciones"
+        redButtonTwo.position = CGPoint(x:0.5,y:-72)
+        //redButtonTwoLabel = mainMenuSetLabelDefaults(label:redButtonTwoLabel)
+        redButtonTwoLabel.text = "Instrucciones (Instructions)"
+        redButtonTwo.addChild(redButtonTwoLabel)
+        buttonGreen.addChild(redButtonTwo)
+        
+        //"Opciones" button
+        redButtonThree.name = "redButtonThree"
+        redButtonThree.position = CGPoint(x:0.5,y:-98.5)
+        redButtonThreeLabel.text = "Opciones (Options)"
+        redButtonThree.addChild(redButtonThreeLabel)
+        buttonGreen.addChild(redButtonThree)
+    }
+    //function that play the background music
+    func initMusic() {
+           guard let url = musicURL else { return }
+           
+           do{
+               musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+           }catch{
+               print("error")
+               }
+           
+           musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+           musicPlayer.prepareToPlay()//ready to play musicPlayer
+           musicPlayer.play()//
+    }
     
- 
     
+    //Touch function
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+           
+           let touch = touches.first!//hold screen touch
+           let touchLocation = touch.location(in: self)//Defines the space where screen touch would be evaluatedf in this case class StartMenu
+           //let touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
+           touchedNode = self.physicsWorld.body(at:touchLocation)//Declared univesally in order to be used by function calls outside this scope(touch function)
+           
+        /*Following statement will set and/or initialize the objects needed to be evaluated on Touch function once(the first time touch function is called). This objects must be ready(initialized and set) before the touch evaluation execute*/
+           if initMainTouchNodes == false{
+               initSetMainTouchNodes()
+               initMainTouchNodes = true
+           }
+           /**Statement below evaluates weather the touch make contact with a physics body or not*/
+           if (touchedNode != nil){
+             /**Execution on the following (if/else)statements will evaluate which parent is being displayed currently, once a statement evaluates to truth a function is called to evaluate which Node(children or parent at render time) was touched by user and trigger a response
+             like taking out of view(screen) the present objects rendered to display a new set of objects for the user to interact with*/
+               if buttonGreen.parent != nil{
+                   mainMenuTouchNodes(nodeTouched:touchedNode)
+               }
+                   
+               else if bestTimesRectangle.parent != nil{
+                   bestTimesTouchNodes(nodeTouched:touchedNode)
+               }
+               
+               else if instructionsEspanolLabel.parent != nil || instructionsEspanolLabelTwo.parent != nil || instructionsEnglishLabel.parent != nil || instructionsEnglishLabelTwo.parent != nil {
+                   instructionsTouchNodes(nodeTouched:touchedNode)
+               }
+               
+               else if mapOrderOldPaperbackground.parent != nil{
+                   mapOrderTouchNodes(nodeTouched:touchedNode)
+               }
+               
+               
+               if gameModeSelectionOldPaperbackground.parent != nil{
+                   gameModeTouchNodes(nodeTouched:touchedNode)
+               }
+                   
+               else if opcionesAudioLabel.parent != nil{
+                   opcionesTouchNodes(nodeTouched:touchedNode)
+               }
+                   
+               else if creditsContainer.parent != nil{
+                   creditsTouchNodes(nodeTouched:touchedNode)
+               }
+               
+           }
+           /**Given that on mapOrder view any of the drop down menus are open by touching anywhere(where there are no physics bodies)menus will close)*/
+           else if mapOrderOldPaperbackground.parent != nil && mapOrderCountryDropDownMenu.parent != nil{
+               mapOrderCountryDropDownMenu.removeFromParent()
+               dropDownLabelBG.addChild(dropDownArrowLabel)//Adds to the view the label preveiously eliminated when gray drop down tab was pressed(dropDownArrowLabel)
+           }
+               
+           else if mapOrderOldPaperbackground.parent != nil && orderDropDownMenu.parent != nil{
+               orderDropDownMenu.removeFromParent()
+               dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//Adds to the view the label preveiously eliminated when gray drop down tab was pressed(dropDownArrowLabel)(dropDownArrowLabelTwo)
+           }
+           
+       }
+    /*The following functions are organized more or less in the same order they are called on touch function. For example the function below is the first function called out of Touch funtion**/
+    func initSetMainTouchNodes(){
+        /**Following statements will set and/or initialize  the objects needed to be evaluated on Touch function. This objects must be ready(initialized and set) before the touch evaluation execute.
+        Iam  using a distinction on naming the functions(Main/Secondary) when i use Main means objects that are needed at runtime. Secondary are objects that are not needed at run time
+        and that could be initialized as they are needed by users.(see Touch function for Secondary objects inizializartion)*/
+        initSetInstruccionesObjects()//Objects from instrucciones view that are to be evaluated by touch function.
+        setMainMapOrderObjects()//Objects from mapOrder view that are to be evaluated by touch function.
+        setMainGameModeSelectionObjects()//Objects from modeSelection view that are to be evaluated by touch function.
+        setMainOpcionesObjects()//Objects from opciones view that are to be evaluated by touch function.
+        initSetcreditsContainer()//creditsContainer object is to be evaluated by touch function.
+    }
+    /** Placed this initialization here as the following functions and/or their objects are related to the object below(but only for organization purposes)*/
+    func initReturnVolverRedButtonObject(){
+        returnVolverRedButton = StartMenuMethods().redButtonShapeNodeToSpriteNode()
+        returnVolverRedButton.name = "returnVolverRedButton"
+        
+        let returnVolverRedButtonLabelOne:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelOne()
+        returnVolverRedButtonLabelOne.name = "redButtonBlueButtonLabelOne"
+        returnVolverRedButtonLabelOne.text = "Volver"
+        //returnVolverRedButtonLabelTwo = redButtonBlueButtonLabelTwo()
+        let returnVolverRedButtonLabelTwo:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelTwo()
+        returnVolverRedButtonLabelTwo.name = "returnVolverRedButtonLabelTwo"
+        returnVolverRedButtonLabelTwo.text = "(Return)"
+        returnVolverRedButton.addChild(returnVolverRedButtonLabelOne)
+        returnVolverRedButton.addChild(returnVolverRedButtonLabelTwo)
+        returnVolverRedButton.position = CGPoint(x:40, y:25)
+        returnVolverRedButton.setScale(1.2)//set a larger scale
+    }
     
+    /**The following 6 functions are ordered in the same way  to the order of the buttons in main menu that they are related to.(THIS ORGANIZATIONIS ONLY FOR REDABILITY AND A BETTER COMPREHENSION OF CODE).*/
+    
+    /**This objects are not initialized runtime, only if needed, thats why i did not init for this objects at initSetMainTouchNodes()*/
+    func initSetBestTimesBoardObjects(){
+        
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)/**Set this attribute here in order to apply to this parent position the class attributes for positioning in order for it to render equally a cross different devices*/
+        
+        let bestTimesToplabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
+        bestTimesToplabel.name = "bestTimesToplabel"
+        bestTimesToplabel.fontSize = 14
+        bestTimesToplabel.text = "Mejores Tiempos\n   (Best Times)"
+        bestTimesToplabel.position = CGPoint(x:0.5,y:60)
+        bestTimesRectangle.addChild(bestTimesToplabel)
+        
+        //bestTimesPrAlphabeticlabel = bestTimeslabel()
+        let bestTimesPrAlphabeticlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
+        bestTimesPrAlphabeticlabel.name = "bestTimesPrAlphabeticlabel"
+        bestTimesPrAlphabeticlabel.text = "Puerto Rico(Alfabético/Alphabetic):"
+        bestTimesPrAlphabeticlabel.position = CGPoint(x:-70,y:35)
+        bestTimesRectangle.addChild(bestTimesPrAlphabeticlabel)
+        
+        //bestTimesPrRandomlabel = bestTimeslabel()
+        let bestTimesPrRandomlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
+        bestTimesPrRandomlabel.name = "bestTimesPrRandomlabel"
+        bestTimesPrRandomlabel.text = "Puerto Rico(Al Azar/Random):"
+        bestTimesPrRandomlabel.position = CGPoint(x:-57,y:15)
+        bestTimesRectangle.addChild(bestTimesPrRandomlabel)
+        
+        //bestTimesPrAlphabeticScorelabel = bestTimesPrAlphabeticScore()
+        let bestTimesPrAlphabeticScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrAlphabeticScore()
+        bestTimesPrAlphabeticScorelabel.name = "bestTimesPrAlphabeticScorelabel"
+        bestTimesPrAlphabeticScorelabel.position = CGPoint(x:120,y:33)
+        bestTimesRectangle.addChild(bestTimesPrAlphabeticScorelabel)
+        
+        //bestTimesPrRandomScorelabel = bestTimesPrRandomScore()
+        let bestTimesPrRandomScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrRandomScore()
+        bestTimesPrRandomScorelabel.name = "bestTimesPrRandomScorelabel"
+        bestTimesPrRandomScorelabel.position = CGPoint(x:120,y:15)
+        bestTimesRectangle.addChild(bestTimesPrRandomScorelabel)
+    }
+    //Function sets attributes and initialize some labels for Instrucciones objects needed to be evaluated on touch function
+    func initSetInstruccionesObjects(){
+        //Label with spanish instructions
+        instructionsEspanolLabel.name = "instructionsEspanolLabel"
+        instructionsEspanolLabel.text = "\tEn la parte inferior de la pantalla encontrarás el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para\n identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los\n objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de\n Reto con un mapa en blanco.\n\tCon algunas excepciones, los nombres de los objetivos a identificarse seran\n en base al idioma oficial del pais o territorio."
+        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.55)
+        
+        //label with second part of spanish instructions
+        instructionsEspanolLabelTwo.name = "instructionsEspanolLabelTwo"
+        instructionsEspanolLabelTwo.text = "\tPuedes acercar o alejar la cámara pellizcando la pantalla con 2 dedos. Cuando\n la cámara está acercada, puedes moverla deslizando 1 solo dedo a través de la pantalla.\n\tPara marcar el objetivo, haz un toque ligero sobre el mismo en la pantalla sin\n mover el dedo(toca el objetivo como tal, NO la raya apuntando al mismo.)Si\n seleccionaste el objetivo corecto, entonces su nombre(o, si estas jugando en\n Modeo de Práctica, una marca de cotejo)aparecerá sobre el mismo en el mapa\n acompañado de un cambio de color tornando el objetivo verde y el nombre\n del proximo objetivo aparecerá al fondo de la pantalla.\n\tCada vez que hagas una selección errónea, se añadirán 3 segundos adicionales\n a tu tiempo. Tambien puedes escoger saltar el objetivo actual con una penalidad\n de 15 segundos añadidos(todavia tendrás que identificar los objetivos saltados al final)"
+        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+        
+        //Label with english instructions
+        instructionsEnglishLabel.name = "instructionsEnglishLabel"
+        instructionsEnglishLabel.text = "\tAt the bottom of the screen is the name of a municipality, state, capital, city,\nterritory or country. You must find it on the map and tap it to identify it. The goal is\n to identify all the targets as fast as you can.\n\tYou can play in Practice Mode with the map already showing the names of the targets, but your fastest time will only be recorded if you play in Challenge Mode with a blank map.\n\tWith some exceptions, the names of the targets will be based on the official language of the countrie or territory"
+        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+        
+        //Label with second part of english instructions
+        instructionsEnglishLabelTwo.name = "instructionsEnglishLabelTwo"
+        instructionsEnglishLabelTwo.text = "\tYou can zoom in/out by pinching the screen with 2 fingers. When zoomed in, you\ncan move the camera around by sliding a single finger across the screen.\n\tTo mark the target, tap it on the screen without moving your finger(tap the target itself, NOT the arrow pointing at it.) If you selected the correct target, then it's name\n(or if you are playing in Practice Mode, a checkmark) will appear over the target in the map and the color of the target will change(to green) and the name of the next target will appear at the bottom of the screen.\n\tEverytime you make a wrong selection, 3 more seconds will be added to your time. You can also choose to skip the current target with a penalty of 15 seconds added(you'll still need to identify skipped targets at the end.)"
+        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+        
+        //Red arrow button that display at the bottom of spanish label instructions
+        redArrowButtonEspanolLabel.name = "redArrowButtonEspanolLabel"
+        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-20)//overrides position values from setRedArrowButton(), as the only arrow node with a different position values.
+        instructionsEspanolLabel.addChild(redArrowButtonEspanolLabel)
+        
+        //Red arrow button that display at the bottom of the second spanish label instructions
+        redArrowButtonEspanolLabelTwo.name = "redArrowButtonEspanolLabelTwo"
+        redArrowButtonEspanolLabelTwo.zRotation = 3.14
+        instructionsEspanolLabelTwo.addChild(redArrowButtonEspanolLabelTwo)
+        
+        //Red arrow button that display at the bottom of english label instructions
+        redArrowButtonEnglishLabel.name = "redArrowButtonEnglishLabel"
+        instructionsEnglishLabel.addChild(redArrowButtonEnglishLabel)
+        
+        //Red arrow button that display at the bottom of the second english label instructions
+        redArrowButtonEnglishLabelTwo.name = "redArrowButtonEnglishLabelTwo"
+        redArrowButtonEnglishLabelTwo.zRotation =  3.14
+        //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-29.5)
+        instructionsEnglishLabelTwo.addChild(redArrowButtonEnglishLabelTwo)
+        
+        //"English" button at the top of spanish instructions label
+        englishButton.name = "englishButton"
+        let englishButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
+        englishButtonLabel.text = "English"
+        englishButton.addChild(englishButtonLabel)
+        englishButton.position = CGPoint(x:0.5, y:170)//290
+        instructionsEspanolLabel.addChild(englishButton)
+        
+        //"Español" button at the top of english instructions label
+        espanolButton.name = "espanolButton"
+        //espanolButtonLabel = espanolEnglishButtonLabelDefaults(label: espanolButtonLabel)//set difault attributes for label
+        let espanolButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
+        espanolButtonLabel.text = "Español"
+        espanolButton.addChild(espanolButtonLabel)
+        espanolButton.position = CGPoint(x:0.5, y:160.5)//160.5
+        instructionsEnglishLabel.addChild(espanolButton)
+    }
+    //Function sets opciones objects needed to be eveluated on touch function
+    func setMainOpcionesObjects(){
+        //"Audio" label
+        opcionesAudioLabel.name = "opcionesAudioLabel"
+        opcionesAudioLabel.fontName = "GillSans-Bold"
+        opcionesAudioLabel.text = "Audio"
+        opcionesAudioLabel.position = CGPoint(x:345,y:225)
+
+        //Top checkbox
+        opcionesCheckbox.name = "opcionesCheckbox"
+        //opcionesCheckbox.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:opcionesCheckbox.size.width, height:opcionesCheckbox.size.height), center: CGPoint(x:0.5, y: 0.5))
+        //opcionesCheckbox.physicsBody?.isDynamic = false
+        opcionesCheckbox.position = CGPoint(x:50,y:-16)
+        opcionesAudioLabel.addChild(opcionesCheckbox)
+
+        //Top checkmark
+        opcionesCheckmark.name = "opcionesCheckmark"
+        opcionesCheckmark.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-16)
+
+        //Bottom checkbox
+        opcionesCheckboxTwo.name = "opcionesCheckboxTwo"
+        opcionesCheckboxTwo.position = CGPoint(x:50,y:-40)
+        opcionesAudioLabel.addChild(opcionesCheckboxTwo)
+
+        //Bottom checkmark
+        opcionesCheckmarkTwo.name = "opcionesCheckmarkTwo"
+        opcionesCheckmarkTwo.position = CGPoint(x:0.5,y:0.5)//(x:50,y:-40)
+        
+        //"Creditos" button
+        creditosButton.name = "creditosButton"
+        creditosButton.position = CGPoint(x:0.5,y:-65)
+        opcionesAudioLabel.addChild(creditosButton)
+        
+        creditButtonLabel.name = "creditButtonLabel"
+        creditButtonLabel.text = "Creditos (Credits)"
+        creditButtonLabel.position = CGPoint(x:0.5,y:-5.5)
+        creditosButton.addChild(creditButtonLabel)
+        
+    }
+    //Function init and set opciones objects that are not needed to evaluate on touch function and will only be called if "Opciones" button is pressed
+    func initSetSecondaryOpcionesObjects(){
+        ///"Musica (Music)" label
+        let opcionesMusicaLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
+        opcionesMusicaLabel.name = "opcionesMusicaLabel"
+        opcionesMusicaLabel.text = "Música (Music)"
+        opcionesMusicaLabel.position = CGPoint(x:-17,y:-20.5)
+        opcionesAudioLabel.addChild(opcionesMusicaLabel)
+        //"Sonidos (Sound)" label
+        let opcionesSonidosLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
+        opcionesSonidosLabel.name = "opcionesSonidosLabel"
+        opcionesSonidosLabel.text = "Sonidos (Sound)"
+        opcionesSonidosLabel.position = CGPoint(x:-11.5,y:-45)
+        opcionesAudioLabel.addChild(opcionesSonidosLabel)
+    }
+    //Function initialize the container holding all credits labels
+    func initSetcreditsContainer(){
+        creditsContainer = nodesContainer()
+        creditsContainer.name = "creditsContainer"
+    }
+    //creditsContainer attributes are set
+    func nodesContainer() -> SKNode{
+        let nodes_Container = SKNode()
+        nodes_Container.position = CGPoint(x:self.size.width/11, y:self.size.height - self.size.height)///25 - 5)//(x: 60.0, y: 0.5)
+        return  nodes_Container
+    }
+    
+    //Function inits and set creditos labels, function is called if "Creditos" is pressed, not commenting on each item as its self explicative
+    func initSetcreditsContainerChildren(){
+    
+        let creditsLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
+        creditsLabel.name = "creditsLabel"
+        creditsLabel.text = "CONCEPT\n\nDESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
+        creditsLabel.position = CGPoint(x:50, y:202)
+        creditsContainer.addChild(creditsLabel)
+        
+        let creditsLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
+        creditsLabelTwo.name = "creditsLabelTwo"
+        creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\nEnrique J. Pizarro\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
+        creditsLabelTwo.fontColor = UIColor.black
+        creditsLabelTwo.position = CGPoint(x:160, y:202)
+        creditsLabelTwo.preferredMaxLayoutWidth = 110 //140
+        creditsContainer.addChild(creditsLabelTwo)
+        
+        let creditsSoundMusicLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
+        creditsSoundMusicLabel.name = "creditsSoundMusicLabel"
+        creditsSoundMusicLabel.text = "SOUND & MUSIC"
+        creditsSoundMusicLabel.position = CGPoint(x:95, y:190)
+        creditsContainer.addChild(creditsSoundMusicLabel)
+        
+        let creditsSoundMusicChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
+        creditsSoundMusicChildLabel.name = "creditsSoundMusicChildLabel"
+        creditsSoundMusicChildLabel.text = "1-At the shore\n2-No Frills Salsa-Alternate\n(shortened from original)\n3-Guiton Sketch\n\n1-La Borinqueña\n2-Star Spangled Banner\n\n1-Game Sound Correct\nOrganic Violin\n\n\nCartoon Success Fanfare"
+        creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 125
+        creditsSoundMusicChildLabel.position = CGPoint(x:69, y:55)
+        creditsContainer.addChild(creditsSoundMusicChildLabel)
+        
+        let creditsSoundMusicChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
+        creditsSoundMusicChildLabelTwo.name = "creditsSoundMusicChildLabelTwo"
+        creditsSoundMusicChildLabelTwo.text = "\nKevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
+        creditsSoundMusicChildLabelTwo.fontColor = UIColor.black
+        creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:55)
+        creditsSoundMusicChildLabelTwo.preferredMaxLayoutWidth = 100 //140
+        creditsContainer.addChild(creditsSoundMusicChildLabelTwo)
+        
+        let creditsSoundMusicChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
+        creditsSoundMusicChildLabelThree.name = "creditsSoundMusicChildLabelThree"
+        creditsSoundMusicChildLabelThree.text = "All music and sounds used licensed under Creative Commons:\n\t\tBy Attribution 3.0 License\n\t(http://creativecommons.org/licenses/by/3.0/)"
+        creditsSoundMusicChildLabelThree.position =  CGPoint(x:125, y:20)
+        creditsContainer.addChild(creditsSoundMusicChildLabelThree)
+        
+        let creditsMapsImagesLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
+        creditsMapsImagesLabel.name = "creditsMapsImagesLabel"
+        creditsMapsImagesLabel.text = "IMAGES AND MAPS"
+        creditsMapsImagesLabel.position = CGPoint(x:370, y:295)
+        creditsContainer.addChild(creditsMapsImagesLabel)
+    
+        let creditsMapsImagesChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
+        creditsMapsImagesChildLabel.name = "creditsMapsImagesChildLabel"
+        creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
+        creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
+        creditsMapsImagesChildLabel.position = CGPoint(x:325, y:245)
+        creditsContainer.addChild(creditsMapsImagesChildLabel)
+        
+        let creditsMapsImagesChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
+        creditsMapsImagesChildLabelTwo.name = "creditsMapsImagesChildLabelTwo"
+        creditsMapsImagesChildLabelTwo.text = "https://mapsvg.com/maps/puerto-rico"
+        creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
+        creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:260)
+        creditsMapsImagesChildLabelTwo.preferredMaxLayoutWidth = 180
+        creditsContainer.addChild(creditsMapsImagesChildLabelTwo)
+        
+        let creditsMapsImagesChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
+        creditsMapsImagesChildLabelThree.name = "creditsMapsImagesChildLabelThree"
+        creditsMapsImagesChildLabelThree.position = CGPoint(x:383, y:215)
+        creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
+        creditsContainer.addChild(creditsMapsImagesChildLabelThree)
+        
+        let creditsSpecialThanksLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
+        creditsSpecialThanksLabel.name = "creditsSpecialThanksLabel"
+        creditsSpecialThanksLabel.text = "SPECIAL THANKS"
+        creditsSpecialThanksLabel.position = CGPoint(x:360, y:200)
+        creditsContainer.addChild(creditsSpecialThanksLabel)
+        
+        let creditsSpecialThanksChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
+        creditsSpecialThanksChildLabel.name = "creditsSpecialThanksChildLabel"
+        creditsSpecialThanksChildLabel.text = "Manuel Alvarez\nRoberto Vélez Benitez\nEnrique J. Pizarro\nRodrigo Barasorda\nJosé Ramos\nMaritza Torres\nNarén Vélez Vendrell\nGabriela Mora Llorens\nCarmine T. Guida\nVladimir Alyamkin\nRaul Rosado\n@Pedro Cacique(https://www.youtube.com/c/PedroCacique)\nHoglund & Pamías\nAtlantic University College\nEpic Games,inc"
+        creditsSpecialThanksChildLabel.fontColor = UIColor.black
+        creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:43)
+        creditsSpecialThanksChildLabel.preferredMaxLayoutWidth = 280 //140
+        creditsContainer.addChild(creditsSpecialThanksChildLabel)
+        
+        let creditsSpecialThanksChildLabelTwo:SKLabelNode = StartMenuMethods().licenseLabels()
+        creditsSpecialThanksChildLabelTwo.name = "creditsSpecialThanksChildLabelTwo"
+        creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
+        creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
+        creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
+        creditsContainer.addChild(creditsSpecialThanksChildLabelTwo)
+    }
+    //Function will set mapOrder objects needed to be evaluated by touch function
+    func setMainMapOrderObjects(){
+        //Parent node. Rectangle containing the objects that the user will interact with
+        mapOrderOldPaperbackground.name = "mapOrderOldPaperbackground"
+        mapOrderOldPaperbackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        
+        //Top Grey drop down tab.**IT DOES NOT HAVE PHYSICS BODY, THE TOUCH FUNCTION IS SET ON THE LABEL ON TOP OF IT**
+        dropDownLabelBG.name = "dropDownLabelBG"
+        dropDownLabelBG.position = CGPoint(x:100,y:50)
+        mapOrderOldPaperbackground.addChild(dropDownLabelBG)
+        
+        //Label "Puerto Rico"(default value) Lies on top of top grey drop down tab and contains the touch function
+        dropDownArrowLabel.name = "dropDownArrowLabel"
+        dropDownArrowLabel.position = CGPoint(x:-55.0,y:-4.5)
+        dropDownArrowLabel.text = "Puerto Rico"
+        dropDownArrowLabel.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:55, y: 4.5))
+        dropDownArrowLabel.physicsBody?.isDynamic = false
+        dropDownLabelBG.addChild(dropDownArrowLabel)
+        
+        //Top drop down menu(dark gray)
+        mapOrderCountryDropDownMenu.name = "mapOrderCountryDropDownMenu"
+        mapOrderCountryDropDownMenu.position = CGPoint(x:434,y:215)
+        
+        //Top yellow background that highlinght the selection on top of drop down menu(top dark gray)
+        mapOrderCountryDropDownMenuYellowBG.name = "mapOrderCountryDropDownMenuYellowBG"
+        mapOrderCountryDropDownMenuYellowBG.position = CGPoint(x:0.0,y:9.7)
+        
+        //Label "Puerto Rico" displayed when top drop down menu renders
+        dropDownMenuLabelPR.name = "dropDownMenuLabelPR"
+        dropDownMenuLabelPR.position = CGPoint(x:-56,y:4.5)
+        dropDownMenuLabelPR.fontSize = 10.5
+        dropDownMenuLabelPR.text = "Puerto Rico"
+        dropDownMenuLabelPR.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:56, y: 4.5))
+        dropDownMenuLabelPR.physicsBody?.isDynamic = false
+        
+        //Bottom gray drop down menu tab. **IT DOES NOT HAVE PHYSICS BODY, THE TOUCH FUNCTION IS SET ON THE LABEL ON TOP OF IT**
+        dropDownLabelBGTwo.name = "dropDownLabelBGTwo"
+        dropDownLabelBGTwo.position = CGPoint(x:100,y:-23)
+        mapOrderOldPaperbackground.addChild(dropDownLabelBGTwo)
+        
+        //Label "Alfabético (Alphabetic)"(default value) Lies on top of bottom grey drop down tab and contains the touch function
+        dropDownArrowLabelTwo.name = "dropDownArrowLabelTwo"
+        dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
+        dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+        dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)//posicionamiento con respecto al parent dropDownLabelBGTwo
+        //dropDownArrowLabelTwo.preferredMaxLayoutWidth = 300
+        dropDownArrowLabelTwo.text = "Alfabético (Alphabetic)"//default text
+        dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+        
+        //Bottom drop down menu, displays when dropDownArrowLabelTwo is pressed
+        orderDropDownMenu.name = "orderDropDownMenu"
+        orderDropDownMenu.position = CGPoint(x:434,y:142)
+        
+        //On bottom drop down menu, yellow background will display when default selection("Alfabético (Alphabetic)") is at play or if selected.
+        orderDropDownMenuYellowBG.name = "orderDropDownMenuYellowBG"
+        orderDropDownMenuYellowBG.position = CGPoint(x:0.0,y:7)
+        orderDropDownMenuYellowBG.zPosition = 0
+        
+        //On bottom drop down menu, yellow background will display when selection("Al Azar (Random)") is selected.
+        orderDropDownMenuYellowBGTwo.name = "orderDropDownMenuYellowBGTwo"
+        orderDropDownMenuYellowBGTwo.position = CGPoint(x:0.0,y:-7.0)
+        orderDropDownMenuYellowBGTwo.zPosition = 0
+        
+        //On bottom drop down menu, label "Alfabético (Alphabetic)" is the first selection(default)
+        orderDropDownMenuLabel.name = "orderDropDownMenuLabel"
+        orderDropDownMenuLabel.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:34.5, y: 4.5))
+        orderDropDownMenuLabel.physicsBody?.isDynamic = false
+        orderDropDownMenuLabel.position = CGPoint(x:-33,y:2)
+        orderDropDownMenuLabel.fontSize = 10.5
+        orderDropDownMenuLabel.text = "Alfabético (Alphabetic)"
+        
+        //On bottom drop down menu, label "Al Azar (Random)" is the second selection(or non default)
+        orderDropDownMenuLabelTwo.name = "orderDropDownMenuLabelTwo"
+        orderDropDownMenuLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:177, height:9.5), center: CGPoint(x:47.5, y: 4.5))
+        orderDropDownMenuLabelTwo.physicsBody?.isDynamic = false
+        orderDropDownMenuLabelTwo.position = CGPoint(x:-45,y:-12)
+        //orderDropDownMenuLabelTwo.zposition = 1
+        orderDropDownMenuLabelTwo.fontSize = 10.5
+        //orderDropDownMenuLabelTwo.fontColor = .white
+        orderDropDownMenuLabelTwo.text = "Al Azar (Random)"
+        
+        //green button
+        mapOrderGreenButton.name = "mapOrderGreenButton"
+        mapOrderGreenButton.position = CGPoint(x:-118, y:-67)
+        mapOrderOldPaperbackground.addChild(mapOrderGreenButton)
+        //red button
+        mapOrderRedButton.name = "mapOrderRedButton"
+        mapOrderRedButton.position = CGPoint(x:-185, y:-67)
+        mapOrderOldPaperbackground.addChild(mapOrderRedButton)
+    }
+    //map Order objects that will be loadad only if "Jugar" button is pressed, but are not needed inmediately for touch function evaluation
+    func initSetSecondaryMapOrderObjects(){
+        //top label map selection instructions
+        let mapOrderTopLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
+        mapOrderTopLabel.name = "mapOrderTopLabel"
+        mapOrderTopLabel.position = CGPoint(x:110, y:58)
+        mapOrderTopLabel.text = "Seleccciona el mapa en el menú desplegable\n(Select the map from the drop-downmenu)"
+        mapOrderOldPaperbackground.addChild(mapOrderTopLabel)
+        
+        //middle label with order selection instructions
+        let mapOrderMiddleLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
+        mapOrderMiddleLabel.name = "mapOrderMiddleLabel"
+        mapOrderMiddleLabel.position = CGPoint(x:72, y:-15)
+        mapOrderMiddleLabel.text = "Selecciona el orden de los objetivos en el menú desplegable\n\t   (Select the target order from the drop-downmenu)"
+        mapOrderOldPaperbackground.addChild(mapOrderMiddleLabel)
+        
+        //Arrow drawing on top of top gray drop down tab
+        let dropDownArrow:SKSpriteNode = StartMenuMethods().dropDownArrowBPToSKSpritenode()
+        dropDownArrow.name = "dropDownArrow"
+        dropDownArrow.position = CGPoint(x:80,y:-0.5)
+        dropDownLabelBG.addChild(dropDownArrow)
+        
+        //left top label
+        let mapOrderSingleLineLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
+        mapOrderSingleLineLabel.name = "mapOrderSingleLineLabel"
+        mapOrderSingleLineLabel.fontSize = 14
+        mapOrderSingleLineLabel.text = "Mapa (Map)"
+        mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabel)
+        mapOrderSingleLineLabel.position = CGPoint(x:-165, y:46)
+        
+        //left bottom label
+        let mapOrderSingleLineLabelTwo:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
+        mapOrderSingleLineLabelTwo.name = "mapOrderSingleLineLabelTwo"
+        mapOrderSingleLineLabelTwo.fontSize = 14
+        mapOrderSingleLineLabelTwo.text = "Orden (Order)"
+        mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabelTwo)
+        mapOrderSingleLineLabelTwo.position = CGPoint(x:-156, y:-25.0)
+        
+        //Arrow drawing on top of bottom gray drop down tab
+        let dropDownArrowTwo:SKSpriteNode = StartMenuMethods().dropDownArrowBPToSKSpritenode()
+        dropDownArrowTwo.name = "dropDownArrowTwo"
+        dropDownArrowTwo.position = CGPoint(x:80,y:-0.5)
+        dropDownLabelBGTwo.addChild(dropDownArrowTwo)//se anade como hijo del dropdown tab
+         
+        //green button top label
+        let mapOrderGreenButtonTopLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsTopLabelsDefault()
+        mapOrderGreenButtonTopLabel.name = "mapOrderGreenButtonTopLabel"
+        mapOrderGreenButtonTopLabel.text = "Siguiente"
+        mapOrderGreenButton.addChild(mapOrderGreenButtonTopLabel)
+        
+        //green button bottom label
+        let mapOrderGreenButtonBottomLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsBottomLabelsDefault()
+        mapOrderGreenButtonBottomLabel.name = "mapOrderGreenButtonBottomLabel"
+        mapOrderGreenButtonBottomLabel.text = "(Next)"
+        mapOrderGreenButton.addChild(mapOrderGreenButtonBottomLabel)
+       
+        //red button top label
+        let mapOrderRedButtonTopLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsTopLabelsDefault()
+        mapOrderRedButtonTopLabel.name = "mapOrderGreenButtonTopLabel"
+        mapOrderRedButtonTopLabel.text = "Volver"
+        mapOrderRedButton.addChild(mapOrderRedButtonTopLabel)
+        
+        //red button bottom label
+        let mapOrderRedButtonBottomLabel:SKLabelNode = StartMenuMethods().mapOrderButtonsBottomLabelsDefault()
+        mapOrderRedButtonBottomLabel.name = "mapOrderGreenButtonBottomLabel"
+        mapOrderRedButtonBottomLabel.text = "(Return)"
+        mapOrderRedButton.addChild(mapOrderRedButtonBottomLabel)
+    }
+    //Function set game mode selection objects to be evaluated in touch function
+    func setMainGameModeSelectionObjects(){
+        
+        //Parent is the rectangle containing the objects for game mode selection screen
+        gameModeSelectionOldPaperbackground.name = "gameModeSelectionOldPaperbackground"
+        gameModeSelectionOldPaperbackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        
+        //green button
+        gameModeSelectionGreenButton.name = "gameModeSelectionGreenButton"
+        gameModeSelectionGreenButton.position = CGPoint(x:-90, y:50)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionGreenButton)
+        
+        //button label "Modo de Reto (Challenge Mode)"
+        gameModeSelectionGreenButtonLabel.name = "gameModeSelectionGreenButtonLabel"
+        gameModeSelectionGreenButtonLabel.text = "  Modo de Reto \n(Challenge Mode)"
+        gameModeSelectionGreenButton.addChild(gameModeSelectionGreenButtonLabel)
+        
+        //blue button
+        gameModeSelectionBlueButton.name = "gameModeSelectionBlueButton"
+        gameModeSelectionBlueButton.position = CGPoint(x:90, y:50)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionBlueButton)
+        
+        //blue button label
+        gameModeSelectionBlueButtonLabel.name = "gameModeSelectionBlueButtonLabel"
+        gameModeSelectionBlueButtonLabel.text = "  Modo de Práctica \n   (Practice Mode)"
+        gameModeSelectionBlueButton.addChild(gameModeSelectionBlueButtonLabel)
+        
+        //red button
+        gameModeSelectionRedButton.name = "gameModeSelectionRedButton"
+        gameModeSelectionRedButton.position = CGPoint(x:0,y:-55)
+        gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
+    }
+    //Function init and set objects when game mode selection screen is rendered, not needed for evaluation for touch function
+    func initSetSecondaryGameModeSelectionObjects(){
+           //on game mode selection screen instructions label at the left
+           let gameModeSelectionLabel:SKLabelNode = StartMenuMethods().modeSelectionLabelDefaults()
+           gameModeSelectionLabel.name = "gameModeSelectionLabel"
+           gameModeSelectionLabel.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
+           gameModeSelectionLabel.position = CGPoint(x:-87,y:-25)
+           gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabel)
+           
+           //on game mode selection screen instructions label at the right
+           let gameModeSelectionLabelTwo:SKLabelNode = StartMenuMethods().modeSelectionLabelDefaults()
+           gameModeSelectionLabelTwo.name = "gameModeSelectionLabelTwo"
+           gameModeSelectionLabelTwo.text = "Juega con nombres ya en el mapa.\n\t Tiempo no se guardará.\n(Play with names already on the map.\n\tTime will not be saved)"
+           gameModeSelectionLabelTwo.preferredMaxLayoutWidth = 160
+           gameModeSelectionLabelTwo.position = CGPoint(x:105,y:-26)
+           gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
+       }
+    
+    //Touched node evaluation when main menu screen is rendered at launch
+    /**returnVolver object(This object is a stand alone object meaning it have no children or node parent besides self, this was done due its used across different groups of objects(Mejores tiempos objs,instrucciones objs,opciones objs and creditos objcs). It was more legible code and easier to understand(like a stand alone objct) .*/
+    func mainMenuTouchNodes(nodeTouched:SKPhysicsBody){
+        //buttonGreen: When buttongreen is pressed the main menu objects are removed and mapOrder objects are added to the scene
+        if(buttonGreen.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()
+            //initialization of mapOrder secondary objects, this line will execute once as you don't need your variables to be reinitialized everytime the button is touched.
+            if mapOrderObjectsNotInitSet == true{
+                initSetSecondaryMapOrderObjects()
+                print("inicializando mapOrderObject")//programmer use
+                mapOrderObjectsNotInitSet = false//line change value to false preventing the execution from reentering and reinitialize the objects again
+            }
+            self.addChild(mapOrderOldPaperbackground)//parent(containing mapOrder objects) is added to the scene
+            
+        }
+        
+        /**button "Mejores Tiempos" When pressed the main menu objects are removed and bestTimes objects and returnVolver objec are added to the scene*/
+        else if (redButtonOne.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()//removing parent of main menu objects
+            //initialization of bestTimes objects, this line will execute once as you don't need your variables to be reinitialized everytime the button is touched.
+            if bestTimesObjectsNotInitSet == true{
+                initSetBestTimesBoardObjects()
+                bestTimesObjectsNotInitSet = false//line change value to false preventing the execution from reentering and reinitialize the objects
+            }
+            if returnVolverRedButton == nil{/*returnVolver button is not initialized until needed(if Mejores tiempos, Instrucciones or Opciones are pressed) also this prevent it from being reinitialized on memory each time bestTimes button is pressed **/
+                initReturnVolverRedButtonObject()
+                print("outside")
+            }
+            self.addChild(bestTimesRectangle)//parent containing bestTimes objects
+            self.addChild(returnVolverRedButton)//read comments at the top
+        }
+        
+        //button Instrucciones when pressed main menu opbjects are removed and spanish instructions with a couple of objects(english button and red arrow button) are rendered and returnVolver button
+        else if (redButtonTwo.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()
+            
+            if returnVolverRedButton == nil{/*returnVolver button is not initialized until needed(if Mejores tiempos, Instrucciones or Opciones are pressed) also this prevent it from being reinitialized on memory each time bestTimes button is pressed **/
+                initReturnVolverRedButtonObject()
+                print("inside")
+            }
+            self.addChild(instructionsEspanolLabel)//First label with spanish instructions parent to two more objects
+            self.addChild(returnVolverRedButton)//read comments at the top
+
+        }
+        //Opciones button when pressed main menu objects are removed and opcionesAudioLabel parent added with children
+        else if (redButtonThree.name == nodeTouched.node?.name){
+            buttonGreen.removeFromParent()//removes button green and its children
+            /**Init object not needed on touch evalation objects are only initialized if button  opciones is pressed*/
+            if opcionesObjectsNotInitSet == true{
+                initSetSecondaryOpcionesObjects()
+                opcionesObjectsNotInitSet = false//line change value to false preventing the execution from reentering and reinitialize the objects once been initialized
+            }
+            /*returnVolver button is not initialized until needed(if Mejores tiempos, Instrucciones or Opciones are pressed) also this prevent it from being reinitialized on memory each time opciones button is pressed **/
+            if returnVolverRedButton == nil{
+                initReturnVolverRedButtonObject()
+                print("wisin y yandel")//programmer use
+            }
+            /*Due StartMenu.backgroundMusicOn is a static variable it will hold it's value even between transitions of scenes. So that we are able to keep StartMenu.backgroundMusicOn default value(true/background music enabled) in between scenes transitions or to keep user changes to defaults in between scenes transitions. In this instance StartMenu.backgroundMusicOn is evaluated in order for the scene to acknowledge if it must render the checkmark or not.**/
+            if StartMenu.backgroundMusicOn == true{
+                opcionesCheckbox.addChild(opcionesCheckmark)
+            }
+            /*Due StartMenu.gamePlaySoundOn is a static variable it will hold it's value even between transitions of scenes. So that we are able to keep StartMenu.gamePlaySoundOn default value(true/background music enabled) in between scenes transitions or to keep user changes to defaults in between scenes transitions. In this instance StartMenu.gamePlaySoundOn is evaluated in order to acknowledge if it must render the checkmark or not.**/
+            if StartMenu.gamePlaySoundOn == true{
+                opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
+            }
+            /** opciones is the label parent on opciones screen*/
+            self.addChild(opcionesAudioLabel)//Parent added with children
+            self.addChild(returnVolverRedButton)
+        }
+    }
+    /**Touch evaluation  for returnVolver button only button rendered on best times view, when pressed bestTimesRectangle(parent) is removed with children and main menu objects are rendered*/
+    func bestTimesTouchNodes(nodeTouched:SKPhysicsBody){
+        if (returnVolverRedButton.name == nodeTouched.node?.name /*&& bestTimesRectangle.parent != nil*/){
+           returnVolverRedButton.removeFromParent()
+           bestTimesRectangle.removeFromParent()
+           self.addChild(buttonGreen)
+        }
+    }
+    /** touch evaluation to navigate along and out of the Instrucciones objects*/
+    func instructionsTouchNodes(nodeTouched:SKPhysicsBody){
+        /**redArrowButtonEspanolLabel moves  to Instrucciones spanish second label (instructionsEspanolLabelTwo)*/
+        if (redArrowButtonEspanolLabel.name == nodeTouched.node?.name){
+            instructionsEspanolLabel.removeFromParent()
+            self.addChild(instructionsEspanolLabelTwo)
+        }
+        /**instructionsEspanolLabelTwo(parent) is removed and instructionsEspanolLabel(parent) added. In general this is returning from spanish instructions second label to spanish instructions first label*/
+        else if (redArrowButtonEspanolLabelTwo.name == nodeTouched.node?.name){
+            instructionsEspanolLabelTwo.removeFromParent()
+            self.addChild(instructionsEspanolLabel)
+        }
+        /**englishButton instructionsEspanolLabel is removed to display first english instructions first label(instructionsEnglishLabel) */
+        else if (englishButton.name == nodeTouched.node?.name){
+            instructionsEspanolLabel.removeFromParent()
+            self.addChild(instructionsEnglishLabel)
+        }
+        /**instructionsEspanolLabel is removed and spanish instructions first label is added to view*/
+        else if (espanolButton.name == nodeTouched.node?.name){
+            instructionsEnglishLabel.removeFromParent()
+            //instructionsEspanolLabel.addChild(englishButton)
+            self.addChild(instructionsEspanolLabel)
+        }
+        /**instructionsEnglishLabel is removed to add second english instructions label*/
+        else if (redArrowButtonEnglishLabel.name == nodeTouched.node?.name){
+            instructionsEnglishLabel.removeFromParent()
+            //instructionsEspanolLabel.addChild(englishButton)
+            self.addChild(instructionsEnglishLabelTwo)
+        }
+        /**instructionsEnglishLabelTwo is removed and first english instruction label added*/
+        else if (redArrowButtonEnglishLabelTwo.name == nodeTouched.node?.name){
+            instructionsEnglishLabelTwo.removeFromParent()
+            self.addChild(instructionsEnglishLabel)
+        }
+       
+       /**the following manages the touch evaluation for returnVolver in order to return to main menu from the Instrucciones view (screens)*/
+        else if (returnVolverRedButton.name == nodeTouched.node?.name){
+            returnVolverRedButton.removeFromParent()
+            if instructionsEspanolLabel.parent != nil{
+                instructionsEspanolLabel.removeFromParent()
+            }
+            if instructionsEspanolLabelTwo.parent != nil{
+                instructionsEspanolLabelTwo.removeFromParent()
+            }
+            if instructionsEnglishLabel.parent != nil{
+                instructionsEnglishLabel.removeFromParent()
+            }
+            if instructionsEnglishLabelTwo.parent != nil{
+                instructionsEnglishLabelTwo.removeFromParent()
+            }
+    
+            self.addChild(buttonGreen)
+            
+        }
+    }
+    /**Touched nodes evaluation when mapOrder parent mapOrderOldPaperbackground and children are rendered*/
+    func mapOrderTouchNodes(nodeTouched:SKPhysicsBody){
+        /**General explanation: in this instance when button green is pressed bottom drop down menu will close, developer wanted drop down menus closed before moving to next view .
+         The execution enters when orderDropDownMenu(bottom drop down menu) is rendered but the green button is touched, removing the drop downmenu from view
+         and adding the label dropDownArrowLabelTwo on top of dropDownLabelBGTwo that was removed  when order orderDropDownMenu (bottom drop down menu) is displayed.
+         */
+         if mapOrderGreenButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
+             orderDropDownMenu.removeFromParent()
+             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         }
+         /**General explanation:in this instance when button green is pressed top drop down menu will close, developer wanted drop down menus closed before moving to next view.
+         The execution enters when mapOrderCountryDropDownMenu(top drop down menu) is rendered but the green button is touched, removing the drop downmenu from view
+         and adding the label dropDownArrowLabel on top of dropDownLabelBG that was removed  when order mapOrderCountryDropDownMenu (top drop down menu) is displayed.
+         */
+         else if mapOrderGreenButton.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)
+         }
+         /* When mapOrderGreenButton is touched mapOrder parent mapOrderOldPaperbackground is removed and gameModeSelection parent(with its children) is added to the view**/
+         else if(mapOrderGreenButton.name == nodeTouched.node?.name){
+             mapOrderOldPaperbackground.removeFromParent()
+             if gameModeSelectionObjectsNotInitSet == true{
+                 initSetSecondaryGameModeSelectionObjects()
+                 gameModeSelectionObjectsNotInitSet = false
+             }
+             self.addChild(gameModeSelectionOldPaperbackground)
+         }
+         
+         /*General explanation: in this instance when button red is pressed bottom drop down menu will close, developer wanted drop down menus closed before moving to main menu objs .
+         The execution enters when orderDropDownMenu(bottom drop down menu) is rendered but the red button is touched, removing the drop downmenu from view
+         and adding the label dropDownArrowLabelTwo on top of dropDownLabelBGTwo that was removed  when order orderDropDownMenu (bottom drop down menu) is displayed. */
+         else if mapOrderRedButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
+             orderDropDownMenu.removeFromParent()
+             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         }
+         /**General explanation:in this instance when button green is pressed top drop down menu will close, developer wanted drop down menus closed before moving to next view.
+         The execution enters when mapOrderCountryDropDownMenu(top drop down menu) is rendered but the green button is touched, removing the drop downmenu from view
+         and adding the label dropDownArrowLabel on top of dropDownLabelBG that was removed  when order mapOrderCountryDropDownMenu (top drop down menu) is displayed.
+         */
+         else if mapOrderRedButton.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil {
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)
+         }
+         /* When mapOrderRedButton is touched mapOrder parent mapOrderOldPaperbackground is removed and buttonGreen parent of main menu objs is added to the view**/
+         else if mapOrderRedButton.name == nodeTouched.node?.name{
+             mapOrderOldPaperbackground.removeFromParent()
+             self.addChild(buttonGreen)
+         }
+          /*General explanation: Developer wanted that only one drop down menu is rendered at a time, so that if user tries to open a second drop down menu the one originally open will close.
+             The execution will enter here when dropDownArrowLabel is pressed but orderDropDownMenu is rendered. orderDropDownMenu is removed from view and dropDownArrowLabelTwo added with the selection
+             highlighted in yellow by orderDropDownMenuYellowBG or orderDropDownMenuYellowBGTwo**/
+         
+         else if (dropDownArrowLabel.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil){
+             if orderDropDownMenuYellowBG.parent != nil {
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+             }
+             else if orderDropDownMenuYellowBGTwo.parent != nil{
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+             }
+             
+             orderDropDownMenu.removeFromParent()
+             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         }
+         /**When dropDownArrowLabel(default text "Puerto Rico") is touched,  dropDownArrowLabel is removed and top drop down menu rendered */
+         else if (dropDownArrowLabel.name == nodeTouched.node?.name){
+             
+             dropDownArrowLabel.removeFromParent()
+             self.addChild(mapOrderCountryDropDownMenu)
+             
+            /**The following statement adds to drop down menu (mapOrderCountryDropDownMenu) mapOrderCountryDropDownMenuYellowBG(yellow background) and dropDownMenuLabelPR(text:"Puerto Rico") . The statements :&& mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil prevents mapOrderCountryDropDownMenuYellowBG and dropDownMenuLabelPR from being re-added to parent if they have already been added previously */
+             if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
+                
+                 mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
+                 mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
+             }
+
+         }
+         /**Execution will enter here when top drop down menu is on display,  when  dropDownMenuLabelPR is touched or selected  removes drop down menu from view and gives its text value  to dropDownArrowLabel(label over top drop down menu tab) and also add it to the view*/
+         else if (dropDownMenuLabelPR.name == nodeTouched.node?.name){
+             dropDownArrowLabel.text = dropDownMenuLabelPR.text
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)
+
+         }
+        
+         /**General explanation: This statement evaluate if at the time of pressing dropDownArrowLabelTwo(label over bottom drop down menu tab)  there is also the top drop down menu on display */
+         else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil){
+            /**Before closing the drop down menu dropDownMenuLabelPR text value is passed to dropDownArrowLabel to be added to the view to the view (over the top drop down tab)in the last statement  */
+             if mapOrderCountryDropDownMenuYellowBG.parent != nil {
+                 dropDownArrowLabel.text = dropDownMenuLabelPR.text
+             }
+             
+             mapOrderCountryDropDownMenu.removeFromParent()
+             dropDownLabelBG.addChild(dropDownArrowLabel)
+         }
+         /**When the label on top of  bottom drop down tab is pressed the same label is removed from view and bottom drop down menu displayed*/
+         else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name){
+             //remuevo el label del dropdown tab
+             dropDownArrowLabelTwo.removeFromParent()
+             self.addChild(orderDropDownMenu)
+             
+            /**The following is evaluating whether at the moment dropDownArrowLabelTwo is pressed, if the selection at the drop down menu is the first label (default highlighted in yellow) and whether orderDropDownMenu children have been added,**/
+             /**this evaluation will proof false when in a previous selection the second label is the selection.(see following else if statement)*/
+             /*When this condition is true it will add to the view(on top of orderDropDownMenu) the labels for "Alfabetico" and "Al Azar" and will place the highlighted yellow backgroud under the
+             first label(**This is the default arrangement when  dropDownArrowLabelTwo is pressed the first time**)*/
+             /**The execution will  enter this block always the first time dropDownArrowLabelTwo is pressed */
+             /**This statements: && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil will prevent the children from being added if the are already added to their parenrt*/
+             if dropDownArrowLabelTwo.text == orderDropDownMenuLabel.text && orderDropDownMenuYellowBG.parent == nil && orderDropDownMenuLabel.parent == nil && orderDropDownMenuLabelTwo.parent == nil{
+                
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                 orderDropDownMenu.addChild(orderDropDownMenuLabel)
+                 orderDropDownMenuLabelTwo.fontColor = .white
+                 orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                 
+             }
+             /**(see commets above)Execution enters here when the selection is(previously selected/non default) the second label and will add the yellow background  under second label*/
+             else if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text && orderDropDownMenuYellowBGTwo.parent == nil && orderDropDownMenuLabelTwo.parent == nil && dropDownArrowLabelTwo.parent == nil {
+                 
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                 orderDropDownMenu.addChild(orderDropDownMenuLabelTwo)
+                 orderDropDownMenuLabel.fontColor = .white
+                 orderDropDownMenu.addChild(orderDropDownMenuLabel)
+             }
+         }
+         /*orderDropDownMenuLabel is the first label inside bottom drop down menu**/
+         else if (orderDropDownMenuLabel.name == nodeTouched.node?.name){
+             /*Following condition is predeterminded as default(where orderDropDownMenuLabel and  dropDownArrowLabelTwo text attribute is the same) in such scenario when orderDropDownMenuLabel is pressed  orderDropDownMenu is removed and dropDownArrowLabelTwo added on top of dropDownLabelBGTwo(drop down tab) */
+             if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
+                 orderDropDownMenu.removeFromParent()
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
+             }
+             /*On the contrary when  orderDropDownMenuLabel is pressed and its text is different from dropDownArrowLabelTwo due previous selection of  "Al Azar"*/
+            /**In such scenario orderDropDownMenu is removed from view and the text of the new selection "Alfabetico" y passed to dropDownArrowLabelTwo(label on top of bottom drop down tab(dropDownLabelBGTwo)) */
+             else if orderDropDownMenuLabel.text != dropDownArrowLabelTwo.text{
+                 orderDropDownMenu.removeFromParent()
+                 /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
+                 aqui otorgado*/
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                /**When  label text attribute is passed to another label the text rendering result might not be as expected(maybe a glitch)  in this scenario when  text attribute("ALfabetico(ALphabetic)") is passed to dropDownArrowLabelTwo, the text rendered more towards the center of the drop down tab, what requires the label tobe repositioned to the left, as a result of this is necessary to also reposition the physics body (but due Physics bodies can't be repositioned) so Physics body is set to nil or removed and redifined with new position*/
+                 dropDownArrowLabelTwo.physicsBody = nil
+                 dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
+                 dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                 dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                
+                /**The next block sets the objects inside orderDropDownMenu for the next time dropDownArrowLabelTwo is pressed and orderDropDownMenu displayed */
+                 orderDropDownMenuYellowBGTwo.removeFromParent()
+                 orderDropDownMenuLabel.fontColor = .black
+                 orderDropDownMenuLabelTwo.fontColor = .white
+                 orderDropDownMenuLabel.zPosition = 1
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+
+             }
+         }
+         /**orderDropDownMenuLabelTwo second label at the bottom drop down menu*/
+         else if (orderDropDownMenuLabelTwo.name == nodeTouched.node?.name){
+             /**when  the condition below evaluate to true means that the previous selection was "Al Azar(Random)" and  that the selection will remain the same("Al Azar(Random)",
+             in this scenario drop down menu(bottom) is removed and due their text attribute is the same dropDownArrowLabelTwo is re-added */
+             if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
+                 orderDropDownMenu.removeFromParent()
+                 //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+             }
+             
+             /**Execution will enter here when orderDropDownMenuLabelTwo is pressed and the default selection is in place or where "Alfabetico(Alphabetic)" is the previous selection. On this instance orderDropDownMenu is removed from view
+                and orderDropDownMenuLabelTwo text attribute is passed to  dropDownArrowLabelTwo*/
+             else if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
+                 //orderDropDownMenu.alpha = 0.9
+                 orderDropDownMenu.removeFromParent()
+                 //dropDownArrowLabelTwo.text = ""
+                 dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                
+                /**When  label text attribute is passed to another label the text rendering result might not be as expected(maybe a glitch)  in this scenario when  text attribute("Al Azar(Random)" is passed to dropDownArrowLabelTwo, the text rendered more towards the center of the drop down tab, what requires the label to be repositioned to the left, as a result of this is necessary to also reposition the physics body (but due Physics bodies can't be repositioned) so Physics body is set to nil or removed and redifined with new position*/
+                 dropDownArrowLabelTwo.physicsBody = nil
+                 dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
+                 dropDownArrowLabelTwo.physicsBody?.isDynamic = false
+                 dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                 
+                /**The next block sets the objects inside orderDropDownMenu for the next time dropDownArrowLabelTwo is pressed and orderDropDownMenu displayed */
+                 orderDropDownMenuYellowBG.removeFromParent()
+                 orderDropDownMenuLabel.fontColor = .white
+                 orderDropDownMenuLabelTwo.fontColor = .black
+                 orderDropDownMenuLabelTwo.zPosition = 1
+                 /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
+                 orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                 //orderDropDownMenuLabelTwo.zPosition = 1
+             }
+         }
+    }
+    /**Touch evaluation for game mode selection view*/
+    func gameModeTouchNodes(nodeTouched: SKPhysicsBody){
+        /**gameModeSelectionGreenButton navigate the user to alphabetic game or random game based on the previous selections on mapOrder view*/
+        if (gameModeSelectionGreenButton.name == nodeTouched.node?.name){
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let startScene = StartScene(size: self.size)
+                self.view?.presentScene(startScene)
+            }
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let randomGame = RandomGame(size: self.size)
+                self.view?.presentScene(randomGame)
+            }
+            
+        }
+        /**gameModeSelectionBlueButton navigate user to practice alphabetical game or practice random game based on the selections done on previous mapOrder view*/
+        else if (gameModeSelectionBlueButton.name == nodeTouched.node?.name){
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
+                self.view?.presentScene(practiceAlphabeticGame)
+            }
+            
+            if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                self.removeAllActions()
+                self.removeFromParent()
+                let practiceRandomGame = PracticeRandomGame(size: self.size)
+                self.view?.presentScene(practiceRandomGame)
+            }
+        }
+        /**gameModeSelectionRedButton return user back to mapOrder view*/
+        else if (gameModeSelectionRedButton.name == nodeTouched.node?.name){
+            gameModeSelectionOldPaperbackground.removeFromParent()
+            self.addChild(mapOrderOldPaperbackground)
+        }
+    }
+    /**Touch evaluation for objects on the opciones view*/
+    func opcionesTouchNodes(nodeTouched:SKPhysicsBody){
+        /**manage top checkbox/checkmark to disable music*/
+        if (opcionesCheckbox.name == nodeTouched.node?.name && opcionesCheckmark.parent != nil){
+            opcionesCheckmark.removeFromParent()
+            StartMenu.backgroundMusicOn = false
+            //startMenuMusic.removeFromParent()
+            musicPlayer.stop()
+        }
+         /**manage top checkbox/checkmark to enable music*/
+        else if (opcionesCheckbox.name == nodeTouched.node?.name && opcionesCheckmark.parent == nil){
+            opcionesCheckbox.addChild(opcionesCheckmark)
+            StartMenu.backgroundMusicOn = true
+            //self.addChild(startMenuMusic)
+            initMusic()
+        }
+        /**The following two else ifs manage if sound is enabled or disabled*/
+        else if (opcionesCheckboxTwo.name == nodeTouched.node?.name && opcionesCheckmarkTwo.parent != nil){
+            opcionesCheckmarkTwo.removeFromParent()
+            StartMenu.gamePlaySoundOn = false
+        }
+        else if (opcionesCheckboxTwo.name == nodeTouched.node?.name && opcionesCheckmarkTwo.parent == nil){
+            opcionesCheckboxTwo.addChild(opcionesCheckmarkTwo)
+            StartMenu.gamePlaySoundOn = true
+        }
+        /**creditosButton when pressed wil navigate the user to creditos screen(view)*/
+        else if (creditosButton.name == nodeTouched.node?.name){
+            opcionesAudioLabel.removeFromParent()
+            if creditsContainerChildrenNotInitSet == true{
+                initSetcreditsContainerChildren()
+                creditsContainerChildrenNotInitSet = false
+            }
+            self.addChild(creditsContainer)
+        }
+        /**Manages touch evaluation for returnVolver button when it display in opciones view*/
+        else if (returnVolverRedButton.name == nodeTouched.node?.name /*&& opcionesAudioLabel.parent != nil*/){
+            returnVolverRedButton.removeFromParent()
+            opcionesAudioLabel.removeFromParent()
+            self.addChild(buttonGreen)
+        }
+    }
+    /**Touch evaluation for returnVolverRedButton when it display in creditos view. Note that this is the only instance of returnVolverRedButton that navigates user to Opciones and not main menu*/
+    func creditsTouchNodes(nodeTouched: SKPhysicsBody){
+        if (returnVolverRedButton.name == nodeTouched.node?.name /*&& creditsContainer.parent != nil*/){
+            creditsContainer.removeFromParent()
+            self.addChild(opcionesAudioLabel)
+        }
+    }
+    
+   
 }
