@@ -232,10 +232,14 @@ class StartMenu: SKScene {
                mapOrderCountryDropDownMenu.removeFromParent()
                dropDownLabelBG.addChild(dropDownArrowLabel)//Adds to the view the label preveiously eliminated when gray drop down tab was pressed(dropDownArrowLabel)
            }
-               
+           /**When bottom drop down menu is rendered and user touch any where there is no physics body on the screen the drop down menu closes and highlighted text  is passed to dropDownArrowLabelTwo which is
+             added on top of bottom drop down tab*/
            else if mapOrderOldPaperbackground.parent != nil && orderDropDownMenu.parent != nil{
                orderDropDownMenu.removeFromParent()
-               dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//Adds to the view the label preveiously eliminated when gray drop down tab was pressed(dropDownArrowLabel)(dropDownArrowLabelTwo)
+               passHighlightedTextTodropDownArrowLabelTwo()
+               dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                
+               
            }
            
        }
@@ -594,6 +598,7 @@ class StartMenu: SKScene {
         orderDropDownMenuLabel.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:34.5, y: 4.5))
         orderDropDownMenuLabel.physicsBody?.isDynamic = false
         orderDropDownMenuLabel.position = CGPoint(x:-33,y:2)
+        orderDropDownMenuLabel.zPosition = 1
         orderDropDownMenuLabel.fontSize = 10.5
         orderDropDownMenuLabel.text = "Alfabético (Alphabetic)"
         
@@ -602,7 +607,7 @@ class StartMenu: SKScene {
         orderDropDownMenuLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:177, height:9.5), center: CGPoint(x:47.5, y: 4.5))
         orderDropDownMenuLabelTwo.physicsBody?.isDynamic = false
         orderDropDownMenuLabelTwo.position = CGPoint(x:-45,y:-12)
-        //orderDropDownMenuLabelTwo.zposition = 1
+        orderDropDownMenuLabelTwo.zPosition = 1
         orderDropDownMenuLabelTwo.fontSize = 10.5
         //orderDropDownMenuLabelTwo.fontColor = .white
         orderDropDownMenuLabelTwo.text = "Al Azar (Random)"
@@ -869,12 +874,13 @@ class StartMenu: SKScene {
     }
     /**Touched nodes evaluation when mapOrder parent mapOrderOldPaperbackground and children are rendered*/
     func mapOrderTouchNodes(nodeTouched:SKPhysicsBody){
-        /**General explanation: in this instance when button green is pressed bottom drop down menu will close, developer wanted drop down menus closed before moving to next view .
+        /**General explanation: in this instance when button green is pressed bottom drop down menu will close and highlighted selection(or last selection) label text attribute is passed to dropDownArrowLabelTwo, developer wanted drop down menus closed before moving to next view .
          The execution enters when orderDropDownMenu(bottom drop down menu) is rendered but the green button is touched, removing the drop downmenu from view
          and adding the label dropDownArrowLabelTwo on top of dropDownLabelBGTwo that was removed  when order orderDropDownMenu (bottom drop down menu) is displayed.
          */
-         if mapOrderGreenButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
+        if mapOrderGreenButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
              orderDropDownMenu.removeFromParent()
+             passHighlightedTextTodropDownArrowLabelTwo()
              dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
          }
          /**General explanation:in this instance when button green is pressed top drop down menu will close, developer wanted drop down menus closed before moving to next view.
@@ -895,15 +901,15 @@ class StartMenu: SKScene {
              self.addChild(gameModeSelectionOldPaperbackground)
          }
          
-         /*General explanation: in this instance when button red is pressed bottom drop down menu will close, developer wanted drop down menus closed before moving to main menu objs .
-         The execution enters when orderDropDownMenu(bottom drop down menu) is rendered but the red button is touched, removing the drop downmenu from view
-         and adding the label dropDownArrowLabelTwo on top of dropDownLabelBGTwo that was removed  when order orderDropDownMenu (bottom drop down menu) is displayed. */
-         else if mapOrderRedButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
-             orderDropDownMenu.removeFromParent()
-             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         /**General explanation: in this instance when buttonr ed is pressed bottom drop down menu will close and highlighted selection(or last selection) label text attribute is passed to dropDownArrowLabelTwo which is added to the view on top of dropDownLabelBGTwo(bottom drop down tab), developer wanted drop down menus closed before moving to next view .*/
+        else if mapOrderRedButton.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil{
+            orderDropDownMenu.removeFromParent()
+            passHighlightedTextTodropDownArrowLabelTwo()
+            dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+             
          }
-         /**General explanation:in this instance when button green is pressed top drop down menu will close, developer wanted drop down menus closed before moving to next view.
-         The execution enters when mapOrderCountryDropDownMenu(top drop down menu) is rendered but the green button is touched, removing the drop downmenu from view
+         /**General explanation:in this instance when button red is pressed top drop down menu will close, developer wanted drop down menus closed before moving to next view.
+         The execution enters when mapOrderCountryDropDownMenu(top drop down menu) is rendered but the red button is touched, removing the drop downmenu from view
          and adding the label dropDownArrowLabel on top of dropDownLabelBG that was removed  when order mapOrderCountryDropDownMenu (top drop down menu) is displayed.
          */
          else if mapOrderRedButton.name == nodeTouched.node?.name && mapOrderCountryDropDownMenu.parent != nil {
@@ -916,20 +922,30 @@ class StartMenu: SKScene {
              self.addChild(buttonGreen)
          }
           /*General explanation: Developer wanted that only one drop down menu is rendered at a time, so that if user tries to open a second drop down menu the one originally open will close.
-             The execution will enter here when dropDownArrowLabel is pressed but orderDropDownMenu is rendered. orderDropDownMenu is removed from view and dropDownArrowLabelTwo added with the selection
-             highlighted in yellow by orderDropDownMenuYellowBG or orderDropDownMenuYellowBGTwo**/
+             The execution will enter here when dropDownArrowLabel(top drop down tab label ) is pressed but orderDropDownMenu is rendered. orderDropDownMenu is removed from view and dropDownArrowLabelTwo
+             added with the selection highlighted in yellow by orderDropDownMenuYellowBG or orderDropDownMenuYellowBGTwo**/
          
          else if (dropDownArrowLabel.name == nodeTouched.node?.name && orderDropDownMenu.parent != nil){
+             /**When first label of  bottom drop down menu is highlighted*/
              if orderDropDownMenuYellowBG.parent != nil {
+                if dropDownArrowLabelTwo.text != orderDropDownMenuLabel.text{
                  dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                 redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlfabeticoAlphabetic(label:dropDownArrowLabelTwo)
+                }
              }
+            /**When second label of bottom drop down menu is highlighted*/
              else if orderDropDownMenuYellowBGTwo.parent != nil{
-                 dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                 if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
+                  dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                  redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlAzarRandom(label:dropDownArrowLabelTwo)
+                 }
+                 
              }
              
              orderDropDownMenu.removeFromParent()
              dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
          }
+         
          /**When dropDownArrowLabel(default text "Puerto Rico") is touched,  dropDownArrowLabel is removed and top drop down menu rendered */
          else if (dropDownArrowLabel.name == nodeTouched.node?.name){
              
@@ -938,7 +954,7 @@ class StartMenu: SKScene {
              
             /**The following statement adds to drop down menu (mapOrderCountryDropDownMenu) mapOrderCountryDropDownMenuYellowBG(yellow background) and dropDownMenuLabelPR(text:"Puerto Rico") . The statements :&& mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil prevents mapOrderCountryDropDownMenuYellowBG and dropDownMenuLabelPR from being re-added to parent if they have already been added previously */
              if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
-                
+                 print("entre")
                  mapOrderCountryDropDownMenu.addChild(mapOrderCountryDropDownMenuYellowBG)
                  mapOrderCountryDropDownMenu.addChild(dropDownMenuLabelPR)
              }
@@ -946,7 +962,9 @@ class StartMenu: SKScene {
          }
          /**Execution will enter here when top drop down menu is on display,  when  dropDownMenuLabelPR is touched or selected  removes drop down menu from view and gives its text value  to dropDownArrowLabel(label over top drop down menu tab) and also add it to the view*/
          else if (dropDownMenuLabelPR.name == nodeTouched.node?.name){
-             dropDownArrowLabel.text = dropDownMenuLabelPR.text
+            if dropDownArrowLabel.text != dropDownMenuLabelPR.text{
+                dropDownArrowLabel.text = dropDownMenuLabelPR.text
+            }
              mapOrderCountryDropDownMenu.removeFromParent()
              dropDownLabelBG.addChild(dropDownArrowLabel)
 
@@ -991,12 +1009,21 @@ class StartMenu: SKScene {
                  orderDropDownMenu.addChild(orderDropDownMenuLabel)
              }
          }
+        /**The execution enters here when orderDropDownMenuLabel(first label bottom drop down menu ) is selected,  but previously orderDropDownMenuLabelTwo was the selection.
+             General explanation: orderDropDownMenuLabel is selected and highlighted its text color chaged to black indicating is the current selection and  orderDropDownMenuLabelTwo highlight is removed and text color change to white*/
+        else if (orderDropDownMenuLabel.name == nodeTouched.node?.name && orderDropDownMenuYellowBGTwo.parent != nil ){
+           orderDropDownMenuYellowBGTwo.removeFromParent()
+           orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+           orderDropDownMenuLabel.fontColor = .black
+           orderDropDownMenuLabelTwo.fontColor = .white
+        }
+            
          /*orderDropDownMenuLabel is the first label inside bottom drop down menu**/
          else if (orderDropDownMenuLabel.name == nodeTouched.node?.name){
              /*Following condition is predeterminded as default(where orderDropDownMenuLabel and  dropDownArrowLabelTwo text attribute is the same) in such scenario when orderDropDownMenuLabel is pressed  orderDropDownMenu is removed and dropDownArrowLabelTwo added on top of dropDownLabelBGTwo(drop down tab) */
              if orderDropDownMenuLabel.text == dropDownArrowLabelTwo.text{
                  orderDropDownMenu.removeFromParent()
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
+                 //dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)//como se habia removido en el bloque anterior tenemos que volver a anadir al redering
              }
              /*On the contrary when  orderDropDownMenuLabel is pressed and its text is different from dropDownArrowLabelTwo due previous selection of  "Al Azar"*/
             /**In such scenario orderDropDownMenu is removed from view and the text of the new selection "Alfabetico" y passed to dropDownArrowLabelTwo(label on top of bottom drop down tab(dropDownLabelBGTwo)) */
@@ -1005,21 +1032,31 @@ class StartMenu: SKScene {
                  /*Reescribe label elimina el phisics body que tenia y que se podria haber afectado por reajustes previos de posicionamiento y se vuelve a definir con respecto al posicionamiento
                  aqui otorgado*/
                  dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                 redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlfabeticoAlphabetic(label:dropDownArrowLabelTwo)
                 /**When  label text attribute is passed to another label the text rendering result might not be as expected(maybe a glitch)  in this scenario when  text attribute("ALfabetico(ALphabetic)") is passed to dropDownArrowLabelTwo, the text rendered more towards the center of the drop down tab, what requires the label tobe repositioned to the left, as a result of this is necessary to also reposition the physics body (but due Physics bodies can't be repositioned) so Physics body is set to nil or removed and redifined with new position*/
-                 dropDownArrowLabelTwo.physicsBody = nil
+                 /*dropDownArrowLabelTwo.physicsBody = nil
                  dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
                  dropDownArrowLabelTwo.physicsBody?.isDynamic = false
                  dropDownArrowLabelTwo.position = CGPoint(x:-26.0,y:-4.5)
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)*/
                 
                 /**The next block sets the objects inside orderDropDownMenu for the next time dropDownArrowLabelTwo is pressed and orderDropDownMenu displayed */
-                 orderDropDownMenuYellowBGTwo.removeFromParent()
-                 orderDropDownMenuLabel.fontColor = .black
-                 orderDropDownMenuLabelTwo.fontColor = .white
-                 orderDropDownMenuLabel.zPosition = 1
-                 orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
+                 //orderDropDownMenuYellowBGTwo.removeFromParent()
+                 //orderDropDownMenuLabel.fontColor = .black
+                 //orderDropDownMenuLabelTwo.fontColor = .white
+                 //orderDropDownMenuLabel.zPosition = 1
+                 //orderDropDownMenu.addChild(orderDropDownMenuYellowBG)
 
-             }
+            }
+            dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+         }
+         /**The execution enters here when orderDropDownMenuLabelTwo(second label bottom drop down menu ) is selected,  but previously orderDropDownMenuLabel was the selection.
+            General explanation: orderDropDownMenuLabelTwo is selected and highlighted its text color chaged to black indicating is the current selection and  orderDropDownMenuLabel highlight is removed and text color change to white*/
+         else if (orderDropDownMenuLabelTwo.name == nodeTouched.node?.name && orderDropDownMenuYellowBG.parent != nil ){
+            orderDropDownMenuYellowBG.removeFromParent()
+            orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+            orderDropDownMenuLabel.fontColor = .white
+            orderDropDownMenuLabelTwo.fontColor = .black
          }
          /**orderDropDownMenuLabelTwo second label at the bottom drop down menu*/
          else if (orderDropDownMenuLabelTwo.name == nodeTouched.node?.name){
@@ -1027,8 +1064,9 @@ class StartMenu: SKScene {
              in this scenario drop down menu(bottom) is removed and due their text attribute is the same dropDownArrowLabelTwo is re-added */
              if dropDownArrowLabelTwo.text == orderDropDownMenuLabelTwo.text{
                  orderDropDownMenu.removeFromParent()
+                 //redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlfabeticoAlphabetic(label:dropDownArrowLabelTwo)
                  //dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                 //dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
              }
              
              /**Execution will enter here when orderDropDownMenuLabelTwo is pressed and the default selection is in place or where "Alfabetico(Alphabetic)" is the previous selection. On this instance orderDropDownMenu is removed from view
@@ -1038,23 +1076,24 @@ class StartMenu: SKScene {
                  orderDropDownMenu.removeFromParent()
                  //dropDownArrowLabelTwo.text = ""
                  dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
-                
+                 redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlAzarRandom(label:dropDownArrowLabelTwo)
                 /**When  label text attribute is passed to another label the text rendering result might not be as expected(maybe a glitch)  in this scenario when  text attribute("Al Azar(Random)" is passed to dropDownArrowLabelTwo, the text rendered more towards the center of the drop down tab, what requires the label to be repositioned to the left, as a result of this is necessary to also reposition the physics body (but due Physics bodies can't be repositioned) so Physics body is set to nil or removed and redifined with new position*/
-                 dropDownArrowLabelTwo.physicsBody = nil
+                 /*dropDownArrowLabelTwo.physicsBody = nil
                  dropDownArrowLabelTwo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
                  dropDownArrowLabelTwo.physicsBody?.isDynamic = false
                  dropDownArrowLabelTwo.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
-                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
+                 dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)*/
                  
                 /**The next block sets the objects inside orderDropDownMenu for the next time dropDownArrowLabelTwo is pressed and orderDropDownMenu displayed */
-                 orderDropDownMenuYellowBG.removeFromParent()
-                 orderDropDownMenuLabel.fontColor = .white
-                 orderDropDownMenuLabelTwo.fontColor = .black
-                 orderDropDownMenuLabelTwo.zPosition = 1
+                 //orderDropDownMenuYellowBG.removeFromParent()
+                 //orderDropDownMenuLabel.fontColor = .white
+                 //orderDropDownMenuLabelTwo.fontColor = .black
+                 //orderDropDownMenuLabelTwo.zPosition = 1
                  /*RECORDAR: orderDropDownMenuLabelTwo fue anadido previamente a orderDropDownMenu,*/
-                 orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
+                 //orderDropDownMenu.addChild(orderDropDownMenuYellowBGTwo)
                  //orderDropDownMenuLabelTwo.zPosition = 1
              }
+             dropDownLabelBGTwo.addChild(dropDownArrowLabelTwo)
          }
     }
     /**Touch evaluation for game mode selection view*/
@@ -1077,13 +1116,14 @@ class StartMenu: SKScene {
         }
         /**gameModeSelectionBlueButton navigate user to practice alphabetical game or practice random game based on the selections done on previous mapOrder view*/
         else if (gameModeSelectionBlueButton.name == nodeTouched.node?.name){
+            /**Selection for practiceAlphabeticGame*/
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
                 self.removeAllActions()
                 self.removeFromParent()
                 let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
                 self.view?.presentScene(practiceAlphabeticGame)
             }
-            
+            /**Selection for practiceRandomGame*/
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
                 self.removeAllActions()
                 self.removeFromParent()
@@ -1145,6 +1185,47 @@ class StartMenu: SKScene {
             self.addChild(opcionesAudioLabel)
         }
     }
+    /**Function is called when a label.text atribute is re-written  and its Physics body is redefined to be re alignned with its label also the label is repositioned as well for the same reason*/
+    /**This is due(maybe a glitch) Physics bodies won't be aligned with its label when its text attribute is re written*/
+    func redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlAzarRandom(label:SKLabelNode){
+         
+        label.text = orderDropDownMenuLabelTwo.text
+        /**When  label text attribute is passed to another label the text rendering result might not be as expected(maybe a glitch)  in this scenario when  text attribute("Al Azar(Random)" is passed to dropDownArrowLabelTwo, the text rendered more towards the center of the drop down tab, what requires the label to be repositioned to the left, as a result of this is necessary to also reposition the physics body (but due Physics bodies can't be repositioned) so Physics body is set to nil or removed and redifined with new position*/
+         label.physicsBody = nil
+         label.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:40, y: 4.5))
+         label.physicsBody?.isDynamic = false
+         label.position = CGPoint(x:-40.0,y:-4.5)//despues que escribimos el label hay reposicionarlo
+         //dropDownLabelBGTwo.addChild(label)
+         
+    }
+    /**Function is called when a label.text atribute is re-written  and its Physics body is redefined to be re alignned with its label also the label is repositioned as well for the same reason*/
+    /**This is due(maybe a glitch) Physics bodies won't be aligned with its label when its text attribute is re written*/
+    func redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlfabeticoAlphabetic(label:SKLabelNode){
     
+         label.text = orderDropDownMenuLabel.text
+        /**When  label text attribute is passed to another label the text rendering result might not be as expected(maybe a glitch)  in this scenario when  text attribute("ALfabetico(ALphabetic)") is passed to dropDownArrowLabelTwo, the text rendered more towards the center of the drop down tab, what requires the label tobe repositioned to the left, as a result of this is necessary to also reposition the physics body (but due Physics bodies can't be repositioned) so Physics body is set to nil or removed and redifined with new position*/
+         label.physicsBody = nil
+         label.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:179, height:9.5), center: CGPoint(x:26, y: 4.5))
+         label.physicsBody?.isDynamic = false
+         label.position = CGPoint(x:-26.0,y:-4.5)
+         //dropDownLabelBGTwo.addChild(label)
+         
+    }
+    
+    func passHighlightedTextTodropDownArrowLabelTwo(){
+        if orderDropDownMenuLabel.parent != nil && orderDropDownMenuYellowBG.parent != nil{
+                if dropDownArrowLabelTwo.text != orderDropDownMenuLabel.text{
+                    dropDownArrowLabelTwo.text = orderDropDownMenuLabel.text
+                    redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlfabeticoAlphabetic(label:dropDownArrowLabelTwo)
+                }
+           }
+        
+           else if orderDropDownMenuLabelTwo.parent != nil && orderDropDownMenuYellowBGTwo.parent != nil{
+                if dropDownArrowLabelTwo.text != orderDropDownMenuLabelTwo.text{
+                    dropDownArrowLabelTwo.text = orderDropDownMenuLabelTwo.text
+                    redifinePhysicsBodyAfterLabelTextAttributeRedefinedAsAlAzarRandom(label:dropDownArrowLabelTwo)
+                }
+           }
+    }
    
 }
