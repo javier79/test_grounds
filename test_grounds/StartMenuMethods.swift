@@ -762,7 +762,7 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontSize = 11
         label.fontName = "GillSans-Bold"
-        label.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        label.fontColor = UIColor.init(red: 0.1255, green: 0.6157, blue: 0.9686, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
         return label
     }
     
@@ -770,7 +770,7 @@ class StartMenuMethods{
       let label = SKLabelNode()
       label.fontName = "GillSans-Bold"
       label.fontSize = 9
-      label.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+      label.fontColor = UIColor.init(red: 0.1255, green: 0.6157, blue: 0.9686, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
       /*label.text = "\tEn la parte inferior de la pantalla encontrarás\n el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de Reto con un mapa en blanco.  Con algunas excepciones, los nombres de los objetivos a identificarse seran en base al idioma oficial del pais o territorio."*/
       label.numberOfLines = 10//12
       label.preferredMaxLayoutWidth = 80//105

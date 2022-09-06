@@ -76,7 +76,7 @@ class StartMenu: SKScene {
     let creditosButton:SKSpriteNode = StartMenuMethods().creditosButtonBpDrawToSKSpriteNode()//this button displays on opciones view
     let creditButtonLabel:SKLabelNode = StartMenuMethods().mainMenuSetLabelDefaults()
     var creditsContainer:SKNode!//parent node when creditos view is rendered. Contains all creditos labels
-    
+    var creditsContainerTwo:SKNode!
     static var backgroundMusicOn = true//variable is set to false if "Musica(Music)" in opciones is unchecked, which disbles background music
     static var gamePlaySoundOn = true//variable is set to false if "Sonidos(Sound)" in opciones is unchecked, which disbles game sound
     
@@ -222,7 +222,7 @@ class StartMenu: SKScene {
                    opcionesTouchNodes(nodeTouched:touchedNode)
                }
                    
-               else if creditsContainer.parent != nil{
+               else if creditsContainer.parent != nil && creditsContainerTwo.parent != nil{
                    creditsTouchNodes(nodeTouched:touchedNode)
                }
                
@@ -377,7 +377,7 @@ class StartMenu: SKScene {
         opcionesAudioLabel.name = "opcionesAudioLabel"
         opcionesAudioLabel.fontName = "GillSans-Bold"
         opcionesAudioLabel.text = "Audio"
-        opcionesAudioLabel.position = CGPoint(x:345,y:225)
+        opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2)
 
         //Top checkbox
         opcionesCheckbox.name = "opcionesCheckbox"
@@ -428,12 +428,15 @@ class StartMenu: SKScene {
     //Function initialize the container holding all credits labels
     func initSetcreditsContainer(){
         creditsContainer = nodesContainer()
+        creditsContainerTwo = nodesContainer()
+        creditsContainerTwo.position = CGPoint(x:self.size.width/11, y:self.size.height/60)/*Overriding function positioning, due at first there was only one containerNode(on StartMenu) and this second one needed a new positioning attributes. 20 - 15, 60*/
+        creditsContainerTwo.name = "creditsContainerTwo"
         creditsContainer.name = "creditsContainer"
     }
     //creditsContainer attributes are set
     func nodesContainer() -> SKNode{
         let nodes_Container = SKNode()
-        nodes_Container.position = CGPoint(x:self.size.width/11, y:self.size.height - self.size.height)///25 - 5)//(x: 60.0, y: 0.5)
+        nodes_Container.position = CGPoint(x:self.size.width/10, y:self.size.height/20 - 25)///25 - 5)//(x: 60.0, y: 0.5)
         return  nodes_Container
     }
     
@@ -485,15 +488,15 @@ class StartMenu: SKScene {
         creditsMapsImagesLabel.name = "creditsMapsImagesLabel"
         creditsMapsImagesLabel.text = "IMAGES AND MAPS"
         creditsMapsImagesLabel.position = CGPoint(x:370, y:295)
-        creditsContainer.addChild(creditsMapsImagesLabel)
+        creditsContainerTwo.addChild(creditsMapsImagesLabel)
     
         let creditsMapsImagesChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsMapsImagesChildLabel.name = "creditsMapsImagesChildLabel"
-        creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        //creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
         creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
         creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
         creditsMapsImagesChildLabel.position = CGPoint(x:325, y:245)
-        creditsContainer.addChild(creditsMapsImagesChildLabel)
+        creditsContainerTwo.addChild(creditsMapsImagesChildLabel)
         
         let creditsMapsImagesChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsMapsImagesChildLabelTwo.name = "creditsMapsImagesChildLabelTwo"
@@ -501,19 +504,19 @@ class StartMenu: SKScene {
         creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
         creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:260)
         creditsMapsImagesChildLabelTwo.preferredMaxLayoutWidth = 180
-        creditsContainer.addChild(creditsMapsImagesChildLabelTwo)
+        creditsContainerTwo.addChild(creditsMapsImagesChildLabelTwo)
         
         let creditsMapsImagesChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsMapsImagesChildLabelThree.name = "creditsMapsImagesChildLabelThree"
         creditsMapsImagesChildLabelThree.position = CGPoint(x:383, y:215)
         creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
-        creditsContainer.addChild(creditsMapsImagesChildLabelThree)
+        creditsContainerTwo.addChild(creditsMapsImagesChildLabelThree)
         
         let creditsSpecialThanksLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         creditsSpecialThanksLabel.name = "creditsSpecialThanksLabel"
         creditsSpecialThanksLabel.text = "SPECIAL THANKS"
         creditsSpecialThanksLabel.position = CGPoint(x:360, y:200)
-        creditsContainer.addChild(creditsSpecialThanksLabel)
+        creditsContainerTwo.addChild(creditsSpecialThanksLabel)
         
         let creditsSpecialThanksChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsSpecialThanksChildLabel.name = "creditsSpecialThanksChildLabel"
@@ -521,14 +524,14 @@ class StartMenu: SKScene {
         creditsSpecialThanksChildLabel.fontColor = UIColor.black
         creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:43)
         creditsSpecialThanksChildLabel.preferredMaxLayoutWidth = 280 //140
-        creditsContainer.addChild(creditsSpecialThanksChildLabel)
+        creditsContainerTwo.addChild(creditsSpecialThanksChildLabel)
         
         let creditsSpecialThanksChildLabelTwo:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsSpecialThanksChildLabelTwo.name = "creditsSpecialThanksChildLabelTwo"
         creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
         creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
         creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
-        creditsContainer.addChild(creditsSpecialThanksChildLabelTwo)
+        creditsContainerTwo.addChild(creditsSpecialThanksChildLabelTwo)
     }
     //Function will set mapOrder objects needed to be evaluated by touch function
     func setMainMapOrderObjects(){
@@ -551,7 +554,7 @@ class StartMenu: SKScene {
         
         //Top drop down menu(dark gray)
         mapOrderCountryDropDownMenu.name = "mapOrderCountryDropDownMenu"
-        mapOrderCountryDropDownMenu.position = CGPoint(x:434,y:215)
+        mapOrderCountryDropDownMenu.position = CGPoint(x:100,y:25.3)
         
         //Top yellow background that highlinght the selection on top of drop down menu(top dark gray)
         mapOrderCountryDropDownMenuYellowBG.name = "mapOrderCountryDropDownMenuYellowBG"
@@ -581,7 +584,7 @@ class StartMenu: SKScene {
         
         //Bottom drop down menu, displays when dropDownArrowLabelTwo is pressed
         orderDropDownMenu.name = "orderDropDownMenu"
-        orderDropDownMenu.position = CGPoint(x:434,y:142)
+        orderDropDownMenu.position = CGPoint(x:100,y:-45)
         
         //On bottom drop down menu, yellow background will display when default selection("Alfabético (Alphabetic)") is at play or if selected.
         orderDropDownMenuYellowBG.name = "orderDropDownMenuYellowBG"
@@ -950,7 +953,7 @@ class StartMenu: SKScene {
          else if (dropDownArrowLabel.name == nodeTouched.node?.name){
              
              dropDownArrowLabel.removeFromParent()
-             self.addChild(mapOrderCountryDropDownMenu)
+             mapOrderOldPaperbackground.addChild(mapOrderCountryDropDownMenu)
              
             /**The following statement adds to drop down menu (mapOrderCountryDropDownMenu) mapOrderCountryDropDownMenuYellowBG(yellow background) and dropDownMenuLabelPR(text:"Puerto Rico") . The statements :&& mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil prevents mapOrderCountryDropDownMenuYellowBG and dropDownMenuLabelPR from being re-added to parent if they have already been added previously */
              if dropDownArrowLabel.text == dropDownMenuLabelPR.text && mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil{
@@ -984,7 +987,7 @@ class StartMenu: SKScene {
          else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name){
              //remuevo el label del dropdown tab
              dropDownArrowLabelTwo.removeFromParent()
-             self.addChild(orderDropDownMenu)
+             mapOrderOldPaperbackground.addChild(orderDropDownMenu)
              
             /**The following is evaluating whether at the moment dropDownArrowLabelTwo is pressed, if the selection at the drop down menu is the first label (default highlighted in yellow) and whether orderDropDownMenu children have been added,**/
              /**this evaluation will proof false when in a previous selection the second label is the selection.(see following else if statement)*/
@@ -1170,6 +1173,7 @@ class StartMenu: SKScene {
                 creditsContainerChildrenNotInitSet = false
             }
             self.addChild(creditsContainer)
+            self.addChild(creditsContainerTwo)
         }
         /**Manages touch evaluation for returnVolver button when it display in opciones view*/
         else if (returnVolverRedButton.name == nodeTouched.node?.name /*&& opcionesAudioLabel.parent != nil*/){
@@ -1182,6 +1186,7 @@ class StartMenu: SKScene {
     func creditsTouchNodes(nodeTouched: SKPhysicsBody){
         if (returnVolverRedButton.name == nodeTouched.node?.name /*&& creditsContainer.parent != nil*/){
             creditsContainer.removeFromParent()
+            creditsContainerTwo.removeFromParent()
             self.addChild(opcionesAudioLabel)
         }
     }
