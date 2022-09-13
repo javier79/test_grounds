@@ -1211,15 +1211,15 @@ class StartMenu: SKScene {
         /**gameModeSelectionGreenButton navigate the user to alphabetic game or random game based on the previous selections on mapOrder view*/
         if (gameModeSelectionGreenButton.name == nodeTouched.node?.name){
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                let startScene = StartScene(size: self.size)
                 self.removeAllActions()
                 self.removeFromParent()
-                let startScene = StartScene(size: self.size)
                 self.view?.presentScene(startScene)
             }
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                let randomGame = RandomGame(size: self.size)
                 self.removeAllActions()
                 self.removeFromParent()
-                let randomGame = RandomGame(size: self.size)
                 self.view?.presentScene(randomGame)
             }
             
@@ -1228,16 +1228,16 @@ class StartMenu: SKScene {
         else if (gameModeSelectionBlueButton.name == nodeTouched.node?.name){
             /**Selection for practiceAlphabeticGame*/
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
                 self.removeAllActions()
                 self.removeFromParent()
-                let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
                 self.view?.presentScene(practiceAlphabeticGame)
             }
             /**Selection for practiceRandomGame*/
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                let practiceRandomGame = PracticeRandomGame(size: self.size)
                 self.removeAllActions()
                 self.removeFromParent()
-                let practiceRandomGame = PracticeRandomGame(size: self.size)
                 self.view?.presentScene(practiceRandomGame)
             }
         }
