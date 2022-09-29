@@ -93,6 +93,16 @@ class TestClass {
     var viequesBezierPath:UIBezierPath!
     var culebraBezierPath:UIBezierPath!*/
     
+    func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
+        let desecheoCover = SKSpriteNode()
+        desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
+        desecheoCover.size = CGSize(width: 10, height:10)
+        desecheoCover.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        desecheoCover.position = CGPoint(x: -8, y: 239)
+        desecheoCover.zPosition = 1
+        return desecheoCover
+    }
+    
     func setinstructionsLabelDefaults()->SKLabelNode{
       let label = SKLabelNode()
       label.fontName = "GillSans-SemiBold"

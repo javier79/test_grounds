@@ -7,107 +7,13 @@
 //
 
 import SpriteKit
-import UIKit
+//import UIKit
 import AVFoundation
 
 
 
 class StartScene: SKScene{
-    //Estas variables UIBezierPath se pueden declarar en didMove
-    /*let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
-    let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
-    let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
-    let anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
-    let rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
-    let aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
-    let aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()
-    let isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
-    let mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
-    let lasMariasbp:UIBezierPath! = TestClass().lasMariasDrawBezierPath()
-    let maricaobp:UIBezierPath! = TestClass().maricaoDrawBezierPath()
-    let sanGermanbp:UIBezierPath! = TestClass().sanGermanDrawBezierPath()
-    let lajasbp:UIBezierPath! = TestClass().lajasDrawBezierPath()
-    let yaucobp:UIBezierPath! = TestClass().yaucoDrawBezierPath()
     
-    
-    let sabanaGrandebp:UIBezierPath! = TestClass().sabanaGrandeDrawBezierPath()
-    let sanSebastianbp:UIBezierPath! = TestClass().sanSebastianDrawBezierPath()
-    let guanicabp:UIBezierPath! = TestClass().guanicaDrawBezierPath()
-    let guayanillabp:UIBezierPath! = TestClass().guayanillaDrawBezierPath()
-    let laresbp:UIBezierPath! = TestClass().laresDrawBezierPath()
-    let penuelasbp:UIBezierPath! = TestClass().penuelasDrawBezierPath()
-    let poncebp:UIBezierPath! = TestClass().ponceDrawBezierPath()
-    let utuadobp:UIBezierPath! = TestClass().utuadoDrawBezierPath()
-    let jayuyabp:UIBezierPath! = TestClass().jayuyaDrawBezierPath()
-    let juanaDiazbp:UIBezierPath! = TestClass().juanaDiazDrawBezierPath()
-    let quebradillasbp:UIBezierPath! = TestClass().quebradillasDrawBezierPath()
-    let camuybp:UIBezierPath! = TestClass().camuyDrawBezierPath()
-    let hatillobp:UIBezierPath! = TestClass().hatilloDrawBezierPath()
-    let arecibobp:UIBezierPath! = TestClass().areciboDrawBezierPath()
-    //let mayaguezTwobp: UIBezierPath! = TestClass().mayaguezTwoDrawBezierPath()
-    let adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
-    
-    
-    let floridabp:UIBezierPath! = TestClass().floridaDrawBezierPath()
-    let barcelonetabp:UIBezierPath! = TestClass().barcelonetaDrawBezierPath()
-    let manatibp:UIBezierPath! = TestClass().manatiDrawBezierPath()
-    let vegaBajabp:UIBezierPath! = TestClass().vegaBajaDrawBezierPath()
-    let villalbabp:UIBezierPath! = TestClass().villalbaDrawBezierPath()
-    let cialesbp:UIBezierPath! = TestClass().cialesDrawBezierPath()
-    let orocovisbp:UIBezierPath! = TestClass().orocovisDrawBezierPath()
-    let morovisbp:UIBezierPath! = TestClass().morovisDrawBezierPath()
-    let corozalbp:UIBezierPath! = TestClass().corozalDrawBezierPath()
-    let barranquitasbp:UIBezierPath! = TestClass().barranquitasDrawBezierPath()
-    let comeriobp:UIBezierPath! = TestClass().comerioDrawBezierPath()
-    let coamobp:UIBezierPath! = TestClass().coamoDrawBezierPath()
-    let naranjitobp:UIBezierPath! = TestClass().naranjitoDrawBezierPath()
-    let aibonitobp:UIBezierPath! = TestClass().aibonitoDrawBezierPath()
-    
-    
-    let salinasbp:UIBezierPath! = TestClass().salinasDrawBezierPath()
-    let cayeybp:UIBezierPath! = TestClass().cayeyDrawBezierPath()
-    let cidrabp:UIBezierPath! = TestClass().cidraDrawBezierPath()
-    let santaIsabelbp:UIBezierPath! = TestClass().santaIsabelDrawBezierPath()
-    let vegaAltabp:UIBezierPath! = TestClass().vegaAltaDrawBezierPath()
-    let doradobp:UIBezierPath! = TestClass().doradoDrawBezierPath()
-    let toaAltabp:UIBezierPath! = TestClass().toaAltaDrawBezierPath()
-    let toaBajabp:UIBezierPath! = TestClass().toaBajaDrawBezierPath()
-    let bayamonbp:UIBezierPath! = TestClass().bayamonDrawBezierPath()
-    let catanobp:UIBezierPath! = TestClass().catanoDrawBezierPath()
-    let guaynabobp:UIBezierPath! = TestClass().guaynaboDrawBezierPath()
-    let sanJuanbp:UIBezierPath! = TestClass().sanJuanDrawBezierPath()
-    let caguasbp:UIBezierPath! = TestClass().caguasDrawBezierPath()
-    let carolinabp:UIBezierPath! = TestClass().carolinaDrawBezierPath()
-    
-    let aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()
-    let trujilloAltobp:UIBezierPath! = TestClass().trujilloAltoDrawBezierPath()
-    let loizabp:UIBezierPath! = TestClass().loizaDrawBezierPath()
-    //let loizaTwobp:UIBezierPath! = TestClass().loizaTwoDrawBezierPath()
-    let canovanasbp:UIBezierPath! = TestClass().canovanasDrawBezierPath()
-    let rioGrandebp:UIBezierPath! = TestClass().rioGrandeDrawBezierPath()
-    let luquillobp:UIBezierPath! = TestClass().luquilloDrawBezierPath()
-    let fajardobp:UIBezierPath! = TestClass().fajardoDrawBezierPath()
-    let ceibabp:UIBezierPath! = TestClass().ceibaDrawBezierPath()
-    let gurabobp:UIBezierPath! = TestClass().guraboDrawBezierPath()
-    let juncosbp:UIBezierPath! = TestClass().juncosDrawBezierPath()
-    
-    
-    let sanLorenzobp:UIBezierPath! = TestClass().sanLorenzoDrawBezierPath()
-    let guayamabp:UIBezierPath! = TestClass().guayamaDrawBezierPath()
-    let arroyobp:UIBezierPath! = TestClass().arroyoDrawBezierPath()
-    let patillasbp:UIBezierPath! = TestClass().patillasDrawBezierPath()
-    let maunabobp:UIBezierPath! = TestClass().maunaboDrawBezierPath()
-    let yabucoabp:UIBezierPath! = TestClass().yabucoaDrawBezierPath()
-    let lasPiedrasbp:UIBezierPath! = TestClass().lasPiedrasDrawBezierPath()
-    let humacaobp:UIBezierPath! = TestClass().humacaoDrawBezierPath()
-    let naguabobp:UIBezierPath! = TestClass().naguaboDrawBezierPath()
-    let viequesbp:UIBezierPath! = TestClass().viequesDrawBezierPath()
-    let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()
-    
-    let rectanglebp:UIBezierPath! = TestClass().createRectangle()
-    let rectangleViequesbp:UIBezierPath! = TestClass().createViequesRectangle()
-    let rectangleCulebrabp:UIBezierPath! = TestClass().createCulebraRectangle()
-    */
     var skipButton = SKSpriteNode()//la declare universalmente temporeramente
     var exitRedButton = SKSpriteNode()
     
@@ -121,29 +27,26 @@ class StartScene: SKScene{
     let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
     var seconds: Int = 0//esta solo se usa en la funcion del reloj
     var minutes: Int = 0//esta solo se usa en la funcion del reloj
-    static var secondsGameOver:Int = 0
-    static var minutesGameOver:Int = 0
-    var renderTimeBiggerCounter: Int! = 0
+    static var secondsGameOver:Int = 0//static variables must be declared at the top
+    static var minutesGameOver:Int = 0//static variables must be declared at the top
+    //var renderTimeBiggerCounter: Int! = 0//For dev use on testing update function
+    let skipButtonPenalty = 15
+    let penalty = 3
     
+
     static var completedGame = false//se usa en mas de una funcion
     
-    var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
     var useLine2:Bool = false//se usa en mas de una funcion
-    //let locationNameLabel = SKLabelNode()/*Esta declaracion estaba originalmente en override func**/
-    
+    var twoLineText: String = ""
 
     /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
     elelemento Adjuntas*/
-    //El array se puede declarar dentro de la funcion touchesBegan
     var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
     
     var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
 
     var touchedNode: SKPhysicsBody!//se puede declarar dentro de la funcion touchesBegan
-    //var success: String!//variable que no se uso
     var fail: Bool!//se usa en mas de una funcion
-    //var penalty: Int!//Se usa solo en la funcion del reloj
-    //var skipButtonPenalty: Int!//Se usa solo en la funcion del reloj
     var currentIndex: Int = 0 //se puede declarar en touchesBegan
     //var locationNameLabel = SKLabelNode()
     var pressSKipButton:Bool = false
@@ -154,25 +57,9 @@ class StartScene: SKScene{
     static var incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
     //static var backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
     var musicPlayer = AVAudioPlayer()
-    var musicURL:URL?
-    
-    //let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
-    /*var endGameRectangle: SKSpriteNode!
-    var endGameRectangleButton = SKSpriteNode()
-    var endGameRectangleButtonTwo = SKSpriteNode()
-    var endGameRectangleButtonThree = SKSpriteNode()*/
-    //var resultadosButton = SKSpriteNode()
-    
-    var secondsandMinutesRetrieved: Bool = false
-    
-    //var inTheFirstSecondOfExecution: Bool = false
-    
-    //var countOfElements = 0
-    
-    //let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
+    var musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")
     
     var skipButtonPressed = false
-    //var scale = SKAction()
     var exitButtonPressed = false
     
     var goldBackgroundSKSpriteNode = SKSpriteNode()
@@ -181,435 +68,61 @@ class StartScene: SKScene{
     
     override func didMove(to view: SKView){
     
-        containerNode = nodesContainer()
+        
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
-        //let backgroundSKSpriteNode: SKSpriteNode = prBackground()
         goldBackgroundSKSpriteNode = goldenBackground()
-        let coverDesecheoIslandSKSpriteNode: SKSpriteNode = desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
-        containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
-        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
+        containerNode = nodesContainer()
+        initAndaddChildrenTocontainerNode()
         
-        skipButton = skipBlueButton()
+        //musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         
         labelScores = labelForScores(ScoresLabel:labelScores)
-        
         labelTimer = labelForTimer(TimerLabel: labelTimer)
-        
         timerBackground = timerLabelBackground()
         
         municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
-        
         municipiosNameBackground = labelMunicipiosNameBackground()
         
-        //endGameRectangle = endgameRectangle()
-        
+        skipButton = skipBlueButton()
         exitRedButton = redButton()
-        
-        /*endGameRectangleButton.name = "buttonOne"//propiedad nombre, el buttonOne abajo es una referencia para usarse dentro de la funcion
-        endGameRectangleButton = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        //endGameRectangle.addChild(endGameRectangleButton)
-        
-        endGameRectangleButtonTwo.name = "buttonTwo"
-        endGameRectangleButtonTwo = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        //endGameRectangle.addChild(endGameRectangleButtonTwo)
-        
-        endGameRectangleButtonThree.name = "buttonThree"
-        endGameRectangleButtonThree = endgameRectangleButton(buttonOne:endGameRectangleButton, buttonTwo:endGameRectangleButtonTwo, buttonThree: endGameRectangleButtonThree)
-        //endGameRectangle.addChild(endGameRectangleButtonThree)*/
-        
-        //resultadosButton = StartMenu().redButtonBpDrawToSKSpriteNode()
-        //resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
-        
-        let rectanglebp:UIBezierPath! = TestClass().createRectangle()
-        let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: rectanglebp)
-        containerNode.addChild(rectangularFrameSKSPriteNode)
-        
-        let rectangleViequesbp:UIBezierPath! = TestClass().createViequesRectangle()
-        let rectangularViequesFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: rectangleViequesbp)
-        containerNode.addChild(rectangularViequesFrameSKSPriteNode)
-        
-        let rectangleCulebrabp:UIBezierPath! = TestClass().createCulebraRectangle()
-        let rectangularCulebraFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: rectangleCulebrabp)
-        containerNode.addChild(rectangularCulebraFrameSKSPriteNode)
-        
-        let caboRojobp: UIBezierPath! = TestClass().caboRojoDrawBezierPath()
-        let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: caboRojobp)
-        containerNode.addChild(caboRojoSKSpriteNode)
-        
-        let hormiguerosbp: UIBezierPath! = TestClass().hormiguerosDrawBezierPath()
-        let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: hormiguerosbp)
-        containerNode.addChild(hormiguerosSKSpriteNode)
-        
-        let mayaguezbp: UIBezierPath! = TestClass().mayaguezDrawBezierPath()
-        let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: mayaguezbp)
-        containerNode.addChild(mayaguezSKSpriteNode)
-        
-        //let mayaguezTwoSKSpriteNode:SKSpriteNode = TestClass().mayaguezTwoBezierPathToSKSpriteNode(bpMayaguezTwo: mayaguezTwobp)
-         //containerNode.addChild(mayaguezTwoSKSpriteNode)
-        let anascobp: UIBezierPath! = TestClass().anascoDrawBezierPath()
-        let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: anascobp)
-        containerNode.addChild(anascoSKSpriteNode)
-        
-        let rinconbp: UIBezierPath! = TestClass().rinconDrawBezierPath()
-        let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: rinconbp)
-        containerNode.addChild(rinconSKSpriteNode)
-        
-        let aguadabp: UIBezierPath! = TestClass().aguadaDrawBezierPath()
-        let aguadaSKSpriteNode: SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: aguadabp)
-        containerNode.addChild(aguadaSKSpriteNode)
-        
-        let aguadillabp: UIBezierPath! = TestClass().aguadillaDrawBezierPath()
-        let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: aguadillabp)
-        containerNode.addChild(aguadillaSKSpriteNode)
-        
-        let isabelabp: UIBezierPath! = TestClass().isabelaDrawBezierPath()
-        let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: isabelabp)
-        containerNode.addChild(isabelaSKSpriteNode)
-        
-        let mocabp:UIBezierPath! = TestClass().mocaDrawBezierPath()
-        let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: mocabp)
-        containerNode.addChild(mocaSKSpriteNode)
-        
-        let lasMariasbp:UIBezierPath! = TestClass().lasMariasDrawBezierPath()
-        let lasMariasSKSpriteNode: SKSpriteNode = TestClass().lasMariasBezierPathToSKSpriteNode(bpLasMarias: lasMariasbp)
-        containerNode.addChild(lasMariasSKSpriteNode)
-        
-        let maricaobp:UIBezierPath! = TestClass().maricaoDrawBezierPath()
-        let maricaoSKSpriteNode: SKSpriteNode = TestClass().maricaoBezierPathToSKSpriteNode(bpMaricao:maricaobp)
-        containerNode.addChild(maricaoSKSpriteNode)
-        
-        let sanGermanbp:UIBezierPath! = TestClass().sanGermanDrawBezierPath()
-        let sanGermanSKSpriteNode:SKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: sanGermanbp)
-        containerNode.addChild(sanGermanSKSpriteNode)
-        
-        let yaucobp:UIBezierPath! = TestClass().yaucoDrawBezierPath()
-        let yaucoSKSpriteNode: SKSpriteNode = TestClass().yaucoBezierPathToSKSpriteNode(bpYauco:yaucobp)
-        containerNode.addChild(yaucoSKSpriteNode)
-        
-        let lajasbp:UIBezierPath! = TestClass().lajasDrawBezierPath()
-        let lajasSKSpriteNode: SKSpriteNode = TestClass().lajasBezierPathToSKSpriteNode(bpLajas:lajasbp)
-        containerNode.addChild(lajasSKSpriteNode)
-        
-        let guanicabp:UIBezierPath! = TestClass().guanicaDrawBezierPath()
-        let guanicaSKSpriteNode: SKSpriteNode = TestClass().guanicaBezierPathToSKSpriteNode(bpGuanica:guanicabp)
-        containerNode.addChild(guanicaSKSpriteNode)
-        
-        let guayanillabp:UIBezierPath! = TestClass().guayanillaDrawBezierPath()
-        let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:guayanillabp)
-        containerNode.addChild(guayanillaSKSpriteNode)
-        
-        let sanSebastianbp:UIBezierPath! = TestClass().sanSebastianDrawBezierPath()
-        let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: sanSebastianbp)
-        containerNode.addChild(sanSebastianSKSpriteNode)
-        
-        let sabanaGrandebp:UIBezierPath! = TestClass().sabanaGrandeDrawBezierPath()
-        let sabanaGrandeSKSpriteNode: SKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: sabanaGrandebp)
-        containerNode.addChild(sabanaGrandeSKSpriteNode)
-        
-        let laresbp:UIBezierPath! = TestClass().laresDrawBezierPath()
-        let laresSKSpriteNode:SKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares: laresbp)
-        containerNode.addChild(laresSKSpriteNode)
     
-        let penuelasbp:UIBezierPath! = TestClass().penuelasDrawBezierPath()
-        let penuelasSKSpriteNode:SKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas: penuelasbp)
-        containerNode.addChild(penuelasSKSpriteNode)
-        
-        let poncebp:UIBezierPath! = TestClass().ponceDrawBezierPath()
-        let ponceSKSpriteNode:SKSpriteNode = TestClass().ponceBezierPathToSKSpriteNode(bpPonce: poncebp)
-        containerNode.addChild(ponceSKSpriteNode)
-        
-        let utuadobp:UIBezierPath! = TestClass().utuadoDrawBezierPath()
-        let utuadoSKSpriteNode:SKSpriteNode = TestClass().utuadoBezierPathToSKSpriteNode(bpUtuado: utuadobp)
-        containerNode.addChild(utuadoSKSpriteNode)
-        
-        let jayuyabp:UIBezierPath! = TestClass().jayuyaDrawBezierPath()
-        let jayuyaSKSpriteNode:SKSpriteNode = TestClass().jayuyaBezierPathToSKSpriteNode(bpJayuya: jayuyabp)
-        containerNode.addChild(jayuyaSKSpriteNode)
-        
-        let juanaDiazbp:UIBezierPath! = TestClass().juanaDiazDrawBezierPath()
-        let juanaDiazSKSpriteNode:SKSpriteNode = TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz: juanaDiazbp)
-        containerNode.addChild(juanaDiazSKSpriteNode)
-        
-        let quebradillasbp:UIBezierPath! = TestClass().quebradillasDrawBezierPath()
-        let quebradillasSKSpriteNode:SKSpriteNode = TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:quebradillasbp)
-        containerNode.addChild(quebradillasSKSpriteNode)
-        
-        let camuybp:UIBezierPath! = TestClass().camuyDrawBezierPath()
-        let camuySKSpriteNode:SKSpriteNode = TestClass().camuyBezierPathToSKSpriteNode(bpCamuy:camuybp)
-        containerNode.addChild(camuySKSpriteNode)
-        
-        let hatillobp:UIBezierPath! = TestClass().hatilloDrawBezierPath()
-        let hatilloSKSpriteNode:SKSpriteNode = TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:hatillobp)
-        containerNode.addChild(hatilloSKSpriteNode)
-        
-        let arecibobp:UIBezierPath! = TestClass().areciboDrawBezierPath()
-        let areciboSKSpriteNode:SKSpriteNode = TestClass().areciboBezierPathToSKSpriteNode(bpArecibo:arecibobp)
-        containerNode.addChild(areciboSKSpriteNode)
-        
-        let adjuntasbp:UIBezierPath! = TestClass().adjuntasDrawBezierPath()
-        let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: adjuntasbp)
-        containerNode.addChild(adjuntasSKSpriteNode)
-        
-        let barcelonetabp:UIBezierPath! = TestClass().barcelonetaDrawBezierPath()
-        let barcelonetaSKSpriteNode:SKSpriteNode = TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:barcelonetabp)
-        containerNode.addChild(barcelonetaSKSpriteNode)
-        
-        let manatibp:UIBezierPath! = TestClass().manatiDrawBezierPath()
-        let manatiSKSpriteNode:SKSpriteNode = TestClass().manatiBezierPathToSKSpriteNode(bpManati:manatibp)
-        containerNode.addChild(manatiSKSpriteNode)
-        
-        let vegaBajabp:UIBezierPath! = TestClass().vegaBajaDrawBezierPath()
-        let vegaBajaSKSpriteNode:SKSpriteNode = TestClass().vegaBajaBezierPathToSKSpriteNode(bpVegaBaja:vegaBajabp)
-        containerNode.addChild(vegaBajaSKSpriteNode)
-        
-        let floridabp:UIBezierPath! = TestClass().floridaDrawBezierPath()
-        let floridaSKSpriteNode:SKSpriteNode = TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:floridabp)
-        containerNode.addChild(floridaSKSpriteNode)
-        
-        let villalbabp:UIBezierPath! = TestClass().villalbaDrawBezierPath()
-        let villalbaSKSpriteNode:SKSpriteNode = TestClass().villalbaBezierPathToSKSpriteNode(bpVillalba: villalbabp)
-        containerNode.addChild(villalbaSKSpriteNode)
-        
-        let cialesbp:UIBezierPath! = TestClass().cialesDrawBezierPath()
-        let cialesSKSpriteNode:SKSpriteNode = TestClass().cialesBezierPathToSKSpriteNode(bpCiales: cialesbp)
-        containerNode.addChild(cialesSKSpriteNode)
-        
-        let orocovisbp:UIBezierPath! = TestClass().orocovisDrawBezierPath()
-        let orocovisSKSpriteNode:SKSpriteNode = TestClass().orocovisBezierPathToSKSpriteNode(bpOrocovis: orocovisbp)
-        containerNode.addChild(orocovisSKSpriteNode)
-        
-        let morovisbp:UIBezierPath! = TestClass().morovisDrawBezierPath()
-        let morovisSKSpriteNode:SKSpriteNode = TestClass().morovisBezierPathToSKSpriteNode(bpMorovis: morovisbp)
-        containerNode.addChild(morovisSKSpriteNode)
-        
-        let corozalbp:UIBezierPath! = TestClass().corozalDrawBezierPath()
-        let corozalSKSpriteNode:SKSpriteNode = TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: corozalbp)
-        containerNode.addChild(corozalSKSpriteNode)
-        
-        let barranquitasbp:UIBezierPath! = TestClass().barranquitasDrawBezierPath()
-        let barranquitasSKSpriteNode:SKSpriteNode = TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: barranquitasbp)
-        containerNode.addChild(barranquitasSKSpriteNode)
-        
-        let comeriobp:UIBezierPath! = TestClass().comerioDrawBezierPath()
-        let comerioSKSpriteNode:SKSpriteNode = TestClass().comerioBezierPathToSKSpriteNode(bpComerio: comeriobp)
-        containerNode.addChild(comerioSKSpriteNode)
-        
-        let coamobp:UIBezierPath! = TestClass().coamoDrawBezierPath()
-        let coamoSKSpriteNode:SKSpriteNode = TestClass().coamoBezierPathToSKSpriteNode(bpCoamo: coamobp)
-        containerNode.addChild(coamoSKSpriteNode)
-        
-        let naranjitobp:UIBezierPath! = TestClass().naranjitoDrawBezierPath()
-        let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: naranjitobp)
-        containerNode.addChild(naranjitoSKSpriteNode)
-        
-        let aibonitobp:UIBezierPath! = TestClass().aibonitoDrawBezierPath()
-        let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: aibonitobp)
-        containerNode.addChild(aibonitoSKSpriteNode)
-        
-        let salinasbp:UIBezierPath! = TestClass().salinasDrawBezierPath()
-        let salinasSKSpriteNode:SKSpriteNode = TestClass().salinasBezierPathToSKSpriteNode(bpSalinas: salinasbp)
-        containerNode.addChild(salinasSKSpriteNode)
-        
-        let cayeybp:UIBezierPath! = TestClass().cayeyDrawBezierPath()
-        let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: cayeybp)
-        containerNode.addChild(cayeySKSpriteNode)
-        
-        let cidrabp:UIBezierPath! = TestClass().cidraDrawBezierPath()
-        let cidraSKSpriteNode:SKSpriteNode = TestClass().cidraBezierPathToSKSpriteNode(bpCidra: cidrabp)
-        containerNode.addChild(cidraSKSpriteNode)
-        
-        let santaIsabelbp:UIBezierPath! = TestClass().santaIsabelDrawBezierPath()
-        let santaIsabelSKSpriteNode:SKSpriteNode = TestClass().santaIsabelBezierPathToSKSpriteNode(bpSantaIsabel: santaIsabelbp)
-        containerNode.addChild(santaIsabelSKSpriteNode)
-        
-        let vegaAltabp:UIBezierPath! = TestClass().vegaAltaDrawBezierPath()
-        let vegaAltaSKSpriteNode:SKSpriteNode = TestClass().vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: vegaAltabp)
-        containerNode.addChild(vegaAltaSKSpriteNode)
-        
-        let doradobp:UIBezierPath! = TestClass().doradoDrawBezierPath()
-        let doradoSKSpriteNode:SKSpriteNode = TestClass().doradoBezierPathToSKSpriteNode(bpDorado: doradobp)
-        containerNode.addChild(doradoSKSpriteNode)
-        
-        let toaAltabp:UIBezierPath! = TestClass().toaAltaDrawBezierPath()
-        let toaAltaSKSpriteNode:SKSpriteNode = TestClass().toaAltaBezierPathToSKSpriteNode(bpToaAlta: toaAltabp)
-        containerNode.addChild(toaAltaSKSpriteNode)
-        
-        let toaBajabp:UIBezierPath! = TestClass().toaBajaDrawBezierPath()
-        let toaBajaSKSpriteNode:SKSpriteNode = TestClass().toaBajaBezierPathToSKSpriteNode(bpToaBaja: toaBajabp)
-        containerNode.addChild(toaBajaSKSpriteNode)
-        
-        let bayamonbp:UIBezierPath! = TestClass().bayamonDrawBezierPath()
-        let bayamonSKSpriteNode:SKSpriteNode = TestClass().bayamonBezierPathToSKSpriteNode(bpBayamon: bayamonbp)
-        containerNode.addChild(bayamonSKSpriteNode)
-          
-        let catanobp:UIBezierPath! = TestClass().catanoDrawBezierPath()
-        let catanoSKSpriteNode:SKSpriteNode = TestClass().catanoBezierPathToSKSpriteNode(bpCatano: catanobp)
-        containerNode.addChild(catanoSKSpriteNode)
-        
-        let guaynabobp:UIBezierPath! = TestClass().guaynaboDrawBezierPath()
-        let guaynaboSKSpriteNode:SKSpriteNode = TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:guaynabobp)
-        containerNode.addChild(guaynaboSKSpriteNode)
-        
-        let sanJuanbp:UIBezierPath! = TestClass().sanJuanDrawBezierPath()
-        let sanJuanSKSpriteNode:SKSpriteNode = TestClass().sanJuanBezierPathToSKSpriteNode(bpSanJuan: sanJuanbp)
-        containerNode.addChild(sanJuanSKSpriteNode)
-        
-        let caguasbp:UIBezierPath! = TestClass().caguasDrawBezierPath()
-        let caguasSKSpriteNode:SKSpriteNode = TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: caguasbp)
-        containerNode.addChild(caguasSKSpriteNode)
-        
-        let carolinabp:UIBezierPath! = TestClass().carolinaDrawBezierPath()
-        let carolinaSKSpriteNode:SKSpriteNode = TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: carolinabp)
-        containerNode.addChild(carolinaSKSpriteNode)
-        
-        let aguasBuenasbp:UIBezierPath! = TestClass().aguasBuenasDrawBezierPath()
-        let aguasBuenasSKSpriteNode:SKSpriteNode = TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: aguasBuenasbp)
-        containerNode.addChild(aguasBuenasSKSpriteNode)
-        
-        let trujilloAltobp:UIBezierPath! = TestClass().trujilloAltoDrawBezierPath()
-        let trujilloAltoSKSpriteNode:SKSpriteNode = TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: trujilloAltobp)
-        containerNode.addChild(trujilloAltoSKSpriteNode)
-        
-        let loizabp:UIBezierPath! = TestClass().loizaDrawBezierPath()
-        let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: loizabp)
-        containerNode.addChild(loizaSKSpriteNode)
-        
-        /*let loizaTwoSKSpriteNode:SKSpriteNode = TestClass().loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: loizaTwobp)
-        containerNode.addChild(loizaTwoSKSpriteNode)*/
-        
-        let canovanasbp:UIBezierPath! = TestClass().canovanasDrawBezierPath()
-        let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: canovanasbp)
-        containerNode.addChild(canovanasSKSpriteNode)
-        
-        let rioGrandebp:UIBezierPath! = TestClass().rioGrandeDrawBezierPath()
-        let rioGrandeSKSpriteNode:SKSpriteNode = TestClass().rioGrandeBezierPathToSKSpriteNode(bpRioGrande: rioGrandebp)
-        containerNode.addChild(rioGrandeSKSpriteNode)
-        
-        let luquillobp:UIBezierPath! = TestClass().luquilloDrawBezierPath()
-        let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: luquillobp)
-        containerNode.addChild(luquilloSKSpriteNode)
-        
-        let fajardobp:UIBezierPath! = TestClass().fajardoDrawBezierPath()
-        let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: fajardobp)
-        containerNode.addChild(fajardoSKSpriteNode)
-        
-        let ceibabp:UIBezierPath! = TestClass().ceibaDrawBezierPath()
-        let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: ceibabp)
-        containerNode.addChild(ceibaSKSpriteNode)
-        
-        let gurabobp:UIBezierPath! = TestClass().guraboDrawBezierPath()
-        let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: gurabobp)
-        containerNode.addChild(guraboSKSpriteNode)
-        
-        let juncosbp:UIBezierPath! = TestClass().juncosDrawBezierPath()
-        let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos: juncosbp)
-        containerNode.addChild(juncosSKSpriteNode)
-        
-        
-        let sanLorenzobp:UIBezierPath! = TestClass().sanLorenzoDrawBezierPath()
-        let sanLorenzoSKSpriteNode:SKSpriteNode = TestClass().sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: sanLorenzobp)
-        containerNode.addChild(sanLorenzoSKSpriteNode)
-        
-        let guayamabp:UIBezierPath! = TestClass().guayamaDrawBezierPath()
-        let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: guayamabp)
-        containerNode.addChild(guayamaSKSpriteNode)
-        
-        let arroyobp:UIBezierPath! = TestClass().arroyoDrawBezierPath()
-        let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: arroyobp)
-        containerNode.addChild(arroyoSKSpriteNode)
-        
-        let patillasbp:UIBezierPath! = TestClass().patillasDrawBezierPath()
-        let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: patillasbp)
-        containerNode.addChild(patillasSKSpriteNode)
-        
-        let maunabobp:UIBezierPath! = TestClass().maunaboDrawBezierPath()
-        let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: maunabobp)
-        containerNode.addChild(maunaboSKSpriteNode)
-        
-        let yabucoabp:UIBezierPath! = TestClass().yabucoaDrawBezierPath()
-        let yabucoaSKSpriteNode:SKSpriteNode = TestClass().yabucoaBezierPathToSKSpriteNode(bpYabucoa: yabucoabp)
-        containerNode.addChild(yabucoaSKSpriteNode)
-        
-        let lasPiedrasbp:UIBezierPath! = TestClass().lasPiedrasDrawBezierPath()
-        let lasPiedrasSKSpriteNode:SKSpriteNode = TestClass().lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: lasPiedrasbp)
-        containerNode.addChild(lasPiedrasSKSpriteNode)
-        
-        let humacaobp:UIBezierPath! = TestClass().humacaoDrawBezierPath()
-        let humacaoSKSpriteNode:SKSpriteNode = TestClass().humacaoBezierPathToSKSpriteNode(bpHumacao: humacaobp)
-        containerNode.addChild(humacaoSKSpriteNode)
-        
-        let naguabobp:UIBezierPath! = TestClass().naguaboDrawBezierPath()
-        let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: naguabobp)
-        containerNode.addChild(naguaboSKSpriteNode)
-        
-        let viequesbp:UIBezierPath! = TestClass().viequesDrawBezierPath()
-        let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: viequesbp)
-        containerNode.addChild(viequesSKSpriteNode)
-        
-        let culebrabp:UIBezierPath! = TestClass().culebraDrawBezierPath()
-        let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: culebrabp)
-        containerNode.addChild(culebraSKSpriteNode)
-        
         //Este grupo de objetos estan relacionados por goldBackgroundSKSpriteNode, dado que esta barra de controles se elimina cuando se acierta el ultimo municipios junto con los botones, labels y backgrounds adheridos a la barra de controles)
-        goldBackgroundSKSpriteNode.addChild(labelScores)
-        municipiosNameBackground.addChild(municipioNameLabel)//ojo puse el background como padre del label para facilitar el posicionamiento de ambos con respecto a goldBackgroundSKSpriteNode
-        goldBackgroundSKSpriteNode.addChild(municipiosNameBackground)
-        goldBackgroundSKSpriteNode.addChild(skipButton)
-        goldBackgroundSKSpriteNode.addChild(exitRedButton)
+        addChildSKLabelNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: labelScores)
+        //goldBackgroundSKSpriteNode.addChild(labelScores)
+        addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
+        //municipiosNameBackground.addChild(municipioNameLabel)//ojo puse el background como padre del label para facilitar el posicionamiento de ambos con respecto a goldBackgroundSKSpriteNode
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
+        //goldBackgroundSKSpriteNode.addChild(municipiosNameBackground)
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
+        //goldBackgroundSKSpriteNode.addChild(skipButton)
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
+        //goldBackgroundSKSpriteNode.addChild(exitRedButton)
         
-        //self.addChild(backgroundSKSpriteNode)
-        self.addChild(goldBackgroundSKSpriteNode)
-        self.addChild(timerBackground)
-        self.addChild(labelTimer)
-        //self.addChild(labelScores)
+        addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
+        //self.addChild(goldBackgroundSKSpriteNode)
+        addChildSKSpriteNodeToParentself(children: timerBackground)
+        //self.addChild(timerBackground)
+        addChildSKLabelNodeToParentself(children: labelTimer)
+        //self.addChild(labelTimer)
+        addChildSKNodeToParentself(children: containerNode)
+        //self.addChild(containerNode)
         
-        //self.addChild(municipioNameLabel)
-        //self.addChild(skipButton)
-        self.addChild(containerNode)
         if StartMenu.backgroundMusicOn == true{
             //self.addChild(StartScene.backgroundMusic)
             initMusic()
         }
-        
-
-        
-        
-        //sleep(1)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a contar
-        
-        
-    }
-   
-    
-    func initMusic() {
-        guard let url = musicURL else { return }
-        
-        do{
-            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
-        }catch{
-            print("error")
-            }
-        
-        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
-        musicPlayer.prepareToPlay()//ready to play musicPlayer
-        musicPlayer.play()//
+        //sleep(1)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a conta
     }
     
-    /*func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
-        let label:SKLabelNode = StartMenu().setLabelDefaults()
-        label.fontName = "AvenirNext-Bold"
-        label.text = "Resultados (Results)"
-        label.position = CGPoint(x:0.5, y:-5.5)
-        buttonResultadosSKSpriteNode.addChild(label)
-        buttonResultadosSKSpriteNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.475)
-        buttonResultadosSKSpriteNode.size = label.frame.size
-        buttonResultadosSKSpriteNode.name = "resultadosButton"
-        buttonResultadosSKSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonResultadosSKSpriteNode.size.width, height:buttonResultadosSKSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-        buttonResultadosSKSpriteNode.physicsBody?.isDynamic = false
-        
-        return buttonResultadosSKSpriteNode
-    }*/
-    
+    //Barra de controles
+    func goldenBackground() -> SKSpriteNode {
+        let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
+        goldenBackground.size = CGSize(width: 680, height:50)
+        goldenBackground.position = CGPoint(x:335, y:25)
+        //goldenBackground.zPosition = 1
+        return goldenBackground
+    }
     
     //Contiene todos los SpriteNodes que tienen que ver con el mapa incluyendo covers(como el de desecheo)
     func nodesContainer() -> SKNode{
@@ -620,48 +133,228 @@ class StartScene: SKScene{
         nodes_Container.position = CGPoint(x: 50, y: 15)
         return  nodes_Container
     }
-    //Esta funcion devuelve el bezier path utilizado para crear los botones de skipButton y exit
-    func blueButtonRedButtonBp()->UIBezierPath{
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:25))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:50 , y:25))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:50, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
-
+    
+    func initAndaddChildrenTocontainerNode(){
+        let coverDesecheoIslandSKSpriteNode: SKSpriteNode = TestClass().desecheoIslandCover()
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: coverDesecheoIslandSKSpriteNode)
+        let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rectangularFrameSKSPriteNode)
+        let rectangularViequesFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: TestClass().createViequesRectangle())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rectangularViequesFrameSKSPriteNode)
+        let rectangularCulebraFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: TestClass().createCulebraRectangle())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rectangularCulebraFrameSKSPriteNode)
+        let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: TestClass().caboRojoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: caboRojoSKSpriteNode)
+        let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: TestClass().hormiguerosDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: hormiguerosSKSpriteNode)
+        let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: TestClass().mayaguezDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: mayaguezSKSpriteNode)
+        let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: TestClass().anascoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: anascoSKSpriteNode)
+        let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: TestClass().rinconDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rinconSKSpriteNode)
+        let aguadaSKSpriteNode: SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: TestClass().aguadaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aguadaSKSpriteNode)
+        let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: TestClass().aguadillaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aguadillaSKSpriteNode)
+        let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: TestClass().isabelaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: isabelaSKSpriteNode)
+        let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: TestClass().mocaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: mocaSKSpriteNode)
+        let lasMariasSKSpriteNode: SKSpriteNode = TestClass().lasMariasBezierPathToSKSpriteNode(bpLasMarias: TestClass().lasMariasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: lasMariasSKSpriteNode)
+        let maricaoSKSpriteNode: SKSpriteNode = TestClass().maricaoBezierPathToSKSpriteNode(bpMaricao:TestClass().maricaoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: maricaoSKSpriteNode)
+        let sanGermanSKSpriteNode:SKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: TestClass().sanGermanDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanGermanSKSpriteNode)
+        let yaucoSKSpriteNode: SKSpriteNode = TestClass().yaucoBezierPathToSKSpriteNode(bpYauco:TestClass().yaucoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: yaucoSKSpriteNode)
+        let lajasSKSpriteNode: SKSpriteNode = TestClass().lajasBezierPathToSKSpriteNode(bpLajas:TestClass().lajasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: lajasSKSpriteNode)
+        let guanicaSKSpriteNode: SKSpriteNode = TestClass().guanicaBezierPathToSKSpriteNode(bpGuanica:TestClass().guanicaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guanicaSKSpriteNode)
+        let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:TestClass().guayanillaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guayanillaSKSpriteNode)
+        let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: TestClass().sanSebastianDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanSebastianSKSpriteNode)
+        let sabanaGrandeSKSpriteNode: SKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: TestClass().sabanaGrandeDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sabanaGrandeSKSpriteNode)
+        let laresSKSpriteNode:SKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares:TestClass().laresDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: laresSKSpriteNode)
+        let penuelasSKSpriteNode:SKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas:TestClass().penuelasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: penuelasSKSpriteNode)
+        let ponceSKSpriteNode:SKSpriteNode = TestClass().ponceBezierPathToSKSpriteNode(bpPonce: TestClass().ponceDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: ponceSKSpriteNode)
+        let utuadoSKSpriteNode:SKSpriteNode = TestClass().utuadoBezierPathToSKSpriteNode(bpUtuado: TestClass().utuadoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: utuadoSKSpriteNode)
+        let jayuyaSKSpriteNode:SKSpriteNode = TestClass().jayuyaBezierPathToSKSpriteNode(bpJayuya: TestClass().jayuyaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: jayuyaSKSpriteNode)
+        let juanaDiazSKSpriteNode:SKSpriteNode = TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz:TestClass().juanaDiazDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: juanaDiazSKSpriteNode)
+        let quebradillasSKSpriteNode:SKSpriteNode = TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:TestClass().quebradillasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: quebradillasSKSpriteNode)
+        let camuySKSpriteNode:SKSpriteNode = TestClass().camuyBezierPathToSKSpriteNode(bpCamuy:TestClass().camuyDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: camuySKSpriteNode)
+        let hatilloSKSpriteNode:SKSpriteNode = TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:TestClass().hatilloDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: hatilloSKSpriteNode)
+        let areciboSKSpriteNode:SKSpriteNode = TestClass().areciboBezierPathToSKSpriteNode(bpArecibo:TestClass().areciboDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: areciboSKSpriteNode)
+        let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: TestClass().adjuntasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: adjuntasSKSpriteNode)
+        let barcelonetaSKSpriteNode:SKSpriteNode = TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:TestClass().barcelonetaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: barcelonetaSKSpriteNode)
+        let manatiSKSpriteNode:SKSpriteNode = TestClass().manatiBezierPathToSKSpriteNode(bpManati:TestClass().manatiDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: manatiSKSpriteNode)
+        let vegaBajaSKSpriteNode:SKSpriteNode = TestClass().vegaBajaBezierPathToSKSpriteNode(bpVegaBaja:TestClass().vegaBajaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: vegaBajaSKSpriteNode)
+        let floridaSKSpriteNode:SKSpriteNode = TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:TestClass().floridaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: floridaSKSpriteNode)
+        let villalbaSKSpriteNode:SKSpriteNode = TestClass().villalbaBezierPathToSKSpriteNode(bpVillalba: TestClass().villalbaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: villalbaSKSpriteNode)
+        let cialesSKSpriteNode:SKSpriteNode = TestClass().cialesBezierPathToSKSpriteNode(bpCiales: TestClass().cialesDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: cialesSKSpriteNode)
+        let orocovisSKSpriteNode:SKSpriteNode = TestClass().orocovisBezierPathToSKSpriteNode(bpOrocovis: TestClass().orocovisDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: orocovisSKSpriteNode)
+        let morovisSKSpriteNode:SKSpriteNode = TestClass().morovisBezierPathToSKSpriteNode(bpMorovis:TestClass().morovisDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: morovisSKSpriteNode)
+        let corozalSKSpriteNode:SKSpriteNode = TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: TestClass().corozalDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: corozalSKSpriteNode)
+        let barranquitasSKSpriteNode:SKSpriteNode = TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: TestClass().barranquitasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: barranquitasSKSpriteNode)
+        let comerioSKSpriteNode:SKSpriteNode = TestClass().comerioBezierPathToSKSpriteNode(bpComerio: TestClass().comerioDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: comerioSKSpriteNode)
+        let coamoSKSpriteNode:SKSpriteNode = TestClass().coamoBezierPathToSKSpriteNode(bpCoamo: TestClass().coamoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: coamoSKSpriteNode)
+        let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: TestClass().naranjitoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: naranjitoSKSpriteNode)
+        let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: TestClass().aibonitoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aibonitoSKSpriteNode)
+        let salinasSKSpriteNode:SKSpriteNode = TestClass().salinasBezierPathToSKSpriteNode(bpSalinas: TestClass().salinasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: salinasSKSpriteNode)
+        let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: TestClass().cayeyDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: cayeySKSpriteNode)
+        let cidraSKSpriteNode:SKSpriteNode = TestClass().cidraBezierPathToSKSpriteNode(bpCidra: TestClass().cidraDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: cidraSKSpriteNode)
+        let santaIsabelSKSpriteNode:SKSpriteNode = TestClass().santaIsabelBezierPathToSKSpriteNode(bpSantaIsabel: TestClass().santaIsabelDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: santaIsabelSKSpriteNode)
+        let vegaAltaSKSpriteNode:SKSpriteNode = TestClass().vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: TestClass().vegaAltaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: vegaAltaSKSpriteNode)
+        let doradoSKSpriteNode:SKSpriteNode = TestClass().doradoBezierPathToSKSpriteNode(bpDorado: TestClass().doradoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: doradoSKSpriteNode)
+        let toaAltaSKSpriteNode:SKSpriteNode = TestClass().toaAltaBezierPathToSKSpriteNode(bpToaAlta: TestClass().toaAltaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: toaAltaSKSpriteNode)
+        let toaBajaSKSpriteNode:SKSpriteNode = TestClass().toaBajaBezierPathToSKSpriteNode(bpToaBaja: TestClass().toaBajaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: toaBajaSKSpriteNode)
+        let bayamonSKSpriteNode:SKSpriteNode = TestClass().bayamonBezierPathToSKSpriteNode(bpBayamon: TestClass().bayamonDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: bayamonSKSpriteNode)
+        let catanoSKSpriteNode:SKSpriteNode = TestClass().catanoBezierPathToSKSpriteNode(bpCatano:TestClass().catanoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: catanoSKSpriteNode)
+        let guaynaboSKSpriteNode:SKSpriteNode = TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:TestClass().guaynaboDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guaynaboSKSpriteNode)
+        let sanJuanSKSpriteNode:SKSpriteNode = TestClass().sanJuanBezierPathToSKSpriteNode(bpSanJuan: TestClass().sanJuanDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanJuanSKSpriteNode)
+        let caguasSKSpriteNode:SKSpriteNode = TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: TestClass().caguasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: caguasSKSpriteNode)
+        let carolinaSKSpriteNode:SKSpriteNode = TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: TestClass().carolinaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: carolinaSKSpriteNode)
+        let aguasBuenasSKSpriteNode:SKSpriteNode = TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: TestClass().aguasBuenasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aguasBuenasSKSpriteNode)
+        let trujilloAltoSKSpriteNode:SKSpriteNode = TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: TestClass().trujilloAltoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: trujilloAltoSKSpriteNode)
+        let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: TestClass().loizaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: loizaSKSpriteNode)
+        /*let loizaTwoSKSpriteNode:SKSpriteNode = TestClass().loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: loizaTwobp)
+        containerNode.addChild(loizaTwoSKSpriteNode)*/
+        let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: TestClass().canovanasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: canovanasSKSpriteNode)
+        let rioGrandeSKSpriteNode:SKSpriteNode = TestClass().rioGrandeBezierPathToSKSpriteNode(bpRioGrande: TestClass().rioGrandeDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rioGrandeSKSpriteNode)
+        let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: TestClass().luquilloDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: luquilloSKSpriteNode)
+        let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: TestClass().fajardoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: fajardoSKSpriteNode)
+        let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: TestClass().ceibaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: ceibaSKSpriteNode)
+        let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: TestClass().guraboDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guraboSKSpriteNode)
+        let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos:TestClass().juncosDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: juncosSKSpriteNode)
+        let sanLorenzoSKSpriteNode:SKSpriteNode = TestClass().sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: TestClass().sanLorenzoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanLorenzoSKSpriteNode)
+        let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: TestClass().guayamaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guayamaSKSpriteNode)
+        let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: TestClass().arroyoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: arroyoSKSpriteNode)
+        let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: TestClass().patillasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: patillasSKSpriteNode)
+        let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: TestClass().maunaboDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: maunaboSKSpriteNode)
+        let yabucoaSKSpriteNode:SKSpriteNode = TestClass().yabucoaBezierPathToSKSpriteNode(bpYabucoa:TestClass().yabucoaDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: yabucoaSKSpriteNode)
+        let lasPiedrasSKSpriteNode:SKSpriteNode = TestClass().lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: TestClass().lasPiedrasDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: lasPiedrasSKSpriteNode)
+        let humacaoSKSpriteNode:SKSpriteNode = TestClass().humacaoBezierPathToSKSpriteNode(bpHumacao: TestClass().humacaoDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: humacaoSKSpriteNode)
+        let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: TestClass().naguaboDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: naguaboSKSpriteNode)
+        let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: TestClass().viequesDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: viequesSKSpriteNode)
+        let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: TestClass().culebraDrawBezierPath())
+        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: culebraSKSpriteNode)
         
-        return path
-        
     }
-    //Label superior para los botones azul y rojo
-    func redButtonBlueButtonLabelOne()->SKLabelNode{
-        let labelSkipButtonOne = SKLabelNode()
-        //labelSkipButtonOne.isUserInteractionEnabled = true
-        labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
-        labelSkipButtonOne.fontSize = 10
-        //labelSkipButtonOne.text = "Saltar"
-        labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
-        //skipBlueButton.addChild(labelSkipButtonOne)
-        return labelSkipButtonOne
+    
+    func labelForScores(ScoresLabel: SKLabelNode) -> SKLabelNode {
+        //let label:SKLabelNode = SKLabelNode()
+        ScoresLabel.position = CGPoint(x:300, y:-0.5)
+        ScoresLabel.fontName = "Arial"
+        ScoresLabel.fontSize = 11
+        ScoresLabel.text = "0/78"
+        ScoresLabel.fontColor = UIColor.init(red: 0.1333, green: 0.8392, blue: 0.1333, alpha: 1.0)
+        return ScoresLabel
     }
-    //Label inferior para los botones azul y rojo
-    func redButtonBlueButtonLabelTwo() ->SKLabelNode{
-        let labelSkipButtonTwo = SKLabelNode()
-        //labelSkipButtonTwo.isUserInteractionEnabled = true
-        labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
-        labelSkipButtonTwo.fontSize = 8
-        //labelSkipButtonTwo.text = "(Skip)"
-        labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
-        //skipBlueButton.addChild(labelSkipButtonTwo)
-        return labelSkipButtonTwo
+    
+    func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
+        //let label:SKLabelNode = SKLabelNode()
+        TimerLabel.position = CGPoint(x: 333.5, y:82.5)
+        TimerLabel.zPosition = 2
+        TimerLabel.fontName = "Arial"
+        TimerLabel.fontSize = 18
+        TimerLabel.fontColor = SKColor.red
+        return TimerLabel
     }
+    
+    func timerLabelBackground() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.lightGray
+        background.position = CGPoint(x:333.5, y:89.5)
+        return background
+    }
+    
+    //Parent labelMunicipioNamesBackground
+    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {//child of labelMunicipiosNameBackground()
+        NameMunicipioLabel.position = CGPoint(x:0.5 /*self.size.width/2*/, y:-6.5 /*self.size.height/2 * 0.14*/)
+        NameMunicipioLabel.fontName = "Helvetica"
+        NameMunicipioLabel.fontSize = 18
+        NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
+        NameMunicipioLabel.text = "Adjuntas"
+        municipiosNameBackground.size = NameMunicipioLabel.frame.size
+        //NameMunicipioLabel.zPosition = 2
+        return NameMunicipioLabel
+    }
+    
+    //Parent goldenBackground
+    func labelMunicipiosNameBackground() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
+        background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
+        background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
+        background.size = municipioNameLabel.frame.size
+        //background.addChild(labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel))
+        //background.zPosition = 5
+        return background
+    }
+    
     //funcion crea skipButton
     func skipBlueButton()-> SKSpriteNode {
          
@@ -696,6 +389,7 @@ class StartScene: SKScene{
         
         return skipBlueButton
     }
+    
     //Funcion crea boton rojo con sus respectivos labels
     func redButton()-> SKSpriteNode {
          
@@ -730,232 +424,104 @@ class StartScene: SKScene{
         
         return redButton
     }
-    //Barra de controles
-    func goldenBackground() -> SKSpriteNode {
-        let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-        goldenBackground.size = CGSize(width: 680, height:50)
-        goldenBackground.position = CGPoint(x:335, y:25)
-        //goldenBackground.zPosition = 1
-        return goldenBackground
-    }
+    
+    //Esta funcion devuelve el bezier path utilizado para crear los botones de skipButton y exit
+    func blueButtonRedButtonBp()->UIBezierPath{
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:25))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:50 , y:25))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:50, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
 
-    //Background que simula el mar
-    /*func prBackground() -> SKSpriteNode {
-        let backgroundNode = SKSpriteNode()
-        backgroundNode.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
-        backgroundNode.size = CGSize(width: self.size.width, height:self.size.height/* * 0.86*/)
-        //nodes_Container.anchorPoint = CGPoint.zero
-        backgroundNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2/*1.75*/)
-        //backgroundNode.zPosition = 0
-        return backgroundNode
-    }*/
-    /*Esta funcion va a crear el SKSpriteNode para el rectangulo que se desplega cuando se consigue identificar la totalidad de los municipios y se le asignan las propiedades correspondientes,
-     tambien se provee las propiedades para los seis labels pertenecientes al rectangulo. OJO los botones en el rectangulo y sus respectivos labels son generados en otra funcion
-     aparte en donde son anadidos como children de endGameRectangle*/
-    /*func endgameRectangle() -> SKSpriteNode {
-        let endGameRectangleNode = SKSpriteNode()
-        endGameRectangleNode.color = UIColor.init(red: 0.00, green: 0.00, blue: 0.00, alpha: 1.00)//color hex #89d7ed
-        endGameRectangleNode.size = CGSize(width:350, height:250)
-        endGameRectangleNode.position = CGPoint(x: self.size.width/2 - 33, y: self.size.height/2 + 16)
-        endGameRectangleNode.zPosition = 2
         
-        /*Abajo se otorga la propiedad de nombre a los labels, propiedad que se utiliza en el proximo bloque , El unico propsito de esto es aislar cada label aprovechando cada iteracion del for loop para asignarles a cada uno propiedades en una misma y unica ejecucion de la funcion */
-        labelOne.name = "labelOne"; labelTwo.name = "labelTwo"; labelThree.name = "labelThree"; labelFour.name = "labelFour"; labelFive.name = "labelFive"; labelSix.name = "labelSix"
-        let arrayOflabels = [labelOne, labelTwo, labelThree, labelFour, labelFive, labelSix]/*Poner los elementos a iterar en un for loop por medio de un array me permite reusar codigo, en vez de escribir un bloque por label donde por ejempl
-          propiedades como fontName,fontSize y fontColor se escribirian 6 veces*/
+        return path
         
-        for label in arrayOflabels {
-            /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
-            label.fontName = "AvenirNext-Bold"
-            label.fontSize = 15
-            label.fontColor = UIColor.white/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
-            //label.zPosition = 3
-            
-            if label.name == "labelOne"{
-                print("Voy subiendo")
-                label.text = label.name
-                label.position = CGPoint(x:-0, y:60)
-
-            }
-            if label.name == "labelTwo"{
-                label.text = label.name
-                label.position = CGPoint(x:-0, y:40)
-
-            }
-            if label.name == "labelThree"{
-                label.text = label.name
-                label.position = CGPoint(x:-0, y:10)
-                
-            }
-            if label.name == "labelFour"{
-                //label.text = label.name
-                label.position = CGPoint(x:-5, y:-10)
-            
-            }
-            
-            if label.name == "labelFive"{
-                //label.text = label.name
-                label.position = CGPoint(x:65, y:50)
-                //endGameRectangleNode.addChild(label)
-            }
-            if label.name == "labelSix"{
-                //label.text = label.name
-                label.position = CGPoint(x:65, y:0)
-                //endGameRectangleNode.addChild(label)
-            }
-            
-            endGameRectangleNode.addChild(label)//se anaden los labels como hijos de endGameRectangle
-        }
-        
-        return endGameRectangleNode
-    }*/
-    /*Esta funcion cumple dos objetivos: hacer el set de las propiedades generales para los tres botones que aparecen sobre endGameRectangle, Asi como tambien crear los labels y establecer las propiedades para los labels.(tambien son anadidos los labels
-     como hijos de su respectivo boton)*/
-    /*func endgameRectangleButton(buttonOne:SKSpriteNode, buttonTwo:SKSpriteNode, buttonThree:SKSpriteNode)-> SKSpriteNode {
-        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
-        let buttonNode = SKSpriteNode()
-        buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.zPosition = 3
-        /*En los siguientes If statements se hace el set de los valores para las propiedades indviduales para cada boton*/
-        if buttonOne.name == "buttonOne"{
-            print("inside button one")
-            buttonNode.position = CGPoint(x:-115.5, y:-78.4)
-            buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-            buttonNode.physicsBody?.isDynamic = false
-            buttonNode.name = "mapButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
-            
-            let buttonOneLabelOne = SKLabelNode()
-            buttonOneLabelOne.fontName = "AvenirNext-Bold"
-            buttonOneLabelOne.fontSize = 16
-            buttonOneLabelOne.text = "Mapa"
-            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonOneLabelOne)
-            
-            let buttonOneLabelTwo = SKLabelNode()
-            buttonOneLabelTwo.fontName = "AvenirNext-Bold"
-            buttonOneLabelTwo.fontSize = 13
-            buttonOneLabelTwo.text = "(Map)"
-            buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
-            //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonOneLabelTwo)
-        }
-        
-        if buttonTwo.name == "buttonTwo"{
-            print("inside button two")
-            buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
-            buttonNode.position = CGPoint(x:0.5, y: -78.4)
-            
-            let buttonTwoLabelOne = SKLabelNode()
-            buttonTwoLabelOne.fontName = "AvenirNext-Bold"
-            buttonTwoLabelOne.fontSize = 16
-            buttonTwoLabelOne.text = "Jugar Otra Vez"
-            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonTwoLabelOne)
-            
-            let buttonTwoLabelTwo = SKLabelNode()
-            buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
-            buttonTwoLabelTwo.fontSize = 13
-            buttonTwoLabelTwo.text = "(Play Again)"
-            buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
-            //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonTwoLabelTwo)
-        }
-        
-        if buttonThree.name == "buttonThree"{
-            print("inside button three")
-            //buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-            buttonNode.position = CGPoint(x:115.5, y:-78.4)
-
-            let buttonThreeLabelOne = SKLabelNode()
-            buttonThreeLabelOne.fontName = "AvenirNext-Bold"
-            buttonThreeLabelOne.fontSize = 16
-            buttonThreeLabelOne.text = "Salir"
-            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-            //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonThreeLabelOne)
-            
-            let buttonThreeLabelTwo = SKLabelNode()
-            buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
-            buttonThreeLabelTwo.fontSize = 13
-            buttonThreeLabelTwo.text = "(Exit)"
-            buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
-            //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-            buttonNode.addChild(buttonThreeLabelTwo)
-        }
-        endGameRectangle.addChild(buttonNode)
-        return buttonNode
-        
-    }*/
-    //SpriteNode hecho solo para cubrir isla desecheo
-    func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
-        let desecheoCover = SKSpriteNode()
-        desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
-        desecheoCover.size = CGSize(width: 10, height:10)
-        desecheoCover.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        desecheoCover.position = CGPoint(x: -8, y: 239)
-        desecheoCover.zPosition = 1
-        return desecheoCover
     }
     
-    func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
-        //let label:SKLabelNode = SKLabelNode()
-        TimerLabel.position = CGPoint(x: 333.5, y:82.5)
-        TimerLabel.zPosition = 2
-        TimerLabel.fontName = "Arial"
-        TimerLabel.fontSize = 18
-        TimerLabel.fontColor = SKColor.red
-        return TimerLabel
+    //Label superior para los botones azul y rojo
+    func redButtonBlueButtonLabelOne()->SKLabelNode{
+        let labelSkipButtonOne = SKLabelNode()
+        //labelSkipButtonOne.isUserInteractionEnabled = true
+        labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
+        labelSkipButtonOne.fontSize = 10
+        //labelSkipButtonOne.text = "Saltar"
+        labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
+        //skipBlueButton.addChild(labelSkipButtonOne)
+        return labelSkipButtonOne
+    }
+    //Label inferior para los botones azul y rojo
+    func redButtonBlueButtonLabelTwo() ->SKLabelNode{
+        let labelSkipButtonTwo = SKLabelNode()
+        //labelSkipButtonTwo.isUserInteractionEnabled = true
+        labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
+        labelSkipButtonTwo.fontSize = 8
+        //labelSkipButtonTwo.text = "(Skip)"
+        labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
+        //skipBlueButton.addChild(labelSkipButtonTwo)
+        return labelSkipButtonTwo
     }
     
-    func labelForScores(ScoresLabel: SKLabelNode) -> SKLabelNode {
-        //let label:SKLabelNode = SKLabelNode()
-        ScoresLabel.position = CGPoint(x:300, y:-0.5)
-        ScoresLabel.fontName = "Arial"
-        ScoresLabel.fontSize = 11
-        ScoresLabel.text = "0/78"
-        ScoresLabel.fontColor = UIColor.init(red: 0.1333, green: 0.8392, blue: 0.1333, alpha: 1.0)
-        return ScoresLabel
+    func addChildSKSpriteNodeToParentSKNode(parent:SKNode, children:SKSpriteNode){
+        if children.parent == nil{
+        parent.addChild(children)
+        }
     }
     
-    func timerLabelBackground() -> SKSpriteNode{
-        let background = SKSpriteNode()
-        background.color = UIColor.lightGray
-        //background.size = CGSize(width:CGFloat(60), height:CGFloat(20))
-        background.position = CGPoint(x:333.5, y:89.5)
-        //background.zPosition = -2
-        return background
-    }
-    //Parent labelMunicipioNamesBackground
-    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {//child of labelMunicipiosNameBackground()
-        NameMunicipioLabel.position = CGPoint(x:0.5 /*self.size.width/2*/, y:-6.5 /*self.size.height/2 * 0.14*/)
-        NameMunicipioLabel.fontName = "Helvetica"
-        NameMunicipioLabel.fontSize = 18
-        NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
-        NameMunicipioLabel.text = "Adjuntas"
-        municipiosNameBackground.size = NameMunicipioLabel.frame.size
-        //NameMunicipioLabel.zPosition = 2
-        return NameMunicipioLabel
-    }
-    //Parent goldenBackground
-    func labelMunicipiosNameBackground() -> SKSpriteNode{
-        let background = SKSpriteNode()
-        background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
-        background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
-        background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
-        background.size = municipioNameLabel.frame.size
-        //background.addChild(labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel))
-        //background.zPosition = 5
-        return background
+    func addChildSKSpriteNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKSpriteNode){
+        if children.parent == nil{
+        parent.addChild(children)
+        }
     }
     
+    func addChildSKLabelNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKLabelNode){
+        if children.parent == nil{
+        parent.addChild(children)
+        }
+    }
+    
+    func addChildSKSpriteNodeToParentself(children:SKSpriteNode){
+        if children.parent == nil{
+        self.addChild(children)
+        }
+    }
+    
+    func addChildSKLabelNodeToParentself(children:SKLabelNode){
+        if children.parent == nil{
+        self.addChild(children)
+        }
+    }
+    
+    func addChildSKNodeToParentself(children:SKNode){
+        if children.parent == nil{
+        self.addChild(children)
+        }
+    }
+    
+    func initMusic() {
+        guard let url = musicURL else { return }
+        
+        do{
+            musicPlayer = try AVAudioPlayer(contentsOf: url)/*exe what is inside url**/
+        }catch{
+            print("error")
+            }
+        
+        musicPlayer.numberOfLoops = -1/*negative numbers will make it loop continuously until stopped*/
+        musicPlayer.prepareToPlay()//ready to play musicPlayer
+        musicPlayer.play()//
+    }
+
     override public func update(_ currentTime: TimeInterval) {/*Esta funcion ejecuta cada segundo para la funcionalidad del reloj. Los print statements son para uso del programador(comentar/descomentar todos los print statements a la misma vez, para entender mejor como funciona esta funcion)*/
 
-        //skipButtonPenalty = 15
-        //penalty = 3//numero de segundos que se anaden a los segundos
-            
+    
         if StartScene.completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
             //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
             if currentTime > renderTime{/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
@@ -971,7 +537,7 @@ class StartScene: SKScene{
                     
                     //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
                     if(fail == true){
-                        let penalty = 3
+                        //let penalty = 3
                         print("inside")
                         seconds = seconds + penalty
                         //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
@@ -980,10 +546,11 @@ class StartScene: SKScene{
                             seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
                             minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
                         }
+                        fail = false
                     }
                     
                     if (pressSKipButton == true){
-                        let skipButtonPenalty = 15
+                        //let skipButtonPenalty = 15//Declared at the top so that it is not declared each time skip button is pressed
                         print("quince segundos mas")
                         seconds = seconds + skipButtonPenalty
                         
@@ -992,6 +559,7 @@ class StartScene: SKScene{
                             seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
                             minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
                         }
+                        pressSKipButton = false
                     }
                     
 
@@ -1007,29 +575,16 @@ class StartScene: SKScene{
                             timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 0:00
                         }
                     
-                        if minutes == 10{// ajusts la apariencia de el label/background para cuando los minutos usan dos lugares que ocurre de los 10 minutos en adelante obviamente.
+                        else if minutes == 10{// ajusts la apariencia de el label/background para cuando los minutos usan dos lugares que ocurre de los 10 minutos en adelante obviamente.
                             timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
                         }
                     
-                        if fail == true{
-                            fail = false
-                        }
-                        if pressSKipButton == true{
-                            pressSKipButton = false
-                        }
+                        
                     }
                   
                     else{
                         labelTimer.text = "\(secondsText)"
-                        //timerBackground.size = labelTimer.frame.size//As this is declared on the else if("else if renderTime == 0.0{") below which execute first,  statement commented for duplicity
-                    
-                        if fail == true{
-                            fail = false
-                        }
-                    
-                        if pressSKipButton == true{
-                            pressSKipButton = false
-                        }
+                        
                     }
                     
                 }
@@ -1058,85 +613,22 @@ class StartScene: SKScene{
         }
         
         //Este bloque solo ejecuta si gameCompleted == true, la idea es tomar los ultimos segundos y minutos para que puedan ser evaluados para la mejor marca de tiempo en la siguiente funcion
-        //StartScene.secondsGameOver = seconds
-        //StartScene.minutesGameOver = minutes
+
         /*Aqui ocurre el paso a la escena de Game Over la razon por la que se encuentra aqui es pq cuando lo ejecutaba en Touchesbegan la transicion le quitaba "espacio" a la funcion
          Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
         
         if StartScene.completedGame == true{
             StartScene.secondsGameOver = seconds
             StartScene.minutesGameOver = minutes
-            self.removeFromParent()
             self.removeAllActions()
+            self.removeFromParent()
             let gameOverScene = GameOverScene(size: self.size)
             //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
             self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
         }
         
     }
-    /*Esta funcion va a recibir los minutos y segundos del update fuction y los va a comparar con el contenido de minutos y segundos almacenados en memoria persistente(record mejor tiempo) y determinar si en efecto  hay un nuevo mejor tiempo que registrar. Para los efectos hay dos escenarios: donde ocurre una marca de tiempo mejor nueva y el otro donde la marca es igual o mayor(se llevo a cabo en mas tiempo) */
-    /*func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRendering(second:Int, minute:Int){
-        /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
-        if UserDefaults.standard.integer(forKey: "minutes") < 1 && UserDefaults.standard.integer(forKey: "seconds") < 1 || minute < UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && seconds < UserDefaults.standard.integer(forKey: "seconds") {
-            /*Ojo el siguiente bloque es el unico donde se va a ejecutar el alamacenamiento en memoria persistente**/
-            UserDefaults.standard.set(minute, forKey:"minutes")
-            UserDefaults.standard.set(second, forKey:"seconds")
-            
-            labelOne.text = "¡NUEVO RECORD!"
-            labelTwo.text = "(NEW RECORD!)"
-            //format casting and rendering of new best record
-            let secondsText = (second < 10) ?
-            "0\(second)" : "\(second)"
-            let minutesText = "\(minute)"
-            
-            if minute >= 1 {
-                labelThree.text = "\(minutesText):\(secondsText)"
-            }
-            else{
-                labelThree.text = "\(secondsText)"
-                //timerBackground.size = labelTimer.frame.size Aqui se utiliza el label de forma transparente por eso no se utiliza esta propiedad
-                
-            }
 
-            
-            //labelFour.text = labelTimer.text esto lo use para probar q en efecto estaba obteniendo el tiempo correcto
-        }
-        
-        else if minute > UserDefaults.standard.integer(forKey: "minutes") || minute == UserDefaults.standard.integer(forKey: "minutes") && second > UserDefaults.standard.integer(forKey: "seconds"){
-            //este bloque se va a encargar del rendering de la marca actual cuando no ocurre un nuevo record
-            labelOne.text = "Tu Tiempo"
-            labelTwo.text = "(Your Time)"
-            labelThree.text = "Mejor Tiempo"
-            labelFour.text = "(Best Time)"
-            //labelFive.text = labelTimer.text
-            let secondText = (second < 10) ?/*Ojo la variable aqui se llama secondText SIN "S", La razon para el cambio de nombre en la variable es pq ambas(secondText/secondsText) son constantes de modo que en el mismo bloque no podrian ejecutar como constantes(con el mismo nombre) y dado que ambas variables cumplen el mismo proposito no se queria cambiar demasiado el nombre. MAS ADELANTE SE VA A CREAR UNA FUNCION UNIVRSAL PARA LIDIAR SOLO CON EL CASTING Y EL RENDERING YA QUE ESTE CODIGO SE REPITE VARIAS VECES*/
-            "0\(second)" : "\(second)"
-            let minuteText = "\(minute)" //Ojo la variable aqui se llama minuteText SIN "S"
-            
-            if minute >= 1 {
-                labelFive.text = ":\(minuteText):\(secondText)"
-            }
-            else{
-                labelFive.text = ":\(secondText)"
-                //timerBackground.size = labelTimer.frame.size
-                
-            }
-            //este bloque se va a encargar de imprimir la mejor marca que en este caso seria la encontrada en memoria persistente
-            let secondsText = (UserDefaults.standard.integer(forKey: "seconds") < 10) ?
-            "0\(UserDefaults.standard.integer(forKey: "seconds"))" : "\(UserDefaults.standard.integer(forKey: "seconds"))"
-            let minutesText = "\(UserDefaults.standard.integer(forKey: "minutes"))"
-            
-            if UserDefaults.standard.integer(forKey: "minutes") >= 1 {
-                labelSix.text = ":\(minutesText):\(secondsText)"
-            }
-            else{
-                labelSix.text = ":\(secondsText)"
-                //timerBackground.size = labelTimer.frame.size
-                
-            }
-            
-        }
-    }*/
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Funcion encargada del toque de pantalla
         
@@ -1163,6 +655,7 @@ class StartScene: SKScene{
                             if StartMenu.gamePlaySoundOn == true{
                                 run(StartScene.correctSound)//correctSound
                             }
+                            
                             let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
                             let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
                             
@@ -1172,269 +665,208 @@ class StartScene: SKScene{
                                     countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
                                 }
                             }
-                            let countOfIndexesTwo = countOfIndexes//USAR SOLO CUANDO SE ESTA HACIENDO TESTING(PRINT STATEMENTS DEL PROGRAMADOR)
-                            //Este bloque lo retire pq no entendi que tuviera sentido contar para convertir a String cuando es un valor constante asi que mejor declaro el String como constante y me ahorro hacer esto
-                           /* if inTheFirstSecondOfExecution == true{
-                                for elements in municipios_names_array {
-                                    if elements != ""{
-                                        countOfElements += 1
-                                        totalScoreCount = countOfElements
-                                        inTheFirstSecondOfExecution = false
-                                    }
-                                }
-                            }*/
+                            //let countOfIndexesTwo = countOfIndexes//USAR SOLO CUANDO SE ESTA HACIENDO TESTING(PRINT STATEMENTS DEL PROGRAMADOR)
                             
-                            if currentIndex <= countOfIndexes/*indexedCount*/{/*Para los efectos del juego esta condicion siempre va a probar cierta, es decir que no es necesaria sin embargo la he dejado como un marker donde podrian en el futuro ser necesario probar alguna otra condicion
-                                es un lugar importante en flow de la ejecucion o lo puede ser en un futuro*/
-                                /*PRINT STATEMENTS PARA USO DEL PROGRAMADOR.OJO CUANDO SE USAN LOS PRINT STATEMENTS USAR EN EL FLOW NORMAL LA VARIABLE: countOfIndexesTWO. Luego de comentados los print statements usar nuevamente la variable countOfIndexes donde se habia cambiado*/
+                            
+                            //if currentIndex <= countOfIndexes /*indexedCount*/{/*Para los efectos del juego esta condicion siempre va a probar cierta, es decir que no es necesaria sin embargo la he dejado como un marker donde podrian en el futuro ser necesario probar alguna otra condicion
+                                //es un lugar importante en flow de la ejecucion o lo puede ser en un futuro*/
+                                /**PRINT STATEMENTS PARA USO DEL PROGRAMADOR.OJO CUANDO SE USAN LOS PRINT STATEMENTS USAR EN EL FLOW NORMAL LA VARIABLE: countOfIndexesTWO. Luego de comentados los print statements usar nuevamente la variable countOfIndexes donde se habia cambiado
                                 print("")//uso del programador
                                 print("CURRENT")//uso del programador
                                 print(currentMunicipioNameOnLabel as Any)//municipio a buscar en el momento en el momento. uso del programador
                                 print(countOfIndexes)//variable que lleva cuenta regresiva de los indices hayados en un momento dado en el array. uso del programador
                                 print(currentIndex)//indice correspondiente al elemento(municipio a buscar) que se evalua en el momento. uso del programador
-                                print(" ")//. uso del programador
-                                
-                                //El siguiente bloque se encarga de los atributos generales que van a compartir todos labels que se desplegan sobre los skspritenodes correspondientes a los municipios en el mapa del juego
-                                locationNameLabel.text = municipioNameLabel.text
-                                locationNameLabel.fontName = "Helvetica"
-                                locationNameLabel.fontColor = UIColor.black
-                                locationNameLabel.xScale = -1.0
-                                locationNameLabel.zRotation = 9.44
-                                locationNameLabel.fontSize = 5.4
-                                firstLineLabel.fontName = "Helvetica"
-                                secondLineLabel.fontName = "Helvetica"
-                                firstLineLabel.fontSize = 5.4
-                                secondLineLabel.fontSize = 5.4
-                                firstLineLabel.fontColor = UIColor.black
-                                secondLineLabel.fontColor = UIColor.black
-                                firstLineLabel.xScale = -1.0
-                                secondLineLabel.xScale = -1.0
-                                firstLineLabel.zRotation = 9.44
-                                secondLineLabel.zRotation = 9.44
-                                
-                                //El switch statement se encarga de algunos atributos mas especificos(de un grupo de municipios o de uno, referente)de los labels que identifican en texto x municipio luego de ser identificado correctamente
-                                //La ejecuccion va a continuar en el case que corresponda o incluya el string con el mismo valor de municipioNameLabel.text
-                                switch municipioNameLabel.text {
-                                        
-                                    case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
-                                         "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
-                                        locationNameLabel.horizontalAlignmentMode = .center
-                                        locationNameLabel.verticalAlignmentMode = .center
-                                        
-                                    case "Camuy", "Aguadilla", "Juncos":
-                                        locationNameLabel.fontSize = 5.0
-                                        locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
+                                print(" ")//. uso del programador*/
+                            print(currentIndex)
+                            print(countOfIndexes)
+                        
+                            locationNameLabel.text = municipioNameLabel.text//Text atribute is pass to locationNameLabel to be used by one word municipios(except for Las Piedras and Las Marias) same
+                            
+                            
+                            //El switch statement se encarga de algunos atributos mas especificos(de un grupo de municipios o de uno, referente)de los labels que identifican en texto x municipio luego de ser identificado correctamente
+                            //La ejecuccion va a continuar en el case que corresponda o incluya el string con el mismo valor de municipioNameLabel.text
+                            switch municipioNameLabel.text {
+                                    
+                                case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
+                                     "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)//Attributes are set for label
+                                    locationNameLabel.horizontalAlignmentMode = .center
+                                    locationNameLabel.verticalAlignmentMode = .center
+                                    
+                                case "Camuy", "Aguadilla", "Juncos":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 5.0
+                                    locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
 
-                                    case "Cayey":
-                                        locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
-
-                                        
-                                    case "Isabela", "Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
-                                        locationNameLabel.fontSize = 5.0
-                                        locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
-                                        //locationNameLabel.zPosition = 1
-
-                                        
-                                    case "Hormigueros", "Maunabo" :
-                                        locationNameLabel.fontSize = 4.3
-                                        locationNameLabel.zRotation = 10.0
-                                        locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
-
-                                        
-                                    case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
-                                        locationNameLabel.fontSize = 5.0
-                                        locationNameLabel.zRotation = 10.5
-                                        locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
-
-                                        
-                                    case "Mayagüez":
-                                        locationNameLabel.fontSize = 5.4
-                                        locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
-
-                                        
-                                    case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
-                                        locationNameLabel.fontSize = 5.5
-                                        locationNameLabel.zRotation = 10.8
-                                        locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
-
-                                        
-                                    case "Guayanilla" :
-                                        locationNameLabel.fontSize = 5.5
-                                        locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
-                                        locationNameLabel.zRotation = 9.0
-
-                                        
-                                    case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
-                                        locationNameLabel.fontSize = 5.1
-                                        locationNameLabel.zRotation = 1.9
-                                        locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
-
-                                        
-                                    case "Florida" :
-                                        locationNameLabel.fontSize = 4.5
-                                        locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
-
-                                        
-                                    case  "Ciales", "Ceiba" :
-                                        locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
-
-                                        
-                                        
-                                    case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
-                                        locationNameLabel.fontSize = 4.9
-                                        locationNameLabel.zRotation = 2.3
-                                        locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
-
-                                        
-                                    case "Cataño":
-                                        locationNameLabel.fontSize = 4.0
-                                        locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
-
-                                        
-                                    case "Loíza" :
-                                        locationNameLabel.fontSize = 7.0
-                                        locationNameLabel.zRotation = 6.18
-                                        locationNameLabel.xScale = 1.0
-                                        locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
-
-                                        
-                                    case "Fajardo":
-                                        locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
-
-                                        
-                                    case "Guayama":
-                                        locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
-
-                                        
-                                    case "Vieques":
-                                        locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
-
-                                           
-                                        
-                                    case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
-                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                        secondLineLabel.verticalAlignmentMode = .top
-
-                                        
-                                    case "Sabana Grande" :
-                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                        firstLineLabel.fontSize = 5.0
-                                        secondLineLabel.fontSize = 5.0
-                                        firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
-                                        secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
-
-                                        
-                                    case "Vega Alta":
-                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                        firstLineLabel.position = CGPoint(x:2, y:0.5)
-                                        secondLineLabel.verticalAlignmentMode = .top
-
-                                        
-                                    case "Toa Baja":
-                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                        firstLineLabel.horizontalAlignmentMode = .right
-                                        secondLineLabel.verticalAlignmentMode = .top
-                                        secondLineLabel.horizontalAlignmentMode = .right
-
-                                        
-                                    case "Trujillo Alto" :
-                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                        firstLineLabel.fontSize = 5.5
-                                        secondLineLabel.fontSize = 5.5
-                                        firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
-                                        secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
-
-                                        
-                                    case "San Lorenzo"  :
-                                        firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
-                                        secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
-                                        secondLineLabel.position = CGPoint(x:4.5, y:6.0)
+                                case "Cayey":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
 
                                     
-                                        default:
-                                            break
-                                }
-                                
+                                case "Isabela", "Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 5.0
+                                    locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+                                    //locationNameLabel.zPosition = 1
 
-                                //Este if statement ejecuta siempre que currentIndex y countOfIndexes son distintos
-                                if currentIndex != countOfIndexes{
-                                    if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{//Corrobora que el municipio a eliminarse del array
-                                        let elementRemoved = municipios_names_array.remove(at:currentIndex)//remueve elemento identificado en el indice al momento(que es el municipio a buscar)
-                                        //countIndex = countIndex - 1// Remueve un indice de la cuenta indexada
-                                        print("CHANGE")//. uso del programador
-                                        countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
-                                        //scoreCount += 1
-                                        //labelScores.text = "\(scoreCount)" + totalScoreCount
-                                        
-                                        //reconteo para uso del programador
-                                        for index in municipios_names_array {
-                                            if index != ""{
-                                                countOfIndexes += 1
-                                            }
-                                        }
-                                        print(countOfIndexes)//. uso del programador
-                                        print(currentIndex)//. uso del programador
-                                        print("")//. uso del programador
-                                        print(elementRemoved)//. uso del programador
-                                        print(municipios_names_array)//. uso del programador
-                                        print("ACA")//. uso del programador
-                                        
-                                    }
-                                }
-                                
-                                /*Este else if ejecuta solo cuando currentIndex y countOfIndexes son iguales pero mayor o igual a 1. Esto solo va a ocurrir si se presiona el boton de skip lo que mueve el index adelante cuando en el transcurso del juego alcanzamos el ultimo elemento en orden natural vamos a observar que ambas variables van a tener el mismo valor (que equivale al numero de municipios saltados previamente), tambien esto nos indica que el currentIndex se movera proximamente al index 0.
-                                */
-                                else if currentIndex == countOfIndexes && currentIndex >= 1 && countOfIndexes >= 1{/*Esta condicion se cumple cuando alcanzamos el fin del array, pero quedan elementos en la posiciones anteriores a currentIndex, de mode
-                                     que currentIndex vuelve a 0 para ir sobre el resto de los elementos que van quedando atras en el queue luego que oprimimos el skipButton*/
-                                    if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
-                                        let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                                        currentIndex = 0/*Cuando la ejecucion entra en este bloque quiere decir que el programa llego al ultimo indice, de modo que vuelve al indice 0 para volver sobre los municipios que no pudieron ser identificados
-                                        durante el recorrido anterior a lo largo del array */
-                                        print("CHANGE")//. uso del programador
-                                        countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
-
-                                        //reconteo para uso del programador
-                                       for index in municipios_names_array {
-                                            if index != ""{
-                                                countOfIndexes += 1
-                                            }
-                                        }
-                                        print(countOfIndexes)//. uso del programador
-                                        print(currentIndex)//. uso del programador
-                                        print("")//. uso del programador
-                                        print(elementRemoved)//. uso del programador
-                                        print(municipios_names_array)//. uso del programador
-                                        print("AQUI")//. uso del programador
-                                    }
-                                   
-                                }
-                                
                                     
-                                //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
-                                else{
-                                    //run(fanfair)
-                                    goldBackgroundSKSpriteNode.removeFromParent()
-                                    timerBackground.removeFromParent()
-                                    labelTimer.removeFromParent()
-                                    //self.addChild(endGameRectangle)
-                                    StartScene.completedGame = true//Se actualiza la variable completedGame para detener el reloj
-                                    /*self.removeFromParent()
-                                    self.removeAllActions()
-                                    let gameOverScene = GameOverScene(size: self.size)
-                                    //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
-                                    self.view?.presentScene(gameOverScene/*, transition: transition*/)*/
-                                    //secondsandMinutesRetrieved = true
-                                    //EL restante del bloque es para uso del pro\gramador
-                                    print("CHANGE")//. uso del programador
+                                case "Hormigueros", "Maunabo" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 4.3
+                                    locationNameLabel.zRotation = 10.0
+                                    locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
+
+                                    
+                                case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 5.0
+                                    locationNameLabel.zRotation = 10.5
+                                    locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
+
+                                    
+                                case "Mayagüez":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 5.4
+                                    locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
+
+                                    
+                                case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 5.5
+                                    locationNameLabel.zRotation = 10.8
+                                    locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
+
+                                    
+                                case "Guayanilla" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 5.5
+                                    locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
+                                    locationNameLabel.zRotation = 9.0
+
+                                    
+                                case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 5.1
+                                    locationNameLabel.zRotation = 1.9
+                                    locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
+
+                                    
+                                case "Florida" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 4.5
+                                    locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+
+                                    
+                                case  "Ciales", "Ceiba" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
+
+                                    
+                                    
+                                case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 4.9
+                                    locationNameLabel.zRotation = 2.3
+                                    locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
+
+                                    
+                                case "Cataño":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 4.0
+                                    locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
+
+                                    
+                                case "Loíza" :
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.fontSize = 7.0
+                                    locationNameLabel.zRotation = 6.18
+                                    locationNameLabel.xScale = 1.0
+                                    locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
+
+                                    
+                                case "Fajardo":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
+
+                                    
+                                case "Guayama":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
+
+                                    
+                                case "Vieques":
+                                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                                    locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
+
+                                       
+                                    
+                                case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
+                                    setTwoLineMunicipioNameLabels(firstLine:firstLineLabel, secondLine:secondLineLabel)//Attributes are set for label
+                                    firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                    secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                    secondLineLabel.verticalAlignmentMode = .top
+
+                                    
+                                case "Sabana Grande" :
+                                    setTwoLineMunicipioNameLabels(firstLine:firstLineLabel, secondLine:secondLineLabel)
+                                    firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                    secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                    firstLineLabel.fontSize = 5.0
+                                    secondLineLabel.fontSize = 5.0
+                                    firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
+                                    secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
+
+                                    
+                                case "Vega Alta":
+                                    setTwoLineMunicipioNameLabels(firstLine:firstLineLabel, secondLine:secondLineLabel)
+                                    firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                    secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                    firstLineLabel.position = CGPoint(x:2, y:0.5)
+                                    secondLineLabel.verticalAlignmentMode = .top
+
+                                    
+                                case "Toa Baja":
+                                    setTwoLineMunicipioNameLabels(firstLine:firstLineLabel, secondLine:secondLineLabel)
+                                    firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                    secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                    firstLineLabel.horizontalAlignmentMode = .right
+                                    secondLineLabel.verticalAlignmentMode = .top
+                                    secondLineLabel.horizontalAlignmentMode = .right
+
+                                    
+                                case "Trujillo Alto" :
+                                    setTwoLineMunicipioNameLabels(firstLine:firstLineLabel, secondLine:secondLineLabel)
+                                    firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                    secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                    firstLineLabel.fontSize = 5.5
+                                    secondLineLabel.fontSize = 5.5
+                                    firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
+                                    secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
+
+                                    
+                                case "San Lorenzo"  :
+                                    setTwoLineMunicipioNameLabels(firstLine:firstLineLabel, secondLine:secondLineLabel)
+                                    firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel)
+                                    secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel)
+                                    secondLineLabel.position = CGPoint(x:4.5, y:6.0)
+
+                                
+                                    default:
+                                        break
+                            }
+                            
+
+                            //Este if statement ejecuta siempre que currentIndex y countOfIndexes son distintos
+                            if currentIndex != countOfIndexes{
+                                if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{//Corrobora que el municipio a eliminarse del array
+                                    /*let elementRemoved =*/ municipios_names_array.remove(at:currentIndex)//remueve elemento identificado en el indice al momento(que es el municipio a buscar)
+                                    //countIndex = countIndex - 1// Remueve un indice de la cuenta indexada
+                                    /**print("CHANGE")//. uso del programador
                                     countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
                                     //scoreCount += 1
                                     //labelScores.text = "\(scoreCount)" + totalScoreCount
-                                    //reconteo uso del programador
+                                    
+                                    //reconteo para uso del programador
                                     for index in municipios_names_array {
                                         if index != ""{
                                             countOfIndexes += 1
@@ -1443,53 +875,103 @@ class StartScene: SKScene{
                                     print(countOfIndexes)//. uso del programador
                                     print(currentIndex)//. uso del programador
                                     print("")//. uso del programador
+                                    print(elementRemoved)//. uso del programador
                                     print(municipios_names_array)//. uso del programador
-                                    print("completed game")
-                                } 
-                                
-                                 //Aqui van a entrar la ejecucion cuando el municipio identificado utiliza dos labels para acomodar el nombre(localidad del mapa)
-                                if(useLine2 == true){
-                                    spriteNode.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
-                                    spriteNode.addChild(secondLineLabel)
-                                    municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
-                                    print(municipioNameLabel.text as Any)//Para uso del programador
-                                    municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
-                                    useLine2 = false
-                                        
+                                    print("ACA")//. uso del programador*/
+                                    
                                 }
-                                //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
-                                else{
-                                    spriteNode.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
-                                    municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
-                                    print(municipioNameLabel.text as Any)//Para uso del programador
-                                    municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
-
-                                }
-                                
-                                /*if completedGame == true{
-                                    let gameOverScene = GameOverScene(size: self.size)
-                                    let transition = SKTransition.fade(withDuration: 0.1)//withDuration: 1.5)
-                                    self.view?.presentScene(gameOverScene, transition: transition)
-                                }*/
-                                
-                                /*Aqui se estaria ejecutando el label para los scores*/
-                                scoreCount += 1
-                                labelScores.text = "\(scoreCount)" + totalScoreCount//totalScoreCount es un constant string solo sirve al rendering del score
-                                
-
-                                /*La siguiente condicion es cierta cuando la variable countOfIndexes == 1(osea que restan dos indices el 0 y 1) y currentIndex se encuentra en 0 o primer indice que es donde se encuentra el penultimo indice(elemento) que a este punto ya fue removido en el bloque anterior. Pero dado que la variable countOfIndexes actualiza en la proxima iteracion para los efectos de(la presente iteracion) quedan dos elementos y es lo que permite crear esta condicion de modo que junto al penultimo elemento(removido en bloques anteriores) tambien removemos el boton de skip en este bloque. Lo importante es entender que cuando se cumple esta condicion(para eliminar el skip button) ya se ha removido el penultimo elemento y que tanto la remocion del penultimo elemento como la remocion del skip button ocurren en una misma iteracion */
-                                /*OJO UTILIZO countofIndexesTwo solo y exclusivamente en esta funcion cuando estoy utilizando los print() statements del programador,
-                                de lo contrario comento todos los statements del programador y utilizo la variable countOfIndexes*/
-                                if countOfIndexesTwo == 1 && currentIndex == 0 && municipios_names_array.endIndex-1 == 0 {
-                                    print("skip button out")
-                                    skipButton.removeFromParent()
-                                }
-                                /*if completedGame == true{
-                                    let gameOverScene = GameOverScene(size: self.size)
-                                    let transition = SKTransition.fade(withDuration: 1.0)//withDuration: 1.5)
-                                    self.view?.presentScene(gameOverScene, transition: transition)
-                                }*/
                             }
+                            
+                            /*Este else if ejecuta solo cuando currentIndex y countOfIndexes son iguales pero mayor o igual a 1. Esto solo va a ocurrir si se presiona el boton de skip lo que mueve el index adelante cuando en el transcurso del juego alcanzamos el ultimo elemento en orden natural vamos a observar que ambas variables van a tener el mismo valor (que equivale al numero de municipios saltados previamente), tambien esto nos indica que el currentIndex se movera proximamente al index 0.
+                            */
+                            else if currentIndex == countOfIndexes && currentIndex >= 1 && countOfIndexes >= 1{/*Esta condicion se cumple cuando alcanzamos el fin del array, pero quedan elementos en la posiciones anteriores a currentIndex, de mode
+                                 que currentIndex vuelve a 0 para ir sobre el resto de los elementos que van quedando atras en el queue luego que oprimimos el skipButton*/
+                                if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
+                                    /*let elementRemoved =*/ municipios_names_array.remove(at:currentIndex)
+                                    currentIndex = 0/*Cuando la ejecucion entra en este bloque quiere decir que el programa llego al ultimo indice, de modo que vuelve al indice 0 para volver sobre los municipios que no pudieron ser identificados
+                                    durante el recorrido anterior a lo largo del array */
+                                    /**print("CHANGE")//. uso del programador
+                                    countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+
+                                    //reconteo para uso del programador
+                                   for index in municipios_names_array {
+                                        if index != ""{
+                                            countOfIndexes += 1
+                                        }
+                                    }
+                                    print(countOfIndexes)//. uso del programador
+                                    print(currentIndex)//. uso del programador
+                                    print("")//. uso del programador
+                                    print(elementRemoved)//. uso del programador
+                                    print(municipios_names_array)//. uso del programador
+                                    print("AQUI")//. uso del programador*/
+                                }
+                               
+                            }
+                            
+                                
+                            //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
+                            else{
+                                //run(fanfair)
+                                goldBackgroundSKSpriteNode.removeFromParent()
+                                timerBackground.removeFromParent()
+                                labelTimer.removeFromParent()
+                                //self.addChild(endGameRectangle)
+                                StartScene.completedGame = true//Se actualiza la variable completedGame para detener el reloj
+                                
+                                //EL restante del bloque es para uso del pro\gramador
+                                /***print("CHANGE")//. uso del programador
+                                countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+                                //scoreCount += 1
+                                //labelScores.text = "\(scoreCount)" + totalScoreCount
+                                //reconteo uso del programador
+                                for index in municipios_names_array {
+                                    if index != ""{
+                                        countOfIndexes += 1
+                                    }
+                                }
+                                print(countOfIndexes)//. uso del programador
+                                print(currentIndex)//. uso del programador
+                                print("")//. uso del programador
+                                print(municipios_names_array)//. uso del programador
+                                print("completed game")*/
+                            }
+                            
+                             //Aqui van a entrar la ejecucion cuando el municipio identificado utiliza dos labels para acomodar el nombre(localidad del mapa)
+                            if(useLine2 == true){
+                                spriteNode.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+                                spriteNode.addChild(secondLineLabel)
+                                municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                /**print(municipioNameLabel.text as Any)//Para uso del programador*/
+                                municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
+                                useLine2 = false
+                                    
+                            }
+                            //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
+                            else{
+                                spriteNode.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+                                municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                /**print(municipioNameLabel.text as Any)//Para uso del programador*/
+                                municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
+
+                            }
+                            
+                            /*Aqui se estaria ejecutando el label para los scores*/
+                            scoreCount += 1
+                            labelScores.text = "\(scoreCount)" + totalScoreCount//totalScoreCount es un constant string solo sirve al rendering del score
+                            
+
+                            /*La siguiente condicion es cierta cuando la variable countOfIndexes == 1(osea que restan dos indices el 0 y 1) y currentIndex se encuentra en 0 o primer indice que es donde se encuentra el penultimo indice(elemento) que a este punto ya fue removido en el bloque anterior. Pero dado que la variable countOfIndexes actualiza en la proxima iteracion para los efectos de(la presente iteracion) quedan dos elementos y es lo que permite crear esta condicion de modo que junto al penultimo elemento(removido en bloques anteriores) tambien removemos el boton de skip en este bloque. Lo importante es entender que cuando se cumple esta condicion(para eliminar el skip button) ya se ha removido el penultimo elemento y que tanto la remocion del penultimo elemento como la remocion del skip button ocurren en una misma iteracion */
+                            /*OJO UTILIZO countofIndexesTwo solo y exclusivamente en esta funcion cuando estoy utilizando los print() statements del programador,
+                            de lo contrario comento todos los statements del programador y utilizo la variable countOfIndexes*/
+                            if  countOfIndexes == 1 && currentIndex == 0 && municipios_names_array.endIndex-1 == 0 {
+                                print("skip button out")
+                                skipButton.removeFromParent()
+                                //print(countOfIndexes)
+                                //print(countOfIndexesTwo)
+                            }
+                                
+                            //}
 
                         }
                                 
@@ -1503,12 +985,7 @@ class StartScene: SKScene{
                 currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
                 skipButton.alpha = 0.9//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
                 skipButtonPressed = true
-                /*if have == false{
-                    skipButton.alpha = 0.5
-                    //let scale = SKAction.scale(to: 0.174, duration: 0)
-                    //skipButton.run(scale)
-                    have = true
-                }*/
+                
                 if currentIndex == municipios_names_array.endIndex-0{//Si el indice llega al ultimo elemento el index se devuelve al 0 para comenzar a iterar los municipios que no fueron identificados en la pasada anterior del juego
                     print("This")//para programador
                     currentIndex = 0//resetea el index al lugar 0 cuando presionando el skip button alcanzamos el ultimo indice
@@ -1527,18 +1004,6 @@ class StartScene: SKScene{
                 self.view?.presentScene(startMenuScene)/*present scene and execut transitions*/
             }
             
-            /*else if (endGameRectangleButton.name == touchedNode?.node?.name){
-                endGameRectangle.removeFromParent()
-                self.addChild(resultadosButton)
-
-            }
-                
-            else if (resultadosButton.name == touchedNode?.node?.name){
-                resultadosButton.removeFromParent()
-                self.addChild(endGameRectangle)
-
-            }*/
-
                         
             //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
             else{
@@ -1550,29 +1015,30 @@ class StartScene: SKScene{
             }
             
         }
-        /*Este bloque maneja el toque de pantalla para el skip button si utilizamos una imagen dado que no funciona como SpriteNode dado que el toque de pantalla es atrapado por los labels
-         y la unica manera que encontre para manejar el toque de pantalla fue asignandole al SKSpriteNode un SKPhysics body, por ende el que se haya movido el bloque arriba dentro del scope
-         que maneja el toque de pantalla para SKPhysics bodies*/
-        /*else if atPoint(touchLocation) == skipButton {
-            currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
-            skipButton.alpha = 1.0//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
-            /*if have == false{
-                skipButton.alpha = 0.5
-                //let scale = SKAction.scale(to: 0.174, duration: 0)
-                //skipButton.run(scale)
-                have = true
-            }*/
-            if currentIndex == municipios_names_array.endIndex-0{//Si el indice llega al ultimo elemento el index se devuelve al 0 para comenzar a iterar los municipios que no fueron identificados en la pasada anterior del juego
-                print("This")//para programador
-                currentIndex = 0//resetea el index al lugar 0 cuando presionando el skip button alcanzamos el ultimo indice
-            }
-            pressSKipButton = true
-            municipioNameLabel.text = municipios_names_array[currentIndex]
-            municipiosNameBackground.size = municipioNameLabel.frame.size
-            print("Skip Button touched")
-        }*/
         
+    }
+    
+    func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
+        //Oneline.text = municipioNameLabel.text
+        Oneline.fontName = "Helvetica"
+        Oneline.fontColor = UIColor.black
+        Oneline.xScale = -1.0
+        Oneline.zRotation = 9.44
+        Oneline.fontSize = 5.4
+    }
+    
+    func setTwoLineMunicipioNameLabels(firstLine:SKLabelNode, secondLine:SKLabelNode){
         
+        firstLine.fontName = "Helvetica"
+        secondLine.fontName = "Helvetica"
+        firstLine.fontSize = 5.4
+        secondLine.fontSize = 5.4
+        firstLine.fontColor = UIColor.black
+        secondLine.fontColor = UIColor.black
+        firstLine.xScale = -1.0
+        secondLine.xScale = -1.0
+        firstLine.zRotation = 9.44
+        secondLine.zRotation = 9.44
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -1595,6 +1061,7 @@ class StartScene: SKScene{
     //Las dos proximas funciones son identicas con la diferencia de que devuelven cada una por su parte una variable diferente
     func splitTextIntoFields(theText:SKLabelNode)->String{
         useLine2 = false//Esta linea resetea la variable que es necesario para no crear redundancia cuando se pasa el texto a label(ej:aguas aguas buenas)
+        //var twoLineText: String = ""
         twoLineText = theText.text!//texto que necesitamos dividir en dos lineas
         //var i: Int = 0
         var line1:String = ""//declaracion de las variables que se van a devolver
@@ -1620,6 +1087,7 @@ class StartScene: SKScene{
     
     func splitTextIntoFieldsTwo(theText:SKLabelNode)->String{
         useLine2 = false
+        //var twoLineText: String = ""
         twoLineText = theText.text!
         //var i: Int = 0
         var line1:String = ""

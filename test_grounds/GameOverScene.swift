@@ -71,7 +71,7 @@ class GameOverScene: SKScene{
         resultadosButton = StartMenuMethods().redButtonBpDrawToSKSpriteNode()
         resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
         
-        let coverDesecheoIslandSKSpriteNode: SKSpriteNode = StartScene().desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
+        let coverDesecheoIslandSKSpriteNode: SKSpriteNode = TestClass().desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.
         containerNode.addChild(coverDesecheoIslandSKSpriteNode)
         
         let rectanglebp:UIBezierPath! = TestClass().createRectangle()
