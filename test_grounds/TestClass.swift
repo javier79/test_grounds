@@ -93,6 +93,90 @@ class TestClass {
     var viequesBezierPath:UIBezierPath!
     var culebraBezierPath:UIBezierPath!*/
     
+    //Parent goldenBackground
+    /* func labelMunicipiosNameBackground() -> SKSpriteNode{
+         let background = SKSpriteNode()
+         background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
+         background.size = CGSize(width:CGFloat(110), height:CGFloat(23))//90/20
+         background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
+         //background.size = municipioNameLabel.frame.size
+         //background.addChild(labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel))
+         //background.zPosition = 5
+         return background
+     }*/
+     
+     func labelMunicipiosNameBackground() -> SKSpriteNode{
+         //Drawing to Shapenode
+         let shapeNode = SKShapeNode(path:labelMunicipiosNameBackgroundBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
+         shapeNode.strokeColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+         shapeNode.lineWidth = 0.5
+         shapeNode.fillColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+         //Shapenode To SKSpriteNode
+         let view = SKView(frame: UIScreen.main.bounds)
+         let texture = view.texture(from: shapeNode)!
+         let backgroundForMunicipiosNameLabel = SKSpriteNode(texture: texture)
+         //backgroundForMunicipiosNameLabel.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
+         backgroundForMunicipiosNameLabel.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
+         
+         return backgroundForMunicipiosNameLabel
+     }
+     
+     func labelMunicipiosNameBackgroundBp()->UIBezierPath{
+         var path = UIBezierPath()
+         // Specify the point that the path should start get drawn.
+         path.move(to: CGPoint(x: 0.0, y: 0.0))
+         // Create a line between the starting point and the bottom-left side of the view.
+         path.addLine(to: CGPoint(x: 0.0, y:20))
+         // Create the bottom line (bottom-left to bottom-right).
+         path.addLine(to: CGPoint(x:90 , y:20))
+         //Create the vertical line from the bottom-right to the top-right side.
+         path.addLine(to: CGPoint(x:90, y: 0.0))
+         // Close the path. This will create the last line automatically.
+         path.close()
+           
+         path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 7.0)//Esta linea trabaja el curveado de las esquinas
+
+         
+         return path
+         
+     }
+    
+    func labelMunicipiosNameBackgroundTwo() -> SKSpriteNode{
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:labelMunicipiosNameBackgroundTwoBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
+        shapeNode.strokeColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+        shapeNode.lineWidth = 0.5
+        shapeNode.fillColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let backgroundForMunicipiosNameLabel = SKSpriteNode(texture: texture)
+        //backgroundForMunicipiosNameLabel.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
+        backgroundForMunicipiosNameLabel.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
+        
+        return backgroundForMunicipiosNameLabel
+    }
+    
+    func labelMunicipiosNameBackgroundTwoBp()->UIBezierPath{
+        var path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:20))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:130 , y:20))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:130, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 7.0)//Esta linea trabaja el curveado de las esquinas
+
+        
+        return path
+        
+    }
+    
     func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
         let desecheoCover = SKSpriteNode()
         desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
@@ -1791,6 +1875,8 @@ class TestClass {
         // Close the path. This will create the last line automatically.
         path.close()
         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 4.0)
+        
         return path
     }
     
@@ -1813,6 +1899,9 @@ class TestClass {
         // Close the path. This will create the last line automatically.
         path.close()
         
+        
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)
+        
         return path
     }
     
@@ -1834,6 +1923,8 @@ class TestClass {
       
         // Close the path. This will create the last line automatically.
         path.close()
+        
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 2.0)
         
         //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)
         //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))

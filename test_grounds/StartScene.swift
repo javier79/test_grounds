@@ -21,7 +21,8 @@ class StartScene: SKScene{
     var labelTimer = SKLabelNode()//se usa en mas de una funcion
     var labelScores = SKLabelNode()
     var timerBackground = SKSpriteNode()//se usa en mas de una funcion
-    var municipiosNameBackground = SKSpriteNode()//se usa en mas de una funcion
+    let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//se usa en mas de una funcion
+    let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()
     
     var renderTime: TimeInterval = 0.0//esta solo se usa en la funcion del reloj
     let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
@@ -82,7 +83,9 @@ class StartScene: SKScene{
         timerBackground = timerLabelBackground()
         
         municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
-        municipiosNameBackground = labelMunicipiosNameBackground()
+        //municipiosNameBackground = labelMunicipiosNameBackground()
+        
+        
         
         skipButton = skipBlueButton()
         exitRedButton = redButton()
@@ -338,22 +341,14 @@ class StartScene: SKScene{
         NameMunicipioLabel.fontSize = 18
         NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
         NameMunicipioLabel.text = "Adjuntas"
-        municipiosNameBackground.size = NameMunicipioLabel.frame.size
+        //municipiosNameBackground.size = NameMunicipioLabel.frame.size
         //NameMunicipioLabel.zPosition = 2
         return NameMunicipioLabel
     }
     
-    //Parent goldenBackground
-    func labelMunicipiosNameBackground() -> SKSpriteNode{
-        let background = SKSpriteNode()
-        background.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
-        background.size = CGSize(width:CGFloat(75), height:CGFloat(17))
-        background.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
-        background.size = municipioNameLabel.frame.size
-        //background.addChild(labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel))
-        //background.zPosition = 5
-        return background
-    }
+    
+    
+    
     
     //funcion crea skipButton
     func skipBlueButton()-> SKSpriteNode {
@@ -942,8 +937,29 @@ class StartScene: SKScene{
                                 spriteNode.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
                                 spriteNode.addChild(secondLineLabel)
                                 municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                if municipioNameLabel.text == "Aguas Buenas" || municipioNameLabel.text == "Barceloneta" || municipioNameLabel.text == "Barranquitas" || municipioNameLabel.text == "Cabo Rojo"
+                                || municipioNameLabel.text == "Canóvanas" || municipioNameLabel.text == "Guayanilla" || municipioNameLabel.text == "Guaynabo" || municipioNameLabel.text == "Hormigueros"
+                                || municipioNameLabel.text == "Juana Díaz" || municipioNameLabel.text == "Las Marías" || municipioNameLabel.text == "Las Piedras" || municipioNameLabel.text == "Mayagüez"
+                                || municipioNameLabel.text == "Quebradillas" || municipioNameLabel.text == "Rio Grande" || municipioNameLabel.text == "Sabana Grande" || municipioNameLabel.text == "San Germán"
+                                || municipioNameLabel.text == "San Lorenzo" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Santa Isabel" || municipioNameLabel.text == "Trujillo Alto"{
+                                    if municipiosNameBackgroundTwo.parent == nil{
+                                    municipioNameLabel.removeFromParent()
+                                    municipiosNameBackground.removeFromParent()
+                                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                                    addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackgroundTwo)
+                                    }
+                                    //if else municipiosNameBackgroundTwo.parent
+                                }
+                                else {
+                                    if municipiosNameBackground.parent == nil{
+                                    municipioNameLabel.removeFromParent()
+                                    municipiosNameBackgroundTwo.removeFromParent()
+                                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
+                                    addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
+                                    }
+                                }
                                 /**print(municipioNameLabel.text as Any)//Para uso del programador*/
-                                municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
+                                //municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
                                 useLine2 = false
                                     
                             }
@@ -951,8 +967,29 @@ class StartScene: SKScene{
                             else{
                                 spriteNode.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
                                 municipioNameLabel.text = municipios_names_array [currentIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+                                if municipioNameLabel.text == "Aguas Buenas" || municipioNameLabel.text == "Barceloneta" || municipioNameLabel.text == "Barranquitas" || municipioNameLabel.text == "Cabo Rojo"
+                                || municipioNameLabel.text == "Canóvanas" || municipioNameLabel.text == "Guayanilla" || municipioNameLabel.text == "Guaynabo" || municipioNameLabel.text == "Hormigueros"
+                                || municipioNameLabel.text == "Juana Díaz" || municipioNameLabel.text == "Las Marías" || municipioNameLabel.text == "Las Piedras" || municipioNameLabel.text == "Mayagüez"
+                                || municipioNameLabel.text == "Quebradillas" || municipioNameLabel.text == "Rio Grande" || municipioNameLabel.text == "Sabana Grande" || municipioNameLabel.text == "San Germán"
+                                || municipioNameLabel.text == "San Lorenzo" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Santa Isabel" || municipioNameLabel.text == "Trujillo Alto"{
+                                    if municipiosNameBackgroundTwo.parent == nil{
+                                    municipioNameLabel.removeFromParent()
+                                    municipiosNameBackground.removeFromParent()
+                                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                                    addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackgroundTwo)
+                                    }
+                                    //if else municipiosNameBackgroundTwo.parent
+                                }
+                                else {
+                                    if municipiosNameBackground.parent == nil{
+                                    municipioNameLabel.removeFromParent()
+                                    municipiosNameBackgroundTwo.removeFromParent()
+                                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
+                                    addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
+                                    }
+                                }
                                 /**print(municipioNameLabel.text as Any)//Para uso del programador*/
-                                municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
+                                //municipiosNameBackground.size = municipioNameLabel.frame.size//Permite que el background del label reajuste su tamano de acuerdo al largo del label()
 
                             }
                             
