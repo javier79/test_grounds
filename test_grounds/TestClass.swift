@@ -141,6 +141,78 @@ class TestClass {
          
      }
     
+    func timerBackGroundBorder() -> SKSpriteNode{
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:timerBackGroundBorderBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
+        shapeNode.lineWidth = 0.5
+        shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//c1d3c8
+        //shapeNode.fillColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let timerBackground = SKSpriteNode(texture: texture)
+        //backgroundForMunicipiosNameLabel.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
+        timerBackground.position = CGPoint(x:333.5, y:89.5)
+        
+        return timerBackground
+    }
+    
+    func timerBackGroundBorderBp()->UIBezierPath{
+        let path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:17))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:36.1, y:17))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:36.1, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 7.0)//Esta linea trabaja el curveado de las esquinas
+
+        
+        return path
+        
+    }
+    
+    func timerBackGroundBorderTwo() -> SKSpriteNode{
+        //Drawing to Shapenode
+        let shapeNode = SKShapeNode(path:timerBackGroundBorderTwoBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
+        shapeNode.lineWidth = 0.5
+        shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//c1d3c8
+        //shapeNode.fillColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+        //Shapenode To SKSpriteNode
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let timerBackground = SKSpriteNode(texture: texture)
+        //backgroundForMunicipiosNameLabel.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
+        timerBackground.position = CGPoint(x:333.5, y:89.5)
+        
+        return timerBackground
+    }
+    
+    func timerBackGroundBorderTwoBp()->UIBezierPath{
+        let path = UIBezierPath()
+        // Specify the point that the path should start get drawn.
+        path.move(to: CGPoint(x: 0.0, y: 0.0))
+        // Create a line between the starting point and the bottom-left side of the view.
+        path.addLine(to: CGPoint(x: 0.0, y:17))
+        // Create the bottom line (bottom-left to bottom-right).
+        path.addLine(to: CGPoint(x:45, y:17))
+        //Create the vertical line from the bottom-right to the top-right side.
+        path.addLine(to: CGPoint(x:45, y: 0.0))
+        // Close the path. This will create the last line automatically.
+        path.close()
+          
+        //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 7.0)//Esta linea trabaja el curveado de las esquinas
+
+        
+        return path
+        
+    }
+    
     func labelMunicipiosNameBackgroundTwo() -> SKSpriteNode{
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:labelMunicipiosNameBackgroundTwoBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode

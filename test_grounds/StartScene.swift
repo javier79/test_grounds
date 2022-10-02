@@ -14,13 +14,16 @@ import AVFoundation
 
 class StartScene: SKScene{
     
-    var skipButton = SKSpriteNode()//la declare universalmente temporeramente
-    var exitRedButton = SKSpriteNode()
+    var skipButton = SKSpriteNode()//se usa en varias funciones
+    var exitRedButton = SKSpriteNode()//se usa en varias funciones
     
     var containerNode = SKNode()//se usa en mas de una funcion
     var labelTimer = SKLabelNode()//se usa en mas de una funcion
     var labelScores = SKLabelNode()
     var timerBackground = SKSpriteNode()//se usa en mas de una funcion
+    var timerBackgroundTwo = SKSpriteNode()
+    let timerBackgroundBorder = TestClass().timerBackGroundBorder()
+    let timerBackgroundBorderTwo = TestClass().timerBackGroundBorderTwo()
     let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//se usa en mas de una funcion
     let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()
     
@@ -81,6 +84,7 @@ class StartScene: SKScene{
         labelScores = labelForScores(ScoresLabel:labelScores)
         labelTimer = labelForTimer(TimerLabel: labelTimer)
         timerBackground = timerLabelBackground()
+        timerBackgroundTwo = timerLabelBackgroundTwo()
         
         municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
         //municipiosNameBackground = labelMunicipiosNameBackground()
@@ -105,6 +109,7 @@ class StartScene: SKScene{
         addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
         //self.addChild(goldBackgroundSKSpriteNode)
         addChildSKSpriteNodeToParentself(children: timerBackground)
+        addChildSKSpriteNodeToParentself(children: timerBackgroundBorder)
         //self.addChild(timerBackground)
         addChildSKLabelNodeToParentself(children: labelTimer)
         //self.addChild(labelTimer)
@@ -322,7 +327,7 @@ class StartScene: SKScene{
         TimerLabel.position = CGPoint(x: 333.5, y:82.5)
         TimerLabel.zPosition = 2
         TimerLabel.fontName = "Arial"
-        TimerLabel.fontSize = 18
+        TimerLabel.fontSize = 16
         TimerLabel.fontColor = SKColor.red
         return TimerLabel
     }
@@ -330,6 +335,15 @@ class StartScene: SKScene{
     func timerLabelBackground() -> SKSpriteNode{
         let background = SKSpriteNode()
         background.color = UIColor.lightGray
+        background.size = CGSize(width: 36.1, height:17)
+        background.position = CGPoint(x:333.5, y:89.5)
+        return background
+    }
+    
+    func timerLabelBackgroundTwo() -> SKSpriteNode{
+        let background = SKSpriteNode()
+        background.color = UIColor.lightGray
+        background.size = CGSize(width:45, height:17)
         background.position = CGPoint(x:333.5, y:89.5)
         return background
     }
@@ -567,12 +581,18 @@ class StartScene: SKScene{
                         labelTimer.text = "\(minutesText):\(secondsText)"
                         //timerBackground.size = labelTimer.frame.size
                         if minutes == 1{//ajusta la apariencia del label/background cuando los minutos utilizan un solo lugar que solo ocurre de 1 al minuto 9
-                            timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 0:00
+                            timerBackgroundBorder.removeFromParent()
+                            timerBackground.removeFromParent()
+                            addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
+                            addChildSKSpriteNodeToParentself(children: timerBackgroundBorderTwo)
+                            
+                            
                         }
                     
-                        else if minutes == 10{// ajusts la apariencia de el label/background para cuando los minutos usan dos lugares que ocurre de los 10 minutos en adelante obviamente.
-                            timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
-                        }
+                        /*else if minutes == 10{// ajusts la apariencia de el label/background para cuando los minutos usan dos lugares que ocurre de los 10 minutos en adelante .
+                            //timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
+                            
+                        }*/
                     
                         
                     }
@@ -589,7 +609,7 @@ class StartScene: SKScene{
                     let secondsText = (seconds < 10) ?
                     "0\(seconds)" : "\(seconds)"
                     labelTimer.text = "\(secondsText)"
-                    timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
+                    //timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
                     print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
                     
                     //Solo para uso del programador no es parte del app perce
@@ -1029,7 +1049,28 @@ class StartScene: SKScene{
                 }
                 pressSKipButton = true
                 municipioNameLabel.text = municipios_names_array[currentIndex]
-                municipiosNameBackground.size = municipioNameLabel.frame.size
+                if municipioNameLabel.text == "Aguas Buenas" || municipioNameLabel.text == "Barceloneta" || municipioNameLabel.text == "Barranquitas" || municipioNameLabel.text == "Cabo Rojo"
+                || municipioNameLabel.text == "Canóvanas" || municipioNameLabel.text == "Guayanilla" || municipioNameLabel.text == "Guaynabo" || municipioNameLabel.text == "Hormigueros"
+                || municipioNameLabel.text == "Juana Díaz" || municipioNameLabel.text == "Las Marías" || municipioNameLabel.text == "Las Piedras" || municipioNameLabel.text == "Mayagüez"
+                || municipioNameLabel.text == "Quebradillas" || municipioNameLabel.text == "Rio Grande" || municipioNameLabel.text == "Sabana Grande" || municipioNameLabel.text == "San Germán"
+                || municipioNameLabel.text == "San Lorenzo" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Santa Isabel" || municipioNameLabel.text == "Trujillo Alto"{
+                    if municipiosNameBackgroundTwo.parent == nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackground.removeFromParent()
+                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                    addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackgroundTwo)
+                    }
+                    //if else municipiosNameBackgroundTwo.parent
+                }
+                else {
+                    if municipiosNameBackground.parent == nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundTwo.removeFromParent()
+                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
+                    addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
+                    }
+                }
+                //municipiosNameBackground.size = municipioNameLabel.frame.size
                 print("Skip Button touched")
             }
             
