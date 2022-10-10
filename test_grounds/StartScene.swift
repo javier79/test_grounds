@@ -10,18 +10,16 @@ import SpriteKit
 //import UIKit
 import AVFoundation
 
-
-
 class StartScene: SKScene{
     
-    var skipButton = SKSpriteNode()//se usa en varias funciones
-    var exitRedButton = SKSpriteNode()//se usa en varias funciones
+    let skipButton = TestClass().skipBlueButton()//se usa en varias funciones
+    let exitRedButton = TestClass().redButton()//se usa en varias funciones
     
-    var containerNode = SKNode()//se usa en mas de una funcion
-    var labelTimer = SKLabelNode()//se usa en mas de una funcion
-    var labelScores = SKLabelNode()
-    var timerBackground = SKSpriteNode()//se usa en mas de una funcion
-    var timerBackgroundTwo = SKSpriteNode()
+    let containerNode = TestClass().initSetcontainerNodeAndChildren()//se usa en mas de una funcion
+    let labelTimer = TestClass().labelForTimer()//se usa en mas de una funcion
+    let labelScores = TestClass().labelForScores()
+    let timerBackground = TestClass().timerLabelBackground()//se usa en mas de una funcion
+    let timerBackgroundTwo = TestClass().timerLabelBackgroundTwo()
     let timerBackgroundBorder = TestClass().timerBackGroundBorder()
     let timerBackgroundBorderTwo = TestClass().timerBackGroundBorderTwo()
     let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//se usa en mas de una funcion
@@ -31,12 +29,12 @@ class StartScene: SKScene{
     let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
     var seconds: Int = 0//esta solo se usa en la funcion del reloj
     var minutes: Int = 0//esta solo se usa en la funcion del reloj
-    static var secondsGameOver:Int = 0//static variables must be declared at the top
-    static var minutesGameOver:Int = 0//static variables must be declared at the top
+    static var secondsGameOver:Int = 0 //static variables must be declared at the top
+    static var minutesGameOver:Int = 0 //static variables must be declared at the top
     //var renderTimeBiggerCounter: Int! = 0//For dev use on testing update function
     let skipButtonPenalty = 15
     let penalty = 3
-    
+    //let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
 
     static var completedGame = false//se usa en mas de una funcion
     
@@ -68,31 +66,30 @@ class StartScene: SKScene{
     
     var goldBackgroundSKSpriteNode = SKSpriteNode()
     
-    
-    
     override func didMove(to view: SKView){
-    
         
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
         goldBackgroundSKSpriteNode = goldenBackground()
         
-        containerNode = nodesContainer()
-        initAndaddChildrenTocontainerNode()
+        //var renderTime: TimeInterval = 0.0
+        
+        //containerNode = nodesContainer()
+        //initAndaddChildrenTocontainerNode()
         
         //musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         
-        labelScores = labelForScores(ScoresLabel:labelScores)
-        labelTimer = labelForTimer(TimerLabel: labelTimer)
-        timerBackground = timerLabelBackground()
-        timerBackgroundTwo = timerLabelBackgroundTwo()
+        //labelScores = labelForScores(ScoresLabel:labelScores)
+        //labelTimer = labelForTimer(TimerLabel: labelTimer)
+        //timerBackground = timerLabelBackground()
+        //timerBackgroundTwo = timerLabelBackgroundTwo()
         
         municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
         //municipiosNameBackground = labelMunicipiosNameBackground()
         
         
         
-        skipButton = skipBlueButton()
-        exitRedButton = redButton()
+        //skipButton = skipBlueButton()
+        //exitRedButton = redButton()
     
         //Este grupo de objetos estan relacionados por goldBackgroundSKSpriteNode, dado que esta barra de controles se elimina cuando se acierta el ultimo municipios junto con los botones, labels y backgrounds adheridos a la barra de controles)
         addChildSKLabelNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: labelScores)
@@ -142,175 +139,7 @@ class StartScene: SKScene{
         return  nodes_Container
     }
     
-    func initAndaddChildrenTocontainerNode(){
-        let coverDesecheoIslandSKSpriteNode: SKSpriteNode = TestClass().desecheoIslandCover()
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: coverDesecheoIslandSKSpriteNode)
-        let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rectangularFrameSKSPriteNode)
-        let rectangularViequesFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: TestClass().createViequesRectangle())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rectangularViequesFrameSKSPriteNode)
-        let rectangularCulebraFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: TestClass().createCulebraRectangle())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rectangularCulebraFrameSKSPriteNode)
-        let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: TestClass().caboRojoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: caboRojoSKSpriteNode)
-        let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: TestClass().hormiguerosDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: hormiguerosSKSpriteNode)
-        let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: TestClass().mayaguezDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: mayaguezSKSpriteNode)
-        let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: TestClass().anascoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: anascoSKSpriteNode)
-        let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: TestClass().rinconDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rinconSKSpriteNode)
-        let aguadaSKSpriteNode: SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: TestClass().aguadaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aguadaSKSpriteNode)
-        let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: TestClass().aguadillaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aguadillaSKSpriteNode)
-        let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: TestClass().isabelaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: isabelaSKSpriteNode)
-        let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: TestClass().mocaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: mocaSKSpriteNode)
-        let lasMariasSKSpriteNode: SKSpriteNode = TestClass().lasMariasBezierPathToSKSpriteNode(bpLasMarias: TestClass().lasMariasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: lasMariasSKSpriteNode)
-        let maricaoSKSpriteNode: SKSpriteNode = TestClass().maricaoBezierPathToSKSpriteNode(bpMaricao:TestClass().maricaoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: maricaoSKSpriteNode)
-        let sanGermanSKSpriteNode:SKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: TestClass().sanGermanDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanGermanSKSpriteNode)
-        let yaucoSKSpriteNode: SKSpriteNode = TestClass().yaucoBezierPathToSKSpriteNode(bpYauco:TestClass().yaucoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: yaucoSKSpriteNode)
-        let lajasSKSpriteNode: SKSpriteNode = TestClass().lajasBezierPathToSKSpriteNode(bpLajas:TestClass().lajasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: lajasSKSpriteNode)
-        let guanicaSKSpriteNode: SKSpriteNode = TestClass().guanicaBezierPathToSKSpriteNode(bpGuanica:TestClass().guanicaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guanicaSKSpriteNode)
-        let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:TestClass().guayanillaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guayanillaSKSpriteNode)
-        let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: TestClass().sanSebastianDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanSebastianSKSpriteNode)
-        let sabanaGrandeSKSpriteNode: SKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: TestClass().sabanaGrandeDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sabanaGrandeSKSpriteNode)
-        let laresSKSpriteNode:SKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares:TestClass().laresDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: laresSKSpriteNode)
-        let penuelasSKSpriteNode:SKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas:TestClass().penuelasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: penuelasSKSpriteNode)
-        let ponceSKSpriteNode:SKSpriteNode = TestClass().ponceBezierPathToSKSpriteNode(bpPonce: TestClass().ponceDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: ponceSKSpriteNode)
-        let utuadoSKSpriteNode:SKSpriteNode = TestClass().utuadoBezierPathToSKSpriteNode(bpUtuado: TestClass().utuadoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: utuadoSKSpriteNode)
-        let jayuyaSKSpriteNode:SKSpriteNode = TestClass().jayuyaBezierPathToSKSpriteNode(bpJayuya: TestClass().jayuyaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: jayuyaSKSpriteNode)
-        let juanaDiazSKSpriteNode:SKSpriteNode = TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz:TestClass().juanaDiazDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: juanaDiazSKSpriteNode)
-        let quebradillasSKSpriteNode:SKSpriteNode = TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:TestClass().quebradillasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: quebradillasSKSpriteNode)
-        let camuySKSpriteNode:SKSpriteNode = TestClass().camuyBezierPathToSKSpriteNode(bpCamuy:TestClass().camuyDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: camuySKSpriteNode)
-        let hatilloSKSpriteNode:SKSpriteNode = TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:TestClass().hatilloDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: hatilloSKSpriteNode)
-        let areciboSKSpriteNode:SKSpriteNode = TestClass().areciboBezierPathToSKSpriteNode(bpArecibo:TestClass().areciboDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: areciboSKSpriteNode)
-        let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: TestClass().adjuntasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: adjuntasSKSpriteNode)
-        let barcelonetaSKSpriteNode:SKSpriteNode = TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:TestClass().barcelonetaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: barcelonetaSKSpriteNode)
-        let manatiSKSpriteNode:SKSpriteNode = TestClass().manatiBezierPathToSKSpriteNode(bpManati:TestClass().manatiDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: manatiSKSpriteNode)
-        let vegaBajaSKSpriteNode:SKSpriteNode = TestClass().vegaBajaBezierPathToSKSpriteNode(bpVegaBaja:TestClass().vegaBajaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: vegaBajaSKSpriteNode)
-        let floridaSKSpriteNode:SKSpriteNode = TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:TestClass().floridaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: floridaSKSpriteNode)
-        let villalbaSKSpriteNode:SKSpriteNode = TestClass().villalbaBezierPathToSKSpriteNode(bpVillalba: TestClass().villalbaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: villalbaSKSpriteNode)
-        let cialesSKSpriteNode:SKSpriteNode = TestClass().cialesBezierPathToSKSpriteNode(bpCiales: TestClass().cialesDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: cialesSKSpriteNode)
-        let orocovisSKSpriteNode:SKSpriteNode = TestClass().orocovisBezierPathToSKSpriteNode(bpOrocovis: TestClass().orocovisDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: orocovisSKSpriteNode)
-        let morovisSKSpriteNode:SKSpriteNode = TestClass().morovisBezierPathToSKSpriteNode(bpMorovis:TestClass().morovisDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: morovisSKSpriteNode)
-        let corozalSKSpriteNode:SKSpriteNode = TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: TestClass().corozalDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: corozalSKSpriteNode)
-        let barranquitasSKSpriteNode:SKSpriteNode = TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: TestClass().barranquitasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: barranquitasSKSpriteNode)
-        let comerioSKSpriteNode:SKSpriteNode = TestClass().comerioBezierPathToSKSpriteNode(bpComerio: TestClass().comerioDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: comerioSKSpriteNode)
-        let coamoSKSpriteNode:SKSpriteNode = TestClass().coamoBezierPathToSKSpriteNode(bpCoamo: TestClass().coamoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: coamoSKSpriteNode)
-        let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: TestClass().naranjitoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: naranjitoSKSpriteNode)
-        let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: TestClass().aibonitoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aibonitoSKSpriteNode)
-        let salinasSKSpriteNode:SKSpriteNode = TestClass().salinasBezierPathToSKSpriteNode(bpSalinas: TestClass().salinasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: salinasSKSpriteNode)
-        let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: TestClass().cayeyDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: cayeySKSpriteNode)
-        let cidraSKSpriteNode:SKSpriteNode = TestClass().cidraBezierPathToSKSpriteNode(bpCidra: TestClass().cidraDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: cidraSKSpriteNode)
-        let santaIsabelSKSpriteNode:SKSpriteNode = TestClass().santaIsabelBezierPathToSKSpriteNode(bpSantaIsabel: TestClass().santaIsabelDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: santaIsabelSKSpriteNode)
-        let vegaAltaSKSpriteNode:SKSpriteNode = TestClass().vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: TestClass().vegaAltaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: vegaAltaSKSpriteNode)
-        let doradoSKSpriteNode:SKSpriteNode = TestClass().doradoBezierPathToSKSpriteNode(bpDorado: TestClass().doradoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: doradoSKSpriteNode)
-        let toaAltaSKSpriteNode:SKSpriteNode = TestClass().toaAltaBezierPathToSKSpriteNode(bpToaAlta: TestClass().toaAltaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: toaAltaSKSpriteNode)
-        let toaBajaSKSpriteNode:SKSpriteNode = TestClass().toaBajaBezierPathToSKSpriteNode(bpToaBaja: TestClass().toaBajaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: toaBajaSKSpriteNode)
-        let bayamonSKSpriteNode:SKSpriteNode = TestClass().bayamonBezierPathToSKSpriteNode(bpBayamon: TestClass().bayamonDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: bayamonSKSpriteNode)
-        let catanoSKSpriteNode:SKSpriteNode = TestClass().catanoBezierPathToSKSpriteNode(bpCatano:TestClass().catanoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: catanoSKSpriteNode)
-        let guaynaboSKSpriteNode:SKSpriteNode = TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:TestClass().guaynaboDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guaynaboSKSpriteNode)
-        let sanJuanSKSpriteNode:SKSpriteNode = TestClass().sanJuanBezierPathToSKSpriteNode(bpSanJuan: TestClass().sanJuanDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanJuanSKSpriteNode)
-        let caguasSKSpriteNode:SKSpriteNode = TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: TestClass().caguasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: caguasSKSpriteNode)
-        let carolinaSKSpriteNode:SKSpriteNode = TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: TestClass().carolinaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: carolinaSKSpriteNode)
-        let aguasBuenasSKSpriteNode:SKSpriteNode = TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: TestClass().aguasBuenasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: aguasBuenasSKSpriteNode)
-        let trujilloAltoSKSpriteNode:SKSpriteNode = TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: TestClass().trujilloAltoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: trujilloAltoSKSpriteNode)
-        let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: TestClass().loizaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: loizaSKSpriteNode)
-        /*let loizaTwoSKSpriteNode:SKSpriteNode = TestClass().loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: loizaTwobp)
-        containerNode.addChild(loizaTwoSKSpriteNode)*/
-        let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: TestClass().canovanasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: canovanasSKSpriteNode)
-        let rioGrandeSKSpriteNode:SKSpriteNode = TestClass().rioGrandeBezierPathToSKSpriteNode(bpRioGrande: TestClass().rioGrandeDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: rioGrandeSKSpriteNode)
-        let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: TestClass().luquilloDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: luquilloSKSpriteNode)
-        let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: TestClass().fajardoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: fajardoSKSpriteNode)
-        let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: TestClass().ceibaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: ceibaSKSpriteNode)
-        let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: TestClass().guraboDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guraboSKSpriteNode)
-        let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos:TestClass().juncosDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: juncosSKSpriteNode)
-        let sanLorenzoSKSpriteNode:SKSpriteNode = TestClass().sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: TestClass().sanLorenzoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: sanLorenzoSKSpriteNode)
-        let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: TestClass().guayamaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: guayamaSKSpriteNode)
-        let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: TestClass().arroyoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: arroyoSKSpriteNode)
-        let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: TestClass().patillasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: patillasSKSpriteNode)
-        let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: TestClass().maunaboDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: maunaboSKSpriteNode)
-        let yabucoaSKSpriteNode:SKSpriteNode = TestClass().yabucoaBezierPathToSKSpriteNode(bpYabucoa:TestClass().yabucoaDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: yabucoaSKSpriteNode)
-        let lasPiedrasSKSpriteNode:SKSpriteNode = TestClass().lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: TestClass().lasPiedrasDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: lasPiedrasSKSpriteNode)
-        let humacaoSKSpriteNode:SKSpriteNode = TestClass().humacaoBezierPathToSKSpriteNode(bpHumacao: TestClass().humacaoDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: humacaoSKSpriteNode)
-        let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: TestClass().naguaboDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: naguaboSKSpriteNode)
-        let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: TestClass().viequesDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: viequesSKSpriteNode)
-        let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: TestClass().culebraDrawBezierPath())
-        addChildSKSpriteNodeToParentSKNode(parent: containerNode, children: culebraSKSpriteNode)
-        
-    }
+    
     
     func labelForScores(ScoresLabel: SKLabelNode) -> SKLabelNode {
         //let label:SKLabelNode = SKLabelNode()
@@ -360,130 +189,6 @@ class StartScene: SKScene{
         return NameMunicipioLabel
     }
     
-    
-    
-    
-    
-    //funcion crea skipButton
-    func skipBlueButton()-> SKSpriteNode {
-         
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
-        shapeNode.strokeColor = UIColor.init(red: 0.098, green: 0.4863, blue: 1, alpha: 1.0)
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.098, green: 0.4863, blue: 1, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let skipBlueButton = SKSpriteNode(texture: texture)
-        skipBlueButton.position = CGPoint(x:195, y:-0.5)
-        skipBlueButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:skipBlueButton.size.width, height:skipBlueButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        skipBlueButton.physicsBody?.isDynamic = false
-        skipBlueButton.name = "skipButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
-        
-        let labelSkipButtonOne = redButtonBlueButtonLabelOne()
-        //labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
-        //labelSkipButtonOne.fontSize = 10
-        labelSkipButtonOne.text = "Saltar"
-        //labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
-        skipBlueButton.addChild(labelSkipButtonOne)
-        
-        let labelSkipButtonTwo = redButtonBlueButtonLabelTwo()
-        //labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
-        //labelSkipButtonTwo.fontSize = 8
-        labelSkipButtonTwo.text = "(Skip)"
-        //labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
-        skipBlueButton.addChild(labelSkipButtonTwo)
-        
-        
-        return skipBlueButton
-    }
-    
-    //Funcion crea boton rojo con sus respectivos labels
-    func redButton()-> SKSpriteNode {
-         
-        //Drawing to Shapenode
-        let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
-        //Shapenode To SKSpriteNode
-        let view = SKView(frame: UIScreen.main.bounds)
-        let texture = view.texture(from: shapeNode)!
-        let redButton = SKSpriteNode(texture: texture)
-        redButton.position = CGPoint(x:-280, y:-0.5)
-        redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-        redButton.physicsBody?.isDynamic = false
-        redButton.name = "redButton"
-        
-        let labelRedButtonOne = redButtonBlueButtonLabelOne()
-        //labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
-        //labelSkipButtonOne.fontSize = 10
-        labelRedButtonOne.text = "Salir"
-        //labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
-        redButton.addChild(labelRedButtonOne)
-        
-        let labelRedButtonTwo = redButtonBlueButtonLabelTwo()
-        //labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
-        //labelSkipButtonTwo.fontSize = 8
-        labelRedButtonTwo.text = "(Exit)"
-        //labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
-        redButton.addChild(labelRedButtonTwo)
-        
-        
-        return redButton
-    }
-    
-    //Esta funcion devuelve el bezier path utilizado para crear los botones de skipButton y exit
-    func blueButtonRedButtonBp()->UIBezierPath{
-        var path = UIBezierPath()
-        // Specify the point that the path should start get drawn.
-        path.move(to: CGPoint(x: 0.0, y: 0.0))
-        // Create a line between the starting point and the bottom-left side of the view.
-        path.addLine(to: CGPoint(x: 0.0, y:25))
-        // Create the bottom line (bottom-left to bottom-right).
-        path.addLine(to: CGPoint(x:50 , y:25))
-        //Create the vertical line from the bottom-right to the top-right side.
-        path.addLine(to: CGPoint(x:50, y: 0.0))
-        // Close the path. This will create the last line automatically.
-        path.close()
-          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
-
-        
-        return path
-        
-    }
-    
-    //Label superior para los botones azul y rojo
-    func redButtonBlueButtonLabelOne()->SKLabelNode{
-        let labelSkipButtonOne = SKLabelNode()
-        //labelSkipButtonOne.isUserInteractionEnabled = true
-        labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
-        labelSkipButtonOne.fontSize = 10
-        //labelSkipButtonOne.text = "Saltar"
-        labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
-        //skipBlueButton.addChild(labelSkipButtonOne)
-        return labelSkipButtonOne
-    }
-    //Label inferior para los botones azul y rojo
-    func redButtonBlueButtonLabelTwo() ->SKLabelNode{
-        let labelSkipButtonTwo = SKLabelNode()
-        //labelSkipButtonTwo.isUserInteractionEnabled = true
-        labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
-        labelSkipButtonTwo.fontSize = 8
-        //labelSkipButtonTwo.text = "(Skip)"
-        labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
-        //skipBlueButton.addChild(labelSkipButtonTwo)
-        return labelSkipButtonTwo
-    }
-    
-    func addChildSKSpriteNodeToParentSKNode(parent:SKNode, children:SKSpriteNode){
-        if children.parent == nil{
-        parent.addChild(children)
-        }
-    }
-    
     func addChildSKSpriteNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKSpriteNode){
         if children.parent == nil{
         parent.addChild(children)
@@ -527,97 +232,41 @@ class StartScene: SKScene{
         musicPlayer.prepareToPlay()//ready to play musicPlayer
         musicPlayer.play()//
     }
+    
+    /*private lazy var myFunction: TimeInterval = {
+        var renderTime: TimeInterval = 0.0//esta solo se usa en la funcion del reloj
+        //let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
+        //var seconds: Int = 0//esta solo se usa en la funcion del reloj
+        //var minutes: Int = 0
+        print("Lazy")
+        return renderTime
+    }()*/
+    
 
     override public func update(_ currentTime: TimeInterval) {/*Esta funcion ejecuta cada segundo para la funcionalidad del reloj. Los print statements son para uso del programador(comentar/descomentar todos los print statements a la misma vez, para entender mejor como funciona esta funcion)*/
-
-    
-        if StartScene.completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
+        
+        //test(currentTime:currentTime, renderTime: Variables.renderTime, changeTime: Variables.changeTime, seconds: Int, minutes: Int)
+       if StartScene.completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
             //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
-            if currentTime > renderTime{/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
+            
+            if currentTime > renderTime {/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
                 
                 //En este bloque es que ocurre el movimiento de segundos y minutos
                 if renderTime > 0{//renderTime en su primera iteracion su valor es 0.0, de modo que pasaria al Else If que le sigue a este bloque. Luego de esta primera iteracion siempre su valor sera mayor a 0
-                    seconds += 1
-                
-                    if seconds == 60 {
-                        seconds = 0
-                        minutes += 1
-                        }
-                    
-                    //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
-                    if(fail == true){
-                        //let penalty = 3
-                        print("inside")
-                        seconds = seconds + penalty
-                        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
-                        
-                        if seconds >= 60{
-                            seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
-                            minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
-                        }
-                        fail = false
-                    }
-                    
-                    if (pressSKipButton == true){
-                        //let skipButtonPenalty = 15//Declared at the top so that it is not declared each time skip button is pressed
-                        print("quince segundos mas")
-                        seconds = seconds + skipButtonPenalty
-                        
-                        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
-                        if seconds >= 60{
-                            seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
-                            minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
-                        }
-                        pressSKipButton = false
-                    }
-                    
-
-                    let secondsText = (seconds < 10) ?
-                    "0\(seconds)" : "\(seconds)"
-                    let minutesText = "\(minutes)"
-                    //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
-                
-                    if minutes >= 1 {
-                        labelTimer.text = "\(minutesText):\(secondsText)"
-                        //timerBackground.size = labelTimer.frame.size
-                        if minutes == 1{//ajusta la apariencia del label/background cuando los minutos utilizan un solo lugar que solo ocurre de 1 al minuto 9
-                            timerBackgroundBorder.removeFromParent()
-                            timerBackground.removeFromParent()
-                            addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
-                            addChildSKSpriteNodeToParentself(children: timerBackgroundBorderTwo)
-                            
-                            
-                        }
-                    
-                        /*else if minutes == 10{// ajusts la apariencia de el label/background para cuando los minutos usan dos lugares que ocurre de los 10 minutos en adelante .
-                            //timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00:00
-                            
-                        }*/
-                    
-                        
-                    }
-                  
-                    else{
-                        labelTimer.text = "\(secondsText)"
-                        
-                    }
-                    
+                    timerManagement()
                 }
                     
                 // Este bloque lo unico que hace es ejecutar para hacer formateo y el rendering del 00 cuando comienza el juego y no vuelve a ejecutar pq rendertime su valor no vuelve a 0 si no que siempre esta en ascenso
                 else if renderTime == 0.0{
-                    let secondsText = (seconds < 10) ?
-                    "0\(seconds)" : "\(seconds)"
-                    labelTimer.text = "\(secondsText)"
-                    //timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
-                    print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
-                    
+                    formatCastZeroToStringAndWriteToLabel()
+                   
                     //Solo para uso del programador no es parte del app perce
                     //UserDefaults.standard.removeObject(forKey: "secondsAlphabetic")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
                     //UserDefaults.standard.removeObject(forKey: "minutesAlphabetic")//OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO
-            }
+                }
                 //print(renderTime)
                 renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime
+                //print(renderTime)
                 //print(renderTime, currentTime, "Abajo")
                 
             }
@@ -633,17 +282,117 @@ class StartScene: SKScene{
          Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
         
         if StartScene.completedGame == true{
-            StartScene.secondsGameOver = seconds
-            StartScene.minutesGameOver = minutes
-            self.removeAllActions()
-            self.removeFromParent()
-            let gameOverScene = GameOverScene(size: self.size)
-            //let transition = SKTransition.fade(withDuration: 0.9)//withDuration: 1.5)
-            self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
+            goToGameOverScene()
+            
+
         }
         
     }
+    
+    func timerManagement(){
+        addSecond()
+            //seconds += 1
+            if seconds == 60 {
+                resetSecondsAddMinutes()
 
+            }
+            
+            //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
+            if(fail == true){
+                addPenaltyToSeconds()
+                
+                //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                if seconds >= 60{
+                    resetSecondsAfterPenaltyAddMinutes()
+                }
+                fail = false
+            }
+            
+            if (pressSKipButton == true){
+                addSkipButtonPenaltyToSeconds()
+                
+                
+                //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+                if seconds >= 60{
+                    resetSecondsAfterPenaltyAddMinutes()
+                }
+                pressSKipButton = false
+            }
+            
+            formatCastToStringAndWriteSecondsAndMinutesToLabel()
+
+    }
+    
+    func addSecond(){
+        seconds += 1
+    }
+    
+    func resetSecondsAddMinutes(){
+        seconds = 0
+        minutes += 1
+    }
+    
+    func addPenaltyToSeconds(){
+        //let penalty = 3
+        print("inside")
+        seconds = seconds + penalty
+        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
+    }
+    
+    func resetSecondsAfterPenaltyAddMinutes(){
+        seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
+        minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+    }
+    func addSkipButtonPenaltyToSeconds(){
+        //let skipButtonPenalty = 15//Declared at the top so that it is not declared each time skip button is pressed
+        print("quince segundos mas")
+        seconds = seconds + skipButtonPenalty
+    }
+    
+    func formatCastToStringAndWriteSecondsAndMinutesToLabel(){
+        let secondsText = (seconds < 10) ? "0\(seconds)" : "\(seconds)"
+        let minutesText = "\(minutes)"
+        //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
+        if minutes >= 1 {
+              labelTimer.text = "\(minutesText):\(secondsText)"
+              //timerBackground.size = labelTimer.frame.size
+              if minutes == 1{//ajusta la apariencia del label/background cuando los minutos utilizan un solo lugar que solo ocurre de 1 al minuto 9
+                  timerBackgroundBorder.removeFromParent()
+                  timerBackground.removeFromParent()
+
+                  addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
+                  addChildSKSpriteNodeToParentself(children: timerBackgroundBorderTwo)
+              }
+          
+          }
+        
+          else{
+              labelTimer.text = "\(secondsText)"
+              
+          }
+    }
+    
+    func formatCastZeroToStringAndWriteToLabel(){
+        let secondsText = (seconds < 10) ?
+        "0\(seconds)" : "\(seconds)"
+        labelTimer.text = "\(secondsText)"
+        //timerBackground.size = labelTimer.frame.size//size para el background del timer para acomodar 00
+        print("rendertime = 0")//Esta linea es solo para indicar al programador cuando se ejecuta este bloque
+    }
+    func goToGameOverScene(){
+        //musicPlayer.stop()
+        
+        StartScene.secondsGameOver = seconds
+        StartScene.minutesGameOver = minutes
+        //musicPlayer.stop()
+        //self.removeAllActions()
+        //self.removeAllChildren()
+        
+        let gameOverScene = GameOverScene(size: self.size)
+        //let transition = SKTransition.fade(withDuration: 1.0)//withDuration: 1.5)
+    
+        self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Funcion encargada del toque de pantalla
         
@@ -667,19 +416,22 @@ class StartScene: SKScene{
                             spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
                             spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
                             spriteNode.physicsBody = nil//Elimina el skphysicsBody
+                            
                             if StartMenu.gamePlaySoundOn == true{
                                 run(StartScene.correctSound)//correctSound
+                            
                             }
                             
                             let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
                             let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
                             
                             //El for statement abajo va a generar la cuenta de los indices entendiendose que el cero es un lugar y esta incluido. En cada nueva iteracion el numero de indices es menor, por: let elementRemoved = municipios_names_array.remove(at:currentIndex)
-                            for index in municipios_names_array {
-                                if index != ""{
+                            for _ in municipios_names_array {
+                                //if index != ""{
                                     countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
-                                }
+                                //}
                             }
+                            print(countOfIndexes)
                             //let countOfIndexesTwo = countOfIndexes//USAR SOLO CUANDO SE ESTA HACIENDO TESTING(PRINT STATEMENTS DEL PROGRAMADOR)
                             
                             
@@ -692,8 +444,8 @@ class StartScene: SKScene{
                                 print(countOfIndexes)//variable que lleva cuenta regresiva de los indices hayados en un momento dado en el array. uso del programador
                                 print(currentIndex)//indice correspondiente al elemento(municipio a buscar) que se evalua en el momento. uso del programador
                                 print(" ")//. uso del programador*/
-                            print(currentIndex)
-                            print(countOfIndexes)
+                            //print(currentIndex)
+                            //print(countOfIndexes)
                         
                             locationNameLabel.text = municipioNameLabel.text//Text atribute is pass to locationNameLabel to be used by one word municipios(except for Las Piedras and Las Marias) same
                             
@@ -927,11 +679,16 @@ class StartScene: SKScene{
                                 
                             //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
                             else{
+                                self.removeAllActions()
+                                self.removeAllChildren()
+                                //musicPlayer.stop()
                                 //run(fanfair)
-                                goldBackgroundSKSpriteNode.removeFromParent()
-                                timerBackground.removeFromParent()
+                        
+                                /*timerBackgroundBorderTwo.removeFromParent()
+                                timerBackgroundTwo.removeFromParent()
                                 labelTimer.removeFromParent()
-                                //self.addChild(endGameRectangle)
+                                containerNode.removeFromParent()
+                                goldBackgroundSKSpriteNode.removeFromParent()*/
                                 StartScene.completedGame = true//Se actualiza la variable completedGame para detener el reloj
                                 
                                 //EL restante del bloque es para uso del pro\gramador

@@ -72,7 +72,7 @@ class PracticeRandomGame: SKScene{
         
         musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         
-        skipButton = StartScene().skipBlueButton()
+        skipButton = TestClass().skipBlueButton()
         
         labelScores = StartScene().labelForScores(ScoresLabel:labelScores)
         
@@ -86,7 +86,7 @@ class PracticeRandomGame: SKScene{
         
         //endGameRectangle = endgameRectangle()
         
-        exitRedButton = StartScene().redButton()
+        exitRedButton = TestClass().redButton()
         
         
         let coverDesecheoIslandSKSpriteNode: SKSpriteNode = TestClass().desecheoIslandCover()//As desecheo island is not mean to be rendered this node hides it from view.

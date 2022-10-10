@@ -37,11 +37,11 @@ class GameOverScene: SKScene{
             run(fanfair)
         }
         
-        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
+        /*musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         if StartMenu.backgroundMusicOn == true{
             //self.addChild(StartScene.backgroundMusic)
             initMusic()
-        }
+        }*/
         //self.addChild(backgroundMusic)
         
         endGameRectangle = endgameRectangle()
@@ -575,7 +575,7 @@ class GameOverScene: SKScene{
             }
             
         if(useLine2 == true){
-             print("ENtrar0 aquA")
+             //print("ENtrar0 aquA")
             node.addChild(firstLineLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
             node.addChild(secondLineLabel)
             useLine2 = false
@@ -583,7 +583,7 @@ class GameOverScene: SKScene{
         }
         //La ejecucion entraria en este bloque para municipios cuyo nombre solo requieren un solo label
         else{
-            print("ENtrare aqui")
+            //print("ENtrare aqui")
             node.addChild(locationNameLabel)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
 
         }
@@ -593,6 +593,14 @@ class GameOverScene: SKScene{
       }
         self.addChild(containerNode)
         self.addChild(endGameRectangle)
+        
+        
+        
+        musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
+        if StartMenu.backgroundMusicOn == true{
+            //self.addChild(StartScene.backgroundMusic)
+            initMusic()
+        }
     }
     
      override public func update(_ currentTime: TimeInterval) {
@@ -850,7 +858,7 @@ class GameOverScene: SKScene{
                 //label.zPosition = 3
                 
                 if label.name == "labelOne"{
-                    print("Voy subiendo")
+                    //print("Voy subiendo")
                     //label.text = label.name
                     label.position = CGPoint(x:-0, y:60)
 
