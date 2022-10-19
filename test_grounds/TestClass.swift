@@ -110,6 +110,7 @@ class TestClass {
         background.color = UIColor.lightGray
         background.size = CGSize(width:45, height:17)
         background.position = CGPoint(x:333.5, y:89.5)
+        //background.zPosition = 0
         return background
     }
     
@@ -118,6 +119,7 @@ class TestClass {
         background.color = UIColor.lightGray
         background.size = CGSize(width: 36.1, height:17)
         background.position = CGPoint(x:333.5, y:89.5)
+        //background.zPosition = 0
         return background
     }
     
