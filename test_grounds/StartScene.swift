@@ -18,12 +18,12 @@ class StartScene: SKScene{
     let containerNode = TestClass().initSetcontainerNodeAndChildren()//se usa en mas de una funcion
     let labelTimer = TestClass().labelForTimer()//se usa en mas de una funcion
     let labelScores = TestClass().labelForScores()
-    let timerBackground = TestClass().timerLabelBackground()//se usa en mas de una funcion
-    let timerBackgroundTwo = TestClass().timerLabelBackgroundTwo()
-    let timerBackgroundBorder = TestClass().timerBackGroundBorder()
-    let timerBackgroundBorderTwo = TestClass().timerBackGroundBorderTwo()
+    let timerBackground = TestClass().timerBackGround()//se usa en mas de una funcion
+    let timerBackgroundTwo = TestClass().timerBackGroundTwo()
+    let municipioNameLabel = TestClass().labelForMunicipioNames()//se usa en mas de una funcion
     let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//se usa en mas de una funcion
     let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()
+
     
     var renderTime: TimeInterval = 0.0//esta solo se usa en la funcion del reloj
     let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
@@ -45,7 +45,7 @@ class StartScene: SKScene{
     elelemento Adjuntas*/
     var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
     
-    var municipioNameLabel = SKLabelNode()//se usa en mas de una funcion
+    
 
     var touchedNode: SKPhysicsBody!//se puede declarar dentro de la funcion touchesBegan
     var fail: Bool!//se usa en mas de una funcion
@@ -59,47 +59,33 @@ class StartScene: SKScene{
     static var incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
     //static var backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
     var musicPlayer = AVAudioPlayer()
-    var musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")
+    let musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")
     
     var skipButtonPressed = false
     var exitButtonPressed = false
     
-    var goldBackgroundSKSpriteNode = SKSpriteNode()
+    let goldBackgroundSKSpriteNode = TestClass().goldenBackground()
         
     override func didMove(to view: SKView){
         
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
-        goldBackgroundSKSpriteNode = goldenBackground()
-
-        municipioNameLabel = labelForMunicipioNames(NameMunicipioLabel: municipioNameLabel)
-        //municipiosNameBackground = labelMunicipiosNameBackground()
-        
-        
-        
-        //skipButton = skipBlueButton()
-        //exitRedButton = redButton()
+        //goldBackgroundSKSpriteNode = goldenBackground()
+        containerNode.position = CGPoint(x: 50, y: 15)
+        timerBackground.position = CGPoint(x:333.5, y:89.5)
+        goldBackgroundSKSpriteNode.position = CGPoint(x:335, y:25)
+       
     
         //Este grupo de objetos estan relacionados por goldBackgroundSKSpriteNode, dado que esta barra de controles se elimina cuando se acierta el ultimo municipios junto con los botones, labels y backgrounds adheridos a la barra de controles)
         addChildSKLabelNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: labelScores)
-        //goldBackgroundSKSpriteNode.addChild(labelScores)
         addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
-        //municipiosNameBackground.addChild(municipioNameLabel)//ojo puse el background como padre del label para facilitar el posicionamiento de ambos con respecto a goldBackgroundSKSpriteNode
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
-        //goldBackgroundSKSpriteNode.addChild(municipiosNameBackground)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
-        //goldBackgroundSKSpriteNode.addChild(skipButton)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
-        //goldBackgroundSKSpriteNode.addChild(exitRedButton)
-        
         addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
-        //self.addChild(goldBackgroundSKSpriteNode)
+        addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackground, children: labelTimer)
         addChildSKSpriteNodeToParentself(children: timerBackground)
-        addChildSKSpriteNodeToParentself(children: timerBackgroundBorder)
-        //self.addChild(timerBackground)
-        addChildSKLabelNodeToParentself(children: labelTimer)
-        //self.addChild(labelTimer)
         addChildSKNodeToParentself(children: containerNode)
-        //self.addChild(containerNode)
+        
         
         if StartMenu.backgroundMusicOn == true{
             //self.addChild(StartScene.backgroundMusic)
@@ -109,13 +95,13 @@ class StartScene: SKScene{
     }
     
     //Barra de controles
-    func goldenBackground() -> SKSpriteNode {
+    /*func goldenBackground() -> SKSpriteNode {
         let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
         goldenBackground.size = CGSize(width: 680, height:50)
         goldenBackground.position = CGPoint(x:335, y:25)
         //goldenBackground.zPosition = 1
         return goldenBackground
-    }
+    }*/
     
     //Contiene todos los SpriteNodes que tienen que ver con el mapa incluyendo covers(como el de desecheo)
     func nodesContainer() -> SKNode{
@@ -285,6 +271,7 @@ class StartScene: SKScene{
             
             //Este bloque solo se ejecuta cuando se presiona sobre el municipio incorrecto, anadiendo 3 segundos al reloj
             if(fail == true){
+                
                 addPenaltyToSeconds()
                 
                 //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
@@ -292,6 +279,7 @@ class StartScene: SKScene{
                     resetSecondsAfterPenaltyAddMinutes()
                 }
                 fail = false
+                
             }
             
             if (pressSKipButton == true){
@@ -343,11 +331,16 @@ class StartScene: SKScene{
               labelTimer.text = "\(minutesText):\(secondsText)"
               //timerBackground.size = labelTimer.frame.size
               if minutes == 1{//ajusta la apariencia del label/background cuando los minutos utilizan un solo lugar que solo ocurre de 1 al minuto 9
-                  timerBackgroundBorder.removeFromParent()
+                  labelTimer.removeFromParent()
+                  //timerBackgroundBorder.removeFromParent()
                   timerBackground.removeFromParent()
-
+                 
+                  addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: labelTimer)
+                  //addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundBorderTwo, children: labelTimer)
                   addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
-                  addChildSKSpriteNodeToParentself(children: timerBackgroundBorderTwo)
+
+                  //addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
+                  //addChildSKSpriteNodeToParentself(children: timerBackgroundBorderTwo)
               }
           
           }
@@ -832,7 +825,6 @@ class StartScene: SKScene{
          if  countOfIndexes == 1 && currentIndex == 0 && municipios_names_array.endIndex-1 == 0 {
              print("skip button out")
              skipButton.removeFromParent()
-             self.removeAllActions()//this statements is used for preventing the last correct sound from executing
              //print(countOfIndexes)
              //print(countOfIndexesTwo)
          }
