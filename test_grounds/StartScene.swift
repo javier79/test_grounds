@@ -11,87 +11,85 @@ import SpriteKit
 import AVFoundation
 
 class StartScene: SKScene{
+    let goldBackgroundSKSpriteNode = TestClass().goldenBackground()
+    let skipButton = TestClass().skipBlueButton()//used in more than one function
+    let exitRedButton = TestClass().redButton()//used in more than one function
     
-    let skipButton = TestClass().skipBlueButton()//se usa en varias funciones
-    let exitRedButton = TestClass().redButton()//se usa en varias funciones
-    
-    let containerNode = TestClass().initSetcontainerNodeAndChildren()//se usa en mas de una funcion
-    let labelTimer = TestClass().labelForTimer()//se usa en mas de una funcion
-    let labelScores = TestClass().labelForScores()
-    let timerBackground = TestClass().timerBackGround()//se usa en mas de una funcion
-    let timerBackgroundTwo = TestClass().timerBackGroundTwo()
-    let municipioNameLabel = TestClass().labelForMunicipioNames()//se usa en mas de una funcion
-    let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//se usa en mas de una funcion
-    let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()
+    let containerNode = TestClass().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
+    let labelTimer = TestClass().labelForTimer()//used in more than one function
+    let labelScores = TestClass().labelForScores()//Scores label(in fluorocent text)
+    //let timerBackground = TestClass().timerBackGround()//This background was used when the timer used a background for seconds(0-59) and a wider background for when minutes(1:00) started to render.
+    let timerBackgroundTwo = TestClass().timerBackGroundTwo()/*Background for timer(At one time the timer used two different size backgrounds, but later i opted out of doing that for eficiency and kept
+    the bigger background(timerBackgroundTwo) as timer's only background along its life cycle */
+    let municipioNameLabel = TestClass().labelForMunicipioNames()//Label rendering municipio name to look up, Used in more than one function
+    let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//Background for most(shorter) municipio names. Used in more than one function
+    let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()//Background for longer municipio names. Used in more than one function
 
+    /**following two variables(renderTime and changeTime)  are basic part of the timer mechanism  and should not be bothered, in case dev wants to understand  how they work roll back to a branch previous to timer function makeover and follow the comments, but again dev should not be too concerned with this variables*/
+    var renderTime: TimeInterval = 0.0//marks the time being played to be compared with currentTime, only used on update(timer function)
+    let changeTime: TimeInterval = 1//adds(update) to renderTime in order to keep renderTime running, only used on update(imer function)
+    var seconds: Int = 0//seconds count, only used on update(imer function)
+    var minutes: Int = 0//minutes count, only used on update(imer function)
+    static var secondsGameOver:Int = 0 //gets number of seconds to render tracked time(renders on gameOverScene), static variables must be declared at the top
+    static var minutesGameOver:Int = 0 //gets number of minutes to render tracked time(renders on gameOverScene), static variables must be declared at the top
+    let skipButtonPenalty = 15//seconds added to timer when skip buttom is pressed
+    let penalty = 3//seconds added to timer when wrong node is pressed
     
-    var renderTime: TimeInterval = 0.0//esta solo se usa en la funcion del reloj
-    let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
-    var seconds: Int = 0//esta solo se usa en la funcion del reloj
-    var minutes: Int = 0//esta solo se usa en la funcion del reloj
-    static var secondsGameOver:Int = 0 //static variables must be declared at the top
-    static var minutesGameOver:Int = 0 //static variables must be declared at the top
-    //var renderTimeBiggerCounter: Int! = 0//For dev use on testing update function
-    let skipButtonPenalty = 15
-    let penalty = 3
-    //let fanfair = SKAction.playSoundFileNamed("cartoon_success_fanfair 1", waitForCompletion: false)
-
-    static var completedGame = false//se usa en mas de una funcion
+    static var completedGame = false/**flow control variable for timer once its value is true allows for timer to stop, and transition to gameOverScene*/
     
-    var useLine2:Bool = false//se usa en mas de una funcion
-    var twoLineText: String = ""
+    var useLine2:Bool = false//used on splitTextIntoFields functions and touch function.(intrinsic to function mechanism, dev should not be too concerned with it)
+    var twoLineText: String = ""//used on splitTextIntoFields, this is the text passed to splitTextIntoFields functions
 
-    /*Ojo el array arranca leyendo el indice 0, pero el primer municipio Adjuntas se lee de la funcion que crea el label(donde se presentan los municipios a buscar) y se incluye en el array pq si el array llega al final del array al reiniciar el array entonces ahi si lee
-    elelemento Adjuntas*/
+    /** Array includes Adjuntas although it' is written from the function that sets the label for municipios to look up, this is due  if adjuntas is skipped when the array reach the end to go back to index 0, then it gets Adjuntas.
+     This array contain the text elements for the municipios to look up*/
     var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
     
-    
-
-    var touchedNode: SKPhysicsBody!//se puede declarar dentro de la funcion touchesBegan
-    var fail: Bool!//se usa en mas de una funcion
-    var currentIndex: Int = 0 //se puede declarar en touchesBegan
-    //var locationNameLabel = SKLabelNode()
-    var pressSKipButton:Bool = false
-    var scoreCount:Int = 0
+    //var touchedNode: SKPhysicsBody!//holds touched node, declared at the top to be accesed by accesory functions out of Touch function
+    var fail: Bool!//flow control var allow when true for penalty to be added at timer funtion. Used on more than one funtion
+    var currentIndex: Int = 0 //refers to index currently diplayed on municipio name label declared at the top to be accesed by accesory functions
+    var pressSKipButton:Bool = false//Flow control variables when true allows timer to add 15 penalty
+    var scoreCount:Int = 0//variable represent the number of municipios identified rendered in the control bar to the right
     let totalScoreCount:String = "/78"
     
     static var correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
     static var incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
     //static var backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
-    var musicPlayer = AVAudioPlayer()
-    let musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")
+    var musicPlayer = AVAudioPlayer()//audio player
+    let musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")//reference to PR Himn
     
-    var skipButtonPressed = false
-    var exitButtonPressed = false
+    var skipButtonPressed = false//flow control var allows to apply alpha animation to skipbuttom on Touches end
     
-    let goldBackgroundSKSpriteNode = TestClass().goldenBackground()
-        
     override func didMove(to view: SKView){
         
-        self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
-        //goldBackgroundSKSpriteNode = goldenBackground()
-        containerNode.position = CGPoint(x: 50, y: 15)
-        timerBackground.position = CGPoint(x:333.5, y:89.5)
-        goldBackgroundSKSpriteNode.position = CGPoint(x:335, y:25)
+        self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//blue background that resembles the ocean
+        /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
+         timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
+        containerNode.position = CGPoint(x:-275 , y:-75 /*15*/)/**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames), Positioning based on parent timerBackgroundTwo*/
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:89.5)/**parent to labelTimer and containerNode*/
+        goldBackgroundSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)
+        goldBackgroundSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
        
     
-        //Este grupo de objetos estan relacionados por goldBackgroundSKSpriteNode, dado que esta barra de controles se elimina cuando se acierta el ultimo municipios junto con los botones, labels y backgrounds adheridos a la barra de controles)
-        addChildSKLabelNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: labelScores)
+        /**Following objects are related to goldBackground SKSPriteNode*/
+        
         addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
+        addChildSKLabelNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: labelScores)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
         addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
-        addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackground, children: labelTimer)
-        addChildSKSpriteNodeToParentself(children: timerBackground)
-        addChildSKNodeToParentself(children: containerNode)
+        /**timerBackground is a stand alone prent node*/
+        addChildSKNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: containerNode)
+        addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: labelTimer)
+        addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
+        //addChildSKNodeToParentself(children: containerNode)
         
-        
+        /**Play background music*/
         if StartMenu.backgroundMusicOn == true{
             //self.addChild(StartScene.backgroundMusic)
             initMusic()
         }
-        //sleep(1)//Este sleep statement es para retrasar un poco el rendering y que este todo desplegado cuando el reloj comienza a conta
+        //sleep(1)
     }
     
     //Barra de controles
@@ -103,7 +101,7 @@ class StartScene: SKScene{
         return goldenBackground
     }*/
     
-    //Contiene todos los SpriteNodes que tienen que ver con el mapa incluyendo covers(como el de desecheo)
+    //OJO ESTA FUNCION PUEDE QUE SE ESTE USANDO EN OTRA ESCENA
     func nodesContainer() -> SKNode{
         let nodes_Container = SKNode()
         //nodes_Container.color = UIColor.white
@@ -192,6 +190,11 @@ class StartScene: SKScene{
         self.addChild(children)
         }
     }
+    func addChildSKNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKNode){
+        if children.parent == nil{
+        parent.addChild(children)
+        }
+    }
     
     func initMusic() {
         guard let url = musicURL else { return }
@@ -217,52 +220,44 @@ class StartScene: SKScene{
     }()*/
     
 
-    override public func update(_ currentTime: TimeInterval) {/*Esta funcion ejecuta cada segundo para la funcionalidad del reloj. Los print statements son para uso del programador(comentar/descomentar todos los print statements a la misma vez, para entender mejor como funciona esta funcion)*/
+    override public func update(_ currentTime: TimeInterval) {/*Function execute every second, for timer functionality*/
         
-        //test(currentTime:currentTime, renderTime: Variables.renderTime, changeTime: Variables.changeTime, seconds: Int, minutes: Int)
-       if StartScene.completedGame == false{//Esta linea se utiliza para detener el reloj una vez completado el juego
-            //print(renderTime, currentTime,"Arriba")//currentTime es una referencia al reloj de la pc y renderTime es una referencia al reloj(interno del juego perce) que va a comandar el movimiento de los segundos y minutos que van a ser desplegados
+        
+       if StartScene.completedGame == false{//Control variable to keep the timer running, once condition is true the timer is stopped
+            /* currentTime refers to the pc running clock and renderTime refers to the passing time while the game is running*/
+            if currentTime > renderTime {/**currentTime  value is bigger than renderTime only when a second is added, later on renderTime value updates to a future time measure bigger than currentTime, due currenTime is continuously running when it becomes bigger than renderTime value, the execution enters the next block to sum seconds and minutes*/
             
-            if currentTime > renderTime {/*currentTime es mayor a renderTime solo cuando se anade un segundo, luego renderTime se actualiza a una medida de tiempo futura(pero que permanece estatica) mayor a currentTime, mientras currentTime como desde el inicio continua corriendo continuamente cuando este ultimo sobre pasa a renderTime, la ejecucion entra en el bloque siguiente para aumentar los segundos y minutos(y desplegarlos)*/
-                
-                //En este bloque es que ocurre el movimiento de segundos y minutos
-                if renderTime > 0{//renderTime en su primera iteracion su valor es 0.0, de modo que pasaria al Else If que le sigue a este bloque. Luego de esta primera iteracion siempre su valor sera mayor a 0
+                /**following block is where seconds and minuteds are added*/
+                if renderTime > 0{/**In its first iteration renderTime value  is 0.0, so that the execution will go  to the next Else If statement, after the first iteration its value will always be bigger than 0*/
                     timerManagement()
                 }
-                    
-                // Este bloque lo unico que hace es ejecutar para hacer formateo y el rendering del 00 cuando comienza el juego y no vuelve a ejecutar pq rendertime su valor no vuelve a 0 si no que siempre esta en ascenso
+                /**Next block will execute only when renderTime value is 0 and it just formats and render 00(timer) at the beginning of the game, it will only execute once as renderTime value keep increasing*/
                 else if renderTime == 0.0{
                     formatCastZeroToStringAndWriteToLabel()
                    
-                    //Solo para uso del programador no es parte del app perce
-                    //UserDefaults.standard.removeObject(forKey: "secondsAlphabetic")/*OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO*/
-                    //UserDefaults.standard.removeObject(forKey: "minutesAlphabetic")//OJO COMO ESTE BLOQUE EJECUTA EN EL SEGUNDO 0 Y NO VUELVE A EJECUTAR COLOQUE AQUI EL RESET DE LA MEMORIA PERSISTENTE DONDE ALMACENO LOS DATOS UTILIZADOS PARA DETERMINAR SI SE LOGRO UN NUEVO RECORD DE TIEMPO
+                    //For dev use ONLY
+                     /**ATTENTION DUE THIS BLOCK EXECUTE ONCE(SECOND 00). I  PLACE HERE THE RESET FOR PERSISTENT MEMORY WHERE I STORE THE VALUES TO EVALUATE  TIME RECORDS ON GAMEOVERSCENE
+                     IN ORDER TO WIPE(reset) PERSISTEN MEMORY UNCOMMENT THE FOLLOWING STATEMENTS RUN THE GAME A FEW SECONDS STOP THE GAME, AND WHEN YOU LAUNCH THE GAME NEXT TIME  PERSISTENT MEMORY WILL BE
+                     CLEAN AS WHEN THE GAME IS PLAYED FOR THE FIRST TIME WHEN DOWNLOADED*/
+                    //UserDefaults.standard.removeObject(forKey: "secondsAlphabetic")
+                    //UserDefaults.standard.removeObject(forKey: "minutesAlphabetic")
                 }
-                //print(renderTime)
-                renderTime = currentTime + changeTime//En esta linea se actualiza el valor de renderTime, cuando esto ocurre renderTime es mayor en valor que currentTime
-                //print(renderTime)
-                //print(renderTime, currentTime, "Abajo")
                 
+                renderTime = currentTime + changeTime//updates renderTime value, when this happens renderTime value is bigger than currentTime
             }
-            //Este bloque es para uso del programador y no tiene relacion alguna con el rendering o ningun aspecto del juego, mas bien se hizo para entender visualmente lo que hace esta funcion y como hace funcionar el reloj que creamos aqui
-            //renderTimeBiggerCounter += 1/* En este contador cuento mas o menos la cantidad de oscilaciones como medida para conocer cuanto tiempo le toma a currentTime sobrepasar el valor de renderTime(mientras esta estatico es decir que no se ha actualizado) antes de volver a ser actualizado*/
-            //print(renderTimeBiggerCounter!)
-            //print("")
+            
         }
-        
-        //Este bloque solo ejecuta si gameCompleted == true, la idea es tomar los ultimos segundos y minutos para que puedan ser evaluados para la mejor marca de tiempo en la siguiente funcion
-
-        /*Aqui ocurre el paso a la escena de Game Over la razon por la que se encuentra aqui es pq cuando lo ejecutaba en Touchesbegan la transicion le quitaba "espacio" a la funcion
-         Touches Began y para que esta pudiera tener su "espacio" y termine de ejecutar su metodo, se coloco aqui dado que esta funcion ejecuta cada segundo pero solo llega la ejecucion aqui si el juego ya se completo luego de que el reloj se detuviera.*/
+        /** This block  will execute when completedGame equals true(meaning all nodes were correctly identified), the function below will get gameOverScene. The reason to place here the game transition to gameOverScene is due Touch function needs "space" in order to perform without much lagging as scene transitioning and
+         Touch function both require a lot of resouces that can compromise the flow of the game(so basically thats why the scene transition is not placed on Touch function)*/
         
         if StartScene.completedGame == true{
             goToGameOverScene()
         }
         
     }
-    
+    //Function adds seconds and minute, also adds penalties when wrong node or skip button is pressed
     func timerManagement(){
-        addSecond()
+            addSecond()
             //seconds += 1
             if seconds == 60 {
                 resetSecondsAddMinutes()
@@ -310,16 +305,15 @@ class StartScene: SKScene{
         //let penalty = 3
         print("inside")
         seconds = seconds + penalty
-        //El if statement abajo substituye(0 resume) los proximos if statements comentados,si los segundos al sumarle el penalty sobrepasan 59, dentro del if se convierte a la cantidad de segundos correspondientes osea 60 a 0, 61 a 1 etc....
     }
     
     func resetSecondsAfterPenaltyAddMinutes(){
-        seconds = seconds - 60//me percate que restandole 60 a los segundos me da la cantidad correspondiente entendiendo que un nuevo segundero a reiniciado.
-        minutes += 1//se sobre entiendo que una vez los segundos(segundero)sobrepasa los 59 segundos se suma un mimnuto
+        seconds = seconds - 60//Subastracting 60 from seconds gets the number of seconds while seconds are reinitiated
+        minutes += 1//adding minutes once seconds count reach 59
     }
+    
     func addSkipButtonPenaltyToSeconds(){
-        //let skipButtonPenalty = 15//Declared at the top so that it is not declared each time skip button is pressed
-        print("quince segundos mas")
+        print("15 more seconds")
         seconds = seconds + skipButtonPenalty
     }
     
@@ -329,20 +323,7 @@ class StartScene: SKScene{
         //"0\(minutes)" : "\(minutes)"//this line of code is to show a 0(01,02,03...minutes) on the minutes counter
         if minutes >= 1 {
               labelTimer.text = "\(minutesText):\(secondsText)"
-              //timerBackground.size = labelTimer.frame.size
-              if minutes == 1{//ajusta la apariencia del label/background cuando los minutos utilizan un solo lugar que solo ocurre de 1 al minuto 9
-                  labelTimer.removeFromParent()
-                  //timerBackgroundBorder.removeFromParent()
-                  timerBackground.removeFromParent()
-                 
-                  addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: labelTimer)
-                  //addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundBorderTwo, children: labelTimer)
-                  addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
-
-                  //addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
-                  //addChildSKSpriteNodeToParentself(children: timerBackgroundBorderTwo)
-              }
-          
+              
           }
         
           else{
@@ -350,7 +331,7 @@ class StartScene: SKScene{
               
           }
     }
-    
+    //Function will only execute during second 00
     func formatCastZeroToStringAndWriteToLabel(){
         let secondsText = (seconds < 10) ?
         "0\(seconds)" : "\(seconds)"
@@ -373,78 +354,60 @@ class StartScene: SKScene{
     
         self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
     }
-    
+    //Function gets seconds and minutes to be evaluated at gameOverScene
     func getSecondsAndMinutes(){
         StartScene.secondsGameOver = seconds
         StartScene.minutesGameOver = minutes
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Funcion encargada del toque de pantalla
+    //function manage touch on screen
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {//Touch function
+         
+        let touch = touches.first!//store touch
+        let touchLocation = touch.location(in: self)//Defines the space where touch is taking effect, in this case StartScene
+        let touchedNode = self.physicsWorld.body(at:touchLocation)//Defines that touch will take effect when it gets in contact with an SKphysics body
         
-        let touch = touches.first!//Guarda toque de pantalla
-        let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
-        touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
         
-        if (touchedNode != nil){//Esta linea permite que la ejecucion continue hacia el bloque abajo si se toco un SKphysics body o tambien se puede entender como si se tocara fuera de los skphysics bodys que en cuyo caso devolveria un valor nil(nulo)
-            if (municipioNameLabel.text == touchedNode?.node?.name){//Si esta condicion no se cumple que es igual a no atinar el municipio a identificar, pasa al Else abajo donde la variable Fail es igual a true
-                getTouchedNodeAddColorAndLabels()
+        if (touchedNode != nil){//This line controls the flow by evaluating if a SKphysics body was touch or not, touchNode will return nil when the screen is touched but no SKphysics body was touched
+            if (municipioNameLabel.text == touchedNode?.node?.name){//Evaluates touch by matching the label text attribute with node's name attributes
+                let spritenode = touchedNode?.node as! SKSpriteNode//pass touchedNode node attribute to spritenode, to apply changes
+                paintNode(spriteNode: spritenode)//color SKSpriteNode green
+                playCorrectSound()
+                /**Set labels and add them to map texture(node)*/
+                setLabelForMunicipioNameAndAddToNode(nodeSprite: spritenode)
+                /**Element identified is removed from names array, Evaluates for game complition and removal of Skip button*/
                 removeIdentifiedElementEvaluateCompleteGameAndSkipButtonRemoval()
+                /**set new municipio to look after*/
                 setNewMunicipioNameToLookUp()
+                /**add one to number of municipios located*/
                 addToScoreCountWriteToLabel()
+                
             }
             
-            /*Se asigno us SKPhysics body para el skipButton y el toque de pantalla se captura en este bloque**/
+            /*Skip button touch action**/
             else if (skipButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente
                 addOneTocurrentIndexSetNameToLookUp()
-                
             }
-            
+            /**Exit button touch action*/
             else if (exitRedButton.name == touchedNode?.node?.name){
                 goToStartMenu()
-                
             }
-            
-            //En este Else statement entra la ejecucion cuando se toca el skbody que no corresponde al municipio a localizar
+           
+            //else statement will execute whenever a wrong municipio node is touched
             else{
                 playIncorrectSound()
                 
-                return fail = true//Esta variable se actualiza para entonces ejecutar la penalizacion de anadir 3 segundos al reloj del juego
-                
+                return fail = true//variable updates to apply 3 seconds penalty at timer function
             }
-            
-        }
-        
-    }
-    
-    func getTouchedNodeAddColorAndLabels(/*nameLocationLabel:SKLabelNode, lineFirstLabel:SKLabelNode, lineSecondlabel: SKLabelNode*/){
-        
-        let locationNameLabel = SKLabelNode()//Label para municipios que utilizan un solo label para acomodar el nombre del mismo
-        let firstLineLabel = SKLabelNode()//Primer label para municipios que utilizan mas de un label para acomodar su nombre
-        let secondLineLabel = SKLabelNode()//Segundo label para municipios que utilizan mas de un label para acomodar su nombre
-        //var countOfIndexes:Int = -1//Dado que interesamos obtener una cuenta de los indices y no de los elementos inicializamos a -1 para que la cuenta incluya el lugar numero 0
-        
-        for child in containerNode.children {//Este for loop va a iterar(en memoria los elementos contenidos en containerNode(SKNode)) de forma continua cotejando la condicion if(touchedNode?.node?.name == spriteNode.name)
-            if let spriteNode = child as? SKSpriteNode {//Esto se leeria como Si child es Skspritenode(esto es porque podria ocurrir que containerNode tenga algun objeto que no un Skspritenode)
-                if(touchedNode?.node?.name == spriteNode.name){//Si esta condicion prueba falsa la ejecucion va a regresar al for loop continuamente hasta que esta pruebe cierta
-                    
-                    paintNode(spriteNode: spriteNode)
-                    
-                    playCorrectSound()
-                   
-                    
-                   setLabelForMunicipioNameAndAddToNode(labelLocationName:locationNameLabel, nodeSprite: spriteNode, labelFirstLine:firstLineLabel, labelSecondLine: secondLineLabel)
-                
-                }
-                        
-            }
-                    
         }
     }
     
+    
+    //paint nodes green also sets physics body to nil
     func paintNode(spriteNode:SKSpriteNode){
-        spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)// Aplica color al municipio identificado correctamente. Color description: minty green(custom color no hex # available)
-        spriteNode.colorBlendFactor = 1.0//Gradacion de la transparecia del color a aplicarse, que en este caso no queremos trasparencia si no que el color se exprese en el mayor grado posible
-        spriteNode.physicsBody = nil//Elimina el skphysicsBody
+        spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
+        spriteNode.colorBlendFactor = 1.0
+        spriteNode.physicsBody = nil
     }
     
     func playCorrectSound(){
@@ -453,192 +416,197 @@ class StartScene: SKScene{
         }
     }
     
-    func setLabelForMunicipioNameAndAddToNode(labelLocationName:SKLabelNode, nodeSprite:SKSpriteNode, labelFirstLine:SKLabelNode, labelSecondLine:SKLabelNode){
+    //following function sets labels for municio names using one or two labels and adds labels to map node(municipio map node)
+    func setLabelForMunicipioNameAndAddToNode(nodeSprite:SKSpriteNode){
            
-           labelLocationName.text = municipioNameLabel.text//Text atribute is pass to locationNameLabel to be used by one word municipios(except for Las Piedras and Las Marias) same
+           let locationNameLabel = SKLabelNode()/**Label serves two uses, first it's the display label on map for short named municipios but also is use to pass its text Attributes to function splitTextIntoFields*/
+           let firstLineLabel = SKLabelNode()//First label for long named municipio names(ex. Aguas Buenas)
+           let secondLineLabel = SKLabelNode()//Second label for long named municipio names(ex Aguas Buenas)
+           locationNameLabel.text = municipioNameLabel.text//Text atribute is pass to locationNameLabel to be used by one word municipios(except for Las Piedras and Las Marias) same
            
-           //El switch statement se encarga de algunos atributos mas especificos(de un grupo de municipios o de uno, referente)de los labels que identifican en texto x municipio luego de ser identificado correctamente
-           //La ejecuccion va a continuar en el case que corresponda o incluya el string con el mismo valor de municipioNameLabel.text
+           /**The switch statement allows to set the label(that identifies each municipio in the map) with attributes necessary to acamodate text, set positioning and other attributes  exclusive to a group of nodes or individual nodes  */
+           /**The execution will enter the case that corresponds with the String value of municipioNameLabel.text*/
            switch municipioNameLabel.text {
                    
                case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
                     "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)//Attributes are set for label
-                   labelLocationName.horizontalAlignmentMode = .center
-                   labelLocationName.verticalAlignmentMode = .center
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)//Attributes are set for label
+                   locationNameLabel.horizontalAlignmentMode = .center
+                   locationNameLabel.verticalAlignmentMode = .center
                    
                case "Camuy", "Aguadilla", "Juncos":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 5.0
-                   labelLocationName.position = CGPoint(x: -2.0, y: 0.0)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 5.0
+                   locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
 
                case "Cayey":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.position = CGPoint(x: -6.5, y: 3.0)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
 
                    
                case "Isabela", "Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 5.0
-                   labelLocationName.position = CGPoint(x: 0.5, y: 0.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 5.0
+                   locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
                    //locationNameLabel.zPosition = 1
 
                    
                case "Hormigueros", "Maunabo" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 4.3
-                   labelLocationName.zRotation = 10.0
-                   labelLocationName.position = CGPoint(x: -0.5, y: 2.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 4.3
+                   locationNameLabel.zRotation = 10.0
+                   locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
 
                    
                case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 5.0
-                   labelLocationName.zRotation = 10.5
-                   labelLocationName.position = CGPoint(x: -4.5, y: 1.0)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 5.0
+                   locationNameLabel.zRotation = 10.5
+                   locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
 
                    
                case "Mayagüez":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 5.4
-                   labelLocationName.position = CGPoint(x: 42.0, y: 21.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 5.4
+                   locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
 
                    
                case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 5.5
-                   labelLocationName.zRotation = 10.8
-                   labelLocationName.position = CGPoint(x: 1.5, y: -1.2)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 5.5
+                   locationNameLabel.zRotation = 10.8
+                   locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
 
                    
                case "Guayanilla" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 5.5
-                   labelLocationName.position = CGPoint(x: 2.5, y:12.5)
-                   labelLocationName.zRotation = 9.0
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 5.5
+                   locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
+                   locationNameLabel.zRotation = 9.0
 
                    
                case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 5.1
-                   labelLocationName.zRotation = 1.9
-                   labelLocationName.position = CGPoint(x: 0.5, y: -1.2)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 5.1
+                   locationNameLabel.zRotation = 1.9
+                   locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
 
                    
                case "Florida" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 4.5
-                   labelLocationName.position = CGPoint(x: 0.5, y: 0.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 4.5
+                   locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
 
                    
                case  "Ciales", "Ceiba" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.position = CGPoint(x: 4.5, y: 0.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
 
                    
                    
                case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 4.9
-                   labelLocationName.zRotation = 2.3
-                   labelLocationName.position = CGPoint(x: 3.5, y: 1.0)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 4.9
+                   locationNameLabel.zRotation = 2.3
+                   locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
 
                    
                case "Cataño":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 4.0
-                   labelLocationName.position = CGPoint(x: 0.5, y: 1.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 4.0
+                   locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
 
                    
                case "Loíza" :
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.fontSize = 7.0
-                   labelLocationName.zRotation = 6.18
-                   labelLocationName.xScale = 1.0
-                   labelLocationName.position = CGPoint(x: 10.0, y: 0.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.fontSize = 7.0
+                   locationNameLabel.zRotation = 6.18
+                   locationNameLabel.xScale = 1.0
+                   locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
 
                    
                case "Fajardo":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.position = CGPoint(x: -5.7, y: 8.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
 
                    
                case "Guayama":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.position = CGPoint(x: 0.5, y: 6.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
 
                    
                case "Vieques":
-                   setOneLineMunicipioNameLabel(Oneline:labelLocationName)
-                   labelLocationName.position = CGPoint(x: -40.5, y: -8.5)
+                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                   locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
 
                       
                    
                case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
-                   setTwoLineMunicipioNameLabels(labelLineFirst:labelFirstLine, labelLineSecond:labelSecondLine)//Attributes are set for label
-                   labelFirstLine.text = splitTextIntoFields(theText:labelLocationName)
-                   labelSecondLine.text = splitTextIntoFieldsTwo(theText:labelLocationName)
-                   labelSecondLine.verticalAlignmentMode = .top
+                   setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)//Attributes are set for label
+                   firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)//adds first part of text attribute(ex.Aguas)
+                   secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)//adds second part of text attribute(ex.Buenas)
+                   secondLineLabel.verticalAlignmentMode = .top
 
                    
                case "Sabana Grande" :
-                   setTwoLineMunicipioNameLabels(labelLineFirst:labelFirstLine, labelLineSecond:labelSecondLine)
-                   labelFirstLine.text = splitTextIntoFields(theText:labelLocationName)
-                   labelSecondLine.text = splitTextIntoFieldsTwo(theText:labelLocationName)
-                   labelFirstLine.fontSize = 5.0
-                   labelSecondLine.fontSize = 5.0
-                   labelFirstLine.position = CGPoint(x:-4.0, y:5.5)
-                   labelSecondLine.position = CGPoint(x:-3.5, y:13.0)
+                   setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                   firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                   secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                   firstLineLabel.fontSize = 5.0
+                   secondLineLabel.fontSize = 5.0
+                   firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
+                   secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
 
                    
                case "Vega Alta":
-                   setTwoLineMunicipioNameLabels(labelLineFirst:labelFirstLine, labelLineSecond:labelSecondLine)
-                   labelFirstLine.text = splitTextIntoFields(theText:labelLocationName)
-                   labelSecondLine.text = splitTextIntoFieldsTwo(theText:labelLocationName)
-                   labelFirstLine.position = CGPoint(x:2, y:0.5)
-                   labelSecondLine.verticalAlignmentMode = .top
+                   setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                   firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                   secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                   firstLineLabel.position = CGPoint(x:2, y:0.5)
+                   secondLineLabel.verticalAlignmentMode = .top
 
                    
                case "Toa Baja":
-                   setTwoLineMunicipioNameLabels(labelLineFirst:labelFirstLine, labelLineSecond:labelSecondLine)
-                   labelFirstLine.text = splitTextIntoFields(theText:labelLocationName)
-                   labelSecondLine.text = splitTextIntoFieldsTwo(theText:labelLocationName)
-                   labelFirstLine.horizontalAlignmentMode = .right
-                   labelSecondLine.verticalAlignmentMode = .top
-                   labelSecondLine.horizontalAlignmentMode = .right
+                   setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                   firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                   secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                   firstLineLabel.horizontalAlignmentMode = .right
+                   secondLineLabel.verticalAlignmentMode = .top
+                   secondLineLabel.horizontalAlignmentMode = .right
 
                    
                case "Trujillo Alto" :
-                   setTwoLineMunicipioNameLabels(labelLineFirst:labelFirstLine, labelLineSecond:labelSecondLine)
-                   labelFirstLine.text = splitTextIntoFields(theText:labelLocationName)
-                   labelSecondLine.text = splitTextIntoFieldsTwo(theText:labelLocationName)
-                   labelFirstLine.fontSize = 5.5
-                   labelSecondLine.fontSize = 5.5
-                   labelFirstLine.position = CGPoint(x:-4.0, y:0.5)
-                   labelSecondLine.position = CGPoint(x:-3.5, y:6.5)
+                   setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                   firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                   secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                   firstLineLabel.fontSize = 5.5
+                   secondLineLabel.fontSize = 5.5
+                   firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
+                   secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
 
                    
                case "San Lorenzo"  :
-                   setTwoLineMunicipioNameLabels(labelLineFirst:labelFirstLine, labelLineSecond:labelSecondLine)
-                   labelFirstLine.text = splitTextIntoFields(theText:labelLocationName)
-                   labelSecondLine.text = splitTextIntoFieldsTwo(theText:labelLocationName)
-                   labelSecondLine.position = CGPoint(x:4.5, y:6.0)
+                   setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                   firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                   secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                   secondLineLabel.position = CGPoint(x:4.5, y:6.0)
 
                
                    default:
                        break
            }
            if(useLine2 == true){
-             nodeSprite.addChild(labelFirstLine)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
-             nodeSprite.addChild(labelSecondLine)
+             nodeSprite.addChild(firstLineLabel)//adds label to map node
+             nodeSprite.addChild(secondLineLabel)//adds label to map node
              useLine2 = false
            }
                
            else{
-             nodeSprite.addChild(labelLocationName)//anade el label al objeto skpritenode(parte del mapa politico que corresponde a un municipio)
+             nodeSprite.addChild(locationNameLabel)//adds label to map node
            }
        }
     
+    //sets attributes for label to use with one word municipio names
     func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
         //Oneline.text = municipioNameLabel.text
         Oneline.fontName = "Helvetica"
@@ -647,7 +615,7 @@ class StartScene: SKScene{
         Oneline.zRotation = 9.44
         Oneline.fontSize = 5.4
     }
-    
+    //sets attributes for labels to use with two word municipio names
     func setTwoLineMunicipioNameLabels(labelLineFirst:SKLabelNode, labelLineSecond:SKLabelNode){
         
         labelLineFirst.fontName = "Helvetica"
@@ -662,17 +630,16 @@ class StartScene: SKScene{
         labelLineSecond.zRotation = 9.44
     }
     
-    //Las dos proximas funciones son identicas con la diferencia de que devuelven cada una por su parte una variable diferente
-    func splitTextIntoFields(theText:SKLabelNode)->String{
-        useLine2 = false//Esta linea resetea la variable que es necesario para no crear redundancia cuando se pasa el texto a label(ej:aguas aguas buenas)
-        //var twoLineText: String = ""
-        twoLineText = theText.text!//texto que necesitamos dividir en dos lineas
-        //var i: Int = 0
-        var line1:String = ""//declaracion de las variables que se van a devolver
+    //The next two fucctions are identical with the difference that each return a different part of the text
+    func splitTextIntoFields(theText:String)->String{
+        
+        twoLineText = theText//text to split in two(ex:"Aguas Buenas")
+
+        var line1:String = ""//var declaration for String value to be returned
         var line2:String = ""
             
             
-        for letter in twoLineText{//Cada letra contenida en el String es desglosada por el for loop
+        for letter in twoLineText{//each character is split on each for loop iteration(one character at a time)
             if (String(letter) == " "){
                 useLine2 = true
             }
@@ -689,10 +656,10 @@ class StartScene: SKScene{
         return line1
     }
     
-    func splitTextIntoFieldsTwo(theText:SKLabelNode)->String{
-        useLine2 = false
+    func splitTextIntoFieldsTwo(theText:String)->String{
+        useLine2 = false//This lie resets the variable which is necessary in order not to create repetition of text ex Aguas Aguas Buenas
         //var twoLineText: String = ""
-        twoLineText = theText.text!
+        twoLineText = theText
         //var i: Int = 0
         var line1:String = ""
         var line2:String = ""
@@ -716,120 +683,36 @@ class StartScene: SKScene{
     }
     
     func removeIdentifiedElementEvaluateCompleteGameAndSkipButtonRemoval(){
-        let countOfIndexes = municipios_names_array.count - 1
-            //print(count)
-            
-            //El for statement abajo va a generar la cuenta de los indices entendiendose que el cero es un lugar y esta incluido. En cada nueva iteracion el numero de indices es menor, por: let elementRemoved = municipios_names_array.remove(at:currentIndex)
-            /**for _ in municipios_names_array {
-                //if index != ""{
-                    countOfIndexes += 1//ojo esta variable se reinicia cuando el programa regresa al tope y pasa  por la declaracion de la variable
-                //}
-            }*/
-            //print(countOfIndexes)
-            let currentMunicipioNameOnLabel = municipioNameLabel.text//Esta variable la cree como guia para mantener identificado el contenido del label(municipioNameLabel) antes de ser actualizado en el bloque donde se hace el rendering de los labels sobre los pueblos correspondientes
-            
-            let municipioToBeRemovedFromArray = municipios_names_array[currentIndex]//Elemento a ser removido del array luego de ser identificado. Se guarda en esta variable que sera utilizada mas adelante en la funcion que remueve elementos del array
-            
-            //Este if statement ejecuta siempre que currentIndex y countOfIndexes son distintos
-            if currentIndex != countOfIndexes{
-                if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{//Corrobora que el municipio a eliminarse del array
-                    /*let elementRemoved =*/ municipios_names_array.remove(at:currentIndex)//remueve elemento identificado en el indice al momento(que es el municipio a buscar)
-                    //countIndex = countIndex - 1// Remueve un indice de la cuenta indexada
-                    /**print("CHANGE")//. uso del programador
-                    countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
-                    //scoreCount += 1
-                    //labelScores.text = "\(scoreCount)" + totalScoreCount
-                    
-                    //reconteo para uso del programador
-                    for index in municipios_names_array {
-                        if index != ""{
-                            countOfIndexes += 1
-                        }
-                    }
-                    print(countOfIndexes)//. uso del programador
-                    print(currentIndex)//. uso del programador
-                    print("")//. uso del programador
-                    print(elementRemoved)//. uso del programador
-                    print(municipios_names_array)//. uso del programador
-                    print("ACA")//. uso del programador*/
-                    
-                }
-                
-            }
-            
-            /*Este else if ejecuta solo cuando currentIndex y countOfIndexes son iguales pero mayor o igual a 1. Esto solo va a ocurrir si se presiona el boton de skip lo que mueve el index adelante cuando en el transcurso del juego alcanzamos el ultimo elemento en orden natural vamos a observar que ambas variables van a tener el mismo valor (que equivale al numero de municipios saltados previamente), tambien esto nos indica que el currentIndex se movera proximamente al index 0.
-            */
-            else if currentIndex == countOfIndexes && currentIndex >= 1 && countOfIndexes >= 1{/*Esta condicion se cumple cuando alcanzamos el fin del array, pero quedan elementos en la posiciones anteriores a currentIndex, de mode
-                 que currentIndex vuelve a 0 para ir sobre el resto de los elementos que van quedando atras en el queue luego que oprimimos el skipButton*/
-                if currentMunicipioNameOnLabel == municipioToBeRemovedFromArray{
-                    /*let elementRemoved =*/ municipios_names_array.remove(at:currentIndex)
-                    currentIndex = 0/*Cuando la ejecucion entra en este bloque quiere decir que el programa llego al ultimo indice, de modo que vuelve al indice 0 para volver sobre los municipios que no pudieron ser identificados
-                    durante el recorrido anterior a lo largo del array */
-                    /**print("CHANGE")//. uso del programador
-                    countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
+        let countOfIndexes = municipios_names_array.count - 1//Gets the number of indexes in array
 
-                    //reconteo para uso del programador
-                   for index in municipios_names_array {
-                        if index != ""{
-                            countOfIndexes += 1
-                        }
-                    }
-                    print(countOfIndexes)//. uso del programador
-                    print(currentIndex)//. uso del programador
-                    print("")//. uso del programador
-                    print(elementRemoved)//. uso del programador
-                    print(municipios_names_array)//. uso del programador
-                    print("AQUI")//. uso del programador*/
-                }
-               
-            }
+        /**cuurentIndex and countOfIndexes will be different as long as the end of the array have not been reached. they become equal under two scenarios when the end of array is reached but still some skipped nodes remain to be identified
+         or reaching the end of array by  identifying all nodes*/
+        if currentIndex != countOfIndexes{
+            municipios_names_array.remove(at:currentIndex)//remove element at the index from array
+        }
             
-                
-            //Este else statement va a ejecutar solo cuando currentIndex y countIndex == 0
-            else{
-                //musicPlayer.stop()
-                self.removeAllActions()
-                getSecondsAndMinutes()
-                //self.removeAllChildren()
-                StartScene.completedGame = true//Se actualiza la variable completedGame para detener el reloj
-                //run(fanfair)
+        /**This condition equals true when currentIndex and countOfIndexes are equals but both equal or bigger than 1. This scenario will play out when skipButtom is pressed , this moves the index forward from default index position 0. When index have moved foward  and the end of array have been reached(at this point currentIndex and countOfIndexes are equals but both equal or bigger than 1 (Note:actually both value are equals to the number of skipped elements)) , then currentIndex must be moved back to 0 in order to be able to evaluate and look up the remaining skipped elements.  */
+        else if currentIndex == countOfIndexes && currentIndex >= 1 && countOfIndexes >= 1{
+            municipios_names_array.remove(at:currentIndex)//remove element at the index from array
+            currentIndex = 0/*resets currentIndex once end of array been reached to go back to index 0 and go over the remaining skipped municipios*/
+        }
+            
+        /**following statement will execute when currentIndex and countOfIndexes equals 0 meaning that last element have been identified and prepare the game to move to gameOverScene*/
+        else{
+            //musicPlayer.stop()
+            self.removeAllActions()//It catches the last correctSound in order for transition to gameOverScene to flow smoother with less laggin
+            getSecondsAndMinutes()//gets seconds and minutes to be used for time record function at gameOverScene
+            StartScene.completedGame = true//variable updates to stop the timer and execute the transition to gameOverScene (gameOverScene TRANSITION EXECUTES AT UPDATE FUNCTION)
+        }
+        /**the following condition is true when var countOfIndexes == 1(meaning there are two elements left 0 and 1) and currentIndex value is 0 or first index of array, where is the second to last element(penultimo elemento), that at this point have been already removed in the block above. But due countOfIndexes updates in the following iteration, to the effect of the present iteration there are two elements left and this allows for this condition to evaluate to true in order to toguether with the removing second to last element(in the previous block) its also removed the skipButton on this block. WHAT IS IMPORTANT TO ACKNOWLEDGE IS THAT THE REMOTION OF SECOND TO LAST(PENULTIMO) ELEMENT AND SKIPBUTTON HAPPENS IN THE SAME ITERATION*/
+        if  countOfIndexes == 1 && currentIndex == 0 && municipios_names_array.endIndex-1 == 0 {
+         print("skip button out")
+         skipButton.removeFromParent()
+        }
         
-                /*timerBackgroundBorderTwo.removeFromParent()
-                timerBackgroundTwo.removeFromParent()
-                labelTimer.removeFromParent()
-                containerNode.removeFromParent()
-                goldBackgroundSKSpriteNode.removeFromParent()*/
-                
-                
-                //EL restante del bloque es para uso del pro\gramador
-                /***print("CHANGE")//. uso del programador
-                countOfIndexes = -1//Reinicia la variable, de lo contrario el statement countOfIndexes += 1 mantendria el valor del conteo inicial y dando un valor erroneo no actualizado
-                //scoreCount += 1
-                //labelScores.text = "\(scoreCount)" + totalScoreCount
-                //reconteo uso del programador
-                for index in municipios_names_array {
-                    if index != ""{
-                        countOfIndexes += 1
-                    }
-                }
-                print(countOfIndexes)//. uso del programador
-                print(currentIndex)//. uso del programador
-                print("")//. uso del programador
-                print(municipios_names_array)//. uso del programador
-                print("completed game")*/
-            }
-        /*La siguiente condicion es cierta cuando la variable countOfIndexes == 1(osea que restan dos indices el 0 y 1) y currentIndex se encuentra en 0 o primer indice que es donde se encuentra el penultimo indice(elemento) que a este punto ya fue removido en el bloque anterior. Pero dado que la variable countOfIndexes actualiza en la proxima iteracion para los efectos de(la presente iteracion) quedan dos elementos y es lo que permite crear esta condicion de modo que junto al penultimo elemento(removido en bloques anteriores) tambien removemos el boton de skip en este bloque. Lo importante es entender que cuando se cumple esta condicion(para eliminar el skip button) ya se ha removido el penultimo elemento y que tanto la remocion del penultimo elemento como la remocion del skip button ocurren en una misma iteracion */
-         /*OJO UTILIZO countofIndexesTwo solo y exclusivamente en esta funcion cuando estoy utilizando los print() statements del programador,
-         de lo contrario comento todos los statements del programador y utilizo la variable countOfIndexes*/
-        
-         if  countOfIndexes == 1 && currentIndex == 0 && municipios_names_array.endIndex-1 == 0 {
-             print("skip button out")
-             skipButton.removeFromParent()
-             //print(countOfIndexes)
-             //print(countOfIndexesTwo)
-         }
     }
     
+    /**following function pass text attributes for the next municipio name to look up and adjust the background size for the label(municipioNameLabel) */
     func setNewMunicipioNameToLookUp(){
         municipioNameLabel.text = municipios_names_array [currentIndex] //Se desplega el nuevo municipio a ser localizado por el jugador
         if municipioNameLabel.text == "Aguas Buenas" || municipioNameLabel.text == "Barceloneta" || municipioNameLabel.text == "Barranquitas" || municipioNameLabel.text == "Cabo Rojo"
@@ -855,15 +738,17 @@ class StartScene: SKScene{
         }
     }
     
+    //function updates the label rendering the number of municipios identified already at the bottom right of screen
     func addToScoreCountWriteToLabel(){
-        /*Aqui se estaria ejecutando el label para los scores*/
         scoreCount += 1
         labelScores.text = "\(scoreCount)" + totalScoreCount//totalScoreCount es un constant string solo sirve al rendering del score
     }
     
+    /*funtion adds 1 to currentIndex(due skipButton been pressed). Also gives alpha effect to the button when pressed, updates variables for penalty(pressSkipButton) at Update(timer) function and updates
+    skipButtonPressed to complete alpha effect at touchesEnded function and set the new municipio to look up at municipioNameLabel*/
     func addOneTocurrentIndexSetNameToLookUp(){
-        currentIndex += 1//mueve el indice adelante en el array de municipios y por consiguiente va a cambiar el municipio a buscarse en orden alfabetico.
-        skipButton.alpha = 0.88//efecto para skipButton al presionarlo, esta linea es solo una prueba y debo al menos sujetarlo a una condicion en el futuro como un if
+        currentIndex += 1
+        skipButton.alpha = 0.88
         pressSKipButton = true
         skipButtonPressed = true
         
@@ -876,6 +761,7 @@ class StartScene: SKScene{
         print("Skip Button touched")
     }
     
+    //transition to StartMenu Scene when exit button is pressed
     func goToStartMenu(){
         let startMenuScene = StartMenu(size: self.size)//definitio
         //let transition = SKTransition.doorsOpenVertical(withDuration: 1.5)
@@ -888,7 +774,7 @@ class StartScene: SKScene{
         }
     }
 
-    
+    //function detects when the touch on screen have ended in order to complete alpha effect that started at addOneTocurrentIndexSetNameToLookUp()
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         //Efecto para el skipButton cuando se suelta el boton
         if skipButtonPressed == true{

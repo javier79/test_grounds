@@ -17,7 +17,7 @@ class TestClass {
     
     func goldenBackground() -> SKSpriteNode {
         let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-        goldenBackground.size = CGSize(width: 680, height:50)
+        //goldenBackground.size = CGSize(width: 680, height:50)
         //goldenBackground.position = CGPoint(x:335, y:25)
         //goldenBackground.zPosition = 1
         return goldenBackground
