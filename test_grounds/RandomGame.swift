@@ -154,7 +154,7 @@ class RandomGame: SKScene{
     override public func update(_ currentTime: TimeInterval) {/*Function execute every second, for timer functionality*/
         
         
-       if StartScene.completedGame == false{//Control variable to keep the timer running, once condition is true the timer is stopped
+       if RandomGame.completedGame == false{//Control variable to keep the timer running, once condition is true the timer is stopped
             /* currentTime refers to the pc running clock and renderTime refers to the passing time while the game is running*/
             if currentTime > renderTime {/**currentTime  value is bigger than renderTime only when a second is added, later on renderTime value updates to a future time measure bigger than currentTime, due currenTime is continuously running when it becomes bigger than renderTime value, the execution enters the next block to sum seconds and minutes*/
             
@@ -343,7 +343,7 @@ class RandomGame: SKScene{
     
     func playCorrectSound(){
         if StartMenu.gamePlaySoundOn == true{
-            run(StartScene.correctSound)//correctSound
+            run(/*StartScene.*/correctSound)//correctSound
         }
     }
     
@@ -635,7 +635,7 @@ class RandomGame: SKScene{
  
     func playIncorrectSound(){
         if StartMenu.gamePlaySoundOn == true{
-            run(StartScene.incorrectSound)
+            run(/*StartScene.*/incorrectSound)
         }
     }
     

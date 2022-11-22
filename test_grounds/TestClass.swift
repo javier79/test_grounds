@@ -13,6 +13,583 @@ class TestClass {
 
     var path: UIBezierPath!
     
+    
+    func initSetcontainerNodeAndChildrenPractice()->SKNode{
+        let containerSKNode = SKNode()
+        
+        let coverDesecheoIslandSKSpriteNode: SKSpriteNode = TestClass().desecheoIslandCover()
+        let rectangularFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())
+        let rectangularViequesFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: TestClass().createViequesRectangle())
+        let rectangularCulebraFrameSKSPriteNode: SKSpriteNode = TestClass().rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: TestClass().createCulebraRectangle())
+        let caboRojoSKSpriteNode: SKSpriteNode = TestClass().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: TestClass().caboRojoDrawBezierPath())
+        let hormiguerosSKSpriteNode:SKSpriteNode = TestClass().hormiguerosBezierPathToSKSpriteNode(bphormigueros: TestClass().hormiguerosDrawBezierPath())
+        let mayaguezSKSpriteNode:SKSpriteNode = TestClass().mayaguezBezierPathToSKSpriteNode(bpMayaguez: TestClass().mayaguezDrawBezierPath())
+        let anascoSKSpriteNode: SKSpriteNode = TestClass().anascoBezierPathToSKSpriteNode(bpAnasco: TestClass().anascoDrawBezierPath())
+        let rinconSKSpriteNode: SKSpriteNode = TestClass().rinconBezierPathToSKSpriteNode(bpRincon: TestClass().rinconDrawBezierPath())
+        let aguadaSKSpriteNode: SKSpriteNode = TestClass().aguadaBezierPathToSKSpriteNode(bpAguada: TestClass().aguadaDrawBezierPath())
+        let aguadillaSKSpriteNode: SKSpriteNode = TestClass().aguadillaBezierPathToSKSpriteNode(bpAguadilla: TestClass().aguadillaDrawBezierPath())
+        let isabelaSKSpriteNode: SKSpriteNode = TestClass().isabelaBezierPathToSKSpriteNode(bpIsabela: TestClass().isabelaDrawBezierPath())
+        let mocaSKSpriteNode: SKSpriteNode = TestClass().mocaBezierPathToSKSpriteNode(bpMoca: TestClass().mocaDrawBezierPath())
+        let lasMariasSKSpriteNode: SKSpriteNode = TestClass().lasMariasBezierPathToSKSpriteNode(bpLasMarias: TestClass().lasMariasDrawBezierPath())
+        let maricaoSKSpriteNode: SKSpriteNode = TestClass().maricaoBezierPathToSKSpriteNode(bpMaricao:TestClass().maricaoDrawBezierPath())
+        let sanGermanSKSpriteNode:SKSpriteNode = TestClass().sanGermanBezierPathToSKSpriteNode(bpSanGerman: TestClass().sanGermanDrawBezierPath())
+        let yaucoSKSpriteNode: SKSpriteNode = TestClass().yaucoBezierPathToSKSpriteNode(bpYauco:TestClass().yaucoDrawBezierPath())
+        let lajasSKSpriteNode: SKSpriteNode = TestClass().lajasBezierPathToSKSpriteNode(bpLajas:TestClass().lajasDrawBezierPath())
+        let guanicaSKSpriteNode: SKSpriteNode = TestClass().guanicaBezierPathToSKSpriteNode(bpGuanica:TestClass().guanicaDrawBezierPath())
+        let guayanillaSKSpriteNode:SKSpriteNode = TestClass().guayanillaBezierPathToSKSpriteNode(bpGuayanilla:TestClass().guayanillaDrawBezierPath())
+        let sanSebastianSKSpriteNode: SKSpriteNode = TestClass().sanSebastianBezierPathToSKSpriteNode(bpSanSebastian: TestClass().sanSebastianDrawBezierPath())
+        let sabanaGrandeSKSpriteNode: SKSpriteNode = TestClass().sabanaGrandeBezierPathToSKSpriteNode(bpSabanaGrande: TestClass().sabanaGrandeDrawBezierPath())
+        let laresSKSpriteNode:SKSpriteNode = TestClass().laresBezierPathToSKSpriteNode(bpLares:TestClass().laresDrawBezierPath())
+        let penuelasSKSpriteNode:SKSpriteNode = TestClass().penuelasBezierPathToSKSpriteNode(bpPenuelas:TestClass().penuelasDrawBezierPath())
+        let ponceSKSpriteNode:SKSpriteNode = TestClass().ponceBezierPathToSKSpriteNode(bpPonce: TestClass().ponceDrawBezierPath())
+        let utuadoSKSpriteNode:SKSpriteNode = TestClass().utuadoBezierPathToSKSpriteNode(bpUtuado: TestClass().utuadoDrawBezierPath())
+        let jayuyaSKSpriteNode:SKSpriteNode = TestClass().jayuyaBezierPathToSKSpriteNode(bpJayuya: TestClass().jayuyaDrawBezierPath())
+        let juanaDiazSKSpriteNode:SKSpriteNode = TestClass().juanaDiazBezierPathToSKSpriteNode(bpJuanaDiaz:TestClass().juanaDiazDrawBezierPath())
+        let quebradillasSKSpriteNode:SKSpriteNode = TestClass().quebradillasBezierPathToSKSpriteNode(bpQuebradillas:TestClass().quebradillasDrawBezierPath())
+        let camuySKSpriteNode:SKSpriteNode = TestClass().camuyBezierPathToSKSpriteNode(bpCamuy:TestClass().camuyDrawBezierPath())
+        let hatilloSKSpriteNode:SKSpriteNode = TestClass().hatilloBezierPathToSKSpriteNode(bpHatillo:TestClass().hatilloDrawBezierPath())
+        let areciboSKSpriteNode:SKSpriteNode = TestClass().areciboBezierPathToSKSpriteNode(bpArecibo:TestClass().areciboDrawBezierPath())
+        let adjuntasSKSpriteNode:SKSpriteNode = TestClass().adjuntasBezierPathToSKSpriteNode(bpAdjuntas: TestClass().adjuntasDrawBezierPath())
+        let barcelonetaSKSpriteNode:SKSpriteNode = TestClass().barcelonetaBezierPathToSKSpriteNode(bpBarceloneta:TestClass().barcelonetaDrawBezierPath())
+        let manatiSKSpriteNode:SKSpriteNode = TestClass().manatiBezierPathToSKSpriteNode(bpManati:TestClass().manatiDrawBezierPath())
+        let vegaBajaSKSpriteNode:SKSpriteNode = TestClass().vegaBajaBezierPathToSKSpriteNode(bpVegaBaja:TestClass().vegaBajaDrawBezierPath())
+        let floridaSKSpriteNode:SKSpriteNode = TestClass().floridaBezierPathToSKSpriteNode(bpFlorida:TestClass().floridaDrawBezierPath())
+        let villalbaSKSpriteNode:SKSpriteNode = TestClass().villalbaBezierPathToSKSpriteNode(bpVillalba: TestClass().villalbaDrawBezierPath())
+        let cialesSKSpriteNode:SKSpriteNode = TestClass().cialesBezierPathToSKSpriteNode(bpCiales: TestClass().cialesDrawBezierPath())
+        let orocovisSKSpriteNode:SKSpriteNode = TestClass().orocovisBezierPathToSKSpriteNode(bpOrocovis: TestClass().orocovisDrawBezierPath())
+        let morovisSKSpriteNode:SKSpriteNode = TestClass().morovisBezierPathToSKSpriteNode(bpMorovis:TestClass().morovisDrawBezierPath())
+        let corozalSKSpriteNode:SKSpriteNode = TestClass().corozalBezierPathToSKSpriteNode(bpCorozal: TestClass().corozalDrawBezierPath())
+        let barranquitasSKSpriteNode:SKSpriteNode = TestClass().barranquitasBezierPathToSKSpriteNode(bpBarranquitas: TestClass().barranquitasDrawBezierPath())
+        let comerioSKSpriteNode:SKSpriteNode = TestClass().comerioBezierPathToSKSpriteNode(bpComerio: TestClass().comerioDrawBezierPath())
+        let coamoSKSpriteNode:SKSpriteNode = TestClass().coamoBezierPathToSKSpriteNode(bpCoamo: TestClass().coamoDrawBezierPath())
+        let naranjitoSKSpriteNode:SKSpriteNode = TestClass().naranjitoBezierPathToSKSpriteNode(bpNaranjito: TestClass().naranjitoDrawBezierPath())
+        let aibonitoSKSpriteNode:SKSpriteNode = TestClass().aibonitoBezierPathToSKSpriteNode(bpAibonito: TestClass().aibonitoDrawBezierPath())
+        let salinasSKSpriteNode:SKSpriteNode = TestClass().salinasBezierPathToSKSpriteNode(bpSalinas: TestClass().salinasDrawBezierPath())
+        let cayeySKSpriteNode:SKSpriteNode = TestClass().cayeyBezierPathToSKSpriteNode(bpCayey: TestClass().cayeyDrawBezierPath())
+        let cidraSKSpriteNode:SKSpriteNode = TestClass().cidraBezierPathToSKSpriteNode(bpCidra: TestClass().cidraDrawBezierPath())
+        let santaIsabelSKSpriteNode:SKSpriteNode = TestClass().santaIsabelBezierPathToSKSpriteNode(bpSantaIsabel: TestClass().santaIsabelDrawBezierPath())
+        let vegaAltaSKSpriteNode:SKSpriteNode = TestClass().vegaAltaBezierPathToSKSpriteNode(bpVegaAlta: TestClass().vegaAltaDrawBezierPath())
+        let doradoSKSpriteNode:SKSpriteNode = TestClass().doradoBezierPathToSKSpriteNode(bpDorado: TestClass().doradoDrawBezierPath())
+        let toaAltaSKSpriteNode:SKSpriteNode = TestClass().toaAltaBezierPathToSKSpriteNode(bpToaAlta: TestClass().toaAltaDrawBezierPath())
+        let toaBajaSKSpriteNode:SKSpriteNode = TestClass().toaBajaBezierPathToSKSpriteNode(bpToaBaja: TestClass().toaBajaDrawBezierPath())
+        let bayamonSKSpriteNode:SKSpriteNode = TestClass().bayamonBezierPathToSKSpriteNode(bpBayamon: TestClass().bayamonDrawBezierPath())
+        let catanoSKSpriteNode:SKSpriteNode = TestClass().catanoBezierPathToSKSpriteNode(bpCatano:TestClass().catanoDrawBezierPath())
+        let guaynaboSKSpriteNode:SKSpriteNode = TestClass().guaynaboBezierPathToSKSpriteNode(bpGuaynabo:TestClass().guaynaboDrawBezierPath())
+        let sanJuanSKSpriteNode:SKSpriteNode = TestClass().sanJuanBezierPathToSKSpriteNode(bpSanJuan: TestClass().sanJuanDrawBezierPath())
+        let caguasSKSpriteNode:SKSpriteNode = TestClass().caguasBezierPathToSKSpriteNode(bpCaguas: TestClass().caguasDrawBezierPath())
+        let carolinaSKSpriteNode:SKSpriteNode = TestClass().carolinaBezierPathToSKSpriteNode(bpCarolina: TestClass().carolinaDrawBezierPath())
+        let aguasBuenasSKSpriteNode:SKSpriteNode = TestClass().aguasBuenasBezierPathToSKSpriteNode(bpAguasBuenas: TestClass().aguasBuenasDrawBezierPath())
+        let trujilloAltoSKSpriteNode:SKSpriteNode = TestClass().trujilloAltoBezierPathToSKSpriteNode(bpTrujilloAlto: TestClass().trujilloAltoDrawBezierPath())
+        let loizaSKSpriteNode:SKSpriteNode = TestClass().loizaBezierPathToSKSpriteNode(bpLoiza: TestClass().loizaDrawBezierPath())
+        /*let loizaTwoSKSpriteNode:SKSpriteNode = TestClass().loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: loizaTwobp)
+        containerNode.addChild(loizaTwoSKSpriteNode)*/
+        let canovanasSKSpriteNode:SKSpriteNode = TestClass().canovanasBezierPathToSKSpriteNode(bpCanovanas: TestClass().canovanasDrawBezierPath())
+        let rioGrandeSKSpriteNode:SKSpriteNode = TestClass().rioGrandeBezierPathToSKSpriteNode(bpRioGrande: TestClass().rioGrandeDrawBezierPath())
+        let luquilloSKSpriteNode:SKSpriteNode = TestClass().luquilloBezierPathToSKSpriteNode(bpLuquillo: TestClass().luquilloDrawBezierPath())
+        let fajardoSKSpriteNode:SKSpriteNode = TestClass().fajardoBezierPathToSKSpriteNode(bpFajardo: TestClass().fajardoDrawBezierPath())
+        let ceibaSKSpriteNode:SKSpriteNode = TestClass().ceibaBezierPathToSKSpriteNode(bpCeiba: TestClass().ceibaDrawBezierPath())
+        let guraboSKSpriteNode:SKSpriteNode = TestClass().guraboBezierPathToSKSpriteNode(bpGurabo: TestClass().guraboDrawBezierPath())
+        let juncosSKSpriteNode:SKSpriteNode = TestClass().juncosBezierPathToSKSpriteNode(bpJuncos:TestClass().juncosDrawBezierPath())
+        let sanLorenzoSKSpriteNode:SKSpriteNode = TestClass().sanLorenzoBezierPathToSKSpriteNode(bpSanLorenzo: TestClass().sanLorenzoDrawBezierPath())
+        let guayamaSKSpriteNode:SKSpriteNode = TestClass().guayamaBezierPathToSKSpriteNode(bpGuayama: TestClass().guayamaDrawBezierPath())
+        let arroyoSKSpriteNode:SKSpriteNode = TestClass().arroyoBezierPathToSKSpriteNode(bpArroyo: TestClass().arroyoDrawBezierPath())
+        let patillasSKSpriteNode:SKSpriteNode = TestClass().patillasBezierPathToSKSpriteNode(bpPatillas: TestClass().patillasDrawBezierPath())
+        let maunaboSKSpriteNode:SKSpriteNode = TestClass().maunaboBezierPathToSKSpriteNode(bpMaunabo: TestClass().maunaboDrawBezierPath())
+        let yabucoaSKSpriteNode:SKSpriteNode = TestClass().yabucoaBezierPathToSKSpriteNode(bpYabucoa:TestClass().yabucoaDrawBezierPath())
+        let lasPiedrasSKSpriteNode:SKSpriteNode = TestClass().lasPiedrasBezierPathToSKSpriteNode(bpLasPiedras: TestClass().lasPiedrasDrawBezierPath())
+        let humacaoSKSpriteNode:SKSpriteNode = TestClass().humacaoBezierPathToSKSpriteNode(bpHumacao: TestClass().humacaoDrawBezierPath())
+        let naguaboSKSpriteNode:SKSpriteNode = TestClass().naguaboBezierPathToSKSpriteNode(bpNaguabo: TestClass().naguaboDrawBezierPath())
+        let viequesSKSpriteNode:SKSpriteNode = TestClass().viequesBezierPathToSKSpriteNode(bpVieques: TestClass().viequesDrawBezierPath())
+        let culebraSKSpriteNode:SKSpriteNode = TestClass().culebraBezierPathToSKSpriteNode(bpCulebra: TestClass().culebraDrawBezierPath())
+        
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: coverDesecheoIslandSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rectangularFrameSKSPriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rectangularViequesFrameSKSPriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rectangularCulebraFrameSKSPriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: caboRojoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: hormiguerosSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: mayaguezSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: anascoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rinconSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: aguadaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: aguadillaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: isabelaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: mocaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: lasMariasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: maricaoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: sanGermanSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: yaucoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: lajasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: guanicaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: guayanillaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: sanSebastianSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: sabanaGrandeSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: laresSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: penuelasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: ponceSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: utuadoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: jayuyaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: juanaDiazSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: quebradillasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: camuySKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: hatilloSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: areciboSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: adjuntasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: barcelonetaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: manatiSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: vegaBajaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: floridaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: villalbaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: cialesSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: orocovisSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: morovisSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: corozalSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: barranquitasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: comerioSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: coamoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: naranjitoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: aibonitoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: salinasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: cayeySKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: cidraSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: santaIsabelSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: vegaAltaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: doradoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: toaAltaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: toaBajaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: bayamonSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: catanoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: guaynaboSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: sanJuanSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: caguasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: carolinaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: aguasBuenasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: trujilloAltoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: loizaSKSpriteNode)
+        /*let loizaTwoSKSpriteNode:SKSpriteNode = TestClass().loizaTwoBezierPathToSKSpriteNode(bpLoizaTwo: loizaTwobp)
+        containerNode.addChild(loizaTwoSKSpriteNode)*/
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: canovanasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rioGrandeSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: luquilloSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: fajardoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: ceibaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: guraboSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: juncosSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: sanLorenzoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: guayamaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: arroyoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: patillasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: maunaboSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: yabucoaSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: lasPiedrasSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: humacaoSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: naguaboSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: viequesSKSpriteNode)
+        addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: culebraSKSpriteNode)
+
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:caboRojoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:hormiguerosSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:mayaguezSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:anascoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:rinconSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:aguadaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:aguadillaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:isabelaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:mocaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:lasMariasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:maricaoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:sanGermanSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:yaucoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:lajasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:guanicaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:guayanillaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:sanSebastianSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:sabanaGrandeSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:laresSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:penuelasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:ponceSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:utuadoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:jayuyaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:juanaDiazSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:quebradillasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:camuySKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:hatilloSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:areciboSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:adjuntasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:barcelonetaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:manatiSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:vegaBajaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:floridaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:villalbaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:cialesSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:orocovisSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:morovisSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:corozalSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:barranquitasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:comerioSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:coamoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:naranjitoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:aibonitoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:salinasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:cayeySKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:cidraSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:santaIsabelSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:vegaAltaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:doradoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:toaAltaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:toaBajaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:bayamonSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:catanoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:guaynaboSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:sanJuanSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:caguasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:carolinaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:aguasBuenasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:trujilloAltoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:loizaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:canovanasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:rioGrandeSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:luquilloSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:fajardoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:ceibaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:guraboSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:juncosSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:sanLorenzoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:guayamaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:arroyoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:patillasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:maunaboSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:yabucoaSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:lasPiedrasSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:humacaoSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:naguaboSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:viequesSKSpriteNode)
+        setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:culebraSKSpriteNode)
+        
+        return containerSKNode
+    }
+    
+    func setLabelForMunicipioNameAndAddToNodePractice(nodeSprite:SKSpriteNode){
+        
+        let locationNameLabel = SKLabelNode()/**Label serves two uses, first it's the display label on map for short named municipios but also is use to pass its text Attributes to function splitTextIntoFields*/
+        let firstLineLabel = SKLabelNode()//First label for long named municipio names(ex. Aguas Buenas)
+        let secondLineLabel = SKLabelNode()//Second label for long named municipio names(ex Aguas Buenas)
+        //locationNameLabel.text = municipioNameLabel.text//Text atribute is pass to locationNameLabel to be used by one word municipios(except for Las Piedras and Las Marias) same
+        var useLine2 = false
+        
+       func splitTextIntoFields(theText:String)->String{
+           
+           let twoLineText = theText//text to split in two(ex:"Aguas Buenas")
+
+           var line1:String = ""//var declaration for String value to be returned
+           var line2:String = ""
+               
+               
+           for letter in twoLineText{//each character is split on each for loop iteration(one character at a time)
+               if (String(letter) == " "){
+                   useLine2 = true
+               }
+                   
+               if(useLine2 == false){
+                   line1 = line1 + String(letter)//casting of letter to String
+               }
+               else {
+                   line2 = line2 + String(letter)
+               }
+                   
+               //i += 1
+           }
+           return line1
+       }
+       
+       func splitTextIntoFieldsTwo(theText:String)->String{
+           useLine2 = false//This lie resets the variable which is necessary in order not to create repetition of text ex Aguas Aguas Buenas
+           //var twoLineText: String = ""
+           let twoLineText = theText
+           //var i: Int = 0
+           var line1:String = ""
+           var line2:String = ""
+               
+               
+           for letter in twoLineText{
+               if (String(letter) == " "){
+                   useLine2 = true
+               }
+                   
+               if(useLine2 == false){
+                   line1 = line1 + String(letter)
+               }
+               else {
+                   line2 = line2 + String(letter)
+               }
+                   
+               //i += 1
+               }
+           return line2
+       }
+        
+        locationNameLabel.text = nodeSprite.name
+        
+        /**The switch statement allows to set the label(that identifies each municipio in the map) with attributes necessary to acamodate text, set positioning and other attributes  exclusive to a group of nodes or individual nodes  */
+        /**The execution will enter the case that corresponds with the String value of municipioNameLabel.text*/
+        switch locationNameLabel.text {
+                
+            case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
+                 "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)//Attributes are set for label
+                locationNameLabel.horizontalAlignmentMode = .center
+                locationNameLabel.verticalAlignmentMode = .center
+                
+            case "Camuy", "Aguadilla", "Juncos":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 5.0
+                locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
+
+            case "Cayey":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
+
+                
+            case "Isabela", "Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 5.0
+                locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+                //locationNameLabel.zPosition = 1
+
+                
+            case "Hormigueros", "Maunabo" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 4.3
+                locationNameLabel.zRotation = 10.0
+                locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
+
+                
+            case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 5.0
+                locationNameLabel.zRotation = 10.5
+                locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
+
+                
+            case "Mayagüez":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 5.4
+                locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
+
+                
+            case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 5.5
+                locationNameLabel.zRotation = 10.8
+                locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
+
+                
+            case "Guayanilla" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 5.5
+                locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
+                locationNameLabel.zRotation = 9.0
+
+                
+            case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 5.1
+                locationNameLabel.zRotation = 1.9
+                locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
+
+                
+            case "Florida" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 4.5
+                locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+
+                
+            case  "Ciales", "Ceiba" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
+
+                
+                
+            case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 4.9
+                locationNameLabel.zRotation = 2.3
+                locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
+
+                
+            case "Cataño":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 4.0
+                locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
+
+                
+            case "Loíza" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 7.0
+                locationNameLabel.zRotation = 6.18
+                locationNameLabel.xScale = 1.0
+                locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
+
+                
+            case "Fajardo":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
+
+                
+            case "Guayama":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
+
+                
+            case "Vieques":
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
+
+                   
+                
+            case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
+                setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)//Attributes are set for label
+                firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)//adds first part of text attribute(ex.Aguas)
+                secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)//adds second part of text attribute(ex.Buenas)
+                secondLineLabel.verticalAlignmentMode = .top
+
+                
+            case "Sabana Grande" :
+                setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                firstLineLabel.fontSize = 5.0
+                secondLineLabel.fontSize = 5.0
+                firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
+                secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
+
+                
+            case "Vega Alta":
+                setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                firstLineLabel.position = CGPoint(x:2, y:0.5)
+                secondLineLabel.verticalAlignmentMode = .top
+
+                
+            case "Toa Baja":
+                setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                firstLineLabel.horizontalAlignmentMode = .right
+                secondLineLabel.verticalAlignmentMode = .top
+                secondLineLabel.horizontalAlignmentMode = .right
+
+                
+            case "Trujillo Alto" :
+                setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                firstLineLabel.fontSize = 5.5
+                secondLineLabel.fontSize = 5.5
+                firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
+                secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
+
+                
+            case "San Lorenzo"  :
+                setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                secondLineLabel.position = CGPoint(x:4.5, y:6.0)
+
+            
+                default:
+                    break
+        }
+        if(useLine2 == true){
+          nodeSprite.addChild(firstLineLabel)//adds label to map node
+          nodeSprite.addChild(secondLineLabel)//adds label to map node
+          useLine2 = false
+        }
+            
+        else{
+          nodeSprite.addChild(locationNameLabel)//adds label to map node
+        }
+        
+        
+
+    }
+    
+    //The next two fucctions are identical with the difference that each return a different part of the text
+    /*func splitTextIntoFields(theText:String)->String{
+        
+        twoLineText = theText//text to split in two(ex:"Aguas Buenas")
+
+        var line1:String = ""//var declaration for String value to be returned
+        var line2:String = ""
+            
+            
+        for letter in twoLineText{//each character is split on each for loop iteration(one character at a time)
+            if (String(letter) == " "){
+                useLine2 = true
+            }
+                
+            if(useLine2 == false){
+                line1 = line1 + String(letter)//casting of letter to String
+            }
+            else {
+                line2 = line2 + String(letter)
+            }
+                
+            //i += 1
+        }
+        return line1
+    }
+    
+    func splitTextIntoFieldsTwo(theText:String)->String{
+        useLine2 = false//This lie resets the variable which is necessary in order not to create repetition of text ex Aguas Aguas Buenas
+        //var twoLineText: String = ""
+        twoLineText = theText
+        //var i: Int = 0
+        var line1:String = ""
+        var line2:String = ""
+            
+            
+        for letter in twoLineText{
+            if (String(letter) == " "){
+                useLine2 = true
+            }
+                
+            if(useLine2 == false){
+                line1 = line1 + String(letter)
+            }
+            else {
+                line2 = line2 + String(letter)
+            }
+                
+            //i += 1
+            }
+        return line2
+    }*/
+    
+    //sets attributes for label to use with one word municipio names
+    func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
+        //Oneline.text = municipioNameLabel.text
+        Oneline.fontName = "Helvetica"
+        Oneline.fontColor = UIColor.black
+        Oneline.xScale = -1.0
+        Oneline.zRotation = 9.44
+        Oneline.fontSize = 5.4
+    }
+    //sets attributes for labels to use with two word municipio names
+    func setTwoLineMunicipioNameLabels(labelLineFirst:SKLabelNode, labelLineSecond:SKLabelNode){
+        
+        labelLineFirst.fontName = "Helvetica"
+        labelLineSecond.fontName = "Helvetica"
+        labelLineFirst.fontSize = 5.4
+        labelLineSecond.fontSize = 5.4
+        labelLineFirst.fontColor = UIColor.black
+        labelLineSecond.fontColor = UIColor.black
+        labelLineFirst.xScale = -1.0
+        labelLineSecond.xScale = -1.0
+        labelLineFirst.zRotation = 9.44
+        labelLineSecond.zRotation = 9.44
+    }
 
     
     func goldenBackground() -> SKSpriteNode {
