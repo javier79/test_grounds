@@ -64,8 +64,8 @@ class StartScene: SKScene{
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//blue background that resembles the ocean
         /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
          timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
-        containerNode.position = CGPoint(x:-275 , y:-75 /*15*/)/**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames), Positioning based on parent timerBackgroundTwo*/
-        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:89.5)/**parent to labelTimer and containerNode*/
+        containerNode.position = CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175) /*CGPoint(x:-275 , y:-75 /*15*/)*//**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames)*/
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:87)/**parent to labelTimer*/
         goldBackgroundSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)
         goldBackgroundSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
        
@@ -78,8 +78,8 @@ class StartScene: SKScene{
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
         addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
-        /**timerBackground is a stand alone prent node*/
-        addChildSKNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: containerNode)
+        addChildSKNodeToParentself(children: containerNode)
+        //addChildSKNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: containerNode)
         addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: labelTimer)
         addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
         //addChildSKNodeToParentself(children: containerNode)
@@ -92,74 +92,7 @@ class StartScene: SKScene{
         //sleep(1)
     }
     
-    //Barra de controles
-    /*func goldenBackground() -> SKSpriteNode {
-        let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
-        goldenBackground.size = CGSize(width: 680, height:50)
-        goldenBackground.position = CGPoint(x:335, y:25)
-        //goldenBackground.zPosition = 1
-        return goldenBackground
-    }*/
     
-    //OJO ESTA FUNCION PUEDE QUE SE ESTE USANDO EN OTRA ESCENA
-    func nodesContainer() -> SKNode{
-        let nodes_Container = SKNode()
-        //nodes_Container.color = UIColor.white
-        //nodes_Container.size = CGSize(width: self.size.width * 0.90, height:self.size.height * 0.90)
-        //nodes_Container.anchorPoint = CGPoint.zero
-        nodes_Container.position = CGPoint(x: 50, y: 15)
-        return  nodes_Container
-    }
-    
-    
-    
-    func labelForScores(ScoresLabel: SKLabelNode) -> SKLabelNode {
-        //let label:SKLabelNode = SKLabelNode()
-        ScoresLabel.position = CGPoint(x:300, y:-0.5)
-        ScoresLabel.fontName = "Arial"
-        ScoresLabel.fontSize = 11
-        ScoresLabel.text = "0/78"
-        ScoresLabel.fontColor = UIColor.init(red: 0.1333, green: 0.8392, blue: 0.1333, alpha: 1.0)
-        return ScoresLabel
-    }
-    
-    func labelForTimer(TimerLabel: SKLabelNode) -> SKLabelNode {
-        //let label:SKLabelNode = SKLabelNode()
-        TimerLabel.position = CGPoint(x: 333.5, y:82.5)
-        TimerLabel.zPosition = 2
-        TimerLabel.fontName = "Arial"
-        TimerLabel.fontSize = 16
-        TimerLabel.fontColor = SKColor.red
-        return TimerLabel
-    }
-    
-    func timerLabelBackground() -> SKSpriteNode{
-        let background = SKSpriteNode()
-        background.color = UIColor.lightGray
-        background.size = CGSize(width: 36.1, height:17)
-        background.position = CGPoint(x:333.5, y:89.5)
-        return background
-    }
-    
-    func timerLabelBackgroundTwo() -> SKSpriteNode{
-        let background = SKSpriteNode()
-        background.color = UIColor.lightGray
-        background.size = CGSize(width:45, height:17)
-        background.position = CGPoint(x:333.5, y:89.5)
-        return background
-    }
-    
-    //Parent labelMunicipioNamesBackground
-    func labelForMunicipioNames(NameMunicipioLabel: SKLabelNode) -> SKLabelNode {//child of labelMunicipiosNameBackground()
-        NameMunicipioLabel.position = CGPoint(x:0.5 /*self.size.width/2*/, y:-6.5 /*self.size.height/2 * 0.14*/)
-        NameMunicipioLabel.fontName = "Helvetica"
-        NameMunicipioLabel.fontSize = 18
-        NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
-        NameMunicipioLabel.text = "Adjuntas"
-        //municipiosNameBackground.size = NameMunicipioLabel.frame.size
-        //NameMunicipioLabel.zPosition = 1
-        return NameMunicipioLabel
-    }
     
     func addChildSKSpriteNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKSpriteNode){
         if children.parent == nil{
@@ -210,14 +143,7 @@ class StartScene: SKScene{
         musicPlayer.play()//
     }
     
-    /*private lazy var myFunction: TimeInterval = {
-        var renderTime: TimeInterval = 0.0//esta solo se usa en la funcion del reloj
-        //let changeTime: TimeInterval = 1//esta solo se usa en la funcion del reloj
-        //var seconds: Int = 0//esta solo se usa en la funcion del reloj
-        //var minutes: Int = 0
-        print("Lazy")
-        return renderTime
-    }()*/
+    
     
 
     override public func update(_ currentTime: TimeInterval) {/*Function execute every second, for timer functionality*/
@@ -451,11 +377,17 @@ class StartScene: SKScene{
                    //locationNameLabel.zPosition = 1
 
                    
-               case "Hormigueros", "Maunabo" :
+               case "Hormigueros":
                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
                    locationNameLabel.fontSize = 4.3
                    locationNameLabel.zRotation = 10.0
                    locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
+            
+                case "Maunabo" :
+                setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                locationNameLabel.fontSize = 4.5
+                locationNameLabel.zRotation = 10.0
+                locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
 
                    
                case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
@@ -519,7 +451,7 @@ class StartScene: SKScene{
                    
                case "Loíza" :
                    setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                   locationNameLabel.fontSize = 7.0
+                   locationNameLabel.fontSize = 7.5
                    locationNameLabel.zRotation = 6.18
                    locationNameLabel.xScale = 1.0
                    locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
@@ -609,8 +541,8 @@ class StartScene: SKScene{
     //sets attributes for label to use with one word municipio names
     func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
         //Oneline.text = municipioNameLabel.text
-        Oneline.fontName = "Helvetica"
-        Oneline.fontColor = UIColor.black
+        Oneline.fontName = "Verdana"
+        Oneline.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
         Oneline.xScale = -1.0
         Oneline.zRotation = 9.44
         Oneline.fontSize = 5.4
@@ -618,12 +550,12 @@ class StartScene: SKScene{
     //sets attributes for labels to use with two word municipio names
     func setTwoLineMunicipioNameLabels(labelLineFirst:SKLabelNode, labelLineSecond:SKLabelNode){
         
-        labelLineFirst.fontName = "Helvetica"
-        labelLineSecond.fontName = "Helvetica"
+        labelLineFirst.fontName = "Verdana"
+        labelLineSecond.fontName = "Verdana"
         labelLineFirst.fontSize = 5.4
         labelLineSecond.fontSize = 5.4
-        labelLineFirst.fontColor = UIColor.black
-        labelLineSecond.fontColor = UIColor.black
+        labelLineFirst.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
+        labelLineSecond.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
         labelLineFirst.xScale = -1.0
         labelLineSecond.xScale = -1.0
         labelLineFirst.zRotation = 9.44

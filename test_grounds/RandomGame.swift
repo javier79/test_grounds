@@ -74,9 +74,9 @@ class RandomGame: SKScene{
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//blue background that resembles the ocean
         /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
          timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
-        containerNode.position = CGPoint(x:-275 , y:-75 /*15*/)/**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames), Positioning based on parent timerBackgroundTwo*/
-        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:89.5)/**parent to labelTimer and containerNode*/
-        goldBackgroundSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)
+        containerNode.position = CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175)/**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames),*/
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:87)/**parent to labelTimer */
+        goldBackgroundSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)//golden controls bar at the bottom of screen
         goldBackgroundSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
         
         getFirstRandomMunicipioNameToLookUp()//Function gets first random municipio name and overwrites text attributes from TestClass().labelForMunicipioNames()(base attributes)
@@ -92,8 +92,8 @@ class RandomGame: SKScene{
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
         addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
-        /**timerBackground is a stand alone prent node*/
-        addChildSKNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: containerNode)
+        addChildSKNodeToParentself(children: containerNode)
+        //addChildSKNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: containerNode)
         addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: labelTimer)
         addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
         //addChildSKNodeToParentself(children: containerNode)
@@ -110,6 +110,12 @@ class RandomGame: SKScene{
         setNewMunicipioNameToLookUp()
         //randomIndex = Int.random(in:0...77)//gets random index for first municipio name to look up
         //municipioNameLabel.text = municipios_names_array[randomIndex]//first municipio name to look up
+    }
+    
+    func addChildSKNodeToParentself(children:SKNode){
+        if children.parent == nil{
+        self.addChild(children)
+        }
     }
     
     func addChildSKLabelNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKLabelNode){
@@ -541,7 +547,7 @@ class RandomGame: SKScene{
     func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
         //Oneline.text = municipioNameLabel.text
         Oneline.fontName = "Helvetica"
-        Oneline.fontColor = UIColor.black
+        Oneline.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
         Oneline.xScale = -1.0
         Oneline.zRotation = 9.44
         Oneline.fontSize = 5.4
@@ -553,8 +559,8 @@ class RandomGame: SKScene{
         labelLineSecond.fontName = "Helvetica"
         labelLineFirst.fontSize = 5.4
         labelLineSecond.fontSize = 5.4
-        labelLineFirst.fontColor = UIColor.black
-        labelLineSecond.fontColor = UIColor.black
+        labelLineFirst.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
+        labelLineSecond.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
         labelLineFirst.xScale = -1.0
         labelLineSecond.xScale = -1.0
         labelLineFirst.zRotation = 9.44

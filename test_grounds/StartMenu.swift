@@ -79,6 +79,8 @@ class StartMenu: SKScene {
     var creditsContainerTwo:SKNode!
     static var backgroundMusicOn = true//variable is set to false if "Musica(Music)" in opciones is unchecked, which disbles background music
     static var gamePlaySoundOn = true//variable is set to false if "Sonidos(Sound)" in opciones is unchecked, which disbles game sound
+    static var playPracticeAlphabeticGame = false
+    static var playPracticeRandomGame = false
     
     var musicPlayer = AVAudioPlayer()//music player object for background music
     var musicURL:URL? //music file address on game file
@@ -1228,6 +1230,7 @@ class StartMenu: SKScene {
         else if (gameModeSelectionBlueButton.name == nodeTouched.node?.name){
             /**Selection for practiceAlphabeticGame*/
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
+                StartMenu.playPracticeAlphabeticGame = true
                 let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
                 self.removeAllActions()
                 self.removeFromParent()
@@ -1235,6 +1238,7 @@ class StartMenu: SKScene {
             }
             /**Selection for practiceRandomGame*/
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
+                StartMenu.playPracticeRandomGame = true
                 let practiceRandomGame = PracticeRandomGame(size: self.size)
                 self.removeAllActions()
                 self.removeFromParent()
