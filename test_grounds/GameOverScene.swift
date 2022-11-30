@@ -140,8 +140,8 @@ class GameOverScene: SKScene{
                 PracticeAlphabeticGame.completedGame = false
             }
             
-           self.removeAllActions()
-           self.removeFromParent()
+           //self.removeAllActions()
+           //self.removeFromParent()
 
            let startMenu = StartMenu(size: self.size)//definitio
            //let transition = SKTransition.fade(withDuration: 1.0)
@@ -194,122 +194,6 @@ class GameOverScene: SKScene{
         musicPlayer.prepareToPlay()//ready to play musicPlayer
         musicPlayer.play()//
     }
-    
-    /*func setEndGameRectangleMapButtonAndLabels()/*-> SKSpriteNode*/ {
-           /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
-           //let buttonNode:SKSpriteNode = buttonNodeDefaults()
-           endGameRectangleButton.name = "buttonMap"
-           /*buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-           buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-           buttonNode.zPosition = 3*/
-          
-
-           endGameRectangleButton.position = CGPoint(x:-115.5, y:-78.4)
-           endGameRectangleButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:endGameRectangleButton.size.width, height:endGameRectangleButton.size.height), center: CGPoint(x:0.5, y: 0.5))
-           endGameRectangleButton.physicsBody?.isDynamic = false
-           
-           
-           let buttonOneLabelOne = SKLabelNode()
-           buttonOneLabelOne.fontName = "AvenirNext-Bold"
-           buttonOneLabelOne.fontSize = 16
-           buttonOneLabelOne.text = "Mapa"
-           //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-           //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-           endGameRectangleButton.addChild(buttonOneLabelOne)
-           
-           let buttonOneLabelTwo = SKLabelNode()
-           buttonOneLabelTwo.fontName = "AvenirNext-Bold"
-           buttonOneLabelTwo.fontSize = 13
-           buttonOneLabelTwo.text = "(Map)"
-           buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
-           //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-           endGameRectangleButton.addChild(buttonOneLabelTwo)
-
-           //return buttonNode
-
-    }*/
-    
-    /*func buttonNodeDefaults()->SKSpriteNode{
-        let buttonNode = SKSpriteNode()
-        buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.zPosition = 3
-        
-        return buttonNode
-    }*/
-    
-    /*func endgameRectangleButtoTwo()-> SKSpriteNode {
-        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
-        let buttonNode:SKSpriteNode = buttonNodeDefaults()
-        buttonNode.name = "buttonJugarOtraVez"
-       /* buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.zPosition = 3*/
-       
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/3, height:endGameRectangle.size.height/4)//Size is overriden pq es de los tres botones el unico que su tamano es diferente.
-        buttonNode.position = CGPoint(x:0.5, y: -78.4)
-        buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-        buttonNode.physicsBody?.isDynamic = false
-        
-        let buttonTwoLabelOne = SKLabelNode()
-        buttonTwoLabelOne.fontName = "AvenirNext-Bold"
-        buttonTwoLabelOne.fontSize = 16
-        buttonTwoLabelOne.text = "Jugar Otra Vez"
-        //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-        //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonTwoLabelOne)
-        
-        let buttonTwoLabelTwo = SKLabelNode()
-        buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
-        buttonTwoLabelTwo.fontSize = 13
-        buttonTwoLabelTwo.text = "(Play Again)"
-        buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
-        //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonTwoLabelTwo)
-    
-
-        return buttonNode
-
-    }*/
-    
-    /*func endgameRectangleButtoThree()-> SKSpriteNode {
-        /*La funcion comienza proveyendo los valores de las propiedades que comparten los tres botones**/
-        let buttonNode:SKSpriteNode = buttonNodeDefaults()
-        buttonNode.name = "buttonSalir"
-       /* buttonNode.color = UIColor.init(red: 1, green: 0.1686, blue: 0.1686, alpha: 1.0)//color is same in all three buttons
-        buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.zPosition = 3*/
-       
-
-        //buttonNode.size = CGSize(width:endGameRectangle.size.width/5 + 20, height:endGameRectangle.size.height/4)
-        buttonNode.position = CGPoint(x:115.5, y:-78.4)
-        buttonNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonNode.size.width, height:buttonNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-        buttonNode.physicsBody?.isDynamic = false
-
-        let buttonThreeLabelOne = SKLabelNode()
-        buttonThreeLabelOne.fontName = "AvenirNext-Bold"
-        buttonThreeLabelOne.fontSize = 16
-        buttonThreeLabelOne.text = "Salir"
-        //buttonOneLabelOne.position = CGPoint(x:0, y:0)
-        //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonThreeLabelOne)
-        
-        let buttonThreeLabelTwo = SKLabelNode()
-        buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
-        buttonThreeLabelTwo.fontSize = 13
-        buttonThreeLabelTwo.text = "(Exit)"
-        buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
-        //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
-        buttonNode.addChild(buttonThreeLabelTwo)
-        
-    
-
-        return buttonNode
-
-    }*/
-    
-    
-
     
     func setEndgameRectangleLabels(){
         
@@ -418,56 +302,6 @@ class GameOverScene: SKScene{
         
         //return endGameRectangleNode
     }
-    
-    /*func splitTextIntoFields(theText:SKLabelNode)->String{
-        useLine2 = false//Esta linea resetea la variable que es necesario para no crear redundancia cuando se pasa el texto a label(ej:aguas aguas buenas)
-        twoLineText = theText.text!//texto que necesitamos dividir en dos lineas
-        //var i: Int = 0
-        var line1:String = ""//declaracion de las variables que se van a devolver
-        var line2:String = ""
-            
-            
-        for letter in twoLineText{//Cada letra contenida en el String es desglosada por el for loop
-            if (String(letter) == " "){
-                useLine2 = true
-            }
-                
-            if(useLine2 == false){
-                line1 = line1 + String(letter)//casting of letter to String
-            }
-            else {
-                line2 = line2 + String(letter)
-            }
-                
-            //i += 1
-        }
-        return line1
-    }
-    
-    func splitTextIntoFieldsTwo(theText:SKLabelNode)->String{
-        useLine2 = false
-        twoLineText = theText.text!
-        //var i: Int = 0
-        var line1:String = ""
-        var line2:String = ""
-            
-            
-        for letter in twoLineText{
-            if (String(letter) == " "){
-                useLine2 = true
-            }
-                
-            if(useLine2 == false){
-                line1 = line1 + String(letter)
-            }
-            else {
-                line2 = line2 + String(letter)
-            }
-                
-            //i += 1
-            }
-        return line2
-    }*/
     
     func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:Int, minute:Int){
          /*Este primer bloque if va a ejecutar siempre que un usuario instala el juego y juega por primera vez o si se borra la data para el juego en el telefono, tambien ejecuta cuando el usuario obtiene una mejor marca de tiempo que quedara registrada en memoria persistente*/
@@ -603,27 +437,4 @@ class GameOverScene: SKScene{
         
      }
     
-    /*func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)->SKSpriteNode{
-        let label = setLabelDefaults()
-        label.fontName = "AvenirNext-Bold"
-        label.text = "Resultados (Results)"
-        label.position = CGPoint(x:0.5, y:-5.5)
-        buttonResultadosSKSpriteNode.addChild(label)
-        buttonResultadosSKSpriteNode.position = CGPoint(x: self.size.width/2, y: self.size.height/2 * 0.475)
-        buttonResultadosSKSpriteNode.size = label.frame.size
-        buttonResultadosSKSpriteNode.name = "resultadosButton"
-        buttonResultadosSKSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:buttonResultadosSKSpriteNode.size.width, height:buttonResultadosSKSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
-        buttonResultadosSKSpriteNode.physicsBody?.isDynamic = false
-        
-        return buttonResultadosSKSpriteNode
-    }*/
-    /*func setLabelDefaults()-> SKLabelNode{
-        let label = SKLabelNode()
-        label.fontName = "AvenirNext-Bold"
-        label.fontSize = 14
-        label.position = CGPoint(x:0.5,y:-5.5)
-        //.zPosition = 1
-        return label
-    }*/
-
 }

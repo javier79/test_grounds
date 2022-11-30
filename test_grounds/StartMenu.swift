@@ -83,9 +83,9 @@ class StartMenu: SKScene {
     static var playPracticeRandomGame = false
     
     var musicPlayer = AVAudioPlayer()//music player object for background music
-    var musicURL:URL? //music file address on game file
-    
-    var touchedNode:SKPhysicsBody!//Declared univesally in order to be used by function calls outside touch function scope
+    //var musicURL:URL? //music file address on game file
+    let musicURL:URL? = Bundle.main.url(forResource:"Guiton Sketch", withExtension:"mp3")//reference to PR Himn
+    //var touchedNode:SKPhysicsBody!//Declared univesally in order to be used by function calls outside touch function scope
     
     var initMainTouchNodes:Bool = false
     
@@ -94,7 +94,7 @@ class StartMenu: SKScene {
         let oldPaperBorderTexture:SKSpriteNode = oldPapertexture()//First object on scene it's appearance is like an old paper with ruff edges, serves as a background for all objects to be rendered
         let elMorro:SKSpriteNode = setElMorro()//Morro picture background
         let mapaClickBanner: SKSpriteNode = setMapaClickBanner()//brand name on top when game launches
-        musicURL = Bundle.main.url(forResource:"Guiton Sketch", withExtension:"mp3")
+        //musicURL = Bundle.main.url(forResource:"Guiton Sketch", withExtension:"mp3")
         /**
          Iam  using a distinction on naming the functions(Main/Secondary) when i use Main means objects that are needed at runtime or needed to be ready when Touch function is called. Secondary are objects that are not needed at run time
          and that could be initialized as they are needed by users.(see Touch function(nested functions) for Secondary objects inizializartion)*/
@@ -198,7 +198,7 @@ class StartMenu: SKScene {
            let touch = touches.first!//hold screen touch
            let touchLocation = touch.location(in: self)//Defines the space where screen touch would be evaluatedf in this case class StartMenu
            //let touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
-           touchedNode = self.physicsWorld.body(at:touchLocation)//Declared univesally in order to be used by function calls outside this scope(touch function)
+           let touchedNode:SKPhysicsBody! = self.physicsWorld.body(at:touchLocation)//Declared univesally in order to be used by function calls outside this scope(touch function)
            
         /*Following statement will set and/or initialize the objects needed to be evaluated on Touch function once(the first time touch function is called). This objects must be ready(initialized and set) before the touch evaluation execute*/
            if initMainTouchNodes == false{
@@ -1214,14 +1214,14 @@ class StartMenu: SKScene {
         if (gameModeSelectionGreenButton.name == nodeTouched.node?.name){
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
                 let startScene = StartScene(size: self.size)
-                self.removeAllActions()
-                self.removeFromParent()
+                //self.removeAllActions()
+                //self.removeFromParent()
                 self.view?.presentScene(startScene)
             }
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
                 let randomGame = RandomGame(size: self.size)
-                self.removeAllActions()
-                self.removeFromParent()
+                //self.removeAllActions()
+                //self.removeFromParent()
                 self.view?.presentScene(randomGame)
             }
             
@@ -1232,16 +1232,16 @@ class StartMenu: SKScene {
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Alfabético (Alphabetic)"{
                 StartMenu.playPracticeAlphabeticGame = true
                 let practiceAlphabeticGame = PracticeAlphabeticGame(size: self.size)
-                self.removeAllActions()
-                self.removeFromParent()
+                //self.removeAllActions()
+                //self.removeFromParent()
                 self.view?.presentScene(practiceAlphabeticGame)
             }
             /**Selection for practiceRandomGame*/
             if dropDownArrowLabel.text == "Puerto Rico" && dropDownArrowLabelTwo.text == "Al Azar (Random)"{
                 StartMenu.playPracticeRandomGame = true
                 let practiceRandomGame = PracticeRandomGame(size: self.size)
-                self.removeAllActions()
-                self.removeFromParent()
+                //self.removeAllActions()
+                //self.removeFromParent()
                 self.view?.presentScene(practiceRandomGame)
             }
         }

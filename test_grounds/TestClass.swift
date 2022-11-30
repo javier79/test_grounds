@@ -539,7 +539,7 @@ class TestClass {
     //sets attributes for label to use with one word municipio names
     func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
         //Oneline.text = municipioNameLabel.text
-        Oneline.fontName = "HelveticaNeue"
+        Oneline.fontName = "Helvetica"
         Oneline.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
         Oneline.xScale = -1.0
         Oneline.zRotation = 9.44
@@ -548,8 +548,8 @@ class TestClass {
     //sets attributes for labels to use with two word municipio names
     func setTwoLineMunicipioNameLabels(labelLineFirst:SKLabelNode, labelLineSecond:SKLabelNode){
         
-        labelLineFirst.fontName = "HelveticaNeue"
-        labelLineSecond.fontName = "HelveticaNeue"
+        labelLineFirst.fontName = "Helvetica"
+        labelLineSecond.fontName = "Helvetica"
         labelLineFirst.fontSize = 5.4
         labelLineSecond.fontSize = 5.4
         labelLineFirst.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
