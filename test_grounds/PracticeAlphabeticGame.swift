@@ -39,7 +39,7 @@ class PracticeAlphabeticGame: SKScene{
     static var completedGame = false/**flow control variable for timer once its value is true allows for timer to stop, and transition to gameOverScene*/
     
     var useLine2:Bool = false//used on splitTextIntoFields functions and touch function.(intrinsic to function mechanism, dev should not be too concerned with it)
-    var twoLineText: String = ""//used on splitTextIntoFields, this is the text passed to splitTextIntoFields functions
+    //var twoLineText: String = ""//used on splitTextIntoFields, this is the text passed to splitTextIntoFields functions
     
     /** Array includes Adjuntas although it' is written from the function that sets the label for municipios to look up, this is due  if adjuntas is skipped when the array reach the end to go back to index 0, then it gets Adjuntas.
      This array contain the text elements for the municipios to look up*/

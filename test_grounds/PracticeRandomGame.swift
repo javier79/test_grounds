@@ -456,7 +456,7 @@ class PracticeRandomGame: SKScene{
         return background
     }
     
-    func splitTextIntoFields(theText:SKLabelNode)->String{
+    /*func splitTextIntoFields(theText:SKLabelNode)->String{
         useLine2 = false//Esta linea resetea la variable que es necesario para no crear redundancia cuando se pasa el texto a label(ej:aguas aguas buenas)
         twoLineText = theText.text!//texto que necesitamos dividir en dos lineas
         //var i: Int = 0
@@ -504,7 +504,7 @@ class PracticeRandomGame: SKScene{
             //i += 1
             }
         return line2
-    }
+    }*/
     
     
     
