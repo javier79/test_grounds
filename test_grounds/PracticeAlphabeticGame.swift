@@ -13,48 +13,51 @@ import AVFoundation
 
 class PracticeAlphabeticGame: SKScene{
     let goldBackgroundSKSpriteNode = TestClass().goldenBackground()
-    let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//Background for most(shorter) municipio names. Used in more than one function
-    let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()//Background for longer municipio names. Used in more than one function
-    let municipioNameLabel = TestClass().labelForMunicipioNames()//Label rendering municipio name to look up, Used in more than one function
     let skipButton = TestClass().skipBlueButton()//used in more than one function
     let exitRedButton = TestClass().redButton()//used in more than one function
-    let labelScores = TestClass().labelForScores()//Scores label(in fluorocent text)
+    
+    let containerNode = TestClass().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
     let labelTimer = TestClass().labelForTimer()//used in more than one function
+    let labelScores = TestClass().labelForScores()//Scores label(in fluorocent text)
+    //let timerBackground = TestClass().timerBackGround()//This background was used when the timer used a background for seconds(0-59) and a wider background for when minutes(1:00) started to render.
     let timerBackgroundTwo = TestClass().timerBackGroundTwo()/*Background for timer(At one time the timer used two different size backgrounds, but later i opted out of doing that for eficiency and kept
     the bigger background(timerBackgroundTwo) as timer's only background along its life cycle */
+    let municipioNameLabel = TestClass().labelForMunicipioNames()//Label rendering municipio name to look up, Used in more than one function
+    let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//Background for most(shorter) municipio names. Used in more than one function
+    let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()//Background for longer municipio names. Used in more than one function
+    
+    /**following two variables(renderTime and changeTime)  are basic part of the timer mechanism  and should not be bothered, in case dev wants to understand  how they work roll back to a branch previous to timer function makeover and follow the comments, but again dev should not be too concerned with this variables*/
     var renderTime: TimeInterval = 0.0//marks the time being played to be compared with currentTime, only used on update(timer function)
     let changeTime: TimeInterval = 1//adds(update) to renderTime in order to keep renderTime running, only used on update(imer function)
     var seconds: Int = 0//seconds count, only used on update(imer function)
     var minutes: Int = 0//minutes count, only used on update(imer function)
+    static var secondsGameOver:Int = 0 //gets number of seconds to render tracked time(renders on gameOverScene), static variables must be declared at the top
+    static var minutesGameOver:Int = 0 //gets number of minutes to render tracked time(renders on gameOverScene), static variables must be declared at the top
     let skipButtonPenalty = 15//seconds added to timer when skip buttom is pressed
     let penalty = 3//seconds added to timer when wrong node is pressed
-    var fail: Bool!//flow control var allow when true for penalty to be added at timer funtion. Used on more than one funtion
-
-    var pressSKipButton:Bool = false//Flow control variables when true allows timer to add 15 penalty
-    //var arrayOfMapSpriteNodes = [SKSpriteNode()]
-    var twoLineText: String = ""//used on splitTextIntoFields, this is the text passed to splitTextIntoFields functions
-    var useLine2:Bool = false//used on splitTextIntoFields functions and touch function.(intrinsic to function mechanism, dev should not be too concerned with it)
-    let containerNode = TestClass().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
-    //var touchedNode: SKPhysicsBody!
     
-    var currentIndex: Int = 0 //refers to index currently diplayed on municipio name label declared at the top to be accesed by accesory functions
+    static var completedGame = false/**flow control variable for timer once its value is true allows for timer to stop, and transition to gameOverScene*/
+    
+    var useLine2:Bool = false//used on splitTextIntoFields functions and touch function.(intrinsic to function mechanism, dev should not be too concerned with it)
+    var twoLineText: String = ""//used on splitTextIntoFields, this is the text passed to splitTextIntoFields functions
     
     /** Array includes Adjuntas although it' is written from the function that sets the label for municipios to look up, this is due  if adjuntas is skipped when the array reach the end to go back to index 0, then it gets Adjuntas.
      This array contain the text elements for the municipios to look up*/
     var municipios_names_array = ["Adjuntas", "Aguada", "Aguadilla", "Aguas Buenas", "Aibonito", "Arecibo", "Arroyo", "Añasco", "Barceloneta", "Barranquitas", "Bayamón", "Cabo Rojo", "Caguas", "Camuy", "Canóvanas", "Carolina", "Cataño", "Cayey", "Ceiba", "Ciales", "Cidra", "Coamo", "Comerío", "Corozal", "Culebra", "Dorado", "Fajardo", "Florida", "Guayama", "Guayanilla", "Guaynabo","Gurabo", "Guánica", "Hatillo", "Hormigueros", "Humacao", "Isabela", "Jayuya", "Juana Díaz", "Juncos", "Lajas", "Lares", "Las Marías", "Las Piedras", "Loíza", "Luquillo", "Manatí", "Maricao", "Maunabo", "Mayagüez", "Moca", "Morovis", "Naguabo", "Naranjito", "Orocovis", "Patillas", "Peñuelas", "Ponce", "Quebradillas", "Rincón", "Rio Grande", "Sabana Grande", "Salinas", "San Germán", "San Juan", "San Lorenzo", "San Sebastián", "Santa Isabel", "Toa Alta", "Toa Baja", "Trujillo Alto", "Utuado", "Vega Alta", "Vega Baja", "Vieques", "Villalba", "Yabucoa", "Yauco"]
-
-    static var completedGame = false/**flow control variable for timer once its value is true allows for timer to stop, and transition to gameOverScene*/
+    
+    var fail: Bool!//flow control var allow when true for penalty to be added at timer funtion. Used on more than one funtion
+    var currentIndex: Int = 0 //refers to index currently diplayed on municipio name label declared at the top to be accesed by accesory functions
+    var pressSKipButton:Bool = false//Flow control variables when true allows timer to add 15 penalty
     var scoreCount:Int = 0//variable represent the number of municipios identified rendered in the control bar to the right
     let totalScoreCount:String = "/78"
-    var skipButtonPressed = false//flow control var allows to apply alpha animation to skipbuttom on Touches end
     
-    static var secondsGameOver:Int = 0 //gets number of seconds to render tracked time(renders on gameOverScene), static variables must be declared at the top
-    static var minutesGameOver:Int = 0 //gets number of minutes to render tracked time(renders on gameOverScene), static variables must be declared at the top
+    let correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
+    let incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
     
     var musicPlayer = AVAudioPlayer()//audio player
     let musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")//reference to PR Himn
-    let correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
-    let incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
+
+    var skipButtonPressed = false//flow control var allows to apply alpha animation to skipbuttom on Touches end
     
     override func didMove(to view: SKView) {
         
