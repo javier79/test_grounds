@@ -12,14 +12,15 @@ import SpriteKit
 import AVFoundation
 
 class StartMenu: SKScene {
-    
+    /*ATTENTION IT MIGHT HAPPEN THAT AN OBJECT VAR NAME MAY REFERENCE A COLOR(An error of mine when i code the game EX:redButtonOne) AND SUCH OBJECT MAY HAVE ANOTHER COLOR DUE ESTETIC,
+    THIS WAS A MISTAKE ON MY PART TO REFERENCE COLORS AS PART OF OBJECTS/VAR NAMES, BELOW IN COMMENTS I DETAIL OBJECTS WHICH NAMES HAVE CHANGED*/
     let buttonGreen:SKSpriteNode = StartMenuMethods().setGreenButton()//green button on main menu
-    let redButtonOne:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//red button "Mejores Tiempos"
-    let redButtonTwo:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//red button "instrucciones"
-    let redButtonThree:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//red button "opciones"
-    let redButtonOneLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label red button "Mejores Tiempos"
-    let redButtonTwoLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label red button "instrucciones"
-    let redButtonThreeLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label red button "opciones"
+    let redButtonOne:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//green button "Mejores Tiempos"
+    let redButtonTwo:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//green button "instrucciones"
+    let redButtonThree:SKSpriteNode = StartMenuMethods().initMainMenuRedButtons()//green button "opciones"
+    let redButtonOneLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label green button "Mejores Tiempos"
+    let redButtonTwoLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label green button "instrucciones"
+    let redButtonThreeLabel:SKLabelNode = StartMenuMethods().mainMenuRedButtonsLabelsDefaults()//label green button "opciones"
     
     let instructionsEspanolLabel:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()//label with spanish instructions
     let instructionsEspanolLabelTwo:SKLabelNode = StartMenuMethods().setinstructionsLabelDefaults()//second label with spanish instructions
@@ -39,9 +40,10 @@ class StartMenu: SKScene {
     let dropDownArrowLabelTwo:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()//on map/order selection view label("Alfabetico(Alphabetic)") on top of inferior grey drop down menu tab
     let dropDownLabelBG:SKSpriteNode = StartMenuMethods().dropDownLabelBackground()//on map/order selection view top grey drop down menu tab
     let dropDownLabelBGTwo:SKSpriteNode = StartMenuMethods().dropDownLabelBackground()//on map/order selection view inferior grey drop down menu tab
-    let mapOrderOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()//on map/order selection view is the view parent, centered rectangle where user interacts
-
+    //let mapOrderOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()//on map/order selection view is the view parent, centered rectangle where user interacts
+    let mapOrderBackgroundRectangle:SKSpriteNode = StartMenuMethods().bestTimesRectangleBezierPathToSKSpriteNode()
     let mapOrderCountryDropDownMenu: SKSpriteNode =  StartMenuMethods().mapOrderCountryDropDownMenuSpriteNode()//dark grey rectangle rendered when label dropDownArrowLabel is pressed
+    
     let orderDropDownMenu: SKSpriteNode = StartMenuMethods().mapOrderCountryDropDownMenuSpriteNodeTwo()/* dark grey rectangle rendered when label dropDownArrowLabelTwo(default text "Alfabetico(Alphabetic)") is pressed*/
     let mapOrderCountryDropDownMenuYellowBG: SKSpriteNode = StartMenuMethods().dropDownMenuLabelBackground()//yellow background that display on top of mapOrderCountryDropDownMenu
     let dropDownMenuLabelPR:SKLabelNode = StartMenuMethods().dropDownArrowLabelDefaults()//label with text "Puerto Rico" on top of mapOrderCountryDropDownMenu
@@ -53,7 +55,8 @@ class StartMenu: SKScene {
     let mapOrderRedButton:SKSpriteNode = StartMenuMethods().setMapOrderRedButton()//Button on mapOrder with text "Volver/Return"
 
     var gameModeSelectionObjectsNotInitSet:Bool = true/*used on touch function as a condition to init/set gameMode Objects and prevents objects from re initializing(and adding objects that were already added to scene)*/
-    let gameModeSelectionOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()//on gameMode selection view is the view parent, centered rectangle where user interacts
+    let gameModeSelectionBackgroundRectangle:SKSpriteNode = StartMenuMethods().bestTimesRectangleBezierPathToSKSpriteNode()
+    //let gameModeSelectionOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()//on gameMode selection view is the view parent, centered rectangle where user interacts
     let gameModeSelectionGreenButton:SKSpriteNode = StartMenuMethods().modeSelectionGreenButton()//on gameModeSelection view the green button
     let gameModeSelectionGreenButtonLabel:SKLabelNode = StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
     let gameModeSelectionBlueButton:SKSpriteNode = StartMenuMethods().modeSelectionBlueButton()
@@ -221,12 +224,12 @@ class StartMenu: SKScene {
                    instructionsTouchNodes(nodeTouched:touchedNode)
                }
                
-               else if mapOrderOldPaperbackground.parent != nil{
+               else if mapOrderBackgroundRectangle.parent != nil{
                    mapOrderTouchNodes(nodeTouched:touchedNode)
                }
                
                
-               if gameModeSelectionOldPaperbackground.parent != nil{
+               if gameModeSelectionBackgroundRectangle.parent != nil{
                    gameModeTouchNodes(nodeTouched:touchedNode)
                }
                    
@@ -240,14 +243,14 @@ class StartMenu: SKScene {
                
            }
            /**Given that on mapOrder view any of the drop down menus are open by touching anywhere(where there are no physics bodies)menus will close)*/
-           else if mapOrderOldPaperbackground.parent != nil && mapOrderCountryDropDownMenu.parent != nil{
+           else if mapOrderBackgroundRectangle.parent != nil && mapOrderCountryDropDownMenu.parent != nil{
                mapOrderCountryDropDownMenu.removeFromParent()
                addChildSKLabelNodeToParentSKSPriteNode(parent: dropDownLabelBG, children: dropDownArrowLabel)
                //dropDownLabelBG.addChild(dropDownArrowLabel)//Adds to the view the label preveiously eliminated when gray drop down tab was pressed(dropDownArrowLabel)
            }
            /**When bottom drop down menu is rendered and user touch any where there is no physics body on the screen the drop down menu closes and highlighted text  is passed to dropDownArrowLabelTwo which is
              added on top of bottom drop down tab*/
-           else if mapOrderOldPaperbackground.parent != nil && orderDropDownMenu.parent != nil{
+           else if mapOrderBackgroundRectangle.parent != nil && orderDropDownMenu.parent != nil{
                orderDropDownMenu.removeFromParent()
                passHighlightedTextTodropDownArrowLabelTwo()
                addChildSKLabelNodeToParentSKSPriteNode(parent: dropDownLabelBGTwo, children: dropDownArrowLabelTwo)
@@ -448,6 +451,7 @@ class StartMenu: SKScene {
         ///"Musica (Music)" label
         let opcionesMusicaLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
         opcionesMusicaLabel.name = "opcionesMusicaLabel"
+        opcionesMusicaLabel.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
         opcionesMusicaLabel.text = "Música (Music)"
         opcionesMusicaLabel.position = CGPoint(x:-17,y:-20.5)
         addChildSKLabelNodeToParentSKLabelNode(parent: opcionesAudioLabel, children: opcionesMusicaLabel)
@@ -455,6 +459,7 @@ class StartMenu: SKScene {
         //"Sonidos (Sound)" label
         let opcionesSonidosLabel:SKLabelNode = StartMenuMethods().opcionesLabelDefaults()
         opcionesSonidosLabel.name = "opcionesSonidosLabel"
+        opcionesSonidosLabel.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
         opcionesSonidosLabel.text = "Sonidos (Sound)"
         opcionesSonidosLabel.position = CGPoint(x:-11.5,y:-45)
         addChildSKLabelNodeToParentSKLabelNode(parent: opcionesAudioLabel, children: opcionesSonidosLabel)
@@ -585,13 +590,13 @@ class StartMenu: SKScene {
     //Function will set mapOrder objects needed to be evaluated by touch function
     func setMainMapOrderObjects(){
         //Parent node. Rectangle containing the objects that the user will interact with
-        mapOrderOldPaperbackground.name = "mapOrderOldPaperbackground"
-        mapOrderOldPaperbackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        mapOrderBackgroundRectangle.name = "mapOrderBackgroundRectangle"
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         
         //Top Grey drop down tab.**IT DOES NOT HAVE PHYSICS BODY, THE TOUCH FUNCTION IS SET ON THE LABEL ON TOP OF IT**
         dropDownLabelBG.name = "dropDownLabelBG"
         dropDownLabelBG.position = CGPoint(x:100,y:50)
-        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: dropDownLabelBG)
+        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: dropDownLabelBG)
         //mapOrderOldPaperbackground.addChild(dropDownLabelBG)
         
         //Label "Puerto Rico"(default value) Lies on top of top grey drop down tab and contains the touch function
@@ -622,7 +627,7 @@ class StartMenu: SKScene {
         //Bottom gray drop down menu tab. **IT DOES NOT HAVE PHYSICS BODY, THE TOUCH FUNCTION IS SET ON THE LABEL ON TOP OF IT**
         dropDownLabelBGTwo.name = "dropDownLabelBGTwo"
         dropDownLabelBGTwo.position = CGPoint(x:100,y:-23)
-        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: dropDownLabelBGTwo)
+        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: dropDownLabelBGTwo)
         //mapOrderOldPaperbackground.addChild(dropDownLabelBGTwo)
         
         //Label "Alfabético (Alphabetic)"(default value) Lies on top of bottom grey drop down tab and contains the touch function
@@ -671,12 +676,12 @@ class StartMenu: SKScene {
         //green button
         mapOrderGreenButton.name = "mapOrderGreenButton"
         mapOrderGreenButton.position = CGPoint(x:-118, y:-67)
-        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: mapOrderGreenButton)
+        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderGreenButton)
         //mapOrderOldPaperbackground.addChild(mapOrderGreenButton)
         //red button
         mapOrderRedButton.name = "mapOrderRedButton"
         mapOrderRedButton.position = CGPoint(x:-185, y:-67)
-        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: mapOrderRedButton)
+        addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderRedButton)
         //mapOrderOldPaperbackground.addChild(mapOrderRedButton)
     }
     //map Order objects that will be loadad only if "Jugar" button is pressed, but are not needed inmediately for touch function evaluation
@@ -686,7 +691,7 @@ class StartMenu: SKScene {
         mapOrderTopLabel.name = "mapOrderTopLabel"
         mapOrderTopLabel.position = CGPoint(x:110, y:58)
         mapOrderTopLabel.text = "Seleccciona el mapa en el menú desplegable\n(Select the map from the drop-downmenu)"
-        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: mapOrderTopLabel)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderTopLabel)
         //mapOrderOldPaperbackground.addChild(mapOrderTopLabel)
         
         //middle label with order selection instructions
@@ -694,7 +699,7 @@ class StartMenu: SKScene {
         mapOrderMiddleLabel.name = "mapOrderMiddleLabel"
         mapOrderMiddleLabel.position = CGPoint(x:72, y:-15)
         mapOrderMiddleLabel.text = "Selecciona el orden de los objetivos en el menú desplegable\n\t   (Select the target order from the drop-downmenu)"
-        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: mapOrderMiddleLabel)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderMiddleLabel)
         //mapOrderOldPaperbackground.addChild(mapOrderMiddleLabel)
         
         //Arrow drawing on top of top gray drop down tab
@@ -709,7 +714,7 @@ class StartMenu: SKScene {
         mapOrderSingleLineLabel.name = "mapOrderSingleLineLabel"
         mapOrderSingleLineLabel.fontSize = 14
         mapOrderSingleLineLabel.text = "Mapa (Map)"
-        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: mapOrderSingleLineLabel)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderSingleLineLabel)
         //mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabel)
         mapOrderSingleLineLabel.position = CGPoint(x:-165, y:46)
         
@@ -718,7 +723,7 @@ class StartMenu: SKScene {
         mapOrderSingleLineLabelTwo.name = "mapOrderSingleLineLabelTwo"
         mapOrderSingleLineLabelTwo.fontSize = 14
         mapOrderSingleLineLabelTwo.text = "Orden (Order)"
-        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: mapOrderSingleLineLabelTwo)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderSingleLineLabelTwo)
         //mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabelTwo)
         mapOrderSingleLineLabelTwo.position = CGPoint(x:-156, y:-25.0)
         
@@ -761,13 +766,13 @@ class StartMenu: SKScene {
     func setMainGameModeSelectionObjects(){
         
         //Parent is the rectangle containing the objects for game mode selection screen
-        gameModeSelectionOldPaperbackground.name = "gameModeSelectionOldPaperbackground"
-        gameModeSelectionOldPaperbackground.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        gameModeSelectionBackgroundRectangle.name = "gameModeSelectionBackgroundRectangle"
+        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         
         //green button
         gameModeSelectionGreenButton.name = "gameModeSelectionGreenButton"
         gameModeSelectionGreenButton.position = CGPoint(x:-90, y:50)
-        addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionOldPaperbackground, children: gameModeSelectionGreenButton)
+        addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionGreenButton)
         //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionGreenButton)
         
         //button label "Modo de Reto (Challenge Mode)"
@@ -779,7 +784,7 @@ class StartMenu: SKScene {
         //blue button
         gameModeSelectionBlueButton.name = "gameModeSelectionBlueButton"
         gameModeSelectionBlueButton.position = CGPoint(x:90, y:50)
-        addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionOldPaperbackground, children: gameModeSelectionBlueButton)
+        addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionBlueButton)
         //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionBlueButton)
         
         //blue button label
@@ -791,7 +796,7 @@ class StartMenu: SKScene {
         //red button
         gameModeSelectionRedButton.name = "gameModeSelectionRedButton"
         gameModeSelectionRedButton.position = CGPoint(x:0,y:-55)
-        addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionOldPaperbackground, children: gameModeSelectionRedButton)
+        addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionRedButton)
         //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
     }
     //Function init and set objects when game mode selection screen is rendered, not needed for evaluation for touch function
@@ -801,7 +806,7 @@ class StartMenu: SKScene {
        gameModeSelectionLabel.name = "gameModeSelectionLabel"
        gameModeSelectionLabel.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
        gameModeSelectionLabel.position = CGPoint(x:-87,y:-25)
-       addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionOldPaperbackground, children: gameModeSelectionLabel)
+       addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionLabel)
        //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabel)
        
        //on game mode selection screen instructions label at the right
@@ -810,7 +815,7 @@ class StartMenu: SKScene {
        gameModeSelectionLabelTwo.text = "Juega con nombres ya en el mapa.\n\t Tiempo no se guardará.\n(Play with names already on the map.\n\tTime will not be saved)"
        gameModeSelectionLabelTwo.preferredMaxLayoutWidth = 160
        gameModeSelectionLabelTwo.position = CGPoint(x:105,y:-26)
-       addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionOldPaperbackground, children: gameModeSelectionLabelTwo)
+       addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionLabelTwo)
        //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
     }
     
@@ -826,7 +831,7 @@ class StartMenu: SKScene {
                 print("inicializando mapOrderObject")//programmer use
                 mapOrderObjectsNotInitSet = false//line change value to false preventing the execution from reentering and reinitialize the objects again
             }
-            addChildSKSPriteNodeToself(children: mapOrderOldPaperbackground)
+            addChildSKSPriteNodeToself(children: mapOrderBackgroundRectangle)
             //self.addChild(mapOrderOldPaperbackground)//parent(containing mapOrder objects) is added to the scene
             
         }
@@ -963,7 +968,7 @@ class StartMenu: SKScene {
             
         }
     }
-    /**Touched nodes evaluation when mapOrder parent mapOrderOldPaperbackground and children are rendered*/
+    /**Touched nodes evaluation when mapOrder parent mapOrderBackgroundRectangle and children are rendered*/
     func mapOrderTouchNodes(nodeTouched:SKPhysicsBody){
         /**General explanation: in this instance when button green is pressed bottom drop down menu will close and highlighted selection(or last selection) label text attribute is passed to dropDownArrowLabelTwo, developer wanted drop down menus closed before moving to next view .
          The execution enters when orderDropDownMenu(bottom drop down menu) is rendered but the green button is touched, removing the drop downmenu from view
@@ -984,14 +989,14 @@ class StartMenu: SKScene {
              addChildSKLabelNodeToParentSKSPriteNode(parent: dropDownLabelBG, children: dropDownArrowLabel)
              //dropDownLabelBG.addChild(dropDownArrowLabel)
          }
-         /* When mapOrderGreenButton is touched mapOrder parent mapOrderOldPaperbackground is removed and gameModeSelection parent(with its children) is added to the view**/
+         /* When mapOrderGreenButton is touched mapOrder parent mapOrderBackgroundRectangle is removed and gameModeSelection parent(with its children) is added to the view**/
          else if(mapOrderGreenButton.name == nodeTouched.node?.name){
-             mapOrderOldPaperbackground.removeFromParent()
+             mapOrderBackgroundRectangle.removeFromParent()
              if gameModeSelectionObjectsNotInitSet == true{
                  initSetSecondaryGameModeSelectionObjects()
                  gameModeSelectionObjectsNotInitSet = false
              }
-             addChildSKSPriteNodeToself(children: gameModeSelectionOldPaperbackground)
+             addChildSKSPriteNodeToself(children: gameModeSelectionBackgroundRectangle)
              //self.addChild(gameModeSelectionOldPaperbackground)
          }
          
@@ -1014,7 +1019,7 @@ class StartMenu: SKScene {
          }
          /* When mapOrderRedButton is touched mapOrder parent mapOrderOldPaperbackground is removed and buttonGreen parent of main menu objs is added to the view**/
          else if mapOrderRedButton.name == nodeTouched.node?.name{
-             mapOrderOldPaperbackground.removeFromParent()
+             mapOrderBackgroundRectangle.removeFromParent()
              addChildSKSPriteNodeToself(children: buttonGreen)
              //self.addChild(buttonGreen)
          }
@@ -1048,7 +1053,7 @@ class StartMenu: SKScene {
          else if (dropDownArrowLabel.name == nodeTouched.node?.name){
              
              dropDownArrowLabel.removeFromParent()
-             addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: mapOrderCountryDropDownMenu)
+             addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderCountryDropDownMenu)
              //mapOrderOldPaperbackground.addChild(mapOrderCountryDropDownMenu)
              
             /**The following statement adds to drop down menu (mapOrderCountryDropDownMenu) mapOrderCountryDropDownMenuYellowBG(yellow background) and dropDownMenuLabelPR(text:"Puerto Rico") . The statements :&& mapOrderCountryDropDownMenuYellowBG.parent == nil && dropDownMenuLabelPR.parent == nil prevents mapOrderCountryDropDownMenuYellowBG and dropDownMenuLabelPR from being re-added to parent if they have already been added previously */
@@ -1087,7 +1092,7 @@ class StartMenu: SKScene {
          else if (dropDownArrowLabelTwo.name == nodeTouched.node?.name){
              //remuevo el label del dropdown tab
              dropDownArrowLabelTwo.removeFromParent()
-             addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderOldPaperbackground, children: orderDropDownMenu)
+             addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: orderDropDownMenu)
              //mapOrderOldPaperbackground.addChild(orderDropDownMenu)
              
             /**The following is evaluating whether at the moment dropDownArrowLabelTwo is pressed, if the selection at the drop down menu is the first label (default highlighted in yellow) and whether orderDropDownMenu children have been added,**/
@@ -1247,8 +1252,8 @@ class StartMenu: SKScene {
         }
         /**gameModeSelectionRedButton return user back to mapOrder view*/
         else if (gameModeSelectionRedButton.name == nodeTouched.node?.name){
-            gameModeSelectionOldPaperbackground.removeFromParent()
-            addChildSKSPriteNodeToself(children: mapOrderOldPaperbackground)
+            gameModeSelectionBackgroundRectangle.removeFromParent()
+            addChildSKSPriteNodeToself(children: mapOrderBackgroundRectangle)
             //self.addChild(mapOrderOldPaperbackground)
         }
     }
@@ -1350,6 +1355,7 @@ class StartMenu: SKScene {
                 }
            }
     }
+    
     func addChildSKSpriteNodeToParentSKSPriteNode(parent:SKSpriteNode,children:SKSpriteNode){
        if children.parent == nil{
            parent.addChild(children)

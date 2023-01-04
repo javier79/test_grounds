@@ -12,7 +12,7 @@ import SpriteKit
 
 class StartMenuMethods{
     
-    func redButtonBpDrawToSKSpriteNode()->SKSpriteNode{
+    /*func redButtonBpDrawToSKSpriteNode()->SKSpriteNode{
         
         //Drawing
        var path = UIBezierPath()
@@ -41,7 +41,7 @@ class StartMenuMethods{
 
        return redButton
             
-    }
+    }*/
     
     
     func mainMenuSetLabelDefaults()-> SKLabelNode{
@@ -67,13 +67,13 @@ class StartMenuMethods{
        // Close the path. This will create the last line automatically.
        path.close()
          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 4.5)//Esta linea trabaja el curveado de las esquinas
        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
        //Drawing to Shapenode
        let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
        shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+       shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+       shapeNode.fillColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
        //Shapenode To SKSpriteNode
        //let view = SKView(frame: UIScreen.main.bounds)
        //let texture = view.texture(from: shapeNode)!
@@ -100,7 +100,7 @@ class StartMenuMethods{
         //path.close()
         
         let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = .black//c1d3c8
+        shapeNode.strokeColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 2.0
         //shapeNode.fillColor = .white
         //Shapenode To SKSpriteNode
@@ -131,7 +131,7 @@ class StartMenuMethods{
         //path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
         
         let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = .white//c1d3c8
+        shapeNode.strokeColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
         shapeNode.fillColor = .white
         //Shapenode To SKSpriteNode
@@ -148,7 +148,7 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontSize = 14
         label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
+        label.fontColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         return label
     }
     
@@ -157,7 +157,7 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontSize = 12
         label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
+        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         
         if UserDefaults.standard.integer(forKey: "minutesRandom") != 0 && UserDefaults.standard.integer(forKey: "secondsRandom") != 0 {
             let secondsText = (UserDefaults.standard.integer(forKey: "secondsRandom") < 10) ?
@@ -187,7 +187,7 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontSize = 12
         label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
+        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         
         if UserDefaults.standard.integer(forKey: "minutesAlphabetic") != 0 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") != 0 {
             
@@ -215,14 +215,14 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontSize = 12
         label.fontName = "GillSans-SemiBold"
-        label.fontColor = .black
+        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         return label
     }
     
     func bestTimesRectangleBezierPathToSKSpriteNode()-> SKSpriteNode{//Big island frame properties
            
         let shapeNode = SKShapeNode(path:TestClass().createRectangle().cgPath)
-        shapeNode.strokeColor = .black
+        shapeNode.strokeColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
         shapeNode.lineWidth = 2.0
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -250,9 +250,9 @@ class StartMenuMethods{
         //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.949, green: 0.2824, blue: 0.2941, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.949, green: 0.2824, blue: 0.2941, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
        // let texture = view.texture(from: shapeNode)!
@@ -279,7 +279,7 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontName = "Avenir-Heavy"
         label.fontSize = 9
-        label.fontColor = .black
+        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
         //label.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
         label.numberOfLines = 3
         label.preferredMaxLayoutWidth = 140
@@ -333,8 +333,8 @@ class StartMenuMethods{
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:initModeSelectionBlueAndGreenButtons().cgPath)
         shapeNode.lineWidth = 0.5
-        shapeNode.strokeColor = UIColor.init(red: 0, green: 0.6588, blue: 0.9882, alpha: 1.0)//c1d3c8
-        shapeNode.fillColor = UIColor.init(red: 0, green: 0.6588, blue: 0.9882, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
         //let texture = view.texture(from: shapeNode)!
@@ -384,8 +384,8 @@ class StartMenuMethods{
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:initModeSelectionBlueAndGreenButtons().cgPath)
         shapeNode.lineWidth = 0.5
-        shapeNode.strokeColor = UIColor.init(red: 0.2706, green: 0.9098, blue: 0.5882, alpha: 1.0)//c1d3c8
-        shapeNode.fillColor = UIColor.init(red: 0.2706, green: 0.9098, blue: 0.5882, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
         //let texture = view.texture(from: shapeNode)!
@@ -433,6 +433,7 @@ class StartMenuMethods{
         //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
         return path
     }
+    
     func mapOrderButtonsTopLabelsDefault()->SKLabelNode{
         let label = SKLabelNode()
         label.fontName = "AvenirNext-Bold"
@@ -471,9 +472,9 @@ class StartMenuMethods{
         
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:initMapOrderButtons().cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2745, blue: 0, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2745, blue: 0, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
         //let texture = view.texture(from: shapeNode)!
@@ -523,9 +524,9 @@ class StartMenuMethods{
         //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))*/
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:initMapOrderButtons().cgPath)
-        shapeNode.strokeColor = UIColor.green//c1d3c8
         shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.green
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
         //let texture = view.texture(from: shapeNode)!
@@ -656,7 +657,7 @@ class StartMenuMethods{
       let label = SKLabelNode()
       label.fontName = "GillSans-SemiBold"
       label.numberOfLines = 3
-      label.fontColor = .black
+      label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
       label.fontSize = 11
       
       return label
@@ -735,9 +736,9 @@ class StartMenuMethods{
         //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
         shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+        shapeNode.fillColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
         //let texture = view.texture(from: shapeNode)!
@@ -762,7 +763,7 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontSize = 11
         label.fontName = "GillSans-Bold"
-        label.fontColor = UIColor.init(red: 0.1255, green: 0.6157, blue: 0.9686, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        label.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
         return label
     }
     
@@ -823,13 +824,13 @@ class StartMenuMethods{
         
     }
     
-    func redButtonShapeNodeToSpriteNode()-> SKSpriteNode {
+    func redButtonShapeNodeToSpriteNode()-> SKSpriteNode{
          
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
         shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+        shapeNode.fillColor = UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
         //let texture = view.texture(from: shapeNode)!
@@ -869,9 +870,9 @@ class StartMenuMethods{
         path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:path.cgPath )
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
         shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
+        shapeNode.fillColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
         //Shapenode To SKSpriteNode
         //let view = SKView(frame: UIScreen.main.bounds)
         //let texture = view.texture(from: shapeNode)!
@@ -910,8 +911,8 @@ class StartMenuMethods{
        //Drawing to Shapenode
        let shapeNode = SKShapeNode(path:path.cgPath)
        shapeNode.lineWidth = 0.5
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
-       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+       shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+       shapeNode.fillColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
        //Shapenode To SKSpriteNode
        //let view = SKView(frame: UIScreen.main.bounds)
        //let texture = view.texture(from: shapeNode)!
@@ -931,7 +932,7 @@ class StartMenuMethods{
     func mainMenuRedButtonsLabelsDefaults()-> SKLabelNode{
         let label = SKLabelNode()
         label.fontName = "AvenirNext-Bold"
-        label.fontSize = 14
+        label.fontSize = 13
         label.position = CGPoint(x:0.5,y:-5.5)
         //.zPosition = 1
         return label
@@ -973,9 +974,9 @@ class StartMenuMethods{
         //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.green//c1d3c8
         shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.green
+        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         
         //Shapenode To SKSpriteNode
         /*let view = SKView(frame: UIScreen.main.bounds)
@@ -988,7 +989,8 @@ class StartMenuMethods{
         //greenbutton.zPosition = 2
         let labelOne = SKLabelNode()
         labelOne.fontName = "AvenirNext-Bold"
-        labelOne.fontSize = 16
+        //labelOne.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+        labelOne.fontSize = 15
         labelOne.text = "JUGAR"
         //labelOne.position = CGPoint(x:0, y:-13)
         //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -996,7 +998,8 @@ class StartMenuMethods{
         
         let labelTwo = SKLabelNode()
         labelTwo.fontName = "AvenirNext-Bold"
-        labelTwo.fontSize = 13
+        //labelTwo.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+        labelTwo.fontSize = 12
         labelTwo.text = "(PLAY)"
         labelTwo.position = CGPoint(x:0.5, y:-13)
         //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -1021,13 +1024,13 @@ class StartMenuMethods{
        // Close the path. This will create the last line automatically.
        path.close()
          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 1.5)//Esta linea trabaja el curveado de las esquinas
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 4.5)//1.5Esta linea trabaja el curveado de las esquinas
        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
        //Drawing to Shapenode
        let shapeNode = SKShapeNode(path:path.cgPath)
-       shapeNode.strokeColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
        shapeNode.lineWidth = 0.5
-       shapeNode.fillColor = UIColor.init(red: 0.8, green: 0.2784, blue: 0, alpha: 1.0)
+       shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+       shapeNode.fillColor = UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0) //UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
        //Shapenode To SKSpriteNode
        //let view = SKView(frame: UIScreen.main.bounds)
        //let texture = view.texture(from: shapeNode)!
