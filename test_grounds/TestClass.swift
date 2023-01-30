@@ -1925,6 +1925,18 @@ class TestClass {
         return  culebraNode
     }
     
+    func containerSKSpriteNodeBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
+           
+        let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
+        shapeNode.strokeColor = .blue//.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+        shapeNode.lineWidth = 0.5
+        let view = SKView(frame: UIScreen.main.bounds)
+        let texture = view.texture(from: shapeNode)!
+        let rectangleNode = SKSpriteNode(texture: texture)
+        rectangleNode.position = CGPoint(x:280, y:190)
+        return  rectangleNode
+    }
+    
       func rectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
            
         let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
