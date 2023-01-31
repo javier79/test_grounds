@@ -74,6 +74,10 @@ class StartScene: SKScene{
         
         
         self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//blue background that resembles the ocean
+        
+        /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
+        timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
+        
         //Invisible Node see comment n its declaration at the top
         containerSKSPriteNode.zPosition = 0
         containerSKSPriteNode.anchorPoint = CGPoint(x:0.5, y:0.5)
@@ -82,8 +86,7 @@ class StartScene: SKScene{
         containerNode.zPosition = -1
         containerNode.position = CGPoint(x:-280, y:-190)//CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175) /*CGPoint(x:-275 , y:-75 /*15*/)*//**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames)*/
         
-        /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
-         timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
+        
         
         
         timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6)/**parent to labelTimer*/
@@ -92,9 +95,6 @@ class StartScene: SKScene{
         goldBackgroundSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)
         goldBackgroundSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
         
-
-       
-    
         /**Following objects are related to goldBackground SKSPriteNode*/
         //addChildSKSpriteNodeToParentself(children:containerSKSPriteNode)
         addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
