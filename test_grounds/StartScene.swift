@@ -103,14 +103,17 @@ class StartScene: SKScene{
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
         addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
         addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
-        
-        containerSKSPriteNode.addChild(containerNode)
-        self.addChild(containerSKSPriteNode)
+        addChildSKNodeToParentSKSpriteNode(parent:containerSKSPriteNode, children:containerNode)
+        //containerSKSPriteNode.addChild(containerNode)
+        addChildSKSpriteNodeToParentself(children:containerSKSPriteNode)
+        //self.addChild(containerSKSPriteNode)
         //addChildSKNodeToParentself(children: containerNode)
         //addChildSKNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: containerNode)
         addChildSKLabelNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: labelTimer)
         addChildSKSpriteNodeToParentself(children: timerBackgroundTwo)
         //addChildSKNodeToParentself(children: containerNode)
+        
+        //set an call hand gesture recognizers
         let pinchRecognizer: UIPinchGestureRecognizer = UIPinchGestureRecognizer(target:self, action: #selector(self.handlePinchFrom(_:)))
         self.view!.addGestureRecognizer(pinchRecognizer)
         
