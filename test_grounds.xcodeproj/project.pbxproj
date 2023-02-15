@@ -28,6 +28,7 @@
 		8D9746BB27FB8B2600934446 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9746BA27FB8B2600934446 /* GameOverScene.swift */; };
 		8DA95C21283D0FEC00C41D1C /* RandomGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA95C20283D0FEC00C41D1C /* RandomGame.swift */; };
 		8DC51BDB27E616DC00E12ACC /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC51BDA27E616DC00E12ACC /* StartMenu.swift */; };
+		8DF29C9C299BD6120068FDD2 /* GamePlayRenderingObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF29C9B299BD6120068FDD2 /* GamePlayRenderingObjects.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		8D9746BA27FB8B2600934446 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		8DA95C20283D0FEC00C41D1C /* RandomGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGame.swift; sourceTree = "<group>"; };
 		8DC51BDA27E616DC00E12ACC /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
+		8DF29C9B299BD6120068FDD2 /* GamePlayRenderingObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayRenderingObjects.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				8DA95C20283D0FEC00C41D1C /* RandomGame.swift */,
 				8D4B649B2846501E000A6544 /* PracticeAlphabeticGame.swift */,
 				8D1D0D5C284F92D900958506 /* PracticeRandomGame.swift */,
+				8DF29C9B299BD6120068FDD2 /* GamePlayRenderingObjects.swift */,
 			);
 			path = test_grounds;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				8D1D0D5D284F92D900958506 /* PracticeRandomGame.swift in Sources */,
 				8D1A898525A8D666008FF0D6 /* SceneDelegate.swift in Sources */,
 				8D62EA13288EEF5D002B6D73 /* StartMenuMethods.swift in Sources */,
+				8DF29C9C299BD6120068FDD2 /* GamePlayRenderingObjects.swift in Sources */,
 				8D1A899725A8DEE4008FF0D6 /* StartScene.swift in Sources */,
 				8D1A899925A8DF16008FF0D6 /* TestClass.swift in Sources */,
 				8DC51BDB27E616DC00E12ACC /* StartMenu.swift in Sources */,

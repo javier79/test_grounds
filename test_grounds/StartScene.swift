@@ -11,21 +11,21 @@ import SpriteKit
 import AVFoundation
 
 class StartScene: SKScene{
-    let containerSKSPriteNode: SKSpriteNode = TestClass().containerSKSpriteNodeBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
+    let containerSKSPriteNode: SKSpriteNode = GamePlayRenderingObjects().containerSKSpriteNodeBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
     
-    let goldBackgroundSKSpriteNode = TestClass().goldenBackground()
-    let skipButton = TestClass().skipBlueButton()//used in more than one function
-    let exitRedButton = TestClass().redButton()//used in more than one function
+    let goldBackgroundSKSpriteNode = GamePlayRenderingObjects().goldenBackground()
+    let skipButton = GamePlayRenderingObjects().skipBlueButton()//used in more than one function
+    let exitRedButton = GamePlayRenderingObjects().redButton()//used in more than one function
     
     let containerNode = TestClass().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
-    let labelTimer = TestClass().labelForTimer()//used in more than one function
-    let labelScores = TestClass().labelForScores()//Scores label(in fluorocent text)
+    let labelTimer = GamePlayRenderingObjects().labelForTimer()//used in more than one function
+    let labelScores = GamePlayRenderingObjects().labelForScores()//Scores label(in fluorocent text)
     //let timerBackground = TestClass().timerBackGround()//This background was used when the timer used a background for seconds(0-59) and a wider background for when minutes(1:00) started to render.
-    let timerBackgroundTwo = TestClass().timerBackGroundTwo()/*Background for timer(At one time the timer used two different size backgrounds, but later i opted out of doing that for eficiency and kept
+    let timerBackgroundTwo = GamePlayRenderingObjects().timerBackGroundTwo()/*Background for timer(At one time the timer used two different size backgrounds, but later i opted out of doing that for eficiency and kept
     the bigger background(timerBackgroundTwo) as timer's only background along its life cycle */
-    let municipioNameLabel = TestClass().labelForMunicipioNames()//Label rendering municipio name to look up, Used in more than one function
-    let municipiosNameBackground = TestClass().labelMunicipiosNameBackground()//Background for most(shorter) municipio names. Used in more than one function
-    let municipiosNameBackgroundTwo = TestClass().labelMunicipiosNameBackgroundTwo()//Background for longer municipio names. Used in more than one function
+    let municipioNameLabel = GamePlayRenderingObjects().labelForMunicipioNames()//Label rendering municipio name to look up, Used in more than one function
+    let municipiosNameBackground = GamePlayRenderingObjects().labelMunicipiosNameBackground()//Background for most(shorter) municipio names. Used in more than one function
+    let municipiosNameBackgroundTwo = GamePlayRenderingObjects().labelMunicipiosNameBackgroundTwo()//Background for longer municipio names. Used in more than one function
 
     /**following two variables(renderTime and changeTime)  are basic part of the timer mechanism  and should not be bothered, in case dev wants to understand  how they work roll back to a branch previous to timer function makeover and follow the comments, but again dev should not be too concerned with this variables*/
     var renderTime: TimeInterval = 0.0//marks the time being played to be compared with currentTime, only used on update(timer function)
