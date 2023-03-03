@@ -15,11 +15,11 @@ class GameOverScene: SKScene{
     //var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
     //var useLine2:Bool = false//se usa en mas de una funcion
     let containerNode = TestClass().initSetcontainerNodeAndChildren()
-    let endGameRectangle = TestClass().endGameRectangleBezierPathToSKSpriteNode(bpEndGameRectangle: TestClass().createEndGameRectangle())
-    let endGameRectangleButton = TestClass().endGameRectangleMapButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:TestClass().createEndGameRectangleSidesButtons())
-    let endGameRectangleButtonTwo = TestClass().endGameRectangleJugarOtraButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:TestClass().createEndGameRectangleMiddleButton())
-    let endGameRectangleButtonThree = TestClass().endGameRectangleSalirButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:TestClass().createEndGameRectangleSidesButtons())
-    let resultadosButton = TestClass().redButtonBpDrawToSKSpriteNode()
+    let endGameRectangle = GameOverRenderingObjects().endGameRectangleBezierPathToSKSpriteNode(bpEndGameRectangle: GameOverRenderingObjects().createEndGameRectangle())
+    let endGameRectangleButton = GameOverRenderingObjects().endGameRectangleMapButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:GameOverRenderingObjects().createEndGameRectangleSidesButtons())
+    let endGameRectangleButtonTwo = GameOverRenderingObjects().endGameRectangleJugarOtraButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:GameOverRenderingObjects().createEndGameRectangleMiddleButton())
+    let endGameRectangleButtonThree = GameOverRenderingObjects().endGameRectangleSalirButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:GameOverRenderingObjects().createEndGameRectangleSidesButtons())
+    let resultadosButton = GameOverRenderingObjects().redButtonBpDrawToSKSpriteNode()
     let labelOne = SKLabelNode(); let labelTwo = SKLabelNode(); let labelThree = SKLabelNode(); let labelFour = SKLabelNode();  let labelFive = SKLabelNode();  let labelSix = SKLabelNode()
     let labelSeven = SKLabelNode(); let labelEight = SKLabelNode(); let labelNine = SKLabelNode(); let labelTen = SKLabelNode()
     var playagain: Bool = false
