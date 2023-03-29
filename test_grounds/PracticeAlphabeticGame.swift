@@ -6,7 +6,7 @@
 //  Copyright © 2022 javierpizarro. All rights reserved.
 //
 
-//import Foundation
+import Foundation
 import SpriteKit
 //import UIKit
 import AVFoundation
@@ -17,7 +17,7 @@ class PracticeAlphabeticGame: SKScene{
     let skipButton = GamePlayRenderingObjects().skipBlueButton()//used in more than one function
     let exitRedButton = GamePlayRenderingObjects().redButton()//used in more than one function
     
-    let containerNode = TestClass().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
+    let containerNode = CreateSetMapNodes().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
     let labelTimer = GamePlayRenderingObjects().labelForTimer()//used in more than one function
     let labelScores = GamePlayRenderingObjects().labelForScores()//Scores label(in fluorocent text)
     //let timerBackground = TestClass().timerBackGround()//This background was used when the timer used a background for seconds(0-59) and a wider background for when minutes(1:00) started to render.

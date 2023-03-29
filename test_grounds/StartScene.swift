@@ -5,7 +5,7 @@
 //  Created by javier pizarro on 1/8/21.
 //  Copyright © 2021 javierpizarro. All rights reserved.
 //
-
+import Foundation
 import SpriteKit
 //import UIKit
 import AVFoundation
@@ -17,7 +17,7 @@ class StartScene: SKScene{
     let skipButton = GamePlayRenderingObjects().skipBlueButton()//used in more than one function
     let exitRedButton = GamePlayRenderingObjects().redButton()//used in more than one function
     
-    let containerNode = TestClass().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
+    let containerNode = CreateSetMapNodes().initSetcontainerNodeAndChildren()//Node container for map nodes and map frames. Used in more than one function
     let labelTimer = GamePlayRenderingObjects().labelForTimer()//used in more than one function
     let labelScores = GamePlayRenderingObjects().labelForScores()//Scores label(in fluorocent text)
     //let timerBackground = TestClass().timerBackGround()//This background was used when the timer used a background for seconds(0-59) and a wider background for when minutes(1:00) started to render.
@@ -226,14 +226,14 @@ class StartScene: SKScene{
                     paintNode(spriteNode: spritenode)//color SKSpriteNode green
                     /**Set labels and add them to map texture(node)*/
                     setLabelForMunicipioNameAndAddToNode(nodeSprite: spritenode)
+                    //playCorrectSound()
                     /**Element identified is removed from names array, Evaluates for game complition and removal of Skip button*/
                     removeIdentifiedElementEvaluateCompleteGameAndSkipButtonRemoval()
                     /**set new municipio to look after*/
                     setNewMunicipioNameToLookUp()
                     /**add one to number of municipios located*/
                     addToScoreCountWriteToLabel()
-                    
-                }
+                                    }
                 
                 /*Skip button touch action**/
                 else if (skipButton.name == touchedNode?.node?.name){//Es lo mismo que preguntar si el physics body tocado se llama (name) como skipButton, la condicion quiere saber si tocamos skipButton basicamente

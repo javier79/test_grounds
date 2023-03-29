@@ -27,6 +27,7 @@
 		8D85CDA128731DF800BBC9E9 /* cartoon_success_fanfair 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D85CDA028731DF800BBC9E9 /* cartoon_success_fanfair 1.mp3 */; };
 		8D9746BB27FB8B2600934446 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9746BA27FB8B2600934446 /* GameOverScene.swift */; };
 		8DA223B329B23AB400164CB3 /* GameOverRenderingObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA223B229B23AB400164CB3 /* GameOverRenderingObjects.swift */; };
+		8DA223B529C8F15000164CB3 /* CreateSetMapNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA223B429C8F15000164CB3 /* CreateSetMapNodes.swift */; };
 		8DA95C21283D0FEC00C41D1C /* RandomGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA95C20283D0FEC00C41D1C /* RandomGame.swift */; };
 		8DC51BDB27E616DC00E12ACC /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC51BDA27E616DC00E12ACC /* StartMenu.swift */; };
 		8DF29C9C299BD6120068FDD2 /* GamePlayRenderingObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF29C9B299BD6120068FDD2 /* GamePlayRenderingObjects.swift */; };
@@ -55,6 +56,7 @@
 		8D85CDA028731DF800BBC9E9 /* cartoon_success_fanfair 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cartoon_success_fanfair 1.mp3"; sourceTree = "<group>"; };
 		8D9746BA27FB8B2600934446 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		8DA223B229B23AB400164CB3 /* GameOverRenderingObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverRenderingObjects.swift; sourceTree = "<group>"; };
+		8DA223B429C8F15000164CB3 /* CreateSetMapNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateSetMapNodes.swift; sourceTree = "<group>"; };
 		8DA95C20283D0FEC00C41D1C /* RandomGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomGame.swift; sourceTree = "<group>"; };
 		8DC51BDA27E616DC00E12ACC /* StartMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = "<group>"; };
 		8DF29C9B299BD6120068FDD2 /* GamePlayRenderingObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayRenderingObjects.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				8D1D0D5C284F92D900958506 /* PracticeRandomGame.swift */,
 				8DF29C9B299BD6120068FDD2 /* GamePlayRenderingObjects.swift */,
 				8DA223B229B23AB400164CB3 /* GameOverRenderingObjects.swift */,
+				8DA223B429C8F15000164CB3 /* CreateSetMapNodes.swift */,
 			);
 			path = test_grounds;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				8D62EA13288EEF5D002B6D73 /* StartMenuMethods.swift in Sources */,
 				8DF29C9C299BD6120068FDD2 /* GamePlayRenderingObjects.swift in Sources */,
 				8D1A899725A8DEE4008FF0D6 /* StartScene.swift in Sources */,
+				8DA223B529C8F15000164CB3 /* CreateSetMapNodes.swift in Sources */,
 				8D1A899925A8DF16008FF0D6 /* TestClass.swift in Sources */,
 				8DC51BDB27E616DC00E12ACC /* StartMenu.swift in Sources */,
 			);
@@ -353,6 +357,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M8F4MCKD3M;
 				INFOPLIST_FILE = test_grounds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -370,6 +375,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M8F4MCKD3M;
 				INFOPLIST_FILE = test_grounds/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

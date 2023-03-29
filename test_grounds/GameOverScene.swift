@@ -7,14 +7,14 @@
 //
 import Foundation
 import SpriteKit
-import UIKit
+//import UIKit
 import AVFoundation
 
 class GameOverScene: SKScene{
     //var arrayOfMapSpriteNodes = [SKSpriteNode()]
     //var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
     //var useLine2:Bool = false//se usa en mas de una funcion
-    let containerNode = TestClass().initSetcontainerNodeAndChildren()
+    let containerNode = CreateSetMapNodes().initSetcontainerNodeAndChildren()
     let endGameRectangle = GameOverRenderingObjects().endGameRectangleBezierPathToSKSpriteNode(bpEndGameRectangle: GameOverRenderingObjects().createEndGameRectangle())
     let endGameRectangleButton = GameOverRenderingObjects().endGameRectangleMapButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:GameOverRenderingObjects().createEndGameRectangleSidesButtons())
     let endGameRectangleButtonTwo = GameOverRenderingObjects().endGameRectangleJugarOtraButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:GameOverRenderingObjects().createEndGameRectangleMiddleButton())

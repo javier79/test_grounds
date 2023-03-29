@@ -7,7 +7,7 @@
 //
 /**In this class StartMenu the user will interact with different groups of nodes/objects that transition from one to another. NOTE that this effects take place on the same scene by taking group of nodes/objects out of view (screen)
  to render another set of related nodes/objects for the user to interact with)*/
-
+import Foundation
 import SpriteKit
 import AVFoundation
 
