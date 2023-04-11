@@ -715,7 +715,7 @@ class RandomGame: SKScene{
     //sets attributes for label to use with one word municipio names
     func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
         //Oneline.text = municipioNameLabel.text
-        Oneline.fontName = "Helvetica"
+        Oneline.fontName = "ArialMT"//"Helvetica"
         Oneline.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
         Oneline.xScale = -1.0
         Oneline.zRotation = 9.44
@@ -724,8 +724,8 @@ class RandomGame: SKScene{
     //sets attributes for labels to use with two word municipio names
     func setTwoLineMunicipioNameLabels(labelLineFirst:SKLabelNode, labelLineSecond:SKLabelNode){
         
-        labelLineFirst.fontName = "Helvetica"
-        labelLineSecond.fontName = "Helvetica"
+        labelLineFirst.fontName = "ArialMT"//"Helvetica"
+        labelLineSecond.fontName = "ArialMT"//"Helvetica"
         labelLineFirst.fontSize = 5.4
         labelLineSecond.fontSize = 5.4
         labelLineFirst.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)

@@ -14,13 +14,43 @@ class GamePlayRenderingObjects{
     func containerSKSpriteNodeBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
-        shapeNode.strokeColor = .blue//.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
-        shapeNode.lineWidth = 0.5
+        shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+        shapeNode.lineWidth = 2.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let rectangleNode = SKSpriteNode(texture: texture)
         rectangleNode.position = CGPoint(x:280, y:190)
         return  rectangleNode
+    }
+    
+    func initControlPanel()->SKSpriteNode{
+        //Drawing
+       var path = UIBezierPath()
+       // Specify the point that the path should start get drawn.
+       path.move(to: CGPoint(x: 0.0, y: 0.0))
+       // Create a line between the starting point and the bottom-left side of the view.
+       path.addLine(to: CGPoint(x: 0.0, y:25))
+       // Create the bottom line (bottom-left to bottom-right).
+       path.addLine(to: CGPoint(x:210 , y:25))
+       //Create the vertical line from the bottom-right to the top-right side.
+       path.addLine(to: CGPoint(x:210, y: 0.0))
+       // Close the path. This will create the last line automatically.
+       path.close()
+         
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 4.5)//1.5Esta linea trabaja el curveado de las esquinas
+       //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
+       //Drawing to Shapenode
+       let shapeNode = SKShapeNode(path:path.cgPath)
+        shapeNode.lineWidth = 1.8
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0)//(red: 1, green: 0.8, blue: 0.3765, alpha: 1.0) /* #ffcc60 *///(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0) /* #46b3e6 *///(red: 0.0157, green: 0.8706, blue: 0.6784, alpha: 1.0) /* #04dead *///(red: 1, green: 0.698, blue: 0, alpha: 1.0) /* #ffb200 *///(red: 0.2549, green: 0.6824, blue: 0.6627, alpha: 1.0) /* #41aea9 */
+        shapeNode.fillColor = UIColor.init(red: 0.78, green: 0.91, blue: 0.81, alpha: 1.00)//UIColor.init(red: 1, green: 0.702, blue: 0.098, alpha: 1.0) /* #dff6f0 *///UIColor.init(red: 0.0157, green: 0.8706, blue: 0.6784, alpha: 1.0)//(red: 0.0549, green: 0.5843, blue: 0.4667, alpha: 1.0) /* #0e9577 *///(red: 0.1529, green: 0.4824, blue: 0.7529, alpha: 1.0) /* #277bc0 *///(red: 0.651, green: 0.9647, blue: 0.9451, alpha: 1.0) /* #a6f6f1 *///UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
+       let view = SKView(frame: UIScreen.main.bounds)
+       let texture = view.texture(from: shapeNode)!
+       let controlPanel = SKSpriteNode(texture: texture)
+       
+       
+       return controlPanel
+            
     }
     
     func goldenBackground() -> SKSpriteNode {
@@ -35,9 +65,9 @@ class GamePlayRenderingObjects{
          
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
-        shapeNode.strokeColor = UIColor.init(red: 0.098, green: 0.4863, blue: 1, alpha: 1.0)
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.098, green: 0.4863, blue: 1, alpha: 1.0)
+        shapeNode.lineWidth = 2.5
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0)//(red: 0.4275, green: 0.9451, blue: 0.8, alpha: 1.0) /* #6df1cc */
+        shapeNode.fillColor = UIColor.init(red: 0.1529, green: 0.8824, blue: 0.8078, alpha: 1.0) /* #27e1ce */
         //Shapenode To SKSpriteNode
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -78,7 +108,7 @@ class GamePlayRenderingObjects{
         // Close the path. This will create the last line automatically.
         path.close()
           
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 3.0)//Esta linea trabaja el curveado de las esquinas
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 4.5/*3.0*/)//Esta linea trabaja el curveado de las esquinas
 
         
         return path
@@ -91,6 +121,7 @@ class GamePlayRenderingObjects{
         //labelSkipButtonOne.isUserInteractionEnabled = true
         labelSkipButtonOne.fontName = "ChalkboardSE-Regular"
         labelSkipButtonOne.fontSize = 10
+        //labelSkipButtonOne.fontColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)
         //labelSkipButtonOne.text = "Saltar"
         labelSkipButtonOne.position = CGPoint(x:0.5, y:0.5)
         //skipBlueButton.addChild(labelSkipButtonOne)
@@ -103,6 +134,7 @@ class GamePlayRenderingObjects{
         //labelSkipButtonTwo.isUserInteractionEnabled = true
         labelSkipButtonTwo.fontName = "ChalkboardSE-Light"
         labelSkipButtonTwo.fontSize = 8
+        //labelSkipButtonTwo.fontColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)
         //labelSkipButtonTwo.text = "(Skip)"
         labelSkipButtonTwo.position = CGPoint(x:0.5, y:-8.5)
         //skipBlueButton.addChild(labelSkipButtonTwo)
@@ -114,9 +146,9 @@ class GamePlayRenderingObjects{
          
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:blueButtonRedButtonBp().cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
-        shapeNode.lineWidth = 0.5
-        shapeNode.fillColor = UIColor.init(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
+        shapeNode.lineWidth = 2.5
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0)//(red: 0.8471, green: 0.8471, blue: 0.8471, alpha: 1.0) /* #d8d8d8 *///(red: 0.9176, green: 0.2157, blue: 0.0902, alpha: 1.0)
+        shapeNode.fillColor = UIColor.init(red: 0.8941, green: 0.5765, blue: 0.5765, alpha: 1.0)
         //Shapenode To SKSpriteNode
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -150,26 +182,26 @@ class GamePlayRenderingObjects{
         //label.zPosition = 2
         label.fontName = "Arial"
         label.fontSize = 16
-        label.fontColor = SKColor.red
+        label.fontColor = UIColor.white//(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)
         return label
     }
     
     func labelForScores() -> SKLabelNode {
         let label:SKLabelNode = SKLabelNode()
-        label.position = CGPoint(x:300, y:-0.5)
+        label.position = CGPoint(x:300, y:-7)
         label.fontName = "Arial"
-        label.fontSize = 11
+        label.fontSize = 12.5
         label.text = "0/78"
-        label.fontColor = UIColor.init(red: 0.1333, green: 0.8392, blue: 0.1333, alpha: 1.0)
+        label.fontColor = UIColor.init(red: 1, green: 0.698, blue: 0, alpha: 1.0) /* #ffb200 */
         return label
     }
     
     func timerBackGroundTwo() -> SKSpriteNode{
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:timerBackGroundBorderTwoBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
-        shapeNode.lineWidth = 0.5
-        shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)/*UIColor.lightGray*///c1d3c8
-        shapeNode.fillColor = UIColor.lightGray
+        shapeNode.lineWidth = 2.0
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0) /* #a5d7e8 */
+        shapeNode.fillColor = UIColor.init(red: 0.2392, green: 0.698, blue: 1, alpha: 1.0) /* #3db2ff */
         //Shapenode To SKSpriteNode
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -205,7 +237,7 @@ class GamePlayRenderingObjects{
         NameMunicipioLabel.position = CGPoint(x:0.5 /*self.size.width/2*/, y:-6.5 /*self.size.height/2 * 0.14*/)
         NameMunicipioLabel.fontName = "Helvetica"
         NameMunicipioLabel.fontSize = 17
-        NameMunicipioLabel.fontColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0)
+        NameMunicipioLabel.fontColor = UIColor.white//(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0) //init(red: 0.9451, green: 0.9373, blue: 0.7255, alpha: 1.0)
         NameMunicipioLabel.text = "Adjuntas"
         //municipiosNameBackground.size = NameMunicipioLabel.frame.size
         //NameMunicipioLabel.zPosition = 1
@@ -215,9 +247,9 @@ class GamePlayRenderingObjects{
     func labelMunicipiosNameBackground() -> SKSpriteNode{
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:labelMunicipiosNameBackgroundBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
-        shapeNode.strokeColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0) /*UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)*/
         shapeNode.lineWidth = 2.5
-        shapeNode.fillColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0) /* #a5d7e8 */
+        shapeNode.fillColor = UIColor.init(red: 0.2392, green: 0.698, blue: 1, alpha: 1.0) /* #3db2ff */
         //Shapenode To SKSpriteNode
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -251,9 +283,9 @@ class GamePlayRenderingObjects{
     func labelMunicipiosNameBackgroundTwo() -> SKSpriteNode{
         //Drawing to Shapenode
         let shapeNode = SKShapeNode(path:labelMunicipiosNameBackgroundTwoBp().cgPath)//En esta linea se invoca la funcion blueButtonRedButtonBp() que retorna un BezierPath y que convertimos en SKShapenode
-        shapeNode.strokeColor = UIColor.init(red: 0.898, green: 0.9765, blue: 0, alpha: 1.0) /*UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)*/
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0) /*UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)*/
         shapeNode.lineWidth = 2.5
-        shapeNode.fillColor = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)
+        shapeNode.fillColor = UIColor.init(red: 0.2392, green: 0.698, blue: 1, alpha: 1.0)
         //Shapenode To SKSpriteNode
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!

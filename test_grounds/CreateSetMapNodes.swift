@@ -13,7 +13,7 @@ class CreateSetMapNodes{
      func initSetcontainerNodeAndChildren()->SKNode{
          let containerSKNode = SKNode()
          let coverDesecheoIslandSKSpriteNode: SKSpriteNode = CreateSetMapNodes().desecheoIslandCover()
-         let rectangularFrameSKSPriteNode: SKSpriteNode = CreateSetMapNodes().rectangleBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())
+         //let rectangularFrameSKSPriteNode: SKSpriteNode = CreateSetMapNodes().rectangleBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())
          let rectangularViequesFrameSKSPriteNode: SKSpriteNode = CreateSetMapNodes().rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: TestClass().createViequesRectangle())
          let rectangularCulebraFrameSKSPriteNode: SKSpriteNode = CreateSetMapNodes().rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: TestClass().createCulebraRectangle())
          let caboRojoSKSpriteNode: SKSpriteNode = CreateSetMapNodes().caboRojoBezierPathToSKSpriteNode(bpCaboRojo: TestClass().caboRojoDrawBezierPath())
@@ -98,7 +98,7 @@ class CreateSetMapNodes{
          let culebraSKSpriteNode:SKSpriteNode = CreateSetMapNodes().culebraBezierPathToSKSpriteNode(bpCulebra: TestClass().culebraDrawBezierPath())
         
          addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: coverDesecheoIslandSKSpriteNode)
-         addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rectangularFrameSKSPriteNode)
+         //addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rectangularFrameSKSPriteNode)
          addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rectangularViequesFrameSKSPriteNode)
          addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: rectangularCulebraFrameSKSPriteNode)
          addChildSKSpriteNodeToParentSKNode(parent: containerSKNode, children: caboRojoSKSpriteNode)
@@ -538,7 +538,7 @@ class CreateSetMapNodes{
      //sets attributes for label to use with one word municipio names
      func setOneLineMunicipioNameLabel(Oneline:SKLabelNode){
          //Oneline.text = municipioNameLabel.text
-         Oneline.fontName = "Helvetica"
+         Oneline.fontName = "ArialMT"//"Helvetica"
          Oneline.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
          Oneline.xScale = -1.0
          Oneline.zRotation = 9.44
@@ -547,8 +547,8 @@ class CreateSetMapNodes{
      //sets attributes for labels to use with two word municipio names
      func setTwoLineMunicipioNameLabels(labelLineFirst:SKLabelNode, labelLineSecond:SKLabelNode){
          
-         labelLineFirst.fontName = "Helvetica"
-         labelLineSecond.fontName = "Helvetica"
+         labelLineFirst.fontName = "ArialMT"//"Helvetica"
+         labelLineSecond.fontName = "ArialMT"//"Helvetica"
          labelLineFirst.fontSize = 5.4
          labelLineSecond.fontSize = 5.4
          labelLineFirst.fontColor = UIColor.init(red: 0.149, green: 0.149, blue: 0.149, alpha: 1.0)
@@ -587,7 +587,7 @@ class CreateSetMapNodes{
 
      func desecheoIslandCover()-> SKSpriteNode {//properties for Desecheo island cover
          let desecheoCover = SKSpriteNode()
-         desecheoCover.color = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
+         desecheoCover.color = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0) /* #42c2ff *///(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//color hex #89d7ed
          desecheoCover.size = CGSize(width: 10, height:10)
          desecheoCover.anchorPoint = CGPoint(x: 0.5, y: 0.5)
          desecheoCover.position = CGPoint(x: -8, y: 239)
@@ -1563,24 +1563,24 @@ class CreateSetMapNodes{
      }
      
      
-     
-       func rectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
+      //THE NODE BELOW WAS THE FORMER RECTANGLE AROUND ALL ISLANDS, INSTEAD IM USING AS RECTANGLE THE NODE THAT MANAGE THE GESTURES AS ITS DIMENSIONS ARE THE SAME.
+       /*func rectangleBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
             
          let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
-         shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
-         shapeNode.lineWidth = 0.5
+         shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+         shapeNode.lineWidth = 2.0
          let view = SKView(frame: UIScreen.main.bounds)
          let texture = view.texture(from: shapeNode)!
          let rectangleNode = SKSpriteNode(texture: texture)
          rectangleNode.position = CGPoint(x:280, y:190)
          return  rectangleNode
-     }
+     }*/
      
      func rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: UIBezierPath)-> SKSpriteNode{//Vieques island frame properties
             
          let shapeNode = SKShapeNode(path:bpViequesRectangle.cgPath)
-         shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//c1d3c8
-         shapeNode.lineWidth = 0.5
+         shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//c1d3c8
+         shapeNode.lineWidth = 2.5
          let view = SKView(frame: UIScreen.main.bounds)
          let texture = view.texture(from: shapeNode)!
          let rectangleViequesNode = SKSpriteNode(texture: texture)
@@ -1591,8 +1591,8 @@ class CreateSetMapNodes{
       func rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: UIBezierPath)-> SKSpriteNode{//Culebra island frame properties
             
          let shapeNode = SKShapeNode(path:bpCulebraRectangle.cgPath)
-         shapeNode.strokeColor = UIColor.init(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//c1d3c8
-         shapeNode.lineWidth = 0.5
+         shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)
+         shapeNode.lineWidth = 2.5
          let view = SKView(frame: UIScreen.main.bounds)
          let texture = view.texture(from: shapeNode)!
          let rectangleCulebraNode = SKSpriteNode(texture: texture)
