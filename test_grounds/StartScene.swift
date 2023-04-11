@@ -11,9 +11,9 @@ import SpriteKit
 import AVFoundation
 
 class StartScene: SKScene{
-    let mapRectangleGestureMGMT: SKSpriteNode = GamePlayRenderingObjects().containerSKSpriteNodeBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
+    let mapRectangleGestureMGMT: SKSpriteNode = GamePlayRenderingObjects().mapRectangleGestureMGMTBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
     
-    let goldBackgroundSKSpriteNode = GamePlayRenderingObjects().initControlPanel()
+    let controlPanelSKSpriteNode = GamePlayRenderingObjects().initControlPanel()
     let skipButton = GamePlayRenderingObjects().skipBlueButton()//used in more than one function
     let exitRedButton = GamePlayRenderingObjects().redButton()//used in more than one function
     
@@ -91,18 +91,18 @@ class StartScene: SKScene{
         
         timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6)/**parent to labelTimer*/
         
-        goldBackgroundSKSpriteNode.zPosition = 1//Set to one in order for the map to zoom and remain behind
-        goldBackgroundSKSpriteNode.size = CGSize(width:self.size.width - 1, height: 50)
-        goldBackgroundSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8/*25*/)
+        controlPanelSKSpriteNode.zPosition = 1//Set to one in order for the map to zoom and remain behind
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height: 50)
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8/*25*/)
         
         /**Following objects are related to goldBackground SKSPriteNode*/
         //addChildSKSpriteNodeToParentself(children:containerSKSPriteNode)
         addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
-        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
-        addChildSKLabelNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: labelScores)
-        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
-        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
-        addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
+        addChildSKLabelNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: labelScores)
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: skipButton)
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: exitRedButton)
+        addChildSKSpriteNodeToParentself(children: controlPanelSKSpriteNode)
         addChildSKNodeToParentSKSpriteNode(parent:mapRectangleGestureMGMT, children:containerNode)
         //containerSKSPriteNode.addChild(containerNode)
         addChildSKSpriteNodeToParentself(children:mapRectangleGestureMGMT)
@@ -860,7 +860,7 @@ class StartScene: SKScene{
             municipioNameLabel.removeFromParent()
             municipiosNameBackground.removeFromParent()
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
-            addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackgroundTwo)
+            addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
             }
             //if else municipiosNameBackgroundTwo.parent
         }
@@ -869,7 +869,7 @@ class StartScene: SKScene{
             municipioNameLabel.removeFromParent()
             municipiosNameBackgroundTwo.removeFromParent()
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
-            addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
+            addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
             }
         }
     }

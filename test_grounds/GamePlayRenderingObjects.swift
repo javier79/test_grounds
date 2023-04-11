@@ -11,7 +11,7 @@ import SpriteKit
 
 class GamePlayRenderingObjects{
     
-    func containerSKSpriteNodeBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{
+    func mapRectangleGestureMGMTBezierPathToSKSpriteNode(bpRectangle: UIBezierPath)-> SKSpriteNode{
            
         let shapeNode = SKShapeNode(path:bpRectangle.cgPath)
         shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8

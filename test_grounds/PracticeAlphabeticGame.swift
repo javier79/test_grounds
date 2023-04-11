@@ -12,7 +12,7 @@ import SpriteKit
 import AVFoundation
 
 class PracticeAlphabeticGame: SKScene{
-    let containerSKSPriteNode: SKSpriteNode = GamePlayRenderingObjects().containerSKSpriteNodeBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
+    let containerSKSPriteNode: SKSpriteNode = GamePlayRenderingObjects().mapRectangleGestureMGMTBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
     let goldBackgroundSKSpriteNode = GamePlayRenderingObjects().goldenBackground()
     let skipButton = GamePlayRenderingObjects().skipBlueButton()//used in more than one function
     let exitRedButton = GamePlayRenderingObjects().redButton()//used in more than one function
