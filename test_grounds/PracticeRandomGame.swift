@@ -12,9 +12,9 @@ import SpriteKit
 import AVFoundation
 
 class PracticeRandomGame: SKScene{
-    let containerSKSPriteNode: SKSpriteNode = GamePlayRenderingObjects().mapRectangleGestureMGMTBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
+    let mapRectangleGestureMGMT: SKSpriteNode = GamePlayRenderingObjects().mapRectangleGestureMGMTBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
     
-    let goldBackgroundSKSpriteNode = GamePlayRenderingObjects().goldenBackground()
+    let controlPanelSKSpriteNode = GamePlayRenderingObjects().initControlPanel()
     let skipButton = GamePlayRenderingObjects().skipBlueButton()//used in more than one function
     let exitRedButton = GamePlayRenderingObjects().redButton()//used in more than one function
     
@@ -64,20 +64,20 @@ class PracticeRandomGame: SKScene{
     var isScaled = false
     override func didMove(to view: SKView){
         
-        self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//blue background that resembles the ocean
+        self.backgroundColor = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0)//blue background that resembles the ocean
         
-        containerSKSPriteNode.zPosition = 0
-        containerSKSPriteNode.anchorPoint = CGPoint(x:0.5, y:0.5)
-        containerSKSPriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)
+        mapRectangleGestureMGMT.zPosition = 0
+        mapRectangleGestureMGMT.anchorPoint = CGPoint(x:0.5, y:0.5)
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)
         /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
          timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
         containerNode.zPosition = -1
         containerNode.position = CGPoint(x:-280, y:-190)//CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175) /*CGPoint(x:-275 , y:-75 /*15*/)*//**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames)*/
         timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6)/**parent to labelTimer*/
         
-        goldBackgroundSKSpriteNode.zPosition = 1//Set to one in order for the map to zoom and remain behind
-        goldBackgroundSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)
-        goldBackgroundSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
+        controlPanelSKSpriteNode.zPosition = 1//Set to one in order for the map to zoom and remain behind
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
         
         getFirstRandomMunicipioNameToLookUp()//Function gets first random municipio name and overwrites text attributes from TestClass().labelForMunicipioNames()(base attributes)
         //randomIndex = Int.random(in:0...77)//gets random index for first municipio name to look up
@@ -88,13 +88,13 @@ class PracticeRandomGame: SKScene{
         //Attention the following two statements were commented due municipioNamesBackground and municipioNameLabel are added at getFirstRandomMunicipioNameToLookUp()
         //addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
         //addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
-        addChildSKLabelNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: labelScores)
-        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: skipButton)
-        addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: exitRedButton)
-        addChildSKSpriteNodeToParentself(children: goldBackgroundSKSpriteNode)
-        addChildSKNodeToParentSKSpriteNode(parent:containerSKSPriteNode, children:containerNode)
+        addChildSKLabelNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: labelScores)
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: skipButton)
+        addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: exitRedButton)
+        addChildSKSpriteNodeToParentself(children: controlPanelSKSpriteNode)
+        addChildSKNodeToParentSKSpriteNode(parent:mapRectangleGestureMGMT, children:containerNode)
         //containerSKSPriteNode.addChild(containerNode)
-        addChildSKSpriteNodeToParentself(children:containerSKSPriteNode)
+        addChildSKSpriteNodeToParentself(children:mapRectangleGestureMGMT)
         //self.addChild(containerSKSPriteNode)
         //addChildSKNodeToParentself(children: containerNode)
         //addChildSKNodeToParentSKSpriteNode(parent: timerBackgroundTwo, children: containerNode)
@@ -168,19 +168,19 @@ class PracticeRandomGame: SKScene{
                  
                  //Contraints for limiting panning
                  let translation = gesture.translation(in: gesture.view)
-                 if containerSKSPriteNode.position.x > maxX {
-                     containerSKSPriteNode.position.x = maxX
-                 } else if containerSKSPriteNode.position.x < minX {
-                     containerSKSPriteNode.position.x = minX
+                 if mapRectangleGestureMGMT.position.x > maxX {
+                     mapRectangleGestureMGMT.position.x = maxX
+                 } else if mapRectangleGestureMGMT.position.x < minX {
+                     mapRectangleGestureMGMT.position.x = minX
                  }
 
-                 if containerSKSPriteNode.position.y > maxY {
-                     containerSKSPriteNode.position.y = maxY
-                 } else if containerSKSPriteNode.position.y < minY {
-                     containerSKSPriteNode.position.y = minY
+                 if mapRectangleGestureMGMT.position.y > maxY {
+                     mapRectangleGestureMGMT.position.y = maxY
+                 } else if mapRectangleGestureMGMT.position.y < minY {
+                     mapRectangleGestureMGMT.position.y = minY
                  }
                  //pan execution
-                 containerSKSPriteNode.position = CGPoint(x: containerSKSPriteNode.position.x + translation.x, y: containerSKSPriteNode.position.y - translation.y)
+                 mapRectangleGestureMGMT.position = CGPoint(x: mapRectangleGestureMGMT.position.x + translation.x, y: mapRectangleGestureMGMT.position.y - translation.y)
                  gesture.setTranslation(.zero, in: view)
                  
              }
@@ -199,6 +199,7 @@ class PracticeRandomGame: SKScene{
                  if (touchedNode != nil){//This line controls the flow by evaluating if a SKphysics body was touch or not, touchNode will return nil when the screen is touched but no SKphysics body was touched
                      if (municipioNameLabel.text == touchedNode?.node?.name){//Evaluates touch by matching the label text attribute with node's name attributes
                          let spritenode = touchedNode?.node as! SKSpriteNode//pass touchedNode node attribute to spritenode, to apply changes
+                         spritenode.physicsBody = nil
                          playCorrectSound()
                          paintNode(spriteNode: spritenode)//color SKSpriteNode green
                          /**Set labels and add them to map texture(node)*/
@@ -234,35 +235,35 @@ class PracticeRandomGame: SKScene{
          @objc func handlePinchFrom(_ sender: UIPinchGestureRecognizer) {
              
              //Constraints for limiting the scaling  of the node
-             if containerSKSPriteNode.xScale * sender.scale < 1.0 {
-                 sender.scale = 1.0 / containerSKSPriteNode.xScale
-             } else if containerSKSPriteNode.xScale * sender.scale > 1.7 {
-                 sender.scale = 1.7 / containerSKSPriteNode.xScale
+             if mapRectangleGestureMGMT.xScale * sender.scale < 1.0 {
+                 sender.scale = 1.0 / mapRectangleGestureMGMT.xScale
+             } else if mapRectangleGestureMGMT.xScale * sender.scale > 1.7 {
+                 sender.scale = 1.7 / mapRectangleGestureMGMT.xScale
              }
 
-             if containerSKSPriteNode.yScale * sender.scale < 1.0 {
-                 sender.scale = 1.0 / containerSKSPriteNode.yScale
-             } else if containerSKSPriteNode.yScale * sender.scale > 1.7 {
-                 sender.scale = 1.7 / containerSKSPriteNode.yScale
+             if mapRectangleGestureMGMT.yScale * sender.scale < 1.0 {
+                 sender.scale = 1.0 / mapRectangleGestureMGMT.yScale
+             } else if mapRectangleGestureMGMT.yScale * sender.scale > 1.7 {
+                 sender.scale = 1.7 / mapRectangleGestureMGMT.yScale
              }
              
              //Set scaling action
              let pinch = SKAction.scale(by: sender.scale, duration: 0.0)
-             containerSKSPriteNode.run(pinch)
+             mapRectangleGestureMGMT.run(pinch)
              sender.scale = 1.0
              
              //Asses if the node is scaled or not(scaled to default size)
              if sender.state == .ended{
              
-                 if containerSKSPriteNode.xScale > 1.0 && containerSKSPriteNode.yScale > 1.0 {
+                 if mapRectangleGestureMGMT.xScale > 1.0 && mapRectangleGestureMGMT.yScale > 1.0 {
                      isScaled = true
                      print("scaled bigger")
                  }
                  let tolerance: CGFloat = 0.001
 
-                 if abs(containerSKSPriteNode.xScale - 1.0) < tolerance && abs(containerSKSPriteNode.yScale - 1.0) < tolerance {
+                 if abs(mapRectangleGestureMGMT.xScale - 1.0) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.0) < tolerance {
                      isScaled = false
-                     containerSKSPriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                     mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)//Whenever node is scaled back to default size the node is repositioned at default position or center
                      print("scaled back to normal")
                  }
              }
@@ -507,7 +508,7 @@ class PracticeRandomGame: SKScene{
     func paintNode(spriteNode:SKSpriteNode){
         spriteNode.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
         spriteNode.colorBlendFactor = 1.0
-        spriteNode.physicsBody = nil
+        //spriteNode.physicsBody = nil
     }
     
     func playCorrectSound(){
@@ -554,7 +555,7 @@ class PracticeRandomGame: SKScene{
             municipioNameLabel.removeFromParent()
             municipiosNameBackground.removeFromParent()
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
-            addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackgroundTwo)
+            addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
             }
             //if else municipiosNameBackgroundTwo.parent
         }
@@ -563,7 +564,7 @@ class PracticeRandomGame: SKScene{
             municipioNameLabel.removeFromParent()
             municipiosNameBackgroundTwo.removeFromParent()
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
-            addChildSKSpriteNodeToParentSKSpriteNode(parent: goldBackgroundSKSpriteNode, children: municipiosNameBackground)
+            addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
             }
         }
     }
