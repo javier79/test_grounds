@@ -338,8 +338,8 @@ class CreateSetMapNodes{
         }
         //Following block will execute when function is called from GameOverScene where nodes are rendered painted in green
         if StartScene.completedGame == true || RandomGame.completedGame == true || PracticeAlphabeticGame.completedGame == true || PracticeRandomGame.completedGame == true{
-             nodeSprite.color = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
-             nodeSprite.colorBlendFactor = 1.0
+             nodeSprite.colorBlendFactor = 0.8
+             nodeSprite.color = UIColor.init(red: 0, green: 1, blue: 0.949, alpha: 1.0)
              nodeSprite.physicsBody = nil
              
          }

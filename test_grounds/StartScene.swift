@@ -53,8 +53,8 @@ class StartScene: SKScene{
     var scoreCount:Int = 0//variable represent the number of municipios identified rendered in the control bar to the right
     let totalScoreCount:String = "/78"
     
-    static var correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
-    static var incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
+    let correctSound = SKAction.playSoundFileNamed("351566__bertrof__game-sound-correct-organic-violin", waitForCompletion: false)
+    let incorrectSound = SKAction.playSoundFileNamed("351565__bertrof__game-sound-incorrect-organic-violin", waitForCompletion: false)
     //static var backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
     var musicPlayer = AVAudioPlayer()//audio player
     let musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")//reference to PR Himn
@@ -534,7 +534,7 @@ class StartScene: SKScene{
     
     func playCorrectSound(){
         if StartMenu.gamePlaySoundOn == true{
-            run(StartScene.correctSound)//correctSound
+            run(correctSound)//correctSound
         }
     }
     
@@ -906,7 +906,7 @@ class StartScene: SKScene{
     
     func playIncorrectSound(){
         if StartMenu.gamePlaySoundOn == true{
-            run(StartScene.incorrectSound)
+            run(incorrectSound)
         }
     }
 

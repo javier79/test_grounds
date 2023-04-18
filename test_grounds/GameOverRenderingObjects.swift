@@ -16,8 +16,8 @@ class GameOverRenderingObjects{
     func endGameRectangleBezierPathToSKSpriteNode(bpEndGameRectangle: UIBezierPath)-> SKSpriteNode{//Big island frame properties
            
         let shapeNode = SKShapeNode(path:bpEndGameRectangle.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)/*init(red: 0.9098, green: 0.7412, blue: 0.051, alpha: 1.0)*/
-        shapeNode.fillColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)/*(red: 0.1255, green: 0.451, blue: 0.5961, alpha: 1.0)*/
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0)/*init(red: 0.9098, green: 0.7412, blue: 0.051, alpha: 1.0)*/
+        shapeNode.fillColor = UIColor.init(red: 0.2392, green: 0.698, blue: 1, alpha: 1.0)/*(red: 0.1255, green: 0.451, blue: 0.5961, alpha: 1.0)*/
         shapeNode.lineWidth = 4.0
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -53,9 +53,9 @@ class GameOverRenderingObjects{
     func endGameRectangleMapButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton: UIBezierPath)-> SKSpriteNode{//Big island frame properties
            
         let shapeNode = SKShapeNode(path:bpEndGameRectangleButton.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)/*(red: 0.9373, green: 0.9608, blue: 0.9686, alpha: 1.0)*//*(red: 0.9098, green: 0.7412, blue: 0.051, alpha: 1.0)*///(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
-        shapeNode.fillColor = UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)/*(red: 0.9765, green: 0.4118, blue: 0.0549, alpha: 1.0)*/
-        shapeNode.lineWidth = 2.0
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0)/*(red: 0.9373, green: 0.9608, blue: 0.9686, alpha: 1.0)*//*(red: 0.9098, green: 0.7412, blue: 0.051, alpha: 1.0)*///(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0)/*(red: 0.9765, green: 0.4118, blue: 0.0549, alpha: 1.0)*/
+        shapeNode.lineWidth = 2.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let button = SKSpriteNode(texture: texture)
@@ -105,7 +105,7 @@ class GameOverRenderingObjects{
            let buttonOneLabelOne = SKLabelNode()
            buttonOneLabelOne.fontName = "AvenirNext-Bold"
            buttonOneLabelOne.fontSize = 16
-           buttonOneLabelOne.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+           buttonOneLabelOne.fontColor = UIColor.white//init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
            buttonOneLabelOne.text = "Mapa"
            //buttonOneLabelOne.position = CGPoint(x:0, y:0)
            //buttonOneLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -114,7 +114,7 @@ class GameOverRenderingObjects{
            let buttonOneLabelTwo = SKLabelNode()
            buttonOneLabelTwo.fontName = "AvenirNext-Bold"
            buttonOneLabelTwo.fontSize = 13
-           buttonOneLabelTwo.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+           buttonOneLabelTwo.fontColor = UIColor.white//(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
            buttonOneLabelTwo.text = "(Map)"
            buttonOneLabelTwo.position = CGPoint(x:0, y:-13)
            //buttonOneLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -127,9 +127,9 @@ class GameOverRenderingObjects{
     func endGameRectangleJugarOtraButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton: UIBezierPath)-> SKSpriteNode{//Big island frame properties
            
         let shapeNode = SKShapeNode(path:bpEndGameRectangleButton.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
-        shapeNode.fillColor = UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
-        shapeNode.lineWidth = 2.0
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.1529, green: 0.8824, blue: 0.8078, alpha: 1.0)
+        shapeNode.lineWidth = 2.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let button = SKSpriteNode(texture: texture)
@@ -154,7 +154,7 @@ class GameOverRenderingObjects{
         let buttonTwoLabelOne = SKLabelNode()
         buttonTwoLabelOne.fontName = "AvenirNext-Bold"
         buttonTwoLabelOne.fontSize = 16
-        buttonTwoLabelOne.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+        buttonTwoLabelOne.fontColor = UIColor.white
         buttonTwoLabelOne.text = "Jugar Otra Vez"
         //buttonOneLabelOne.position = CGPoint(x:0, y:0)
         //buttonTwoLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -163,7 +163,7 @@ class GameOverRenderingObjects{
         let buttonTwoLabelTwo = SKLabelNode()
         buttonTwoLabelTwo.fontName = "AvenirNext-Bold"
         buttonTwoLabelTwo.fontSize = 13
-        buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+        buttonTwoLabelTwo.fontColor = UIColor.white
         buttonTwoLabelTwo.text = "(Play Again)"
         buttonTwoLabelTwo.position = CGPoint(x:0, y:-13)
         //buttonTwoLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -201,9 +201,9 @@ class GameOverRenderingObjects{
     func endGameRectangleSalirButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton: UIBezierPath)-> SKSpriteNode{//Big island frame properties
            
         let shapeNode = SKShapeNode(path:bpEndGameRectangleButton.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
-        shapeNode.fillColor = UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
-        shapeNode.lineWidth = 2.0
+        shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.8431, blue: 0.9098, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+        shapeNode.fillColor = UIColor.init(red: 0.8941, green: 0.5765, blue: 0.5765, alpha: 1.0)
+        shapeNode.lineWidth = 2.5
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let button = SKSpriteNode(texture: texture)
@@ -229,7 +229,7 @@ class GameOverRenderingObjects{
         let buttonThreeLabelOne = SKLabelNode()
         buttonThreeLabelOne.fontName = "AvenirNext-Bold"
         buttonThreeLabelOne.fontSize = 16
-        buttonThreeLabelOne.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+        buttonThreeLabelOne.fontColor = UIColor.white//init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
         buttonThreeLabelOne.text = "Salir"
         //buttonOneLabelOne.position = CGPoint(x:0, y:0)
         //buttonThreeLabelOne.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -238,7 +238,7 @@ class GameOverRenderingObjects{
         let buttonThreeLabelTwo = SKLabelNode()
         buttonThreeLabelTwo.fontName = "AvenirNext-Bold"
         buttonThreeLabelTwo.fontSize = 13
-        buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
+        buttonThreeLabelTwo.fontColor = UIColor.white//init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)
         buttonThreeLabelTwo.text = "(Exit)"
         buttonThreeLabelTwo.position = CGPoint(x:0, y:-13)
         //buttonThreeLabelTwo.fontColor = UIColor.init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)
@@ -270,8 +270,8 @@ class GameOverRenderingObjects{
        //Drawing to Shapenode
        let shapeNode = SKShapeNode(path:path.cgPath)
        shapeNode.lineWidth = 2.0
-       shapeNode.strokeColor = UIColor.init(red: 0.9098, green: 0.7412, blue: 0.051, alpha: 1.0)
-       shapeNode.fillColor = UIColor.init(red: 0.9765, green: 0.4118, blue: 0.0549, alpha: 1.0)
+       shapeNode.strokeColor = UIColor.init(red: 0.6471, green: 0.9451, blue: 0.9137, alpha: 1.0)
+       shapeNode.fillColor = UIColor.init(red: 0.498, green: 0.7373, blue: 0.8235, alpha: 1.0)
        //Shapenode To SKSpriteNode
        let view = SKView(frame: UIScreen.main.bounds)
        let texture = view.texture(from: shapeNode)!
@@ -287,7 +287,7 @@ class GameOverRenderingObjects{
     func setResultadosButton(buttonResultadosSKSpriteNode:SKSpriteNode)/*->SKSpriteNode*/{
         let label = setLabelDefaults()
         label.fontName = "AvenirNext-Bold"
-        label.fontColor = UIColor.init(red: 0.7922, green: 0.8353, blue: 0.8863, alpha: 1.0)
+        label.fontColor = UIColor.white//init(red: 0.7922, green: 0.8353, blue: 0.8863, alpha: 1.0)
         label.fontSize = 12
         label.text = "Resultados (Results)"
         label.position = CGPoint(x:0.5, y:-5.5)

@@ -14,6 +14,7 @@ class GameOverScene: SKScene{
     //var arrayOfMapSpriteNodes = [SKSpriteNode()]
     //var twoLineText: String = ""//se usa solo en las dos funciones splitTextIntoFields puedo declararla en ambas funciones de manera local
     //var useLine2:Bool = false//se usa en mas de una funcion
+    let mapRectangleGestureMGMT: SKSpriteNode = GamePlayRenderingObjects().mapRectangleGestureMGMTBezierPathToSKSpriteNode(bpRectangle: TestClass().createRectangle())//This Node is invisible, it works by parenting containeNode and applying handgestures as SKNode have no anchor point property which is needed to be set at 0.5 for the pinch gesture to be able to zoom and be centered
     let containerNode = CreateSetMapNodes().initSetcontainerNodeAndChildren()
     let endGameRectangle = GameOverRenderingObjects().endGameRectangleBezierPathToSKSpriteNode(bpEndGameRectangle: GameOverRenderingObjects().createEndGameRectangle())
     let endGameRectangleButton = GameOverRenderingObjects().endGameRectangleMapButtonBezierPathToSKSpriteNode(bpEndGameRectangleButton:GameOverRenderingObjects().createEndGameRectangleSidesButtons())
@@ -28,6 +29,7 @@ class GameOverScene: SKScene{
     //let backgroundMusic = SKAudioNode(fileNamed: "predited.mp3")
     var musicPlayer = AVAudioPlayer()
     let musicURL:URL? = Bundle.main.url(forResource:"predited", withExtension:"mp3")//reference to PR Himn
+    var isScaled = false
     
     override func didMove(to view: SKView) {
         //PracticeAlphabeticGame.completedGame = true
@@ -35,11 +37,19 @@ class GameOverScene: SKScene{
         if StartMenu.gamePlaySoundOn == true{
             run(fanfair)
         }
-        self.backgroundColor = UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)
+        self.backgroundColor = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0)
+        
+        mapRectangleGestureMGMT.zPosition = 0
+        mapRectangleGestureMGMT.anchorPoint = CGPoint(x:0.5, y:0.5)
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)
+        
+        containerNode.zPosition = -1
+        containerNode.position = CGPoint(x:-280, y:-190)//CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175) /*CGPoint(x:-275 , y:-75 /*15*/)*//**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames)*/
+        
         endGameRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 16)
         endGameRectangle.zPosition = 2
         setEndgameRectangleLabels()
-        containerNode.position = CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175)
+        //containerNode.position = CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175)
         //setEndGameRectangleMapButtonAndLabels()
         resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 102)
         
@@ -56,22 +66,102 @@ class GameOverScene: SKScene{
         endGameRectangle.addChild(endGameRectangleButtonTwo)
         endGameRectangle.addChild(endGameRectangleButtonThree)
         
-        
-        
-        
-        //resultadosButton = StartMenuMethods().redButtonBpDrawToSKSpriteNode()
-        //resultadosButton = setResultadosButton(buttonResultadosSKSpriteNode:resultadosButton)
-        
-       
-        self.addChild(containerNode)
+        addChildSKNodeToParentSKSpriteNode(parent:mapRectangleGestureMGMT, children:containerNode)
+        addChildSKSpriteNodeToParentself(children:mapRectangleGestureMGMT)
+        //self.addChild(containerNode)
         self.addChild(endGameRectangle)
         
+        //set an call hand gesture recognizers
+        let pinchRecognizer: UIPinchGestureRecognizer = UIPinchGestureRecognizer(target:self, action: #selector(self.handlePinchFrom(_:)))
+        self.view!.addGestureRecognizer(pinchRecognizer)
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(_:)))
+        // Add the gesture recognizer to the scene's view
+        self.view!.addGestureRecognizer(panGestureRecognizer)
         
         
         //musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         if StartMenu.backgroundMusicOn == true{
             //self.addChild(StartScene.backgroundMusic)
             initMusic()
+        }
+    }
+    
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        //Asses screen
+        let screenSize = self.view?.bounds.size
+        let screenWidth = screenSize?.width ?? 0
+        let screenHeight = screenSize?.height ?? 0
+        
+        //Apply min and max value to limit panning based on screen size
+        let minX = screenWidth * 0.02
+        let maxX = screenWidth * 0.99
+        let minY = screenHeight * 0.1
+        let maxY = screenHeight * 1.0//0.6
+        
+        //Flag variable allows pan only when zoom in have taken place
+        if isScaled == true{
+            /*var touchLocation: CGPoint = gesture.location(in: gesture.view)
+            touchLocation = self.convertPoint(fromView: touchLocation)
+            let moveAction = SKAction.move(to: touchLocation, duration: 0.5)
+            moveAction.timingMode = .linear//.easeInEaseOut
+            containerSKSPriteNode.run(moveAction)*/
+            
+            //Contraints for limiting panning
+            let translation = gesture.translation(in: gesture.view)
+            if mapRectangleGestureMGMT.position.x > maxX {
+                mapRectangleGestureMGMT.position.x = maxX
+            } else if mapRectangleGestureMGMT.position.x < minX {
+                mapRectangleGestureMGMT.position.x = minX
+            }
+
+            if mapRectangleGestureMGMT.position.y > maxY {
+                mapRectangleGestureMGMT.position.y = maxY
+            } else if mapRectangleGestureMGMT.position.y < minY {
+                mapRectangleGestureMGMT.position.y = minY
+            }
+            //pan execution
+            mapRectangleGestureMGMT.position = CGPoint(x: mapRectangleGestureMGMT.position.x + translation.x, y: mapRectangleGestureMGMT.position.y - translation.y)
+            gesture.setTranslation(.zero, in: view)
+            
+        }
+       
+    }
+    
+    @objc func handlePinchFrom(_ sender: UIPinchGestureRecognizer) {
+        
+        //Constraints for limiting the scaling  of the node
+        if mapRectangleGestureMGMT.xScale * sender.scale < 1.0 {
+            sender.scale = 1.0 / mapRectangleGestureMGMT.xScale
+        } else if mapRectangleGestureMGMT.xScale * sender.scale > 1.7 {
+            sender.scale = 1.7 / mapRectangleGestureMGMT.xScale
+        }
+
+        if mapRectangleGestureMGMT.yScale * sender.scale < 1.0 {
+            sender.scale = 1.0 / mapRectangleGestureMGMT.yScale
+        } else if mapRectangleGestureMGMT.yScale * sender.scale > 1.7 {
+            sender.scale = 1.7 / mapRectangleGestureMGMT.yScale
+        }
+        
+        //Set scaling action
+        let pinch = SKAction.scale(by: sender.scale, duration: 0.0)
+        mapRectangleGestureMGMT.run(pinch)
+        sender.scale = 1.0
+        
+        //Asses if the node is scaled or not(scaled to default size)
+        if sender.state == .ended{
+        
+            if mapRectangleGestureMGMT.xScale > 1.0 && mapRectangleGestureMGMT.yScale > 1.0 {
+                isScaled = true
+                print("scaled bigger")
+            }
+            let tolerance: CGFloat = 0.001
+
+            if abs(mapRectangleGestureMGMT.xScale - 1.0) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.0) < tolerance {
+                isScaled = false
+                mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                print("scaled back to normal")
+            }
         }
     }
     
@@ -209,7 +299,7 @@ class GameOverScene: SKScene{
                 /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
                 label.fontName = "AvenirNext-Bold"
                 label.fontSize = 15
-                label.fontColor = UIColor.init(red: 0.7922, green: 0.8353, blue: 0.8863, alpha: 1.0)/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
+                label.fontColor = UIColor.white//init(red: 0.7922, green: 0.8353, blue: 0.8863, alpha: 1.0)/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
                 //label.zPosition = 3
                 
                 if label.name == "labelOne"{
@@ -242,7 +332,7 @@ class GameOverScene: SKScene{
             for label in arrayOflabelsPractice {
                 /*Ojo en el primer bloque estan las propiedades que quiero afecte a todos mis objetos o que son default por llamarlos de algua forma*/
                 label.fontName = "AvenirNext-Bold"
-                label.fontColor = UIColor.init(red: 0.7922, green: 0.8353, blue: 0.8863, alpha: 1.0)/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
+                label.fontColor = UIColor.white//init(red: 0.7922, green: 0.8353, blue: 0.8863, alpha: 1.0)/*init(red: 0.88, green: 0.90, blue: 1.00, alpha: 1.00)*/
 
                 if label.name == "labelSeven"{
                 label.fontSize = 15
@@ -301,6 +391,18 @@ class GameOverScene: SKScene{
         }
         
         //return endGameRectangleNode
+    }
+    
+    func addChildSKNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKNode){
+        if children.parent == nil{
+        parent.addChild(children)
+        }
+    }
+    
+    func addChildSKSpriteNodeToParentself(children:SKSpriteNode){
+        if children.parent == nil{
+        self.addChild(children)
+        }
     }
     
     func secondsAndMinutesBestTimesAssesmentAndRecordStatusAndTimesRenderingAlphabetic(second:Int, minute:Int){
