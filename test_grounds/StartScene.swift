@@ -263,35 +263,35 @@ class StartScene: SKScene{
     @objc func handlePinchFrom(_ sender: UIPinchGestureRecognizer) {
         
         //Constraints for limiting the scaling  of the node
-        if mapRectangleGestureMGMT.xScale * sender.scale < 1.0 {
-            sender.scale = 1.0 / mapRectangleGestureMGMT.xScale
-        } else if mapRectangleGestureMGMT.xScale * sender.scale > 1.7 {
-            sender.scale = 1.7 / mapRectangleGestureMGMT.xScale
+        if mapRectangleGestureMGMT.xScale * sender.scale < 1.38 {
+            sender.scale = 1.38 / mapRectangleGestureMGMT.xScale
+        } else if mapRectangleGestureMGMT.xScale * sender.scale > 3.0 {
+            sender.scale = 3.0 / mapRectangleGestureMGMT.xScale
         }
 
-        if mapRectangleGestureMGMT.yScale * sender.scale < 1.0 {
-            sender.scale = 1.0 / mapRectangleGestureMGMT.yScale
-        } else if mapRectangleGestureMGMT.yScale * sender.scale > 1.7 {
-            sender.scale = 1.7 / mapRectangleGestureMGMT.yScale
+        if mapRectangleGestureMGMT.yScale * sender.scale < 1.38 {
+            sender.scale = 1.38 / mapRectangleGestureMGMT.yScale
+        } else if mapRectangleGestureMGMT.yScale * sender.scale > 3.0 {
+            sender.scale = 3.0 / mapRectangleGestureMGMT.yScale
         }
         
         //Set scaling action
         let pinch = SKAction.scale(by: sender.scale, duration: 0.0)
         mapRectangleGestureMGMT.run(pinch)
-        sender.scale = 1.0
+        sender.scale = 1.00
         
         //Asses if the node is scaled or not(scaled to default size)
         if sender.state == .ended{
         
-            if mapRectangleGestureMGMT.xScale > 1.0 && mapRectangleGestureMGMT.yScale > 1.0 {
+            if mapRectangleGestureMGMT.xScale > 1.38 && mapRectangleGestureMGMT.yScale > 1.38 {
                 isScaled = true
                 print("scaled bigger")
             }
             let tolerance: CGFloat = 0.001
 
-            if abs(mapRectangleGestureMGMT.xScale - 1.0) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.0) < tolerance {
+            if abs(mapRectangleGestureMGMT.xScale - 1.38) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.38) < tolerance {
                 isScaled = false
-                mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.66/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
                 print("scaled back to normal")
             }
         }
