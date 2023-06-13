@@ -538,170 +538,187 @@ class RandomGame: SKScene{
                   
               case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
                    "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)//Attributes are set for label
-                  locationNameLabel.horizontalAlignmentMode = .center
-                  locationNameLabel.verticalAlignmentMode = .center
-                  
-              case "Camuy", "Aguadilla", "Juncos":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 5.0
-                  locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)//Attributes are set for label
+                 locationNameLabel.horizontalAlignmentMode = .center
+                 locationNameLabel.verticalAlignmentMode = .center
+                 
+             case "Camuy", "Aguadilla", "Juncos":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.0
+                 locationNameLabel.position = CGPoint(x: -2.0, y: 0.0)
 
-              case "Cayey":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
+             case "Cayey":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.position = CGPoint(x: -6.5, y: 3.0)
 
-                  
-              case "Isabela", "Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 5.0
-                  locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
-                  //locationNameLabel.zPosition = 1
+                 
+             case "Isabela", "Corozal", "Morovis", "Aibonito", "Gurabo", "Luquillo":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.0
+                 locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+                 //locationNameLabel.zPosition = 1
 
-                  
-              case "Hormigueros", "Maunabo" :
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 4.3
-                  locationNameLabel.zRotation = 10.0
-                  locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
-
-                  
-              case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 5.0
-                  locationNameLabel.zRotation = 10.5
-                  locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
-
-                  
-              case "Mayagüez":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 5.4
-                  locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
-
-                  
-              case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 5.5
-                  locationNameLabel.zRotation = 10.8
-                  locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
-
-                  
-              case "Guayanilla" :
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 5.5
-                  locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
-                  locationNameLabel.zRotation = 9.0
-
-                  
-              case  "Barceloneta", "Bayamón", "Dorado", "Guaynabo":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 5.1
-                  locationNameLabel.zRotation = 1.9
-                  locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
-
-                  
-              case "Florida" :
+                 
+             case "Hormigueros":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+             locationNameLabel.fontSize = 3.9
+                 locationNameLabel.zRotation = 10.0
+                 locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
+          
+              case "Maunabo" :
                   setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
                   locationNameLabel.fontSize = 4.5
-                  locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+                  locationNameLabel.zRotation = 10.0
+             locationNameLabel.position = CGPoint(x: -1.5/*-0.5*/, y: 2.5)
+
+                 
+             case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.0
+                 locationNameLabel.zRotation = 10.5
+                 locationNameLabel.position = CGPoint(x: -4.5, y: 1.0)
+
+                 
+             case "Mayagüez":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.4
+                 locationNameLabel.position = CGPoint(x: 42.0, y: 21.5)
+
+                 
+             case "Quebradillas", "Hatillo", "Peñuelas", "Carolina":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.5
+                 locationNameLabel.zRotation = 10.8
+                 locationNameLabel.position = CGPoint(x: 1.5, y: -1.2)
+
+                 
+             case "Guayanilla" :
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.5
+                 locationNameLabel.position = CGPoint(x: 2.5, y:12.5)
+                 locationNameLabel.zRotation = 9.0
+             
+             case "Guaynabo":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.0
+                 locationNameLabel.zRotation = 1.6
+                 locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
+
+             case  "Barceloneta":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 4.5
+                 locationNameLabel.zRotation = 1.9
+                 locationNameLabel.position = CGPoint(x: 0.5, y: -2.2)
+                 
+             case  /*"Barceloneta",*/ "Bayamón", "Dorado"/*, "Guaynabo"*/:
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 5.1
+                 locationNameLabel.zRotation = 1.9
+                 locationNameLabel.position = CGPoint(x: 0.5, y: -1.2)
+
+                 
+             case "Florida" :
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 4.5
+                 locationNameLabel.position = CGPoint(x: 0.5, y: 0.5)
+
+                 
+             case  "Ciales", "Ceiba" :
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.position = CGPoint(x: 5.5, y: 0.5)
+
+                 
+                 
+             case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 4.5
+                 locationNameLabel.zRotation = 2.3
+                 locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
+
+                 
+             case "Cataño":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 3.6//4.0
+                 locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
+
+                 
+             case "Loíza" :
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.fontSize = 7.5
+                 locationNameLabel.zRotation = 6.18
+                 locationNameLabel.xScale = 1.0
+                 locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
+
+                 
+             case "Fajardo":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
+
+                 
+             case "Guayama":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
+
+                 
+             case "Vieques":
+                 setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
+                 locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
+
+                    
+                 
+             case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
+                 setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)//Attributes are set for label
+                 firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)//adds first part of text attribute(ex.Aguas)
+                 secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)//adds second part of text attribute(ex.Buenas)
+                 secondLineLabel.verticalAlignmentMode = .top
+
+                 
+             case "Sabana Grande" :
+                 setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                 firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                 secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                 firstLineLabel.fontSize = 5.0
+                 secondLineLabel.fontSize = 5.0
+                 firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
+                 secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
+
+                 
+             case "Vega Alta":
+                 setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                 firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                 secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                 firstLineLabel.position = CGPoint(x:2, y:0.5)
+                 secondLineLabel.verticalAlignmentMode = .top
+
+                 
+             case "Toa Baja":
+                 setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                 firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                 secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                 firstLineLabel.horizontalAlignmentMode = .right
+                 secondLineLabel.verticalAlignmentMode = .top
+                 secondLineLabel.horizontalAlignmentMode = .right
+
+                 
+             case "Trujillo Alto" :
+                 setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                 firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                 secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                 firstLineLabel.fontSize = 5.5
+                 secondLineLabel.fontSize = 5.5
+                 firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
+                 secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
+
+                 
+             case "San Lorenzo"  :
+                 setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
+                 firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
+                 secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
+                 secondLineLabel.position = CGPoint(x:4.5, y:6.0)
 
                   
-              case  "Ciales", "Ceiba" :
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.position = CGPoint(x: 4.5, y: 0.5)
-
-                  
-                  
-              case "Naranjito", "Barranquitas", "Las Piedras", "Humacao" :
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 4.9
-                  locationNameLabel.zRotation = 2.3
-                  locationNameLabel.position = CGPoint(x: 3.5, y: 1.0)
-
-                  
-              case "Cataño":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 4.0
-                  locationNameLabel.position = CGPoint(x: 0.5, y: 1.5)
-
-                  
-              case "Loíza" :
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.fontSize = 7.0
-                  locationNameLabel.zRotation = 6.18
-                  locationNameLabel.xScale = 1.0
-                  locationNameLabel.position = CGPoint(x: 10.0, y: 0.5)
-
-                  
-              case "Fajardo":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.position = CGPoint(x: -5.7, y: 8.5)
-
-                  
-              case "Guayama":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.position = CGPoint(x: 0.5, y: 6.5)
-
-                  
-              case "Vieques":
-                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-                  locationNameLabel.position = CGPoint(x: -40.5, y: -8.5)
-
-                     
-                  
-              case "Cabo Rojo", "San Germán", "San Sebastián", "Juana Díaz", "Vega Baja", "San Juan", "Santa Isabel", "Aguas Buenas", "Rio Grande" :
-                  setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)//Attributes are set for label
-                  firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)//adds first part of text attribute(ex.Aguas)
-                  secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)//adds second part of text attribute(ex.Buenas)
-                  secondLineLabel.verticalAlignmentMode = .top
-
-                  
-              case "Sabana Grande" :
-                  setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
-                  firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
-                  secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
-                  firstLineLabel.fontSize = 5.0
-                  secondLineLabel.fontSize = 5.0
-                  firstLineLabel.position = CGPoint(x:-4.0, y:5.5)
-                  secondLineLabel.position = CGPoint(x:-3.5, y:13.0)
-
-                  
-              case "Vega Alta":
-                  setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
-                  firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
-                  secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
-                  firstLineLabel.position = CGPoint(x:2, y:0.5)
-                  secondLineLabel.verticalAlignmentMode = .top
-
-                  
-              case "Toa Baja":
-                  setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
-                  firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
-                  secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
-                  firstLineLabel.horizontalAlignmentMode = .right
-                  secondLineLabel.verticalAlignmentMode = .top
-                  secondLineLabel.horizontalAlignmentMode = .right
-
-                  
-              case "Trujillo Alto" :
-                  setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
-                  firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
-                  secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
-                  firstLineLabel.fontSize = 5.5
-                  secondLineLabel.fontSize = 5.5
-                  firstLineLabel.position = CGPoint(x:-4.0, y:0.5)
-                  secondLineLabel.position = CGPoint(x:-3.5, y:6.5)
-
-                  
-              case "San Lorenzo"  :
-                  setTwoLineMunicipioNameLabels(labelLineFirst:firstLineLabel, labelLineSecond:secondLineLabel)
-                  firstLineLabel.text = splitTextIntoFields(theText:locationNameLabel.text!)
-                  secondLineLabel.text = splitTextIntoFieldsTwo(theText:locationNameLabel.text!)
-                  secondLineLabel.position = CGPoint(x:4.5, y:6.0)
-
-              
-                  default:
-                      break
+                      default:
+                          break
           }
           if(useLine2 == true){
             nodeSprite.addChild(firstLineLabel)//adds label to map node
