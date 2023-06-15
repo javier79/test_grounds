@@ -72,7 +72,7 @@ class GamePlayRenderingObjects{
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let skipBlueButton = SKSpriteNode(texture: texture)
-        skipBlueButton.position = CGPoint(x:195, y:-0.5)
+        skipBlueButton.position = CGPoint(x:195, y:0.5)
         skipBlueButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:skipBlueButton.size.width, height:skipBlueButton.size.height), center: CGPoint(x:0.5, y: 0.5))
         skipBlueButton.physicsBody?.isDynamic = false
         skipBlueButton.name = "skipButton"//Sets name property that will be used inside TouchesBegun() in the skipButton block there
@@ -153,7 +153,7 @@ class GamePlayRenderingObjects{
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
         let redButton = SKSpriteNode(texture: texture)
-        redButton.position = CGPoint(x:-280, y:-0.5)
+        redButton.position = CGPoint(x:-240, y:0.5)
         redButton.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:redButton.size.width, height:redButton.size.height), center: CGPoint(x:0.5, y: 0.5))
         redButton.physicsBody?.isDynamic = false
         redButton.name = "redButton"
@@ -188,9 +188,9 @@ class GamePlayRenderingObjects{
     
     func labelForScores() -> SKLabelNode {
         let label:SKLabelNode = SKLabelNode()
-        label.position = CGPoint(x:300, y:-7)
+        label.position = CGPoint(x:280/*300*/, y:-7)
         label.fontName = "Arial"
-        label.fontSize = 12.5
+        label.fontSize = 17.5
         label.text = "0/78"
         label.fontColor = UIColor.init(red: 1, green: 0.698, blue: 0, alpha: 1.0) /* #ffb200 */
         return label

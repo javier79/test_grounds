@@ -73,7 +73,7 @@ class StartScene: SKScene{
     override func didMove(to view: SKView){
         
         
-        self.backgroundColor = .white//UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0) /* #42c2ff */ /* #1cb3c8 */ //UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//blue background that resembles the ocean
+        self.backgroundColor = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0) /* #42c2ff */ /* #1cb3c8 */ //UIColor.init(red: 0.5373, green: 0.8431, blue: 0.9294, alpha: 1.0)//blue background that resembles the ocean
         
         /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
         timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
@@ -81,20 +81,23 @@ class StartScene: SKScene{
         //Invisible Node see comment n its declaration at the top
         //mapRectangleGestureMGMT.zPosition = 0
         mapRectangleGestureMGMT.anchorPoint = CGPoint(x:0.5, y:0.5)
-        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.66/*1.8*/)
-        mapRectangleGestureMGMT.setScale(1.38)//1.38
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.76/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
         
         //containerNode.zPosition = -1
         containerNode.position = CGPoint(x:-280, y:-190)//CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175) /*CGPoint(x:-275 , y:-75 /*15*/)*//**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames)*/
         
-        
-        
-        
-        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6)/**parent to labelTimer*/
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.4)/**parent to labelTimer*/
         
         controlPanelSKSpriteNode.zPosition = 1//Set to one in order for the map to zoom and remain behind
-        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height: 50)
-        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8/*25*/)
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height:50) //50)
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
         
         /**Following objects are related to goldBackground SKSPriteNode*/
         //addChildSKSpriteNodeToParentself(children:containerSKSPriteNode)
@@ -871,6 +874,7 @@ class StartScene: SKScene{
             if municipiosNameBackgroundTwo.parent == nil{
             municipioNameLabel.removeFromParent()
             municipiosNameBackground.removeFromParent()
+            municipiosNameBackgroundTwo.setScale(1.20)
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
             addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
             }
