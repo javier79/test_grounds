@@ -1466,8 +1466,8 @@ class CreateSetMapNodes{
              //trujilloAltoNode.zPosition = 1
             let physicsBody1 = SKPhysicsBody(circleOfRadius: trujilloAltoNode.size.width/2 * 0.40, center: CGPoint(x: 4.5, y: -5.5))//top physicsBody
             let physicsBody2 = SKPhysicsBody(circleOfRadius: trujilloAltoNode.size.width/2 * 0.35, center: CGPoint(x: 5.5, y: 2.5))//middle
-         let physicsBody3 = SKPhysicsBody(circleOfRadius: trujilloAltoNode.size.width/2 * 0.40, center: CGPoint(x:0.5, y: 1.5))//bottom
-            let physicsBody4 = SKPhysicsBody(circleOfRadius: trujilloAltoNode.size.width/2 * 0.40, center: CGPoint(x:-3.5, y: -8.5))//bottom
+            let physicsBody3 = SKPhysicsBody(circleOfRadius: trujilloAltoNode.size.width/2 * 0.40, center: CGPoint(x:0.5, y: 1.5))//bottom
+            //let physicsBody4 = SKPhysicsBody(circleOfRadius: trujilloAltoNode.size.width/2 * 0.40, center: CGPoint(x:-3.5, y: -8.5))//bottom
             let compoundBody = SKPhysicsBody(bodies: [physicsBody1, physicsBody2, physicsBody3/*, physicsBody48*/])
             trujilloAltoNode.physicsBody = compoundBody
              //trujilloAltoNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:trujilloAltoNode.size.width/2 , height:trujilloAltoNode.size.height/2), center: CGPoint(x:4.0,y:0.5))

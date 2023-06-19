@@ -64,6 +64,8 @@ class StartScene: SKScene{
     
     var isScaled = false
     
+    let screenSize = UIScreen.main.nativeBounds
+    
     /*let minX = CGFloat(0)
     let maxX = CGFloat(670)
     let minY = CGFloat(50)
@@ -81,23 +83,55 @@ class StartScene: SKScene{
         //Invisible Node see comment n its declaration at the top
         //mapRectangleGestureMGMT.zPosition = 0
         mapRectangleGestureMGMT.anchorPoint = CGPoint(x:0.5, y:0.5)
-        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.76/*1.8*/)
-        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        //mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)
+        //mapRectangleGestureMGMT.setScale(1.33)//1.38
         
         //containerNode.zPosition = -1
         containerNode.position = CGPoint(x:-280, y:-190)//CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175) /*CGPoint(x:-275 , y:-75 /*15*/)*//**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames)*/
         
-        timerBackgroundTwo.setScale(1.20)
-        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.4)/**parent to labelTimer*/
+        //timerBackgroundTwo.setScale(1.20)
+        //timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.4)/**parent to labelTimer*/
         
         controlPanelSKSpriteNode.zPosition = 1//Set to one in order for the map to zoom and remain behind
         controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height:50) //50)
-        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
         
-        skipButton.setScale(1.50)
-        exitRedButton.setScale(1.50)
+        //skipButton.setScale(1.50)
+        //exitRedButton.setScale(1.50)
         
-        municipiosNameBackground.setScale(1.20)
+        //municipiosNameBackground.setScale(1.20)
+        
+        //let screenSize = UIScreen.main.nativeBounds
+        print("Screen size: \(screenSize)")
+        
+        if screenSize.width == 750 && screenSize.height == 1334 || screenSize.width == 1080 && screenSize.height == 2340 || screenSize.width == 1125 && screenSize.height == 2436{
+            print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+            setScaleAndIndepRenderingPositioningForSmallScreenSizes()
+        }
+        
+        else if screenSize.width == 1242 && screenSize.height == 2208 || screenSize.width == 828 && screenSize.height == 1792 || screenSize.width == 1242 && screenSize.height == 2688{
+            print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+            setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+        }
+        
+        else if screenSize.width == 1170 && screenSize.height == 2532 || screenSize.width == 1179 && screenSize.height == 2556 {
+            print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+            setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+        }
+        
+        else if screenSize.width == 1284 && screenSize.height == 2778 || screenSize.width == 1290 && screenSize.height == 2796 {
+            print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+            setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        }
+        
+        else {
+            setScaleAndIndepRenderingPositioningForSmallScreenSizes()
+        }
+        
+        /*else if screenSize.width == 1125 && screenSize.height == 2436{
+            print("iPhone X,XS,11PRO")
+            setScaleAndIndepRenderingPositioningForSmallScreenSizes()
+        }*/
         
         /**Following objects are related to goldBackground SKSPriteNode*/
         //addChildSKSpriteNodeToParentself(children:containerSKSPriteNode)
@@ -139,7 +173,65 @@ class StartScene: SKScene{
         //sleep(1)
     }
     
-   
+    func setScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.4)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
+    
+    func setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes(){
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.906/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.7)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
+    
+    func setScaleAndIndepRenderingPositioningForLargeScreenSizes(){
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.811/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.5)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
+    
+    func setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes(){
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.96/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.8)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
     
     
     /*@objc func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -266,14 +358,14 @@ class StartScene: SKScene{
     @objc func handlePinchFrom(_ sender: UIPinchGestureRecognizer) {
         
         //Constraints for limiting the scaling  of the node
-        if mapRectangleGestureMGMT.xScale * sender.scale < 1.38 {
-            sender.scale = 1.38 / mapRectangleGestureMGMT.xScale
+        if mapRectangleGestureMGMT.xScale * sender.scale < 1.33 {
+            sender.scale = 1.33 / mapRectangleGestureMGMT.xScale
         } else if mapRectangleGestureMGMT.xScale * sender.scale > 3.0 {
             sender.scale = 3.0 / mapRectangleGestureMGMT.xScale
         }
 
-        if mapRectangleGestureMGMT.yScale * sender.scale < 1.38 {
-            sender.scale = 1.38 / mapRectangleGestureMGMT.yScale
+        if mapRectangleGestureMGMT.yScale * sender.scale < 1.33 {
+            sender.scale = 1.33 / mapRectangleGestureMGMT.yScale
         } else if mapRectangleGestureMGMT.yScale * sender.scale > 3.0 {
             sender.scale = 3.0 / mapRectangleGestureMGMT.yScale
         }
@@ -285,20 +377,53 @@ class StartScene: SKScene{
         
         //Asses if the node is scaled or not(scaled to default size)
         if sender.state == .ended{
-        
-            if mapRectangleGestureMGMT.xScale > 1.38 && mapRectangleGestureMGMT.yScale > 1.38 {
+            
+            if mapRectangleGestureMGMT.xScale > 1.33 && mapRectangleGestureMGMT.yScale > 1.33 {
                 isScaled = true
                 print("scaled bigger")
             }
+            
             let tolerance: CGFloat = 0.001
-
-            if abs(mapRectangleGestureMGMT.xScale - 1.38) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.38) < tolerance {
+            
+            if screenSize.width == 750 && screenSize.height == 1334 || screenSize.width == 1080 && screenSize.height == 2340 || screenSize.width == 1125 && screenSize.height == 2436{
+                if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
                 isScaled = false
-                mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.66/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
                 print("scaled back to normal")
+                }
+            }
+            
+            else if screenSize.width == 1242 && screenSize.height == 2208 || screenSize.width == 828 && screenSize.height == 1792 || screenSize.width == 1242 && screenSize.height == 2688{
+                if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                    isScaled = false
+                    mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.906/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                    print("scaled back to normal")
+                }
+            }
+            else if screenSize.width == 1170 && screenSize.height == 2532 || screenSize.width == 1179 && screenSize.height == 2556{
+                if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                    isScaled = false
+                    mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.811/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                    print("scaled back to normal")
+                }
+            }
+            else if screenSize.width == 1284 && screenSize.height == 2778 || screenSize.width == 1290 && screenSize.height == 2796{
+                if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                    isScaled = false
+                    mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.96/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                    print("scaled back to normal")
+                }
+            }
+            else{
+                if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                isScaled = false
+                mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                print("scaled back to normal")
+                }
             }
         }
     }
+    
     
     
     func addChildSKSpriteNodeToParentSKSpriteNode(parent:SKSpriteNode, children:SKSpriteNode){
