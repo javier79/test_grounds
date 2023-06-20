@@ -53,6 +53,7 @@ class GamePlayRenderingObjects{
             
     }
     
+    
     func goldenBackground() -> SKSpriteNode {
         let goldenBackground = SKSpriteNode(imageNamed: "old paper texture")
         //goldenBackground.size = CGSize(width: 680, height:50)

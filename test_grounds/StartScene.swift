@@ -102,9 +102,36 @@ class StartScene: SKScene{
         //municipiosNameBackground.setScale(1.20)
         
         //let screenSize = UIScreen.main.nativeBounds
-        print("Screen size: \(screenSize)")
         
-        if screenSize.width == 750 && screenSize.height == 1334 || screenSize.width == 1080 && screenSize.height == 2340 || screenSize.width == 1125 && screenSize.height == 2436{
+        print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+        case (1668.0, 2224.0),(1536.0, 2048.0), (1668.0, 2388.0), (2048.0, 2732.0), (1620.0, 2160.0),(1640.0, 2360.0),(1488.0, 2266.0) :
+                print("iPad Pro 10.5, 6Gen, Pro11(1gen), Pro12.9(3gen), Mini(5gen), Air(3gen), 7Gen, Pro11(2gen), Pro12.9(4gen), 8Gen, Air(4gen), PRO11(3gen), Pro12.9(5gen), Air(5gen), 10Gen, Pro11(4gen), Pro12.9(6gen) ")
+                setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+            
+           case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+           case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+               setScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                break
+        }
+        //print("Screen size: \(screenSize)")
+        
+        /*if screenSize.width == 750 && screenSize.height == 1334 || screenSize.width == 1080 && screenSize.height == 2340 || screenSize.width == 1125 && screenSize.height == 2436{
             print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
             setScaleAndIndepRenderingPositioningForSmallScreenSizes()
         }
@@ -124,14 +151,15 @@ class StartScene: SKScene{
             setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
         }
         
+        /*else if screenSize.width == 1668 && screenSize.height == 2224  {
+            print("iPad Pro10.5")
+            setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+        }*/
+        
         else {
             setScaleAndIndepRenderingPositioningForSmallScreenSizes()
-        }
-        
-        /*else if screenSize.width == 1125 && screenSize.height == 2436{
-            print("iPhone X,XS,11PRO")
-            setScaleAndIndepRenderingPositioningForSmallScreenSizes()
         }*/
+        
         
         /**Following objects are related to goldBackground SKSPriteNode*/
         //addChildSKSpriteNodeToParentself(children:containerSKSPriteNode)
@@ -173,6 +201,33 @@ class StartScene: SKScene{
         //sleep(1)
     }
     
+    func setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes(){
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)
+        //mapRectangleGestureMGMT.setScale(1.90)//1.38
+        mapRectangleGestureMGMT.setScale(1.85)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 9.5)/**parent to labelTimer*/
+        
+        labelScores.position = CGPoint(x:440/*300*/, y:-7)
+        labelScores.fontSize = 22.5
+        
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height:70)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 20.5) //14.8)
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 22.5)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 4.5) //14.8)
+        //controlPanelSKSpriteNode.setScale(1.5)
+        
+        skipButton.setScale(2.00)
+        skipButton.position = CGPoint(x:320, y:-0.5)
+        exitRedButton.setScale(2.00)
+        exitRedButton.position = CGPoint(x:-370, y:-0.5)
+        
+        timerBackgroundTwo.setScale(1.85)
+        
+        municipiosNameBackground.setScale(1.75)
+    }
+    
     func setScaleAndIndepRenderingPositioningForSmallScreenSizes(){
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)
         mapRectangleGestureMGMT.setScale(1.33)//1.38
@@ -181,6 +236,7 @@ class StartScene: SKScene{
         timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.4)/**parent to labelTimer*/
         
         controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
         
         skipButton.setScale(1.50)
         exitRedButton.setScale(1.50)
@@ -356,18 +412,35 @@ class StartScene: SKScene{
    
     
     @objc func handlePinchFrom(_ sender: UIPinchGestureRecognizer) {
-        
         //Constraints for limiting the scaling  of the node
-        if mapRectangleGestureMGMT.xScale * sender.scale < 1.33 {
-            sender.scale = 1.33 / mapRectangleGestureMGMT.xScale
-        } else if mapRectangleGestureMGMT.xScale * sender.scale > 3.0 {
-            sender.scale = 3.0 / mapRectangleGestureMGMT.xScale
-        }
+        if screenSize.width == 1668 && screenSize.height == 2224 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0{
+            print("iPad Pro10.5 entering handlePinch func")
+            if mapRectangleGestureMGMT.xScale * sender.scale < 1.85 {
+                sender.scale = 1.85 / mapRectangleGestureMGMT.xScale
+            } else if mapRectangleGestureMGMT.xScale * sender.scale > 3.0 {
+                sender.scale = 3.0 / mapRectangleGestureMGMT.xScale
+            }
 
-        if mapRectangleGestureMGMT.yScale * sender.scale < 1.33 {
-            sender.scale = 1.33 / mapRectangleGestureMGMT.yScale
-        } else if mapRectangleGestureMGMT.yScale * sender.scale > 3.0 {
+            if mapRectangleGestureMGMT.yScale * sender.scale < 1.85 {
+            sender.scale = 1.85 / mapRectangleGestureMGMT.yScale
+            } else if mapRectangleGestureMGMT.yScale * sender.scale > 3.0 {
             sender.scale = 3.0 / mapRectangleGestureMGMT.yScale
+            }
+        }
+        //Constraints for limiting the scaling  of the node
+        else{
+            print("iPhone entering handlePinch func")
+            if mapRectangleGestureMGMT.xScale * sender.scale < 1.33 {
+                sender.scale = 1.33 / mapRectangleGestureMGMT.xScale
+            } else if mapRectangleGestureMGMT.xScale * sender.scale > 3.0 {
+                sender.scale = 3.0 / mapRectangleGestureMGMT.xScale
+            }
+            
+            if mapRectangleGestureMGMT.yScale * sender.scale < 1.33 {
+                sender.scale = 1.33 / mapRectangleGestureMGMT.yScale
+            } else if mapRectangleGestureMGMT.yScale * sender.scale > 3.0 {
+                sender.scale = 3.0 / mapRectangleGestureMGMT.yScale
+            }
         }
         
         //Set scaling action
@@ -378,14 +451,77 @@ class StartScene: SKScene{
         //Asses if the node is scaled or not(scaled to default size)
         if sender.state == .ended{
             
-            if mapRectangleGestureMGMT.xScale > 1.33 && mapRectangleGestureMGMT.yScale > 1.33 {
-                isScaled = true
-                print("scaled bigger")
+            if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+                if mapRectangleGestureMGMT.xScale > 1.85 && mapRectangleGestureMGMT.yScale > 1.85 {
+                    isScaled = true
+                    print("iPad scaled bigger")
+                }
             }
+            else{
+                if mapRectangleGestureMGMT.xScale > 1.33 && mapRectangleGestureMGMT.yScale > 1.33 {
+                    isScaled = true
+                    print("iPhone scaled bigger")
+                }
+            }
+            
             
             let tolerance: CGFloat = 0.001
             
-            if screenSize.width == 750 && screenSize.height == 1334 || screenSize.width == 1080 && screenSize.height == 2340 || screenSize.width == 1125 && screenSize.height == 2436{
+            print("Last Screen size: \(screenSize)")
+            switch (screenSize.width, screenSize.height) {
+             
+            case (1668.0, 2224.0), (1536.0, 2048.0), (1668.0,2388.0), (2048.0, 2732.0),(1536.0, 2048.0), (1620.0, 2160.0), (1640.0, 2360.0), (1488.0, 2266.0):
+                    print("iPad Pro 10.5, 6Gen")
+                    if abs(mapRectangleGestureMGMT.xScale - 1.85) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.85) < tolerance {
+                        isScaled = false
+                        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                        print("iPad scaled back to normal")
+                    }
+                    
+                case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                    print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                    if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                        isScaled = false
+                        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                        print("iPhone scaled back to normal")
+                    }
+                case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                    print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                    if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                        isScaled = false
+                        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.906/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                        print("iPhone scaled back to normal")
+                    }
+                    
+                case (1170.0, 2532.0), (1179.0, 2556.0):
+                     print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                     if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                        isScaled = false
+                        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.811/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                        print("iPhone scaled back to normal")
+                    }
+                    
+                case (1284.0, 2778.0), (1290.0, 2796.0):
+                     print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                     if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                        isScaled = false
+                        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.96/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                        print("iPhone scaled back to normal")
+                    }
+                    
+                    
+                default:
+                    if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
+                    isScaled = false
+                    mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
+                    print("scaled back to normal")
+                    }
+                    break
+                
+            }
+            
+            
+            /*if screenSize.width == 750 && screenSize.height == 1334 || screenSize.width == 1080 && screenSize.height == 2340 || screenSize.width == 1125 && screenSize.height == 2436{
                 if abs(mapRectangleGestureMGMT.xScale - 1.33) < tolerance && abs(mapRectangleGestureMGMT.yScale - 1.33) < tolerance {
                 isScaled = false
                 mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
@@ -420,7 +556,7 @@ class StartScene: SKScene{
                 mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)//Whenever node is scaled back to default size the node is repositioned at default position or center
                 print("scaled back to normal")
                 }
-            }
+            }*/
         }
     }
     
@@ -997,11 +1133,17 @@ class StartScene: SKScene{
         || municipioNameLabel.text == "Quebradillas" || municipioNameLabel.text == "Rio Grande" || municipioNameLabel.text == "Sabana Grande" || municipioNameLabel.text == "San Germán"
         || municipioNameLabel.text == "San Lorenzo" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Santa Isabel" || municipioNameLabel.text == "Trujillo Alto"{
             if municipiosNameBackgroundTwo.parent == nil{
-            municipioNameLabel.removeFromParent()
-            municipiosNameBackground.removeFromParent()
-            municipiosNameBackgroundTwo.setScale(1.20)
-            addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
-            addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
+                municipioNameLabel.removeFromParent()
+                municipiosNameBackground.removeFromParent()
+                
+                if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+                    municipiosNameBackgroundTwo.setScale(1.75)
+                }
+                else{
+                    municipiosNameBackgroundTwo.setScale(1.20)
+                }
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
             }
             //if else municipiosNameBackgroundTwo.parent
         }
