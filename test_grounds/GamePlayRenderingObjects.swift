@@ -37,7 +37,7 @@ class GamePlayRenderingObjects{
        // Close the path. This will create the last line automatically.
        path.close()
          
-        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 4.5)//1.5Esta linea trabaja el curveado de las esquinas
+        path = UIBezierPath(roundedRect:path.bounds,cornerRadius: 4.5/*4.5*/)//1.5Esta linea trabaja el curveado de las esquinas
        //path = UIBezierPath(roundedRect: path.bounds, cornerRadius: CGFloat(4.0))//otra version de la linea de arriba con el mismo resultado
        //Drawing to Shapenode
        let shapeNode = SKShapeNode(path:path.cgPath)
