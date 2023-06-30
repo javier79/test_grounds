@@ -94,11 +94,13 @@ class StartMenu: SKScene {
     
     let screenSize = UIScreen.main.nativeBounds
     
+    let mapaClickBanner: SKSpriteNode = StartMenuMethods().setMapaClickBanner()
+    
     override func didMove(to view: SKView){
         
         let oldPaperBorderTexture:SKSpriteNode = oldPapertexture()//First object on scene it's appearance is like an old paper with ruff edges, serves as a background for all objects to be rendered
         let elMorro:SKSpriteNode = setElMorro()//Morro picture background
-        let mapaClickBanner: SKSpriteNode = setMapaClickBanner()//brand name on top when game launches
+        //mapaClickBanner = setMapaClickBanner()//brand name on top when game launches
         //musicURL = Bundle.main.url(forResource:"Guiton Sketch", withExtension:"mp3")
         /**
          Iam  using a distinction on naming the functions(Main/Secondary) when i use Main means objects that are needed at runtime or needed to be ready when Touch function is called. Secondary are objects that are not needed at run time
@@ -1014,6 +1016,11 @@ class StartMenu: SKScene {
        //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
     }
     
+    func scaleAndRepositionMapaclickBanner(){
+        mapaClickBanner.setScale(0.4)
+        mapaClickBanner.position = CGPoint(x:180, y:-160.0)//y:-150.5)
+    }
+    
     //Touched node evaluation when main menu screen is rendered at launch
     /**returnVolver object(This object is a stand alone object meaning it have no children or node parent besides self, this was done due its used across different groups of objects(Mejores tiempos objs,instrucciones objs,opciones objs and creditos objcs). It was more legible code and easier to understand(like a stand alone objct) .*/
     func mainMenuTouchNodes(nodeTouched:SKPhysicsBody){
@@ -1026,6 +1033,7 @@ class StartMenu: SKScene {
                 print("inicializando mapOrderObject")//programmer use
                 mapOrderObjectsNotInitSet = false//line change value to false preventing the execution from reentering and reinitialize the objects again
             }
+            scaleAndRepositionMapaclickBanner()
             addChildSKSPriteNodeToself(children: mapOrderBackgroundRectangle)
             //self.addChild(mapOrderOldPaperbackground)//parent(containing mapOrder objects) is added to the scene
             
@@ -1043,6 +1051,7 @@ class StartMenu: SKScene {
                 initReturnVolverRedButtonObject()
                 print("outside")
             }
+            scaleAndRepositionMapaclickBanner()
             addChildSKSPriteNodeToself(children: bestTimesRectangle)
             addChildSKSPriteNodeToself(children: returnVolverRedButton)
             //self.addChild(bestTimesRectangle)//parent containing bestTimes objects
@@ -1059,6 +1068,7 @@ class StartMenu: SKScene {
             }
             addChildSKLabelNodeToself(children: instructionsEspanolLabel)
             addChildSKSPriteNodeToself(children: returnVolverRedButton)
+            scaleAndRepositionMapaclickBanner()
             //self.addChild(instructionsEspanolLabel)//First label with spanish instructions parent to two more objects
             //self.addChild(returnVolverRedButton)//read comments at the top
 
@@ -1089,6 +1099,7 @@ class StartMenu: SKScene {
             /** opciones is the label parent on opciones screen*/
             addChildSKLabelNodeToself(children: opcionesAudioLabel)
             addChildSKSPriteNodeToself(children: returnVolverRedButton)
+            scaleAndRepositionMapaclickBanner()
             //self.addChild(opcionesAudioLabel)//Parent added with children
             //self.addChild(returnVolverRedButton)
         }
@@ -1098,6 +1109,7 @@ class StartMenu: SKScene {
         if (returnVolverRedButton.name == nodeTouched.node?.name /*&& bestTimesRectangle.parent != nil*/){
            returnVolverRedButton.removeFromParent()
            bestTimesRectangle.removeFromParent()
+           scaleMapaclickBannerToOriginalSizeAndOriginalPosition()
            addChildSKSPriteNodeToself(children: buttonGreen)
            //self.addChild(buttonGreen)
         }
@@ -1158,10 +1170,16 @@ class StartMenu: SKScene {
             if instructionsEnglishLabelTwo.parent != nil{
                 instructionsEnglishLabelTwo.removeFromParent()
             }
+            scaleMapaclickBannerToOriginalSizeAndOriginalPosition()
             addChildSKSPriteNodeToself(children: buttonGreen)
             //self.addChild(buttonGreen)
             
         }
+    }
+    
+    func scaleMapaclickBannerToOriginalSizeAndOriginalPosition(){
+        mapaClickBanner.setScale(1.0)
+        mapaClickBanner.position = CGPoint(x: 0.5, y: 145)
     }
     /**Touched nodes evaluation when mapOrder parent mapOrderBackgroundRectangle and children are rendered*/
     func mapOrderTouchNodes(nodeTouched:SKPhysicsBody){
@@ -1215,6 +1233,7 @@ class StartMenu: SKScene {
          /* When mapOrderRedButton is touched mapOrder parent mapOrderOldPaperbackground is removed and buttonGreen parent of main menu objs is added to the view**/
          else if mapOrderRedButton.name == nodeTouched.node?.name{
              mapOrderBackgroundRectangle.removeFromParent()
+             scaleMapaclickBannerToOriginalSizeAndOriginalPosition()
              addChildSKSPriteNodeToself(children: buttonGreen)
              //self.addChild(buttonGreen)
          }
@@ -1495,6 +1514,7 @@ class StartMenu: SKScene {
         else if (returnVolverRedButton.name == nodeTouched.node?.name /*&& opcionesAudioLabel.parent != nil*/){
             returnVolverRedButton.removeFromParent()
             opcionesAudioLabel.removeFromParent()
+            scaleMapaclickBannerToOriginalSizeAndOriginalPosition()
             addChildSKSPriteNodeToself(children: buttonGreen)
             //self.addChild(buttonGreen)
         }

@@ -749,6 +749,15 @@ class StartMenuMethods{
         
     }
     
+    func setMapaClickBanner()->SKSpriteNode{
+        let bannerMapaClick = SKSpriteNode(imageNamed: "Mapaclick Title")
+        //bannerMapaClick.setScale(0.85)
+        bannerMapaClick.size = CGSize(width: 600, height:45)
+        bannerMapaClick.position = CGPoint(x: 0.5, y: 145)
+        //elMorro.zPosition = 1
+        return bannerMapaClick
+    }
+    
     func licenseLabels()->SKLabelNode{
         let label = SKLabelNode()
         label.fontColor = UIColor.black
