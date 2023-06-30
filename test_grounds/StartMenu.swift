@@ -92,6 +92,8 @@ class StartMenu: SKScene {
     
     var initMainTouchNodes:Bool = false
     
+    let screenSize = UIScreen.main.nativeBounds
+    
     override func didMove(to view: SKView){
         
         let oldPaperBorderTexture:SKSpriteNode = oldPapertexture()//First object on scene it's appearance is like an old paper with ruff edges, serves as a background for all objects to be rendered
@@ -148,37 +150,70 @@ class StartMenu: SKScene {
         //"Jugar" button
         //buttonGreen = setGreenButton()
         buttonGreen.name = "buttonGreen"
-        buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
         
         //"Mejores Tiempos Button"
         redButtonOne.name = "redButtonOne"
-        redButtonOne.position = CGPoint(x:0.5,y:-45.5)
         redButtonOneLabel.text = "Mejores Tiempos (Best Times)"
-        
         addChildSKLabelNodeToParentSKSPriteNode(parent:redButtonOne,children:redButtonOneLabel)
-        //redButtonOne.addChild(redButtonOneLabel)
         addChildSKSpriteNodeToParentSKSPriteNode(parent:buttonGreen,children:redButtonOne)
-        //buttonGreen.addChild(redButtonOne)
         
         //"Instrucciones" button
         redButtonTwo.name = "instrucciones"
-        redButtonTwo.position = CGPoint(x:0.5,y:-72)
-        //redButtonTwoLabel = mainMenuSetLabelDefaults(label:redButtonTwoLabel)
         redButtonTwoLabel.text = "Instrucciones (Instructions)"
         addChildSKLabelNodeToParentSKSPriteNode(parent:redButtonTwo,children:redButtonTwoLabel)
-        //redButtonTwo.addChild(redButtonTwoLabel)
         addChildSKSpriteNodeToParentSKSPriteNode(parent:buttonGreen,children:redButtonTwo)
-        //buttonGreen.addChild(redButtonTwo)
         
         //"Opciones" button
         redButtonThree.name = "redButtonThree"
-        redButtonThree.position = CGPoint(x:0.5,y:-98.5)
         redButtonThreeLabel.text = "Opciones (Options)"
         addChildSKLabelNodeToParentSKSPriteNode(parent:redButtonThree,children:redButtonThreeLabel)
-        //redButtonThree.addChild(redButtonThreeLabel)
         addChildSKSpriteNodeToParentSKSPriteNode(parent:buttonGreen,children:redButtonThree)
-        //buttonGreen.addChild(redButtonThree)
+        
+        print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setMainMenuObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+                setMainMenuObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                break
+        }
     }
+    
+    func setMainMenuObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        buttonGreen.setScale(1.25)
+        buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
+        redButtonOne.position = CGPoint(x:0.5,y:-40.5)
+        redButtonTwo.position = CGPoint(x:0.5,y:-66.5)
+        redButtonThree.position = CGPoint(x:0.5,y:-92.5)
+    }
+    
     //function that play the background music
     func initMusic() {
            guard let url = musicURL else { return }
@@ -284,11 +319,48 @@ class StartMenu: SKScene {
         returnVolverRedButtonLabelTwo.name = "returnVolverRedButtonLabelTwo"
         returnVolverRedButtonLabelTwo.text = "(Return)"
         addChildSKLabelNodeToParentSKSPriteNode(parent: returnVolverRedButton, children: returnVolverRedButtonLabelOne)
-        //returnVolverRedButton.addChild(returnVolverRedButtonLabelOne)
         addChildSKLabelNodeToParentSKSPriteNode(parent: returnVolverRedButton, children: returnVolverRedButtonLabelTwo)
-        //returnVolverRedButton.addChild(returnVolverRedButtonLabelTwo)
-        returnVolverRedButton.position = CGPoint(x:40, y:25)
-        returnVolverRedButton.setScale(1.2)//set a larger scale
+        
+        
+        print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+                setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                break
+        }
+    }
+    
+    func setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        returnVolverRedButton.position = CGPoint(x:50, y:28)
+        returnVolverRedButton.setScale(1.5)//set a larger scale
     }
     
     /**The following 6 functions are ordered in the same way  to the order of the buttons in main menu that they are related to.(THIS ORGANIZATIONIS ONLY FOR REDABILITY AND A BETTER COMPREHENSION OF CODE).*/
@@ -296,7 +368,7 @@ class StartMenu: SKScene {
     /**This objects are not initialized runtime, only if needed, thats why i did not init for this objects at initSetMainTouchNodes()*/
     func initSetBestTimesBoardObjects(){
         
-        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)/**Set this attribute here in order to apply to this parent position the class attributes for positioning in order for it to render equally a cross different devices*/
+        //bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)/**Set this attribute here in order to apply to this parent position the class attributes for positioning in order for it to render equally a cross different devices*/
         
         let bestTimesToplabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
         bestTimesToplabel.name = "bestTimesToplabel"
@@ -310,7 +382,7 @@ class StartMenu: SKScene {
         let bestTimesPrAlphabeticlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
         bestTimesPrAlphabeticlabel.name = "bestTimesPrAlphabeticlabel"
         bestTimesPrAlphabeticlabel.text = "Puerto Rico(Alfabético/Alphabetic):"
-        bestTimesPrAlphabeticlabel.position = CGPoint(x:-70,y:35)
+        bestTimesPrAlphabeticlabel.position = CGPoint(x:-110,y:45)
         addChildSKLabelNodeToParentSKSPriteNode(parent: bestTimesRectangle, children: bestTimesPrAlphabeticlabel)
         //bestTimesRectangle.addChild(bestTimesPrAlphabeticlabel)
         
@@ -318,98 +390,180 @@ class StartMenu: SKScene {
         let bestTimesPrRandomlabel:SKLabelNode = StartMenuMethods().bestTimeslabel()
         bestTimesPrRandomlabel.name = "bestTimesPrRandomlabel"
         bestTimesPrRandomlabel.text = "Puerto Rico(Al Azar/Random):"
-        bestTimesPrRandomlabel.position = CGPoint(x:-57,y:15)
+        bestTimesPrRandomlabel.position = CGPoint(x:-95,y:25)
         addChildSKLabelNodeToParentSKSPriteNode(parent: bestTimesRectangle, children: bestTimesPrRandomlabel)
         //bestTimesRectangle.addChild(bestTimesPrRandomlabel)
         
         //bestTimesPrAlphabeticScorelabel = bestTimesPrAlphabeticScore()
         let bestTimesPrAlphabeticScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrAlphabeticScore()
         bestTimesPrAlphabeticScorelabel.name = "bestTimesPrAlphabeticScorelabel"
-        bestTimesPrAlphabeticScorelabel.position = CGPoint(x:120,y:33)
+        bestTimesPrAlphabeticScorelabel.position = CGPoint(x:120,y:45)
         addChildSKLabelNodeToParentSKSPriteNode(parent: bestTimesRectangle, children: bestTimesPrAlphabeticScorelabel)
         //bestTimesRectangle.addChild(bestTimesPrAlphabeticScorelabel)
         
         //bestTimesPrRandomScorelabel = bestTimesPrRandomScore()
         let bestTimesPrRandomScorelabel:SKLabelNode = StartMenuMethods().bestTimesPrRandomScore()
         bestTimesPrRandomScorelabel.name = "bestTimesPrRandomScorelabel"
-        bestTimesPrRandomScorelabel.position = CGPoint(x:120,y:15)
+        bestTimesPrRandomScorelabel.position = CGPoint(x:120,y:25)
         addChildSKLabelNodeToParentSKSPriteNode(parent: bestTimesRectangle, children: bestTimesPrRandomScorelabel)
         //bestTimesRectangle.addChild(bestTimesPrRandomScorelabel)
+        
+        print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+                setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                break
+        }
     }
+    
+    func setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+       
+        bestTimesRectangle.setScale(1.17)
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 10)
+    }
+    
     //Function sets attributes and initialize some labels for Instrucciones objects needed to be evaluated on touch function
     func initSetInstruccionesObjects(){
         //Label with spanish instructions
         instructionsEspanolLabel.name = "instructionsEspanolLabel"
         instructionsEspanolLabel.text = "\tEn la parte inferior de la pantalla encontrarás el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para\n identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los\n objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de\n Reto con un mapa en blanco.\n\tCon algunas excepciones, los nombres de los objetivos a identificarse seran\n en base al idioma oficial del pais o territorio."
-        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.55)
         
         //label with second part of spanish instructions
         instructionsEspanolLabelTwo.name = "instructionsEspanolLabelTwo"
-        instructionsEspanolLabelTwo.text = "\tPuedes acercar o alejar la cámara pellizcando la pantalla con 2 dedos. Cuando\n la cámara está acercada, puedes moverla deslizando 1 solo dedo a través de la pantalla.\n\tPara marcar el objetivo, haz un toque ligero sobre el mismo en la pantalla sin\n mover el dedo(toca el objetivo como tal, NO la raya apuntando al mismo.)Si\n seleccionaste el objetivo corecto, entonces su nombre(o, si estas jugando en\n Modeo de Práctica, una marca de cotejo)aparecerá sobre el mismo en el mapa\n acompañado de un cambio de color tornando el objetivo verde y el nombre\n del proximo objetivo aparecerá al fondo de la pantalla.\n\tCada vez que hagas una selección errónea, se añadirán 3 segundos adicionales\n a tu tiempo. Tambien puedes escoger saltar el objetivo actual con una penalidad\n de 15 segundos añadidos(todavia tendrás que identificar los objetivos saltados al final)"
-        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
+        instructionsEspanolLabelTwo.text = "\tPuedes acercar o alejar la cámara pellizcando la pantalla con 2 dedos. Cuando\n la cámara está acercada, puedes moverla deslizando 1 solo dedo a través de la pantalla.\n\tPara marcar el objetivo, haz un toque ligero sobre el mismo en la pantalla sin\n mover el dedo(toca el objetivo como tal, NO la raya apuntando al mismo.)Si\n seleccionaste el objetivo corecto, entonces su nombre(o, si estas jugando en\n Modo de Práctica, una marca de cotejo)aparecerá sobre el mismo en el mapa\n acompañado de un cambio de color tornando el objetivo verde y el nombre\n del proximo objetivo aparecerá al fondo de la pantalla.\n\tCada vez que hagas una selección errónea, se añadirán 3 segundos adicionales\n a tu tiempo. Tambien puedes escoger saltar el objetivo actual con una penalidad\n de 15 segundos añadidos(todavia tendrás que identificar los objetivos saltados al final)"
         
         //Label with english instructions
         instructionsEnglishLabel.name = "instructionsEnglishLabel"
         instructionsEnglishLabel.text = "\tAt the bottom of the screen is the name of a municipality, state, capital, city,\nterritory or country. You must find it on the map and tap it to identify it. The goal is\n to identify all the targets as fast as you can.\n\tYou can play in Practice Mode with the map already showing the names of the targets, but your fastest time will only be recorded if you play in Challenge Mode with a blank map.\n\tWith some exceptions, the names of the targets will be based on the official language of the countrie or territory"
-        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
         
         //Label with second part of english instructions
         instructionsEnglishLabelTwo.name = "instructionsEnglishLabelTwo"
         instructionsEnglishLabelTwo.text = "\tYou can zoom in/out by pinching the screen with 2 fingers. When zoomed in, you\ncan move the camera around by sliding a single finger across the screen.\n\tTo mark the target, tap it on the screen without moving your finger(tap the target itself, NOT the arrow pointing at it.) If you selected the correct target, then it's name\n(or if you are playing in Practice Mode, a checkmark) will appear over the target in the map and the color of the target will change(to green) and the name of the next target will appear at the bottom of the screen.\n\tEverytime you make a wrong selection, 3 more seconds will be added to your time. You can also choose to skip the current target with a penalty of 15 seconds added(you'll still need to identify skipped targets at the end.)"
-        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.6)
         
         //Red arrow button that display at the bottom of spanish label instructions
         redArrowButtonEspanolLabel.name = "redArrowButtonEspanolLabel"
-        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-20)//overrides position values from setRedArrowButton(), as the only arrow node with a different position values.
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabel,children:redArrowButtonEspanolLabel)
-        //instructionsEspanolLabel.addChild(redArrowButtonEspanolLabel)
         
         //Red arrow button that display at the bottom of the second spanish label instructions
         redArrowButtonEspanolLabelTwo.name = "redArrowButtonEspanolLabelTwo"
         redArrowButtonEspanolLabelTwo.zRotation = 3.14
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabelTwo,children:redArrowButtonEspanolLabelTwo)
-        //instructionsEspanolLabelTwo.addChild(redArrowButtonEspanolLabelTwo)
         
         //Red arrow button that display at the bottom of english label instructions
         redArrowButtonEnglishLabel.name = "redArrowButtonEnglishLabel"
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabel,children:redArrowButtonEnglishLabel)
-        //instructionsEnglishLabel.addChild(redArrowButtonEnglishLabel)
         
         //Red arrow button that display at the bottom of the second english label instructions
         redArrowButtonEnglishLabelTwo.name = "redArrowButtonEnglishLabelTwo"
         redArrowButtonEnglishLabelTwo.zRotation =  3.14
-        //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-29.5)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabelTwo,children:redArrowButtonEnglishLabelTwo)
-        //instructionsEnglishLabelTwo.addChild(redArrowButtonEnglishLabelTwo)
         
         //"English" button at the top of spanish instructions label
         englishButton.name = "englishButton"
         let englishButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
         englishButtonLabel.text = "English"
         addChildSKLabelNodeToParentSKSPriteNode(parent: englishButton, children: englishButtonLabel)
-        //englishButton.addChild(englishButtonLabel)
-        englishButton.position = CGPoint(x:0.5, y:170)//290
+        englishButton.position = CGPoint(x:0.5, y:190)//290
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabel,children:englishButton)
-        //instructionsEspanolLabel.addChild(englishButton)
         
         //"Español" button at the top of english instructions label
         espanolButton.name = "espanolButton"
-        //espanolButtonLabel = espanolEnglishButtonLabelDefaults(label: espanolButtonLabel)//set difault attributes for label
         let espanolButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
         espanolButtonLabel.text = "Español"
         addChildSKLabelNodeToParentSKSPriteNode(parent: espanolButton, children: espanolButtonLabel)
-        //espanolButton.addChild(espanolButtonLabel)
-        espanolButton.position = CGPoint(x:0.5, y:160.5)//160.5
+        espanolButton.position = CGPoint(x:0.5, y:192)//160.5
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabel,children:espanolButton)
-        //instructionsEnglishLabel.addChild(espanolButton)
+        
+        
+        print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                
+                
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+            setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            break
+        }
     }
+    
+    func setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        englishButton.setScale(1.50)
+        espanolButton.setScale(1.50)
+    
+        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.45)
+        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.45)
+        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 105 /* 0.5*/)
+        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 110/* 0.6*/)
+        
+        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
+        redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
+        redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
+        redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
+    }
+    
     //Function sets opciones objects needed to be eveluated on touch function
     func setMainOpcionesObjects(){
         //"Audio" label
         opcionesAudioLabel.name = "opcionesAudioLabel"
         opcionesAudioLabel.fontName = "GillSans-Bold"
         opcionesAudioLabel.text = "Audio"
-        opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2)
+        //opcionesAudioLabel.setScale(1.4)
+        //opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2 + 40)
 
         //Top checkbox
         opcionesCheckbox.name = "opcionesCheckbox"
@@ -445,7 +599,48 @@ class StartMenu: SKScene {
         addChildSKLabelNodeToParentSKSPriteNode(parent: creditosButton, children: creditButtonLabel)
         //creditosButton.addChild(creditButtonLabel)
         
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setOpcionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                
+                
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+                setOpcionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            break
+        }
     }
+    
+    func setOpcionesScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        opcionesAudioLabel.setScale(1.4)
+        opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2 + 40)
+    }
+    
     //Function init and set opciones objects that are not needed to evaluate on touch function and will only be called if "Opciones" button is pressed
     func initSetSecondaryOpcionesObjects(){
         ///"Musica (Music)" label
@@ -485,7 +680,7 @@ class StartMenu: SKScene {
     
         let creditsLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsLabel.name = "creditsLabel"
-        creditsLabel.text = "CONCEPT\n\nDESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
+        creditsLabel.text = "ORIGINAL CONCEPT\n\nORIGINAL DESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
         creditsLabel.position = CGPoint(x:50, y:202)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsLabel)
         //creditsContainer.addChild(creditsLabel)

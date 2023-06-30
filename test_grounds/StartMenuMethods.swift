@@ -155,9 +155,9 @@ class StartMenuMethods{
     func bestTimesPrRandomScore()->SKLabelNode{
         
         let label = SKLabelNode()
-        label.fontSize = 12
+        label.fontSize = 13
         label.fontName = "GillSans-SemiBold"
-        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
+        label.fontColor = UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         
         if UserDefaults.standard.integer(forKey: "minutesRandom") != 0 && UserDefaults.standard.integer(forKey: "secondsRandom") != 0 {
             let secondsText = (UserDefaults.standard.integer(forKey: "secondsRandom") < 10) ?
@@ -185,9 +185,9 @@ class StartMenuMethods{
     func bestTimesPrAlphabeticScore()->SKLabelNode {
         
         let label = SKLabelNode()
-        label.fontSize = 12
+        label.fontSize = 13
         label.fontName = "GillSans-SemiBold"
-        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
+        label.fontColor = UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         
         if UserDefaults.standard.integer(forKey: "minutesAlphabetic") != 0 && UserDefaults.standard.integer(forKey: "secondsAlphabetic") != 0 {
             
@@ -213,16 +213,16 @@ class StartMenuMethods{
     
     func bestTimeslabel()->SKLabelNode{
         let label = SKLabelNode()
-        label.fontSize = 12
-        label.fontName = "GillSans-SemiBold"
-        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
+        label.fontSize = 13
+        label.fontName = "HelveticaNeue-Bold"//"GillSans-SemiBold" 
+        label.fontColor = UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.2314, green: 0.3569, blue: 0.8078, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)
         return label
     }
     
     func bestTimesRectangleBezierPathToSKSpriteNode()-> SKSpriteNode{//Big island frame properties
            
         let shapeNode = SKShapeNode(path:TestClass().createRectangle().cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
+        shapeNode.strokeColor = UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
         shapeNode.lineWidth = 2.0
         let view = SKView(frame: UIScreen.main.bounds)
         let texture = view.texture(from: shapeNode)!
@@ -655,9 +655,9 @@ class StartMenuMethods{
     
     func mapOrderTwoLineLabelDefaults()->SKLabelNode{
       let label = SKLabelNode()
-      label.fontName = "GillSans-SemiBold"
+      label.fontName = "HelveticaNeue-Bold"//"GillSans-SemiBold"
       label.numberOfLines = 3
-      label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
+      label.fontColor = UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)
       label.fontSize = 11
       
       return label
@@ -774,7 +774,7 @@ class StartMenuMethods{
       label.fontColor = UIColor.init(red: 0.1255, green: 0.6157, blue: 0.9686, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
       /*label.text = "\tEn la parte inferior de la pantalla encontrarás\n el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de Reto con un mapa en blanco.  Con algunas excepciones, los nombres de los objetivos a identificarse seran en base al idioma oficial del pais o territorio."*/
       label.numberOfLines = 10//12
-      label.preferredMaxLayoutWidth = 80//105
+      label.preferredMaxLayoutWidth = 110//80
       
       //label.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.4)
       
@@ -920,8 +920,8 @@ class StartMenuMethods{
        var textureAsSpriteNode:SKSpriteNode = shapeNodeToSpriteNodeTexture(nodeShape:shapeNode)
        textureAsSpriteNode = initSetButtonPhysicsBody(objectButton: textureAsSpriteNode)
        //Set Attributes
-       textureAsSpriteNode.position = CGPoint(x:0.0,y:-29.5)
-       textureAsSpriteNode.setScale(0.50)
+       //textureAsSpriteNode.position = CGPoint(x:0.0,y:-29.5)
+       textureAsSpriteNode.setScale(0.65)
        //textureAsSpriteNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width:textureAsSpriteNode.size.width, height:textureAsSpriteNode.size.height), center: CGPoint(x:0.5, y: 0.5))
        //textureAsSpriteNode.physicsBody?.isDynamic = false
 
@@ -941,10 +941,10 @@ class StartMenuMethods{
     func setinstructionsLabelDefaults()->SKLabelNode{
       let label = SKLabelNode()
       label.fontName = "GillSans-SemiBold"
-      label.fontSize = 14
-      label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//(red: 0, green: 0.4078, blue: 0.2431, alpha: 1.0)
+        label.fontSize = 16.5
+        label.fontColor = .black//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)//(red: 0, green: 0.4078, blue: 0.2431, alpha: 1.0)
       label.numberOfLines = 12//12
-      label.preferredMaxLayoutWidth = 580//650
+      label.preferredMaxLayoutWidth = 635//650
       //label.position = CGPoint(x: StartMenu().self.size.width/2 /* 135*/, y:StartMenu().self.size.height/2 * 0.6)
       return label
     }
