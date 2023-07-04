@@ -100,7 +100,7 @@ class StartMenuMethods{
         //path.close()
         
         let shapeNode = SKShapeNode(path:path.cgPath)
-        shapeNode.strokeColor = UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)//c1d3c8
+        shapeNode.strokeColor = .black//UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)//UIColor.init(red: 0.1961, green: 1, blue: 0.7059, alpha: 1.0)//c1d3c8
         shapeNode.lineWidth = 2.0
         //shapeNode.fillColor = .white
         //Shapenode To SKSpriteNode
@@ -761,10 +761,10 @@ class StartMenuMethods{
     func licenseLabels()->SKLabelNode{
         let label = SKLabelNode()
         label.fontColor = UIColor.black
-        label.fontSize = 7.5
+        label.fontSize = 9.0
         label.fontName = "GillSans-Bold"
         label.numberOfLines = 5
-        label.preferredMaxLayoutWidth = 250
+        //label.preferredMaxLayoutWidth = 250
         return label
     }
     
@@ -772,18 +772,18 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontSize = 11
         label.fontName = "GillSans-Bold"
-        label.fontColor = UIColor.init(red: 0.6157, green: 0.9098, blue: 0.851, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        label.fontColor = UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)//UIColor.init(red: 0, green: 0.4471, blue: 0.6863, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
         return label
     }
     
     func setCreditsLabelDefaults()->SKLabelNode{
       let label = SKLabelNode()
       label.fontName = "GillSans-Bold"
-      label.fontSize = 9
-      label.fontColor = UIColor.init(red: 0.1255, green: 0.6157, blue: 0.9686, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
+        label.fontSize = 9.0
+        label.fontColor = .black//UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)//(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
       /*label.text = "\tEn la parte inferior de la pantalla encontrarás\n el nombre de un municipio, estado,\n ciudad capital,territorio o país. Debes localizarlo en el mapa y tocarlo para identificarlo. La meta final es identificar todos los objetivos lo mas rapido que puedas.\n\n\t Puedes jugar en Modo de Practica con el mapa ya mostrando los nombres de los objetivos, pero solo se guardará tu tiempo mas rapido cuando juegas en Modo de Reto con un mapa en blanco.  Con algunas excepciones, los nombres de los objetivos a identificarse seran en base al idioma oficial del pais o territorio."*/
       label.numberOfLines = 10//12
-      label.preferredMaxLayoutWidth = 110//80
+      //label.preferredMaxLayoutWidth = 110//80
       
       //label.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.4)
       

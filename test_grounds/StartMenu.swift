@@ -449,7 +449,7 @@ class StartMenu: SKScene {
     func setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes(){
        
         bestTimesRectangle.setScale(1.17)
-        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 10)
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 15)
     }
     
     //Function sets attributes and initialize some labels for Instrucciones objects needed to be evaluated on touch function
@@ -472,20 +472,24 @@ class StartMenu: SKScene {
         
         //Red arrow button that display at the bottom of spanish label instructions
         redArrowButtonEspanolLabel.name = "redArrowButtonEspanolLabel"
+        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabel,children:redArrowButtonEspanolLabel)
         
         //Red arrow button that display at the bottom of the second spanish label instructions
         redArrowButtonEspanolLabelTwo.name = "redArrowButtonEspanolLabelTwo"
         redArrowButtonEspanolLabelTwo.zRotation = 3.14
+        redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabelTwo,children:redArrowButtonEspanolLabelTwo)
         
         //Red arrow button that display at the bottom of english label instructions
         redArrowButtonEnglishLabel.name = "redArrowButtonEnglishLabel"
+        redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabel,children:redArrowButtonEnglishLabel)
         
         //Red arrow button that display at the bottom of the second english label instructions
         redArrowButtonEnglishLabelTwo.name = "redArrowButtonEnglishLabelTwo"
         redArrowButtonEnglishLabelTwo.zRotation =  3.14
+        redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabelTwo,children:redArrowButtonEnglishLabelTwo)
         
         //"English" button at the top of spanish instructions label
@@ -547,15 +551,15 @@ class StartMenu: SKScene {
         englishButton.setScale(1.50)
         espanolButton.setScale(1.50)
     
-        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.45)
-        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.45)
-        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 105 /* 0.5*/)
-        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 110/* 0.6*/)
+        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.65)
+        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.645)
+        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.64 /* 0.5*/)
+        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.615/* 0.6*/)
         
-        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
-        redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
-        redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
-        redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
+        //redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
+        //redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
+        //redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
+        //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
     }
     
     //Function sets opciones objects needed to be eveluated on touch function
@@ -682,79 +686,94 @@ class StartMenu: SKScene {
     
         let creditsLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsLabel.name = "creditsLabel"
+        creditsLabel.preferredMaxLayoutWidth = 110
         creditsLabel.text = "ORIGINAL CONCEPT\n\nORIGINAL DESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
-        creditsLabel.position = CGPoint(x:50, y:202)
+        //creditsLabel.position = CGPoint(x:50, y:260/*202*/)
+        creditsLabel.fontColor = UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsLabel)
         //creditsContainer.addChild(creditsLabel)
         
         let creditsLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsLabelTwo.name = "creditsLabelTwo"
-        creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\nEnrique J. Pizarro\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
-        creditsLabelTwo.fontColor = UIColor.black
-        creditsLabelTwo.position = CGPoint(x:160, y:202)
-        creditsLabelTwo.preferredMaxLayoutWidth = 110 //140
+        creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\n\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
+        //creditsLabelTwo.fontColor = .black
+        //creditsLabelTwo.position = CGPoint(x:160, y:260)
+        creditsLabelTwo.preferredMaxLayoutWidth = 130 //140
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsLabelTwo)
         //creditsContainer.addChild(creditsLabelTwo)
+        
+        let creditsLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
+        creditsLabelThree.name = "creditsLabelThree"
+        //creditsLabelThree.position = CGPoint(x:100, y:226)
+        creditsLabelThree.preferredMaxLayoutWidth = 270
+        creditsLabelThree.text = "Developed by Enrique Pizarro with permission of use for the name Mapaclick(All rights reserved), concept, design, and artwork by the original creators, listed above."
+        addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsLabelThree)
         
         let creditsSoundMusicLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         creditsSoundMusicLabel.name = "creditsSoundMusicLabel"
         creditsSoundMusicLabel.text = "SOUND & MUSIC"
-        creditsSoundMusicLabel.position = CGPoint(x:95, y:190)
+        //creditsSoundMusicLabel.position = CGPoint(x:95, y:210)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicLabel)
         //creditsContainer.addChild(creditsSoundMusicLabel)
         
         let creditsSoundMusicChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsSoundMusicChildLabel.name = "creditsSoundMusicChildLabel"
-        creditsSoundMusicChildLabel.text = "1-At the shore\n2-No Frills Salsa-Alternate\n(shortened from original)\n3-Guiton Sketch\n\n1-La Borinqueña\n2-Star Spangled Banner\n\n1-Game Sound Correct\nOrganic Violin\n\n\nCartoon Success Fanfare"
-        creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 125
-        creditsSoundMusicChildLabel.position = CGPoint(x:69, y:55)
+        creditsSoundMusicChildLabel.text = "1-At the shore\n2-No Frills Salsa-Alternate\n(shortened from original)\n3-Guiton Sketch\n\n1-La Borinqueña\n2-Star Spangled Banner\n\n1-Game Sound Correct\nOrganic Violin\n\nCartoon Success Fanfare"
+        //creditsSoundMusicChildLabel.fontColor = .yellow//UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)
+        creditsSoundMusicChildLabel.fontSize = 10.0
+        creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 130
+        //creditsSoundMusicChildLabel.position = CGPoint(x:69, y:65)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicChildLabel)
         //creditsContainer.addChild(creditsSoundMusicChildLabel)
         
         let creditsSoundMusicChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsSoundMusicChildLabelTwo.name = "creditsSoundMusicChildLabelTwo"
-        creditsSoundMusicChildLabelTwo.text = "\nKevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
-        creditsSoundMusicChildLabelTwo.fontColor = UIColor.black
-        creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:55)
-        creditsSoundMusicChildLabelTwo.preferredMaxLayoutWidth = 100 //140
+        creditsSoundMusicChildLabelTwo.text = "Kevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
+        //creditsSoundMusicChildLabelTwo.fontColor = UIColor.black
+        creditsSoundMusicChildLabelTwo.fontSize = 10.0
+        //creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:64)
+        creditsSoundMusicChildLabelTwo.preferredMaxLayoutWidth = 115 //140
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicChildLabelTwo)
         //creditsContainer.addChild(creditsSoundMusicChildLabelTwo)
         
         let creditsSoundMusicChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsSoundMusicChildLabelThree.name = "creditsSoundMusicChildLabelThree"
         creditsSoundMusicChildLabelThree.text = "All music and sounds used licensed under Creative Commons:\n\t\tBy Attribution 3.0 License\n\t(http://creativecommons.org/licenses/by/3.0/)"
-        creditsSoundMusicChildLabelThree.position =  CGPoint(x:125, y:20)
+        //creditsSoundMusicChildLabelThree.position =  CGPoint(x:175, y:18)
+        creditsSoundMusicChildLabelThree.preferredMaxLayoutWidth = 290
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicChildLabelThree)
         //creditsContainer.addChild(creditsSoundMusicChildLabelThree)
         
         let creditsMapsImagesLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         creditsMapsImagesLabel.name = "creditsMapsImagesLabel"
         creditsMapsImagesLabel.text = "IMAGES AND MAPS"
-        creditsMapsImagesLabel.position = CGPoint(x:370, y:295)
+        //creditsMapsImagesLabel.position = CGPoint(x:370, y:348)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesLabel)
         //creditsContainerTwo.addChild(creditsMapsImagesLabel)
     
         let creditsMapsImagesChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsMapsImagesChildLabel.name = "creditsMapsImagesChildLabel"
         //creditsMapsImagesChildLabel.fontColor = UIColor.init(red: 0, green: 0.4824, blue: 0.8784, alpha: 1.0)
-        creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
+        creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based on:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
+        //creditsMapsImagesChildLabel.fontColor = .yellow//UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)
         creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
-        creditsMapsImagesChildLabel.position = CGPoint(x:325, y:245)
+        //creditsMapsImagesChildLabel.position = CGPoint(x:325, y:300)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesChildLabel)
         //creditsContainerTwo.addChild(creditsMapsImagesChildLabel)
         
         let creditsMapsImagesChildLabelTwo:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsMapsImagesChildLabelTwo.name = "creditsMapsImagesChildLabelTwo"
         creditsMapsImagesChildLabelTwo.text = "https://mapsvg.com/maps/puerto-rico"
-        creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
-        creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:260)
+        //creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
+        //creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:310)
         creditsMapsImagesChildLabelTwo.preferredMaxLayoutWidth = 180
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesChildLabelTwo)
         //creditsContainerTwo.addChild(creditsMapsImagesChildLabelTwo)
         
         let creditsMapsImagesChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsMapsImagesChildLabelThree.name = "creditsMapsImagesChildLabelThree"
-        creditsMapsImagesChildLabelThree.position = CGPoint(x:383, y:215)
+        //creditsMapsImagesChildLabelThree.position = CGPoint(x:420, y:260)
+        creditsMapsImagesChildLabelThree.preferredMaxLayoutWidth = 250
         creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesChildLabelThree)
         //creditsContainerTwo.addChild(creditsMapsImagesChildLabelThree)
@@ -762,28 +781,81 @@ class StartMenu: SKScene {
         let creditsSpecialThanksLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         creditsSpecialThanksLabel.name = "creditsSpecialThanksLabel"
         creditsSpecialThanksLabel.text = "SPECIAL THANKS"
-        creditsSpecialThanksLabel.position = CGPoint(x:360, y:200)
+        //creditsSpecialThanksLabel.position = CGPoint(x:360, y:240)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsSpecialThanksLabel)
         //creditsContainerTwo.addChild(creditsSpecialThanksLabel)
         
         let creditsSpecialThanksChildLabel:SKLabelNode = StartMenuMethods().setCreditsLabelDefaults()
         creditsSpecialThanksChildLabel.name = "creditsSpecialThanksChildLabel"
         creditsSpecialThanksChildLabel.text = "Manuel Alvarez\nRoberto Vélez Benitez\nEnrique J. Pizarro\nRodrigo Barasorda\nJosé Ramos\nMaritza Torres\nNarén Vélez Vendrell\nGabriela Mora Llorens\nCarmine T. Guida\nVladimir Alyamkin\nRaul Rosado\n@Pedro Cacique(https://www.youtube.com/c/PedroCacique)\nHoglund & Pamías\nAtlantic University College\nEpic Games,inc"
-        creditsSpecialThanksChildLabel.fontColor = UIColor.black
-        creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:43)
+        //creditsSpecialThanksChildLabel.fontColor = UIColor.black
+        //creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:80)
         creditsSpecialThanksChildLabel.preferredMaxLayoutWidth = 280 //140
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsSpecialThanksChildLabel)
         //creditsContainerTwo.addChild(creditsSpecialThanksChildLabel)
         
         let creditsSpecialThanksChildLabelTwo:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsSpecialThanksChildLabelTwo.name = "creditsSpecialThanksChildLabelTwo"
-        creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:10)
-        creditsSpecialThanksChildLabelTwo.text = "Mapaclick © 2019 MAPACLICK All rights reserved\nMapaclick uses Swift© programming language developed by Apple© inc\n and Spritekit© framework developed by Apple© inc"
-        creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 280
+        //creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:52)
+        creditsSpecialThanksChildLabelTwo.text = "Mapaclick uses Swift© programming language developed by Apple© inc and Spritekit© framework developed by Apple© inc"
+        creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 295
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsSpecialThanksChildLabelTwo)
         //reditsContainerTwo.addChild(creditsSpecialThanksChildLabelTwo)
+        //creditsContainerTwo.setScale(1.05)
         
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+                setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            break
+        }
+        func setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+            creditsLabel.position = CGPoint(x:50, y:260/*202*/)
+            creditsLabelTwo.position = CGPoint(x:160, y:260)
+            creditsLabelThree.position = CGPoint(x:100, y:226)
+            creditsSoundMusicLabel.position = CGPoint(x:95, y:210)
+            creditsSoundMusicChildLabel.position = CGPoint(x:69, y:65)
+            creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:64)
+            creditsSoundMusicChildLabelThree.position =  CGPoint(x:175, y:18)
+            creditsMapsImagesLabel.position = CGPoint(x:370, y:348)
+            creditsMapsImagesChildLabel.position = CGPoint(x:325, y:300)
+            creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:310)
+            creditsMapsImagesChildLabelThree.position = CGPoint(x:420, y:260)
+            creditsSpecialThanksLabel.position = CGPoint(x:360, y:240)
+            creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:80)
+            creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:52)
+        }
     }
+    
+    
+    
     //Function will set mapOrder objects needed to be evaluated by touch function
     func setMainMapOrderObjects(){
         //Parent node. Rectangle containing the objects that the user will interact with
