@@ -278,11 +278,11 @@ class StartMenuMethods{
     func modeSelectionLabelDefaults()->SKLabelNode{
         let label = SKLabelNode()
         label.fontName = "Avenir-Heavy"
-        label.fontSize = 9
-        label.fontColor = UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
+        label.fontSize = 9.5
+        label.fontColor = .black//UIColor.init(red: 0.5686, green: 1, blue: 0.8745, alpha: 1.0)
         //label.text = "Juega con un mapa en blanco.\nTiempo más rápido se guardará.\n  (Play with a blank map.\n  Fastest time will be saved)"
-        label.numberOfLines = 3
-        label.preferredMaxLayoutWidth = 140
+        label.numberOfLines = 6
+        label.preferredMaxLayoutWidth = 250
         return label
     }
     
@@ -308,8 +308,9 @@ class StartMenuMethods{
         let label = SKLabelNode()
         label.fontName = "AvenirNext-Bold"
         label.fontSize = 13
-        label.text = "  Modo de Práctica \n   (Practice Mode)"
+        //label.text = "  Modo de Práctica \n   (Practice Mode)"
         label.numberOfLines = 2
+        //label.preferredMaxLayoutWidth = 230
         label.position = CGPoint(x:0.5, y:-19.5)
         return label
     }

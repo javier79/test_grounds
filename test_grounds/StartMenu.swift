@@ -58,10 +58,12 @@ class StartMenu: SKScene {
     let gameModeSelectionBackgroundRectangle:SKSpriteNode = StartMenuMethods().bestTimesRectangleBezierPathToSKSpriteNode()
     //let gameModeSelectionOldPaperbackground:SKSpriteNode = StartMenuMethods().mapOrderOldPaperDropdownBG()//on gameMode selection view is the view parent, centered rectangle where user interacts
     let gameModeSelectionGreenButton:SKSpriteNode = StartMenuMethods().modeSelectionGreenButton()//on gameModeSelection view the green button
-    let gameModeSelectionGreenButtonLabel:SKLabelNode = StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
+    let gameModeSelectionGreenButtonLabel:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelOne()//StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
+    let gameModeSelectionGreenButtonLabelTwo:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelTwo()//StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
     let gameModeSelectionBlueButton:SKSpriteNode = StartMenuMethods().modeSelectionBlueButton()
-    let gameModeSelectionBlueButtonLabel:SKLabelNode = StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
-    let gameModeSelectionRedButton:SKSpriteNode = StartMenuMethods().modeSelectionRedButton()
+    let gameModeSelectionBlueButtonLabel:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelOne()//StartMenuMethods().modeSelectionBlueRedButtonsLabelsDefaults()
+    let gameModeSelectionBlueButtonLabelTwo:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelTwo()
+    let gameModeSelectionRedButton:SKSpriteNode = StartMenuMethods().redButtonShapeNodeToSpriteNode()//StartMenuMethods().redButtonShapeNodeToSpriteNode()//StartMenuMethods().modeSelectionRedButton()
     
     var bestTimesObjectsNotInitSet: Bool = true/*used on touch function as a condition to init/set bestTimes objects and prevents objects from re initializing(and adding objects that were already added to scene)*/
     let bestTimesRectangle:SKSpriteNode = StartMenuMethods().bestTimesRectangleBezierPathToSKSpriteNode()//centered rectangle parent of bestTimes view
@@ -542,7 +544,7 @@ class StartMenu: SKScene {
                 //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
         
             default:
-            setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
             break
         }
     }
@@ -860,7 +862,7 @@ class StartMenu: SKScene {
     func setMainMapOrderObjects(){
         //Parent node. Rectangle containing the objects that the user will interact with
         mapOrderBackgroundRectangle.name = "mapOrderBackgroundRectangle"
-        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        //mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         
         //Top Grey drop down tab.**IT DOES NOT HAVE PHYSICS BODY, THE TOUCH FUNCTION IS SET ON THE LABEL ON TOP OF IT**
         dropDownLabelBG.name = "dropDownLabelBG"
@@ -952,13 +954,56 @@ class StartMenu: SKScene {
         mapOrderRedButton.position = CGPoint(x:-185, y:-67)
         addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderRedButton)
         //mapOrderOldPaperbackground.addChild(mapOrderRedButton)
+        
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setMapOrderScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                //setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+                setMapOrderScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            break
+        }
     }
+    
+    func setMapOrderScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        mapOrderBackgroundRectangle.setScale(1.3)
+    }
+    
     //map Order objects that will be loadad only if "Jugar" button is pressed, but are not needed inmediately for touch function evaluation
     func initSetSecondaryMapOrderObjects(){
         //top label map selection instructions
         let mapOrderTopLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
         mapOrderTopLabel.name = "mapOrderTopLabel"
         mapOrderTopLabel.position = CGPoint(x:110, y:58)
+        mapOrderTopLabel.fontColor = .black//UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
+        mapOrderTopLabel.fontSize = 10
         mapOrderTopLabel.text = "Seleccciona el mapa en el menú desplegable\n(Select the map from the drop-downmenu)"
         addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderTopLabel)
         //mapOrderOldPaperbackground.addChild(mapOrderTopLabel)
@@ -967,6 +1012,8 @@ class StartMenu: SKScene {
         let mapOrderMiddleLabel:SKLabelNode = StartMenuMethods().mapOrderTwoLineLabelDefaults()
         mapOrderMiddleLabel.name = "mapOrderMiddleLabel"
         mapOrderMiddleLabel.position = CGPoint(x:72, y:-15)
+        mapOrderMiddleLabel.fontColor = .black//UIColor.init(red: 0.5059, green: 0.6314, blue: 0.5647, alpha: 1.0)
+        mapOrderMiddleLabel.fontSize = 10
         mapOrderMiddleLabel.text = "Selecciona el orden de los objetivos en el menú desplegable\n\t   (Select the target order from the drop-downmenu)"
         addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderMiddleLabel)
         //mapOrderOldPaperbackground.addChild(mapOrderMiddleLabel)
@@ -982,6 +1029,7 @@ class StartMenu: SKScene {
         let mapOrderSingleLineLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         mapOrderSingleLineLabel.name = "mapOrderSingleLineLabel"
         mapOrderSingleLineLabel.fontSize = 14
+        mapOrderSingleLineLabel.fontColor = UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)
         mapOrderSingleLineLabel.text = "Mapa (Map)"
         addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderSingleLineLabel)
         //mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabel)
@@ -991,6 +1039,7 @@ class StartMenu: SKScene {
         let mapOrderSingleLineLabelTwo:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         mapOrderSingleLineLabelTwo.name = "mapOrderSingleLineLabelTwo"
         mapOrderSingleLineLabelTwo.fontSize = 14
+        mapOrderSingleLineLabelTwo.fontColor = UIColor.init(red: 0.2, green: 1, blue: 0.8745, alpha: 1.0)
         mapOrderSingleLineLabelTwo.text = "Orden (Order)"
         addChildSKLabelNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderSingleLineLabelTwo)
         //mapOrderOldPaperbackground.addChild(mapOrderSingleLineLabelTwo)
@@ -1046,9 +1095,15 @@ class StartMenu: SKScene {
         
         //button label "Modo de Reto (Challenge Mode)"
         gameModeSelectionGreenButtonLabel.name = "gameModeSelectionGreenButtonLabel"
-        gameModeSelectionGreenButtonLabel.text = "  Modo de Reto \n(Challenge Mode)"
-        addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionGreenButton, children: gameModeSelectionGreenButtonLabel)
+        gameModeSelectionGreenButtonLabel.text = "Modo de Reto"
+        gameModeSelectionGreenButtonLabel.fontSize = 14
         //gameModeSelectionGreenButton.addChild(gameModeSelectionGreenButtonLabel)
+        gameModeSelectionGreenButtonLabelTwo.name = "gameModeSelectionGreenButtonLabelTwo"
+        gameModeSelectionGreenButtonLabelTwo.text = "(Challenge Mode)"
+        gameModeSelectionGreenButtonLabelTwo.fontSize = 13
+        gameModeSelectionGreenButtonLabelTwo.position = CGPoint(x:0.5, y:-12.5)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionGreenButton, children: gameModeSelectionGreenButtonLabel)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionGreenButton, children: gameModeSelectionGreenButtonLabelTwo)
         
         //blue button
         gameModeSelectionBlueButton.name = "gameModeSelectionBlueButton"
@@ -1058,16 +1113,74 @@ class StartMenu: SKScene {
         
         //blue button label
         gameModeSelectionBlueButtonLabel.name = "gameModeSelectionBlueButtonLabel"
-        gameModeSelectionBlueButtonLabel.text = "  Modo de Práctica \n   (Practice Mode)"
+        gameModeSelectionBlueButtonLabel.text = "Modo de Práctica"
+        gameModeSelectionBlueButtonLabel.fontSize = 14
+        gameModeSelectionBlueButtonLabelTwo.name = "gameModeSelectionBlueButtonLabelTwo"
+        gameModeSelectionBlueButtonLabelTwo.text = "(Practice Mode)"
+        gameModeSelectionBlueButtonLabelTwo.fontSize = 13
+        gameModeSelectionBlueButtonLabelTwo.position = CGPoint(x:0.5, y:-12.5)
         addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionBlueButton, children: gameModeSelectionBlueButtonLabel)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionBlueButton, children: gameModeSelectionBlueButtonLabelTwo)
         //gameModeSelectionBlueButton.addChild(gameModeSelectionBlueButtonLabel)
         
         //red button
         gameModeSelectionRedButton.name = "gameModeSelectionRedButton"
         gameModeSelectionRedButton.position = CGPoint(x:0,y:-55)
+        gameModeSelectionRedButton.setScale(1.3)
+        let gameModeSelectionRedButtonLabelOne:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelOne()
+        gameModeSelectionRedButtonLabelOne.name = "gameModeSelectionRedButtonLabelOne"
+        gameModeSelectionRedButtonLabelOne.text = "Volver"
+        let gameModeSelectionRedButtonLabelTwo:SKLabelNode = StartMenuMethods().redButtonBlueButtonLabelTwo()
+        gameModeSelectionRedButtonLabelTwo.name = "gameModeSelectionRedButtonLabelTwo"
+        gameModeSelectionRedButtonLabelTwo.text = "(Return)"
+        addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionRedButton, children:gameModeSelectionRedButtonLabelOne)
+        addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionRedButton, children:gameModeSelectionRedButtonLabelTwo)
+        //gameModeSelectionRedButton.addChild(gameModeSelectionRedButtonLabelOne)
+        //gameModeSelectionRedButton.addChild(gameModeSelectionRedButtonLabelTwo)
         addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionRedButton)
         //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
+        
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setGameModeSelectionScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                //setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                
+            case (1170.0, 2532.0), (1179.0, 2556.0):
+                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+            case (1284.0, 2778.0), (1290.0, 2796.0):
+                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+                setGameModeSelectionScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            break
+        }
     }
+    
+    func setGameModeSelectionScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        gameModeSelectionBackgroundRectangle.setScale(1.3)
+
+    }
+    
     //Function init and set objects when game mode selection screen is rendered, not needed for evaluation for touch function
     func initSetSecondaryGameModeSelectionObjects(){
        //on game mode selection screen instructions label at the left
@@ -1081,7 +1194,7 @@ class StartMenu: SKScene {
        //on game mode selection screen instructions label at the right
        let gameModeSelectionLabelTwo:SKLabelNode = StartMenuMethods().modeSelectionLabelDefaults()
        gameModeSelectionLabelTwo.name = "gameModeSelectionLabelTwo"
-       gameModeSelectionLabelTwo.text = "Juega con nombres ya en el mapa.\n\t Tiempo no se guardará.\n(Play with names already on the map.\n\tTime will not be saved)"
+       gameModeSelectionLabelTwo.text = "Juega con nombres ya en el mapa.\n\t Tiempo no se guardará.\n(Play with names already on the map. Time will not be saved)"
        gameModeSelectionLabelTwo.preferredMaxLayoutWidth = 160
        gameModeSelectionLabelTwo.position = CGPoint(x:105,y:-26)
        addChildSKLabelNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionLabelTwo)
