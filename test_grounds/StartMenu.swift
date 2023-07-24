@@ -174,6 +174,7 @@ class StartMenu: SKScene {
         addChildSKSpriteNodeToParentSKSPriteNode(parent:buttonGreen,children:redButtonThree)
         
         print("Screen size: \(screenSize)")
+        //Following code adjust MainMenuObjects positioning and scaling according to screen size
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
@@ -188,29 +189,29 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
-                setMainMenuObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0) :
+                print("Entering setMainMenuObjectsForRender: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS , 11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes()
                 
-            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+            //case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                //print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes()
                 
-            case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
-                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            //case (1170.0, 2532.0), (1179.0, 2556.0):
+                //print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                //setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes()
             
-            case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
-                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+            //case (1284.0, 2778.0), (1290.0, 2796.0):
+                //print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                //setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes()
         
             default:
-                setMainMenuObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes()
                 break
         }
     }
     
-    func setMainMenuObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+    func setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes(){
         buttonGreen.setScale(1.25)
         buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
         redButtonOne.position = CGPoint(x:0.5,y:-40.5)
@@ -325,8 +326,8 @@ class StartMenu: SKScene {
         addChildSKLabelNodeToParentSKSPriteNode(parent: returnVolverRedButton, children: returnVolverRedButtonLabelOne)
         addChildSKLabelNodeToParentSKSPriteNode(parent: returnVolverRedButton, children: returnVolverRedButtonLabelTwo)
         
-        
-        print("Screen size: \(screenSize)")
+        //Following code adjust returnVolver positioning and scaling according to screen size
+        //print("Screen size: \(screenSize)")
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
@@ -341,20 +342,22 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ):
+                print("Entering initReturnVolverRedButtonObject: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
                 setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes()
-            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+            
+            case (1242.0, 2208.0) /*(828.0, 1792.0 )*/ :
+                print("Entering initReturnVolverRedButtonObject: iPhone 8plus")
+                setVolverRedButtonScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
                 
-            case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+            //case (1170.0, 2532.0), (1179.0, 2556.0), (828.0, 1792.0 ):
+                //print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro, , XR, 11")
+                //setVolverRedButtonScaleAndIndepRenderingPositioningForLargeScreenSizes()
                 //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
-            case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
-                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+            case (1284.0, 2778.0), (1290.0, 2796.0),(1242.0, 2688.0 ), (1170.0, 2532.0), (1179.0, 2556.0), (828.0, 1792.0 ):
+                print("Entering initReturnVolverRedButtonObject: iPhone XSMax, 11ProMax, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, , XR, 11")
+                setVolverRedButtonScaleAndIndepRenderingPositioningForLargeAndMediumLargeScreenSizes()
         
             default:
                 setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes()
@@ -362,8 +365,18 @@ class StartMenu: SKScene {
         }
     }
     
+    func setVolverRedButtonScaleAndIndepRenderingPositioningForLargeAndMediumLargeScreenSizes(){
+        returnVolverRedButton.position = CGPoint(x:75, y:31)
+        returnVolverRedButton.setScale(1.84)//set a larger scale
+    }
+    
+    func setVolverRedButtonScaleAndIndepRenderingPositioningForMediumLargeScreenSizes(){
+        returnVolverRedButton.position = CGPoint(x:60, y:31)
+        returnVolverRedButton.setScale(1.71)//set a larger scale 67
+    }
+    
     func setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes(){
-        returnVolverRedButton.position = CGPoint(x:50, y:28)
+        returnVolverRedButton.position = CGPoint(x:55, y:28)
         returnVolverRedButton.setScale(1.5)//set a larger scale
     }
     
@@ -412,6 +425,7 @@ class StartMenu: SKScene {
         addChildSKLabelNodeToParentSKSPriteNode(parent: bestTimesRectangle, children: bestTimesPrRandomScorelabel)
         //bestTimesRectangle.addChild(bestTimesPrRandomScorelabel)
         
+        //Following code adjust SetBestTimesBoardObjects positioning and scaling according to screen size
         print("Screen size: \(screenSize)")
         switch (screenSize.width, screenSize.height) {
             
@@ -427,20 +441,21 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ):
+                print("Entering initSetBestTimesBoardObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            
             case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                print("Entering initSetBestTimesBoardObjects: iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                setBestTimesObjectsScaleAndIndepRenderingPositioningForLargeAndMediumLargeScreenSizes()
                 
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
-                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+                print("Entering initSetBestTimesBoardObjects: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                setBestTimesObjectsScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
-                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+                print(" Entering initSetBestTimesBoardObjects: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setBestTimesObjectsScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
         
             default:
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
@@ -448,9 +463,26 @@ class StartMenu: SKScene {
         }
     }
     
+    func setBestTimesObjectsScaleAndIndepRenderingPositioningForLargeScreenSizes(){
+        bestTimesRectangle.setScale(1.33)//(1.17)
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 23)
+    }
+    
+    func setBestTimesObjectsScaleAndIndepRenderingPositioningForXtraLargeScreenSizes(){
+       
+        bestTimesRectangle.setScale(1.5)//(1.17)
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 26)
+    }
+    
+    func setBestTimesObjectsScaleAndIndepRenderingPositioningForLargeAndMediumLargeScreenSizes(){
+       
+        bestTimesRectangle.setScale(1.43)//(1.17)
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 23)
+    }
+    
     func setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes(){
        
-        bestTimesRectangle.setScale(1.17)
+        bestTimesRectangle.setScale(1.3)//(1.17)
         bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 15)
     }
     
@@ -510,8 +542,8 @@ class StartMenu: SKScene {
         espanolButton.position = CGPoint(x:0.5, y:192)//160.5
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabel,children:espanolButton)
         
-        
-        print("Screen size: \(screenSize)")
+        //Following code adjust Instrucciones positioning and scaling according to screen size
+        //print("Screen size: \(screenSize)")
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
@@ -526,30 +558,30 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
-                setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0):
+                print("Entering initSetInstruccionesObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setInstruccionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
                 
                 
-            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+            //case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0) :
+                //print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setInstruccionesScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
                 
-            case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+            //case (1170.0, 2532.0), (1179.0, 2556.0):
+                //print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
                 //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
-            case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+            //case (1284.0, 2778.0), (1290.0, 2796.0):
+                //print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
         
             default:
-                setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                setInstruccionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
             break
         }
     }
     
-    func setInstruccionesScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+    func setInstruccionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes(){
         englishButton.setScale(1.50)
         espanolButton.setScale(1.50)
     
@@ -607,6 +639,7 @@ class StartMenu: SKScene {
         addChildSKLabelNodeToParentSKSPriteNode(parent: creditosButton, children: creditButtonLabel)
         //creditosButton.addChild(creditButtonLabel)
         
+        //Following code adjust Opciones positioning and scaling according to screen size
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
@@ -621,30 +654,30 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
-                setOpcionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0), (828.0, 1792.0),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0) :
+                print("Entering setMainOpcionesObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setOpcionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
                 
                 
-            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+            //case (1242.0, 2208.0), (828.0, 1792.0),(1242.0, 2688.0) :
+                //print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                //setOpcionesScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
                 
-            case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+            //case (1170.0, 2532.0), (1179.0, 2556.0):
+                //print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
                 //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
-            case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+            //case (1284.0, 2778.0), (1290.0, 2796.0):
+                //print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
         
             default:
-                setOpcionesScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                setOpcionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
             break
         }
     }
     
-    func setOpcionesScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+    func setOpcionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes(){
         opcionesAudioLabel.setScale(1.4)
         opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2 + 40)
     }
@@ -670,18 +703,18 @@ class StartMenu: SKScene {
     }
     //Function initialize the container holding all credits labels
     func initSetcreditsContainer(){
-        creditsContainer = nodesContainer()
-        creditsContainerTwo = nodesContainer()
-        creditsContainerTwo.position = CGPoint(x:self.size.width/11, y:self.size.height/60)/*Overriding function positioning, due at first there was only one containerNode(on StartMenu) and this second one needed a new positioning attributes. 20 - 15, 60*/
+        creditsContainer = SKNode()
+        creditsContainerTwo = SKNode()
+        //creditsContainerTwo.position = CGPoint(x:self.size.width/11, y:self.size.height/60)/*Overriding function positioning, due at first there was only one containerNode(on StartMenu) and this second one needed a new positioning attributes. 20 - 15, 60*/
         creditsContainerTwo.name = "creditsContainerTwo"
         creditsContainer.name = "creditsContainer"
     }
     //creditsContainer attributes are set
-    func nodesContainer() -> SKNode{
+    /*func nodesContainer() -> SKNode{
         let nodes_Container = SKNode()
         nodes_Container.position = CGPoint(x:self.size.width/10, y:self.size.height/20 - 25)///25 - 5)//(x: 60.0, y: 0.5)
         return  nodes_Container
-    }
+    }*/
     
     //Function inits and set creditos labels, function is called if "Creditos" is pressed, not commenting on each item as its self explicative
     func initSetcreditsContainerChildren(){
@@ -690,7 +723,7 @@ class StartMenu: SKScene {
         creditsLabel.name = "creditsLabel"
         creditsLabel.preferredMaxLayoutWidth = 110
         creditsLabel.text = "ORIGINAL CONCEPT\n\nORIGINAL DESIGN\n\n\n\nORIGINAL ART\n\n\n\nPROGRAMMING"
-        //creditsLabel.position = CGPoint(x:50, y:260/*202*/)
+        creditsLabel.position = CGPoint(x:50, y:260/*202*/)
         creditsLabel.fontColor = UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsLabel)
         //creditsContainer.addChild(creditsLabel)
@@ -699,14 +732,14 @@ class StartMenu: SKScene {
         creditsLabelTwo.name = "creditsLabelTwo"
         creditsLabelTwo.text = "Roberto Veléz Benítez\n\nRoberto Veléz Benítez\nManuel Alvarez\n\n\nRoberto Veléz Benítez\nManuel Alvarez\nRodrigo Barasorda\n\nEnrique J. Pizarro"
         //creditsLabelTwo.fontColor = .black
-        //creditsLabelTwo.position = CGPoint(x:160, y:260)
+        creditsLabelTwo.position = CGPoint(x:160, y:260)
         creditsLabelTwo.preferredMaxLayoutWidth = 130 //140
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsLabelTwo)
         //creditsContainer.addChild(creditsLabelTwo)
         
         let creditsLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsLabelThree.name = "creditsLabelThree"
-        //creditsLabelThree.position = CGPoint(x:100, y:226)
+        creditsLabelThree.position = CGPoint(x:100, y:226)
         creditsLabelThree.preferredMaxLayoutWidth = 270
         creditsLabelThree.text = "Developed by Enrique Pizarro with permission of use for the name Mapaclick(All rights reserved), concept, design, and artwork by the original creators, listed above."
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsLabelThree)
@@ -714,7 +747,7 @@ class StartMenu: SKScene {
         let creditsSoundMusicLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         creditsSoundMusicLabel.name = "creditsSoundMusicLabel"
         creditsSoundMusicLabel.text = "SOUND & MUSIC"
-        //creditsSoundMusicLabel.position = CGPoint(x:95, y:210)
+        creditsSoundMusicLabel.position = CGPoint(x:95, y:210)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicLabel)
         //creditsContainer.addChild(creditsSoundMusicLabel)
         
@@ -724,7 +757,7 @@ class StartMenu: SKScene {
         //creditsSoundMusicChildLabel.fontColor = .yellow//UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)
         creditsSoundMusicChildLabel.fontSize = 10.0
         creditsSoundMusicChildLabel.preferredMaxLayoutWidth = 130
-        //creditsSoundMusicChildLabel.position = CGPoint(x:69, y:65)
+        creditsSoundMusicChildLabel.position = CGPoint(x:69, y:65)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicChildLabel)
         //creditsContainer.addChild(creditsSoundMusicChildLabel)
         
@@ -733,7 +766,7 @@ class StartMenu: SKScene {
         creditsSoundMusicChildLabelTwo.text = "Kevin MacLeod\n(incompetech.com)\n\n\nnationalanthems.info\n\n\nBertrof\n(freesound.org)\n\nwww.zapsplat.com"
         //creditsSoundMusicChildLabelTwo.fontColor = UIColor.black
         creditsSoundMusicChildLabelTwo.fontSize = 10.0
-        //creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:64)
+        creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:64)
         creditsSoundMusicChildLabelTwo.preferredMaxLayoutWidth = 115 //140
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicChildLabelTwo)
         //creditsContainer.addChild(creditsSoundMusicChildLabelTwo)
@@ -741,7 +774,7 @@ class StartMenu: SKScene {
         let creditsSoundMusicChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsSoundMusicChildLabelThree.name = "creditsSoundMusicChildLabelThree"
         creditsSoundMusicChildLabelThree.text = "All music and sounds used licensed under Creative Commons:\n\t\tBy Attribution 3.0 License\n\t(http://creativecommons.org/licenses/by/3.0/)"
-        //creditsSoundMusicChildLabelThree.position =  CGPoint(x:175, y:18)
+        creditsSoundMusicChildLabelThree.position =  CGPoint(x:175, y:18)
         creditsSoundMusicChildLabelThree.preferredMaxLayoutWidth = 290
         addChildSKLabelNodeToParentSKNode(parent: creditsContainer, children: creditsSoundMusicChildLabelThree)
         //creditsContainer.addChild(creditsSoundMusicChildLabelThree)
@@ -749,7 +782,7 @@ class StartMenu: SKScene {
         let creditsMapsImagesLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         creditsMapsImagesLabel.name = "creditsMapsImagesLabel"
         creditsMapsImagesLabel.text = "IMAGES AND MAPS"
-        //creditsMapsImagesLabel.position = CGPoint(x:370, y:348)
+        creditsMapsImagesLabel.position = CGPoint(x:370, y:348)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesLabel)
         //creditsContainerTwo.addChild(creditsMapsImagesLabel)
     
@@ -759,7 +792,7 @@ class StartMenu: SKScene {
         creditsMapsImagesChildLabel.text = "\tMap of Puerto Rico\n(All BezierPath shapes based on:\nhttps://mapsvg.com/static/maps\n/geo-calibrated/puerto-rico.svg)"
         //creditsMapsImagesChildLabel.fontColor = .yellow//UIColor.init(red: 0.0078, green: 0.2941, blue: 0.8275, alpha: 1.0)
         creditsMapsImagesChildLabel.preferredMaxLayoutWidth = 155
-        //creditsMapsImagesChildLabel.position = CGPoint(x:325, y:300)
+        creditsMapsImagesChildLabel.position = CGPoint(x:325, y:300)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesChildLabel)
         //creditsContainerTwo.addChild(creditsMapsImagesChildLabel)
         
@@ -767,14 +800,14 @@ class StartMenu: SKScene {
         creditsMapsImagesChildLabelTwo.name = "creditsMapsImagesChildLabelTwo"
         creditsMapsImagesChildLabelTwo.text = "https://mapsvg.com/maps/puerto-rico"
         //creditsMapsImagesChildLabelTwo.fontColor = UIColor.black
-        //creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:310)
+        creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:310)
         creditsMapsImagesChildLabelTwo.preferredMaxLayoutWidth = 180
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesChildLabelTwo)
         //creditsContainerTwo.addChild(creditsMapsImagesChildLabelTwo)
         
         let creditsMapsImagesChildLabelThree:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsMapsImagesChildLabelThree.name = "creditsMapsImagesChildLabelThree"
-        //creditsMapsImagesChildLabelThree.position = CGPoint(x:420, y:260)
+        creditsMapsImagesChildLabelThree.position = CGPoint(x:420, y:260)
         creditsMapsImagesChildLabelThree.preferredMaxLayoutWidth = 250
         creditsMapsImagesChildLabelThree.text = "\tLicensed under Creative Commons:\nBy Attribution 4.0 International (CC BY 4.0) License\n(https://creativecommons.org/licenses/by/4.0/)"
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsMapsImagesChildLabelThree)
@@ -783,7 +816,7 @@ class StartMenu: SKScene {
         let creditsSpecialThanksLabel:SKLabelNode = StartMenuMethods().creditsSingleLineLabelDefaults()
         creditsSpecialThanksLabel.name = "creditsSpecialThanksLabel"
         creditsSpecialThanksLabel.text = "SPECIAL THANKS"
-        //creditsSpecialThanksLabel.position = CGPoint(x:360, y:240)
+        creditsSpecialThanksLabel.position = CGPoint(x:360, y:240)
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsSpecialThanksLabel)
         //creditsContainerTwo.addChild(creditsSpecialThanksLabel)
         
@@ -791,20 +824,21 @@ class StartMenu: SKScene {
         creditsSpecialThanksChildLabel.name = "creditsSpecialThanksChildLabel"
         creditsSpecialThanksChildLabel.text = "Manuel Alvarez\nRoberto Vélez Benitez\nEnrique J. Pizarro\nRodrigo Barasorda\nJosé Ramos\nMaritza Torres\nNarén Vélez Vendrell\nGabriela Mora Llorens\nCarmine T. Guida\nVladimir Alyamkin\nRaul Rosado\n@Pedro Cacique(https://www.youtube.com/c/PedroCacique)\nHoglund & Pamías\nAtlantic University College\nEpic Games,inc"
         //creditsSpecialThanksChildLabel.fontColor = UIColor.black
-        //creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:80)
+        creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:80)
         creditsSpecialThanksChildLabel.preferredMaxLayoutWidth = 280 //140
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsSpecialThanksChildLabel)
         //creditsContainerTwo.addChild(creditsSpecialThanksChildLabel)
         
         let creditsSpecialThanksChildLabelTwo:SKLabelNode = StartMenuMethods().licenseLabels()
         creditsSpecialThanksChildLabelTwo.name = "creditsSpecialThanksChildLabelTwo"
-        //creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:52)
+        creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:52)
         creditsSpecialThanksChildLabelTwo.text = "Mapaclick uses Swift© programming language developed by Apple© inc and Spritekit© framework developed by Apple© inc"
         creditsSpecialThanksChildLabelTwo.preferredMaxLayoutWidth = 295
         addChildSKLabelNodeToParentSKNode(parent: creditsContainerTwo, children: creditsSpecialThanksChildLabelTwo)
         //reditsContainerTwo.addChild(creditsSpecialThanksChildLabelTwo)
         //creditsContainerTwo.setScale(1.05)
         
+        //Following code adjust Credits positioning and scaling according to screen size
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
@@ -819,42 +853,69 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
-                setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436):
+                print("Entering initSetcreditsContainerChildren: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                if (screenSize.width == 750.0 && screenSize.height == 1334){
+                    setCreditsPositioningForSmallLessWiderScreenSizes()
+                    print("Entering initSetcreditsContainerChildren SmallLessWiderScreenSizes")
+                }
+                else{
+                    setCreditsPositioningForSmallWiderAndLargeScreenSizes()
+                    print("Entering initSetcreditsContainerChildren SmallWiderAndLargeScreenSizes")
+                }
+            
             case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+                print("Entering initSetcreditsContainerChildren: iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                if (screenSize.width == 1242.0 && screenSize.height == 2208.0){
+                    setCreditsPositioningForMediumLargeLessWideScreenSizes()
+                    print("Entering initSetcreditsContainerChildren MediumLargeLessWideScreenSizes")
+                }
+                else{
+                    setCreditsPositioningForMediumLargeWiderScreenSizes()
+                    print("Entering initSetcreditsContainerChildren MediumLargeWiderScreenSizes")
+                }
                 
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
-                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+                print("Entering initSetcreditsContainerChildren: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                setCreditsPositioningForSmallWiderAndLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
-                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+                print("Entering initSetcreditsContainerChildren: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setCreditsPositioningForXtraLargeScreenSizes()
         
             default:
-                setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                setCreditsPositioningForSmallLessWiderScreenSizes()
+                
             break
         }
-        func setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes(){
-            creditsLabel.position = CGPoint(x:50, y:260/*202*/)
-            creditsLabelTwo.position = CGPoint(x:160, y:260)
-            creditsLabelThree.position = CGPoint(x:100, y:226)
-            creditsSoundMusicLabel.position = CGPoint(x:95, y:210)
-            creditsSoundMusicChildLabel.position = CGPoint(x:69, y:65)
-            creditsSoundMusicChildLabelTwo.position = CGPoint(x:200, y:64)
-            creditsSoundMusicChildLabelThree.position =  CGPoint(x:175, y:18)
-            creditsMapsImagesLabel.position = CGPoint(x:370, y:348)
-            creditsMapsImagesChildLabel.position = CGPoint(x:325, y:300)
-            creditsMapsImagesChildLabelTwo.position = CGPoint(x:510, y:310)
-            creditsMapsImagesChildLabelThree.position = CGPoint(x:420, y:260)
-            creditsSpecialThanksLabel.position = CGPoint(x:360, y:240)
-            creditsSpecialThanksChildLabel.position = CGPoint(x:425, y:80)
-            creditsSpecialThanksChildLabelTwo.position = CGPoint(x:422, y:52)
-        }
+        
     }
+    
+    func setCreditsPositioningForXtraLargeScreenSizes(){
+        creditsContainer.position = CGPoint(x:self.size.width/6, y:self.size.height/70)
+        creditsContainerTwo.position = CGPoint(x:self.size.width/4.3, y:self.size.height/25)
+    }
+    
+    func setCreditsPositioningForMediumLargeLessWideScreenSizes(){
+        creditsContainer.position = CGPoint(x:self.size.width/10, y:self.size.height/20 - 25)
+        creditsContainerTwo.position = CGPoint(x:self.size.width/6, y:self.size.height/60)
+    }
+    
+    func setCreditsPositioningForMediumLargeWiderScreenSizes(){
+        creditsContainer.position = CGPoint(x:self.size.width/6, y:self.size.height/20 - 25)
+        creditsContainerTwo.position = CGPoint(x:self.size.width/4.3, y:self.size.height/60)
+    }
+    
+    func setCreditsPositioningForSmallWiderAndLargeScreenSizes(){
+        creditsContainer.position = CGPoint(x:self.size.width/8, y:self.size.height/20 - 25)
+        creditsContainerTwo.position = CGPoint(x:self.size.width/5, y:self.size.height/60)
+    }
+    
+    func setCreditsPositioningForSmallLessWiderScreenSizes(){
+        creditsContainer.position = CGPoint(x:self.size.width/10, y:self.size.height/20 - 25)
+        creditsContainerTwo.position = CGPoint(x:self.size.width/11, y:self.size.height/60)
+    }
+    
     
     
     
@@ -955,6 +1016,7 @@ class StartMenu: SKScene {
         addChildSKSpriteNodeToParentSKSPriteNode(parent: mapOrderBackgroundRectangle, children: mapOrderRedButton)
         //mapOrderOldPaperbackground.addChild(mapOrderRedButton)
         
+        //Following code adjust MapOrder positioning and scaling according to screen size
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
@@ -969,29 +1031,46 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
-                setMapOrderScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0) :
+                print("Entering setMainMapOrderObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
+                setMapOrderScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
                 //setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
-            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
-                
+            
+            case /*(1242.0, 2208.0),*/ (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("Entering setMainMapOrderObjects: iPhone XR, 11, XSMax, 11ProMax")
+                setMapOrderScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
+            
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
-                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+                print("Entering setMainMapOrderObjects: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                setMapOrderScaleAndIndepRenderingPositioningForLargeScreenSizes()
+                //setMapOrderScaleAndIndepRenderingPositioningForMediumLargeAndLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
-                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
-        
+                print("Entering setMainMapOrderObjects: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setMapOrderScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
+            
             default:
-                setMapOrderScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                setMapOrderScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
             break
         }
     }
     
-    func setMapOrderScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+    func setMapOrderScaleAndIndepRenderingPositioningForLargeScreenSizes(){
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 10)
+        mapOrderBackgroundRectangle.setScale(1.4)
+    }
+    
+    func setMapOrderScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes(){
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 15)
+        mapOrderBackgroundRectangle.setScale(1.45)
+    }
+    
+    func setMapOrderScaleAndIndepRenderingPositioningForMediumLargeScreenSizes(){
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 20)
+        mapOrderBackgroundRectangle.setScale(1.5)
+    }
+    
+    func setMapOrderScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes(){
         mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         mapOrderBackgroundRectangle.setScale(1.3)
     }
@@ -1085,7 +1164,7 @@ class StartMenu: SKScene {
         
         //Parent is the rectangle containing the objects for game mode selection screen
         gameModeSelectionBackgroundRectangle.name = "gameModeSelectionBackgroundRectangle"
-        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        //gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         
         //green button
         gameModeSelectionGreenButton.name = "gameModeSelectionGreenButton"
@@ -1140,6 +1219,7 @@ class StartMenu: SKScene {
         addChildSKSpriteNodeToParentSKSPriteNode(parent: gameModeSelectionBackgroundRectangle, children: gameModeSelectionRedButton)
         //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionRedButton)
         
+        //Following code adjust gameModeSelection positioning and scaling according to screen size
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
@@ -1154,30 +1234,43 @@ class StartMenu: SKScene {
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
-                print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
-                setGameModeSelectionScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0) :
+                print("Entering setMainGameModeSelectionObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
+                setGameModeSelectionScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
                 //setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
-            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
-                //setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+            
+            case /*(1242.0, 2208.0),*/ (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                print("Entering setMainGameModeSelectionObjects: iPhone XR, 11, XSMax, 11ProMax")
+                setGameModeSelectionScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
                 
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
-                //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+                print("Entering setMainGameModeSelectionObjects: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                setGameModeSelectionScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
-                //setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
-        
+                print("Entering setMainGameModeSelectionObjects: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setGameModeSelectionScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
             default:
-                setGameModeSelectionScaleAndIndepRenderingPositioningForSmallScreenSizes()
+                setGameModeSelectionScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
             break
         }
     }
     
-    func setGameModeSelectionScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+    func setGameModeSelectionScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes(){
         gameModeSelectionBackgroundRectangle.setScale(1.3)
+        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+
+    }
+    
+    func setGameModeSelectionScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes(){
+        gameModeSelectionBackgroundRectangle.setScale(1.45)
+        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 15)
+
+    }
+    
+    func setGameModeSelectionScaleAndIndepRenderingPositioningForLargeScreenSizes(){
+        gameModeSelectionBackgroundRectangle.setScale(1.4)
+        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 10)
 
     }
     
