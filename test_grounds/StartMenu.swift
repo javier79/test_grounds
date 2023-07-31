@@ -156,18 +156,21 @@ class StartMenu: SKScene {
         buttonGreen.name = "buttonGreen"
         
         //"Mejores Tiempos Button"
+        redButtonOne.position = CGPoint(x:0.5,y:-40.5)
         redButtonOne.name = "redButtonOne"
         redButtonOneLabel.text = "Mejores Tiempos (Best Times)"
         addChildSKLabelNodeToParentSKSPriteNode(parent:redButtonOne,children:redButtonOneLabel)
         addChildSKSpriteNodeToParentSKSPriteNode(parent:buttonGreen,children:redButtonOne)
         
         //"Instrucciones" button
+        redButtonTwo.position = CGPoint(x:0.5,y:-66.5)
         redButtonTwo.name = "instrucciones"
         redButtonTwoLabel.text = "Instrucciones (Instructions)"
         addChildSKLabelNodeToParentSKSPriteNode(parent:redButtonTwo,children:redButtonTwoLabel)
         addChildSKSpriteNodeToParentSKSPriteNode(parent:buttonGreen,children:redButtonTwo)
         
         //"Opciones" button
+        redButtonThree.position = CGPoint(x:0.5,y:-92.5)
         redButtonThree.name = "redButtonThree"
         redButtonThreeLabel.text = "Opciones (Options)"
         addChildSKLabelNodeToParentSKSPriteNode(parent:redButtonThree,children:redButtonThreeLabel)
@@ -178,19 +181,21 @@ class StartMenu: SKScene {
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 print("Set scaling and positioning mainMenuObjects for Large screenSize: iPad Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen)")
                  //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
-           
+                setMainMenuObjectsScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
+            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
-            
+                 print("Set scaling and positioning mainMenuObjects for Small screenSize: iPad 6Gen, Mini(5gen), Mini(6gen)")
+                setMainMenuObjectsScaleAndIndepRenderingPositioningForiPadsSmallAndMediumScreenSizes()
+                
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                print("Set scaling and positioning mainMenuObjects for Medium screenSize:iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, Air(4gen), PRO11(3gen), 9Gen, Air(5gen), 10Gen, Pro11(4gen)")
+                setMainMenuObjectsScaleAndIndepRenderingPositioningForiPadsSmallAndMediumScreenSizes()
+                mapaClickBanner.setScale(1.42)//overriding for bigger device screen
             
-            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0) :
-                print("Entering setMainMenuObjectsForRender: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS , 11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0) :
+                print("Entering setMainMenuObjects For All iPhone screenSizes: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS , 11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes()
                 
             //case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
@@ -211,12 +216,27 @@ class StartMenu: SKScene {
         }
     }
     
+    func setMainMenuObjectsScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes(){
+        mapaClickBanner.setScale(1.8)
+        mapaClickBanner.position = CGPoint(x: 0.5, y:325)
+        buttonGreen.setScale(1.6)//1.53 1.6
+        buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2 + 30)
+    }
+    
+    
+    func setMainMenuObjectsScaleAndIndepRenderingPositioningForiPadsSmallAndMediumScreenSizes(){
+        mapaClickBanner.setScale(1.3)
+        mapaClickBanner.position = CGPoint(x: 0.5, y:240)
+        buttonGreen.setScale(1.43)//1.4
+        buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2 + 30)
+    }
+    
     func setMainMenuObjectsScaleAndIndepRenderingPositioningForiPhoneAllScreenSizes(){
         buttonGreen.setScale(1.25)
         buttonGreen.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
-        redButtonOne.position = CGPoint(x:0.5,y:-40.5)
-        redButtonTwo.position = CGPoint(x:0.5,y:-66.5)
-        redButtonThree.position = CGPoint(x:0.5,y:-92.5)
+        //redButtonOne.position = CGPoint(x:0.5,y:-40.5)
+        //redButtonTwo.position = CGPoint(x:0.5,y:-66.5)
+        //redButtonThree.position = CGPoint(x:0.5,y:-92.5)
     }
     
     //function that play the background music
@@ -243,7 +263,7 @@ class StartMenu: SKScene {
            //let touchedNode = self.physicsWorld.body(at:touchLocation)//Se define que el toque de pantalla tomara efecto cuando el mismo entre en contacto con un SKphysics body, dentro de la vista StartScene
            let touchedNode:SKPhysicsBody! = self.physicsWorld.body(at:touchLocation)//Declared univesally in order to be used by function calls outside this scope(touch function)
            
-        /*Following statement will set and/or initialize the objects needed to be evaluated on Touch function once(the first time touch function is called). This objects must be ready(initialized and set) before the touch evaluation execute*/
+        /*Following statement will set and/or initialize the objects needed to be evaluated on Touch function once(the first time touch function is called). This objects must be ready(initialized and set) before the next touch evaluation execute*/
            if initMainTouchNodes == false{
                initSetMainTouchNodes()
                initMainTouchNodes = true
@@ -305,6 +325,7 @@ class StartMenu: SKScene {
         /**Following statements will set and/or initialize  the objects needed to be evaluated on Touch function. This objects must be ready(initialized and set) before the touch evaluation execute.
         Iam  using a distinction on naming the functions(Main/Secondary) when i use Main means objects that are needed at runtime. Secondary are objects that are not needed at run time
         and that could be initialized as they are needed by users.(see Touch function for Secondary objects inizializartion)*/
+        initSetBestTimesBoardObjects()//Objects from bestTimes view that are to be evaluated by touch function.
         initSetInstruccionesObjects()//Objects from instrucciones view that are to be evaluated by touch function.
         setMainMapOrderObjects()//Objects from mapOrder view that are to be evaluated by touch function.
         setMainGameModeSelectionObjects()//Objects from modeSelection view that are to be evaluated by touch function.
@@ -330,17 +351,18 @@ class StartMenu: SKScene {
         //print("Screen size: \(screenSize)")
         switch (screenSize.width, screenSize.height) {
             
-            case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
-           
+            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+                print("Entering set Volver Button for: iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                setVolverRedButtonScaleAndIndepRenderingPositioningForiPadsAllScreenSizes()
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                print("Entering set Volver Button for: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                setVolverRedButtonScaleAndIndepRenderingPositioningForiPadsAllScreenSizes()
+           
+            case (2048.0, 2732.0):
+             print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                setVolverRedButtonScaleAndIndepRenderingPositioningForiPadsAllScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436 ):
                 print("Entering initReturnVolverRedButtonObject: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
@@ -363,6 +385,11 @@ class StartMenu: SKScene {
                 setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes()
                 break
         }
+    }
+    
+    func setVolverRedButtonScaleAndIndepRenderingPositioningForiPadsAllScreenSizes(){
+        returnVolverRedButton.position = CGPoint(x:75, y:40)
+        returnVolverRedButton.setScale(2.12)//set a larger scale
     }
     
     func setVolverRedButtonScaleAndIndepRenderingPositioningForLargeAndMediumLargeScreenSizes(){
@@ -426,20 +453,28 @@ class StartMenu: SKScene {
         //bestTimesRectangle.addChild(bestTimesPrRandomScorelabel)
         
         //Following code adjust SetBestTimesBoardObjects positioning and scaling according to screen size
-        print("Screen size: \(screenSize)")
+        //print("Screen size: \(screenSize)")
         switch (screenSize.width, screenSize.height) {
             
-            case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
-           
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+                //print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                if screenSize.width == 1536.0 && screenSize.height == 2048.0{
+                    print("Entering set bestTimesRectangle for: iPad 6Gen, Mini(5gen) Entering initSetBestTimesBoardObjects scaling and poaitioning")
+                    setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes()
+                }
+                //here enters Mini(6gen)/(1488.0, 2266.0)
+                else{
+                    print("Entering set bestTimesRectangle for: iPad Mini(6gen) Entering initSetBestTimesBoardObjects scaling and poaitioning")
+                    setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsSmallMiniAndMediumScreenSizes()
+                }
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                print("Entering set bestTimesRectangle for: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsSmallMiniAndMediumScreenSizes()
+            
+            case (2048.0, 2732.0):
+                print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436 ):
                 print("Entering initSetBestTimesBoardObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
@@ -461,6 +496,24 @@ class StartMenu: SKScene {
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
                 break
         }
+    }
+    
+    func setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes(){
+       
+        bestTimesRectangle.setScale(2.2)//1.6
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 15)
+    }
+    
+    func setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsSmallMiniAndMediumScreenSizes(){
+       
+        bestTimesRectangle.setScale(1.8)//1.6
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 15)
+    }
+    
+    func setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes(){
+       
+        bestTimesRectangle.setScale(1.6)//1.6
+        bestTimesRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 15)
     }
     
     func setBestTimesObjectsScaleAndIndepRenderingPositioningForLargeScreenSizes(){
@@ -506,24 +559,24 @@ class StartMenu: SKScene {
         
         //Red arrow button that display at the bottom of spanish label instructions
         redArrowButtonEspanolLabel.name = "redArrowButtonEspanolLabel"
-        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
+        //redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabel,children:redArrowButtonEspanolLabel)
         
         //Red arrow button that display at the bottom of the second spanish label instructions
         redArrowButtonEspanolLabelTwo.name = "redArrowButtonEspanolLabelTwo"
         redArrowButtonEspanolLabelTwo.zRotation = 3.14
-        redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
+        //redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabelTwo,children:redArrowButtonEspanolLabelTwo)
         
         //Red arrow button that display at the bottom of english label instructions
         redArrowButtonEnglishLabel.name = "redArrowButtonEnglishLabel"
-        redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
+        //redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabel,children:redArrowButtonEnglishLabel)
         
         //Red arrow button that display at the bottom of the second english label instructions
         redArrowButtonEnglishLabelTwo.name = "redArrowButtonEnglishLabelTwo"
         redArrowButtonEnglishLabelTwo.zRotation =  3.14
-        redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
+        //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabelTwo,children:redArrowButtonEnglishLabelTwo)
         
         //"English" button at the top of spanish instructions label
@@ -531,7 +584,7 @@ class StartMenu: SKScene {
         let englishButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
         englishButtonLabel.text = "English"
         addChildSKLabelNodeToParentSKSPriteNode(parent: englishButton, children: englishButtonLabel)
-        englishButton.position = CGPoint(x:0.5, y:190)//290
+        //englishButton.position = CGPoint(x:0.5, y:190)//290
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEspanolLabel,children:englishButton)
         
         //"Español" button at the top of english instructions label
@@ -539,24 +592,26 @@ class StartMenu: SKScene {
         let espanolButtonLabel: SKLabelNode = StartMenuMethods().espanolEnglishButtonLabelDefaults()
         espanolButtonLabel.text = "Español"
         addChildSKLabelNodeToParentSKSPriteNode(parent: espanolButton, children: espanolButtonLabel)
-        espanolButton.position = CGPoint(x:0.5, y:192)//160.5
+        //espanolButton.position = CGPoint(x:0.5, y:192)//160.5
         addChildSKSpriteNodeToParentSKLabelNode(parent:instructionsEnglishLabel,children:espanolButton)
         
         //Following code adjust Instrucciones positioning and scaling according to screen size
         //print("Screen size: \(screenSize)")
         switch (screenSize.width, screenSize.height) {
             
-            case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
-           
+            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+                print("Entering set InstruccionesObjects for: iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                setInstruccionesScaleAndIndepRenderingPositioningForiPadsAllSizes()
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                print("Entering set InstruccionesObjects for: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen)")
+                setInstruccionesScaleAndIndepRenderingPositioningForiPadsAllSizes()
+           
+            case (2048.0, 2732.0):
+                 print("iPad Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                setInstruccionesScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
+            
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0):
                 print("Entering initSetInstruccionesObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
@@ -581,19 +636,82 @@ class StartMenu: SKScene {
         }
     }
     
+    func setInstruccionesScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes(){
+        
+        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 100)
+        instructionsEspanolLabel.setScale(1.45)
+        
+        englishButton.setScale(1.75)
+        englishButton.position = CGPoint(x:0.5, y:220)
+        
+        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-50)
+        
+        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 105)
+        instructionsEspanolLabelTwo.setScale(1.45)
+        
+        redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-45)
+        
+        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 100)
+        instructionsEnglishLabel.setScale(1.45)
+        
+        espanolButton.setScale(1.75)
+        espanolButton.position = CGPoint(x:0.5, y:220)
+        
+        redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-50)
+        
+        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 105)
+        instructionsEnglishLabelTwo.setScale(1.45)
+        
+        redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.5,y:-45)
+    }
+    
+    func setInstruccionesScaleAndIndepRenderingPositioningForiPadsAllSizes(){
+        
+        instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 100)
+        instructionsEspanolLabel.setScale(1.2)
+        
+        englishButton.setScale(1.75)
+        englishButton.position = CGPoint(x:0.5, y:220)
+        
+        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-50)
+        
+        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 105)
+        instructionsEspanolLabelTwo.setScale(1.2)
+        
+        redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-45)
+        
+        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 100)
+        instructionsEnglishLabel.setScale(1.2)
+        
+        espanolButton.setScale(1.75)
+        espanolButton.position = CGPoint(x:0.5, y:220)
+        
+        redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-50)
+        
+        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 - 105)
+        instructionsEnglishLabelTwo.setScale(1.2)
+        
+        redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.5,y:-45)
+    }
+    
     func setInstruccionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes(){
         englishButton.setScale(1.50)
         espanolButton.setScale(1.50)
     
         instructionsEspanolLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.65)
-        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.645)
-        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.64 /* 0.5*/)
-        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.615/* 0.6*/)
+        englishButton.position = CGPoint(x:0.5, y:190)
+        redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
         
-        //redArrowButtonEspanolLabel.position = CGPoint(x:0.5,y:-35)
-        //redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
-        //redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
-        //redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
+        instructionsEspanolLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.645)
+        redArrowButtonEspanolLabelTwo.position = CGPoint(x:0.0,y:-33.5)
+        
+        instructionsEnglishLabel.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.64 /* 0.5*/)
+        redArrowButtonEnglishLabel.position = CGPoint(x:0.5,y:-33.0)
+        espanolButton.position = CGPoint(x:0.5, y:192)
+        
+        instructionsEnglishLabelTwo.position = CGPoint(x: self.size.width/2 /* 135*/, y:self.size.height/2 * 0.615/* 0.6*/)
+        redArrowButtonEnglishLabelTwo.position = CGPoint(x:0.0,y:-28.0)
+        
     }
     
     //Function sets opciones objects needed to be eveluated on touch function
@@ -642,18 +760,19 @@ class StartMenu: SKScene {
         //Following code adjust Opciones positioning and scaling according to screen size
         switch (screenSize.width, screenSize.height) {
             
-            case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
-           
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+                print("iPad 6Gen, Mini(5gen), Mini(6gen)")
+                setOpcionesScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes()
+            
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                setOpcionesScaleAndIndepRenderingPositioningForiPadsMediumScreenSizes()
             
+            case (2048.0, 2732.0):
+                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                setOpcionesScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
+           
             case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0), (828.0, 1792.0),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0) :
                 print("Entering setMainOpcionesObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setOpcionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
@@ -675,6 +794,21 @@ class StartMenu: SKScene {
                 setOpcionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
             break
         }
+    }
+    
+    func setOpcionesScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes(){
+        opcionesAudioLabel.setScale(2.1)
+        opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2 + 70)
+    }
+    
+    func setOpcionesScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes(){
+        opcionesAudioLabel.setScale(2.5)
+        opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2 + 70)
+    }
+    
+    func setOpcionesScaleAndIndepRenderingPositioningForiPadsMediumScreenSizes(){
+        opcionesAudioLabel.setScale(2.2)
+        opcionesAudioLabel.position = CGPoint(x:self.size.width/2,y:self.size.height/2 + 70)
     }
     
     func setOpcionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes(){
@@ -842,16 +976,16 @@ class StartMenu: SKScene {
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+                 print("Entering setCreditsPositioningAndScaling for Larger screeSizes: iPad Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen)")
+                 setCreditsPositioningForiPadsLargeScreenSizes()
            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+                 print("Entering setCreditsPositioningAndScaling for smallScreenSizes: iPad 6Gen, Mini(5gen), Mini(6gen)")
+                setCreditsPositioningForiPadsSmallAndMediumScreenSizes()
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                print("Entering setCreditsPositioningAndScaling for MediumScreenSizes: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                setCreditsPositioningForiPadsSmallAndMediumScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436):
                 print("Entering initSetcreditsContainerChildren: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
@@ -889,6 +1023,22 @@ class StartMenu: SKScene {
             break
         }
         
+    }
+    
+    func setCreditsPositioningForiPadsLargeScreenSizes(){
+        creditsContainer.position = CGPoint(x:self.size.height/2 - 360, y:self.size.height/2 - 280)
+        creditsContainer.setScale(1.7)
+        
+        creditsContainerTwo.position = CGPoint(x:self.size.width/2 - 430, y:self.size.height/2 - 260)
+        creditsContainerTwo.setScale(1.7)
+    }
+    
+    func setCreditsPositioningForiPadsSmallAndMediumScreenSizes(){
+        creditsContainer.position = CGPoint(x:self.size.width/2 - 440, y:self.size.height/20 + 70)
+        creditsContainer.setScale(1.45)
+        
+        creditsContainerTwo.position = CGPoint(x:self.size.width/2 - 370 , y:self.size.height/8 + 30)
+        creditsContainerTwo.setScale(1.45)
     }
     
     func setCreditsPositioningForXtraLargeScreenSizes(){
@@ -1021,15 +1171,21 @@ class StartMenu: SKScene {
             
             case (2048.0, 2732.0):
                  print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+                 setMapOrderScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
                  print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
-            
+                if screenSize.width == 1536.0 && screenSize.height == 2048.0{
+                    setMapOrderScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes()
+                    print("SMALL")
+                }
+                else{
+                    setMapOrderScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes()
+                    print("mini")
+                }
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                setMapOrderScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0) :
                 print("Entering setMainMapOrderObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
@@ -1053,6 +1209,21 @@ class StartMenu: SKScene {
                 setMapOrderScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
             break
         }
+    }
+    
+    func setMapOrderScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes(){
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 20)
+        mapOrderBackgroundRectangle.setScale(1.9)
+    }
+    
+    func setMapOrderScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes(){
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 20)
+        mapOrderBackgroundRectangle.setScale(1.8)
+    }
+    
+    func setMapOrderScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes(){
+        mapOrderBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 20)
+        mapOrderBackgroundRectangle.setScale(1.65)
     }
     
     func setMapOrderScaleAndIndepRenderingPositioningForLargeScreenSizes(){
@@ -1224,15 +1395,22 @@ class StartMenu: SKScene {
             
             case (2048.0, 2732.0):
                  print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+                setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
                  print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
-                 //setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+                if screenSize.width == 1536.0 && screenSize.height == 2048.0{
+                    setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes()
+                    print("SMALL2")
+                }
+                else{
+                    setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes()
+                    print("mini2")
+                }
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
                 print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
-                //setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+                setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0) :
                 print("Entering setMainGameModeSelectionObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
@@ -1254,6 +1432,21 @@ class StartMenu: SKScene {
                 setGameModeSelectionScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
             break
         }
+    }
+    
+    func setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes(){
+        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 20)
+        gameModeSelectionBackgroundRectangle.setScale(1.9)
+    }
+    
+    func setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes(){
+        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 20)
+        gameModeSelectionBackgroundRectangle.setScale(1.8)
+    }
+    
+    func setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes(){
+        gameModeSelectionBackgroundRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 20)
+        gameModeSelectionBackgroundRectangle.setScale(1.65)
     }
     
     func setGameModeSelectionScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes(){
@@ -1294,9 +1487,47 @@ class StartMenu: SKScene {
        //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
     }
     
+    //Function scales(smaller) Banner and repositions it to the lower right of the screen when entering bestTimes, Instrucciones, opciones and credits
     func scaleAndRepositionMapaclickBanner(){
+        //print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0):
+                print("Entering scaleAndRepositionMapaclickBanner For All iPhone screenSizes: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS , 11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                iPhoneAndDefaultBannerScaleAndPositioning()
+                //mapaClickBanner.setScale(0.4)
+                //mapaClickBanner.position = CGPoint(x:180, y:-160.0)//y:-150.5)
+                
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                print("Entering scaleAndRepositionMapaclickBanner for iPads Small screenSize: iPad 6Gen, Mini(5gen), Mini(6gen)")
+                iPadSmallAndMediumScreenSizesBannerScaleAndPositioning()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("Entering scaleAndRepositionMapaclickBanner for iPads Medium screenSize:iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                iPadSmallAndMediumScreenSizesBannerScaleAndPositioning()
+            
+            case (2048.0, 2732.0):
+                print("Entering scaleAndRepositionMapaclickBanner for iPads Large screenSize: iPads Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                iPadLargeScreenSizesBannerScaleAndPositioning()
+                
+            default:
+                iPhoneAndDefaultBannerScaleAndPositioning()
+                break
+            }
+    }
+    
+    func iPhoneAndDefaultBannerScaleAndPositioning(){
         mapaClickBanner.setScale(0.4)
         mapaClickBanner.position = CGPoint(x:180, y:-160.0)//y:-150.5)
+    }
+    
+    func iPadSmallAndMediumScreenSizesBannerScaleAndPositioning(){
+        mapaClickBanner.setScale(0.7)
+        mapaClickBanner.position = CGPoint(x:250, y:-275.0)//y:-150.5)
+    }
+    
+    func iPadLargeScreenSizesBannerScaleAndPositioning(){
+        mapaClickBanner.setScale(0.8)
+        mapaClickBanner.position = CGPoint(x:250, y:-275.0)//y:-150.5)
     }
     
     //Touched node evaluation when main menu screen is rendered at launch
@@ -1321,10 +1552,10 @@ class StartMenu: SKScene {
         else if (redButtonOne.name == nodeTouched.node?.name){
             buttonGreen.removeFromParent()//removing parent of main menu objects
             //initialization of bestTimes objects, this line will execute once as you don't need your variables to be reinitialized everytime the button is touched.
-            if bestTimesObjectsNotInitSet == true{
+            /*if bestTimesObjectsNotInitSet == true{
                 initSetBestTimesBoardObjects()
                 bestTimesObjectsNotInitSet = false//line change value to false preventing the execution from reentering and reinitialize the objects
-            }
+            }*/
             if returnVolverRedButton == nil{/*returnVolver button is not initialized until needed(if Mejores tiempos, Instrucciones or Opciones are pressed) also this prevent it from being reinitialized on memory each time bestTimes button is pressed **/
                 initReturnVolverRedButtonObject()
                 print("outside")
@@ -1454,11 +1685,54 @@ class StartMenu: SKScene {
             
         }
     }
-    
+    //Function scales(bigger) Banner and repositions it to the top center of the screen when returning to main menu
     func scaleMapaclickBannerToOriginalSizeAndOriginalPosition(){
+        
+        //print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0):
+                print("Entering scaleMapaclickBannerToOriginalSizeAndOriginalPosition(Back to Main menu) For All iPhone screenSizes: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS , 11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPhones()
+                
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                print("Entering scaleMapaclickBannerToOriginalSizeAndOriginalPosition(Back to Main menu) for iPads Small screenSize: iPad 6Gen, Mini(5gen), Mini(6gen)")
+                scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                print("Entering scaleMapaclickBannerToOriginalSizeAndOriginalPosition(Back to Main menu) for iPads Medium screenSize: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen)")
+                scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPadsMediumScreenSizes()
+            
+            case (2048.0, 2732.0):
+                print("Entering scaleMapaclickBannerToOriginalSizeAndOriginalPosition(Back to Main menu) for iPads Medium screenSize: iPads Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPadsLargeScreenSizes()
+            
+            default:
+                scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPhones()
+                break
+            }
+    }
+    
+    func scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPadsLargeScreenSizes(){
+        mapaClickBanner.setScale(1.8)
+        mapaClickBanner.position = CGPoint(x: 0.5, y:325)
+    }
+    
+    
+    func scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPadsMediumScreenSizes(){
+        mapaClickBanner.setScale(1.42)
+        mapaClickBanner.position = CGPoint(x: 0.5, y:240)
+    }
+    
+    func scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPhones(){
         mapaClickBanner.setScale(1.0)
         mapaClickBanner.position = CGPoint(x: 0.5, y: 145)
     }
+    
+    func scaleMapaclickBannerToOriginalSizeAndOriginalPositioniPadsSmallScreenSizes(){
+        mapaClickBanner.setScale(1.3)
+        mapaClickBanner.position = CGPoint(x: 0.5, y:240)
+    }
+    
     /**Touched nodes evaluation when mapOrder parent mapOrderBackgroundRectangle and children are rendered*/
     func mapOrderTouchNodes(nodeTouched:SKPhysicsBody){
         /**General explanation: in this instance when button green is pressed bottom drop down menu will close and highlighted selection(or last selection) label text attribute is passed to dropDownArrowLabelTwo, developer wanted drop down menus closed before moving to next view .
