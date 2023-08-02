@@ -361,15 +361,15 @@ class StartMenu: SKScene {
                 setVolverRedButtonScaleAndIndepRenderingPositioningForiPadsAllScreenSizes()
            
             case (2048.0, 2732.0):
-             print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+             print("Entering set Volver Button for: iPad Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
                 setVolverRedButtonScaleAndIndepRenderingPositioningForiPadsAllScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436 ):
-                print("Entering initReturnVolverRedButtonObject: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                print("Entering set Volver Button for: iPhone SE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
                 setVolverRedButtonScaleAndIndepRenderingPositioningForSmallScreenSizes()
             
             case (1242.0, 2208.0) /*(828.0, 1792.0 )*/ :
-                print("Entering initReturnVolverRedButtonObject: iPhone 8plus")
+                print("Entering set Volver Button for: iPhone 8plus")
                 setVolverRedButtonScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
                 
             //case (1170.0, 2532.0), (1179.0, 2556.0), (828.0, 1792.0 ):
@@ -378,7 +378,7 @@ class StartMenu: SKScene {
                 //setScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0),(1242.0, 2688.0 ), (1170.0, 2532.0), (1179.0, 2556.0), (828.0, 1792.0 ):
-                print("Entering initReturnVolverRedButtonObject: iPhone XSMax, 11ProMax, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, , XR, 11")
+                print("Entering set Volver Button for: iPhone XSMax, 11ProMax, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, , XR, 11")
                 setVolverRedButtonScaleAndIndepRenderingPositioningForLargeAndMediumLargeScreenSizes()
         
             default:
@@ -473,23 +473,23 @@ class StartMenu: SKScene {
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsSmallMiniAndMediumScreenSizes()
             
             case (2048.0, 2732.0):
-                print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                print("Entering set bestTimesRectangle for: iPad Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436 ):
-                print("Entering initSetBestTimesBoardObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                print("Entering Entering set bestTimesRectangle for: iPhone SE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForSmallScreenSizes()
             
             case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("Entering initSetBestTimesBoardObjects: iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                print("Entering set bestTimesRectangle for: iPhone 8plus, XR, 11, XSMax, 11ProMax")
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForLargeAndMediumLargeScreenSizes()
                 
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("Entering initSetBestTimesBoardObjects: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                print("Entering set bestTimesRectangle for: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print(" Entering initSetBestTimesBoardObjects: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                print("Entering set bestTimesRectangle for: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setBestTimesObjectsScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
         
             default:
@@ -609,12 +609,12 @@ class StartMenu: SKScene {
                 setInstruccionesScaleAndIndepRenderingPositioningForiPadsAllSizes()
            
             case (2048.0, 2732.0):
-                 print("iPad Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 print("Entering set InstruccionesObjects for: iPad Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
                 setInstruccionesScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
             
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0):
-                print("Entering initSetInstruccionesObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                print("Entering set InstruccionesObjects for: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setInstruccionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
                 
                 
@@ -761,20 +761,20 @@ class StartMenu: SKScene {
         switch (screenSize.width, screenSize.height) {
             
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                print("iPad 6Gen, Mini(5gen), Mini(6gen)")
+                print("Entering set opcionesObjects for: iPad 6Gen, Mini(5gen), Mini(6gen)")
                 setOpcionesScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes()
             
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                print("Entering set opcionesObjects for: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 setOpcionesScaleAndIndepRenderingPositioningForiPadsMediumScreenSizes()
             
             case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 print("Entering set opcionesObjects for: Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
                 setOpcionesScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
            
             case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0), (828.0, 1792.0),(1242.0, 2688.0), (1170.0, 2532.0), (1179.0, 2556.0), (1284.0, 2778.0), (1290.0, 2796.0) :
-                print("Entering setMainOpcionesObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                print("Entering set opcionesObjects for: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus, XR, 11, XSMax, 11ProMax, 12, 12Pro, 13, 13Pro, 14, 14Pro, 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setOpcionesScaleAndIndepRenderingPositioningForAlliPhoneScreenSizes()
                 
                 
@@ -988,33 +988,33 @@ class StartMenu: SKScene {
                 setCreditsPositioningForiPadsSmallAndMediumScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436):
-                print("Entering initSetcreditsContainerChildren: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                print("Entering setCreditsPositioningAndScaling for: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
                 if (screenSize.width == 750.0 && screenSize.height == 1334){
                     setCreditsPositioningForSmallLessWiderScreenSizes()
-                    print("Entering initSetcreditsContainerChildren SmallLessWiderScreenSizes")
+                    print("Entering setCreditsPositioningAndScaling SmallLessWiderScreenSizes")
                 }
                 else{
                     setCreditsPositioningForSmallWiderAndLargeScreenSizes()
-                    print("Entering initSetcreditsContainerChildren SmallWiderAndLargeScreenSizes")
+                    print("Entering setCreditsPositioningAndScaling SmallWiderAndLargeScreenSizes")
                 }
             
             case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("Entering initSetcreditsContainerChildren: iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                print("Entering setCreditsPositioningAndScaling: iPhone 8plus, XR, 11, XSMax, 11ProMax")
                 if (screenSize.width == 1242.0 && screenSize.height == 2208.0){
                     setCreditsPositioningForMediumLargeLessWideScreenSizes()
-                    print("Entering initSetcreditsContainerChildren MediumLargeLessWideScreenSizes")
+                    print("Entering setCreditsPositioningAndScaling for: MediumLargeLessWideScreenSizes")
                 }
                 else{
                     setCreditsPositioningForMediumLargeWiderScreenSizes()
-                    print("Entering initSetcreditsContainerChildren MediumLargeWiderScreenSizes")
+                    print("Entering setCreditsPositioningAndScaling for: MediumLargeWiderScreenSizes")
                 }
                 
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("Entering initSetcreditsContainerChildren: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                print("Entering setCreditsPositioningAndScaling: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
                 setCreditsPositioningForSmallWiderAndLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("Entering initSetcreditsContainerChildren: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                print("Entering setCreditsPositioningAndScaling: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setCreditsPositioningForXtraLargeScreenSizes()
         
             default:
@@ -1024,7 +1024,7 @@ class StartMenu: SKScene {
         }
         
     }
-    
+    //creditsContainer and creditsContainerTwo are used to contain all credits objects and facilitate positioning and scaling as a whole. The objects(labels) to the left(of the screen) are contained on creditsContainer the ones to the right are contained on creditsContainerTwo.
     func setCreditsPositioningForiPadsLargeScreenSizes(){
         creditsContainer.position = CGPoint(x:self.size.height/2 - 360, y:self.size.height/2 - 280)
         creditsContainer.setScale(1.7)
@@ -1170,11 +1170,11 @@ class StartMenu: SKScene {
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 print("Entering set mapOrder objects for: iPads Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
                  setMapOrderScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 print("Entering set mapOrder objects for: iPad 6Gen, Mini(5gen), Mini(6gen) ")
                 if screenSize.width == 1536.0 && screenSize.height == 2048.0{
                     setMapOrderScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes()
                     print("SMALL")
@@ -1184,25 +1184,25 @@ class StartMenu: SKScene {
                     print("mini")
                 }
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                print("Entering set mapOrder objects for: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 setMapOrderScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436 ), (1242.0, 2208.0) :
-                print("Entering setMainMapOrderObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
+                print("Entering set mapOrder objects for: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
                 setMapOrderScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
                 //setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
             
             case /*(1242.0, 2208.0),*/ (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("Entering setMainMapOrderObjects: iPhone XR, 11, XSMax, 11ProMax")
+                print("Entering set mapOrder objects for: iPhone XR, 11, XSMax, 11ProMax")
                 setMapOrderScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
             
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("Entering setMainMapOrderObjects: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                print("Entering set mapOrder objects for: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
                 setMapOrderScaleAndIndepRenderingPositioningForLargeScreenSizes()
                 //setMapOrderScaleAndIndepRenderingPositioningForMediumLargeAndLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("Entering setMainMapOrderObjects: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                print("Entering set mapOrder objects for: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setMapOrderScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
             
             default:
@@ -1394,11 +1394,11 @@ class StartMenu: SKScene {
         switch (screenSize.width, screenSize.height) {
             
             case (2048.0, 2732.0):
-                 print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 print("Entering set gameModeSelection objects for: Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
                 setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsLargeScreenSizes()
            
             case (1536.0, 2048.0),(1488.0, 2266.0) :
-                 print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 print("Entering set gameModeSelection objects for: iPad 6Gen, Mini(5gen), Mini(6gen) ")
                 if screenSize.width == 1536.0 && screenSize.height == 2048.0{
                     setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsSmallScreenSizes()
                     print("SMALL2")
@@ -1409,24 +1409,24 @@ class StartMenu: SKScene {
                 }
             
             case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
-                print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                print("Entering set gameModeSelection objects for: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
                 setGameModeSelectionScaleAndIndepRenderingPositioningForiPadsMiniAndMediumScreenSizes()
             
             case (750.0, 1334), (1080, 2340 ),(1125, 2436), (1242.0, 2208.0) :
-                print("Entering setMainGameModeSelectionObjects: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
+                print("Entering set gameModeSelection objects for: iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO, 8plus")
                 setGameModeSelectionScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
                 //setCreditsScaleAndIndepRenderingPositioningForSmallScreenSizes()
             
             case /*(1242.0, 2208.0),*/ (828.0, 1792.0 ),(1242.0, 2688.0 ) :
-                print("Entering setMainGameModeSelectionObjects: iPhone XR, 11, XSMax, 11ProMax")
+                print("Entering set gameModeSelection objects for: iPhone XR, 11, XSMax, 11ProMax")
                 setGameModeSelectionScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
                 
             case (1170.0, 2532.0), (1179.0, 2556.0):
-                print("Entering setMainGameModeSelectionObjects: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                print("Entering set gameModeSelection objects for: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
                 setGameModeSelectionScaleAndIndepRenderingPositioningForLargeScreenSizes()
             
             case (1284.0, 2778.0), (1290.0, 2796.0):
-                print("Entering setMainGameModeSelectionObjects: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                print("Entering set gameModeSelection objects for: iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
                 setGameModeSelectionScaleAndIndepRenderingPositioningForMediumLargeAndExtraLargeScreenSizes()
             default:
                 setGameModeSelectionScaleAndIndepRenderingPositioningForSmallAndMediumLargeScreenSizes()
@@ -1487,7 +1487,7 @@ class StartMenu: SKScene {
        //gameModeSelectionOldPaperbackground.addChild(gameModeSelectionLabelTwo)
     }
     
-    //Function scales(smaller) Banner and repositions it to the lower right of the screen when entering bestTimes, Instrucciones, opciones and credits
+    //Function scales(smaller) Banner and repositions it to the lower right of the screen when entering bestTimes, Instrucciones, opciones, credits, mapOrder and gameModeSelection screens
     func scaleAndRepositionMapaclickBanner(){
         //print("Screen size: \(screenSize)")
         switch (screenSize.width, screenSize.height) {
