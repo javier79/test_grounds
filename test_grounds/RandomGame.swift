@@ -69,27 +69,69 @@ class RandomGame: SKScene{
     var randomIndex: Int = 0
 
     var isScaled = false
+    
+    let screenSize = UIScreen.main.nativeBounds
+    
     override func didMove(to view: SKView){
         
         self.backgroundColor = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0)//blue background that resembles the ocean
         
-        mapRectangleGestureMGMT.zPosition = 0
+        //mapRectangleGestureMGMT.zPosition = 0
         mapRectangleGestureMGMT.anchorPoint = CGPoint(x:0.5, y:0.5)
-        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)
+        //mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.8)
+        
         /**The following  objects are the parent for all rendering objects, class positioning attributers are applied in order for objects to render the same independent of the screen size, In the case of containerNode it's positioning is set  based on its parent
          timerBackgroundTwo. The reason for not giving containerNode class positioning was due when class attributes were applied to containerNode it would render different in devices with smaller screen size(maybe something im not aware about, or a glitch of some kind).*/
-        containerNode.zPosition = -1
+        //containerNode.zPosition = -1
         containerNode.position = CGPoint(x:-280, y:-190)//CGPoint(x:self.size.width/2 - 285, y:self.size.height/2 - 175) /*CGPoint(x:-275 , y:-75 /*15*/)*//**Sknode containing(children) map sprites, desecheo cover(node whose only job is to hid desecheo island, rectangular frames)*/
-        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6)/**parent to labelTimer*/
+        
+        //timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6)/**parent to labelTimer*/
         
         controlPanelSKSpriteNode.zPosition = 1//Set to one in order for the map to zoom and remain behind
-        controlPanelSKSpriteNode.size = CGSize(width:self.size.width + 6, height: 50)
-        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height: 50)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16.5/*25*/)
         
         getFirstRandomMunicipioNameToLookUp()//Function gets first random municipio name and overwrites text attributes from TestClass().labelForMunicipioNames()(base attributes)
         //randomIndex = Int.random(in:0...77)//gets random index for first municipio name to look up
         //municipioNameLabel.text = municipios_names_array[randomIndex]//first municipio name to look up
         //municipioNameLabel = labelForMunicipioNamesRandomGame(NameMunicipioLabel: municipioNameLabel)
+        
+        //The following block reads device screen size in points, based on screen size a function will execute to asign scaling and positioning attributes
+        print("Screen size: \(screenSize)")
+        switch (screenSize.width, screenSize.height) {
+            
+            case (2048.0, 2732.0):
+                 //print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) ")
+                 setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes()
+           
+            case (1536.0, 2048.0),(1488.0, 2266.0) :
+                 //print("iPad 6Gen, Mini(5gen), Mini(6gen) ")
+                 setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes()
+            
+            case (1668.0, 2224.0), (1668.0, 2388.0), (1620.0, 2160.0),(1640.0, 2360.0):
+                //print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) ")
+                setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes()
+            
+            case (750.0, 1334), (1080, 2340 ),(1125, 2436 ) :
+                //print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO")
+                setScaleAndIndepRenderingPositioningForSmallScreenSizes()
+            
+            case (1242.0, 2208.0), (828.0, 1792.0 ),(1242.0, 2688.0 ) :
+                //print("iPhone 8plus, XR, 11, XSMax, 11ProMax")
+                setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes()
+            
+           case (1170.0, 2532.0), (1179.0, 2556.0):
+                //print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro")
+                setScaleAndIndepRenderingPositioningForLargeScreenSizes()
+            
+           case (1284.0, 2778.0), (1290.0, 2796.0):
+                //print("iPhone 12ProMax, 13ProMax, 14plus, 13Pro, 14ProMax")
+                setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes()
+        
+            default:
+               setScaleAndIndepRenderingPositioningForSmallScreenSizes()//This line will catch any device which screen measure is none of the above
+                break
+        }
         
         /**Following objects are related to goldBackground SKSPriteNode*/
         //Attention the following two statements were commented due municipioNamesBackground and municipioNameLabel are added at getFirstRandomMunicipioNameToLookUp()
@@ -128,6 +170,159 @@ class RandomGame: SKScene{
         //sleep(1)
     }
     
+    //Execute attributes for scaling and positioning based on device screen size
+    func setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes(){
+        print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) IpadsLargeScreenSizes scaling and positioning func")
+        print("IpadsLargeScreenSizesFunc")
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)
+        //mapRectangleGestureMGMT.setScale(1.90)//1.38
+        mapRectangleGestureMGMT.setScale(2.4)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 12.0)/**parent to labelTimer*/
+        
+        labelScores.position = CGPoint(x:440/*300*/, y:-7)
+        labelScores.fontSize = 25.5
+        
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height:70)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 20.5) //14.8)
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 28.5)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 4.5) //14.8)
+        //controlPanelSKSpriteNode.setScale(1.5)
+        
+        skipButton.setScale(2.1)
+        skipButton.position = CGPoint(x:320, y:-0.5)
+        exitRedButton.setScale(2.1)
+        exitRedButton.position = CGPoint(x:-370, y:-0.5)
+        
+        timerBackgroundTwo.setScale(1.9)
+        
+        municipiosNameBackground.setScale(1.9)
+    }
+    //Execute attributes for scaling and positioning based on device screen size
+    func setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes(){
+        print("iPad 6Gen, Mini(5gen), Mini(6gen) entering IpadsSmallScreenSizes scaling and positioning func")
+        print("IpadsSmallScreenSizesFunc")
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)
+        //mapRectangleGestureMGMT.setScale(1.90)//1.38
+        mapRectangleGestureMGMT.setScale(1.85)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 9.5 )/**parent to labelTimer*/
+        
+        labelScores.position = CGPoint(x:440/*300*/, y:-7)
+        labelScores.fontSize = 22.5
+        
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height:64)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 20.5) //14.8)
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 22.5)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 4.5) //14.8)
+        //controlPanelSKSpriteNode.setScale(1.5)
+        
+        skipButton.setScale(1.90)
+        skipButton.position = CGPoint(x:320, y:-0.5)
+        exitRedButton.setScale(1.90)
+        exitRedButton.position = CGPoint(x:-370, y:-0.5)
+        
+        timerBackgroundTwo.setScale(1.85)
+        
+        municipiosNameBackground.setScale(1.75)
+    }
+    //Execute attributes for scaling and positioning based on device screen size
+    func setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes(){
+        print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) entering iPad Medium size scaling and positioning func")
+        print("IpadsMediumScreenSizesFunc")
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)
+        //mapRectangleGestureMGMT.setScale(1.90)//1.38
+        mapRectangleGestureMGMT.setScale(1.85)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 9.5)/**parent to labelTimer*/
+        
+        labelScores.position = CGPoint(x:440/*300*/, y:-7)
+        labelScores.fontSize = 22.5
+        
+        controlPanelSKSpriteNode.size = CGSize(width:self.size.width - 1, height:70)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 20.5) //14.8)
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 22.5)
+        //controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 4.5) //14.8)
+        //controlPanelSKSpriteNode.setScale(1.5)
+        
+        skipButton.setScale(2.00)
+        skipButton.position = CGPoint(x:320, y:-0.5)
+        exitRedButton.setScale(2.00)
+        exitRedButton.position = CGPoint(x:-370, y:-0.5)
+        
+        timerBackgroundTwo.setScale(1.85)
+        
+        municipiosNameBackground.setScale(1.75)
+    }
+    //Execute attributes for scaling and positioning based on device screen size
+    func setScaleAndIndepRenderingPositioningForSmallScreenSizes(){
+        print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO enter SmallScreenSizes scaling and positioning func")
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.4)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
+    //Execute attributes for scaling and positioning based on device screen size
+    func setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes(){
+        print("iPhone 8plus, XR, 11, XSMax, 11ProMax enter MediumLargeScreenSizes scaling and positioning func")
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.906/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.7)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
+    //Execute attributes for scaling and positioning based on device screen size
+    func setScaleAndIndepRenderingPositioningForLargeScreenSizes(){
+        print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro enter LargeScreenSizes scaling and positioning func")
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.811/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 6.5)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 14.8) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
+    //Execute attributes for scaling and positioning based on device screen size
+    func setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes(){
+        print("iPhone 12ProMax, 13ProMax, 14plus, 14ProMax enter XtraLargeScreenSizes scaling and positioning func ")
+        mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.975/*1.8*/)
+        mapRectangleGestureMGMT.setScale(1.33)//1.38
+        
+        timerBackgroundTwo.setScale(1.20)
+        timerBackgroundTwo.position = CGPoint(x:self.size.width / 2/*333.5*/, y:self.size.height / 7.0)/**parent to labelTimer*/
+        
+        controlPanelSKSpriteNode.position = CGPoint(x:self.size.width / 2, y:self.size.height / 16) //14.8)
+        
+        skipButton.setScale(1.50)
+        exitRedButton.setScale(1.50)
+        
+        municipiosNameBackground.setScale(1.20)
+    }
+    
     /*@objc func handlePan(_ gesture: UIPanGestureRecognizer) {
           if isScaled == true {
               //let translation = gesture.translation(in: gesture.view)
@@ -152,6 +347,8 @@ class RandomGame: SKScene{
               gesture.setTranslation(.zero, in: view)
           }
       }*/
+    
+    
 
       @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
           //Asses screen
@@ -537,7 +734,7 @@ class RandomGame: SKScene{
           switch municipioNameLabel.text {
                   
               case "Adjuntas", "Aguada", "Añasco", "Lajas", "Maricao", "Las Marías", "Moca", "Yauco", "Guánica", "Lares", "Arecibo", "Utuado", "Ponce", "Jayuya",
-                   "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
+                  "Manatí", "Coamo", "Orocovis", "Villalba", "Comerío", "Toa Alta", "Caguas", "Cidra", "Salinas", "Culebra", "Naguabo", "Yabucoa" :
                  setOneLineMunicipioNameLabel(Oneline:locationNameLabel)//Attributes are set for label
                  locationNameLabel.horizontalAlignmentMode = .center
                  locationNameLabel.verticalAlignmentMode = .center
@@ -780,6 +977,7 @@ class RandomGame: SKScene{
         }
     }
     
+    
     func setNewMunicipioNameToLookUp(){
         let countOfIndexes = municipios_names_array.count - 1
         randomIndex = Int.random(in:0...countOfIndexes)
@@ -790,11 +988,28 @@ class RandomGame: SKScene{
         || municipioNameLabel.text == "Quebradillas" || municipioNameLabel.text == "Rio Grande" || municipioNameLabel.text == "Sabana Grande" || municipioNameLabel.text == "San Germán"
         || municipioNameLabel.text == "San Lorenzo" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Santa Isabel" || municipioNameLabel.text == "Trujillo Alto"{
             if municipiosNameBackgroundTwo.parent == nil{
+                municipioNameLabel.removeFromParent()
+                municipiosNameBackground.removeFromParent()
+                
+                if screenSize.width == 2048.0 && screenSize.height == 2732.0{
+                    municipiosNameBackgroundTwo.setScale(1.9)
+                }
+                
+                else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+                    municipiosNameBackgroundTwo.setScale(1.75)
+                }
+                else{
+                    municipiosNameBackgroundTwo.setScale(1.20)
+                }
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
+            }
+            /*if municipiosNameBackgroundTwo.parent == nil{
             municipioNameLabel.removeFromParent()
             municipiosNameBackground.removeFromParent()
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
             addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
-            }
+            }*/
             //if else municipiosNameBackgroundTwo.parent
         }
         else {
