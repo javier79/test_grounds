@@ -212,8 +212,8 @@ class StartScene: SKScene{
     }
     //Execute attributes for scaling and positioning based on device screen size
     func setScaleAndIndepRenderingPositioningForIpadsLargeScreenSizes(){
-        print("Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) IpadsLargeScreenSizes scaling and positioning func")
-        print("IpadsLargeScreenSizesFunc")
+        print("Set RandomGame gamePlay objts scaling and positioning for: iPads Pro12.9(3gen), Pro12.9(4gen), Pro12.9(5gen), Pro12.9(6gen) IpadsLargeScreenSizes scaling and positioning func")
+        print("Ipads Large Screen Sizes")
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)
         //mapRectangleGestureMGMT.setScale(1.90)//1.38
         mapRectangleGestureMGMT.setScale(2.4)//1.38
@@ -241,8 +241,8 @@ class StartScene: SKScene{
     }
     //Execute attributes for scaling and positioning based on device screen size
     func setScaleAndIndepRenderingPositioningForIpadsSmallScreenSizes(){
-        print("iPad 6Gen, Mini(5gen), Mini(6gen) entering IpadsSmallScreenSizes scaling and positioning func")
-        print("IpadsSmallScreenSizesFunc")
+        print("Set RandomGame gamePlay objts scaling and positioning for: iPad 6Gen, Mini(5gen), Mini(6gen) entering IpadsSmallScreenSizes scaling and positioning func")
+        print("Ipads Small Screen Sizes")
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)
         //mapRectangleGestureMGMT.setScale(1.90)//1.38
         mapRectangleGestureMGMT.setScale(1.85)//1.38
@@ -270,8 +270,8 @@ class StartScene: SKScene{
     }
     //Execute attributes for scaling and positioning based on device screen size
     func setScaleAndIndepRenderingPositioningForIpadsMediumScreenSizes(){
-        print("iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) entering iPad Medium size scaling and positioning func")
-        print("IpadsMediumScreenSizesFunc")
+        print("Set RandomGame gamePlay objts scaling and positioning for: iPad Pro 10.5, Pro11(1gen), Air(3gen), 7Gen, Pro11(2gen), 8Gen, 9Gen, Air(4gen), PRO11(3gen), Air(5gen), 10Gen, Pro11(4gen) entering iPad Medium size scaling and positioning func")
+        print("Ipads Medium Screen Sizes")
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 2.00/*1.8*/)
         //mapRectangleGestureMGMT.setScale(1.90)//1.38
         mapRectangleGestureMGMT.setScale(1.85)//1.38
@@ -299,7 +299,8 @@ class StartScene: SKScene{
     }
     //Execute attributes for scaling and positioning based on device screen size
     func setScaleAndIndepRenderingPositioningForSmallScreenSizes(){
-        print("iPhoneSE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO enter SmallScreenSizes scaling and positioning func")
+        print("Set RandomGame gamePlay objts scaling and positioning for: iPhone SE3, SE2, 8, mini12, mini13, iPhone X, XS ,11PRO enter SmallScreenSizes scaling and positioning func")
+        print("iPhone small screen sizes")
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.755/*1.8*/)
         mapRectangleGestureMGMT.setScale(1.33)//1.38
         
@@ -316,7 +317,8 @@ class StartScene: SKScene{
     }
     //Execute attributes for scaling and positioning based on device screen size
     func setScaleAndIndepRenderingPositioningForMediumLargeScreenSizes(){
-        print("iPhone 8plus, XR, 11, XSMax, 11ProMax enter MediumLargeScreenSizes scaling and positioning func")
+        print("Set RandomGame gamePlay objts scaling and positioning for: iPhone 8plus, XR, 11, XSMax, 11ProMax enter MediumLargeScreenSizes scaling and positioning func")
+        print("iPhone medium-large screen sizes")
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.906/*1.8*/)
         mapRectangleGestureMGMT.setScale(1.33)//1.38
         
@@ -332,7 +334,8 @@ class StartScene: SKScene{
     }
     //Execute attributes for scaling and positioning based on device screen size
     func setScaleAndIndepRenderingPositioningForLargeScreenSizes(){
-        print("iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro enter LargeScreenSizes scaling and positioning func")
+        print("Set RandomGame gamePlay objts scaling and positioning for: iPhone 12, 12Pro, 13, 13Pro, 14, 14Pro enter LargeScreenSizes scaling and positioning func")
+        print("iPhone large screen sizes")
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.811/*1.8*/)
         mapRectangleGestureMGMT.setScale(1.33)//1.38
         
@@ -348,7 +351,8 @@ class StartScene: SKScene{
     }
     //Execute attributes for scaling and positioning based on device screen size
     func setScaleAndIndepRenderingPositioningForXtraLargeScreenSizes(){
-        print("iPhone 12ProMax, 13ProMax, 14plus, 14ProMax enter XtraLargeScreenSizes scaling and positioning func ")
+        print("Set RandomGame gamePlay objts scaling and positioning for: iPhone 12ProMax, 13ProMax, 14plus, 14ProMax enter XtraLargeScreenSizes scaling and positioning func ")
+        print("iPhone Xtralarge screen sizes")
         mapRectangleGestureMGMT.position = CGPoint(x:self.size.width / 2, y:self.size.height / 1.975/*1.8*/)
         mapRectangleGestureMGMT.setScale(1.33)//1.38
         
@@ -850,9 +854,9 @@ class StartScene: SKScene{
         //self.removeAllChildren()
         
         let gameOverScene = GameOverScene(size: self.size)
-        //let transition = SKTransition.fade(withDuration: 1.0)//withDuration: 1.5)
+        let transition = SKTransition.fade(withDuration: 2.0)//withDuration: 1.5)
     
-        self.view?.presentScene(gameOverScene/*, transition: transition*/)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
+        self.view?.presentScene(gameOverScene, transition: transition)/*si anado una transicion con 1.0 segundos o hasta 0.5 permite que el ultimo mnicipio se cambie de color antes de cambiar la vista pero ocurre cierto laggin que de cierta forma interfiere con el ritmo que llevaba el juego y afecta un poco la experiencia pero puedo volver a tratar mas adelante ajustando esto hasta dar con la experiencia que busco*/
     }
     //Function gets seconds and minutes to be evaluated at gameOverScene
     func getSecondsAndMinutes(){
@@ -1113,6 +1117,7 @@ class StartScene: SKScene{
                    default:
                        break
            }
+        
            if(useLine2 == true){
              nodeSprite.addChild(firstLineLabel)//adds label to map node
              nodeSprite.addChild(secondLineLabel)//adds label to map node
@@ -1218,7 +1223,7 @@ class StartScene: SKScene{
         /**following statement will execute when currentIndex and countOfIndexes equals 0 meaning that last element have been identified and prepare the game to move to gameOverScene*/
         else{
             //musicPlayer.stop()
-            self.removeAllActions()//It catches the last correctSound in order for transition to gameOverScene to flow smoother with less laggin
+            //self.removeAllActions()//It catches the last correctSound in order for transition to gameOverScene to flow smoother with less laggin
             getSecondsAndMinutes()//gets seconds and minutes to be used for time record function at gameOverScene
             StartScene.completedGame = true//variable updates to stop the timer and execute the transition to gameOverScene (gameOverScene TRANSITION EXECUTES AT UPDATE FUNCTION)
         }
@@ -1277,9 +1282,9 @@ class StartScene: SKScene{
     skipButtonPressed to complete alpha effect at touchesEnded function and set the new municipio to look up at municipioNameLabel*/
     func addOneTocurrentIndexSetNameToLookUp(){
         currentIndex += 1
-        skipButton.alpha = 0.88
+        //skipButton.alpha = 0.88
         pressSKipButton = true
-        skipButtonPressed = true
+        //skipButtonPressed = true THIS IS USED WHEN touchesEnd FUNCTION IS USED FOR ALPHA EFFECT ON BUTTON AT THE MOMENT IT IS NOT ON USE DUE TO HANDGESTURE TAP FUNCTION IS USED INSTEAD.
         
         if currentIndex == municipios_names_array.endIndex-0{//Si el indice llega al ultimo elemento el index se devuelve al 0 para comenzar a iterar los municipios que no fueron identificados en la pasada anterior del juego
             print("This")//para programador
@@ -1304,15 +1309,16 @@ class StartScene: SKScene{
     }
 
     //function detects when the touch on screen have ended in order to complete alpha effect that started at addOneTocurrentIndexSetNameToLookUp()
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    /*override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         
         //Efecto para el skipButton cuando se suelta el boton
         if skipButtonPressed == true{
-            skipButton.alpha = 1.0//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
+            print("ENtering touchesEnd")
+            skipButton.alpha = 2.5//Ojo esto se veria mejor dentro de un if sin embargo  si utilizo una condicion como if skipButton.alpha == 1.0 causa un glitch, pero puedo hacer una condicion con una variable boolean
             skipButtonPressed = false
         }
         //Exit button does not have alpha effect as it goes out of view when pressed
-    }
+    }*/
 
 }
