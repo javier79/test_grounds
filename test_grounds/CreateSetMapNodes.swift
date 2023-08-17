@@ -375,7 +375,7 @@ class CreateSetMapNodes{
             
         case "Hormigueros":
             setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
-        locationNameLabel.fontSize = 3.9
+             locationNameLabel.fontSize = 3.9
             locationNameLabel.zRotation = 10.0
             locationNameLabel.position = CGPoint(x: -0.5, y: 2.5)
      
@@ -383,7 +383,7 @@ class CreateSetMapNodes{
              setOneLineMunicipioNameLabel(Oneline:locationNameLabel)
              locationNameLabel.fontSize = 4.5
              locationNameLabel.zRotation = 10.0
-        locationNameLabel.position = CGPoint(x: -1.5/*-0.5*/, y: 2.5)
+             locationNameLabel.position = CGPoint(x: -1.5/*-0.5*/, y: 2.5)
 
             
         case "Rincón", "Canóvanas", "Arroyo", "Patillas" :
@@ -534,6 +534,7 @@ class CreateSetMapNodes{
                  default:
                      break
          }
+         
          if(useLine2 == true){
            nodeSprite.addChild(firstLineLabel)//adds label to map node
            nodeSprite.addChild(secondLineLabel)//adds label to map node
