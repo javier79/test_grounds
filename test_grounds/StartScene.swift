@@ -26,7 +26,8 @@ class StartScene: SKScene{
     let municipioNameLabel = GamePlayRenderingObjects().labelForMunicipioNames()//Label rendering municipio name to look up, Used in more than one function
     let municipiosNameBackground = GamePlayRenderingObjects().labelMunicipiosNameBackground()//Background for most(shorter) municipio names. Used in more than one function
     let municipiosNameBackgroundTwo = GamePlayRenderingObjects().labelMunicipiosNameBackgroundTwo()//Background for longer municipio names. Used in more than one function
-
+    let municipiosNameBackgroundThree = GamePlayRenderingObjects().labelMunicipiosNameBackgroundThree()
+    let municipiosNameBackgroundFour = GamePlayRenderingObjects().labelMunicipiosNameBackgroundFour()
     /**following two variables(renderTime and changeTime)  are basic part of the timer mechanism  and should not be bothered, in case dev wants to understand  how they work roll back to a branch previous to timer function makeover and follow the comments, but again dev should not be too concerned with this variables*/
     var renderTime: TimeInterval = 0.0//marks the time being played to be compared with currentTime, only used on update(timer function)
     let changeTime: TimeInterval = 1//adds(update) to renderTime in order to keep renderTime running, only used on update(imer function)
@@ -1237,39 +1238,159 @@ class StartScene: SKScene{
     
     /**following function pass text attributes for the next municipio name to look up and adjust the background size for the label(municipioNameLabel) */
     func setNewMunicipioNameToLookUp(){
-        municipioNameLabel.text = municipios_names_array [currentIndex] //Se desplega el nuevo municipio a ser localizado por el jugador
-        
-        if municipioNameLabel.text == "Aguas Buenas" || municipioNameLabel.text == "Barceloneta" || municipioNameLabel.text == "Barranquitas" || municipioNameLabel.text == "Cabo Rojo"
-        || municipioNameLabel.text == "Canóvanas" || municipioNameLabel.text == "Guayanilla" || municipioNameLabel.text == "Guaynabo" || municipioNameLabel.text == "Hormigueros"
-        || municipioNameLabel.text == "Juana Díaz" || municipioNameLabel.text == "Las Marías" || municipioNameLabel.text == "Las Piedras" || municipioNameLabel.text == "Mayagüez"
-        || municipioNameLabel.text == "Quebradillas" || municipioNameLabel.text == "Rio Grande" || municipioNameLabel.text == "Sabana Grande" || municipioNameLabel.text == "San Germán"
-        || municipioNameLabel.text == "San Lorenzo" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Santa Isabel" || municipioNameLabel.text == "Trujillo Alto"{
-            if municipiosNameBackgroundTwo.parent == nil{
-                municipioNameLabel.removeFromParent()
-                municipiosNameBackground.removeFromParent()
+        municipioNameLabel.text = municipios_names_array [currentIndex] //Writes to label the next municipio name to be located by player
+       
+        //This block manage the longest two word names
+        if municipioNameLabel.text == "Aguas Buenas"  || municipioNameLabel.text == "Hormigueros" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Sabana Grande"{
+            
+            //Removes current background to add municipiosNameBackgroundTwo to the scene
+            if municipiosNameBackgroundTwo.parent == nil{// Checks if municipiosNameBackgroundTwo is already in the scene, if municipioNameBackgroundTwo is already on the scene the following block is ignored
                 
-                if screenSize.width == 2048.0 && screenSize.height == 2732.0{
-                    municipiosNameBackgroundTwo.setScale(1.9)
+                if municipiosNameBackground.parent != nil{//If last statement is true(municipiosNameBackgroundTwo not in the scene ), this statement check if the background on the scene is municipiosNameBackground
+                    municipioNameLabel.removeFromParent()//If last statement is true( municipioNameLabel is on the scene) municipioNameLabel is removed in order to be "attached"(add as a child) to municipiosNameBackgroundTwo
+                    municipiosNameBackground.removeFromParent()//If municipiosNameBackground.parent != nil true municipiosNameBackgroundis removed to put in its place municipiosNameBackgroundTwo
+                    scaleMunicipioNameBackgroundTwoForScreenSizes()//scaling for municipiosNameBackgroundTwo is set according to screen size
                 }
                 
-                else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
-                    municipiosNameBackgroundTwo.setScale(1.75)
+                else if municipiosNameBackgroundThree.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundThree.removeFromParent()
+                    scaleMunicipioNameBackgroundTwoForScreenSizes()
                 }
-                else{
-                    municipiosNameBackgroundTwo.setScale(1.20)
+                
+                else if municipiosNameBackgroundFour.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundFour.removeFromParent()
+                    scaleMunicipioNameBackgroundTwoForScreenSizes()
                 }
+                
+                //After municipiosNameBackground or municipiosNameBackgroundThree or municipiosNameBackgroundFour are removed from the scene municipiosNameBackgroundTwo is added with children label municipioNameLabel
                 addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
                 addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
             }
-            //if else municipiosNameBackgroundTwo.parent
+           
         }
+        //Block manages short two words municipio names and longer one word names
+        else if municipioNameLabel.text == "Barceloneta" || municipioNameLabel.text == "Canóvanas" || municipioNameLabel.text == "Juana Díaz" || municipioNameLabel.text == "Las Marías" || municipioNameLabel.text == "Las Piedras" || municipioNameLabel.text == "Rio Grande" || municipioNameLabel.text == "San Germán" || municipioNameLabel.text == "San Lorenzo" || municipioNameLabel.text == "Santa Isabel" || municipioNameLabel.text == "Barranquitas" || municipioNameLabel.text == "Quebradillas"{
+            //Removes current background to add municipiosNameBackgroundFour to the scene
+            if municipiosNameBackgroundFour.parent == nil{// Checks if municipiosNameBackgroundFour is already in the scene, if municipioNameBackgroundFour is already on the scene the following block is ignored
+                if municipiosNameBackground.parent != nil{//If last statement is true(municipiosNameBackgroundFour not in the scene ), this statement check if the background on the scene is municipiosNameBackground
+                    municipioNameLabel.removeFromParent()//If last statement is true( municipioNameLabel is on the scene) municipioNameLabel is removed in order to be "attached"(add as a child) to municipiosNameBackgroundFour
+                    municipiosNameBackground.removeFromParent()//If municipiosNameBackground.parent != nil is true(meaning is presently on the scene) municipiosNameBackground is removed to put in its place municipiosNameBackgroundFour
+                    scaleMunicipioNameBackgroundFourForScreenSizes()//scaling for municipiosNameBackgroundFour is set according to screen size
+                }
+                else if municipiosNameBackgroundTwo.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundTwo.removeFromParent()
+                    scaleMunicipioNameBackgroundFourForScreenSizes()
+                }
+                
+                else if municipiosNameBackgroundThree.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundThree.removeFromParent()
+                    scaleMunicipioNameBackgroundFourForScreenSizes()
+                }
+                
+                
+            addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundFour, children: municipioNameLabel)
+            addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundFour)
+            }
+            
+        }
+            
+        //Block manages long single words and short two words municipio names
+        else if municipioNameLabel.text == "Cabo Rojo" || municipioNameLabel.text == "Bayamón" || municipioNameLabel.text == "Guayanilla" || municipioNameLabel.text == "Guaynabo" || municipioNameLabel.text == "Guayama"
+        || municipioNameLabel.text == "Humacao" || municipioNameLabel.text == "Mayagüez" || municipioNameLabel.text == "Maunabo" || municipioNameLabel.text == "Naguabo" || municipioNameLabel.text == "Peñuelas" || municipioNameLabel.text == "San Juan"
+        || municipioNameLabel.text == "Vega Alta" || municipioNameLabel.text == "Vega Baja" || municipioNameLabel.text == "Naranjito" || municipioNameLabel.text == "Orocovis" || municipioNameLabel.text == "Trujillo Alto"{
+            
+            if municipiosNameBackgroundThree.parent == nil{
+                if municipiosNameBackground.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackground.removeFromParent()
+                    scaleMunicipioNameBackgroundThreeForScreenSizes()
+                }
+                else if municipiosNameBackgroundTwo.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundTwo.removeFromParent()
+                    scaleMunicipioNameBackgroundThreeForScreenSizes()
+                }
+                else if municipiosNameBackgroundFour.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundFour.removeFromParent()
+                    scaleMunicipioNameBackgroundThreeForScreenSizes()
+                }
+            addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundThree, children: municipioNameLabel)
+            addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundThree)
+            }
+            
+        }
+        //Following block receive most municipio names(shorter ones)
         else {
+            
             if municipiosNameBackground.parent == nil{
-            municipioNameLabel.removeFromParent()
-            municipiosNameBackgroundTwo.removeFromParent()
+            //municipioNameLabel.removeFromParent()
+            //municipiosNameBackgroundTwo.removeFromParent()
+                if municipiosNameBackgroundTwo.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundTwo.removeFromParent()
+                    //scaleMunicipioNameBackgroundThreeForScreenSizes()
+                }
+                else if municipiosNameBackgroundThree.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundThree.removeFromParent()
+                    //scaleMunicipioNameBackgroundThreeForScreenSizes()
+                }
+                
+                else if municipiosNameBackgroundFour.parent != nil{
+                    municipioNameLabel.removeFromParent()
+                    municipiosNameBackgroundFour.removeFromParent()
+                    //scaleMunicipioNameBackgroundThreeForScreenSizes()
+                }
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
             addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
             }
+        }
+    }
+    
+    func scaleMunicipioNameBackgroundTwoForScreenSizes(){
+        
+        if screenSize.width == 2048.0 && screenSize.height == 2732.0{
+            municipiosNameBackgroundTwo.setScale(1.9)
+        }
+        
+        else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+            municipiosNameBackgroundTwo.setScale(1.75)
+        }
+        else{
+            municipiosNameBackgroundTwo.setScale(1.20)
+        }
+    }
+    
+    func scaleMunicipioNameBackgroundThreeForScreenSizes(){
+        
+        if screenSize.width == 2048.0 && screenSize.height == 2732.0{
+            municipiosNameBackgroundThree.setScale(1.9)
+        }
+        
+        else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+            municipiosNameBackgroundThree.setScale(1.75)
+        }
+        else{
+            municipiosNameBackgroundThree.setScale(1.20)
+        }
+    }
+    
+    func scaleMunicipioNameBackgroundFourForScreenSizes(){
+        
+        if screenSize.width == 2048.0 && screenSize.height == 2732.0{
+            municipiosNameBackgroundFour.setScale(1.9)
+        }
+        
+        else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+            municipiosNameBackgroundFour.setScale(1.75)
+        }
+        else{
+            municipiosNameBackgroundFour.setScale(1.20)
         }
     }
     
