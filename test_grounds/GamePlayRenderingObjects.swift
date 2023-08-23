@@ -293,7 +293,7 @@ class GamePlayRenderingObjects{
         let backgroundForMunicipiosNameLabel = SKSpriteNode(texture: texture)
         //backgroundForMunicipiosNameLabel.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
         backgroundForMunicipiosNameLabel.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
-        
+        backgroundForMunicipiosNameLabel.name = "MunicipiosNameBackgroundTwo"
         return backgroundForMunicipiosNameLabel
     }
     
@@ -329,7 +329,7 @@ class GamePlayRenderingObjects{
         let backgroundForMunicipiosNameLabel = SKSpriteNode(texture: texture)
         //backgroundForMunicipiosNameLabel.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
         backgroundForMunicipiosNameLabel.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
-        
+        backgroundForMunicipiosNameLabel.name = "MunicipiosNameBackgroundThree"
         return backgroundForMunicipiosNameLabel
     }
     
@@ -365,7 +365,7 @@ class GamePlayRenderingObjects{
         let backgroundForMunicipiosNameLabel = SKSpriteNode(texture: texture)
         //backgroundForMunicipiosNameLabel.color = UIColor.init(red: 0.8078, green: 0.6039, blue: 0, alpha: 1.0)//#ce9a00
         backgroundForMunicipiosNameLabel.position = CGPoint(x:0.5/*goldenBackground().size.width/200*/, y:-0.5/*goldenBackground().size.height/2 * 0.18*/)
-        
+        backgroundForMunicipiosNameLabel.name = "MunicipiosNameBackgroundFour"
         return backgroundForMunicipiosNameLabel
     }
     

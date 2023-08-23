@@ -1239,9 +1239,121 @@ class StartScene: SKScene{
     /**following function pass text attributes for the next municipio name to look up and adjust the background size for the label(municipioNameLabel) */
     func setNewMunicipioNameToLookUp(){
         municipioNameLabel.text = municipios_names_array [currentIndex] //Writes to label the next municipio name to be located by player
-       
+       //Switch reveals the name of the next municipio to look out for
+        switch(municipioNameLabel.text){
+            //This block manage the longest two word names
+            case "Aguas Buenas", "Hormigueros", "San Sebastián", "Sabana Grande" ://This municipio names will use municipiosNameBackgroundTwo
+                //Removes current background to add municipiosNameBackgroundTwo to the scene if its not already present on the scene
+                if municipiosNameBackgroundTwo.parent == nil{// Checks if municipiosNameBackgroundTwo is already in the scene, if municipioNameBackgroundTwo is already on the scene the following block is ignored
+                    switch(municipioNameLabel.parent?.name){//returns the background currently in use that is not municipiosNameBackgroundTwo and that needs to be removed in order to add municipiosNameBackgroundTwo to fit "Aguas Buenas", "Hormigueros", "San Sebastián", "Sabana Grande"
+                        
+                        case "MunicipiosNameBackground"://Background to be removed in order for municipiosNameBackgroundTwo to be added
+                            municipioNameLabel.removeFromParent()//municipioNameLabel is removed in order to be added(as child) to municipiosNameBackgroundTwo
+                            municipiosNameBackground.removeFromParent()//If municipiosNameBackground.parent != nil true municipiosNameBackgroundis removed to put in its place municipiosNameBackgroundTwo
+                            scaleMunicipioNameBackgroundTwoForScreenSizes()//scaling for municipiosNameBackgroundTwo is set according to screen size
+                        
+                        case "MunicipiosNameBackgroundThree":
+                            municipioNameLabel.removeFromParent()
+                            municipiosNameBackgroundThree.removeFromParent()
+                            scaleMunicipioNameBackgroundTwoForScreenSizes()
+                            
+                        case "MunicipiosNameBackgroundFour":
+                            municipioNameLabel.removeFromParent()
+                            municipiosNameBackgroundFour.removeFromParent()
+                            scaleMunicipioNameBackgroundTwoForScreenSizes()
+                            
+                            
+                        default:
+                           
+                        break
+                        
+                    }
+                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                    addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
+                }
+        
+            //Block manages short two words municipio names and longer one word names(CHECK COMMENTS ON FIRST BLOCK OF THE SWITCH CASE AS THEY FOLLOW THE SAME LOGIC)
+        case "Barceloneta", "Canóvanas", "Juana Díaz", "Las Marías", "Las Piedras", "Rio Grande", "San Germán", "San Lorenzo", "Santa Isabel", "Barranquitas", "Quebradillas"://This municipio names will use municipiosNameBackgroundFour
+            if municipiosNameBackgroundFour.parent == nil{
+                switch(municipioNameLabel.parent?.name){
+                    case "MunicipiosNameBackground":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackground.removeFromParent()
+                        scaleMunicipioNameBackgroundFourForScreenSizes()
+                    
+                    case "MunicipiosNameBackgroundTwo":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundTwo.removeFromParent()
+                        scaleMunicipioNameBackgroundFourForScreenSizes()
+                    
+                    case "MunicipiosNameBackgroundThree":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundThree.removeFromParent()
+                        scaleMunicipioNameBackgroundFourForScreenSizes()
+                    
+                    default:
+                    break
+            }
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundFour, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundFour)
+        }
+            //Block manages long single words and short two words municipio names(CHECK COMMENTS ON FIRST BLOCK OF THE SWITCH CASE AS THEY FOLLOW THE SAME LOGIC)
+        case  "Cabo Rojo", "Bayamón", "Guayanilla", "Guaynabo", "Guayama", "Humacao", "Mayagüez", "Maunabo", "Naguabo", "Peñuelas", "San Juan", "Vega Alta", "Vega Baja", "Naranjito", "Orocovis", "Trujillo Alto"://This municipio names will use municipiosNameBackgroundThree
+            if municipiosNameBackgroundThree.parent == nil{
+                switch(municipioNameLabel.parent?.name){
+                    case "MunicipiosNameBackground":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackground.removeFromParent()
+                        scaleMunicipioNameBackgroundThreeForScreenSizes()
+                        
+                    case "MunicipiosNameBackgroundTwo":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundTwo.removeFromParent()
+                        scaleMunicipioNameBackgroundThreeForScreenSizes()
+                        
+                    case "MunicipiosNameBackgroundFour":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundFour.removeFromParent()
+                        scaleMunicipioNameBackgroundThreeForScreenSizes()
+                        
+                    default:
+                        break
+                }
+                
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundThree, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundThree)
+            }
+            
+            //Following block receive most municipio names(shorter ones)This municipio names will use municipiosNameBackground (CHECK COMMENTS ON FIRST BLOCK OF THE SWITCH CASE AS THEY FOLLOW THE SAME LOGIC)
+          default:
+            if municipiosNameBackground.parent == nil{
+                switch(municipioNameLabel.parent?.name){
+                    case "MunicipiosNameBackgroundTwo":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundTwo.removeFromParent()
+                    
+                    case "MunicipiosNameBackgroundThree":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundThree.removeFromParent()
+                    
+                    case "MunicipiosNameBackgroundFour":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundFour.removeFromParent()
+                    
+                    default:
+                   
+                    break
+                    
+                }
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
+            }
+           
+            break
+        }
+        
         //This block manage the longest two word names
-        if municipioNameLabel.text == "Aguas Buenas"  || municipioNameLabel.text == "Hormigueros" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Sabana Grande"{
+       /* if municipioNameLabel.text == "Aguas Buenas"  || municipioNameLabel.text == "Hormigueros" || municipioNameLabel.text == "San Sebastián" || municipioNameLabel.text == "Sabana Grande"{
             
             //Removes current background to add municipiosNameBackgroundTwo to the scene
             if municipiosNameBackgroundTwo.parent == nil{// Checks if municipiosNameBackgroundTwo is already in the scene, if municipioNameBackgroundTwo is already on the scene the following block is ignored
@@ -1349,7 +1461,7 @@ class StartScene: SKScene{
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
             addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
             }
-        }
+        }*/
     }
     
     func scaleMunicipioNameBackgroundTwoForScreenSizes(){
