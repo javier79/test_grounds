@@ -28,6 +28,8 @@ class RandomGame: SKScene{
     let municipioNameLabel = GamePlayRenderingObjects().labelForMunicipioNames()//Label rendering municipio name to look up, Used in more than one function
     let municipiosNameBackground = GamePlayRenderingObjects().labelMunicipiosNameBackground()//Background for most(shorter) municipio names. Used in more than one function
     let municipiosNameBackgroundTwo = GamePlayRenderingObjects().labelMunicipiosNameBackgroundTwo()//Background for longer municipio names. Used in more than one function
+    let municipiosNameBackgroundThree = GamePlayRenderingObjects().labelMunicipiosNameBackgroundThree()
+    let municipiosNameBackgroundFour = GamePlayRenderingObjects().labelMunicipiosNameBackgroundFour()
     
     var renderTime: TimeInterval = 0.0//marks the time being played to be compared with currentTime, only used on update(timer function)
     let changeTime: TimeInterval = 1//adds(update) to renderTime in order to keep renderTime running, only used on update(imer function)
@@ -665,9 +667,34 @@ class RandomGame: SKScene{
       }*/
     
     func getFirstRandomMunicipioNameToLookUp(){
-        setNewMunicipioNameToLookUp()
-        //randomIndex = Int.random(in:0...77)//gets random index for first municipio name to look up
-        //municipioNameLabel.text = municipios_names_array[randomIndex]//first municipio name to look up
+        //setNewMunicipioNameToLookUp()
+        randomIndex = Int.random(in:0...77)//gets random index for first municipio name to look up
+        municipioNameLabel.text = municipios_names_array[randomIndex]//first municipio name to look up
+        
+        switch(municipioNameLabel.text){
+            case "Aguas Buenas", "Hormigueros", "San Sebastián", "Sabana Grande" :
+                scaleMunicipioNameBackgroundTwoForScreenSizes()
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
+            
+            case "Barceloneta", "Canóvanas", "Juana Díaz", "Las Marías", "Las Piedras", "Rio Grande", "San Germán", "San Lorenzo", "Santa Isabel", "Barranquitas", "Quebradillas":
+                scaleMunicipioNameBackgroundFourForScreenSizes()
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundFour, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundFour)
+            
+            case  "Cabo Rojo", "Bayamón", "Guayanilla", "Guaynabo", "Guayama", "Humacao", "Mayagüez", "Maunabo", "Naguabo", "Peñuelas", "San Juan", "Vega Alta", "Vega Baja", "Naranjito", "Orocovis", "Trujillo Alto":
+                scaleMunicipioNameBackgroundThreeForScreenSizes()
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundThree, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundThree)
+            
+        default:
+            
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
+            break
+        }
+        
+        
     }
     
     func addChildSKNodeToParentself(children:SKNode){
@@ -1183,7 +1210,122 @@ class RandomGame: SKScene{
         else{
             randomIndex = Int.random(in:0...countOfIndexes)
         }
-        municipioNameLabel.text = municipios_names_array[randomIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
+        
+        municipioNameLabel.text = municipios_names_array [randomIndex] //Writes to label the next municipio name to be located by player
+       //Switch reveals the name of the next municipio to look out for
+        switch(municipioNameLabel.text){
+            //This block manage the longest two word names
+            case "Aguas Buenas", "Hormigueros", "San Sebastián", "Sabana Grande" ://This municipio names will use municipiosNameBackgroundTwo
+                //Removes current background to add municipiosNameBackgroundTwo to the scene if its not already present on the scene
+                if municipiosNameBackgroundTwo.parent == nil{// Checks if municipiosNameBackgroundTwo is already in the scene, if municipioNameBackgroundTwo is already on the scene the following block is ignored
+                    switch(municipioNameLabel.parent?.name){//returns the background currently in use that is not municipiosNameBackgroundTwo and that needs to be removed in order to add municipiosNameBackgroundTwo to fit "Aguas Buenas", "Hormigueros", "San Sebastián", "Sabana Grande"
+                        
+                        case "MunicipiosNameBackground"://Background to be removed in order for municipiosNameBackgroundTwo to be added
+                            municipioNameLabel.removeFromParent()//municipioNameLabel is removed in order to be added(as child) to municipiosNameBackgroundTwo
+                            municipiosNameBackground.removeFromParent()//If municipiosNameBackground.parent != nil true municipiosNameBackgroundis removed to put in its place municipiosNameBackgroundTwo
+                            scaleMunicipioNameBackgroundTwoForScreenSizes()//scaling for municipiosNameBackgroundTwo is set according to screen size
+                        
+                        case "MunicipiosNameBackgroundThree":
+                            municipioNameLabel.removeFromParent()
+                            municipiosNameBackgroundThree.removeFromParent()
+                            scaleMunicipioNameBackgroundTwoForScreenSizes()
+                            
+                        case "MunicipiosNameBackgroundFour":
+                            municipioNameLabel.removeFromParent()
+                            municipiosNameBackgroundFour.removeFromParent()
+                            scaleMunicipioNameBackgroundTwoForScreenSizes()
+                            
+                            
+                        default:
+                           
+                        break
+                        
+                    }
+                    addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundTwo, children: municipioNameLabel)
+                    addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundTwo)
+                }
+        
+            //Block manages short two words municipio names and longer one word names(CHECK COMMENTS ON FIRST BLOCK OF THE SWITCH CASE AS THEY FOLLOW THE SAME LOGIC)
+        case "Barceloneta", "Canóvanas", "Juana Díaz", "Las Marías", "Las Piedras", "Rio Grande", "San Germán", "San Lorenzo", "Santa Isabel", "Barranquitas", "Quebradillas"://This municipio names will use municipiosNameBackgroundFour
+            if municipiosNameBackgroundFour.parent == nil{
+                switch(municipioNameLabel.parent?.name){
+                    case "MunicipiosNameBackground":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackground.removeFromParent()
+                        scaleMunicipioNameBackgroundFourForScreenSizes()
+                    
+                    case "MunicipiosNameBackgroundTwo":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundTwo.removeFromParent()
+                        scaleMunicipioNameBackgroundFourForScreenSizes()
+                    
+                    case "MunicipiosNameBackgroundThree":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundThree.removeFromParent()
+                        scaleMunicipioNameBackgroundFourForScreenSizes()
+                    
+                    default:
+                    break
+            }
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundFour, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundFour)
+        }
+            //Block manages long single words and short two words municipio names(CHECK COMMENTS ON FIRST BLOCK OF THE SWITCH CASE AS THEY FOLLOW THE SAME LOGIC)
+        case  "Cabo Rojo", "Bayamón", "Guayanilla", "Guaynabo", "Guayama", "Humacao", "Mayagüez", "Maunabo", "Naguabo", "Peñuelas", "San Juan", "Vega Alta", "Vega Baja", "Naranjito", "Orocovis", "Trujillo Alto"://This municipio names will use municipiosNameBackgroundThree
+            if municipiosNameBackgroundThree.parent == nil{
+                switch(municipioNameLabel.parent?.name){
+                    case "MunicipiosNameBackground":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackground.removeFromParent()
+                        scaleMunicipioNameBackgroundThreeForScreenSizes()
+                        
+                    case "MunicipiosNameBackgroundTwo":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundTwo.removeFromParent()
+                        scaleMunicipioNameBackgroundThreeForScreenSizes()
+                        
+                    case "MunicipiosNameBackgroundFour":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundFour.removeFromParent()
+                        scaleMunicipioNameBackgroundThreeForScreenSizes()
+                        
+                    default:
+                        break
+                }
+                
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackgroundThree, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackgroundThree)
+            }
+            
+            //Following block receive most municipio names(shorter ones)This municipio names will use municipiosNameBackground (CHECK COMMENTS ON FIRST BLOCK OF THE SWITCH CASE AS THEY FOLLOW THE SAME LOGIC)
+          default:
+            if municipiosNameBackground.parent == nil{
+                switch(municipioNameLabel.parent?.name){
+                    case "MunicipiosNameBackgroundTwo":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundTwo.removeFromParent()
+                    
+                    case "MunicipiosNameBackgroundThree":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundThree.removeFromParent()
+                    
+                    case "MunicipiosNameBackgroundFour":
+                        municipioNameLabel.removeFromParent()
+                        municipiosNameBackgroundFour.removeFromParent()
+                    
+                    default:
+                   
+                    break
+                    
+                }
+                addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
+                addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
+            }
+           
+            break
+        }
+        
+        /*municipioNameLabel.text = municipios_names_array[randomIndex]//Se desplega el nuevo municipio a ser localizado por el jugador
         if municipioNameLabel.text == "Aguas Buenas" || municipioNameLabel.text == "Barceloneta" || municipioNameLabel.text == "Barranquitas" || municipioNameLabel.text == "Cabo Rojo"
         || municipioNameLabel.text == "Canóvanas" || municipioNameLabel.text == "Guayanilla" || municipioNameLabel.text == "Guaynabo" || municipioNameLabel.text == "Hormigueros"
         || municipioNameLabel.text == "Juana Díaz" || municipioNameLabel.text == "Las Marías" || municipioNameLabel.text == "Las Piedras" || municipioNameLabel.text == "Mayagüez"
@@ -1221,6 +1363,48 @@ class RandomGame: SKScene{
             addChildSKLabelNodeToParentSKSpriteNode(parent: municipiosNameBackground, children: municipioNameLabel)
             addChildSKSpriteNodeToParentSKSpriteNode(parent: controlPanelSKSpriteNode, children: municipiosNameBackground)
             }
+        }*/
+    }
+    
+    func scaleMunicipioNameBackgroundTwoForScreenSizes(){
+        
+        if screenSize.width == 2048.0 && screenSize.height == 2732.0{
+            municipiosNameBackgroundTwo.setScale(1.9)
+        }
+        
+        else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+            municipiosNameBackgroundTwo.setScale(1.75)
+        }
+        else{
+            municipiosNameBackgroundTwo.setScale(1.20)
+        }
+    }
+    
+    func scaleMunicipioNameBackgroundThreeForScreenSizes(){
+        
+        if screenSize.width == 2048.0 && screenSize.height == 2732.0{
+            municipiosNameBackgroundThree.setScale(1.9)
+        }
+        
+        else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+            municipiosNameBackgroundThree.setScale(1.75)
+        }
+        else{
+            municipiosNameBackgroundThree.setScale(1.20)
+        }
+    }
+    
+    func scaleMunicipioNameBackgroundFourForScreenSizes(){
+        
+        if screenSize.width == 2048.0 && screenSize.height == 2732.0{
+            municipiosNameBackgroundFour.setScale(1.9)
+        }
+        
+        else if screenSize.width == 1668.0 && screenSize.height == 2224.0 || screenSize.width == 1536.0 && screenSize.height == 2048.0 || screenSize.width == 1668.0 && screenSize.height == 2388.0 || screenSize.width == 2048.0 && screenSize.height == 2732.0 || screenSize.width == 1620.0 && screenSize.height == 2160.0 || screenSize.width == 1640.0 && screenSize.height == 2360.0 || screenSize.width == 1488.0 && screenSize.height == 2266.0 {
+            municipiosNameBackgroundFour.setScale(1.75)
+        }
+        else{
+            municipiosNameBackgroundFour.setScale(1.20)
         }
     }
     
