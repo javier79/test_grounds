@@ -1796,7 +1796,15 @@ class CreateSetMapNodes{
      func rectangleViequesBezierPathToSKSpriteNode(bpViequesRectangle: UIBezierPath)-> SKSpriteNode{//Vieques island frame properties
             
          let shapeNode = SKShapeNode(path:bpViequesRectangle.cgPath)
-         shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//c1d3c8
+         //Following if statement evaluates if current game have finished in order to color rectangle blue(to make the impression that the rectangle was removed from the scene)
+         if StartScene.completedGame == true || RandomGame.completedGame == true || PracticeAlphabeticGame.completedGame == true || PracticeRandomGame.completedGame == true {
+             shapeNode.strokeColor = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0)
+         }
+         //If none of the games have been completed means we are at the start of a game and rectangle color must be paint yellow
+         else{
+             shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+         }
+         //shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//c1d3c8
          shapeNode.lineWidth = 2.5
          let view = SKView(frame: UIScreen.main.bounds)
          let texture = view.texture(from: shapeNode)!
@@ -1808,7 +1816,15 @@ class CreateSetMapNodes{
       func rectangleCulebraBezierPathToSKSpriteNode(bpCulebraRectangle: UIBezierPath)-> SKSpriteNode{//Culebra island frame properties
             
          let shapeNode = SKShapeNode(path:bpCulebraRectangle.cgPath)
-         shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)
+          //Following if statement evaluates if current game have finished in order to color rectangle blue(to make the impression that the rectangle was removed from the scene)
+          if StartScene.completedGame == true || RandomGame.completedGame == true || PracticeAlphabeticGame.completedGame == true || PracticeRandomGame.completedGame == true {
+              shapeNode.strokeColor = UIColor.init(red: 0.2588, green: 0.7608, blue: 1, alpha: 1.0)
+          }
+          //If none of the games have been completed means we are at the start of a game and rectangle color must be paint yellow
+          else{
+              shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)//(red: 0.97, green: 0.56, blue: 0.12, alpha: 1.00)//(red: 1.00, green: 0.40, blue: 0.00, alpha: 1.00)//c1d3c8
+          }
+         //shapeNode.strokeColor = UIColor.init(red: 1, green: 0.8824, blue: 0.5804, alpha: 1.0)
          shapeNode.lineWidth = 2.5
          let view = SKView(frame: UIScreen.main.bounds)
          let texture = view.texture(from: shapeNode)!
