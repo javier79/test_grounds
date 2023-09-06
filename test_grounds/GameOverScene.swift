@@ -373,12 +373,14 @@ class GameOverScene: SKScene{
             }
             
            //self.removeAllActions()
-           //self.removeFromParent()
-
+           //self.removeAllChildren()
+            
+           exited = false
+            
            let startMenu = StartMenu(size: self.size)//definitio
            //let transition = SKTransition.fade(withDuration: 1.0)
            self.view?.presentScene(startMenu/*, transition: transition*/)/*present scene and execut transitions*/
-           exited = false
+           
        }
     }
     
