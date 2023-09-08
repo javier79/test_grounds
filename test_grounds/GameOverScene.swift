@@ -119,6 +119,10 @@ class GameOverScene: SKScene{
         // Add the gesture recognizer to the scene's view
         self.view!.addGestureRecognizer(panGestureRecognizer)
         
+        let tapRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTapFrom(_:)))
+        tapRecognizer.numberOfTapsRequired = 1
+        self.view!.addGestureRecognizer(tapRecognizer)
+        
         
         //musicURL = Bundle.main.url(forResource:"predited", withExtension:"mp3")
         if StartMenu.backgroundMusicOn == true{
@@ -528,7 +532,42 @@ class GameOverScene: SKScene{
        }
     }
     
-     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    @objc func handleTapFrom(_ sender: UITapGestureRecognizer){
+        
+        
+        if sender.state == .recognized {//execute code as soon as gesture is recognized
+            
+            let touchLocation = sender.location(in: sender.view)//convert UIView coordinates to SpriteKit
+            let location = self.convertPoint(fromView: touchLocation)//Defines the space where touch is taking effect, in this case StartScene
+            let touchedNode = self.physicsWorld.body(at:location)//Defines that touch will take effect when it gets in contact with an SKphysics body
+            
+            if (touchedNode != nil){
+                if (endGameRectangleButton.name == touchedNode?.node?.name){
+                    endGameRectangle.removeFromParent()
+                    self.addChild(resultadosButton)
+
+                }
+                    
+                else if (resultadosButton.name == touchedNode?.node?.name){
+                    resultadosButton.removeFromParent()
+                    self.addChild(endGameRectangle)
+
+                }
+                
+                else if (endGameRectangleButtonTwo.name == touchedNode?.node?.name){
+                    playagain = true
+                }
+                
+                else if(endGameRectangleButtonThree.name == touchedNode?.node?.name){
+                    exited = true
+                   
+                }
+                
+            }
+        }
+    }
+    
+     /*override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         let touch = touches.first!//Guarda toque de pantalla
         let touchLocation = touch.location(in: self)//Define el espacio en donde van a tomar efecto los toques de pantalla en este caso la vista StartScene
@@ -558,7 +597,7 @@ class GameOverScene: SKScene{
             
         }
         
-    }
+    }*/
     
     func initMusic() {
         guard let url = musicURL else { return }
