@@ -608,7 +608,7 @@ class CreateSetMapNodes{
      }
      
 
-     
+     //function is called by the BezierPathToSKSpriteNode(caboRojoBezierPathToSKSpriteNode) function of each municipio node in order to apply some general attributes
      func ToSkShapeNodeAndDefaultProperties(nodeShape:SKShapeNode)-> SKSpriteNode{
          nodeShape.fillColor = UIColor.init(red: 0.78, green: 0.91, blue: 0.81, alpha: 1.00)//#C6E7CE/*(red: 0.9647, green: 0.9647, blue: 0.9647, alpha: 1.0)//f6f6f6*/
          nodeShape.strokeColor = UIColor.init(red: 0.81, green: 1.00, blue: 0.81, alpha: 1.00)//#CEFFCE/*(red: 0.80, green: 1.00, blue: 0.73, alpha: 1.00)*//*(red: 0.88, green: 0.80, blue: 0.59, alpha: 1.00)*//*(red: 0.99, green: 0.91, blue: 0.84, alpha: 1.00)//#FDE8D7*//*(red: 0.7569, green: 0.8275, blue: 0.7843, alpha: 1.0)//c1d3c8*/

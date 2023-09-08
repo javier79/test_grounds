@@ -137,7 +137,7 @@ class GameOverScene: SKScene{
         endGameRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 18)
         endGameRectangle.setScale(2.5)
         
-        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 288)
+        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 303)
         resultadosButton.setScale(2.8)
     }
     
@@ -152,7 +152,7 @@ class GameOverScene: SKScene{
         endGameRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 10)
         endGameRectangle.setScale(1.8)
         
-        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 223)
+        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 240)
         resultadosButton.setScale(2.1)
         
         
@@ -169,7 +169,7 @@ class GameOverScene: SKScene{
         endGameRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 10)
         endGameRectangle.setScale(2.0)
         
-        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 226)
+        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 240)
         resultadosButton.setScale(2.3)
         
         
@@ -198,7 +198,7 @@ class GameOverScene: SKScene{
         endGameRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 18)
         endGameRectangle.setScale(1.25)
         
-        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 133)
+        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 152)
         resultadosButton.setScale(1.4)
     }
     
@@ -212,7 +212,7 @@ class GameOverScene: SKScene{
         endGameRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 18)
         endGameRectangle.setScale(1.25)
         
-        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 133)
+        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 142)
         resultadosButton.setScale(1.4)
     }
     
@@ -225,7 +225,7 @@ class GameOverScene: SKScene{
         endGameRectangle.position = CGPoint(x: self.size.width/2, y: self.size.height/2 + 18)
         endGameRectangle.setScale(1.25)
         
-        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 133)
+        resultadosButton.position = CGPoint(x: self.size.width/2, y: self.size.height/2 - 158)
         resultadosButton.setScale(1.4)
     }
     
